@@ -17,6 +17,7 @@ define(function defineFocusContain() {
     // TODO: create a central key-event-manager instead?
     // TODO: should this be bound to context, not body?
     var _handle = handle.bind(context);
+    // Chrome won't fire a keypress for TAB
     context.addEventListener('keydown', _handle, false);
     return function off() {
       context.removeEventListener('keydown', _handle, false);
