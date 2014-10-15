@@ -1,8 +1,8 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
-define(function defineDomFocusable() {
+define(function defineDomFocusable(require) {
   var selector = 'a[href], area[href],'
     + 'input, select, textarea, button,' 
-    + 'iframe, object, embed',
+    + 'iframe, object, embed'
     + '[tabindex], [contenteditable]';
 
   function focusable(context) {

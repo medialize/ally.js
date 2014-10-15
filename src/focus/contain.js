@@ -1,4 +1,4 @@
-define(function defineFocusContain() {
+define(function defineFocusContain(require) {
   var keycode = require('../map/keycode');
   var wrap = require('./wrap');
 

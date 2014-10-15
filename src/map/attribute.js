@@ -1,4 +1,4 @@
-defined(function defineMapAttribute() {
+defined(function defineMapAttribute(require) {
 
   var map = {
     'aria-hidden': ['true', 'false'],

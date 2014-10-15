@@ -1,4 +1,4 @@
-define(function() {
+define(function(require) {
 
   function visible(element) {
     // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15

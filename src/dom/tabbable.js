@@ -1,5 +1,5 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
-define(function defineDomTabbable() {
+define(function defineDomTabbable(require) {
   var focusable = require('./focusable');
   var visible = require('./visible');
 
