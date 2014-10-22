@@ -7,10 +7,13 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 ## Goals
 
 * help manage focus
-  * fix crappy mouse-interaction for `tabindex="-2"` http://codepen.io/patrickhlauke/pen/fJamL and http://jsbin.com/fawaqi/edit
 * abstract keyboard bindings
 * create unqique IDs for aria-reference-only use
 * provide default data maps (keyCodes, aria attribute values, …)
+
+## Questions
+
+* tabbing to an element that is not in the viewport triggers scroll - preventable?
 
 ---
 
