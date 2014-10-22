@@ -7,6 +7,7 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 ## Goals
 
 * help manage focus
+  * fix crappy mouse-interaction for `tabindex="-2"` http://codepen.io/patrickhlauke/pen/fJamL and http://jsbin.com/fawaqi/edit
 * abstract keyboard bindings
 * create unqique IDs for aria-reference-only use
 * provide default data maps (keyCodes, aria attribute values, …)
@@ -15,6 +16,7 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 
 ## Read
 
+* http://www.w3.org/TR/html5/editing.html#the-hidden-attribute
 * http://www.w3.org/TR/wai-aria/
 * http://w3c.github.io/aria-in-html/
 * http://www.w3.org/WAI/PF/aria-practices/
@@ -34,6 +36,15 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 * http://www.marcozehe.de/2012/02/06/if-you-use-the-wai-aria-role-application-please-do-so-wisely/
 * http://www.marcozehe.de/2011/12/05/from-wai-aria-to-html5-and-back-or-maybe-not/
 
+---
+
+## Checkout
+
+* http://n12v.com/focus-transition/
+  * `-moz-mac-focusring`
+  * scrollIntoView
+  * https://github.com/NV/flying-focus/
+  * https://jonathanstark.com/labs/flying-focus/
 
 ---
 
