@@ -1,0 +1,26 @@
+{
+  "name": "a11y.js",
+  "version": "0.0.0",
+  "authors": [
+    "Rodney Rehm <mail+github@rodneyrehm.de>"
+  ],
+  "description": "suite of JavaScript functions and workflows to help applications with accessibility concerns",
+  "keywords": [
+    "accessibility"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.15"
+  }
+}
