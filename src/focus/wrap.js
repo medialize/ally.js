@@ -1,4 +1,6 @@
 define(function defineFocusWrap(require) {
+  'use strict';
+
   var tabbable = require('../dom/tabbable');
 
   function wrap(context, forward) {

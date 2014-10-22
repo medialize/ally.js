@@ -1,4 +1,5 @@
 define(function defineMapKeycode(require) {
+  'use strict';
 
   var map = {
     // Element Focus

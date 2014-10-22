@@ -1,4 +1,5 @@
 defined(function defineMapAttribute(require) {
+  'use strict';
 
   var map = {
     'aria-hidden': ['true', 'false'],

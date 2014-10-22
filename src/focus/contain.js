@@ -1,4 +1,6 @@
 define(function defineFocusContain(require) {
+  'use strict';
+
   var keycode = require('../map/keycode');
   var wrap = require('./wrap');
 
