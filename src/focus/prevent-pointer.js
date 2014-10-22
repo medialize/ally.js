@@ -3,6 +3,10 @@ define(function defineFocusPreventPointer(require) {
 
   var domPath = require('../dom/path');
 
+  // WARNING: https://twitter.com/MarcoZehe/status/525063127013285888
+  // possibly related: https://code.google.com/p/chromium/issues/detail?id=350738#c12
+  // TODO: limit to given context rather than its entire sub-tree
+
   function preventFocus(context, entryEvent, exitEvent) {
     // remove [tabindex="-1"] from the element that is about to be clicked
     // so the element (and its parents) cannot be given focus after the 
