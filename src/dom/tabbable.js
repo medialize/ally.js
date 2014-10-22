@@ -26,6 +26,7 @@ define(function defineDomTabbable(require) {
   function compare(a, b) {
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.tabIndex
 
+    // TODO: sort by tabindex, preserving DOM order of everything else
     // elements with a positive tabIndex: 
     // Elements that have identical tabIndexes should be navigated in the order they appear.
     // Navigation proceeds from the lowest tabIndex to the highest tabIndex.
