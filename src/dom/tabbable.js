@@ -4,6 +4,7 @@ define(function defineDomTabbable(require) {
 
   var focusable = require('./focusable');
   var visible = require('./visible');
+  var sortTabindex = require('./sort-tabindex');
 
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   function filter(element) {
@@ -23,24 +24,9 @@ define(function defineDomTabbable(require) {
     return true;
   };
 
-  function compare(a, b) {
-    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.tabIndex
-
-    // TODO: sort by tabindex, preserving DOM order of everything else
-    // elements with a positive tabIndex: 
-    // Elements that have identical tabIndexes should be navigated in the order they appear.
-    // Navigation proceeds from the lowest tabIndex to the highest tabIndex.
-
-    // elements with tabIndex "0" (including tabbableElements without tabIndex) should be navigated in the order they appear.
-
-
-    return 0;
-  };
-
   function tabbable(context) {
     var elements = focusable(context).filter(filter);
-    elements.sort(compare);
-    return elements;
+    return sortTabindex(elements);
   };
 
   return tabbable;
