@@ -2,13 +2,10 @@
 define(function defineDomFocusable(require) {
   'use strict';
 
-  var selector = 'a[href], area[href],'
-    + 'input, select, textarea, button,' 
-    + 'iframe, object, embed'
-    + '[tabindex], [contenteditable]';
+  var selector = require('../map/selector');
 
   function focusable(context) {
-    var elements = context.querySelectorAll(selector);
+    var elements = context.querySelectorAll(selector.focusable);
     return [].slice.call(elements, 0);
   }
 
