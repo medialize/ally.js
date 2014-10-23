@@ -2,7 +2,7 @@ define(function defineDomVisible(require) {
   'use strict';
 
   var path = require('./path');
-  var findIndex = require('../array/findIndex');
+  var findIndex = require('../array/find-index');
 
   function notDisplayed(_path) {
     return _path.some(function(element) {
