@@ -13,6 +13,7 @@ define(function defineDomSortTabindex(require) {
     // on a stable sorting algorithm, sortTabindex() could be as simple as
     // elements.sort(function(a, b) { return a.tabIndex - b.tabIndex; });
     // at this time Chrome does not use a stable sorting algorithm
+    // see http://blog.rodneyrehm.de/archives/14-Sorting-Were-Doing-It-Wrong.html#stability
 
     // NOTE: compareDocumentPosition seemed like more overhead than just sorting this with buckets
     // https://developer.mozilla.org/en-US/docs/Web/API/Node.compareDocumentPosition
