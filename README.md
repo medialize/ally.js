@@ -41,7 +41,7 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 
 ---
 
-## Checkout
+## Check Out
 
 * http://n12v.com/focus-transition/
   * `-moz-mac-focusring`
@@ -52,6 +52,18 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 ---
 
 a11y.js is written using a number of [ES5](http://kangax.github.io/compat-table/es5/) features - It is 2014, live with it.
+
+## Requirements:
+
+* [ES5](http://kangax.github.io/compat-table/es5/)
+* [ES6 Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+* [CSSOM CSS.escape](https://developer.mozilla.org/en-US/docs/Web/API/CSS.escape) ([spec](http://dev.w3.org/csswg/cssom/#the-css.escape%28%29-method))
+
+## Dependencies:
+
+* [ES5 shim](https://github.com/es-shims/es5-shim)
+* [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) (or complete [ES6-shim](https://github.com/paulmillr/es6-shim))
+* [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape)
 
 ---
 

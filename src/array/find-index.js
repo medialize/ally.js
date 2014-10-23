@@ -1,6 +1,8 @@
 define(function defineArrayFindIndex(require) {
   'use strict';
 
+  // TODO: replace array/find-index by github.com/paulmillr/Array.prototype.findIndex
+
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
   function findIndex(list, callback, context) {
     var index = -1;

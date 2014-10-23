@@ -1,6 +1,10 @@
-// http://www.w3.org/WAI/PF/aria-practices/#keyboard
 define(function defineDomFocusable(require) {
   'use strict';
+
+  // TODO: verify focusable defined by http://www.w3.org/TR/html5/editing.html#focusable
+
+  // http://www.w3.org/TR/html5/editing.html#focusable
+  // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
   var selector = require('../map/selector');
 

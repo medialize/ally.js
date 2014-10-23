@@ -3,6 +3,11 @@ define(function defineFocusPreventPointer(require) {
 
   var domPath = require('../dom/path');
 
+  // FIXME: remove negative tabindex only of parent elements - should fix that chrome bug
+  // without affecting pointer-focus when it's actually desired
+  // TODO: test <div tabindex="-1"><a href="#foo">
+
+
   // WARNING: https://twitter.com/MarcoZehe/status/525063127013285888
   // possibly related: https://code.google.com/p/chromium/issues/detail?id=350738#c12
   // TODO: limit to given context rather than its entire sub-tree
