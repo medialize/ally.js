@@ -3,6 +3,8 @@
 a11y.js is a suite of JavaScript functions and workflows to help your application with various [WAI-ARIA](http://www.w3.org/TR/wai-aria/) related accessibility concerns.
 
 ---
+---
+---
 
 ## Goals
 
@@ -43,15 +45,16 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 
 ## Check Out
 
-* http://n12v.com/focus-transition/
+* https://github.com/Flamefork/freefocus (arrow-key focus navigation)
+* http://n12v.com/focus-transition/ (animated :focus transitions)
   * `-moz-mac-focusring`
   * scrollIntoView
   * https://github.com/NV/flying-focus/
   * https://jonathanstark.com/labs/flying-focus/
 
 ---
-
-a11y.js is written using a number of [ES5](http://kangax.github.io/compat-table/es5/) features - It is 2014, live with it.
+---
+---
 
 ## Requirements:
 
@@ -67,7 +70,6 @@ a11y.js is written using a number of [ES5](http://kangax.github.io/compat-table/
 
 ---
 
-
 ## Tools
 
 
@@ -76,3 +78,15 @@ a11y.js is written using a number of [ES5](http://kangax.github.io/compat-table/
 * [Firefox DOM Inspector Extension](https://addons.mozilla.org/en-US/firefox/addon/dom-inspector-6622/) (Accessibility Tree, Accessibility Events)
 * XCode Accessibility Inspector `open '/Applications/Xcode.app/Contents/Applications/Accessibility Inspector.app'`
 
+---
+
+## Changelog
+
+### 0.0.0 (???) ###
+
+* initial release
+
+
+## License
+
+a11y.js is published under the [MIT License](http://opensource.org/licenses/mit-license).

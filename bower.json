@@ -2,11 +2,16 @@
   "name": "a11y.js",
   "version": "0.0.0",
   "authors": [
-    "Rodney Rehm <mail+github@rodneyrehm.de>"
+    "Rodney Rehm <rodney.rehm@medialize.de>"
   ],
   "description": "suite of JavaScript functions and workflows to help applications with accessibility concerns",
   "keywords": [
-    "accessibility"
+    "accessibility",
+    "a11y",
+    "focus",
+    "focusable",
+    "tabbing"
+    "tabbable"
   ],
   "license": "MIT",
   "private": true,
