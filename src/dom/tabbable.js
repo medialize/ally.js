@@ -14,22 +14,53 @@ define(function defineDomTabbable(require) {
 
   var focusable = require('./focusable');
   var visible = require('./visible');
+  var path = require('./path');
   var sortTabindex = require('./sort-tabindex');
+
+  var interactiveElement = /input|select|textarea|button|object/;
+
+  function validArea(element) {
+    // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
+    if (!element.name || !element.href || element.parentElement.nodeName.toLowerCase() !== 'map') {
+      return false;
+    }
+
+    var img = document.querySelector('img[usemap="#' + CSS.escape(element.name) + '"]')[0];
+    if (!img || !visible(img)) {
+      return false;
+    }
+
+    var childOfInteractive = path(img).slice(1).some(function(element) {
+      var name = element.nodeName.toLowerCase();
+      return name === 'button' || name === 'a';
+    });
+
+    if (childOfInteractive) {
+      return false;
+    }
+
+    return true;
+  }
 
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   function filter(element) {
-
-    // disabled form elements are focusable, but not tabbable
-    if (element.disabled) {
-      return false;
-    }
+    var nodeName = element.nodeName.toLowerCase();
 
     // negative tabindex is focusable, but not tabbable
     if (element.tabIndex < 0) {
       return false;
     }
 
-    // TODO: <area> https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
+    // disabled form elements are focusable, but not tabbable
+    if (element.disabled && (interactiveElement.test(nodeName)) {
+      return false;
+    }
+
+    if (nodeName === 'area' && !validArea(element)) {
+      return false;
+    }
 
     return true;
   };
