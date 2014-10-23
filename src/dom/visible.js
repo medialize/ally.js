@@ -30,7 +30,7 @@ define(function defineDomVisible(require) {
     });
 
     if (visible === -1) {
-      // there is no visible element
+      // there is no visible element (but a hidden element)
       return true;
     }
 
