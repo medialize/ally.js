@@ -1,8 +1,8 @@
 define(function defineDomVisible(require) {
   'use strict';
 
+  require('array.prototype.findindex');
   var path = require('./path');
-  var findIndex = require('../array/find-index');
 
   function notDisplayed(_path) {
     return _path.some(function(element) {
@@ -15,7 +15,7 @@ define(function defineDomVisible(require) {
     // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L109-L114
     // NOTE: a nested element can reverse visibility:hidden|collapse by explicitly setting visibility:visible
     // NOTE: visibility can be ["", "visible", "hidden", "collapse"]
-    var hidden = findIndex(_path, function(element) {
+    var hidden = _path.findIndex(function(element) {
       var visibility = element.style.visibility;
       return visibility === 'hidden' || visibility === 'collapse';
     });
@@ -25,7 +25,7 @@ define(function defineDomVisible(require) {
       return false;
     }
 
-    var visible = findIndex(_path, function(element) {
+    var visible = _path.findIndex(function(element) {
       return element.style.visibility === 'visible';
     });
 
