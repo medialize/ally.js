@@ -1,4 +1,4 @@
-define(function defineDomVisible(require) {
+define(function defineDomIsVisible(require) {
   'use strict';
 
   require('array.prototype.findindex');
@@ -48,10 +48,10 @@ define(function defineDomVisible(require) {
     return element.offsetWidth <= 0 || element.offsetHeight <= 0;
   }
 
-  function visible(element) {
+  function isVisible(element) {
     var _path = path(element);
     return !Boolean(notDisplayed(_path) || notVisible(_path) || noDimension(element));
   }
 
-  return visible;
+  return isVisible;
 });

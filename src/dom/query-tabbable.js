@@ -14,7 +14,7 @@ define(function defineDomQueryTabbable(require) {
 
   require('CSS.escape');
   var queryFocusable = require('./query-focusable');
-  var visible = require('./visible');
+  var isVisible = require('./is-visible');
   var path = require('./path');
   var sortTabindex = require('./sort-tabindex');
 
@@ -29,7 +29,7 @@ define(function defineDomQueryTabbable(require) {
     }
 
     var img = document.querySelector('img[usemap="#' + CSS.escape(element.name) + '"]')[0];
-    if (!img || !visible(img)) {
+    if (!img || !isVisible(img)) {
       return false;
     }
 

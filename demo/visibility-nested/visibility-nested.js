@@ -4,9 +4,9 @@ require.config({
   }
 });
 
-require(['a11y/dom/visible'], function (visible) {
+require(['a11y/dom/is-visible'], function (isVisible) {
   var links = document.querySelectorAll('a');
-  var visibleLinks = [].filter.call(links, visible);
+  var visibleLinks = [].filter.call(links, isVisible);
 
   function textContent(element) {
     return element.textContent;
