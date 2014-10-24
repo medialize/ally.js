@@ -10,7 +10,7 @@
     "a11y",
     "focus",
     "focusable",
-    "tabbing"
+    "tabbing",
     "tabbable"
   ],
   "license": "MIT",
@@ -26,6 +26,10 @@
   "moduleType": [
     "amd"
   ],
+  "dependencies": {
+    "CSS.escape": "https://github.com/mathiasbynens/CSS.escape.git#0.2.1",
+    "array.prototype.findindex": "~1.0.0"
+  },
   "devDependencies": {
     "requirejs": "~2.1.15"
   }

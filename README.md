@@ -68,6 +68,33 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 * [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) (or complete [ES6-shim](https://github.com/paulmillr/es6-shim))
 * [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape)
 
+## RequireJS Config
+
+```js
+require.config({
+  paths: {
+    'a11y.js': 'bower_components/a11y.js/src',
+    // shims required by a11y.js
+    'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
+    'CSS.escape': 'bower_components/CSS.escape/css.escape',
+  },
+  // automatically load shims
+  // http://requirejs.org/docs/api.html#config-deps
+  deps: [
+    'array.prototype.findindex',
+    'CSS.escape'
+  ],
+
+  // only if you're using es6-shim instead of selected bundles
+  // see http://requirejs.org/docs/api.html#config-map
+  map: {
+    '*': {
+      'array.prototype.findindex': 'es6-shim',
+    }
+  },
+});
+```
+
 ---
 
 ## Tools
