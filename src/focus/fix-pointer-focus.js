@@ -1,16 +1,22 @@
-define(function defineFocusPreventPointer(require) {
+/*
+ * Clicking on a link that has a focusable element in its ancestry [tabindex="-1"],
+ * can lead to that parental element gaining focus, instead of the link.
+ * 
+ * Example:
+ *   <div tabindex="-1">
+ *     <a href="#foo">click me</a>
+ *   </div>
+ *
+ * This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
+ * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 40.
+ */
+define(function defineFocusFixPointerFocus(require) {
   'use strict';
 
-  var domPath = require('../dom/path');
+  require('array.prototype.findindex');
 
-  // FIXME: remove negative tabindex only of parent elements - should fix that chrome bug
-  // without affecting pointer-focus when it's actually desired
-  // TODO: test <div tabindex="-1"><a href="#foo">
-
-
-  // WARNING: https://twitter.com/MarcoZehe/status/525063127013285888
-  // possibly related: https://code.google.com/p/chromium/issues/detail?id=350738#c12
-  // TODO: limit to given context rather than its entire sub-tree
+  var path = require('../dom/path');
+  var isFocusable = require('../dom/is-focusable');
 
   function preventFocus(context, entryEvent, exitEvent) {
     // remove [tabindex="-1"] from the element that is about to be clicked
@@ -22,9 +28,18 @@ define(function defineFocusPreventPointer(require) {
       // remember the elements we hacked
       var revert = [];
       // obtain the DOM hierarchy path of the element about to be clicked on,
-      // clean the negative tabindexes of every parental element as well, as
-      // the click would otherwise simply focus a parent element
-      domPath(event.target).forEach(function(node) {
+      var _path = path(event.target);
+      // find the first element that is actually focusable
+      var _firstFocusableIndex = _path.findIndex(isFocusable);
+      if (_firstFocusableIndex === -1 || _firstFocusableIndex + 1 >= _path.length) {
+        // there's nothing to focus
+        return;
+      }
+
+      // clean the negative tabindexes of every parent of the focusable element, 
+      // as the click would otherwise simply focus a parent element in Chrome
+      // related bug: https://code.google.com/p/chromium/issues/detail?id=350738#c12
+      _path.slice(_firstFocusableIndex + 1).forEach(function(node) {
         // need to use the attribute, not the property, because
         // node.tabIndex === -1 - even if the tabindex attribute was not set,
         // where getAttribute('tabindex') === null if it is not present.
@@ -40,8 +55,8 @@ define(function defineFocusPreventPointer(require) {
         revert.push(node);
       });
 
-      // if we didn't do anything, there's no need to wait for the exitEvent
       if (!revert.length) {
+        // there's nothing to revert, so skip that
         return;
       }
 
@@ -72,15 +87,15 @@ define(function defineFocusPreventPointer(require) {
   }
 
   // export convenience wrapper to engage pointer-focus prevention
-  function preventPointerFocus(context) {
+  function fixPointerFocus(context) {
     var allowMouse = preventFocus(context || document, 'mousedown', 'mouseup');
     var allowTouch = preventFocus(context || document, 'touchstart', 'touchend');
     // return callback to disengage the pointer-focus prevention
-    return function allowPointerFocus() {
+    return function undoFixPointerFocus() {
       allowMouse();
       allowTouch();
     };
   }
 
-  return preventPointerFocus;
+  return fixPointerFocus;
 });
