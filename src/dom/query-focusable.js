@@ -1,4 +1,4 @@
-define(function defineDomFocusable(require) {
+define(function defineDomQueryFocusable(require) {
   'use strict';
 
   // TODO: verify focusable defined by http://www.w3.org/TR/html5/editing.html#focusable
@@ -8,10 +8,10 @@ define(function defineDomFocusable(require) {
 
   var selector = require('../map/selector');
 
-  function focusable(context) {
+  function queryFocusable(context) {
     var elements = context.querySelectorAll(selector.focusable);
     return [].slice.call(elements, 0);
   }
 
-  return focusable;
+  return queryFocusable;
 });

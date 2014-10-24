@@ -1,4 +1,4 @@
-define(function defineDomTabbable(require) {
+define(function defineDomQueryTabbable(require) {
   'use strict';
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
@@ -12,7 +12,8 @@ define(function defineDomTabbable(require) {
       <input tabindex="-1">
   */
 
-  var focusable = require('./focusable');
+  require('CSS.escape');
+  var queryFocusable = require('./query-focusable');
   var visible = require('./visible');
   var path = require('./path');
   var sortTabindex = require('./sort-tabindex');
@@ -65,10 +66,10 @@ define(function defineDomTabbable(require) {
     return true;
   };
 
-  function tabbable(context) {
-    var elements = focusable(context).filter(filter);
+  function queryTabbable(context) {
+    var elements = queryFocusable(context).filter(filter);
     return sortTabindex(elements);
   };
 
-  return tabbable;
+  return queryTabbable;
 });

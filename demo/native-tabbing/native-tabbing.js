@@ -4,8 +4,8 @@ require.config({
   }
 });
 
-require(['a11y/dom/tabbable'], function (tabbable) {
-  var names = tabbable(document.body).map(function(node) {
+require(['a11y/dom/query-tabbable'], function (queryTabbable) {
+  var names = queryTabbable(document.body).map(function(node) {
     return node.getAttribute('data-dom');
   });
   console.log(names);

@@ -1,10 +1,10 @@
 define(function defineFocusWrap(require) {
   'use strict';
 
-  var tabbable = require('../dom/tabbable');
+  var tabbable = require('../dom/query-tabbable');
 
   function wrap(context, forward) {
-    var sequence = tabbable(context);
+    var sequence = queryTabbable(context);
     if (sequence[0] === event.target && !forward) {
       // is first element of sequence and we're going backwards
       sequence[sequence.length - 1].focus();
