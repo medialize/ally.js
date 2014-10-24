@@ -1,7 +1,8 @@
-defined(function defineMapSelector(require) {
+define(function defineMapSelector(require) {
   'use strict';
 
   var map = {
+    // TODO: what about focusing <svg> elements?
     focusable: 'a[href], area[href],'
       // TODO: spec says link[href] is tabbable?!
       + 'input, select, textarea, button,' 
@@ -10,5 +11,5 @@ defined(function defineMapSelector(require) {
       + '[tabindex], [contenteditable]',
   };
 
-  return attributes;
+  return map;
 });
