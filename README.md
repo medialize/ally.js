@@ -73,18 +73,13 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 ```js
 require.config({
   paths: {
-    'a11y.js': 'bower_components/a11y.js/src',
+    'a11y': 'bower_components/a11y.js/src',
     // shims required by a11y.js
     'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
     'CSS.escape': 'bower_components/CSS.escape/css.escape',
   },
-  // automatically load shims
-  // http://requirejs.org/docs/api.html#config-deps
-  deps: [
-    'array.prototype.findindex',
-    'CSS.escape'
-  ],
 
+  // alias array.prototype.findindex to es6-shim
   // only if you're using es6-shim instead of selected bundles
   // see http://requirejs.org/docs/api.html#config-map
   map: {
