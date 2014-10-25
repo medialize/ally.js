@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>What Is Focusable?</title>
+	<style>
+	  :focus {
+	    background: hotpink;
+	  }
+	</style>
+</head>
+<body onload="window.isLoaded=true;">
+
+  <article>
+    <h1>What Elements Are Focusable?</h1>
+    <p>This document is a testing ground to identify what a browser deems focusable and tabbable.</p>
+    <p>
+      At first the document will add <code>focus</code> event handlers to every descendant of <code>&lt;body&gt;</code>.
+      <!-- FocusManagement: http://www.w3.org/TR/html5/editing.html#focus-management -->
+      It will then try to <code>.focus()</code> every element to identify which elements satisfiy Focus Managemenet.
+      After that you - the user - can hit <kbd>TAB</kbd> a couple of times (like 50 or something) to determine the browser's natural tabbing order
+    </p>
+  </article>
+
+  <article>
+    <h2 id="form-elements">Form Elements</h2>
+  
+    <input type="text" id="label-target" data-label="input[type=text]">
+    <input type="password" data-label="input[type=password]">
+    <input type="checkbox" data-label="input[type=checkbox]">
+    <input type="radio" name="void-form-elements-1" data-label="input[type=radio]">
+    <input type="submit" data-label="input[type=submit]">
+    <input type="reset" data-label="input[type=radio]">
+    <input type="hidden" data-label="input[type=hidden]">
+    <select data-label="select"><option>option</option></select>
+    <textarea rows="1" cols="10" data-label="textarea"></textarea>
+    <button type="button" data-label="button[type=button]">button</button>
+    <label data-label="label">button</label>
+    <label for="label-target" data-label="label[for=&quot;label-target&quot;]">button</label>
+  </article>
+
+  <!-- http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled -->
+  <article>
+    <h2 id="disabled-elements">Disabled Elements</h3>
+
+    <input disabled type="text" data-label="input[type=text][disabled]">
+    <input disabled type="password" data-label="input[type=password][disabled]">
+    <input disabled type="checkbox" data-label="input[type=checkbox][disabled]">
+    <input disabled type="radio" name="void-disabled-form-elements-1" data-label="input[type=radio][disabled]">
+    <input disabled type="submit" data-label="input[type=submit][disabled]">
+    <input disabled type="reset" data-label="input[type=radio][disabled]">
+    <input disabled type="hidden" data-label="input[type=hidden][disabled]">
+    <select disabled data-label="select[disabled]"><option>option</option></select>
+    <textarea disabled rows="1" cols="10" data-label="textarea[disabled]"></textarea>
+    <button disabled type="button" data-label="button[type=button][disabled]">button</button>
+    <label disabled data-label="label">button</label>
+  </article>
+
+  <article>
+    <h2 id="navigation-elements">Navigation Elements</h2>
+
+    <a name="void-navigation-elements-1" data-label="a[name]">link</a>
+    <a href="#void" data-label="a[href]">link</a>
+    <a href="" data-label="a[href=&quot;&quot;]">link</a>
+  </article>
+
+  <!-- https://html.spec.whatwg.org/multipage/microdata.html#microdata -->
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+   <header>
+    <h1 id="microdata-link" itemprop="headline">Microdata Link</h1>
+    <p><time itemprop="datePublished" datetime="2013-08-29">today</time></p>
+    <link itemprop="url" href="#void" data-label="link[itemprop][href]">
+   </header>
+  </article>
+
+  <article>
+    <h2 id="image-maps">Image Maps</h2>
+
+    <map name="image-maps-1">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="area[href].upper">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
+    </map>
+
+    <img usemap="image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].first">
+    <img usemap="image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].second">
+    <img usemap="void" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
+    <img src="image-map-demo.png" alt="no map associated" data-label="img">
+
+    <a href="#void" data-label="a.image-map">
+      <img ismap src="image-map-demo.png" alt="clickable anywhere" data-label="a > img[ismap]">
+    </a>
+  </article>
+
+  <!-- http://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
+  <article>
+    <h2 id="browsing-contexts">Browsing Contexts</h2>
+    
+    <iframe src="iframe.html" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
+  </article>
+
+  <!-- http://www.w3.org/TR/html5/dom.html#interactive-content -->
+  <article>
+    <h2 id="interactive-content">Interactive Content</h2>
+
+    <audio src="#audio-resource" data-label="audio">
+      no &lt;audio&gt; support
+    </audio>
+
+    <audio controls src="#audio-resource" data-label="audio[controls]">
+      no &lt;audio&gt; support
+    </audio>
+
+    <video src="#video-resource" data-label="video">
+      no &lt;video&gt; support
+    </video>
+
+    <video src="#video-resource" data-label="video[controls]">
+      no &lt;video&gt; support
+    </video>
+
+    <embed type="video/quicktime" src="movie.mov" width="640" height="480" data-label="embed">
+
+    <object data="move.swf" type="application/x-shockwave-flash" data-label="object"></object>
+    <object usemap="image-maps-1" data="move.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
+
+    <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
+  </article>
+
+  <article>
+    <h2 id="svg">SVG</h2>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <a xlink:href="#void" data-label="svg a[xlink|href]">
+        <text x="10" y="20">a link</text>
+      </a>
+    </svg>
+  </article>
+
+  <!-- http://www.w3.org/TR/html5/editing.html#editing-host -->
+  <article>
+    <h2 id="editing-hosts">Editing Hosts</h2>
+    
+    <div contenteditable data-label="[contenteditable]"></div>
+  </article>
+
+  <article>
+    <h2 id="tabindex">Tabindex</h2>
+
+    <div tabindex="-2" data-label="[tabindex=-2]">tabindex <code>-2</code></div>
+    <div tabindex="-1" data-label="[tabindex=-1]">tabindex <code>-1</code></div>
+    <div tabindex="0" data-label="[tabindex=0]">tabindex <code>0</code></div>
+    <div tabindex="1" data-label="[tabindex=1]">tabindex <code>1</code></div>
+    <div tabindex="+2" data-label="[tabindex=+2]">tabindex <code>+2</code></div>
+    <div tabindex=" +2" data-label="[tabindex= +2]">tabindex <code> +2</code></div>
+
+
+    <h3 id="invalid-tabindex">Invalid Tabindex</h3>
+    <div tabindex="" data-label="[tabindex=&quot;&quot;]">empty tabindex</div>
+    <div tabindex="hello" data-label="[tabindex=hello]">tabindex <code>hello</code></div>
+    <div tabindex="3 " data-label="[tabindex=3 ]">tabindex <code>3 </code></div>
+
+
+    <h3 id="disabled-and-tabindex">Disabled And Tabindex</h3>
+    <fieldset disabled tabindex="0" data-label="fieldset[tabindex=0][disabled]"></fieldset>
+  </article>
+
+  <article>
+    <h2 id="css-visibility">CSS <code>visibility</code></h2>
+
+    <div style="visibility:hidden">
+      <a href="#void" data-label="{hidden} > a">link</a>
+      <a href="#void" style="visibility:visible" data-label="{hidden} > a{visible}">link</a>
+      <div style="visibility:visible">
+        <a href="#void" style="visibility:visible" data-label="{hidden} > {visible} > a">link</a>
+      </div>
+    </div>
+    <a href="#void" style="visibility:hidden" data-label="a{hidden}">link</a>
+
+    <table>
+      <tr>
+        <td>
+          <a href="#void" data-label="table tr td a">link</a>
+        </td>
+      </tr>
+      <tr style="visibility:collapse">
+        <td>
+          <a href="#void" data-label="table tr{collapse} td a">link</a>
+        </td>
+      </tr>
+      <tr style="visibility:collapse">
+        <td>
+          <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
+          <a href="#void" style="visibility: visible" data-label="table tr{collapse} td a{visible}">link</a>
+        </td>
+      </tr>
+    </table>
+  </article>
+
+  <article>
+    <h2 id="css-Display">CSS <conde>display</conde></h2>
+
+    <div style="display:none">
+      <a href="#void" data-label="{none} > a">link</a>
+      <a href="#void" style="display:inline" data-label="{none} > a{inline}">link</a>
+    </div>
+    <a href="#void" style="display:none" data-label="a{none}">link</a>
+  </article>
+
+  <h2 id="output-focusable">Focusable</h2>
+  <pre id="focusable"></pre>
+  <h2 id="output-tab-order">Tab Order</h2>
+  <pre id="tab-order"></pre>
+  <script src="../../bower_components/requirejs/require.js" data-main="focusable"></script>
+</body>
+</html>
