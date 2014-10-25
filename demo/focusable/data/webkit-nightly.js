@@ -1,11 +1,11 @@
-define(function defineDemoFocusableIE11(require) {
+define(function defineDemoFocusableWebkitNightly(require) {
   'use strict';
 
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    name: 'Internet Explorer 11 stable 2014-10-25 (via VMWare 6)',
-    userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; rv:11.0) like Gecko',
+    name: 'WebKit Nightly r175131 2014-10-25',
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/601.1.6+ (KHTML, like Gecko) Version/6.2 Safari/537.85.10',
     focusable: [
       "BODY",
       "input[type=text]",
@@ -17,18 +17,17 @@ define(function defineDemoFocusableIE11(require) {
       "select",
       "textarea",
       "button[type=button]",
+      "input[type=text]",
       "a[href]",
       "a[href=\"\"]",
       "a.image-map",
-      "a > img[ismap]",
       "iframe",
-      "audio",
       "audio[controls]",
-      "video",
-      "video[controls]",
       "embed",
-      "object",
-      "object[usemap]",
+      "keygen",
+      "svg",
+      "svg a[xlink|href]",
+      "text",
       "[contenteditable]",
       "[tabindex=-2]",
       "[tabindex=-1]",
@@ -37,15 +36,14 @@ define(function defineDemoFocusableIE11(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "TABLE",
-      "TD",
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
     tabOrder: [
-      "BODY",
+      "[tabindex=1]",
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -59,20 +57,13 @@ define(function defineDemoFocusableIE11(require) {
       "select",
       "textarea",
       "button[type=button]",
-      "a[href]",
-      "a[href=\"\"]",
-      "a.image-map",
-      "a > img[ismap]",
-      "iframe",
       "audio[controls]",
-      "embed",
-      "object",
-      "object[usemap]",
+      "keygen",
       "svg",
-      "object[usemap]",
-      "object",
-      "object[usemap]",
-      "svg"
+      "text",
+      "[contenteditable]",
+      "[tabindex=0]",
+      "fieldset[tabindex=0][disabled]"
     ]
   };
 });

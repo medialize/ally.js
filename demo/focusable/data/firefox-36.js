@@ -1,11 +1,11 @@
-define(function defineDemoFocusableIE11(require) {
+define(function defineDemoFocusableFirefoxNightly(require) {
   'use strict';
 
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    name: 'Internet Explorer 11 stable 2014-10-25 (via VMWare 6)',
-    userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; rv:11.0) like Gecko',
+    name: 'Firefox 36.0a1 Nightly (without E10S) 2014-10-25',
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:36.0) Gecko/20100101 Firefox/36.0',
     focusable: [
       "BODY",
       "input[type=text]",
@@ -17,18 +17,15 @@ define(function defineDemoFocusableIE11(require) {
       "select",
       "textarea",
       "button[type=button]",
+      "input[type=text]",
       "a[href]",
       "a[href=\"\"]",
       "a.image-map",
-      "a > img[ismap]",
-      "iframe",
-      "audio",
       "audio[controls]",
       "video",
       "video[controls]",
       "embed",
-      "object",
-      "object[usemap]",
+      "keygen",
       "[contenteditable]",
       "[tabindex=-2]",
       "[tabindex=-1]",
@@ -36,16 +33,15 @@ define(function defineDemoFocusableIE11(require) {
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
+      "[tabindex=\"\"]",
+      "[tabindex=hello]",
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "TABLE",
-      "TD",
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
     tabOrder: [
-      "BODY",
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -62,17 +58,19 @@ define(function defineDemoFocusableIE11(require) {
       "a[href]",
       "a[href=\"\"]",
       "a.image-map",
-      "a > img[ismap]",
-      "iframe",
       "audio[controls]",
+      "video",
+      "video[controls]",
       "embed",
-      "object",
-      "object[usemap]",
-      "svg",
-      "object[usemap]",
-      "object",
-      "object[usemap]",
-      "svg"
+      "embed",
+      "keygen",
+      "svg a[xlink|href]",
+      "[contenteditable]",
+      "[tabindex=0]",
+      "{hidden} > a{visible}",
+      "{hidden} > {visible} > a",
+      "table tr td a",
+      "table tr{collapse} td a{visible}"
     ]
   };
 });
