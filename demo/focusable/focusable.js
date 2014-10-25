@@ -1,6 +1,10 @@
 require.config({
   paths: {
-    a11y: '../../src'
+    a11y: '../../src',
+    // shims required by a11y.js
+    'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
+    'CSS.escape': '../../bower_components/CSS.escape/css.escape',
+
   }
 });
 
@@ -24,37 +28,25 @@ function captureStuff() {
 
   setTimeout(function() {
     document.getElementById('focusable').textContent = JSON.stringify(focusHistory, null, 2);
+    require(['a11y/dom/query-focusable'], function (queryFocusable) {
+      var scriptedFocus = queryFocusable(document).map(function(element) {
+        return element.getAttribute('data-label') || element.nodeName;
+      });
 
-    // reset focusHistory
-    document.activeElement.blur();
-    focusHistory.length=0;
+      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(scriptedFocus, null, 2);
 
-    alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Tab Order" headline');
-    document.getElementById('output-tab-order').addEventListener('click', function() {
-      document.getElementById('tab-order').textContent = JSON.stringify(focusHistory, null, 2);
-    }, false);
-  }, 1000)
+      // reset focusHistory
+      document.activeElement.blur();
+      focusHistory.length=0;
+
+      alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Tab Order" headline');
+      document.getElementById('output-tab-order').addEventListener('click', function() {
+        document.getElementById('tab-order').textContent = JSON.stringify(focusHistory, null, 2);
+      }, false);
+      
+    });
+
+  }, 1000);
 }
 
 captureStuff();
-
-// if (window.isLoaded) {
-//   captureStuff();
-// } else {
-//   window.onLoad = captureStuff;
-// }
-
-
-// 
-// require(['a11y/dom/is-visible'], function (isVisible) {
-//   var links = document.querySelectorAll('a');
-//   var visibleLinks = [].filter.call(links, isVisible);
-// 
-//   function textContent(element) {
-//     return element.textContent;
-//   }
-// 
-//   console.log("links", [].map.call(links, textContent));
-//   console.log("visible", [].map.call(visibleLinks, textContent));
-// });
-// 
