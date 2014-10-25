@@ -131,7 +131,7 @@
 
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <a xlink:href="#void" data-label="svg a[xlink|href]">
-        <text x="10" y="20">a link</text>
+        <text x="10" y="20" data-label="svg a[xlink|href] text">a link</text>
       </a>
     </svg>
   </article>
@@ -176,19 +176,19 @@
     </div>
     <a href="#void" style="visibility:hidden" data-label="a{hidden}">link</a>
 
-    <table>
+    <table data-label="table.error-by-visibility">
       <tr>
-        <td>
+        <td data-label="table tr td.error-by-visibility">
           <a href="#void" data-label="table tr td a">link</a>
         </td>
       </tr>
-      <tr style="visibility:collapse">
-        <td>
+      <tr style="visibility:collapse" data-label="tr{collapse}.error-by-visibility">
+        <td data-label="table tr{collapse} td{collapse}.error-by-visibility">
           <a href="#void" data-label="table tr{collapse} td a">link</a>
         </td>
       </tr>
       <tr style="visibility:collapse">
-        <td>
+        <td data-label="table tr{collapse} td{collapse}.error-by-visibility">
           <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
           <a href="#void" style="visibility: visible" data-label="table tr{collapse} td a{visible}">link</a>
         </td>

@@ -27,7 +27,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "keygen",
       "svg",
       "svg a[xlink|href]",
-      "text",
+      "svg a[xlink|href] text",
       "[contenteditable]",
       "[tabindex=-2]",
       "[tabindex=-1]",
@@ -60,7 +60,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "audio[controls]",
       "keygen",
       "svg",
-      "text",
+      "svg a[xlink|href] text",
       "[contenteditable]",
       "[tabindex=0]",
       "fieldset[tabindex=0][disabled]"

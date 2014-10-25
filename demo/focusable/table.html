@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Table Of Focusable Elements</title>
+
+  <!-- http://clrs.cc/ -->
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 5px;
+      border: 1px solid #aaaaaa;
+    }
+    tbody th {
+      text-align: left;
+    }
+    td[data-supported="yes"] {
+      text-align: center;
+      background: #01ff70;
+    }
+    td[data-supported="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Which Elements Are Considered Focusable?</h1>
+  <p>The following table shows which of the <a href="./test.html">test elements</a> are deemed focusable by the given browser. "Deemed focusable" means "triggered a <code>focus</code> event".</p>
+
+  <table id="focusable-table">
+    <thead>
+      <tr class="row">
+        <th data-column="element">Element</th>
+        <th data-column="a11y">a11y.js</th>
+        <th data-column="chrome-stable">Chrome 38</th>
+        <th data-column="chrome-nightly">Chrome 40</th>
+        <th data-column="firefox-stable">Firefox 33</th>
+        <th data-column="firefox-nightly">Firefox 36</th>
+        <th data-column="ie-11">Internet Explorer 11</th>
+        <th data-column="safari-6_2">Safari 6.2</th>
+        <th data-column="webkit-nightly">WebKit Nightly</th>
+        <th data-column="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody class="items"></tbody>
+  </table>
+
+  <script src="../../bower_components/requirejs/require.js" data-main="table"></script>
+</body>
+</html>

@@ -13,6 +13,9 @@ function captureStuff() {
   var elements = [].slice.call(document.body.querySelectorAll('*'), 0);
   var focusHistory = [document.activeElement && (document.activeElement.getAttribute('data-label') || document.activeElement.nodeName) || 'no-initial-focus'];
   function logFocusEvent(event) {
+    if ((event.target.getAttribute('data-label') || event.target.nodeName) === 'text') {
+      console.log(event.target);
+    }
     focusHistory.push(event.target.getAttribute('data-label') || event.target.nodeName);
   }
   function registerFocusLogging(element) {
