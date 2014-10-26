@@ -9,14 +9,14 @@ define(function defineDomIsFocusable(require) {
   var path = require('./path');
 
   // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
-  var validIntegerPattern = /^\s+(-|\+)?[0-9]+$/;
+  var validIntegerPattern = /^\s*(-|\+)?[0-9]+$/;
   // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
   var disabledElementsPattern = /^(input|select|textarea|button|fieldset)$/;
 
   function validTabindex(element) {
     // an element matches the tabindex selector even if its value is invalid
     var tabindex = element.getAttribute('tabindex');
-    return !(tabindex !== null && (tabindex !== '' || !validIntegerPattern.test(tabindex)));
+    return !(tabindex !== null && (tabindex === '' || !validIntegerPattern.test(tabindex)));
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
@@ -45,8 +45,6 @@ define(function defineDomIsFocusable(require) {
     return true;
   }
 
-
-
   function isFocusable(element) {
     var focusable = selector.focusable;
     var nodeName = element.nodeName.toLowerCase();
@@ -60,10 +58,6 @@ define(function defineDomIsFocusable(require) {
     if (nodeName === 'area' && !validArea(element)) {
       return false;
     }
-
-    // TODO: test focusing <a href=""> (empty href)
-
-    // TODO: test focusing <fieldset tabindex="0" disabled>
 
     // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
     if (element.disabled && disabledElementsPattern.test(nodeName)) {
@@ -91,6 +85,8 @@ define(function defineDomIsFocusable(require) {
       focusable = focusable.replace('[tabindex],', '');
     }
 
+    // FIXME: Element.matches is not yet supported everywhere
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element.matches#Polyfill
     return element.matches(focusable);
   }
 
