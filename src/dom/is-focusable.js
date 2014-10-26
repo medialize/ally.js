@@ -55,7 +55,6 @@ define(function defineDomIsFocusable(require) {
       return false;
     }
 
-    // FIXME: filtering for <area> is potentially wrong, as a single map can be used by two <img>
     if (nodeName === 'area' && !validArea(element)) {
       return false;
     }

@@ -11,6 +11,7 @@ define(function defineMapSelector(require) {
       // + 'a[href], svg a[xlink|href],'
       + 'a[href],'
       // validity determined by dom/is-focusable.js
+      // TODO: figure out why no browser makes area[href] focusable
       + 'area[href],'
       // validity determined by dom/is-focusable.js
       + 'input, select, textarea, button,'
