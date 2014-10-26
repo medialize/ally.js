@@ -29,32 +29,52 @@ function captureStuff() {
 
   // try to focus every single element, successes wil end up in focusHistory
   elements.forEach(function(element) {
-    // FIXME: need to test if activeElement changed without focus event
-    // FIXME: need to verify activeElement is the thing we just focused
+    var previous = document.activeElement;
     element.focus && element.focus();
+    if (document.activeElement !== element && document.activeElement !== previous) {
+      console.log("focus changed, but onto unexpected target", element, previous, document.activeElement)
+    }
   });
 
+  var results = {
+    name: "",
+    userAgent: navigator.userAgent,
+    focusable: null,
+    tabOrder: null,
+    a11y: {
+      focusable: null,
+      tabOrder: null,
+    },
+    jquery: {
+      focusable: null,
+      tabOrder: null,
+    },
+  };
+
   setTimeout(function() {
+    results.focusable = focusHistory.slice(0);
     document.getElementById('focusable').textContent = JSON.stringify(focusHistory, null, 2);
+
     require(['a11y/dom/query-focusable', 'jquery', 'jquery.ui/core'], function (queryFocusable, $) {
-      var a11yFocus = queryFocusable(document).map(function(element) {
+      results.a11y.focusable = queryFocusable(document).map(function(element) {
         return element.getAttribute('data-label') || element.nodeName;
       });
 
-      var jqueryFocus = $(':focusable').toArray().map(function(element) {
+      results.jquery.focusable = $(':focusable').toArray().map(function(element) {
         return element.getAttribute('data-label') || element.nodeName;
       });
 
-      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(a11yFocus, null, 2);
-      document.getElementById('focusable').textContent += '\n\njQueryUI:\n' + JSON.stringify(jqueryFocus, null, 2);
+      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(results.a11y.focusable, null, 2);
+      document.getElementById('focusable').textContent += '\n\njQueryUI:\n' + JSON.stringify(results.jquery.focusable, null, 2);
 
       // reset focusHistory
       document.activeElement.blur();
       focusHistory.length=0;
 
-      alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Tab Order" headline');
-      document.getElementById('output-tab-order').addEventListener('click', function() {
-        document.getElementById('tab-order').textContent = JSON.stringify(focusHistory, null, 2);
+      alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
+      document.getElementById('output-results').addEventListener('click', function() {
+        results.tabOrder = focusHistory;
+        document.getElementById('results').textContent = JSON.stringify(results, null, 2);
       }, false);
       
     });

@@ -4,9 +4,9 @@ define(function defineDemoFocusableChrome(require) {
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    name: 'Chrome 38 stable 2014-10-25',
-    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36',
-    focusable: [
+    "name": "Chrome 38 stable 2014-10-25",
+    "userAgent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36',
+    "focusable": [
       "BODY",
       "input[type=text]",
       "input[type=password]",
@@ -44,7 +44,7 @@ define(function defineDemoFocusableChrome(require) {
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
-    tabOrder: [
+    "tabOrder": [
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -73,6 +73,73 @@ define(function defineDemoFocusableChrome(require) {
       "{hidden} > {visible} > a",
       "table tr td a",
       "table tr{collapse} td a{visible}"
-    ]
+    ],
+    "a11y": {
+      "focusable": [
+        "BODY",
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "a.image-map",
+        "iframe",
+        "audio[controls]",
+        "embed",
+        "object",
+        "object[usemap]",
+        "keygen",
+        "[contenteditable]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "{hidden} > a{visible}",
+        "{hidden} > {visible} > a",
+        "table tr td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    },
+    "jquery": {
+      "focusable": [
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "a.image-map",
+        "object",
+        "object[usemap]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=3 ]",
+        "fieldset[tabindex=0][disabled]",
+        "table tr td a",
+        "table tr{collapse} td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    }
   };
+
 });
