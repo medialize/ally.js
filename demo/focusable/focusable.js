@@ -4,7 +4,10 @@ require.config({
     // shims required by a11y.js
     'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
     'CSS.escape': '../../bower_components/CSS.escape/css.escape',
-
+    // stuff used for testing and co
+    'underscore': '../../bower_components/underscore/underscore',
+    'jquery': '../../bower_components/jquery/dist/jquery',
+    'jquery.ui': '../../bower_components/jquery.ui/ui',
   }
 });
 
@@ -33,12 +36,17 @@ function captureStuff() {
 
   setTimeout(function() {
     document.getElementById('focusable').textContent = JSON.stringify(focusHistory, null, 2);
-    require(['a11y/dom/query-focusable'], function (queryFocusable) {
-      var scriptedFocus = queryFocusable(document).map(function(element) {
+    require(['a11y/dom/query-focusable', 'jquery', 'jquery.ui/core'], function (queryFocusable, $) {
+      var a11yFocus = queryFocusable(document).map(function(element) {
         return element.getAttribute('data-label') || element.nodeName;
       });
 
-      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(scriptedFocus, null, 2);
+      var jqueryFocus = $(':focusable').toArray().map(function(element) {
+        return element.getAttribute('data-label') || element.nodeName;
+      });
+
+      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(a11yFocus, null, 2);
+      document.getElementById('focusable').textContent += '\n\njQueryUI:\n' + JSON.stringify(jqueryFocus, null, 2);
 
       // reset focusHistory
       document.activeElement.blur();

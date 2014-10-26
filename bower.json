@@ -33,6 +33,7 @@
   "devDependencies": {
     "requirejs": "~2.1.15",
     "underscore": "~1.7.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "jquery.ui": "~1.11.2"
   }
 }
