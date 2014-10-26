@@ -5,6 +5,7 @@ require.config({
     'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
     'CSS.escape': '../../bower_components/CSS.escape/css.escape',
     // stuff used for testing and co
+    'platform': '../../bower_components/platform/platform',
     'underscore': '../../bower_components/underscore/underscore',
     'jquery': '../../bower_components/jquery/dist/jquery',
     'jquery.ui': '../../bower_components/jquery.ui/ui',
@@ -15,15 +16,19 @@ function captureStuff() {
   // focus does not bubble so attach the listener to every element in the dom and log events to focusHistory
   var elements = [].slice.call(document.body.querySelectorAll('*'), 0);
   var focusHistory = [document.activeElement && (document.activeElement.getAttribute('data-label') || document.activeElement.nodeName) || 'no-initial-focus'];
-  function logFocusEvent(event) {
-    if ((event.target.getAttribute('data-label') || event.target.nodeName) === 'text') {
-      console.log(event.target);
-    }
-    focusHistory.push(event.target.getAttribute('data-label') || event.target.nodeName);
+
+  function elementName(element) {
+    return element.getAttribute('data-label') || element.nodeName;
   }
+
+  function logFocusEvent(event) {
+    focusHistory.push(elementName(event.target));
+  }
+
   function registerFocusLogging(element) {
     element.addEventListener('focus', logFocusEvent, false);
   }
+
   registerFocusLogging(document.body);
   elements.forEach(registerFocusLogging);
 
@@ -32,13 +37,13 @@ function captureStuff() {
     var previous = document.activeElement;
     element.focus && element.focus();
     if (document.activeElement !== element && document.activeElement !== previous) {
-      console.log("focus changed, but onto unexpected target", element, previous, document.activeElement)
+      // make apparent that the focus was triggered from another element
+      focusHistory.push('via(' + elementName(element) + '): ' + elementName(document.activeElement));
     }
   });
 
   var results = {
-    name: "",
-    userAgent: navigator.userAgent,
+    platform: null,
     focusable: null,
     tabOrder: null,
     a11y: {
@@ -53,19 +58,11 @@ function captureStuff() {
 
   setTimeout(function() {
     results.focusable = focusHistory.slice(0);
-    document.getElementById('focusable').textContent = JSON.stringify(focusHistory, null, 2);
 
-    require(['a11y/dom/query-focusable', 'jquery', 'jquery.ui/core'], function (queryFocusable, $) {
-      results.a11y.focusable = queryFocusable(document).map(function(element) {
-        return element.getAttribute('data-label') || element.nodeName;
-      });
-
-      results.jquery.focusable = $(':focusable').toArray().map(function(element) {
-        return element.getAttribute('data-label') || element.nodeName;
-      });
-
-      document.getElementById('focusable').textContent += '\n\na11y.js:\n' + JSON.stringify(results.a11y.focusable, null, 2);
-      document.getElementById('focusable').textContent += '\n\njQueryUI:\n' + JSON.stringify(results.jquery.focusable, null, 2);
+    require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
+      results.platform = platform;
+      results.a11y.focusable = queryFocusable(document).map(elementName);
+      results.jquery.focusable = $(':focusable').toArray().map(elementName);
 
       // reset focusHistory
       document.activeElement.blur();
