@@ -1,5 +1,6 @@
 define(function defineDemoFocusableData(require) {
   return {
+    'expected': require('./expected'),
     'a11y': require('./a11y'),
     'chrome-stable': require('./chrome-stable'),
     'chrome-nightly': require('./chrome-nightly'),

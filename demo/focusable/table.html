@@ -24,6 +24,9 @@
       text-align: center;
       background: #ff4136;
     }
+    td[data-correct="no"] {
+      border: 4px solid black;
+    }
   </style>
 </head>
 <body>
@@ -35,6 +38,7 @@
     <thead>
       <tr class="row">
         <th data-column="element">Element</th>
+        <th data-column="expected">expected</th>
         <th data-column="a11y">a11y.js</th>
         <th data-column="chrome-stable">Chrome 38</th>
         <th data-column="chrome-nightly">Chrome 40</th>

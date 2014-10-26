@@ -29,6 +29,7 @@ require([
   selectors.sort().forEach(function(selector) {
     var $_row = $row.clone().attr('data-row', selector);
     var $cells = $_row.children('td').not('[data-column="notes"]');
+    var expected = data.expected.focusable.indexOf(selector) !== -1;
 
     $_row.children('th').text(selector);
     notes[selector] && $_row.children('[data-column="notes"]').html(notes[selector]);
@@ -37,7 +38,9 @@ require([
       var $cell = $(this);
       var browser = $cell.attr('data-column');
       var supported = data[browser].focusable.indexOf(selector) !== -1;
-      $cell.text(supported ? 'yes' : 'no').attr('data-supported', supported ? 'yes' : 'no');
+      $cell.text(supported ? 'yes' : 'no')
+        .attr('data-supported', supported ? 'yes' : 'no')
+        .attr('data-correct', expected === supported ? 'yes' : 'no');
     });
 
     $_row.appendTo($tbody);
