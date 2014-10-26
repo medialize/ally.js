@@ -26,6 +26,8 @@ function captureStuff() {
 
   // try to focus every single element, successes wil end up in focusHistory
   elements.forEach(function(element) {
+    // FIXME: need to test if activeElement changed without focus event
+    // FIXME: need to verify activeElement is the thing we just focused
     element.focus && element.focus();
   });
 
