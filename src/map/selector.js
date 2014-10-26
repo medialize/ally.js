@@ -5,11 +5,8 @@ define(function defineMapSelector(require) {
     // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
     focusable: 'body,'
       // navigational elements
-      // FIXME: Finding links in SVGs fails because of namespaced-attribute-selector
-      // Chrome Error: Uncaught NamespaceError: Failed to execute 'querySelectorAll' on 'Document': '…' contains namespaces, which are not supported. 
-      // Firefox Error: SyntaxError: An invalid or illegal string was specified
-      // + 'a[href], svg a[xlink|href],'
-      + 'a[href],'
+      // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
+      + 'a[href], svg a[*|href],'
       // validity determined by dom/is-focusable.js
       // TODO: figure out why no browser makes area[href] focusable
       + 'area[href],'
