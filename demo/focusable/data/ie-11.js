@@ -4,10 +4,25 @@ define(function defineDemoFocusableIE11(require) {
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    name: 'Internet Explorer 11 stable 2014-10-25 (via VMWare 6)',
-    userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; rv:11.0) like Gecko',
-    focusable: [
+    "platform": {
+      "description": "IE 11.0 32-bit on Windows 8.1 64-bit",
+      "layout": "Trident",
+      "manufacturer": null,
+      "name": "IE",
+      "prerelease": null,
+      "product": null,
+      "ua": "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; rv:11.0) like Gecko",
+      "version": "11.0",
+      "os": {
+        "architecture": 64,
+        "family": "Windows",
+        "version": "8.1"
+      }
+    },
+    "focusable": [
       "BODY",
+      "via(img[usemap].first): area[href].upper",
+      "via(img[usemap].second): area[href].upper",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -19,8 +34,12 @@ define(function defineDemoFocusableIE11(require) {
       "button[type=button]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
+      "area[href].upper",
+      "a:has([ismap])",
       "a > img[ismap]",
+      "area[href].upper",
       "iframe",
       "audio",
       "audio[controls]",
@@ -44,7 +63,8 @@ define(function defineDemoFocusableIE11(require) {
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
-    tabOrder: [
+    "tabOrder": [
+      "BODY",
       "BODY",
       "[tabindex=1]",
       "[tabindex=+2]",
@@ -61,8 +81,12 @@ define(function defineDemoFocusableIE11(require) {
       "button[type=button]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
+      "a:has([ismap])",
       "a > img[ismap]",
+      "area[href].upper",
+      "area[href].lower",
       "iframe",
       "audio[controls]",
       "embed",
@@ -72,7 +96,79 @@ define(function defineDemoFocusableIE11(require) {
       "object[usemap]",
       "object",
       "object[usemap]",
-      "svg"
-    ]
+      "svg",
+      "BODY"
+    ],
+    "a11y": {
+      "focusable": [
+        "BODY",
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "a:has([ismap])",
+        "iframe",
+        "audio[controls]",
+        "embed",
+        "object",
+        "object[usemap]",
+        "svg a[xlink|href]",
+        "[contenteditable]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=3 ]",
+        "{hidden} > a{visible}",
+        "{hidden} > {visible} > a",
+        "table tr td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    },
+    "jquery": {
+      "focusable": [
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "area[href].upper",
+        "area[href].lower",
+        "a:has([ismap])",
+        "object",
+        "object[usemap]",
+        "svg a[xlink|href]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=3 ]",
+        "fieldset[tabindex=0][disabled]",
+        "table tr td a",
+        "table tr{collapse} td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    }
   };
 });

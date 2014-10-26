@@ -4,8 +4,21 @@ define(function defineDemoFocusableFirefox(require) {
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    "name": "Firefox stable 2014-10-25",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:33.0) Gecko/20100101 Firefox/33.0",
+    "platform": {
+      "description": "Firefox 33.0 on OS X 10.8",
+      "layout": "Gecko",
+      "manufacturer": null,
+      "name": "Firefox",
+      "prerelease": null,
+      "product": null,
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:33.0) Gecko/20100101 Firefox/33.0",
+      "version": "33.0",
+      "os": {
+        "architecture": 32,
+        "family": "OS X",
+        "version": "10.8"
+      }
+    },
     "focusable": [
       "BODY",
       "input[type=text]",
@@ -18,9 +31,10 @@ define(function defineDemoFocusableFirefox(require) {
       "textarea",
       "button[type=button]",
       "input[type=text]",
+      "via(label[for=\"label-target\"]): input[type=text]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "a:has([ismap])",
       "audio[controls]",
       "video",
       "video[controls]",
@@ -57,7 +71,8 @@ define(function defineDemoFocusableFirefox(require) {
       "button[type=button]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
       "audio[controls]",
       "video",
       "video[controls]",
@@ -84,7 +99,7 @@ define(function defineDemoFocusableFirefox(require) {
         "button[type=button]",
         "a[href]",
         "a[href=\"\"]",
-        "a.image-map",
+        "a:has([ismap])",
         "iframe",
         "embed",
         "keygen",
@@ -115,7 +130,9 @@ define(function defineDemoFocusableFirefox(require) {
         "button[type=button]",
         "a[href]",
         "a[href=\"\"]",
-        "a.image-map",
+        "area[href].upper",
+        "area[href].lower",
+        "a:has([ismap])",
         "object",
         "object[usemap]",
         "keygen",

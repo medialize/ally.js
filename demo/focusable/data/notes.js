@@ -13,6 +13,8 @@ define(function defineDemoFocusableNotes(require) {
     "link[itemprop][href]": 'naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
 
     "a > img[ismap]": 'see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap">&lt;img ismap&gt;</a>, focus should be the link-parent',
+    "area[href].upper" : 'tabbable but not focusable in Firefox. Also should fire twice, does not!',
+    "area[href].lower" : 'tabbable but not focusable in Firefox. Also should fire twice, does not!',
 
     // invalid [tabindex]
     "[tabindex=\"\"]": 'invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',

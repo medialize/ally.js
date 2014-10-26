@@ -15,6 +15,8 @@ define(function defineDemoFocusableExpected(require) {
       "[tabindex=-2]",
       "[tabindex=0]",
       "[tabindex=1]",
+      "area[href].upper",
+      "area[href].lower",
       "a.image-map",
       "a[href=\"\"]",
       "a[href]",

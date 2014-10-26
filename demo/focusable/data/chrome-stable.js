@@ -4,8 +4,21 @@ define(function defineDemoFocusableChrome(require) {
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    "name": "Chrome 38 stable 2014-10-25",
-    "userAgent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36',
+    "platform": {
+      "description": "Chrome 38.0.2125.104 on OS X 10.8.5",
+      "layout": "Blink",
+      "manufacturer": null,
+      "name": "Chrome",
+      "prerelease": null,
+      "product": null,
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36",
+      "version": "38.0.2125.104",
+      "os": {
+        "architecture": 32,
+        "family": "OS X",
+        "version": "10.8.5"
+      }
+    },
     "focusable": [
       "BODY",
       "input[type=text]",
@@ -18,9 +31,12 @@ define(function defineDemoFocusableChrome(require) {
       "textarea",
       "button[type=button]",
       "input[type=text]",
+      "via(label[for=\"label-target\"]): input[type=text]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
+      "a:has([ismap])",
       "iframe",
       "audio[controls]",
       "embed",
@@ -60,7 +76,9 @@ define(function defineDemoFocusableChrome(require) {
       "button[type=button]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
+      "a:has([ismap])",
       "audio[controls]",
       "keygen",
       "svg",
@@ -88,7 +106,7 @@ define(function defineDemoFocusableChrome(require) {
         "button[type=button]",
         "a[href]",
         "a[href=\"\"]",
-        "a.image-map",
+        "a:has([ismap])",
         "iframe",
         "audio[controls]",
         "embed",
@@ -122,7 +140,9 @@ define(function defineDemoFocusableChrome(require) {
         "button[type=button]",
         "a[href]",
         "a[href=\"\"]",
-        "a.image-map",
+        "area[href].upper",
+        "area[href].lower",
+        "a:has([ismap])",
         "object",
         "object[usemap]",
         "[tabindex=-2]",
@@ -141,5 +161,4 @@ define(function defineDemoFocusableChrome(require) {
       "tabOrder": null
     }
   };
-
 });

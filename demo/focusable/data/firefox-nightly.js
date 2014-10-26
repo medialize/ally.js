@@ -4,9 +4,22 @@ define(function defineDemoFocusableFirefoxNightly(require) {
   // The contents of this file have been collected by running focusable/index.html
 
   return {
-    name: 'Firefox 36.0a1 Nightly (without E10S) 2014-10-25',
-    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:36.0) Gecko/20100101 Firefox/36.0',
-    focusable: [
+    "platform": {
+      "description": "Firefox 36.0 on OS X 10.8",
+      "layout": "Gecko",
+      "manufacturer": null,
+      "name": "Firefox",
+      "prerelease": null,
+      "product": null,
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:36.0) Gecko/20100101 Firefox/36.0",
+      "version": "36.0",
+      "os": {
+        "architecture": 32,
+        "family": "OS X",
+        "version": "10.8"
+      }
+    },
+    "focusable": [
       "BODY",
       "input[type=text]",
       "input[type=password]",
@@ -18,9 +31,10 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "textarea",
       "button[type=button]",
       "input[type=text]",
+      "via(label[for=\"label-target\"]): input[type=text]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "a:has([ismap])",
       "audio[controls]",
       "video",
       "video[controls]",
@@ -41,7 +55,7 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
-    tabOrder: [
+    "tabOrder": [
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -57,12 +71,11 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "button[type=button]",
       "a[href]",
       "a[href=\"\"]",
-      "a.image-map",
+      "area[href].upper",
+      "area[href].lower",
       "audio[controls]",
       "video",
       "video[controls]",
-      "embed",
-      "embed",
       "keygen",
       "svg a[xlink|href]",
       "[contenteditable]",
@@ -71,6 +84,73 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "{hidden} > {visible} > a",
       "table tr td a",
       "table tr{collapse} td a{visible}"
-    ]
+    ],
+    "a11y": {
+      "focusable": [
+        "BODY",
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "a:has([ismap])",
+        "iframe",
+        "embed",
+        "keygen",
+        "svg a[xlink|href]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "{hidden} > a{visible}",
+        "{hidden} > {visible} > a",
+        "table tr td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    },
+    "jquery": {
+      "focusable": [
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "area[href].upper",
+        "area[href].lower",
+        "a:has([ismap])",
+        "object",
+        "object[usemap]",
+        "keygen",
+        "svg a[xlink|href]",
+        "[tabindex=-2]",
+        "[tabindex=-1]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=3 ]",
+        "fieldset[tabindex=0][disabled]",
+        "table tr td a",
+        "table tr{collapse} td a",
+        "table tr{collapse} td a{visible}"
+      ],
+      "tabOrder": null
+    }
   };
 });
