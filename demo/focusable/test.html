@@ -81,14 +81,16 @@
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
     </map>
 
-    <img usemap="image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].first">
-    <img usemap="image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].second">
-    <img usemap="void" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
+    <img usemap="#image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].first">
+
+    <img usemap="#void" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
     <img src="image-map-demo.png" alt="no map associated" data-label="img">
 
-    <a href="#void" data-label="a.image-map">
+    <a href="#void" data-label="a:has([ismap])">
       <img ismap src="image-map-demo.png" alt="clickable anywhere" data-label="a > img[ismap]">
     </a>
+    <img usemap="#image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].second">
+
   </article>
 
   <!-- http://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
