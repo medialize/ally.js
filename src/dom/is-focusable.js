@@ -7,6 +7,7 @@ define(function defineDomIsFocusable(require) {
   var selector = require('../map/selector');
   var isVisible = require('./is-visible');
   var path = require('./path');
+  var matches = require('./matches');
 
   // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
   var validIntegerPattern = /^\s*(-|\+)?[0-9]+$/;
@@ -85,9 +86,7 @@ define(function defineDomIsFocusable(require) {
       focusable = focusable.replace('[tabindex],', '');
     }
 
-    // FIXME: Element.matches is not yet supported everywhere
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element.matches#Polyfill
-    return element.matches(focusable);
+    return matches(element, focusable);
   }
 
   return isFocusable;
