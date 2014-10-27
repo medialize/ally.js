@@ -6,19 +6,12 @@ define(function defineDomIsFocusable(require) {
   require('CSS.escape');
   var selector = require('../map/selector');
   var isVisible = require('./is-visible');
+  var isValidTabindex = require('./is-valid-tabindex');
   var path = require('./path');
   var matches = require('./matches');
 
-  // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
-  var validIntegerPattern = /^\s*(-|\+)?[0-9]+$/;
   // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
   var disabledElementsPattern = /^(input|select|textarea|button|fieldset)$/;
-
-  function validTabindex(element) {
-    // an element matches the tabindex selector even if its value is invalid
-    var tabindex = element.getAttribute('tabindex');
-    return !(tabindex !== null && (tabindex === '' || !validIntegerPattern.test(tabindex)));
-  }
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
@@ -81,7 +74,7 @@ define(function defineDomIsFocusable(require) {
     //   flag is set and, if so, whether the element can be reached using sequential focus navigation,
     //   and if so, what its relative order should be.
     //   - http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-    if (!validTabindex(element)) {
+    if (!isValidTabindex(element)) {
       focusable = focusable.replace('[tabindex],', '');
     }
 
