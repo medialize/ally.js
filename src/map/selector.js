@@ -1,6 +1,27 @@
 define(function defineMapSelector(require) {
   'use strict';
 
+  function canFocusWithoutControls(nodeName, contentType) {
+    // create dummy element to test focusability disabled fieldset
+    var element = document.createElement(nodeName);
+    // invalid video can trigger warning in console, data-uri to prevent HTTP request
+    element.setAttribute('src', 'data:' + contentType + ';base64,' + nodeName + '-focus-test');
+    // element needs to be part of the DOM to be focusable
+    document.body.appendChild(element);
+    // remember what had focus to restore after test
+    var previousActiveElement = document.activeElement;
+    // test if the element with invalid tabindex can be focused
+    element.focus();
+    var allowsFocus = document.activeElement === element;
+    // restore focus to what it was before test and cleanup
+    previousActiveElement.focus();
+    document.body.removeChild(element);
+    return allowsFocus;
+  }
+
+  var canFocusVideoWithoutControls = canFocusWithoutControls('video', 'video/mp4');
+  var canFocusAudioWithoutControls = canFocusWithoutControls('video', 'audio/mp3');
+
   var map = {
     // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
     focusable: 'body,'
@@ -20,8 +41,9 @@ define(function defineMapSelector(require) {
       // browsing context containers
       + 'iframe, object, embed,'
       // interactive content
-      // FIXME: Chrome does not understand the controls attribute, it will remove it from the DOM while parsing the document
-      + 'audio[controls], video[controls], keygen,'
+      + 'keygen,'
+      + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
+      + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
       // validity determined by dom/is-focusable.js
       + '[tabindex],'
       // editing hosts
