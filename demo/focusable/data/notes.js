@@ -18,6 +18,8 @@ define(function defineDemoFocusableNotes(require) {
     "area[href].upper" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
     "area[href].lower" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
 
+    "object[usemap]": 'once focused in IE11, the browser cannot tab back to the document anymore, it get\'s stuck in the address bar',
+
     "[contenteditable]:empty": 'Firefox reports <code>element.offsetHeight === 0</code>, working around that internally',
 
     "via(img[usemap].first): area[href].upper": 'upon focusing an image with associated &lt;map&gt;, IE will focus the first &lt;area&gt; of that map.',
@@ -26,7 +28,7 @@ define(function defineDemoFocusableNotes(require) {
 
     // invalid [tabindex]
     "[tabindex=\"\"]": 'invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
-    "[tabindex=3 ]": 'invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
+    "[tabindex=3 ]": 'invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a> but every browser permits it anyways',
     "[tabindex=hello]": 'invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
 
   };
