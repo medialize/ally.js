@@ -18,6 +18,8 @@ define(function defineDemoFocusableNotes(require) {
     "area[href].upper" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
     "area[href].lower" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
 
+    "[contenteditable]:empty": 'Firefox reports <code>element.offsetHeight === 0</code>, working around that internally',
+
     "via(img[usemap].first): area[href].upper": 'upon focusing an image with associated &lt;map&gt;, IE will focus the first &lt;area&gt; of that map.',
     "via(img[usemap].second): area[href].upper": 'upon focusing an image with associated &lt;map&gt;, IE will focus the first &lt;area&gt; of that map.',
     "via(label[for=\"label-target\"]): input[type=text]": 'upon focusing <label for> the element identified by the for attribute gets focused',

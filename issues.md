@@ -11,7 +11,7 @@
 
 * no accessibility support for `<svg>`
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) are not applied to `[tabindex]`
-* `[contenteditable]` without content has no height, i.e. `<div contenteditable></div>` has `element.offsetHeight === 0`
+* `[contenteditable]` without content has no height, i.e. `<div contenteditable></div>` has `element.offsetHeight === 0` (which may be correct according to [CSS2](http://www.w3.org/TR/CSS2/visudet.html#normal-block) but sucks for UX, quick fix: `[contenteditable]:empty { min-height: 123px; }`)
 
 
 ## Blink (Chrome) ##
