@@ -12,18 +12,23 @@
 * no accessibility support for `<svg>`
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) are not applied to `[tabindex]`
 * `[contenteditable]` without content has no height, i.e. `<div contenteditable></div>` has `element.offsetHeight === 0` (which may be correct according to [CSS2](http://www.w3.org/TR/CSS2/visudet.html#normal-block) but sucks for UX, quick fix: `[contenteditable]:empty { min-height: 123px; }`)
+* unknown audio file has no height, i.e. `<audio src="#foo">` has `element.offsetHeight === 0` - but its focusable and can be tabbed to
+* unknown video file has a height, i.e. `<video src="#foo">` has `element.offsetHeight === 150`
+* `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 
 
 ## Blink (Chrome) ##
 
 * mouse-focus (`mousedown` on a focusable element) will trigger the focus on the `div` not the `a` in `<div tabindex="-1"><a href="#foo">…` (resolved in Chrome 40)
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
+* `<video>` is *not* focusable at all, not even `<video controls>`
 
 
 ## WebKit (Safari) ##
 
 * mouse-focus (`mousedown` on a focusable element) will trigger the focus on the `div` not the `a` in `<div tabindex="-1"><a href="#foo">…`
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
+* `<video>` is *not* focusable at all, not even `<video controls>`
 
 
 ## Trident (Internet Explorer) ##
@@ -33,6 +38,7 @@
 * the `<img>` is focusable in `<a href="#foo"><img ismap …>`
 * `<table>` and `<td>` are focusable in `<table><tr><td><a href="#foo">…`
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
+* `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 
 
 ## jQuery & jQuery UI ##
