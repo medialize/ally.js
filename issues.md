@@ -5,6 +5,7 @@
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
 * `iframe` focus in Firefox
+* `object[usemap]` fracks focus in IE11
 * find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
 
@@ -40,6 +41,7 @@
 * `<table>` and `<td>` are focusable in `<table><tr><td><a href="#foo">…`
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
+* `<object usemap>` breaks the browser's ability to tab through the document. Once `<object usemap>` is reached, IE11's tabbing gets stuck in the address bar
 
 
 ## jQuery & jQuery UI ##

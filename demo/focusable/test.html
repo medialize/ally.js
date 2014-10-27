@@ -136,7 +136,12 @@
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
 
     <object data="../media/test.swf" type="application/x-shockwave-flash" data-label="object"></object>
+
+    <!--
+    NOTE: This seriously fracks IE11's tabbing ability. If you tab to this element, IE11 gets stuck in its address bar and won't return to the document.
+    Leave this element out and everything is fine.
     <object usemap="image-maps-1" data="../media/test.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
+    -->
 
     <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
   </article>
