@@ -2,6 +2,8 @@
 
 ## TODO: Investigate
 
+* `fieldset[tabindex=0][disabled]` feature-detection breaks
+* `[tabindex=hello]`, `[tabindex=""]` false positives in IE11
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
 * `iframe` focus in Firefox
