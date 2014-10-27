@@ -17,7 +17,7 @@ define(function defineDemoFocusableExpected(require) {
       "[tabindex=1]",
       "area[href].upper",
       "area[href].lower",
-      "a.image-map",
+      "a:has([ismap])",
       "a[href=\"\"]",
       "a[href]",
       "audio[controls]",

@@ -21,9 +21,23 @@ require([
 
   var $table = $('#focusable-table');
   var $tbody = $table.find('.items')
-  var $row = $table.find('.row').clone();
+  var $versions = $table.find('.versions');
+  var $row = $versions.clone();
   $row.children().replaceWith(function(index) {
     return index ? $('<td></td>').attr('data-column', $(this).attr('data-column')) : this;
+  });
+
+  $versions.children().each(function() {
+    var $cell = $(this);
+    var key = $cell.attr('data-column');
+    var version = data[key] && data[key].platform && data[key].platform.version;
+    if (!version) {
+      return;
+    }
+
+    $cell
+      .text(version.split('.').slice(0, 2).join('.'))
+      .attr('title', data[key].platform.ua);
   });
 
   selectors.sort().forEach(function(selector) {
