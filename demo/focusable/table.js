@@ -82,6 +82,12 @@ require([
   $scriptTable.find('tbody tr').each(function() {
     var $_row = $(this);
     var selector = $_row.attr('data-selector');
+    // hide via() calls, as they're only relevant to browser-native testing
+    if (selector.slice(0, 4) === 'via(') {
+      $_row.remove();
+      return;
+    }
+
     $_row.children('td').not('.meta').each(function() {
       var $browserCell = $(this);
       var browser = $browserCell.attr('data-column');
