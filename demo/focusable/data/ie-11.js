@@ -96,7 +96,6 @@ define(function defineDemoFocusableIE11(require) {
       "object[usemap]",
       "object",
       "object[usemap]",
-      "svg",
       "BODY"
     ],
     "a11y": {
@@ -127,7 +126,6 @@ define(function defineDemoFocusableIE11(require) {
         "[tabindex=1]",
         "[tabindex=+2]",
         "[tabindex= +2]",
-        "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",

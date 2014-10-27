@@ -111,6 +111,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "[tabindex=1]",
         "[tabindex=+2]",
         "[tabindex= +2]",
+        "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
         "table tr td a",

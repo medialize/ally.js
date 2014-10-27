@@ -34,6 +34,8 @@ define(function defineDemoFocusableFirefox(require) {
       "via(label[for=\"label-target\"]): input[type=text]",
       "a[href]",
       "a[href=\"\"]",
+      "area[href].upper",
+      "area[href].lower",
       "a:has([ismap])",
       "audio[controls]",
       "video",
