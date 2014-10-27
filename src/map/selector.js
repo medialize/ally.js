@@ -7,6 +7,10 @@ define(function defineMapSelector(require) {
       // navigational elements
       // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
       + 'a[href], svg a[*|href],'
+      // TODO: investigate SVG's focusable attribute
+      //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
+      //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
+      //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
       // validity determined by dom/is-focusable.js
       // TODO: figure out why no browser makes area[href] focusable
       + 'area[href],'
