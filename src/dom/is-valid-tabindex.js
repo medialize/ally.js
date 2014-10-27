@@ -5,11 +5,10 @@ define(function defineDomIsValidTabindex(require) {
   // NOTE: all browsers agree to allow trailing spaces as well
   var validIntegerPattern = /^\s*(-|\+)?[0-9]+\s*$/;
 
-  // Firefox allows *any* value and treats invalid values like tabindex="-1"
-  var allowsInvalidValue = (function testAllowsInvalidValue() {
-    // create dummy element to test focusability of invalid tabindex values
+  function testTabindexValueSupport(value) {
+    // create dummy element to test focusability of given tabindex value
     var element = document.createElement('div');
-    element.setAttribute('tabindex', 'invalid-value');
+    element.setAttribute('tabindex', value);
     // element needs to be part of the DOM to be focusable
     document.body.appendChild(element);
     // remember what had focus to restore after test
@@ -21,12 +20,23 @@ define(function defineDomIsValidTabindex(require) {
     previousActiveElement.focus();
     document.body.removeChild(element);
     return allowsInvalidValue;
-  })();
+  }
+
+  // Firefox allows *any* value and treats invalid values like tabindex="-1"
+  var allowsInvalidValue = testTabindexValueSupport('invalid-value');
 
   function isValidTabindex(element) {
+    if (!element.hasAttribute('tabindex') || allowsInvalidValue) {
+      return true;
+    }
     // an element matches the tabindex selector even if its value is invalid
     var tabindex = element.getAttribute('tabindex');
-    return allowsInvalidValue || !(tabindex !== null && (tabindex === '' || !validIntegerPattern.test(tabindex)));
+    // IE11 parses tabindex="" as the value "-32768"
+    if (tabindex === '-32768') {
+      return false;
+    }
+
+    return Boolean(tabindex && validIntegerPattern.test(tabindex));
   }
 
   return isValidTabindex;
