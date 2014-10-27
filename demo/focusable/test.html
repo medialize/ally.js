@@ -100,30 +100,43 @@
     <iframe src="iframe.html" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
   </article>
 
-  <!-- http://www.w3.org/TR/html5/dom.html#interactive-content -->
+  <!--
+    http://www.w3.org/TR/html5/dom.html#interactive-content
+    https://blog.mediacru.sh/2013/12/23/The-right-way-to-encode-HTML5-video.html
+  -->
   <article>
     <h2 id="interactive-content">Interactive Content</h2>
 
-    <audio src="#audio-resource" data-label="audio">
-      no &lt;audio&gt; support
+    <audio data-label="audio">
+      <source src="../media/test.mp3"></source>
+      <source src="../media/test.ogg"></source>
+      <p>no &lt;audio&gt; support</p>
     </audio>
 
-    <audio controls src="#audio-resource" data-label="audio[controls]">
-      no &lt;audio&gt; support
+    <audio controls data-label="audio[controls]">
+      <source src="../media/test.mp3"></source>
+      <source src="../media/test.ogg"></source>
+      <p>no &lt;audio&gt; support</p>
     </audio>
 
-    <video src="#video-resource" data-label="video">
-      no &lt;video&gt; support
+    <video poster="../media/test.poster.png" data-label="video">
+      <source src="../media/test.mp4"></source>
+      <source src="../media/test.webm"></source>
+      <source src="../media/test.ogv"></source>
+      <p>no &lt;video&gt; support</p>
     </video>
 
-    <video src="#video-resource" data-label="video[controls]">
-      no &lt;video&gt; support
+    <video poster="../media/test.poster.png" controls data-label="video[controls]">
+      <source src="../media/test.mp4"></source>
+      <source src="../media/test.webm"></source>
+      <source src="../media/test.ogv"></source>
+      <p>no &lt;video&gt; support</p>
     </video>
 
-    <embed type="video/quicktime" src="movie.mov" width="640" height="480" data-label="embed">
+    <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
 
-    <object data="move.swf" type="application/x-shockwave-flash" data-label="object"></object>
-    <object usemap="image-maps-1" data="move.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" data-label="object"></object>
+    <object usemap="image-maps-1" data="../media/test.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
 
     <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
   </article>
