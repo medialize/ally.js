@@ -18,7 +18,7 @@ define(function defineDemoFocusableNotes(require) {
     "area[href].upper" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
     "area[href].lower" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
 
-    "object[usemap]": 'once focused in IE11, the browser cannot tab back to the document anymore, it get\'s stuck in the address bar',
+    "object[usemap]": 'once focused in IE11, the browser cannot tab back to the document anymore, it get\'s stuck in the address bar. It was therefore removed from the test',
 
     "[contenteditable]:empty": 'Firefox reports <code>element.offsetHeight === 0</code>, working around that internally',
 
