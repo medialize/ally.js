@@ -9,6 +9,7 @@ define(function defineDemoFocusableExpected(require) {
     focusable: [
       "BODY",
       "[contenteditable]",
+      "[contenteditable]:empty",
       "[tabindex= +2]",
       "[tabindex=+2]",
       "[tabindex=-1]",

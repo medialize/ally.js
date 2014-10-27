@@ -45,7 +45,20 @@ define(function defineDomIsVisible(require) {
 
   function noDimension(element) {
     // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15
-    return element.offsetWidth <= 0 || element.offsetHeight <= 0;
+    var emptyContenteditableFirefoxBug = element.hasAttribute('contenteditable') && element.childNodes.length === 0;
+    var _minHeight;
+    if (emptyContenteditableFirefoxBug) {
+      _minHeight = element.style.minHeight;
+      element.style.minHeight = '10px';
+    }
+
+    var result = element.offsetWidth <= 0 || element.offsetHeight <= 0;
+
+    if (emptyContenteditableFirefoxBug) {
+      element.style.minHeight = _minHeight;
+    }
+
+    return result;
   }
 
   function isVisible(element) {

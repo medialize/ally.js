@@ -11,6 +11,7 @@
 
 * no accessibility support for `<svg>`
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) are not applied to `[tabindex]`
+* `[contenteditable]` without content has no height, i.e. `<div contenteditable></div>` has `element.offsetHeight === 0`
 
 
 ## Blink (Chrome) ##
