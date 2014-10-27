@@ -5,6 +5,7 @@
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
 * `iframe` focus in Firefox
+* find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
 
 ## Gecko (Firefox) ##
@@ -51,6 +52,7 @@
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) does not allow trailing whitespace, but every browser permits them
 * `link[itemprop][href]` should be focusable as per [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute) but no browser does this
 * missing DOM interface `Element.focusableElements` to query the browser's list of focusable descendants
+* missing DOM property `Element.focusable` to query if the given element can be focused
 * missing DOM interface `Element.tabbableElements` to query the browser's list of tabbable descendants
 * missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires
 
