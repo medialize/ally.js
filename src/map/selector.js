@@ -11,6 +11,7 @@ define(function defineMapSelector(require) {
       //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
       //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
       //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
+      //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
       // validity determined by dom/is-focusable.js
       // TODO: figure out why no browser makes area[href] focusable
       + 'area[href],'
