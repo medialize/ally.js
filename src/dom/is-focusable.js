@@ -6,12 +6,11 @@ define(function defineDomIsFocusable(require) {
   require('CSS.escape');
   var selector = require('../map/selector');
   var isVisible = require('./is-visible');
+  var isDisabled = require('./is-disabled');
   var isValidTabindex = require('./is-valid-tabindex');
   var path = require('./path');
   var matches = require('./matches');
 
-  // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
-  var disabledElementsPattern = /^(input|select|textarea|button|fieldset)$/;
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
@@ -54,8 +53,7 @@ define(function defineDomIsFocusable(require) {
       return false;
     }
 
-    // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
-    if (element.disabled && disabledElementsPattern.test(nodeName)) {
+    if (isDisabled(element)) {
       return false;
     }
 

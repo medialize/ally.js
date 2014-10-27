@@ -40,5 +40,4 @@ define(function defineDomIsValidTabindex(require) {
   }
 
   return isValidTabindex;
-
 });
