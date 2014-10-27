@@ -45,6 +45,8 @@ define(function defineDomIsVisible(require) {
 
   function noDimension(element) {
     // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15
+    // [contenteditable]:empty has no height in Firefox
+    // <audio src="#unknown"> has no height in Firefox
     var emptyContenteditableFirefoxBug = element.hasAttribute('contenteditable') && element.childNodes.length === 0;
     var _minHeight;
     if (emptyContenteditableFirefoxBug) {
