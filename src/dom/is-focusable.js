@@ -17,12 +17,14 @@ define(function defineDomIsFocusable(require) {
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
   // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
   function validArea(element) {
+    var map = element.parentElement;
+
     // an <area> matches the area[href] selector even if it is not applicable
-    if (!element.name || !element.href || element.parentElement.nodeName.toLowerCase() !== 'map') {
+    if (!map.name || !element.href || map.nodeName.toLowerCase() !== 'map') {
       return false;
     }
 
-    var img = document.querySelector('img[usemap="#' + CSS.escape(element.name) + '"]')[0];
+    var img = document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]');
     if (!img || !isVisible(img)) {
       return false;
     }
@@ -57,9 +59,10 @@ define(function defineDomIsFocusable(require) {
       return false;
     }
 
-    // elements that is are not rendered, cannot be focused
+    // elements that are not rendered, cannot be focused
+    // (except for <area> which is never rendered directly)
     // http://www.w3.org/TR/html5/rendering.html#being-rendered
-    if (!isVisible(element)) {
+    if (nodeName !== 'area' && !isVisible(element)) {
       return false;
     }
 
