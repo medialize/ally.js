@@ -18,9 +18,7 @@ define(function defineDomIsDisabled(require) {
 
   function isDisabled(element) {
     var nodeName = element.nodeName.toLowerCase();
-    if (element.disabled && disabledElementsPattern.test(nodeName)) {
-      return false;
-    }
+    return element.disabled && disabledElementsPattern.test(nodeName);
   }
 
   return isDisabled;

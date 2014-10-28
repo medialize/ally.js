@@ -4,7 +4,7 @@ define(function defineDomIsValidTabindex(require) {
   var detectFeatureFocus = require('./detect-feature-focus');
 
   // Firefox allows *any* value and treats invalid values like tabindex="-1"
-  var allowsInvalidValue = detectFeatureFocus('fieldset', function(element) {
+  var allowsInvalidValue = detectFeatureFocus('div', function(element) {
     element.setAttribute('tabindex', 'invalid-value');
   });
 
