@@ -3,7 +3,7 @@ define(function defineDomIsFocusable(require) {
 
   // http://www.w3.org/TR/html5/editing.html#focus-management
 
-  var selector = require('../map/selector');
+  var selector = require('../selector/focusable');
   var isVisible = require('./is-visible');
   var isDisabled = require('./is-disabled');
   var isValidTabindex = require('./is-valid-tabindex');
@@ -11,7 +11,7 @@ define(function defineDomIsFocusable(require) {
   var matches = require('./matches');
 
   function isFocusable(element) {
-    var focusable = selector.focusable;
+    var focusable = selector;
     var nodeName = element.nodeName.toLowerCase();
 
     // input[type="hidden"] cannot be focused
