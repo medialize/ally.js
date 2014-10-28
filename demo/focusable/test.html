@@ -197,19 +197,19 @@
     </div>
     <a href="#void" style="visibility:hidden" data-label="a{hidden}">link</a>
 
-    <table data-label="table.error-by-visibility">
+    <table data-label="error(table)">
       <tr>
-        <td data-label="table tr td.error-by-visibility">
+        <td data-label="error(table tr td)">
           <a href="#void" data-label="table tr td a">link</a>
         </td>
       </tr>
-      <tr style="visibility:collapse" data-label="tr{collapse}.error-by-visibility">
-        <td data-label="table tr{collapse} td{collapse}.error-by-visibility">
+      <tr style="visibility:collapse" data-label="error(table tr{collapse})">
+        <td data-label="error(table tr{collapse} td{collapse})">
           <a href="#void" data-label="table tr{collapse} td a">link</a>
         </td>
       </tr>
       <tr style="visibility:collapse">
-        <td data-label="table tr{collapse} td{collapse}.error-by-visibility">
+        <td data-label="error(table tr{collapse} td{collapse})">
           <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
           <a href="#void" style="visibility: visible" data-label="table tr{collapse} td a{visible}">link</a>
         </td>

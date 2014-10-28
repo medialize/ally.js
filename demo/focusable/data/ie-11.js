@@ -58,8 +58,8 @@ define(function defineDemoFocusableIE11(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table.error-by-visibility",
-      "table tr td.error-by-visibility",
+      "error(table)",
+      "error(table tr td)",
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],

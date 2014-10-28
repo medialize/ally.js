@@ -5,8 +5,8 @@ define(function defineDemoFocusableNotes(require) {
     "audio": '<a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with <code>controls</code> attribute',
     "video": '<a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with <code>controls</code> attribute',
 
-    "table.error-by-visibility": 'TODO: investigate this behavior',
-    "table tr td.error-by-visibility": 'TODO: investigate this behavior',
+    "error(table)": 'TODO: investigate this behavior',
+    "error(table tr td)": 'TODO: investigate this behavior',
 
     "svg": '&lt;svg&gt; could be considered embedded content (like &lt;object&gt;) in which case it should be focusable',
     "svg a[xlink|href]": '<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=369507">Bug 369507: default visual indication of focus</a>',
