@@ -17,7 +17,9 @@ require([
   './data/notes'
 ], function (_, $, data, notes) {
 
-  var selectors = _.chain(data).values().pluck('focusable').flatten().unique().value();
+  var focusables = _.chain(data).values().pluck('focusable').flatten().unique().value();
+  var tabbables = _.chain(data).values().pluck('tabOrder').flatten().unique().value();
+  var selectors = _.chain([focusables, tabbables]).flatten().unique().value();
 
   var $table = $('#focusable-table');
   var $tbody = $table.find('.items')
@@ -56,9 +58,11 @@ require([
       var $cell = $(this);
       var browser = $cell.attr('data-column');
       var supported = data[browser].focusable.indexOf(selector) !== -1;
+      var tabbable = data[browser].tabOrder.indexOf(selector) !== -1;
       $cell.text(supported ? 'yes' : 'no')
         .attr('data-supported', supported ? 'yes' : 'no')
-        .attr('data-correct', expected === supported ? 'yes' : 'no');
+        .attr('data-correct', expected === supported ? 'yes' : 'no')
+        .attr('data-tabbable', tabbable ? 'yes' : 'no');
     });
 
     $_row.appendTo($tbody);
