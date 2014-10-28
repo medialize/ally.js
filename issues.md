@@ -27,7 +27,8 @@
 * mouse-focus (`mousedown` on a focusable element) will trigger the focus on the `div` not the `a` in `<div tabindex="-1"><a href="#foo">…` (resolved in Chrome 40)
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
-
+* the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
+* every element in `<svg>` is focusable and tabbable
 
 ## WebKit (Safari) ##
 

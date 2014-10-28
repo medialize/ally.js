@@ -24,11 +24,15 @@ define(function defineSelectorFocusable(require) {
   //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
   //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
 
+  // TODO: investigate focusable elements in SVG
+  //   Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
+  //   'svg a[*|href],' works
+  //   but what about the item actually being rendered? offsetHeight === 0 for the `<a>`, only containing elements like `<text>` have a dimension
+
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   var selector = 'body,'
     // navigational elements
-    // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-    + 'a[href], svg a[*|href],'
+    + 'a[href],'
     // validity determined by dom/is-valid-area.js
     + 'area[href],'
     // validity determined by dom/is-disabled.js
