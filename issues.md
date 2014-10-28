@@ -20,6 +20,7 @@
 * unknown video file has a height, i.e. `<video src="#foo">` has `element.offsetHeight === 150`
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 * [#131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784) focusing `<iframe>` does not dispatch `focus` event, but properly updates `document.activeElement`
+* some sort of optimization is happening on reload (<kbd>Command + R</kbd>) causing `<area>` elements to not do anything upon `.focus()` (no `focus` event, no `document.activeElement` update) - regular page load  (<kbd>Command + L, Enter</kbd>) on same browser-tab works fine, though.
 
 
 ## Blink (Chrome) ##
