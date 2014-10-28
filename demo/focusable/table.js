@@ -83,7 +83,7 @@ require([
     var $_row = $(this);
     var selector = $_row.attr('data-selector');
     // hide via() calls, as they're only relevant to browser-native testing
-    if (selector.slice(0, 4) === 'via(') {
+    if (selector.slice(0, 4) === 'via(' || selector.slice(0, 6) === 'error(' || selector.slice(0, 14) === 'without-event(') {
       $_row.remove();
       return;
     }
