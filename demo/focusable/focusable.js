@@ -39,6 +39,9 @@ function captureStuff() {
     if (document.activeElement !== element && document.activeElement !== previous) {
       // make apparent that the focus was triggered from another element
       focusHistory.push('via(' + elementName(element) + '): ' + elementName(document.activeElement));
+    } else if (document.activeElement === element && focusHistory[focusHistory.length -1] !== elementName(element)) {
+      // make apparent that the focus happened but no event was dispatched
+      focusHistory.push('without-event(' + elementName(element) + ')');
     }
   });
 

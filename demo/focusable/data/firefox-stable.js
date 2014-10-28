@@ -37,6 +37,7 @@ define(function defineDemoFocusableFirefox(require) {
       "area[href].upper",
       "area[href].lower",
       "a:has([ismap])",
+      "without-event(iframe)",
       "audio[controls]",
       "video",
       "video[controls]",

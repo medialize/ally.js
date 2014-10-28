@@ -19,6 +19,7 @@
 * unknown audio file has no height, i.e. `<audio src="#foo">` has `element.offsetHeight === 0` - but its focusable and can be tabbed to
 * unknown video file has a height, i.e. `<video src="#foo">` has `element.offsetHeight === 150`
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
+* [#131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784) focusing `<iframe>` does not dispatch `focus` event, but properly updates `document.activeElement`
 
 
 ## Blink (Chrome) ##

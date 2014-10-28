@@ -14,9 +14,12 @@ define(function defineDemoFocusableNotes(require) {
     "fieldset[tabindex=0][disabled]": 'should not be focusable as per <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>',
     "link[itemprop][href]": 'naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
 
+    "iframe": 'Firefox does not dispatch <code>focus</code> event upon focusing &lt;iframe&gt; but <code>document.activeElement</code> points to the iframe, see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=131784">#131784</a>',
+    "without-event(iframe)": 'Firefox does not dispatch <code>focus</code> event upon focusing &lt;iframe&gt; but <code>document.activeElement</code> points to the iframe, see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=131784">#131784</a>',
+
     "a > img[ismap]": 'see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap">&lt;img ismap&gt;</a>, focus should be the link-parent',
-    "area[href].upper" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
-    "area[href].lower" : 'possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
+    "area[href].upper" : 'Firefox: does not always report focusable, but is always tabbable - unclear what the conditions for failure are - possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
+    "area[href].lower" : 'Firefox: does not always report focusable, but is always tabbable - unclear what the conditions for failure are - possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
 
     "object[usemap]": 'once focused in IE11, the browser cannot tab back to the document anymore, it get\'s stuck in the address bar. It was therefore removed from the test',
 
