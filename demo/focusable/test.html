@@ -135,7 +135,23 @@
 
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
 
-    <object data="../media/test.swf" type="application/x-shockwave-flash" data-label="object"></object>
+    <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
+  </article>
+
+  <article>
+    <h2 id="object">Object</h2>
+
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
+      <param name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]">
+      <param name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+
+    <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg]"></object>
+    <object type="image/svg+xml" data="../media/test.svg" width="200" height="0" data-label="object[src=svg][height=0]"></object>
 
     <!--
     NOTE: This seriously fracks IE11's tabbing ability. If you tab to this element, IE11 gets stuck in its address bar and won't return to the document.
@@ -143,7 +159,6 @@
     <object usemap="image-maps-1" data="../media/test.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
     -->
 
-    <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
   </article>
 
   <article>

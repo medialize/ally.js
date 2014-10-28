@@ -43,10 +43,18 @@ define(function defineDomIsVisible(require) {
     return false;
   }
 
+  // <audio src="#unknown"> has no height in Firefox but is focusable
+  // <area> is not rendered
+  // <object> may have no dimension but is still focusable
+  var notRenderedElementsPattern = /^(area|audio|object)$/;
+
   function noDimension(element) {
-    // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15
+    var nodeName = element.nodeName.toLowerCase();
+    if (notRenderedElementsPattern.test(nodeName)) {
+      return false;
+    }
+
     // [contenteditable]:empty has no height in Firefox
-    // <audio src="#unknown"> has no height in Firefox
     var emptyContenteditableFirefoxBug = element.hasAttribute('contenteditable') && element.childNodes.length === 0;
     var _minHeight;
     if (emptyContenteditableFirefoxBug) {
@@ -54,6 +62,7 @@ define(function defineDomIsVisible(require) {
       element.style.minHeight = '10px';
     }
 
+    // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15
     var result = element.offsetWidth <= 0 || element.offsetHeight <= 0;
 
     if (emptyContenteditableFirefoxBug) {

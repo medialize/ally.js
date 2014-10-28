@@ -2,11 +2,9 @@
 
 ## TODO: Investigate
 
-* `fieldset[tabindex=0][disabled]` feature-detection breaks
 * `[tabindex=hello]`, `[tabindex=""]` false positives in IE11
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
-* `iframe` focus in Firefox
 * `object[usemap]` fracks focus in IE11
 * find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
@@ -20,6 +18,7 @@
 * unknown video file has a height, i.e. `<video src="#foo">` has `element.offsetHeight === 150`
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 * [#131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784) focusing `<iframe>` does not dispatch `focus` event, but properly updates `document.activeElement`
+* focusing `<object data="some.svg">` does not dispatch `focus` event, but properly updates `document.activeElement`
 * some sort of optimization is happening on reload (<kbd>Command + R</kbd>) causing `<area>` elements to not do anything upon `.focus()` (no `focus` event, no `document.activeElement` update) - regular page load  (<kbd>Command + L, Enter</kbd>) on same browser-tab works fine, though.
 
 
