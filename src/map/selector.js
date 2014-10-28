@@ -25,7 +25,6 @@ define(function defineMapSelector(require) {
       //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
       //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
       // validity determined by dom/is-focusable.js
-      // TODO: figure out why no browser makes area[href] focusable
       + 'area[href],'
       // validity determined by dom/is-focusable.js
       + 'input, select, textarea, button,'
