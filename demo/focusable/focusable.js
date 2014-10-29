@@ -35,7 +35,13 @@ function captureStuff() {
   // try to focus every single element, successes wil end up in focusHistory
   elements.forEach(function(element) {
     var previous = document.activeElement;
-    element.focus && element.focus();
+
+    if (!element.focus) {
+      console.log('no focus method', element);
+    } else {
+      element.focus()
+    }
+
     if (document.activeElement !== element && document.activeElement !== previous) {
       // make apparent that the focus was triggered from another element
       focusHistory.push('via(' + elementName(element) + '): ' + elementName(document.activeElement));
