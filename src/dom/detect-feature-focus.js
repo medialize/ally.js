@@ -1,18 +1,24 @@
 define(function defineDomDetectFeatureFocus(require) {
   'use strict';
 
+  // nodeName:
+  //  {string} element name
+  //  {function} callback that returns a DOMElement
+  // callback: (optional)
+  //  {function} callback(element) to manipulate element prior to focus-test.
+  //             Can return DOMElement to define focus target (default: element)
   function detectFeatureFocus(nodeName, callback) {
     // create dummy element to test focusability of
-    var element = document.createElement(nodeName);
+    var element = typeof nodeName === 'string' ? document.createElement(nodeName) : nodeName();
     // allow callback to further specify dummy element
-    callback && callback(element);
+    var focus = callback && callback(element) || element;
     // element needs to be part of the DOM to be focusable
     document.body.appendChild(element);
     // remember what had focus to restore after test
     var previousActiveElement = document.activeElement;
     // test if the element with invalid tabindex can be focused
-    element.focus();
-    var allowsFocus = document.activeElement === element;
+    focus.focus && focus.focus();
+    var allowsFocus = document.activeElement === focus;
     // restore focus to what it was before test and cleanup
     previousActiveElement.focus();
     document.body.removeChild(element);
