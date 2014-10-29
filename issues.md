@@ -1,11 +1,19 @@
 # Identified Issues #
 
+## TODO: fix test/a11y
+
+* `table tr{collapse} td a{visible}` a11y-fail in IE11
+* `a > img[ismap]` a11y-fail in IE11
+* `svg` not reported focusable in IE11 (because danger-zone not loaded)
+* rewrite test to check activeElement first, then attach `focus` and test again
+
 ## TODO: Investigate
 
-* `[tabindex=hello]`, `[tabindex=""]` false positives in IE11
+* `error(table)`, in IE11 possibly caused by `focus` event listener like svg in chrome?
+* `<area>` focus sometimes possible, sometimes not - Firefox
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
-* `object[usemap]` fracks focus in IE11
+* `object` fracks focus in IE11
 * find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
 
