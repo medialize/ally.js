@@ -16,10 +16,12 @@ require([
   './data/all',
   './data/notes'
 ], function (_, $, data, notes) {
-
-  var focusables = _.chain(data).values().pluck('focusable').flatten().unique().value();
-  var tabbables = _.chain(data).values().pluck('tabOrder').flatten().unique().value();
-  var selectors = _.chain([focusables, tabbables]).flatten().unique().value();
+  var selectors = _.chain([
+    _.chain(data).values().pluck('focusable').value(),
+    _.chain(data).values().pluck('tabOrder').value(),
+    _.chain(data).values().pluck('a11y').filter().pluck('focusable').value(),
+    _.chain(data).values().pluck('jquery').filter().pluck('focusable').value(),
+  ]).flatten().unique().value();
 
   var $table = $('#focusable-table');
   var $tbody = $table.find('.items')
