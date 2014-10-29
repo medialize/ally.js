@@ -68,6 +68,11 @@ function captureStuff() {
   setTimeout(function() {
     results.focusable = focusHistory.slice(0);
 
+    // reset focusHistory
+    document.activeElement.blur();
+    document.body.focus();
+    focusHistory.length=0;
+
     require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
       results.platform = platform;
       results.a11y.focusable = queryFocusable(document).map(elementName);
@@ -75,6 +80,7 @@ function captureStuff() {
 
       // reset focusHistory
       document.activeElement.blur();
+      document.body.focus();
       focusHistory.length=0;
 
       alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
