@@ -8,8 +8,10 @@ define(function defineDemoFocusableNotes(require) {
     "error(table)": 'TODO: investigate this behavior',
     "error(table tr td)": 'TODO: investigate this behavior',
 
-    "svg": '&lt;svg&gt; could be considered embedded content (like &lt;object&gt;) in which case it should be focusable',
+    "svg": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
     "svg a[xlink|href]": '<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=369507">Bug 369507: default visual indication of focus</a>',
+    "svg text": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
+    "svg rect": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
 
     "fieldset[tabindex=0][disabled]": 'should not be focusable as per <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>',
     "link[itemprop][href]": 'naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',

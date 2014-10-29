@@ -31,6 +31,7 @@
 * `<video>` is *not* focusable at all, not even `<video controls>`
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
 * every element in `<svg>` is focusable and tabbable
+* any `<svg>` element can be made focusable and tabbable by adding a focus event handler
 
 
 ## WebKit (Safari) ##
