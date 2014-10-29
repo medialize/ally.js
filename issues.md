@@ -20,6 +20,8 @@
 * [#131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784) focusing `<iframe>` does not dispatch `focus` event, but properly updates `document.activeElement`
 * focusing `<object data="some.svg">` does not dispatch `focus` event, but properly updates `document.activeElement`
 * some sort of optimization is happening on reload (<kbd>Command + R</kbd>) causing `<area>` elements to not do anything upon `.focus()` (no `focus` event, no `document.activeElement` update) - regular page load  (<kbd>Command + L, Enter</kbd>) on same browser-tab works fine, though.
+* `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.
+* `document.body.focus.call(svgElement);` fails with `TypeError: 'focus' called on an object that does not implement interface HTMLElement.`
 
 
 ## Blink (Chrome) ##
@@ -29,6 +31,7 @@
 * `<video>` is *not* focusable at all, not even `<video controls>`
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
 * every element in `<svg>` is focusable and tabbable
+
 
 ## WebKit (Safari) ##
 
@@ -46,6 +49,8 @@
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 * `<object usemap>` breaks the browser's ability to tab through the document. Once `<object usemap>` is reached, IE11's tabbing gets stuck in the address bar
+* `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`)
+* `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 
 
 ## jQuery & jQuery UI ##
