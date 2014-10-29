@@ -6,6 +6,7 @@ define(function defineSelectorFocusable(require) {
   // there are too many edge cases that they could be covered in
   // a simple CSS selector…
 
+  require('../danger-zone/svgelement.prototype.focus');
   var detectFeatureFocus = require('../dom/detect-feature-focus');
 
   var canFocusAudioWithoutControls = detectFeatureFocus('audio', function(element) {
@@ -18,6 +19,12 @@ define(function defineSelectorFocusable(require) {
     element.setAttribute('src', 'data:video/mp4;base64,' + 'video-focus-test');
   });
 
+  var canFocusSvg = SVGElement.prototype.focus && detectFeatureFocus(function() {
+    var d = document.createElement('div');
+    d.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100" height="100" id="ficken"><text x="20" y="20">hello</text><a xlink:href="#bar"><text x="50" y="50">asd</text></a><text x="40" y="80">after link</text></svg>';
+    return d.firstElementChild;
+  });
+
   // TODO: investigate SVG's focusable attribute
   //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
   //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
@@ -27,8 +34,10 @@ define(function defineSelectorFocusable(require) {
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   var selector = 'body,'
     // supporting <svg>
+    + (canFocusSvg ? 'svg,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-    + 'svg a[*|href],'
+    // Firefox cannot focus <svg> child elements from script
+    + (SVGElement.prototype.focus ? 'svg a[*|href],' : '')
     // + 'svg, svg *,' in chrome as *every* svg element is focusable
     // navigational elements
     + 'a[href],'
