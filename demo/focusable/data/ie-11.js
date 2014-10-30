@@ -21,8 +21,6 @@ define(function defineDemoFocusableIE11(require) {
     },
     "focusable": [
       "BODY",
-      "via(img[usemap].first): area[href].upper",
-      "via(img[usemap].second): area[href].upper",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -36,10 +34,8 @@ define(function defineDemoFocusableIE11(require) {
       "a[href=\"\"]",
       "area[href].upper",
       "area[href].lower",
-      "area[href].upper",
       "a:has([ismap])",
       "a > img[ismap]",
-      "area[href].upper",
       "iframe",
       "audio",
       "audio[controls]",
@@ -62,8 +58,19 @@ define(function defineDemoFocusableIE11(require) {
       "table tr td a",
       "table tr{collapse} td a{visible}"
     ],
+    "focusEvents": [],
+    "focusRedirection": [
+      "img[usemap].first --- area[href].upper",
+      "img[usemap].second --- area[href].upper"
+    ],
+    "noFocusMethod": [
+      "svg",
+      "svg a[xlink|href]",
+      "svg a[xlink|href] text",
+      "svg text",
+      "svg rect"
+    ],
     "tabOrder": [
-      "BODY",
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -97,7 +104,8 @@ define(function defineDemoFocusableIE11(require) {
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tr{collapse} td a{visible}",
+      "HTML"
     ],
     "a11y": {
       "focusable": [

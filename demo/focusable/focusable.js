@@ -12,48 +12,17 @@ require.config({
   }
 });
 
+function elementName(element) {
+  return element.getAttribute('data-label') || element.nodeName;
+}
+
 function captureStuff() {
-  // focus does not bubble so attach the listener to every element in the dom and log events to focusHistory
-  var elements = [].slice.call(document.body.querySelectorAll('*'), 0);
-  var focusHistory = [document.activeElement && (document.activeElement.getAttribute('data-label') || document.activeElement.nodeName) || 'no-initial-focus'];
-
-  function elementName(element) {
-    return element.getAttribute('data-label') || element.nodeName;
-  }
-
-  function logFocusEvent(event) {
-    focusHistory.push(elementName(event.target));
-  }
-
-  function registerFocusLogging(element) {
-    element.addEventListener('focus', logFocusEvent, false);
-  }
-
-  registerFocusLogging(document.body);
-  elements.forEach(registerFocusLogging);
-
-  // try to focus every single element, successes wil end up in focusHistory
-  elements.forEach(function(element) {
-    var previous = document.activeElement;
-
-    if (!element.focus) {
-      console.log('no focus method', element);
-    } else {
-      element.focus()
-    }
-
-    if (document.activeElement !== element && document.activeElement !== previous) {
-      // make apparent that the focus was triggered from another element
-      focusHistory.push('via(' + elementName(element) + '): ' + elementName(document.activeElement));
-    } else if (document.activeElement === element && focusHistory[focusHistory.length -1] !== elementName(element)) {
-      // make apparent that the focus happened but no event was dispatched
-      focusHistory.push('without-event(' + elementName(element) + ')');
-    }
-  });
-
   var results = {
     platform: null,
     focusable: null,
+    focusEvents: null,
+    focusRedirection: null,
+    noFocusMethod: null,
     tabOrder: null,
     a11y: {
       focusable: null,
@@ -65,33 +34,106 @@ function captureStuff() {
     },
   };
 
-  setTimeout(function() {
-    results.focusable = focusHistory.slice(0);
+  var elements = [].slice.call(document.body.querySelectorAll('*'), 0);
 
-    // reset focusHistory
+  var activeElementHistory = [document.activeElement && elementName(document.activeElement) || 'no-initial-focus'];
+  var focusEventHistory = [];
+  var focusRedirection = [];
+  var noFocusMethod = [];
+
+  // collect changes of document.activeElement  
+  function observeActiveElement() {
+    var _element = elementName(document.activeElement);
+    if (document.activeElement !== document.body && activeElementHistory[activeElementHistory.length - 1] !== _element) {
+      activeElementHistory.push(_element);
+    }
+
+    requestAnimationFrame(observeActiveElement);
+  }
+
+  // collect focus events
+  function logFocusEvent(event) {
+    focusEventHistory.push(elementName(event.target));
+  }
+
+  // try to focus every single element without focus event listeners
+  elements.forEach(function(element) {
+    // reset focus to prevent redirections from being ignored
     document.activeElement.blur();
     document.body.focus();
-    focusHistory.length=0;
 
-    require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
-      results.platform = platform;
-      results.a11y.focusable = queryFocusable(document).map(elementName);
-      results.jquery.focusable = $(':focusable').toArray().map(elementName);
+    var previous = document.activeElement;
+    var _element = elementName(element);
 
-      // reset focusHistory
-      document.activeElement.blur();
-      document.body.focus();
-      focusHistory.length=0;
+    if (!element.focus) {
+      noFocusMethod.push(_element);
+      return;
+    }
 
-      alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
-      document.getElementById('output-results').addEventListener('click', function() {
-        results.tabOrder = focusHistory;
-        document.getElementById('results').textContent = JSON.stringify(results, null, 2);
-      }, false);
-      
-    });
+    element.focus();
+    
+    if (document.activeElement === element) {
+      activeElementHistory.push(_element);
+    } else if (document.activeElement !== previous) {
+      focusRedirection.push(_element + ' --- ' + elementName(document.activeElement));
+    }
+  });
 
-  }, 1000);
+  // save results
+  results.focusable = activeElementHistory.slice(0);
+  results.noFocusMethod = noFocusMethod.slice(0);
+  results.focusRedirection = focusRedirection.slice(0);
+  // reset buffers
+  activeElementHistory.length = 0;
+  noFocusMethod.length = 0;
+  focusRedirection.length = 0;
+  document.activeElement.blur();
+  document.body.focus();
+  // we already know that body is focusable by default
+  // registerFocusLogging(document.body);
+
+  // try to focus every single element *with* focus event listeners
+  elements.forEach(function(element) {
+    // reset focus to prevent redirections from being ignored
+    document.activeElement.blur();
+    document.body.focus();
+    // register focus event handler
+    element.addEventListener('focus', logFocusEvent, false);
+    // focus the element, it will end up in focusEventHistory
+    element.focus && element.focus();
+  });
+
+  // save results
+  results.focusEvents = focusEventHistory.slice(0);
+  // reset buffers
+  activeElementHistory.length = 0;
+  noFocusMethod.length = 0;
+  focusRedirection.length = 0;
+  document.activeElement.blur();
+  document.body.focus();
+
+  require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
+    // save results
+    results.platform = platform;
+    results.a11y.focusable = queryFocusable(document).map(elementName);
+    results.jquery.focusable = $(':focusable').toArray().map(elementName);
+    // reset buffers
+    activeElementHistory.length = 0;
+    noFocusMethod.length = 0;
+    focusRedirection.length = 0;
+    document.activeElement.blur();
+    document.body.focus();
+
+    alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
+    document.activeElement.blur();
+    document.body.focus();
+    observeActiveElement();
+
+    document.getElementById('output-results').addEventListener('click', function() {
+      results.tabOrder = activeElementHistory.slice(0);
+      document.getElementById('results').textContent = JSON.stringify(results, null, 2);
+    }, false);
+  });
 }
 
 captureStuff();

@@ -16,12 +16,17 @@ require([
   './data/all',
   './data/notes'
 ], function (_, $, data, notes) {
+
+  // TODO: present focusRedirection
+
   var selectors = _.chain([
     _.chain(data).values().pluck('focusable').value(),
+    _.chain(data).values().pluck('focusEvent').value(),
+    _.chain(data).values().pluck('noFocusMethod').value(),
     _.chain(data).values().pluck('tabOrder').value(),
     _.chain(data).values().pluck('a11y').filter().pluck('focusable').value(),
     _.chain(data).values().pluck('jquery').filter().pluck('focusable').value(),
-  ]).flatten().unique().value();
+  ]).flatten().unique().filter().value();
 
   var $table = $('#focusable-table');
   var $tbody = $table.find('.items')
@@ -55,16 +60,25 @@ require([
 
     $_row.children('th').text(selector);
     notes[selector] && $_row.children('[data-column="notes"]').html(notes[selector]);
-
+console.log(selector);
     $cells.each(function() {
       var $cell = $(this);
       var browser = $cell.attr('data-column');
       var supported = data[browser].focusable.indexOf(selector) !== -1;
       var tabbable = data[browser].tabOrder.indexOf(selector) !== -1;
+      var event = data[browser].focusEvents.indexOf(selector) !== -1;
+      var noFocusMethod = data[browser].noFocusMethod.indexOf(selector) !== -1;
+
       $cell.text(supported ? 'yes' : 'no')
         .attr('data-supported', supported ? 'yes' : 'no')
         .attr('data-correct', expected === supported ? 'yes' : 'no')
+        .attr('data-event', event ? 'yes' : 'no')
+        .attr('data-method', !noFocusMethod ? 'yes' : 'no')
         .attr('data-tabbable', tabbable ? 'yes' : 'no');
+
+      if (noFocusMethod) {
+        $cell.text('method!');
+      }
     });
 
     $_row.appendTo($tbody);
@@ -88,11 +102,6 @@ require([
   $scriptTable.find('tbody tr').each(function() {
     var $_row = $(this);
     var selector = $_row.attr('data-selector');
-    // hide via() calls, as they're only relevant to browser-native testing
-    if (selector.slice(0, 4) === 'via(' || selector.slice(0, 6) === 'error(' || selector.slice(0, 14) === 'without-event(') {
-      $_row.remove();
-      return;
-    }
 
     $_row.children('td').not('.meta').each(function() {
       var $browserCell = $(this);
