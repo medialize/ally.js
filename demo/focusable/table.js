@@ -60,7 +60,7 @@ require([
 
     $_row.children('th').text(selector);
     notes[selector] && $_row.children('[data-column="notes"]').html(notes[selector]);
-console.log(selector);
+
     $cells.each(function() {
       var $cell = $(this);
       var browser = $cell.attr('data-column');

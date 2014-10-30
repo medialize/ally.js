@@ -7,6 +7,7 @@ define(function defineDemoFocusableNotes(require) {
 
     "error(table)": 'TODO: investigate this behavior',
     "error(table tr td)": 'TODO: investigate this behavior',
+    "table tr{collapse} td a{visible}": 'Firefox does not render the element, but it is tabbable. IE11 renders it, but it has `element.offsetHeight === 0`',
 
     "svg": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
     "svg a[xlink|href]": '<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=369507">Bug 369507: default visual indication of focus</a>',
