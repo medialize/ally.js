@@ -58,7 +58,6 @@ define(function defineDomIsVisible(require) {
 
     // an <a> in <svg> does not necessarily have intrinsic dimensions, but its focusable anyways
     if (element.ownerSVGElement && nodeName === 'a') {
-console.log("svg link");
       return false
     }
 
