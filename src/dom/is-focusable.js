@@ -3,6 +3,12 @@ define(function defineDomIsFocusable(require) {
 
   // http://www.w3.org/TR/html5/editing.html#focus-management
 
+  // NOTE: The following known issues exist:
+  //   Trident: `a > img[ismap]` is not identified as focusable
+  //   Trident: `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable
+  //   Gecko: `svg a[xlink|href]` is not identified as focusable
+  //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
+
   require('../prototype/element.prototype.matches');
   var selector = require('../selector/focusable');
   var isVisible = require('./is-visible');
