@@ -56,12 +56,10 @@ define(function defineDomIsVisible(require) {
       return false;
     }
 
-    // Chrome: an <a> in <svg> does not have intrinsic dimensions, but its children might
-    // TODO: figure out what Firefox is doing with <svg> <a>
-    if (element.ownerSVGElement) {
-      return ![].some.call(element.querySelectorAll('*'), function(child) {
-        return child.offsetHeight && child.offsetWidth;
-      });
+    // an <a> in <svg> does not necessarily have intrinsic dimensions, but its focusable anyways
+    if (element.ownerSVGElement && nodeName === 'a') {
+console.log("svg link");
+      return false
     }
 
     // [contenteditable]:empty has no height in Firefox
