@@ -25,8 +25,10 @@ define(function defineDemoFocusableNotes(require) {
     "iframe": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly, see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=131784">#131784</a>',
 
     "a > img[ismap]": 'see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap">&lt;img ismap&gt;</a>, focus should be the link-parent',
-    "area[href].upper" : 'Firefox: does not always report focusable, but is always tabbable - might be some reload optimization?! - possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
-    "area[href].lower" : 'Firefox: does not always report focusable, but is always tabbable - might be some reload optimization?! - possibly related bugs: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=672039">672039</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866373">866373</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=135083">135083</a>',
+    "area[href].upper": 'Firefox requires the image using the map to be loaded',
+    "area[href].lower": 'Firefox requires the image using the map to be loaded',
+    "map.invalid-image area[href].upper": 'Maps belonging to broken images should not be focusable',
+    "map.invalid-image area[href].lower": 'Maps belonging to broken images should not be focusable',
 
     "object[src=svg]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',
     "object[src=svg][height=0]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',
