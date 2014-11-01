@@ -7,7 +7,6 @@
 * `FocusEvent` is cancelable - what does that mean, what's it do exactly?
 * can you prevent `scrollElementIntoView()` upon `FocusEvent`?
 * `FocusEvent` happens after `keydown`, `mousedown`, `touchstart`, `pointerdown` consistently?
-* `<body>` focusable through `<body tabindex="-1">`? otherwise only accessible through `document.activeElement.blur()`?
 * side-effects from `user-select`, `pointer-events`
 * can make `-webkit-appearance: button` make a div naturally focusable?
 * `document.body.focus()` does nothing, so body is not focusable, it's just the default focus upon `document.activeElement.blur()`?
@@ -25,8 +24,11 @@
 
 ---
 
+## Behavior
+
 * `FocusEvent` happens after `keydown`, `mousedown`, `touchstart`, `pointerdown`
 * Chrome does not dispatch `keypress` for <kbd>TAB</kbd> and <kbd>SHIFT + TAB</kbd>
+* `<html>` and `<body>` are not naturally focusable, but `<body>` is the `document.activeElement` when nothing has focus. `document.body.focus()` does not work, though. To make `<body>` the `activeElement` one has to remove focus from the currently active element: `document.activeElement.blur()`
 
 ## Visual
 
