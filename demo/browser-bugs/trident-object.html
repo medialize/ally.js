@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Trident: Losing focus at object + object</title>
+	<style>
+	body :focus {
+	  outline: 2px solid hotpink;
+	}
+	</style>
+</head>
+<body>
+
+  <p>
+    Trident (Internet Explorer 11) freaks out when it encounters two consecutive <code>&lt;object&gt;</code> elements while tabbing through the document.
+    It will get stuck on the second <code>&lt;object&gt;</code> and then only tab through its browser chrome (location, tabs, menu),
+    but never get back the document. If you put something tabbable (not only focusable!) in between, everything is fine.
+  </p>
+
+  <hr>
+  <input type="text">
+  <hr>
+  <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
+    <param name="movie" value="../media/test.swf">
+    <param name="quality" value="high">
+  </object>
+
+<!--
+  Put something tabbable in the middle and everything is fine
+  <hr>
+  <input type="text">
+-->
+
+  <hr>
+  <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
+    <param name="movie" value="../media/test.swf">
+    <param name="quality" value="high">
+  </object>
+  <hr>
+  <input type="text">
+
+  <script src="observe-activeelement.js"></script>
+  <script>
+  
+  </script>
+</body>
+</html>

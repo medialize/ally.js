@@ -16,6 +16,10 @@ function elementName(element) {
   return element.getAttribute('data-label') || element.nodeName;
 }
 
+function ignore(value) {
+  return value !== 'ignore';
+}
+
 function captureStuff() {
   var results = {
     platform: null,
@@ -80,9 +84,9 @@ function captureStuff() {
   });
 
   // save results
-  results.focusable = activeElementHistory.slice(0);
-  results.noFocusMethod = noFocusMethod.slice(0);
-  results.focusRedirection = focusRedirection.slice(0);
+  results.focusable = activeElementHistory.filter(ignore);
+  results.noFocusMethod = noFocusMethod.filter(ignore);
+  results.focusRedirection = focusRedirection.filter(ignore);
   // reset buffers
   activeElementHistory.length = 0;
   noFocusMethod.length = 0;
@@ -104,7 +108,7 @@ function captureStuff() {
   });
 
   // save results
-  results.focusEvents = focusEventHistory.slice(0);
+  results.focusEvents = focusEventHistory.filter(ignore);
   // reset buffers
   activeElementHistory.length = 0;
   noFocusMethod.length = 0;
@@ -115,8 +119,8 @@ function captureStuff() {
   require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
     // save results
     results.platform = platform;
-    results.a11y.focusable = queryFocusable(document).map(elementName);
-    results.jquery.focusable = $(':focusable').toArray().map(elementName);
+    results.a11y.focusable = queryFocusable(document).map(elementName).filter(ignore);
+    results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
     // reset buffers
     activeElementHistory.length = 0;
     noFocusMethod.length = 0;
@@ -130,7 +134,7 @@ function captureStuff() {
     observeActiveElement();
 
     document.getElementById('output-results').addEventListener('click', function() {
-      results.tabOrder = activeElementHistory.slice(0);
+      results.tabOrder = activeElementHistory.filter(ignore);
       document.getElementById('results').textContent = JSON.stringify(results, null, 2);
     }, false);
   });

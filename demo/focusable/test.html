@@ -4,8 +4,8 @@
 	<meta charset="utf-8" />
 	<title>What Is Focusable?</title>
 	<style>
-	  :focus {
-	    background: hotpink;
+	  body :focus {
+	    outline: 2px solid hotpink;
 	  }
 	</style>
 </head>
@@ -147,24 +147,34 @@
   <article>
     <h2 id="object">Object</h2>
 
+    <!--
+      NOTE: Internet Explorer 11 gets stuck in the browser chrome, when it has to tab through 2 consecutive <object>s,
+      that's why we added a couple of ignore-me fillers…
+    -->
+
     <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
+
+    <div tabindex="0" data-label="ignore"></div>
+
     <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
+    <div tabindex="0" data-label="ignore"></div>
+
     <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg]"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+
     <object type="image/svg+xml" data="../media/test.svg" width="200" height="0" data-label="object[src=svg][height=0]"></object>
 
-    <!--
-    NOTE: This seriously fracks IE11's tabbing ability. If you tab to this element, IE11 gets stuck in its address bar and won't return to the document.
-    Leave this element out and everything is fine.
-    <object usemap="image-maps-1" data="../media/test.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
-    -->
+    <div tabindex="0" data-label="ignore"></div>
 
+    <object usemap="image-maps-1" data="../media/test.swf" type="application/x-shockwave-flash" data-label="object[usemap]"></object>
   </article>
 
   <article>

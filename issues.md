@@ -4,7 +4,6 @@
 
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
-* `object` fracks focus in IE11
 * find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
 
@@ -55,6 +54,7 @@
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
+* consecutive `object` elements break the tabbing behavior, focus will get stuck on browser chrome
 
 
 ## jQuery & jQuery UI ##
