@@ -27,6 +27,7 @@
     var log = document.querySelector('pre');
 
     ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
     });
@@ -34,10 +35,12 @@
     log.textContent += '\nadding focus listeners\n';
 
     ['svg', 'svg text'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
       document.querySelector(selector).addEventListener('focus', function(){}, false);
     });
 
     ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
     });
