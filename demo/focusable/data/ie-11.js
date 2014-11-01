@@ -153,7 +153,11 @@ define(function defineDemoFocusableIE11(require) {
         "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tbody tr td a"
+        "table",
+        "table thead tr td",
+        "table tbody tr td",
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible}"
       ],
       "tabOrder": null
     },
