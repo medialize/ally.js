@@ -11,6 +11,7 @@
     But in IE11 <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> (but not <code>&lt;th&gt;</code>) are also focusable.
   </p>
 
+
   <table>
     <tbody>
       <tr>
@@ -22,10 +23,11 @@
 
   <a href="#void">link</a>
 
-  <pre></pre>
 
+  <pre></pre>
   <script>
     var log = document.querySelector('pre');
+
     ['p', 'table', 'tbody', 'tr', 'td', 'td', 'a'].forEach(function(selector) {
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
