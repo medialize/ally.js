@@ -136,4 +136,11 @@ function captureStuff() {
   });
 }
 
-captureStuff();
+if (window.isLoaded) {
+  captureStuff();
+} else {
+  window.addEventListener('load', function() {
+    captureStuff();
+  }, false);
+}
+
