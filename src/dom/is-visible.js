@@ -4,6 +4,13 @@ define(function defineDomIsVisible(require) {
   require('array.prototype.findindex');
   var path = require('./path');
 
+  // http://www.w3.org/TR/html5/rendering.html#being-rendered
+  // <area> is not rendered
+  var notRenderedElementsPattern = /^(area)$/;
+  // <audio src="#unknown"> has no height in Firefox but is focusable
+  // <object> may have no dimension but is still focusable
+  var notDimensionBoundElementsPattern = /^(audio|object)$/;
+
   function notDisplayed(_path) {
     return _path.some(function(element) {
       // display:none is not visible (optimized away at layout)
@@ -43,14 +50,9 @@ define(function defineDomIsVisible(require) {
     return false;
   }
 
-  // <audio src="#unknown"> has no height in Firefox but is focusable
-  // <area> is not rendered
-  // <object> may have no dimension but is still focusable
-  var notRenderedElementsPattern = /^(area|audio|object)$/;
-
   function noDimension(element) {
     var nodeName = element.nodeName.toLowerCase();
-    if (notRenderedElementsPattern.test(nodeName)) {
+    if (notDimensionBoundElementsPattern.test(nodeName)) {
       return false;
     }
 
@@ -81,6 +83,11 @@ define(function defineDomIsVisible(require) {
   }
 
   function isVisible(element) {
+    var nodeName = element.nodeName.toLowerCase();
+    if (notRenderedElementsPattern.test(nodeName)) {
+      return true;
+    }
+
     var _path = path(element);
     return !Boolean(notDisplayed(_path) || notVisible(_path) || noDimension(element));
   }

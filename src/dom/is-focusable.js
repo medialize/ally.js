@@ -28,9 +28,7 @@ define(function defineDomIsFocusable(require) {
     }
 
     // elements that are not rendered, cannot be focused
-    // (except for <area> which is never rendered directly)
-    // http://www.w3.org/TR/html5/rendering.html#being-rendered
-    if (nodeName !== 'area' && !isVisible(element)) {
+    if (!isVisible(element)) {
       return false;
     }
 
