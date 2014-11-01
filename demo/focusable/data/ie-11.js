@@ -34,6 +34,8 @@ define(function defineDemoFocusableIE11(require) {
       "a[href=\"\"]",
       "area[href].upper",
       "area[href].lower",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a > img[ismap]",
       "iframe",
@@ -64,6 +66,7 @@ define(function defineDemoFocusableIE11(require) {
     "focusEvents": [],
     "focusRedirection": [
       "img[usemap].first --- area[href].upper",
+      "img[usemap].invalid --- map.invalid-image area[href].upper",
       "img[usemap].second --- area[href].upper"
     ],
     "noFocusMethod": [
@@ -91,6 +94,8 @@ define(function defineDemoFocusableIE11(require) {
       "a[href=\"\"]",
       "area[href].upper",
       "area[href].lower",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a > img[ismap]",
       "area[href].upper",
@@ -126,6 +131,8 @@ define(function defineDemoFocusableIE11(require) {
         "a[href=\"\"]",
         "area[href].upper",
         "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "iframe",
         "audio",
@@ -164,6 +171,8 @@ define(function defineDemoFocusableIE11(require) {
         "a[href=\"\"]",
         "area[href].upper",
         "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "svg a[xlink|href]",
         "[tabindex=-2]",

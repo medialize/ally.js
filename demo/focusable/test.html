@@ -81,15 +81,21 @@
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
     </map>
 
-    <img usemap="#image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].first">
+    <map name="image-maps-2">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.invalid-image area[href].upper">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.invalid-image area[href].lower">
+    </map>
 
-    <img usemap="#void" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
-    <img src="image-map-demo.png" alt="no map associated" data-label="img">
+    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].first">
+    <img usemap="#image-maps-2" src="#void" alt="not a valid image" data-label="img[usemap].invalid">
+
+    <img usemap="#void" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
+    <img src="../media/image-map.png" alt="no map associated" data-label="img">
 
     <a href="#void" data-label="a:has([ismap])">
-      <img ismap src="image-map-demo.png" alt="clickable anywhere" data-label="a > img[ismap]">
+      <img ismap src="../media/image-map.png" alt="clickable anywhere" data-label="a > img[ismap]">
     </a>
-    <img usemap="#image-maps-1" src="image-map-demo.png" alt="two clickable areas" data-label="img[usemap].second">
+    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].second">
 
   </article>
 
