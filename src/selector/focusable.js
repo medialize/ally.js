@@ -19,10 +19,10 @@ define(function defineSelectorFocusable(require) {
     element.setAttribute('src', 'data:video/mp4;base64,' + 'video-focus-test');
   });
 
-  var canFocusSvg = SVGElement.prototype.focus && detectFeatureFocus(function() {
-    var d = document.createElement('div');
-    d.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100" height="100" id="ficken"><text x="20" y="20">hello</text><a xlink:href="#bar"><text x="50" y="50">asd</text></a><text x="40" y="80">after link</text></svg>';
-    return d.firstElementChild;
+  var canFocusSvg = SVGElement.prototype.focus && detectFeatureFocus('div', function(element) {
+    element.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100" height="100">'
+      + '<text x="20" y="20">hello</text></svg>';
+    return element.firstElementChild;
   });
 
   // TODO: investigate SVG's focusable attribute
