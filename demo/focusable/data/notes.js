@@ -5,18 +5,23 @@ define(function defineDemoFocusableNotes(require) {
     "audio": '<a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with <code>controls</code> attribute',
     "video": '<a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with <code>controls</code> attribute',
 
-    "error(table)": 'TODO: investigate this behavior',
-    "error(table tr td)": 'TODO: investigate this behavior',
+    "table": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
+    "table thead tr td": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
+    "table tbody tr td": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
+    "table tbody tr{collapse} td a": 'jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>',
+    "table tbody tr{collapse} td{visible}": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
+    "table tbody tr{collapse} td a{visible}": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
     "table tr{collapse} td a{visible}": 'Firefox does not render the element, but it is tabbable. IE11 renders it, but it has `element.offsetHeight === 0`',
 
-    "svg": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
-    "svg a[xlink|href]": '<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=369507">Bug 369507: default visual indication of focus</a>',
+    "svg": 'Focusable and tabbable in IE11, accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
+    "svg a[xlink|href]": 'Firefox and IE11 are missing <code>SVGElement.prototype.focus</code>',
     "svg text": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
     "svg rect": 'accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
 
     "fieldset[tabindex=0][disabled]": 'should not be focusable as per <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>',
     "link[itemprop][href]": 'naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
 
+    "keygen": 'Not supported in IE11',
     "iframe": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly, see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=131784">#131784</a>',
 
     "a > img[ismap]": 'see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap">&lt;img ismap&gt;</a>, focus should be the link-parent',

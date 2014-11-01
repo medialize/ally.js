@@ -53,10 +53,13 @@ define(function defineDemoFocusableIE11(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "error(table)",
-      "error(table tr td)",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table",
+      "table thead tr td",
+      "table tbody tr td",
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible}",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusEvents": [],
     "focusRedirection": [
@@ -103,9 +106,9 @@ define(function defineDemoFocusableIE11(require) {
       "[tabindex=0]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}",
-      "HTML"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "a11y": {
       "focusable": [
@@ -142,7 +145,7 @@ define(function defineDemoFocusableIE11(require) {
         "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tr td a"
+        "table tbody tr td a"
       ],
       "tabOrder": null
     },
@@ -172,7 +175,7 @@ define(function defineDemoFocusableIE11(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tr td a"
+        "table tbody tr td a"
       ],
       "tabOrder": null
     }

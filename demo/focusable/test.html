@@ -214,23 +214,38 @@
     </div>
     <a href="#void" style="visibility:hidden" data-label="a{hidden}">link</a>
 
-    <table data-label="error(table)">
-      <tr>
-        <td data-label="error(table tr td)">
-          <a href="#void" data-label="table tr td a">link</a>
-        </td>
-      </tr>
-      <tr style="visibility:collapse" data-label="error(table tr{collapse})">
-        <td data-label="error(table tr{collapse} td{collapse})">
-          <a href="#void" data-label="table tr{collapse} td a">link</a>
-        </td>
-      </tr>
-      <tr style="visibility:collapse">
-        <td data-label="error(table tr{collapse} td{collapse})">
-          <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
-          <a href="#void" style="visibility: visible" data-label="table tr{collapse} td a{visible}">link</a>
-        </td>
-      </tr>
+    <table data-label="table">
+      <thead data-label="table thead">
+        <tr data-label="table thead tr">
+          <th data-label="table thead tr th">cell</th>
+          <td data-label="table thead tr td">cell</td>
+        </tr>
+      </thead>
+      <tbody data-label="table tbody">
+        <tr data-label="table tbody tr">
+          <th data-label="table tbody tr th">cell</th>
+          <td data-label="table tbody tr td">
+            <a href="#void" data-label="table tbody tr td a">link</a>
+          </td>
+        </tr>
+        <tr style="visibility:collapse" data-label="table tbody tr{collapse}">
+          <td colspan="2" data-label="table tbody tr{collapse} td">
+            <a href="#void" data-label="table tbody tr{collapse} td a">link</a>
+          </td>
+        </tr>
+        <tr style="visibility:collapse">
+          <td colspan="2" style="visibility: visible" data-label="table tbody tr{collapse} td{visible}">
+            <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
+            <a href="#void" data-label="table tbody tr{collapse} td{visible} a">link</a>
+          </td>
+        </tr>
+        <tr style="visibility:collapse">
+          <td colspan="2" data-label="table tbody tr{collapse} td">
+            <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
+            <a href="#void" style="visibility: visible" data-label="table tbody tr{collapse} td a{visible}">link</a>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </article>
 

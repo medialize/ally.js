@@ -1,13 +1,7 @@
 # Identified Issues #
 
-## TODO: fix test/a11y
-
-* `a > img[ismap]` a11y-fail in IE11
-* `svg` not reported focusable in IE11 (because prototype not loaded)
-
 ## TODO: Investigate
 
-* `error(table)`, in IE11 possibly caused by `focus` event listener like svg in chrome?
 * `<area>` focus sometimes possible, sometimes not - Firefox
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
@@ -60,7 +54,7 @@
 * `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`)
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
-
+* `table` and `td` are naturally focusable
 
 ## jQuery & jQuery UI ##
 

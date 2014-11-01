@@ -35,6 +35,7 @@ define(function defineDemoFocusableFirefox(require) {
       "area[href].upper",
       "area[href].lower",
       "a:has([ismap])",
+      "iframe",
       "audio[controls]",
       "video",
       "video[controls]",
@@ -53,8 +54,9 @@ define(function defineDemoFocusableFirefox(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -90,8 +92,9 @@ define(function defineDemoFocusableFirefox(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]"
@@ -133,8 +136,9 @@ define(function defineDemoFocusableFirefox(require) {
       "[tabindex=0]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "a11y": {
       "focusable": [
@@ -172,8 +176,9 @@ define(function defineDemoFocusableFirefox(require) {
         "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tr td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     },
@@ -204,9 +209,10 @@ define(function defineDemoFocusableFirefox(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tr td a",
-        "table tr{collapse} td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     }

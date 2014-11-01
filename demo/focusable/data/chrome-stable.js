@@ -53,8 +53,9 @@ define(function defineDemoFocusableChrome(require) {
       "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -94,8 +95,9 @@ define(function defineDemoFocusableChrome(require) {
       "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]"
@@ -135,8 +137,9 @@ define(function defineDemoFocusableChrome(require) {
       "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "a11y": {
       "focusable": [
@@ -173,8 +176,9 @@ define(function defineDemoFocusableChrome(require) {
         "fieldset[tabindex=0][disabled]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tr td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     },
@@ -203,9 +207,10 @@ define(function defineDemoFocusableChrome(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tr td a",
-        "table tr{collapse} td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     }
