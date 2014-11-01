@@ -3,7 +3,7 @@
 ## TODO: fix test/a11y
 
 * `a > img[ismap]` a11y-fail in IE11
-* `svg` not reported focusable in IE11 (because danger-zone not loaded)
+* `svg` not reported focusable in IE11 (because prototype not loaded)
 
 ## TODO: Investigate
 

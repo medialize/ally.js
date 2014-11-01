@@ -3,12 +3,12 @@ define(function defineDomIsFocusable(require) {
 
   // http://www.w3.org/TR/html5/editing.html#focus-management
 
+  require('../prototype/element.prototype.matches');
   var selector = require('../selector/focusable');
   var isVisible = require('./is-visible');
   var isDisabled = require('./is-disabled');
   var isValidTabindex = require('./is-valid-tabindex');
   var isValidArea = require('./is-valid-area');
-  var matches = require('./matches');
 
   function isFocusable(element) {
     var focusable = selector;
@@ -47,7 +47,7 @@ define(function defineDomIsFocusable(require) {
       focusable = focusable.replace('[tabindex],', '');
     }
 
-    return matches(element, focusable);
+    return element.matches(focusable);
   }
 
   return isFocusable;

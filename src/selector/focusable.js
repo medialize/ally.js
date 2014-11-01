@@ -6,7 +6,7 @@ define(function defineSelectorFocusable(require) {
   // there are too many edge cases that they could be covered in
   // a simple CSS selector…
 
-  require('../danger-zone/svgelement.prototype.focus');
+  require('../prototype/svgelement.prototype.focus');
   var detectFeatureFocus = require('../dom/detect-feature-focus');
 
   var canFocusAudioWithoutControls = detectFeatureFocus('audio', function(element) {
