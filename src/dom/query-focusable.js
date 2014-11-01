@@ -5,7 +5,7 @@ define(function defineDomQueryFocusable(require) {
   // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
   var selector = require('../selector/focusable');
-  var isFocusable = require('../dom/is-focusable');
+  var isFocusable = require('./is-focusable');
 
   function queryFocusable(context) {
     var elements = context.querySelectorAll(selector);
