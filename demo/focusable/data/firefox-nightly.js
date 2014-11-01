@@ -41,6 +41,10 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "video[controls]",
       "embed",
       "keygen",
+      "object[src=swf]",
+      "object[src=swf][height=0]",
+      "object[src=svg]",
+      "object[src=svg][height=0]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=-2]",
@@ -54,8 +58,9 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -78,6 +83,8 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "video[controls]",
       "embed",
       "keygen",
+      "object[src=swf]",
+      "object[src=swf][height=0]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=-2]",
@@ -91,8 +98,9 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "[tabindex=3 ]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]"
@@ -128,14 +136,17 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "video",
       "video[controls]",
       "keygen",
+      "object[src=svg]",
+      "object[src=svg][height=0]",
       "svg a[xlink|href]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=0]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "a11y": {
       "focusable": [
@@ -160,6 +171,10 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "video[controls]",
         "embed",
         "keygen",
+        "object[src=swf]",
+        "object[src=swf][height=0]",
+        "object[src=svg]",
+        "object[src=svg][height=0]",
         "[contenteditable]:empty",
         "[contenteditable]",
         "[tabindex=-2]",
@@ -173,8 +188,9 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "[tabindex=3 ]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tr td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     },
@@ -193,8 +209,14 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "a[href=\"\"]",
         "area[href].upper",
         "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "keygen",
+        "object[src=swf]",
+        "object[src=swf][height=0]",
+        "object[src=svg]",
+        "object[src=svg][height=0]",
         "svg a[xlink|href]",
         "[tabindex=-2]",
         "[tabindex=-1]",
@@ -205,9 +227,10 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tr td a",
-        "table tr{collapse} td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     }

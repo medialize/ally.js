@@ -113,7 +113,8 @@ define(function defineDemoFocusableIE11(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "HTML"
     ],
     "a11y": {
       "focusable": [

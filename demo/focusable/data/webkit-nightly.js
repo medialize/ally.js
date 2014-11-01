@@ -5,14 +5,14 @@ define(function defineDemoFocusableWebkitNightly(require) {
 
   return {
     "platform": {
-      "description": "WebKit Nightly 601.1.7 (like Safari 7+) on OS X 10.8.5",
+      "description": "WebKit Nightly 601.1.8 (like Safari 7+) on OS X 10.8.5",
       "layout": "WebKit",
       "manufacturer": null,
       "name": "WebKit Nightly",
       "prerelease": "alpha",
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/601.1.7+ (KHTML, like Gecko) Version/6.2 Safari/537.85.10",
-      "version": "601.1.7",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/601.1.8+ (KHTML, like Gecko) Version/6.2 Safari/537.85.10",
+      "version": "601.1.8",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -34,12 +34,16 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "a[href=\"\"]",
       "area[href].upper",
       "area[href].lower",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "iframe",
       "audio[controls]",
       "video[controls]",
       "embed",
       "keygen",
+      "object[src=svg]",
+      "object[src=svg][height=0]",
       "svg a[xlink|href]",
       "[contenteditable]:empty",
       "[contenteditable]",
@@ -53,8 +57,9 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -71,12 +76,16 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "a[href=\"\"]",
       "area[href].upper",
       "area[href].lower",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "iframe",
       "audio[controls]",
       "video[controls]",
       "embed",
       "keygen",
+      "object[src=svg]",
+      "object[src=svg][height=0]",
       "svg",
       "svg a[xlink|href]",
       "svg a[xlink|href] text",
@@ -94,8 +103,9 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "fieldset[tabindex=0][disabled]",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
-      "table tr td a",
-      "table tr{collapse} td a{visible}"
+      "table tbody tr td a",
+      "table tbody tr{collapse} td{visible} a",
+      "table tbody tr{collapse} td a{visible}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]"
@@ -117,6 +127,8 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "button[type=button]",
       "area[href].upper",
       "area[href].lower",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "iframe",
       "audio[controls]",
       "video[controls]",
@@ -146,12 +158,18 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "a[href=\"\"]",
         "area[href].upper",
         "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "iframe",
         "audio[controls]",
         "video[controls]",
         "embed",
         "keygen",
+        "object[src=swf]",
+        "object[src=swf][height=0]",
+        "object[src=svg]",
+        "object[src=svg][height=0]",
         "svg a[xlink|href]",
         "[contenteditable]:empty",
         "[contenteditable]",
@@ -165,8 +183,9 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "fieldset[tabindex=0][disabled]",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
-        "table tr td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     },
@@ -185,7 +204,13 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "a[href=\"\"]",
         "area[href].upper",
         "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
         "a:has([ismap])",
+        "object[src=swf]",
+        "object[src=swf][height=0]",
+        "object[src=svg]",
+        "object[src=svg][height=0]",
         "[tabindex=-2]",
         "[tabindex=-1]",
         "[tabindex=0]",
@@ -195,9 +220,10 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tr td a",
-        "table tr{collapse} td a",
-        "table tr{collapse} td a{visible}"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     }
