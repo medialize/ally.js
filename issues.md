@@ -19,6 +19,7 @@
 * [#131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784) focusing `<iframe>` does not dispatch `focus` event, but properly updates `document.activeElement`
 * focusing `<object data="some.svg">` does not dispatch `focus` event, but properly updates `document.activeElement`
 * `area` only becomes focusable after at least one image with the proper `usemap` set is fully loaded
+* `area` never becomes focusable when only broken images use the `map`
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.
 * `document.body.focus.call(svgElement);` fails with `TypeError: 'focus' called on an object that does not implement interface HTMLElement.`
 * `table tr{collapse} td a{visible}` not rendered, but can be tabbed to
@@ -32,7 +33,6 @@
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
 * every element in `<svg>` is focusable and tabbable
 * any `<svg>` element can be made focusable and tabbable by adding a focus event handler
-* `<area>` is focusable even if the `img` using the map is not loaded
 
 
 ## WebKit (Safari) ##
@@ -40,7 +40,6 @@
 * mouse-focus (`mousedown` on a focusable element) will trigger the focus on the `div` not the `a` in `<div tabindex="-1"><a href="#foo">…`
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
-* `<area>` is focusable even if the `img` using the map is not loaded
 
 
 ## Trident (Internet Explorer) ##
@@ -56,7 +55,6 @@
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
-* `<area>` is focusable even if the `img` using the map is not loaded
 
 
 ## jQuery & jQuery UI ##

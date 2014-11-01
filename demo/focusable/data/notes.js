@@ -8,9 +8,9 @@ define(function defineDemoFocusableNotes(require) {
     "table": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
     "table thead tr td": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
     "table tbody tr td": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
-    "table tbody tr{collapse} td a": 'jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>',
     "table tbody tr{collapse} td{visible}": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
-    "table tbody tr{collapse} td a{visible}": 'IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.',
+    "table tbody tr{collapse} td a": 'jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>',
+    "table tbody tr{collapse} td a{visible}": 'jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>',
     "table tr{collapse} td a{visible}": 'Firefox does not render the element, but it is tabbable. IE11 renders it, but it has `element.offsetHeight === 0`',
 
     "svg": 'Focusable and tabbable in IE11, accidentally made focusable/tabbable because we added a <code>focus</code> event listener (Blink, WebKit)',
@@ -27,8 +27,8 @@ define(function defineDemoFocusableNotes(require) {
     "a > img[ismap]": 'see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap">&lt;img ismap&gt;</a>, focus should be the link-parent',
     "area[href].upper": 'Firefox requires the image using the map to be loaded',
     "area[href].lower": 'Firefox requires the image using the map to be loaded',
-    "map.invalid-image area[href].upper": 'Maps belonging to broken images should not be focusable',
-    "map.invalid-image area[href].lower": 'Maps belonging to broken images should not be focusable',
+    "map.invalid-image area[href].upper": 'Maps belonging to broken images',
+    "map.invalid-image area[href].lower": 'Maps belonging to broken images',
 
     "object[src=svg]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',
     "object[src=svg][height=0]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',

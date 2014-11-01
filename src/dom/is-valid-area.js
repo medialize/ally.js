@@ -46,6 +46,7 @@ define(function defineDomIsValidArea(require) {
       return false;
     }
 
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
     var childOfInteractive = path(img).slice(1).some(function(element) {
       var name = element.nodeName.toLowerCase();
       return name === 'button' || name === 'a';
