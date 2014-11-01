@@ -30,8 +30,8 @@ define(function defineDemoFocusableNotes(require) {
     "map.invalid-image area[href].upper": 'Maps belonging to broken images',
     "map.invalid-image area[href].lower": 'Maps belonging to broken images',
 
-    "object[src=svg]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',
-    "object[src=svg][height=0]": 'Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly',
+    "object[src=svg]": 'IE11 will not focus an svg object by script, but it is tabbable',
+    "object[src=svg][height=0]": 'IE11 will not focus an svg object by script, but it is tabbable',
     "object[usemap]": 'once focused in IE11, the browser cannot tab back to the document anymore, it get\'s stuck in the address bar. It was therefore removed from the test',
 
     "[contenteditable]:empty": 'Firefox reports <code>element.offsetHeight === 0</code>, working around that internally',
