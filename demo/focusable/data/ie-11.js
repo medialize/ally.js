@@ -113,8 +113,7 @@ define(function defineDemoFocusableIE11(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}",
-      "HTML"
+      "table tbody tr{collapse} td a{visible}"
     ],
     "a11y": {
       "focusable": [
@@ -142,6 +141,7 @@ define(function defineDemoFocusableIE11(require) {
         "video[controls]",
         "embed",
         "svg",
+        "svg a[xlink|href]",
         "[contenteditable]:empty",
         "[contenteditable]",
         "[tabindex=-2]",
