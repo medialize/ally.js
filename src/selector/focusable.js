@@ -25,6 +25,10 @@ define(function defineSelectorFocusable(require) {
     return element.firstElementChild;
   });
 
+  var canFocusTable = detectFeatureFocus('table', function(element) {
+    element.innerHTML = '<tr><td>cell</td></tr>';
+  });
+
   // TODO: investigate SVG's focusable attribute
   //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
   //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
@@ -33,6 +37,8 @@ define(function defineSelectorFocusable(require) {
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   var selector = 'body,'
+    // ID11 can focus <table> and <td>
+    + (canFocusTable ? 'table, td,' : '')
     // supporting <svg>
     + (canFocusSvg ? 'svg,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124

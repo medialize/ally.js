@@ -6,7 +6,6 @@ define(function defineDomIsFocusable(require) {
   // NOTE: The following known issues exist:
   //   Trident: `a > img[ismap]` is not identified as focusable
   //   Trident: `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable (because !element.offsetHeight)
-  //   Trident: `table` and `td` are not identified as focusable
   //   Gecko: `svg a[xlink|href]` is not identified as focusable (because SVGElement.prototype.focus is missing)
   //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
 
