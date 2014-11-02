@@ -9,4 +9,4 @@ define(function defineSupportsFocusInvalidTabindex(require) {
   });
 
   return allowsInvalidValue;
-})
+});
