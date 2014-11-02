@@ -56,6 +56,22 @@ a11y.js is a suite of JavaScript functions and workflows to help your applicatio
 ---
 ---
 
+## Features:
+
+* `dom/query-focusable` `dom/is-focusable` - to obtain a list of focusable elements within a given dom element
+* `dom/query-tabbable` `dom/is-tabbable` - to obtain a list of tabbable elements within a given dom element
+
+* `focus/contain` -- to contain the *focus* within a given dom element upon <kbd>Tab</kbd>
+* `focus/wrap` -- to focus next or previous tabbable element with given dom element
+* `focus/fix-pointer-focus` -- to work around focus-click bug in Blink and WebKit
+
+* `event/active-element` -- to dispatch `active-element` event to `html` element
+
+
+---
+---
+---
+
 ## Requirements:
 
 * [ES5](http://kangax.github.io/compat-table/es5/)
@@ -95,10 +111,18 @@ require.config({
 ## Tools
 
 
+### Screen Readers
+
+* [ChromeVox](www.chromevox.com) (Chrome, Free)
+* [NVDA](http://www.nvaccess.org/) (Windows, Free)
+* [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS) (Windows, Trial)
+
+
 ### Tools for Visualizing the Accessibility Tree
 
 * [Firefox DOM Inspector Extension](https://addons.mozilla.org/en-US/firefox/addon/dom-inspector-6622/) (Accessibility Tree, Accessibility Events)
 * XCode Accessibility Inspector `open '/Applications/Xcode.app/Contents/Applications/Accessibility Inspector.app'`
+
 
 ---
 
