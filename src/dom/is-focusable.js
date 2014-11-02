@@ -25,6 +25,11 @@ define(function defineDomIsFocusable(require) {
       return false;
     }
 
+    // object[usemap] is not focusable in any browser
+    if (nodeName === 'object' && element.usemap) {
+      return false;
+    }
+
     if (!isValidArea(element)) {
       return false;
     }
