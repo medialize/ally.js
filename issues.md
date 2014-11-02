@@ -1,5 +1,10 @@
 # Identified Issues #
 
+## TODO: enhance tests
+
+* output table needs a `tbody` for "focusRedirection" (or focus delegation)
+* refactor all feature tests to their own directory `detection`
+
 ## TODO: Investigate
 
 * `audio` vs. `audio[controls]` in Firefox, IE11
@@ -22,6 +27,7 @@
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.
 * `document.body.focus.call(svgElement);` fails with `TypeError: 'focus' called on an object that does not implement interface HTMLElement.`
 * `table tr{collapse} td a{visible}` not rendered, but can be tabbed to
+* `object[usemap]` (with a PNG) makes the image map available to mouse, but neither `object` nor `area` are focusable or tabbable
 
 
 ## Blink (Chrome) ##
@@ -30,8 +36,8 @@
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
-* every element in `<svg>` is focusable and tabbable
 * any `<svg>` element can be made focusable and tabbable by adding a focus event handler
+* `object[usemap]` (with a PNG) renders the image but ignores the image map completely
 
 
 ## WebKit (Safari) ##
@@ -39,6 +45,9 @@
 * mouse-focus (`mousedown` on a focusable element) will trigger the focus on the `div` not the `a` in `<div tabindex="-1"><a href="#foo">…`
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
+* the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
+* any `<svg>` element can be made focusable and tabbable by adding a focus event handler
+* `object[usemap]` (with a PNG) renders the image but ignores the image map completely
 
 
 ## Trident (Internet Explorer) ##
@@ -55,6 +64,8 @@
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
 * consecutive `object` elements break the tabbing behavior, focus will get stuck on browser chrome
+* `object[usemap]` (with a PNG) makes the image map available to mouse, but neither `object` nor `area` are focusable or tabbable
+* `document.activeElement === null` during document parse time, after that it is `html`, after blur it is `body`
 
 
 ## jQuery & jQuery UI ##
