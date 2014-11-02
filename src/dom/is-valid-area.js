@@ -4,13 +4,7 @@ define(function defineDomIsValidArea(require) {
   require('CSS.escape');
   var isVisible = require('./is-visible');
   var path = require('./path');
-  var detectFeatureFocus = require('./detect-feature-focus');
-
-  var canFocusBrokenImageMaps = detectFeatureFocus('div', function(element) {
-    element.innerHTML = '<map name="broken-image-map-test"><area href="#void" shape="rect" coords="63,19,144,45"></map>'
-      + '<img usemap="#broken-image-map-test" alt="" src="data:image/png;base64,broken-image-test">';
-      return element.querySelector('area');
-  });
+  var canFocusBrokenImageMaps = require('../supports/focus-broken-image-map');
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap

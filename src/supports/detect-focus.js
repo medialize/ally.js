@@ -1,4 +1,4 @@
-define(function defineDomDetectFeatureFocus(require) {
+define(function defineSupportsDetectFocus(require) {
   'use strict';
 
   // nodeName:
@@ -7,7 +7,7 @@ define(function defineDomDetectFeatureFocus(require) {
   // callback: (optional)
   //  {function} callback(element) to manipulate element prior to focus-test.
   //             Can return DOMElement to define focus target (default: element)
-  function detectFeatureFocus(nodeName, callback) {
+  function detectFocus(nodeName, callback) {
     // create dummy element to test focusability of
     var element = typeof nodeName === 'string' ? document.createElement(nodeName) : nodeName();
     // allow callback to further specify dummy element
@@ -25,5 +25,5 @@ define(function defineDomDetectFeatureFocus(require) {
     return allowsFocus;
   }
 
-  return detectFeatureFocus;
+  return detectFocus;
 });

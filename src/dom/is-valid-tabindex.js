@@ -1,12 +1,7 @@
 define(function defineDomIsValidTabindex(require) {
   'use strict';
 
-  var detectFeatureFocus = require('./detect-feature-focus');
-
-  // Firefox allows *any* value and treats invalid values like tabindex="-1"
-  var allowsInvalidValue = detectFeatureFocus('div', function(element) {
-    element.setAttribute('tabindex', 'invalid-value');
-  });
+  var allowsInvalidValue = require('../supports/focus-invalid-tabindex');
 
   // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
   // NOTE: all browsers agree to allow trailing spaces as well

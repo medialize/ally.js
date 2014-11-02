@@ -7,27 +7,10 @@ define(function defineSelectorFocusable(require) {
   // a simple CSS selector…
 
   require('../prototype/svgelement.prototype.focus');
-  var detectFeatureFocus = require('../dom/detect-feature-focus');
-
-  var canFocusAudioWithoutControls = detectFeatureFocus('audio', function(element) {
-    // invalid media file can trigger warning in console, data-uri to prevent HTTP request
-    element.setAttribute('src', 'data:audio/mp3;base64,' + 'audio-focus-test');
-  });
-
-  var canFocusVideoWithoutControls = detectFeatureFocus('video', function(element) {
-    // invalid media file can trigger warning in console, data-uri to prevent HTTP request
-    element.setAttribute('src', 'data:video/mp4;base64,' + 'video-focus-test');
-  });
-
-  var canFocusSvg = SVGElement.prototype.focus && detectFeatureFocus('div', function(element) {
-    element.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100" height="100">'
-      + '<text x="20" y="20">hello</text></svg>';
-    return element.firstElementChild;
-  });
-
-  var canFocusTable = detectFeatureFocus('table', function(element) {
-    element.innerHTML = '<tr><td>cell</td></tr>';
-  });
+  var canFocusAudioWithoutControls = require('../supports/focus-audio-without-controls');
+  var canFocusVideoWithoutControls =  require('../supports/focus-video-without-controls');
+  var canFocusSvg = require('../supports/focus-svg');
+  var canFocusTable = require('../supports/focus-table');
 
   // TODO: investigate SVG's focusable attribute
   //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
