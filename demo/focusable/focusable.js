@@ -107,20 +107,32 @@ function captureStuff() {
     element.focus && element.focus();
   });
 
-  // save results
-  results.focusEvents = focusEventHistory.filter(ignore);
-  // reset buffers
-  activeElementHistory.length = 0;
-  noFocusMethod.length = 0;
-  focusRedirection.length = 0;
-  document.activeElement.blur();
-  document.body.focus();
+  require([
+    'a11y/dom/query-focusable',
+    'a11y/dom/query-tabbable',
+    'platform',
+    'jquery',
+    'jquery.ui/core'
+  ], function (queryFocusable, queryTabbable, platform, $) {
+    // save results
+    results.focusEvents = focusEventHistory.filter(ignore);
+    // reset buffers
+    activeElementHistory.length = 0;
+    noFocusMethod.length = 0;
+    focusRedirection.length = 0;
+    document.activeElement.blur();
+    document.body.focus();
 
-  require(['a11y/dom/query-focusable', 'platform', 'jquery', 'jquery.ui/core'], function (queryFocusable, platform, $) {
+    elements.forEach(function(element) {
+      // unregister focus event handler
+      element.removeEventListener('focus', logFocusEvent, false);
+    });
     // save results
     results.platform = platform;
     results.a11y.focusable = queryFocusable(document).map(elementName).filter(ignore);
+    results.a11y.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
     results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
+    results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
     // reset buffers
     activeElementHistory.length = 0;
     noFocusMethod.length = 0;
