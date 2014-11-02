@@ -5,15 +5,11 @@ define(function defineDomQueryTabbable(require) {
   // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
   var queryFocusable = require('./query-focusable');
+  var isTabbable = require('./is-tabbable');
   var sortTabindex = require('./sort-tabindex');
 
-  // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
-  function positiveTabindex(element) {
-    return element.tabIndex >= 0;
-  };
-
   function queryTabbable(context) {
-    var elements = queryFocusable(context).filter(positiveTabindex);
+    var elements = queryFocusable(context).filter(isTabbable);
     return sortTabindex(elements);
   };
 
