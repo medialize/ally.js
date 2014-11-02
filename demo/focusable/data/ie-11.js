@@ -46,7 +46,6 @@ define(function defineDemoFocusableIE11(require) {
       "embed",
       "object[src=swf]",
       "object[src=swf][height=0]",
-      "object[usemap]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=-2]",
@@ -111,7 +110,6 @@ define(function defineDemoFocusableIE11(require) {
       "object[src=swf][height=0]",
       "object[src=svg]",
       "object[src=svg][height=0]",
-      "object[usemap]",
       "svg",
       "svg a[xlink|href]",
       "[contenteditable]:empty",
@@ -170,7 +168,9 @@ define(function defineDemoFocusableIE11(require) {
         "table thead tr td",
         "table tbody tr td",
         "table tbody tr td a",
-        "table tbody tr{collapse} td{visible}"
+        "table tbody tr{collapse} td{visible}",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     },
@@ -207,7 +207,10 @@ define(function defineDemoFocusableIE11(require) {
         "[tabindex=\"\"]",
         "[tabindex=3 ]",
         "fieldset[tabindex=0][disabled]",
-        "table tbody tr td a"
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
       ],
       "tabOrder": null
     }

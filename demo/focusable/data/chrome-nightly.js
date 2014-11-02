@@ -5,14 +5,14 @@ define(function defineDemoFocusableChromeCanary(require) {
 
   return {
     "platform": {
-      "description": "Chrome 40.0.2207.0 on OS X 10.8.5",
+      "description": "Chrome 40.0.2208.0 on OS X 10.8.5",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2207.0 Safari/537.36",
-      "version": "40.0.2207.0",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2208.0 Safari/537.36",
+      "version": "40.0.2208.0",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -46,7 +46,6 @@ define(function defineDemoFocusableChromeCanary(require) {
       "object[src=swf][height=0]",
       "object[src=svg]",
       "object[src=svg][height=0]",
-      "object[usemap]",
       "svg a[xlink|href]",
       "[contenteditable]:empty",
       "[contenteditable]",
@@ -91,7 +90,6 @@ define(function defineDemoFocusableChromeCanary(require) {
       "object[src=swf][height=0]",
       "object[src=svg]",
       "object[src=svg][height=0]",
-      "object[usemap]",
       "svg",
       "svg a[xlink|href]",
       "svg a[xlink|href] text",
