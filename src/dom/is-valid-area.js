@@ -22,8 +22,8 @@ define(function defineDomIsValidArea(require) {
       return false;
     }
 
-    // TODO: image maps can also be applied to <object> with image content, but that
-    // would mean I'd have to know what type an object contains (really map mime types?)
+    // NOTE: image maps can also be applied to <object> with image content,
+    // but no browser supports this at the moment
 
     // HTML5 specifies HTMLMapElement.images to be an HTMLCollection of all
     // <img> and <object> referencing the <map> element, but no browser implements this
