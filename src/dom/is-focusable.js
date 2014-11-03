@@ -26,7 +26,7 @@ define(function defineDomIsFocusable(require) {
     }
 
     // object[usemap] is not focusable in any browser
-    if (nodeName === 'object' && element.usemap) {
+    if (nodeName === 'object' && element.hasAttribute('usemap')) {
       return false;
     }
 

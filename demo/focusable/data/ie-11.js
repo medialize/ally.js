@@ -244,7 +244,6 @@ define(function defineDemoFocusableIE11(require) {
         "object[src=swf][height=0]",
         "object[src=svg]",
         "object[src=svg][height=0]",
-        "object[usemap]",
         "svg",
         "svg a[xlink|href]",
         "[contenteditable]:empty",
