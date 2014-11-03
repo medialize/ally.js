@@ -194,7 +194,37 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}"
       ],
-      "tabOrder": null
+      "tabOrder": [
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=3 ]",
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "area[href].upper",
+        "area[href].lower",
+        "a:has([ismap])",
+        "iframe",
+        "audio[controls]",
+        "video",
+        "video[controls]",
+        "keygen",
+        "[tabindex=0]",
+        "{hidden} > a{visible}",
+        "{hidden} > {visible} > a",
+        "table tbody tr td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
+      ]
     },
     "jquery": {
       "focusable": [
@@ -235,7 +265,42 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}"
       ],
-      "tabOrder": null
+      "tabOrder": [
+        "input[type=text]",
+        "input[type=password]",
+        "input[type=checkbox]",
+        "input[type=radio]",
+        "input[type=submit]",
+        "input[type=radio]",
+        "select",
+        "textarea",
+        "button[type=button]",
+        "a[href]",
+        "a[href=\"\"]",
+        "area[href].upper",
+        "area[href].lower",
+        "map.invalid-image area[href].upper",
+        "map.invalid-image area[href].lower",
+        "a:has([ismap])",
+        "keygen",
+        "object[src=swf]",
+        "object[src=swf][height=0]",
+        "object[src=svg]",
+        "object[src=svg][height=0]",
+        "object[usemap]",
+        "svg a[xlink|href]",
+        "[tabindex=0]",
+        "[tabindex=1]",
+        "[tabindex=+2]",
+        "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=3 ]",
+        "fieldset[tabindex=0][disabled]",
+        "table tbody tr td a",
+        "table tbody tr{collapse} td a",
+        "table tbody tr{collapse} td{visible} a",
+        "table tbody tr{collapse} td a{visible}"
+      ]
     }
   };
 });
