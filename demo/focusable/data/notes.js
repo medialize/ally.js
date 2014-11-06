@@ -19,6 +19,10 @@ define(function defineDemoFocusableNotes(require) {
     "svg text": 'In Blink and Webkit SVG elements can be made focusable/tabbable by adding a <code>focus</code> event listener',
     "svg rect": 'In Blink and Webkit SVG elements can be made focusable/tabbable by adding a <code>focus</code> event listener',
 
+    "details a[href]": 'Currently only supported in Blink, Webkit (<a href="http://caniuse.com/#feat=details">caniuse</a>)',
+    "details summary": 'Currently only supported in Blink, Webkit (<a href="http://caniuse.com/#feat=details">caniuse</a>)',
+    "details[open] summary": 'Currently only supported in Blink, Webkit (<a href="http://caniuse.com/#feat=details">caniuse</a>)',
+
     "fieldset[tabindex=0][disabled]": 'should not be focusable as per <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>',
     "link[itemprop][href]": 'naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a>',
 
