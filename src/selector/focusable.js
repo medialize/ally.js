@@ -11,6 +11,7 @@ define(function defineSelectorFocusable(require) {
   var canFocusVideoWithoutControls =  require('../supports/focus-video-without-controls');
   var canFocusSvg = require('../supports/focus-svg');
   var canFocusTable = require('../supports/focus-table');
+  var canFocusSummary = require('../supports/focus-summary');
 
   // TODO: investigate SVG's focusable attribute
   //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
@@ -40,6 +41,7 @@ define(function defineSelectorFocusable(require) {
     + 'keygen,'
     + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
     + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
+    + (canFocusSummary ? 'summary,' : '')
     // validity determined by dom/is-valid-tabindex.js
     + '[tabindex],'
     // editing hosts
