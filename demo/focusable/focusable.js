@@ -1,4 +1,5 @@
 require.config({
+  urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
     a11y: '../../src',
     // shims required by a11y.js
