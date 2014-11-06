@@ -1,6 +1,6 @@
 # a11y.js
 
-a11y.js is a suite of JavaScript functions and workflows to help your application with various [WAI-ARIA](http://www.w3.org/TR/wai-aria/) related accessibility concerns.
+a11y.js (pronounced "ally js", pun intended) is a suite of JavaScript functions and workflows to help your application with various [WAI-ARIA](http://www.w3.org/TR/wai-aria/) related accessibility concerns.
 
 ---
 ---
