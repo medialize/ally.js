@@ -4,10 +4,17 @@ define(function defineEventActiveElement(require) {
   /*
     USAGE:
 
-      document.documentElement.addEventListener('active-element', function(event) {
+      document.body.addEventListener('active-element', function(event) {
         // event.detail.focus: element that received focus
         // event.detail.blur: element that lost focus
       }, false);
+
+
+    NOTE: You *can* use event-delegation on focus events by using the capture-phase:
+      document.body.addEventListener('focus', function(event) {
+        // event.target: element that received focus
+        // event.relatedTarget: element that lost focus
+      }, true);
 
    */
 
@@ -27,7 +34,7 @@ define(function defineEventActiveElement(require) {
         }
       });
 
-      document.documentElement.dispatchEvent(activeElementEvent);
+      document.body.dispatchEvent(activeElementEvent);
       previousActiveElement = document.activeElement;
     }
 
