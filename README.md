@@ -65,7 +65,7 @@ a11y.js (pronounced "ally js", pun intended) is a suite of JavaScript functions 
 * `focus/wrap` -- to focus next or previous tabbable element with given dom element
 * `focus/fix-pointer-focus` -- to work around focus-click bug in Blink and WebKit
 
-* `event/active-element` -- to dispatch `active-element` event to `html` element
+* `event/active-element` -- to dispatch `active-element` event to `html` element regardless of `focus` event
 
 
 ---
@@ -116,6 +116,7 @@ require.config({
 * [ChromeVox](www.chromevox.com) (Chrome, Free)
 * [NVDA](http://www.nvaccess.org/) (Windows, Free)
 * [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS) (Windows, Trial)
+* [ZoomText](http://www.aisquared.com/zoomtext/more/zoomtext_magnifier_reader/) (Windows, Trial)
 
 
 ### Tools for Visualizing the Accessibility Tree
