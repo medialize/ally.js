@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>event-sequence</title>
+</head>
+<body>
+
+  <h1>Focus Event Sequence Test</h1>
+  <p>First Tab through the elements, then click each element, then press <kbd>escape</kbd></p>
+
+  <input type="text" data-label="first">
+  <input type="text" data-label="second">
+  <div tabindex="0" data-label="third">third</div>
+  <div tabindex="-1" data-label="fourth"><a href="#void" data-label="fifth">fifth</a></div>
+
+
+  <pre></pre>
+  <script src="../../bower_components/platform/platform.js"></script>
+  <script>
+    (function() {
+      var log = document.querySelector('pre');
+      var history = [];
+      var buffer = [];
+
+      function elementName(element) {
+        var value = element && element.getAttribute && element.getAttribute('data-label') || element && element.nodeName || 'none';
+        return value;
+      }
+
+      function bufferEvent(event, target, related) {
+        buffer.push({
+          event: event.type,
+          target: elementName(target || event.target),
+          related: elementName(related || event.relatedTarget),
+        });
+      }
+
+      var breakerTimeout;
+      function breaker() {
+        clearTimeout(breakerTimeout);
+        breakerTimeout = setTimeout(function() {
+          log.textContent += "---------------------------------------------\n";
+          history.push(buffer.slice(0));
+          buffer.length = 0;
+        }, 500);
+      }
+
+      function logFocusEvent(event) {
+        log.textContent += event.type + ': ' + elementName(event.target) + ', related: ' + elementName(event.relatedTarget) + "\n";
+        bufferEvent(event);
+        breaker();
+      }
+
+      function logPointerEvent(event) {
+        log.textContent += event.type + ': ' + elementName(event.target) + "\n";
+        bufferEvent(event);
+        breaker();
+      }
+
+      function logKeyEvent(event) {
+        var code = event.keyCode || event.which;
+        if (code != 9) {
+          return;
+        }
+
+        log.textContent += event.type + ': ' + elementName(event.target) + "\n";
+        bufferEvent(event);
+        breaker();
+      }
+
+      function logActiveElementEvent(event) {
+        log.textContent += 'active-element' + ': ' + elementName(event.detail.focus) + ', related: ' + elementName(event.detail.blur) + "\n";
+        bufferEvent(event, event.detail.focus, event.detail.blur);
+        breaker();
+      }
+
+      ['focus', 'blur', 'focusin', 'focusout'].forEach(function(eventName) {
+        document.body.addEventListener(eventName, logFocusEvent, true);
+      });
+
+      ['mousedown', 'mouseup', 'click', 'touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function(eventName) {
+        document.body.addEventListener(eventName, logPointerEvent, true);
+      });
+
+      ['keydown', 'keyup', 'keypress'].forEach(function(eventName) {
+        document.body.addEventListener(eventName, logKeyEvent, true);
+      });
+
+      document.body.addEventListener('active-element', logActiveElementEvent, true);
+
+      function unregisterLogEvents() {
+        ['focus', 'blur', 'focusin', 'focusout'].forEach(function(eventName) {
+          document.body.removeEventListener(eventName, logFocusEvent, true);
+        });
+
+        ['mousedown', 'mouseup', 'click', 'touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function(eventName) {
+          document.body.removeEventListener(eventName, logPointerEvent, true);
+        });
+
+        ['keydown', 'keyup', 'keypress'].forEach(function(eventName) {
+          document.body.removeEventListener(eventName, logKeyEvent, true);
+        });
+
+        document.body.removeEventListener('active-element', logActiveElementEvent, true);
+      }
+    
+      document.body.addEventListener('keydown', function(event) {
+        var code = event.keyCode || event.which;
+        if (code != 27) {
+          return;
+        }
+
+        unregisterLogEvents();
+        log.textContent += 'observation stopped';
+
+        var result = document.createElement('textarea');
+        result.style.width = '100%';
+        result.style.height = '400px';
+        document.body.appendChild(result);
+        result.value += JSON.stringify({
+          platform: window.platform,
+          events: history,
+        }, null, 2);
+      }, true);
+
+      (function() {
+        var previousActiveElement = document.activeElement;
+        function observeActiveElement() {
+          if (document.activeElement !== previousActiveElement) {
+            // https://developer.mozilla.org/en/docs/Web/API/CustomEvent
+            var activeElementEvent = new CustomEvent('active-element', {
+              bubbles: false,
+              cancelable: false,
+              detail: {
+                focus: document.activeElement,
+                blur: previousActiveElement,
+              }
+            });
+
+            document.body.dispatchEvent(activeElementEvent);
+            previousActiveElement = document.activeElement;
+          }
+
+          requestAnimationFrame(observeActiveElement);
+        }
+
+        observeActiveElement();
+      })();
+    })();
+  </script>
+
+</body>
+</html>
