@@ -3,7 +3,7 @@
 ## TODO: enhance tests
 
 * output table needs a `tbody` for "focusRedirection" (or focus delegation)
-* refactor all feature tests to their own directory `detection`
+
 
 ## TODO: Investigate
 
@@ -14,7 +14,6 @@
 
 ## Gecko (Firefox) ##
 
-* no accessibility support for `<svg>`
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) are not applied to `[tabindex]`
 * `[contenteditable]` without content has no height, i.e. `<div contenteditable></div>` has `element.offsetHeight === 0` (which may be correct according to [CSS2](http://www.w3.org/TR/CSS2/visudet.html#normal-block) but sucks for UX, quick fix: `[contenteditable]:empty { min-height: 123px; }`)
 * unknown audio file has no height, i.e. `<audio src="#foo">` has `element.offsetHeight === 0` - but its focusable and can be tabbed to
@@ -59,7 +58,7 @@
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 * `<object usemap>` breaks the browser's ability to tab through the document. Once `<object usemap>` is reached, IE11's tabbing gets stuck in the address bar
-* `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`)
+* `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`) - http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focus
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
