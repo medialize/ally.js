@@ -80,9 +80,17 @@ require([
         .attr('data-method', !noFocusMethod ? 'yes' : 'no')
         .attr('data-tabbable', tabbable ? 'yes' : 'no');
 
+      var title = [];
+      !event && (title.push('No focus event dispatched.'))
+      noFocusMethod && (title.push('Element does not know the .focus() method.'))
+      !tabbable && (title.push('Not tabbable.'))
+      tabbable && (title.push('Tabbable.'))
+      $cell.attr('title', title.join('\n'));
+
       if (noFocusMethod) {
         $cell.text('method!');
       }
+
     });
 
     $_row.appendTo($tbody);
