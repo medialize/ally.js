@@ -34,8 +34,23 @@
 </head>
 <body>
 
-  <h1 id="browser-support">Which Elements Are Considered Focusable?</h1>
-  <p>The following table shows which of the <a href="./test.html">test elements</a> are deemed focusable by the given browser. "Deemed focusable" means "triggered a <code>focus</code> event".</p>
+  <h1>Focus Compatibility Tables</h1>
+
+  <p>
+    The data displayed in the tables of this document was gathered by manually running <a href="./test.html">the focusable test</a>.
+    I've not employed automation (WebDriver) for this because I wanted the tests to start in the browser's chrome (the browser UI itself)
+    and I didn't see how this could be managed reliably with current test automation tools.
+  </p>
+
+  <ul>
+    <li><a href="#browser-support">Focusable Elements</a>
+    <li><a href="#browser-support-tabbable">Focusable vs. Tabbable Elements</a>
+    <li><a href="#browser-support-redirection">Focus-redirecting Elements</a>
+    <li><a href="#javascript-support">JavaScript support (a11y.js, jQueryUI)</a>
+  </ul>
+
+  <h2 id="browser-support">Which Elements Are Considered Focusable?</h2>
+  <p>The following table shows which of the <a href="./test.html">test elements</a> are deemed focusable by the given browser. "Deemed focusable" means "changed <code>document.activeElement</code>".</p>
   <p>Blue borders mean that the cell differs from what is <em>expected</em>.</p>
   <table id="focusable-table">
     <thead>
