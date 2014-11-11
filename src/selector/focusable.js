@@ -9,6 +9,7 @@ define(function defineSelectorFocusable(require) {
   require('../prototype/svgelement.prototype.focus');
   var canFocusAudioWithoutControls = require('../supports/focus-audio-without-controls');
   var canFocusVideoWithoutControls =  require('../supports/focus-video-without-controls');
+  var canFocusHtml = require('../supports/focus-html');
   var canFocusSvg = require('../supports/focus-svg');
   var canFocusTable = require('../supports/focus-table');
   var canFocusSummary = require('../supports/focus-summary');
@@ -21,7 +22,9 @@ define(function defineSelectorFocusable(require) {
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   var selector = 'body,'
-    // ID11 can focus <table> and <td>
+    // Firefox, IE11 can focus <html>
+    + (canFocusHtml ? 'html,' : '')
+    // IE11 can focus <table> and <td>
     + (canFocusTable ? 'table, td,' : '')
     // supporting <svg>
     + (canFocusSvg ? 'svg,' : '')
