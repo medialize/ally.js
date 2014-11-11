@@ -38,19 +38,23 @@ require([
     return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
   });
 
-  // fill in proper versions for each browser column
-  $versions.children().each(function() {
-    var $cell = $(this);
-    var key = $cell.attr('data-column');
-    var version = data[key] && data[key].platform && data[key].platform.version;
-    if (!version) {
-      return;
-    }
+  function setVersions($versions) {
+    // fill in proper versions for each browser column
+    $versions.children().each(function() {
+      var $cell = $(this);
+      var key = $cell.attr('data-column');
+      var version = data[key] && data[key].platform && data[key].platform.version;
+      if (!version) {
+        return;
+      }
 
-    $cell
-      .text(version.split('.').slice(0, 2).join('.'))
-      .attr('title', data[key].platform.ua);
-  });
+      $cell
+        .text(version.split('.').slice(0, 2).join('.'))
+        .attr('title', data[key].platform.ua);
+    });
+  }
+
+  setVersions($versions);
 
   // add rows of actual data
   selectors.sort().forEach(function(selector) {
@@ -84,7 +88,9 @@ require([
     $_row.appendTo($tbody);
   });
 
-  // prepare second table that shows support of libraries in given browser
+
+
+  // prepare table that shows support of libraries in given browser
   var $scriptTable = $('#script-focusable-table');
   $scriptTable.empty().append($table.children().clone());
   $scriptTable.find('[data-column="notes"]').remove();
@@ -126,4 +132,37 @@ require([
     })
   });
 
+
+
+  $table = $('#focus-redirection-table');
+  $tbody = $table.find('.items')
+  $versions = $table.find('.versions');
+  $row = $versions.clone();
+  $row.children().replaceWith(function(index) {
+    var $this = $(this);
+    return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
+  });
+
+  setVersions($versions)
+
+  var selectors = _.chain(data).values().pluck('focusRedirection').flatten().unique().filter().value();
+
+  // add rows of actual data
+  selectors.sort().forEach(function(selector) {
+    var $_row = $row.clone().attr('data-selector', selector);
+    var $cells = $_row.children('td').not('[data-column="target"]');
+    var _selector = selector.split(' --- ');
+    $_row.children('th').text(_selector[0]).next().text(_selector[1]);
+
+    $cells.each(function() {
+      var $cell = $(this);
+      var browser = $cell.attr('data-column');
+      var supported = data[browser].focusRedirection.indexOf(selector) !== -1;
+
+      $cell.text(supported ? 'yes' : 'no')
+        .attr('data-supported', supported ? 'yes' : 'no');
+    });
+
+    $_row.appendTo($tbody);
+  });
 });
