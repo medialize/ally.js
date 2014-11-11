@@ -11,6 +11,7 @@ define(function defineSelectorFocusable(require) {
   var canFocusVideoWithoutControls =  require('../supports/focus-video-without-controls');
   var canFocusHtml = require('../supports/focus-html');
   var canFocusSvg = require('../supports/focus-svg');
+  var canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
   var canFocusTable = require('../supports/focus-table');
   var canFocusSummary = require('../supports/focus-summary');
 
@@ -27,10 +28,10 @@ define(function defineSelectorFocusable(require) {
     // IE11 can focus <table> and <td>
     + (canFocusTable ? 'table, td,' : '')
     // supporting <svg>
-    + (canFocusSvg ? 'svg,' : '')
+    + (canFocusSvgMethod && canFocusSvg ? 'svg,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox cannot focus <svg> child elements from script
-    + (SVGElement.prototype.focus ? 'svg a[*|href],' : '')
+    + (canFocusSvgMethod ? 'svg a[*|href],' : '')
     // + 'svg, svg *,' in chrome as *every* svg element is focusable
     // navigational elements
     + 'a[href],'
