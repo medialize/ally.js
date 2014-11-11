@@ -39,9 +39,10 @@ function captureStuff() {
     },
   };
 
-  var elements = [].slice.call(document.body.querySelectorAll('*'), 0);
+  var elements = [].slice.call(document.documentElement.querySelectorAll('*'), 0);
+  elements.unshift(document.documentElement);
 
-  var activeElementHistory = [document.activeElement && elementName(document.activeElement) || 'no-initial-focus'];
+  var activeElementHistory = [];
   var focusEventHistory = [];
   var focusRedirection = [];
   var noFocusMethod = [];
