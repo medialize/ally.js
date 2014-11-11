@@ -149,7 +149,12 @@ function captureStuff() {
 
     document.getElementById('output-results').addEventListener('click', function() {
       results.tabOrder = activeElementHistory.filter(ignore);
-      document.getElementById('results').textContent = JSON.stringify(results, null, 2);
+      var _results = document.createElement('textarea');
+      _results.style.width = '100%';
+      _results.style.height = '400px';
+      _results.id = 'results';
+      document.body.replaceChild(_results, document.getElementById('results'));
+      _results.value = JSON.stringify(results, null, 2);
     }, false);
   });
 }
