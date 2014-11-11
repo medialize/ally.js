@@ -153,7 +153,7 @@ require([
 
   setVersions($versions)
 
-  var selectors = _.chain(data).values().pluck('focusRedirection').flatten().unique().filter().value();
+  selectors = _.chain(data).values().pluck('focusRedirection').flatten().unique().filter().value();
 
   // add rows of actual data
   selectors.sort().forEach(function(selector) {
@@ -173,4 +173,55 @@ require([
 
     $_row.appendTo($tbody);
   });
+
+
+
+  $table = $('#tabbable-table');
+  $tbody = $table.find('.items')
+  $versions = $table.find('.versions');
+  $row = $versions.clone();
+  $row.children().replaceWith(function(index) {
+    var $this = $(this);
+    return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
+  });
+
+  setVersions($versions)
+
+  selectors = _.chain([
+    _.chain(data).values().pluck('focusable').value(),
+    _.chain(data).values().pluck('tabOrder').value(),
+  ]).flatten().unique().filter().value();
+
+
+  // add rows of actual data
+  selectors.sort().forEach(function(selector) {
+    var $_row = $row.clone().attr('data-selector', selector);
+    var $cells = $_row.children('td');
+    var expectedFocusable = data.expected.focusable.indexOf(selector) !== -1 ? 10 : 0;
+    var expectedTabbable = data.expected.tabOrder.indexOf(selector) !== -1 ? 1 : 0;
+    var expected = expectedFocusable + expectedTabbable;
+
+    $_row.children('th').text(selector);
+
+    $cells.each(function() {
+      var $cell = $(this);
+      var browser = $cell.attr('data-column');
+      var focusable = data[browser].focusable.indexOf(selector) !== -1;
+      var tabbable = data[browser].tabOrder.indexOf(selector) !== -1;
+      var supported = (focusable ? 10 : 0) + (tabbable ? 1 : 0);
+
+      $cell.text(tabbable ? 'tabbable' : focusable ? 'focusable' : 'no')
+        .attr('data-correct', expected === supported ? 'yes' : 'no')
+        .attr('data-focusable', focusable ? 'yes' : 'no')
+        .attr('data-tabbable', tabbable ? 'yes' : 'no');
+
+      var title = [];
+      !focusable && tabbable && (title.push('Not focusable but tabbable.'))
+      $cell.attr('title', title.join('\n'));
+
+    });
+
+    $_row.appendTo($tbody);
+  });
+
 });
