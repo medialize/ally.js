@@ -31,26 +31,23 @@
       background: hotpink;
     }
 
-    #tabbable-table td[data-focusable="yes"] {
+    .focusable-tabbable-scheme td[data-focusable="yes"] {
       text-align: center;
       background: #FFDC00;
     }
-    #tabbable-table td[data-tabbable="yes"] {
+    .focusable-tabbable-scheme td[data-tabbable="yes"] {
       text-align: center;
       background: #01FF70;
     }
-    #tabbable-table td[data-focusable="no"][data-tabbable="yes"] {
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="yes"] {
       text-align: center;
       background: #FF851B;
     }
-    #tabbable-table td[data-focusable="no"][data-tabbable="no"] {
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="no"] {
       text-align: center;
       background: #ff4136;
     }
 
-    #taborder-table td {
-      text-align: center;
-    }
   </style>
 </head>
 <body>
@@ -105,7 +102,7 @@
 
   <h2 id="browser-support-tabbable">Which Elements Are Focusable, which are Tabbable?</h2>
   <p>Some elements cannot be focused and tabbed to, others only focused, others only tabbed to.</p>
-  <table id="tabbable-table">
+  <table id="tabbable-table" class="focusable-tabbable-scheme">
     <thead>
       <tr class="labels">
         <th colspan="2" class="meta"></th>
@@ -134,7 +131,7 @@
 
   <h2 id="browser-support-taborder">In What Order Are Elements Tabbed?</h2>
   <p>The Following table shows the exact order elements are tabbed through (beginning in browser UI)</p>
-  <table id="taborder-table">
+  <table id="taborder-table" class="focusable-tabbable-scheme">
     <thead>
       <tr class="labels">
         <th colspan="2" class="meta"></th>

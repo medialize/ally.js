@@ -315,9 +315,12 @@ require([
       var $cell = $(this);
       var browser = $cell.attr('data-column');
       var _index = data[browser].interlockedTabOrder[index];
+      var focusable = data[browser].focusable.indexOf(selector) !== -1;
 
       $cell.text(_index !== null ? _index : '' )
-        .attr('data-tabbable', _index !== null  ? 'yes' : 'no');
+        .attr('data-correct', expected === (_index !== null) ? 'yes' : 'no')
+        .attr('data-tabbable', _index !== null  ? 'yes' : 'no')
+        .attr('data-focusable', focusable ? 'yes' : 'no');
     });
 
     $_row.appendTo($tbody);
