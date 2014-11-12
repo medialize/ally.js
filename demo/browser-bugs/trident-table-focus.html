@@ -8,7 +8,7 @@
 
   <p>
     The only thing focusable on this page should be the <code>&lt;a&gt;</code>.
-    But in IE11 <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> (but not <code>&lt;th&gt;</code>) are also focusable.
+    But in IE11 <code>&lt;table&gt;</code> <code>&lt;td&gt;</code> (but not <code>&lt;th&gt;</code>) and <code>&lt;fieldset&gt;</code> are also focusable.
   </p>
 
 
@@ -21,6 +21,8 @@
     </tbody>
   </table>
 
+  <fieldset></fieldset>
+
   <a href="#void">link</a>
 
 
@@ -28,7 +30,7 @@
   <script>
     var log = document.querySelector('pre');
 
-    ['p', 'table', 'tbody', 'tr', 'td', 'td', 'a'].forEach(function(selector) {
+    ['p', 'table', 'tbody', 'tr', 'td', 'td', 'fieldset', 'a'].forEach(function(selector) {
       document.activeElement && document.activeElement.blur();
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';

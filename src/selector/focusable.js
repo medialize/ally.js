@@ -13,6 +13,7 @@ define(function defineSelectorFocusable(require) {
   var canFocusSvg = require('../supports/focus-svg');
   var canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
   var canFocusTable = require('../supports/focus-table');
+  var canFocusFieldset = require('../supports/focus-fieldset');
   var canFocusSummary = require('../supports/focus-summary');
 
   // TODO: investigate SVG's focusable attribute
@@ -27,6 +28,8 @@ define(function defineSelectorFocusable(require) {
     + (canFocusHtml ? 'html,' : '')
     // IE11 can focus <table> and <td>
     + (canFocusTable ? 'table, td,' : '')
+    // IE11 can focus <fieldset>
+    + (canFocusFieldset ? 'fieldset,' : '')
     // supporting <svg>
     + (canFocusSvgMethod && canFocusSvg ? 'svg,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
