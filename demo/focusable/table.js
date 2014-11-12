@@ -103,14 +103,14 @@ require([
   $scriptTable.empty().append($table.children().clone());
   $scriptTable.find('[data-column="notes"]').remove();
   $scriptTable.find('thead td, thead th').not('.meta').attr('colspan', function() {
-    return ($(this).attr('colspan') || 1) * 3;
+    return ($(this).attr('colspan') || 1) * 2;
   }).css('border', '3px solid black');
 
   var $subline = $scriptTable.find('thead tr').last().clone().appendTo($scriptTable.children('thead'));
   $subline.find('.meta').remove();
   $subline.prepend('<td colspan="2">');
   $subline.find('th').replaceWith(function() {
-    return $('<th style="border-left: 3px solid black">Browser</th><th>a11y.js</th><th style="border-right: 3px solid black">jQuery UI</th>');
+    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">a11y.js</th>');
   });
 
   $scriptTable.find('tbody tr').each(function() {
@@ -129,14 +129,9 @@ require([
         .attr('data-supported', a11ySupported ? 'yes' : 'no')
         .attr('data-correct', browserSupported === a11ySupported ? 'yes' : 'no');
 
-      var $jqueryCell = $('<td>!</td>').insertAfter($a11yCell)
-        .text(jquerySupported ? 'yes' : 'no')
-        .attr('data-supported', jquerySupported ? 'yes' : 'no')
-        .attr('data-correct', browserSupported === jquerySupported ? 'yes' : 'no');
-
       // make browser versions distinguishable
       $browserCell.css('border-left', '3px solid black');
-      $jqueryCell.css('border-right', '3px solid black');
+      $a11yCell.css('border-right', '3px solid black');
     })
   });
 
