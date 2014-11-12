@@ -16,7 +16,7 @@
   </p>
 
 
-  <object type="image/svg+xml" data="../media/test.svg" width="200" height="50"></object>
+  <object id="svg-object" type="image/svg+xml" data="../media/test.svg" width="200" height="50"></object>
 
   <input type="text">
 
@@ -24,6 +24,9 @@
     <param name="movie" value="../media/test.swf">
     <param name="quality" value="high">
   </object>
+
+
+  <input type="text">
 
 
   <pre></pre>
@@ -35,7 +38,7 @@
       SVGElement.prototype.focus = HTMLElement.prototype.focus;
     }
 
-    ['object', 'input', '#swf-object'].forEach(function(selector) {
+    ['#svg-object', 'input', '#swf-object'].forEach(function(selector) {
       document.activeElement && document.activeElement.blur();
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
