@@ -238,7 +238,7 @@
   </article>
 
   <article>
-    <h2>Fieldset and Legend</h2>
+    <h2 id="fieldset-legend">Fieldset and Legend</h2>
 
     <fieldset data-label="fieldset">
       <legend data-label="fieldset legend">legend</legend>
@@ -252,6 +252,23 @@
     <h2>Menu and Menuitems</h2>
 
     <p>No browser hast implemented <code>&lt;menu type=&quot;toolbar&quot;&gt;</code> yet, so testing this now won't make a difference.</p>
+  </article>
+
+  <!-- https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute -->
+  <article>
+    <h2 id="hidden-attribute">hidden attribute</h2>
+
+    <div hidden data-label="[hidden]">
+      <input type="text" data-label="[hidden] input">
+    </div>
+
+    <div hidden data-label="[hidden]" tabindex="-1">
+      <input type="text" data-label="[hidden][tabindex=-1] input">
+    </div>
+
+    <div hidden data-label="[hidden]" tabindex="0">
+      <input type="text" data-label="[hidden][tabindex=0] input">
+    </div>
   </article>
 
   <article>
