@@ -1,12 +1,9 @@
 # Identified Issues #
 
-## TODO: enhance tests
-
-* output table needs a `tbody` for "focusRedirection" (or focus delegation)
-
-
 ## TODO: Investigate
 
+* `a > img[ismap]` not tabbable in Firefox?
+* http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-dialog-element
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
 * find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
@@ -54,16 +51,17 @@
 * `[tabindex=""]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === '-32768'` (where every other browser declares `element.tabIndex === -1` and element.getAttribute('tabindex') === '')
 * `[tabindex="invalid-value"]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === 'invalid-value'` (where every other browser declares `element.tabIndex === -1`)
 * the `<img>` is focusable in `<a href="#foo"><img ismap …>`
-* `<table>` and `<td>` are focusable in `<table><tr><td><a href="#foo">…`
+* `<table>`, `<td>`, `<fieldset>` are focusable
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
-* `<object usemap>` breaks the browser's ability to tab through the document. Once `<object usemap>` is reached, IE11's tabbing gets stuck in the address bar
 * `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`) - http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focus
 * `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
 * consecutive `object` elements break the tabbing behavior, focus will get stuck on browser chrome
+* if `object` is last tabbable element, it will break the tabbing behavior, focus will get stuck on browser chrome
 * `object[usemap]` (with a PNG) makes the image map available to mouse, but neither `object` nor `area` are focusable or tabbable
+* `object[src=*.svg]` is not focusable by script, but can be tabbed to
 * `document.activeElement === null` during document parse time, after that it is `html`, after blur it is `body`
 
 
@@ -76,8 +74,12 @@
 
 * [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) does not allow trailing whitespace, but every browser permits them
 * `link[itemprop][href]` should be focusable as per [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute) but no browser does this
+* `object[usemap]` is not supported by any browser
 * missing DOM interface `Element.focusableElements` to query the browser's list of focusable descendants
 * missing DOM property `Element.focusable` to query if the given element can be focused
 * missing DOM interface `Element.tabbableElements` to query the browser's list of tabbable descendants
 * missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires
+* missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires
+* maybe ditch `tabindex` in favor of `focusable` and `tabbable` flags?
+* maybe allow cancellation of `FocusEvent`, which would prevent the browser from bringing that element into the viewport, it can be done by script through `Element.scrollElementIntoView()`
 
