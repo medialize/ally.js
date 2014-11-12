@@ -113,6 +113,7 @@ define(function defineDemoFocusableExpected(require) {
       "input[type=checkbox]",
       "input[type=radio]",
       "input[type=submit]",
+      "input[type=reset]",
       "select",
       "textarea",
       "button[type=button]",
@@ -141,6 +142,14 @@ define(function defineDemoFocusableExpected(require) {
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}"
-    ]
+    ],
+    "a11y": {
+      "focusable": [],
+      "tabOrder": [],
+    },
+    "jquery": {
+      "focusable": [],
+      "tabOrder": [],
+    },
   };
 });
