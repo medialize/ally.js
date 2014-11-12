@@ -170,7 +170,6 @@ require([
   });
 
 
-
   $table = $('#tabbable-table');
   $tbody = $table.find('.items')
   $versions = $table.find('.versions');
@@ -270,10 +269,10 @@ require([
       }
 
       var position = list.indexOf(item, target);
-      var nextPosition = list.indexOf(master[index + 1], target);
+      var nextPosition = master.indexOf(list[target + 1], index);
 
       if (position !== -1) {
-        if (nextPosition !== -1 && position > nextPosition) {
+        if (nextPosition !== -1) {
           offset--;
           return null;
         }
