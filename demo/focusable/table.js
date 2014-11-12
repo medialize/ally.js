@@ -224,4 +224,116 @@ require([
     $_row.appendTo($tbody);
   });
 
+
+
+  $table = $('#taborder-table');
+  $tbody = $table.find('.items')
+  $versions = $table.find('.versions');
+  $row = $versions.clone();
+  $row.children().replaceWith(function(index) {
+    var $this = $(this);
+    return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
+  });
+
+  setVersions($versions)
+
+  selectors = data.expected.tabOrder.slice(0);
+  // make HTML the first element of the list (because we splice things in *after* the current item)
+  selectors.unshift('HTML');
+  // flatten() but maintaining order
+  _.chain(data).values().pluck('tabOrder').value().forEach(function(list) {
+    var offset = 0;
+    list.forEach(function(item, index) {
+      var target = index + offset;
+      var position;
+      var _offset;
+
+      if (selectors[target] === item) {
+        return;
+      }
+
+      position = selectors.indexOf(item, target);
+      _offset = position - target;
+      if (position > -1 && _offset < 10) {
+        offset += _offset;
+        return;
+      }
+
+      position =  selectors.lastIndexOf(item, target);
+      _offset = position - target;
+      if (position > -1 && _offset > -10) {
+        offset += _offset;
+        return;
+      }
+
+      selectors.splice(index + offset, 0, item);
+    });
+  });
+  // map holes in sequence
+  Object.keys(data).forEach(function(browser) {
+    var list = data[browser].tabOrder;
+    var _list = [];
+    var offset = 0;
+
+    selectors.forEach(function(selector, index) {
+      var target = index + offset;
+      if (selector === list[target]) {
+        _list.push(target);
+        return;
+      }
+
+      var position = list.indexOf(selector, target);
+      var nextPosition = list.indexOf(selectors[index + 1], target);
+
+      if (position !== -1) {
+        if (nextPosition !== -1 && position > nextPosition) {
+          offset--;
+          _list.push(null);
+          return;
+        }
+
+        offset += position - target;
+        _list.push(index + offset);
+        return;
+      }
+
+      offset--;
+      _list.push(null);
+    });
+    data[browser].interlockedTabOrder = _list;
+  });
+
+  // add rows of actual data
+  selectors.forEach(function(selector, index) {
+    var $_row = $row.clone().attr('data-selector', selector);
+    var $cells = $_row.children('td');
+    var expected = data.expected.tabOrder.indexOf(selector) !== -1;
+
+    $_row.children('th').text(selector);
+
+    $cells.each(function() {
+      var $cell = $(this);
+      var browser = $cell.attr('data-column');
+      var _index = data[browser].interlockedTabOrder[index];
+
+      $cell.text(_index !== null ? _index : '' )
+        .attr('data-tabbable', _index !== null  ? 'yes' : 'no');
+    });
+
+    $_row.appendTo($tbody);
+  });
+
+
+  // add taborder as single cell per browser for comparison
+  // var $_row = $row.clone().attr('data-selector', 'all');
+  // $_row.children('td').each(function() {
+  //   var $cell = $(this);
+  //   var browser = $cell.attr('data-column');
+  //   $cell.css('vertical-align', 'top').html(data[browser].tabOrder.join('<br>\n'));
+  //     // .attr('data-correct', expected === supported ? 'yes' : 'no')
+  //     // .attr('data-focusable', focusable ? 'yes' : 'no')
+  //     // .attr('data-tabbable', tabbable ? 'yes' : 'no');
+  //
+  // });
+  // $_row.appendTo($tbody);
 });

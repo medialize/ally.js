@@ -6,7 +6,7 @@ define(function defineDemoFocusableExpected(require) {
   return {
     name: 'expected',
     userAgent: 'Rodney\'s brain',
-    focusable: [
+    "focusable": [
       "BODY",
       "[contenteditable]",
       "[contenteditable]:empty",
@@ -28,10 +28,9 @@ define(function defineDemoFocusableExpected(require) {
       "input[type=checkbox]",
       "input[type=password]",
       "input[type=radio]",
-      "input[type=radio]",
       "input[type=submit]",
       "input[type=text]",
-      "input[type=text]",
+      "input[type=reset]",
       "fieldset input",
       "keygen",
       "details summary",
@@ -55,7 +54,8 @@ define(function defineDemoFocusableExpected(require) {
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a"
     ],
-    focusEvents: [
+    "focusEvents": [
+      "BODY",
       "[contenteditable]",
       "[contenteditable]:empty",
       "[tabindex= +2]",
@@ -76,10 +76,9 @@ define(function defineDemoFocusableExpected(require) {
       "input[type=checkbox]",
       "input[type=password]",
       "input[type=radio]",
-      "input[type=radio]",
       "input[type=submit]",
       "input[type=text]",
-      "input[type=text]",
+      "input[type=reset]",
       "fieldset input",
       "keygen",
       "details summary",
@@ -103,9 +102,9 @@ define(function defineDemoFocusableExpected(require) {
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a"
     ],
-    focusRedirection: [],
-    noFocusMethod: [],
-    tabOrder: [
+    "focusRedirection": [],
+    "noFocusMethod": [],
+    "tabOrder": [
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
@@ -114,7 +113,6 @@ define(function defineDemoFocusableExpected(require) {
       "input[type=checkbox]",
       "input[type=radio]",
       "input[type=submit]",
-      "input[type=radio]",
       "select",
       "textarea",
       "button[type=button]",
