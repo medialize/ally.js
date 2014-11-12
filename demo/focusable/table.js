@@ -330,16 +330,74 @@ require([
   });
 
 
-  // add taborder as single cell per browser for comparison
-  // var $_row = $row.clone().attr('data-selector', 'all');
-  // $_row.children('td').each(function() {
-  //   var $cell = $(this);
-  //   var browser = $cell.attr('data-column');
-  //   $cell.css('vertical-align', 'top').html(data[browser].tabOrder.join('<br>\n'));
-  //     // .attr('data-correct', expected === supported ? 'yes' : 'no')
-  //     // .attr('data-focusable', focusable ? 'yes' : 'no')
-  //     // .attr('data-tabbable', tabbable ? 'yes' : 'no');
-  //
-  // });
-  // $_row.appendTo($tbody);
+
+  $table = $('#script-taborder-table');
+  $tbody = $table.find('.items')
+  $versions = $table.find('.versions');
+  $row = $versions.clone();
+  $row.children().replaceWith(function(index) {
+    var $this = $(this);
+    return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
+  });
+
+  $table.find('thead td, thead th').not('.meta').attr('colspan', function() {
+    return ($(this).attr('colspan') || 1) * 2;
+  }).css('border', '3px solid black');
+
+  $subline = $table.find('thead tr').last().clone().appendTo($table.children('thead'));
+  $subline.find('.meta').remove();
+  $subline.prepend('<td colspan="1">');
+  $subline.find('th').replaceWith(function() {
+    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">a11y.js</th>');
+  });
+
+
+  setVersions($versions);
+
+  // flatten() but maintaining order
+  Object.keys(data).forEach(function(browser) {
+    data[browser].a11y.tabOrder.forEach(getArrayFoldingIterator(selectors));
+  });
+
+  // map holes in sequence
+  Object.keys(data).forEach(function(browser) {
+    var list = data[browser].tabOrder;
+    data[browser].interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, list));
+    var _list = data[browser].a11y.tabOrder;
+    data[browser].a11y.interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, _list));
+  });
+
+  // add rows of actual data
+  selectors.forEach(function(selector, index) {
+    var $_row = $row.clone().attr('data-selector', selector);
+    var $cells = $_row.children('td');
+    var expected = data.expected.tabOrder.indexOf(selector) !== -1;
+
+    $_row.children('th').text(selector);
+
+    $cells.each(function() {
+      var $cell = $(this);
+      var browser = $cell.attr('data-column');
+      var _index = data[browser].interlockedTabOrder[index];
+      var _aIndex = data[browser].a11y.interlockedTabOrder[index];
+      var focusable = data[browser].focusable.indexOf(selector) !== -1;
+      var aFocusable = data[browser].a11y.focusable.indexOf(selector) !== -1;
+
+      $cell.text(_index !== null ? _index : '')
+         .attr('data-tabbable', _index !== null  ? 'yes' : 'no')
+         .attr('data-focusable', focusable ? 'yes' : 'no')
+         .css('border-left', '3px solid black');
+
+      $('<td></td>')
+        .text(_aIndex !== null ? _aIndex : '')
+        .attr('data-tabbable', _aIndex !== null  ? 'yes' : 'no')
+        .attr('data-focusable', aFocusable ? 'yes' : 'no')
+        .attr('data-correct', _index === _aIndex ? 'yes' : 'no')
+        .css('border-right', '3px solid black')
+        .insertAfter($cell);
+    });
+
+    $_row.appendTo($tbody);
+  });
+
 });
