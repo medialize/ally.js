@@ -25,7 +25,6 @@ require([
     _.chain(data).values().pluck('noFocusMethod').value(),
     _.chain(data).values().pluck('tabOrder').value(),
     _.chain(data).values().pluck('a11y').filter().pluck('focusable').value(),
-    _.chain(data).values().pluck('jquery').filter().pluck('focusable').value(),
   ]).flatten().unique().filter().value();
 
   var $table = $('#focusable-table');
@@ -122,7 +121,6 @@ require([
       var browser = $browserCell.attr('data-column');
       var browserSupported = $browserCell.attr('data-supported') === 'yes';
       var a11ySupported = data[browser].a11y.focusable.indexOf(selector) !== -1;
-      var jquerySupported = data[browser].jquery.focusable.indexOf(selector) !== -1;
 
       var $a11yCell = $('<td>?</td>').insertAfter($browserCell)
         .text(a11ySupported ? 'yes' : 'no')
