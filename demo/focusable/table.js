@@ -237,70 +237,73 @@ require([
 
   setVersions($versions)
 
-  selectors = data.expected.tabOrder.slice(0);
-  // make HTML the first element of the list (because we splice things in *after* the current item)
-  selectors.unshift('HTML');
-  // flatten() but maintaining order
-  _.chain(data).values().pluck('tabOrder').value().forEach(function(list) {
+  function getArrayFoldingIterator(destination) {
     var offset = 0;
-    list.forEach(function(item, index) {
+    return function(item, index) {
       var target = index + offset;
       var position;
       var _offset;
 
-      if (selectors[target] === item) {
+      if (destination[target] === item) {
         return;
       }
 
-      position = selectors.indexOf(item, target);
+      position = destination.indexOf(item, target);
       _offset = position - target;
       if (position > -1 && _offset < 10) {
         offset += _offset;
         return;
       }
 
-      position =  selectors.lastIndexOf(item, target);
+      position =  destination.lastIndexOf(item, target);
       _offset = position - target;
       if (position > -1 && _offset > -10) {
         offset += _offset;
         return;
       }
 
-      selectors.splice(index + offset, 0, item);
-    });
-  });
-  // map holes in sequence
-  Object.keys(data).forEach(function(browser) {
-    var list = data[browser].tabOrder;
-    var _list = [];
-    var offset = 0;
+      destination.splice(index + offset, 0, item);
+    };
+  }
 
-    selectors.forEach(function(selector, index) {
+  function getFoldedArrayIndexMapper(master, list) {
+    var offset = 0;
+    return function(item, index) {
       var target = index + offset;
-      if (selector === list[target]) {
-        _list.push(target);
-        return;
+      if (item === list[target]) {
+        return target;
       }
 
-      var position = list.indexOf(selector, target);
-      var nextPosition = list.indexOf(selectors[index + 1], target);
+      var position = list.indexOf(item, target);
+      var nextPosition = list.indexOf(master[index + 1], target);
 
       if (position !== -1) {
         if (nextPosition !== -1 && position > nextPosition) {
           offset--;
-          _list.push(null);
-          return;
+          return null;
         }
 
         offset += position - target;
-        _list.push(index + offset);
-        return;
+        return index + offset;
       }
 
       offset--;
-      _list.push(null);
-    });
-    data[browser].interlockedTabOrder = _list;
+      return null
+    };
+  }
+
+  selectors = data.expected.tabOrder.slice(0);
+  // make HTML the first element of the list (because we splice things in *after* the current item)
+  selectors.unshift('HTML');
+  // flatten() but maintaining order
+  Object.keys(data).forEach(function(browser) {
+    data[browser].tabOrder.forEach(getArrayFoldingIterator(selectors));
+  });
+
+  // map holes in sequence
+  Object.keys(data).forEach(function(browser) {
+    var list = data[browser].tabOrder;
+    data[browser].interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, list));
   });
 
   // add rows of actual data
