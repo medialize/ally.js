@@ -13,9 +13,10 @@ require.config({
 require([
   'underscore',
   'jquery',
+  '../js/merge-arrays',
   './data/all',
   './data/notes'
-], function (_, $, data, notes) {
+], function (_, $, mergeArrays, data, notes) {
 
   // TODO: present focusRedirection
 
@@ -229,35 +230,6 @@ require([
 
   setVersions($versions)
 
-  function getArrayFoldingIterator(destination) {
-    var offset = 0;
-    return function(item, index) {
-      var target = index + offset;
-      var position;
-      var _offset;
-
-      if (destination[target] === item) {
-        return;
-      }
-
-      position = destination.indexOf(item, target);
-      _offset = position - target;
-      if (position > -1 && _offset < 10) {
-        offset += _offset;
-        return;
-      }
-
-      position =  destination.lastIndexOf(item, target);
-      _offset = position - target;
-      if (position > -1 && _offset > -10) {
-        offset += _offset;
-        return;
-      }
-
-      destination.splice(index + offset, 0, item);
-    };
-  }
-
   function getFoldedArrayIndexMapper(master, list) {
     var offset = 0;
     return function(item, index) {
@@ -288,9 +260,11 @@ require([
   // make HTML the first element of the list (because we splice things in *after* the current item)
   selectors.unshift('HTML');
   // flatten() but maintaining order
-  Object.keys(data).forEach(function(browser) {
-    data[browser].tabOrder.forEach(getArrayFoldingIterator(selectors));
+  var _selectors = Object.keys(data).map(function(browser) {
+    return data[browser].tabOrder
   });
+
+  selectors = mergeArrays.apply(null, [selectors].concat(_selectors));
 
   // map holes in sequence
   Object.keys(data).forEach(function(browser) {
@@ -347,9 +321,10 @@ require([
   setVersions($versions);
 
   // flatten() but maintaining order
-  Object.keys(data).forEach(function(browser) {
-    data[browser].a11y.tabOrder.forEach(getArrayFoldingIterator(selectors));
+  _selectors = Object.keys(data).map(function(browser) {
+    return data[browser].a11y.tabOrder
   });
+  selectors = mergeArrays.apply(null, [selectors].concat(_selectors));
 
   // map holes in sequence
   Object.keys(data).forEach(function(browser) {
