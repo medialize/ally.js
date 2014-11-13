@@ -22,7 +22,8 @@ define(function defineDomSortTabindex(require) {
     var indexes = [];
     var normal = elements.filter(function(element) {
       // extract elements that don't need sorting
-      if (element.tabIndex <= 0) {
+      // in Trident and Gecko SVGElement does not know about the tabIndex property
+      if (element.tabIndex <= 0 || element.tabIndex === undefined) {
         return true;
       }
 
