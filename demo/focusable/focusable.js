@@ -131,7 +131,7 @@ function captureStuff() {
     });
     // save results
     results.platform = platform;
-    results.a11y.focusable = queryFocusable(document).map(elementName).filter(ignore);
+    results.a11y.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
     results.a11y.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
     results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
     results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
