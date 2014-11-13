@@ -14,7 +14,7 @@ require.config({
 });
 
 function elementName(element) {
-  return element.getAttribute('data-label') || element.nodeName;
+  return element ? element.getAttribute('data-label') || element.nodeName : '-null-';
 }
 
 function ignore(value) {
@@ -59,6 +59,11 @@ function captureStuff() {
 
   // collect focus events
   function logFocusEvent(event) {
+    if (event.target && event.target.nodeName === 'BODY' && !event.relatedTarget) {
+      // IE-11: ignore repeated focus events on <body> as they are irrelevant to data-collection
+      return;
+    }
+
     focusEventHistory.push(elementName(event.target));
   }
 
@@ -98,65 +103,69 @@ function captureStuff() {
   // we already know that body is focusable by default
   // registerFocusLogging(document.body);
 
-  // try to focus every single element *with* focus event listeners
-  elements.forEach(function(element) {
-    // reset focus to prevent redirections from being ignored
-    document.activeElement.blur();
-    document.body.focus();
-    // register focus event handler
-    element.addEventListener('focus', logFocusEvent, false);
-    // focus the element, it will end up in focusEventHistory
-    element.focus && element.focus();
-  });
-
-  require([
-    'a11y/dom/query-focusable',
-    'a11y/dom/query-tabbable',
-    'platform',
-    'jquery',
-    'jquery.ui/core'
-  ], function (queryFocusable, queryTabbable, platform, $) {
-    // save results
-    results.focusEvents = focusEventHistory.filter(ignore);
-    // reset buffers
-    activeElementHistory.length = 0;
-    noFocusMethod.length = 0;
-    focusRedirection.length = 0;
-    document.activeElement.blur();
-    document.body.focus();
-
+  // delaying execution to give IE some time to handle the FocusEvents triggered before
+  // IE does not dispatch them synchronously, that messes up data collection.
+  setTimeout(function() {
+    // try to focus every single element *with* focus event listeners
     elements.forEach(function(element) {
-      // unregister focus event handler
-      element.removeEventListener('focus', logFocusEvent, false);
+      // reset focus to prevent redirections from being ignored
+      document.activeElement.blur();
+      document.body.focus();
+      // register focus event handler
+      element.addEventListener('focus', logFocusEvent, false);
+      // focus the element, it will end up in focusEventHistory
+      element.focus && element.focus();
     });
-    // save results
-    results.platform = platform;
-    results.a11y.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
-    results.a11y.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
-    results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
-    results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
-    // reset buffers
-    activeElementHistory.length = 0;
-    noFocusMethod.length = 0;
-    focusRedirection.length = 0;
-    document.activeElement.blur();
-    document.body.focus();
 
-    alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
-    document.activeElement.blur();
-    document.body.focus();
-    observeActiveElement();
+    require([
+      'a11y/dom/query-focusable',
+      'a11y/dom/query-tabbable',
+      'platform',
+      'jquery',
+      'jquery.ui/core'
+    ], function (queryFocusable, queryTabbable, platform, $) {
+      // save results
+      results.focusEvents = focusEventHistory.filter(ignore);
+      // reset buffers
+      activeElementHistory.length = 0;
+      noFocusMethod.length = 0;
+      focusRedirection.length = 0;
+      document.activeElement.blur();
+      document.body.focus();
 
-    document.getElementById('output-results').addEventListener('click', function() {
-      results.tabOrder = activeElementHistory.filter(ignore);
-      var _results = document.createElement('textarea');
-      _results.style.width = '100%';
-      _results.style.height = '400px';
-      _results.id = 'results';
-      document.body.replaceChild(_results, document.getElementById('results'));
-      _results.value = JSON.stringify(results, null, 2);
-    }, false);
-  });
+      elements.forEach(function(element) {
+        // unregister focus event handler
+        element.removeEventListener('focus', logFocusEvent, false);
+      });
+      // save results
+      results.platform = platform;
+      results.a11y.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
+      results.a11y.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
+      results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
+      results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
+      // reset buffers
+      activeElementHistory.length = 0;
+      noFocusMethod.length = 0;
+      focusRedirection.length = 0;
+      document.activeElement.blur();
+      document.body.focus();
+
+      alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
+      document.activeElement.blur();
+      document.body.focus();
+      observeActiveElement();
+
+      document.getElementById('output-results').addEventListener('click', function() {
+        results.tabOrder = activeElementHistory.filter(ignore);
+        var _results = document.createElement('textarea');
+        _results.style.width = '100%';
+        _results.style.height = '400px';
+        _results.id = 'results';
+        document.body.replaceChild(_results, document.getElementById('results'));
+        _results.value = JSON.stringify(results, null, 2);
+      }, false);
+    });
+  }, 500);
 }
 
 if (window.isLoaded) {
