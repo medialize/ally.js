@@ -7,10 +7,16 @@ define(function defineDomQueryFocusable(require) {
   var selector = require('../selector/focusable');
   var isFocusable = require('./is-focusable');
 
-  function queryFocusable(context) {
+  function queryFocusable(context, includeContext) {
     var elements = context.querySelectorAll(selector);
     // the selector potentially matches more than really is focusable
-    return [].filter.call(elements, isFocusable);
+    var result = [].filter.call(elements, isFocusable);
+    // add context if requested and focusable
+    if (includeContext && isFocusable(context)) {
+      result.unshift(context);
+    }
+
+    return result;
   }
 
   return queryFocusable;
