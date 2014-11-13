@@ -8,6 +8,11 @@ define(function defineDomQueryFocusable(require) {
   var isFocusable = require('./is-focusable');
 
   function queryFocusable(context, includeContext) {
+    // alias document to document.documentElement for convenience
+    if (context.nodeType === 9) {
+      context = context.documentElement;
+    }
+
     var elements = context.querySelectorAll(selector);
     // the selector potentially matches more than really is focusable
     var result = [].filter.call(elements, isFocusable);
