@@ -12,7 +12,7 @@ define(function defineDomIsTabbable(require) {
     var requireTabindexAttriute = false;
     // null: not set, true: tabbable, false: focusable
     var tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
-      ? parseInt(element.getAttribute('tabindex'), 10) > 0
+      ? parseInt(element.getAttribute('tabindex'), 10) >= 0
       : null;
 
     // Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
