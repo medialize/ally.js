@@ -357,7 +357,7 @@ require([
         .text(_aIndex !== null ? _aIndex : '')
         .attr('data-tabbable', _aIndex !== null  ? 'yes' : 'no')
         .attr('data-focusable', aFocusable ? 'yes' : 'no')
-        .attr('data-correct', _index === _aIndex ? 'yes' : 'no')
+        .attr('data-correct', (_index !== null) === (_aIndex !== null) ? 'yes' : 'no')
         .css('border-right', '3px solid black')
         .insertAfter($cell);
     });
