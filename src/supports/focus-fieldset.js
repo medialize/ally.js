@@ -3,9 +3,9 @@ define(function defineSupportsFocusTable(require) {
 
   var detectFocus = require('./detect-focus');
 
-  var canFocusTable = detectFocus('fieldset', function(element) {
+  var canFocusFieldset = detectFocus('can-focus-fieldset', 'fieldset', function(element) {
     element.innerHTML = '<legend>legend</legend><p>content</p>';
   });
 
-  return canFocusTable;
+  return canFocusFieldset;
 });

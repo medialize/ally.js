@@ -1,6 +1,39 @@
 define(function defineSupportsDetectFocus(require) {
   'use strict';
 
+  function readLocalStorage(key) {
+    var data;
+    try {
+      data = window.localStorage && window.localStorage.getItem(key);
+      if (data) {
+        data = JSON.parse(data);
+      } else {
+        data = {};
+      }
+    } catch (e) {
+      data = {};
+    }
+    return data;
+  }
+
+  function writeLocalStorage(key, value) {
+    try {
+      window.localStorage && window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {}
+  }
+
+  var userAgent = window.navigator.userAgent;
+  var cacheKey = 'a11y-focus-cache';
+  var cache = readLocalStorage(cacheKey);
+
+  // update the cache if the user agent changes (newer version, etc)
+  if (cache.userAgent !== userAgent) {
+    cache = {};
+  }
+
+  cache.userAgent = userAgent;
+
+
   // nodeName:
   //  {string} element name
   //  {function} callback that returns a DOMElement
@@ -28,9 +61,20 @@ define(function defineSupportsDetectFocus(require) {
     var allowsFocus = document.activeElement === focus;
     // restore focus to what it was before test and cleanup
     previousActiveElement.focus();
-    document.body.removeChild(element);
+    document.body.removeChild(wrapper);
     return allowsFocus;
   }
 
-  return detectFocus;
+  // cache detected support so we don't have to bother screen readers with unstoppable focus changes
+  // and flood the console with net::ERR_INVALID_URL errors for audio/video tests
+  function detectFocusSupport(testName, nodeName, callback) {
+    if (typeof cache[testName] !== 'boolean') {
+      cache[testName] = detectFocus(nodeName, callback);
+      writeLocalStorage(cacheKey, cache);
+    }
+
+    return cache[testName];
+  }
+
+  return detectFocusSupport;
 });

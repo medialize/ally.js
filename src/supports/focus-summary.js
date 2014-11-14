@@ -3,7 +3,7 @@ define(function defineSupportsFocusSummary(require) {
 
   var detectFocus = require('./detect-focus');
 
-  var canFocusSummary = detectFocus('details', function(element) {
+  var canFocusSummary = detectFocus('can-focus-summary', 'details', function(element) {
     element.innerHTML = '<summary>foo</summary><p>content</p>';
     return element.firstElementChild
   });
