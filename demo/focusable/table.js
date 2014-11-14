@@ -257,8 +257,6 @@ require([
   }
 
   selectors = data.expected.tabOrder.slice(0);
-  // make HTML the first element of the list (because we splice things in *after* the current item)
-  selectors.unshift('HTML');
   // flatten() but maintaining order
   var _selectors = Object.keys(data).map(function(browser) {
     return data[browser].tabOrder
