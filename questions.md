@@ -2,19 +2,18 @@
 
 ## Impact of Assistive Technologies
 
-* does ChromeVox (et al) allow focusing anything (like a `<p>`) and is that communicated?
+
 * how does tabbing work on iPhone?
 * Investigate how delaying focus until `transitionend` can impact AT users
 * can focus be given safely before transition ended (there may be a bug in chrome when offscreen element gets focus before its visible because of scrollIntoView)
 
 ## Behavior
 
+* does reversing display order using Flexbox reflect on tab-order?
 * what's up with `autofocus`?
   * only works on form elements
   * https://code.google.com/p/chromium/issues/detail?id=382901
 * what happens when focus is given to something else upon mousedown?
-* can you prevent `scrollElementIntoView()` upon `FocusEvent`?
-  * no!
 * `FocusEvent` happens after `keydown`, `mousedown`, `touchstart`, `pointerdown` consistently?
 * side-effects from `user-select`, `pointer-events`
 * can make `-webkit-appearance: button` make a div naturally focusable?
@@ -37,6 +36,13 @@
 
 * Chrome does not dispatch `keypress` for <kbd>TAB</kbd> and <kbd>SHIFT + TAB</kbd>
 * `<html>` and `<body>` are not naturally focusable, but `<body>` is the `document.activeElement` when nothing has focus. `document.body.focus()` does not work, though. To make `<body>` the `activeElement` one has to remove focus from the currently active element: `document.activeElement.blur()`
+* does ChromeVox (et al) allow focusing anything (like a `<p>`) and is that communicated?
+  * not in `activeElement` and not detectable in `computedStyle`
+* are `KeyEvents` dispatched in IE when tabbing through `<video>` controls?
+  * yes, also <kbd>left/right/up/down/space</kbd>, even in Firefox
+  * default actions can be prevented
+* can you prevent `scrollElementIntoView()` upon `FocusEvent`?
+  * no!
 * Focus Redirection
   * `<label>` redirects to its associated form-element
   * `<legend>` redirects to the first form-element within the `<fieldset>`
