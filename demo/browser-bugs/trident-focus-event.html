@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Trident: focus event not synchronous</title>
+</head>
+<body>
+
+  <p>
+    Trident will dispatch <code>FocusEvent</code> to an element even if the event listener
+    was registered after the element had been given focus.
+  </p>
+  <p>
+    Blink will dispatch <code>FocusEvent</code> to the <code>activeElement</code> upon window gaining
+    focus (first load, on reload the document has focus already).
+  </p>
+  <hr>
+
+  <input type="text">
+  <a href="#void">link</a>
+
+  <hr>
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    if (document.hasFocus && document.hasFocus()) {
+      log.textContent += 'Document has Focus\n';
+    }
+
+    if (window.hasFocus && window.hasFocus()) {
+      log.textContent += 'Window has Focus\n';
+    }
+
+    window.addEventListener('focus', function(event) {
+      log.textContent += 'FocusEvent on Window: ' + (event.target && event.target.nodeName) + '\n';
+    }, false);
+
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'FocusEvent on Document: ' + (event.target && event.target.nodeName) + '\n';
+    }, false);
+
+    ['input', 'a'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      var element = document.querySelector(selector);
+      element.focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+      element.addEventListener('focus', function(event) {
+        log.textContent += selector + ': [Focus Event] ' + event.target.nodeName + '\n';
+      }, false);
+    });
+
+  </script>
+</body>
+</html>
