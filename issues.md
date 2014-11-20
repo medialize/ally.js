@@ -27,6 +27,7 @@
 * `table tr{collapse} td a{visible}` not rendered, but can be tabbed to
 * `object[usemap]` (with a PNG) makes the image map available to mouse, but neither `object` nor `area` are focusable or tabbable
 * referencing the same `<map>` from multiple images will hide *all* tabbable elements between the first and last image using that map
+* the CSS property `order` affects tabbing sequence
 
 
 ## Blink (Chrome) ##
