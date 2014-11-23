@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>scrollIntoView(true) - Focus-Scrolling behavior</title>
+</head>
+<style>
+  .vertical-container,
+  .horizontal-container {
+    box-sizing: border-box;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    border: 2px dashed blue;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .first,
+  .second,
+  .third {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    padding: 5px;
+    border: 1px solid red;
+  }
+
+  .vertical-container {
+    height: 30px;
+    
+  }
+  .vertical-container .first,
+  .vertical-container .second {
+    height: 30px;
+    display: block;
+  }
+
+  .first {
+    background: #CCFFFF;
+  }
+  .second {
+    background: #FFCCFF;
+  }
+  .third {
+    background: #FFFFCC;
+  }
+
+  div:focus {
+    background: #AAA;
+  }
+</style>
+<body>
+
+  <h1>Scrolling behavior of <code>element.scrollIntoView(true)</code></h1>
+
+  <!--
+    https://developer.mozilla.org/en-US/docs/Web/API/Element.scrollIntoView
+    http://dev.w3.org/csswg/cssom-view/#dom-element-scrollintoview
+  -->
+
+  <h2>Vertical Scrolling</h2>
+
+   <p>foo</p>
+   <div class="vertical-container" style="height: 40px">
+     <div class="first" tabindex="0">first thing</div>
+     <div class="second" tabindex="0">second thing</div>
+     <div class="third" tabindex="0">third thing</div>
+   </div>
+
+   <p>foo</p>
+   <div class="vertical-container">
+     <div class="first" tabindex="0">first thing</div>
+     <div class="second" tabindex="0">second thing</div>
+     <div class="third" tabindex="0">third thing</div>
+   </div>
+
+   <p>foo</p>
+   <div class="vertical-container" style="height: 20px">
+     <div class="first" tabindex="0">first thing</div>
+     <div class="second" tabindex="0">second thing</div>
+     <div class="third" tabindex="0">third thing</div>
+   </div>
+
+
+  <h2>Horizontal Scrolling</h2>
+
+  <p>Only Trident scrolls <code>second thing</code> fully into view if it is partially visible already. Gecko <em>sometimes</em> scrolls <code>second thing</code> fully into view, but it is (yet) unclear when and why.</p>
+  <div class="horizontal-container" style="width: 400px">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <div class="third" tabindex="0">third thing</div>
+  </div>
+
+  <p>All browsers scroll <code>second thing</code> fully into view if there's just enough space available.</p>
+  <div class="horizontal-container">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <div class="third" tabindex="0">third thing</div>
+  </div>
+
+  <p>All browsers scroll <code>second thing</code> fully into view if there's too little space available. Gecko and Trident scroll to the element's top/left position, where Blink scrolls to the center/center position.</p>
+  <div class="horizontal-container" style="width: 200px">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <div class="third" tabindex="0">third thing</div>
+  </div>
+
+  <script>
+    [].forEach.call(document.getElementsByClassName('second'), function(element, index) {
+      setTimeout(function() {
+        element.scrollIntoView(true);
+      }, 1000 * index);
+    });
+  </script>
+
+</body>
+</html>

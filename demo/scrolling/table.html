@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Scrolling On Focus Compatibility Table</title>
+
+  <!-- http://clrs.cc/ -->
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 5px;
+      border: 1px solid #aaaaaa;
+    }
+    tbody th {
+      text-align: left;
+    }
+    td[data-supported="yes"] {
+      text-align: center;
+      background: #01ff70;
+    }
+    td[data-supported="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+    td[data-correct="no"] {
+      box-shadow: inset 0 0 0px 2px #0074d9;
+    }
+    td[data-supported="no"][data-tabbable="yes"] {
+      background: hotpink;
+    }
+
+    .focusable-tabbable-scheme td[data-focusable="yes"] {
+      text-align: center;
+      background: #FFDC00;
+    }
+    .focusable-tabbable-scheme td[data-tabbable="yes"] {
+      text-align: center;
+      background: #01FF70;
+    }
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="yes"] {
+      text-align: center;
+      background: #FF851B;
+    }
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <h1>Focus-Scrolling Compatibility Tables</h1>
+
+  <p>
+    The data displayed in the tables of this document was gathered by manually running the various test files in this directory.
+  </p>
+
+  <table>
+    <thead>
+      <tr class="labels">
+        <th colspan="2" class="meta"></th>
+        <th colspan="1" data-column="chrome">Chrome</th>
+        <th colspan="1" data-column="firefox">Firefox</th>
+        <th colspan="1" data-column="ie">Internet Explorer</th>
+        <th colspan="1" data-column="safari">Safari</th>
+        <th colspan="1" data-column="notes" class="meta"></th>
+      </tr>
+      <tr class="versions">
+        <th data-column="element" class="meta">Element</th>
+        <th data-column="expected" class="meta">Expected</th>
+        <th data-column="chrome-stable">38.0</th>
+        <th data-column="firefox-stable">33.0</th>
+        <th data-column="ie-11">11.0</th>
+        <th data-column="safari-6_2">6.2</th>
+        <th data-column="notes" class="meta">Notes</th>
+      </tr>
+    </thead>
+
+    <tbody class="items">
+      <tr>
+        <th colspan="7" class="block-header">Vertical in <code>overflow</code> block</th>
+      </tr>
+      <tr data-column="vertical-more-space">
+        <th>more than required space</th>
+        <td>bottom</td>
+        <td data-column="chrome">bottom</td>
+        <td data-column="firefox">bottom</td>
+        <td data-column="ie">bottom</td>
+        <td data-column="safari">bottom</td>
+        <td data-column="notes"></td>
+      </tr>
+      <tr data-column="vertical-exact-space">
+        <th>required space</th>
+        <td>top</td>
+        <td data-column="chrome">bottom</td>
+        <td data-column="firefox">top</td>
+        <td data-column="ie">top</td>
+        <td data-column="safari">bottom</td>
+        <td data-column="notes"></td>
+      </tr>
+      <tr data-column="vertical-less-space">
+        <th>less than required space</th>
+        <td>top</td>
+        <td data-column="chrome">center</td>
+        <td data-column="firefox">top</td>
+        <td data-column="ie">top</td>
+        <td data-column="safari">center</td>
+        <td data-column="notes"></td>
+      </tr>
+    </tbody>
+
+    <tbody class="items">
+      <tr>
+        <th colspan="7" class="block-header">Horizontal in <code>overflow</code> block</th>
+      </tr>
+      <tr data-column="horizontal-more-space">
+        <th>more than required space</th>
+        <td>right</td>
+        <td data-column="chrome">right, partial</td>
+        <td data-column="firefox">right, partial</td>
+        <td data-column="ie">right</td>
+        <td data-column="safari">right, partial</td>
+        <td data-column="notes">Gecko and Blink won't scroll the container if the focused element is partially visible</td>
+      </tr>
+      <tr data-column="horizontal-exact-space">
+        <th>required space</th>
+        <td>left</td>
+        <td data-column="chrome">right</td>
+        <td data-column="firefox">left</td>
+        <td data-column="ie">left</td>
+        <td data-column="safari">right</td>
+        <td data-column="notes"></td>
+      </tr>
+      <tr data-column="horizontal-less-space">
+        <th>less than required space</th>
+        <td>left</td>
+        <td data-column="chrome">center</td>
+        <td data-column="firefox">left</td>
+        <td data-column="ie">left</td>
+        <td data-column="safari">center</td>
+        <td data-column="notes"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
