@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Table Of Focus Event Sequence</title>
+
+  <!-- http://clrs.cc/ -->
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 5px;
+      border: 1px solid #aaaaaa;
+    }
+    tbody th {
+      text-align: left;
+    }
+    td[data-supported="yes"] {
+      text-align: center;
+      background: #01ff70;
+    }
+    td[data-supported="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+    td[data-correct="no"] {
+      box-shadow: inset 0 0 0px 2px #0074d9;
+    }
+    td[data-supported="no"][data-tabbable="yes"] {
+      background: hotpink;
+    }
+
+    .focusable-tabbable-scheme td[data-focusable="yes"] {
+      text-align: center;
+      background: #FFDC00;
+    }
+    .focusable-tabbable-scheme td[data-tabbable="yes"] {
+      text-align: center;
+      background: #01FF70;
+    }
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="yes"] {
+      text-align: center;
+      background: #FF851B;
+    }
+    .focusable-tabbable-scheme td[data-focusable="no"][data-tabbable="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Focus Event Sequence Compatibility Tables</h1>
+
+  <p>
+    The data displayed in the tables of this document was gathered by manually running <a href="./test.html">the event sequence test</a>.
+    I've not employed automation (WebDriver) for this because I wanted the tests to start in the browser's chrome (the browser UI itself)
+    and I didn't see how this could be managed reliably with current test automation tools.
+  </p>
+
+  <h2 id="browser-support-taborder">In What Order Are Focus Relevant Events Dispatched?</h2>
+  <p>The Following table shows the exact order events that are dispatched when tabbing through the focusable elements.</p>
+  <table id="taborder-table" class="focusable-tabbable-scheme">
+    <thead>
+      <tr class="labels">
+        <th colspan="2" class="meta"></th>
+        <th colspan="1" data-column="chrome">Chrome</th>
+        <th colspan="1" data-column="firefox">Firefox</th>
+        <th colspan="1" data-column="ie">Internet Explorer</th>
+        <th colspan="1" data-column="safari">Safari</th>
+        <th colspan="1" data-column="iphone">iPhone</th>
+      </tr>
+      <tr class="versions">
+        <th data-column="element" class="meta">Element</th>
+        <th data-column="expected" class="meta">Expected</th>
+        <th data-column="chrome-stable">V</th>
+        <th data-column="firefox-stable">V</th>
+        <th data-column="ie-11">V</th>
+        <th data-column="safari-6_2">V</th>
+        <th data-column="safari-iphone">V</th>
+      </tr>
+    </thead>
+    <tbody class="items">
+      <!-- replaced by table.js -->
+    </tbody>
+  </table>
+
+  <script src="../../bower_components/requirejs/require.js" data-main="table"></script>
+</body>
+</html>

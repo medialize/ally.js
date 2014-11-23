@@ -1,7 +1,7 @@
-define(function defineDemoFocusableFirefox(require) {
+define(function defineDemoEventSequenceFirefox(require) {
   'use strict';
 
-  // The contents of this file have been collected by running event-sequence/index.html
+  // The contents of this file have been collected by running event-sequence/test.html
 
   return {
     "platform": {
@@ -29,25 +29,23 @@ define(function defineDemoFocusableFirefox(require) {
         {
           "event": "focusout",
           "target": "BODY",
-          "related": "first"
-        },
-        {
-          "event": "focusin",
-          "target": "first",
-          "related": "BODY"
+          "related": "HTML"
         },
         {
           "event": "blur",
           "target": "BODY",
           "related": "none"
+      //   }
+      // ],
+      // [
+    },
+        {
+          "event": "focusin",
+          "target": "first",
+          "related": "HTML"
         },
         {
           "event": "focus",
-          "target": "first",
-          "related": "none"
-        },
-        {
-          "event": "keyup",
           "target": "first",
           "related": "none"
         }
@@ -340,53 +338,6 @@ define(function defineDemoFocusableFirefox(require) {
         {
           "event": "click",
           "target": "fifth",
-          "related": "none"
-        }
-      ],
-      [
-        {
-          "event": "pointerdown",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "mousedown",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "focusout",
-          "target": "fifth",
-          "related": "BODY"
-        },
-        {
-          "event": "focusin",
-          "target": "BODY",
-          "related": "fifth"
-        },
-        {
-          "event": "blur",
-          "target": "fifth",
-          "related": "none"
-        },
-        {
-          "event": "focus",
-          "target": "BODY",
-          "related": "none"
-        },
-        {
-          "event": "pointerup",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "mouseup",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "click",
-          "target": "PRE",
           "related": "none"
         }
       ]

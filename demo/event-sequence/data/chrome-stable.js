@@ -1,18 +1,18 @@
-define(function defineDemoFocusableChrome(require) {
+define(function defineDemoEventSequenceChrome(require) {
   'use strict';
 
-  // The contents of this file have been collected by running event-sequence/index.html
+  // The contents of this file have been collected by running event-sequence/test.html
 
   return {
     "platform": {
-      "description": "Chrome 38.0.2125.111 on OS X 10.8.5",
+      "description": "Chrome 38.0.2125.122 on OS X 10.8.5",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36",
-      "version": "38.0.2125.111",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36",
+      "version": "38.0.2125.122",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -335,38 +335,6 @@ define(function defineDemoFocusableChrome(require) {
         {
           "event": "click",
           "target": "fifth",
-          "related": "none"
-        }
-      ],
-      [
-        {
-          "event": "mousedown",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "blur",
-          "target": "fourth",
-          "related": "none"
-        },
-        {
-          "event": "focusout",
-          "target": "fourth",
-          "related": "none"
-        },
-        {
-          "event": "active-element",
-          "target": "BODY",
-          "related": "fourth"
-        },
-        {
-          "event": "mouseup",
-          "target": "PRE",
-          "related": "none"
-        },
-        {
-          "event": "click",
-          "target": "PRE",
           "related": "none"
         }
       ]

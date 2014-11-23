@@ -15,11 +15,14 @@
   <div tabindex="-1" data-label="fourth"><a href="#void" data-label="fifth">fifth</a></div>
 
 
-  <pre></pre>
+  <hr>
+  <h2 id="output-results">Results</h2>
+  <pre id="results">click tab order to update the output of results</pre>
+
   <script src="../../bower_components/platform/platform.js"></script>
   <script>
     (function() {
-      var log = document.querySelector('pre');
+      var log = document.getElementById('results');
       var history = [];
       var buffer = [];
 
@@ -40,20 +43,20 @@
       function breaker() {
         clearTimeout(breakerTimeout);
         breakerTimeout = setTimeout(function() {
-          log.textContent += "---------------------------------------------\n";
+          //log.textContent += "---------------------------------------------\n";
           history.push(buffer.slice(0));
           buffer.length = 0;
         }, 500);
       }
 
       function logFocusEvent(event) {
-        log.textContent += event.type + ': ' + elementName(event.target) + ', related: ' + elementName(event.relatedTarget) + "\n";
+        //log.textContent += event.type + ': ' + elementName(event.target) + ', related: ' + elementName(event.relatedTarget) + "\n";
         bufferEvent(event);
         breaker();
       }
 
       function logPointerEvent(event) {
-        log.textContent += event.type + ': ' + elementName(event.target) + "\n";
+        //log.textContent += event.type + ': ' + elementName(event.target) + "\n";
         bufferEvent(event);
         breaker();
       }
@@ -64,13 +67,13 @@
           return;
         }
 
-        log.textContent += event.type + ': ' + elementName(event.target) + "\n";
+        //log.textContent += event.type + ': ' + elementName(event.target) + "\n";
         bufferEvent(event);
         breaker();
       }
 
       function logActiveElementEvent(event) {
-        log.textContent += 'active-element' + ': ' + elementName(event.detail.focus) + ', related: ' + elementName(event.detail.blur) + "\n";
+        //log.textContent += 'active-element' + ': ' + elementName(event.detail.focus) + ', related: ' + elementName(event.detail.blur) + "\n";
         bufferEvent(event, event.detail.focus, event.detail.blur);
         breaker();
       }
@@ -104,20 +107,15 @@
 
         document.body.removeEventListener('active-element', logActiveElementEvent, true);
       }
-    
-      document.body.addEventListener('keydown', function(event) {
-        var code = event.keyCode || event.which;
-        if (code != 27) {
-          return;
-        }
 
+      log.addEventListener('click', function(event) {
         unregisterLogEvents();
-        log.textContent += 'observation stopped';
+        //log.textContent += 'observation stopped';
 
         var result = document.createElement('textarea');
         result.style.width = '100%';
         result.style.height = '400px';
-        document.body.appendChild(result);
+        document.body.replaceChild(result, log);
         result.value += JSON.stringify({
           platform: window.platform,
           events: history,
