@@ -5,6 +5,7 @@
 	<title>overflow:auto - Focus-Scrolling behavior</title>
 </head>
 <style>
+  .both-container,
   .vertical-container,
   .horizontal-container {
     box-sizing: border-box;
@@ -12,12 +13,15 @@
     margin: 0;
     padding: 0;
     border: 2px dashed blue;
-    overflow: auto;
+    overflow: hidden;
     white-space: nowrap;
   }
+
+  .filler,
   .first,
   .second,
-  .third {
+  .third,
+  .fourth {
     display: inline-block;
     box-sizing: border-box;
     width: 300px;
@@ -25,14 +29,18 @@
     border: 1px solid red;
   }
 
+  .both-container,
   .vertical-container {
     height: 30px;
-    
   }
-  .vertical-container .first,
-  .vertical-container .second {
+
+  .vertical-container > div {
     height: 30px;
     display: block;
+  }
+
+  .both-container > div {
+    height: 30px;
   }
 
   .first {
@@ -44,6 +52,12 @@
   .third {
     background: #FFFFCC;
   }
+  .fourth {
+    background: #CCFFCC;
+  }
+  .filler {
+    background: #EEE;
+  }
 
   div:focus {
     background: #AAA;
@@ -53,52 +67,108 @@
 
   <h1>Scrolling behavior of <code>overflow:auto</code> upon <code>Focus</code></h1>
 
+
   <h2>Vertical Scrolling</h2>
 
-  <p>foo</p>
+  <p>more than required space</p>
   <div class="vertical-container" style="height: 40px">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
-  <p>foo</p>
+  <p>required space</p>
   <div class="vertical-container">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
-  <p>foo</p>
+  <p>less than required space</p>
   <div class="vertical-container" style="height: 20px">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
 
   <h2>Horizontal Scrolling</h2>
 
-  <p>Only Trident scrolls <code>second thing</code> fully into view if it is partially visible already. Gecko <em>sometimes</em> scrolls <code>second thing</code> fully into view, but it is (yet) unclear when and why.</p>
+  <p>more than required space</p>
   <div class="horizontal-container" style="width: 400px">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
-  <p>All browsers scroll <code>second thing</code> fully into view if there's just enough space available.</p>
+  <p>required space</p>
   <div class="horizontal-container">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
-  <p>All browsers scroll <code>second thing</code> fully into view if there's too little space available. Gecko and Trident scroll to the element's top/left position, where Blink scrolls to the center/center position.</p>
+  <p>less than required space</p>
   <div class="horizontal-container" style="width: 200px">
     <div class="first" tabindex="0">first thing</div>
     <div class="second" tabindex="0">second thing</div>
     <div class="third" tabindex="0">third thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
   </div>
+
+
+  <h2>Horizontal And Vertical Scrolling</h2>
+
+  <p>more than required space</p>
+  <div class="both-container" style="width: 400px; height: 40px">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="filler" tabindex="0">filler thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="third" tabindex="0">third thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
+  </div>
+
+  <p>required space</p>
+  <div class="both-container">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="filler" tabindex="0">filler thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="third" tabindex="0">third thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
+  </div>
+
+  <p>less than required space</p>
+  <div class="both-container" style="width: 200px; height: 20px">
+    <div class="first" tabindex="0">first thing</div>
+    <div class="filler" tabindex="0">filler thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="second" tabindex="0">second thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="third" tabindex="0">third thing</div>
+    <br>
+    <div class="filler" tabindex="0">filler thing</div>
+    <div class="fourth" tabindex="0">fourth thing</div>
+  </div>
+
 
   <script>
     [].forEach.call(document.getElementsByClassName('third'), function(element, index) {
