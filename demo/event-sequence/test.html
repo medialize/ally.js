@@ -72,18 +72,29 @@
         breaker();
       }
 
+      function logInputEvent(event) {
+        bufferEvent(event);
+        breaker();
+      }
+
       function logActiveElementEvent(event) {
         //log.textContent += 'active-element' + ': ' + elementName(event.detail.focus) + ', related: ' + elementName(event.detail.blur) + "\n";
         bufferEvent(event, event.detail.focus, event.detail.blur);
         breaker();
       }
 
-      ['focus', 'blur', 'focusin', 'focusout'].forEach(function(eventName) {
+      // http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
+      // http://www.w3.org/TR/DOM-Level-3-Events/#legacy-focusevent-events
+      ['focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DOMFocusOut', 'domfocusin', 'domfocusout'].forEach(function(eventName) {
         document.body.addEventListener(eventName, logFocusEvent, true);
       });
 
       ['mousedown', 'mouseup', 'click', 'touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function(eventName) {
         document.body.addEventListener(eventName, logPointerEvent, true);
+      });
+
+      ['input', 'beforeinput'].forEach(function(eventName) {
+        document.body.addEventListener(eventName, logInputEvent, true);
       });
 
       ['keydown', 'keyup', 'keypress'].forEach(function(eventName) {

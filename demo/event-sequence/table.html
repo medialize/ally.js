@@ -6,6 +6,9 @@
 
   <!-- http://clrs.cc/ -->
   <style>
+    body {
+      padding-bottom: 50px;
+    }
     table {
       border-collapse: collapse;
     }
@@ -60,9 +63,9 @@
     and I didn't see how this could be managed reliably with current test automation tools.
   </p>
 
-  <h2 id="browser-support-taborder">In What Order Are Focus Relevant Events Dispatched?</h2>
+  <h2 id="browser-support-event-sequence">In What Order Are Focus Relevant Events Dispatched?</h2>
   <p>The Following table shows the exact order events that are dispatched when tabbing through the focusable elements.</p>
-  <table id="taborder-table" class="focusable-tabbable-scheme">
+  <table id="event-sequence-table" class="focusable-tabbable-scheme">
     <thead>
       <tr class="labels">
         <th colspan="2" class="meta"></th>
@@ -86,6 +89,7 @@
       <!-- replaced by table.js -->
     </tbody>
   </table>
+
 
   <script src="../../bower_components/requirejs/require.js" data-main="table"></script>
 </body>

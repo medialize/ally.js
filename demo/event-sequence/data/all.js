@@ -1,6 +1,6 @@
 define(function defineDemoEventSequenceData(require) {
   return {
-    //'expected': require('./expected'),
+    'expected': require('./expected'),
     'chrome-stable': require('./chrome-stable'),
     'firefox-stable': require('./firefox-stable'),
     'ie-11': require('./ie-11'),
