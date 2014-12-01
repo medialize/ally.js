@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Shadow DOM</title>
+</head>
+<body>
+
+  <p>
+    Firefox 34 leaks shadowed elements to <code>document.activeElement</code> (though not through <code>FocusEvent</code>).
+    Chrome 39 focuses shadowed content and only reports the shadow-host to <code>document.activeElement</code> and the <code>FocusEvent</code>.
+    There is curretly no way to identify what is focused within a shadow-host in Chrome, although the 
+    <a href="http://w3c.github.io/webcomponents/spec/shadow/#active-element">spec</a>
+    demands the shadow-host to expose its own <code>.activeElement</code>.
+    Unlinke Chrome, Firefox dispatches a new <code>FocusEvent</code> for every activeElement change within a shadow-host.
+  </p>
+  <p>Note: for Firefox the setting <code>dom.webcomponents.enabled</code> needs to be set to <code>true</code></p>
+  
+  <!--
+    http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events
+    http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
+    http://w3c.github.io/webcomponents/spec/shadow/#active-element
+  -->
+
+  <input type="text" id="first">
+  <div id="shadowed"></div>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.documentElement.addEventListener('focus', function(event) {
+      log.textContent += 'event: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+    var host = document.getElementById('shadowed');
+    var root = host.createShadowRoot();
+    if (host.activeElement) {
+      log.textContent += 'root.activeElement found\n';
+    } 
+    if (root.activeElement) {
+      log.textContent += 'host.activeElement found\n';      
+    }
+    if (!host.activeElement && !root.activeElement){
+      log.textContent += 'no activeElement on host and root\n';
+    }
+
+    root.innerHTML = '<input type="text" id="second"><input type="text" id="third">';
+    root.addEventListener('focus', function(event) {
+      log.textContent += 'shadow event: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+    var previousActiveElement = null;
+    setInterval(function() {
+      if (previousActiveElement === document.activeElement) {
+        return;
+      }
+      previousActiveElement = document.activeElement;
+      log.textContent += 'activeElement: ' + (previousActiveElement.id || previousActiveElement.nodeName) + '\n';
+    }, 100);
+
+  </script>
+
+</body>
+</html>

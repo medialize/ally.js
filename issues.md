@@ -2,11 +2,9 @@
 
 ## TODO: Investigate
 
-* `a > img[ismap]` not tabbable in Firefox?
 * http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-dialog-element
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
-* find a way to prevent `focus` from being broadcast by AssistiveTechnology - otherwise feature detection MUST NOT be used - https://twitter.com/MarcoZehe/status/526844622778425345
 
 
 ## Gecko (Firefox) ##
