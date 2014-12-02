@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Blink: Autofocus And URL Fragment</title>
+</head>
+<body>
+  
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=382901
+    
+    open
+  -->
+  
+  <p>Blink ignores the URL's fragment (hash) if there is an element with <code>[autofocus]</code> on the page</p>
+  
+  <a href="#foo">jump to anchor, then reload</a>
+  <input type="text" autofocus>
+  <div style="height: 1000px"></div>
+  <div id="foo">yup</div>
+  
+</body>
+</html>
