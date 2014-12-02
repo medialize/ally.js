@@ -7,17 +7,16 @@ require.config({
     // stuff used for testing and co
     'underscore': '../../bower_components/underscore/underscore',
     'jquery': '../../bower_components/jquery/dist/jquery',
+    'sequence-comparison-table': '../../bower_components/sequence-comparison-table/src',
   }
 });
 
 require([
   'underscore',
   'jquery',
-  '../js/merge-arrays',
+  'sequence-comparison-table/sequence-table-body',
   './data/all'
-], function (_, $, mergeArrays, data) {
-
-  var sequences = [];
+], function (_, $, sequenceTableBody, data) {
 
   Object.keys(data).forEach(function(browser) {
     data[browser].sequences = [];
@@ -47,79 +46,22 @@ require([
     });
   }
 
-  function getFoldedArrayIndexMapper(master, list) {
-    var offset = 0;
-    return function(item, index) {
-      var target = index + offset;
-      if (item === list[target]) {
-        return target;
-      }
-
-      var position = list.indexOf(item, target);
-      var nextPosition = master.indexOf(list[target + 1], index);
-
-      if (position !== -1) {
-        if (nextPosition !== -1) {
-          offset--;
-          return null;
-        }
-
-        offset += position - target;
-        return index + offset;
-      }
-
-      offset--;
-      return null
-    };
-  }
-
   var $table = $('#event-sequence-table');
-  var $tbody = $table.find('.items')
   var $versions = $table.find('.versions');
-  var $row = $versions.clone();
-  $row.children().replaceWith(function(index) {
-    var $this = $(this);
-    return index ? $('<td></td>').prop('className', $this.prop('className')).attr('data-column', $this.attr('data-column')) : this;
-  });
-  
   setVersions($versions);
   
-
-
   // flatten and merge first sequence
-  var sequences = Object.keys(data).map(function(browser) {
-    return data[browser].sequences[1];
-  });
-  var sequence = mergeArrays.apply(null, sequences);
-  // map holes in sequence
+  var _data = {};
   Object.keys(data).forEach(function(browser) {
-    data[browser].interlockedSequences = [];
-    var list = data[browser].sequences[1];
-    data[browser].interlockedSequences[1] = sequence.map(getFoldedArrayIndexMapper(sequence, list));
+    _data[browser] = data[browser].sequences[1];
   });
 
-  // add rows of actual data
-  sequence.forEach(function(event, index) {
-    var $_row = $row.clone().attr('data-event', event);
-    var $cells = $_row.children('td');
-    //var expected = data.expected.tabOrder.indexOf(selector) !== -1;
-
-    $_row.children('th').text(event);
-
-    $cells.each(function() {
-      var $cell = $(this);
-      var browser = $cell.attr('data-column');
-      var _index = data[browser].interlockedSequences[1][index];
-      // var focusable = data[browser].focusable.indexOf(selector) !== -1;
-
-      $cell.text(_index !== null ? _index : '' )
-      //   .attr('data-correct', expected === (_index !== null) ? 'yes' : 'no')
-      //   .attr('data-tabbable', _index !== null  ? 'yes' : 'no')
-      //   .attr('data-focusable', focusable ? 'yes' : 'no');
-    });
-
-    $_row.appendTo($tbody);
+  var tbody = sequenceTableBody(_data, {
+    columns: $versions.children().toArray().slice(1).map(function(element) {
+      return element.getAttribute('data-column');
+    }),
   });
   
+  $table.find('.items').replaceWith(tbody);
 
 });
