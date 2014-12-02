@@ -8,6 +8,7 @@ define(function defineDomIsFocusable(require) {
   //   Trident: `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable (because !element.offsetHeight)
   //   Gecko: `svg a[xlink|href]` is not identified as focusable (because SVGElement.prototype.focus is missing)
   //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
+  //   ShadowDOM is ignored completely
 
   require('../prototype/element.prototype.matches');
   var selector = require('../selector/focusable');

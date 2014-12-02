@@ -22,6 +22,8 @@ define(function defineSelectorFocusable(require) {
   //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
   //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
 
+  // TODO: decide if elements in ::shadow should be identified as focusable as well
+
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   var selector = 'body,'
     // Firefox, IE11 can focus <html>

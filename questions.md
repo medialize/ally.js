@@ -8,18 +8,12 @@
 
 ## Behavior
 
-
+* WHATWG deems `[draggable]` and [`table[sortable] th`](https://html.spec.whatwg.org/multipage/tables.html#table-sorting-model) focusable, W3C and browsers do not
 * do we care about accesskey?
   * https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute
-* what's up with `autofocus`?
-  * only works on form elements
-  * https://code.google.com/p/chromium/issues/detail?id=382901
-  * does this affect `<dialog>`? does `<dialog>` actually set focus?
 * `FocusEvent` happens after `keydown`, `mousedown`, `touchstart`, `pointerdown` consistently? what about sequence?
   * `focusin` bubbles
   * http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
-* side-effects from `user-select`, `pointer-events`
-* can make `-webkit-appearance: button` make a div naturally focusable?
 * `document.body.focus()` does nothing, so body is not focusable, it's just the default focus upon `document.activeElement.blur()`?
 * what can be focused by mouse on mac?
   * Firefox won't focus `<input type="checkbox|radio">` on click
@@ -60,6 +54,11 @@
   * this allows handling ESC in the hierarchy through observing bubble
 * Safari is not tabbing to links?!
   * "Press Tab to highlight each item on a webpage" otherwise <kbd>Alt Tab</kbd> - http://www.456bereastreet.com/archive/200906/enabling_keyboard_navigation_in_mac_os_x_web_browsers/
+* what's up with `autofocus`?
+  * only works on form elements
+  * https://code.google.com/p/chromium/issues/detail?id=382901
+  * it affects `<dialog>` on `.openModal()`
+
 
 ## Visual
 
@@ -69,6 +68,12 @@
 
 * what about `direction` - http://dev.w3.org/csswg/css-writing-modes/#direction
   * nope, no influence on tab order
+* can make `-webkit-appearance: button` make a div naturally focusable?
+  * nope, it cannot
+* can `user-select` prevent focus (by mouse)
+  * nope, it cannot
+* can `pointer-events: none` prevent focus (by mouse)
+  * yes, of course it does
 
 ---
 

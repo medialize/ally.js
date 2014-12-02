@@ -9,6 +9,9 @@ define(function defineDomQueryTabbable(require) {
   var sortTabindex = require('./sort-tabindex');
 
   function queryTabbable(context) {
+
+    // TODO: [tabbing-order] filter out <area> and inject them where <img usemap> occurs (like trident does it)
+
     var elements = queryFocusable(context).filter(isTabbable);
     return sortTabindex(elements);
   };
