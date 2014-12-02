@@ -3,61 +3,142 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Shadow DOM</title>
+
+  <style>
+    div::shadow input {
+      border: 1px solid red;
+    }
+
+    body {
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
 
+  <!--
+      * do key events bubble through?
+        -> yes, also preventable on capture
+      * what happens if host.focus() is called?
+        -> nothing, and nothing is specified
+      * focusing a non-focusable shadow-host does not propagate focus to first focusable element in shadow-root
+  -->
+
   <p>
-    Firefox 34 leaks shadowed elements to <code>document.activeElement</code> (though not through <code>FocusEvent</code>).
+    Firefox 34 leaks shadowed elements to <code>document.activeElement</code> (though not through <code>FocusEvent</code>) and it does not implement <code>ShadowRoot.activeElement</code>.
     Chrome 39 focuses shadowed content and only reports the shadow-host to <code>document.activeElement</code> and the <code>FocusEvent</code>.
-    There is curretly no way to identify what is focused within a shadow-host in Chrome, although the 
-    <a href="http://w3c.github.io/webcomponents/spec/shadow/#active-element">spec</a>
-    demands the shadow-host to expose its own <code>.activeElement</code>.
     Unlinke Chrome, Firefox dispatches a new <code>FocusEvent</code> for every activeElement change within a shadow-host.
   </p>
+  <p>
+    Firefox does not know the CSS pseudo <code>::shadow</code> and thus cannot "easily" query shadow hosts.
+    Chrome supports the pseudo class, but only if a descendant of ::shadow is queried.
+    This effectively allows finding all focusable elements in the <a href="http://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
+  </p>
+  <p>
+    Firefox does not add shadowed elements with <code>[tabindex="1"]</code> to the document's tablist.
+    Chrome treats the shadow root as the context in which tabindex order is determined, i.e. shadow-dom localizes the effects of <code>[tabindex="1"]</code> to the shadow root.
+  </p>
+  <p>
+    Chrome focuses the very first element with <code>[autofocus]</code> regardless of it being shadowed or not.
+    Firefox prefers a non-shadowed element with <code>[autofocus]</code> over a shadowed element with autofocus.
+    <code>[autofocus]</code> has no effect on tabbing-order when entering a shadow-root, i.e. it is completely ignored after page-load.
+  </p>
+
+  <p>Running <code>shadowHost.focus()</code> has no effect (unless it happens to be focusable by itself).</p>
+  <p><code>KeyEvent</code> does not leak shadowed content, but is posing the same problem as <code>&lt;video&gt;</code> in IE11 in respect to <kbd>TAB</kbd> not necessarily chaning <code>document.activeElement</code>.</p>
+
   <p>Note: for Firefox the setting <code>dom.webcomponents.enabled</code> needs to be set to <code>true</code></p>
+
   
   <!--
     http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events
     http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
     http://w3c.github.io/webcomponents/spec/shadow/#active-element
+    http://www.w3.org/TR/shadow-dom/#active-element
+
+
+    access to shadowed activeElement:
+    shadowHostElement.shadowRoot.activeElement
   -->
 
   <input type="text" id="first">
   <div id="shadowed"></div>
+  <input type="text" id="sixth" autofocus>
 
   <pre></pre>
   <script>
     var log = document.querySelector('pre');
 
     document.documentElement.addEventListener('focus', function(event) {
-      log.textContent += 'event: ' + (event.target.id || event.target.nodeName) + '\n';
+      log.textContent += 'focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+    document.documentElement.addEventListener('keydown', function(event) {
+      // it is possible to prevent a ShadowRoot from receiving an event
+      // event.preventDefault();
+      // event.stopPropagation();
+      log.textContent += 'keydown: ' + (event.target.id || event.target.nodeName) + '\n';
     }, true);
 
     var host = document.getElementById('shadowed');
     var root = host.createShadowRoot();
-    if (host.activeElement) {
+
+    if (host.activeElement !== undefined) {
       log.textContent += 'root.activeElement found\n';
     } 
-    if (root.activeElement) {
-      log.textContent += 'host.activeElement found\n';      
+    if (root.activeElement !== undefined) {
+      log.textContent += 'host.activeElement found\n';
     }
-    if (!host.activeElement && !root.activeElement){
+    if (host.activeElement === undefined && root.activeElement === undefined){
       log.textContent += 'no activeElement on host and root\n';
     }
 
-    root.innerHTML = '<input type="text" id="second"><input type="text" id="third">';
+    root.innerHTML = '<input type="text" id="second" autofocus><input type="text" id="third" tabindex="3"><span id="shadowed-inner"></span>';
     root.addEventListener('focus', function(event) {
-      log.textContent += 'shadow event: ' + (event.target.id || event.target.nodeName) + '\n';
+      log.textContent += 'shadow.focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+    root.addEventListener('keydown', function(event) {
+      log.textContent += 'shadow.keydown: ' + (event.target.id || event.target.nodeName) + '\n';
     }, true);
 
-    var previousActiveElement = null;
+    var innerHost = root.getElementById('shadowed-inner');
+    var innerRoot = innerHost.createShadowRoot();
+    innerRoot.innerHTML = '<input type="text" id="fourth"><input type="text" id="fifth" autofocus>';
+
+    var previousActiveElement = document.activeElement;
     setInterval(function() {
       if (previousActiveElement === document.activeElement) {
         return;
       }
+
       previousActiveElement = document.activeElement;
       log.textContent += 'activeElement: ' + (previousActiveElement.id || previousActiveElement.nodeName) + '\n';
     }, 100);
+
+    setTimeout(function() {
+      host.focus();
+    }, 500);
+
+    var logShadowSelectors = function(message) {
+      log.textContent += message;
+      ['::shadow', '*::shadow', '::shadow > :first-child', '*::shadow > :first-child', 'input, ::shadow input'].forEach(function(selector) {
+        try {
+          var elements = document.querySelectorAll(selector);
+          var _elements = [].map.call(elements, function(element) {
+            return element.outerHTML;
+          }).join('\n  ');
+
+          log.textContent += 'query( ' + selector + ' ) = ' + elements.length + ' [' + (_elements ? ('\n  ' + _elements + '\n') : '') + ']\n';
+        } catch (e) {
+          log.textContent += 'query( ' + selector + ' ) = ' + e.message + '\n';
+        }
+      });
+    };
+
+    logShadowSelectors('\ntesting shadow selectors:\n');
+    setTimeout(function(){
+      logShadowSelectors('\ntesting shadow selectors (after page load):\n');
+    }, 1000)
 
   </script>
 
