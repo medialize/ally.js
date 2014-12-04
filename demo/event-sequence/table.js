@@ -19,8 +19,10 @@ require([
 ], function (_, $, sequenceTable, data) {
 
   var eventMap = {};
+  var numberOfSequences = 0;
   Object.keys(data).forEach(function(browser) {
     data[browser].sequences = [];
+    numberOfSequences = Math.max(data[browser].events.length, numberOfSequences);
     data[browser].events.forEach(function(sequence) {
       var _sequence = sequence.map(function(event) {
         var key = event.key = event.event + ': ' + event.target + ' (' + event.related + ')';
@@ -32,13 +34,7 @@ require([
     });
   });
 
-  // flatten and merge first sequence
-  var _data = {};
-  Object.keys(data).forEach(function(browser) {
-    _data[browser] = data[browser].sequences[1];
-  });
-
-  var table = sequenceTable(_data, {
+  var sequenceTableOptions = {
     columns: [
       'expected',
       'firefox-stable',
@@ -89,8 +85,20 @@ require([
       to.textContent = event.related;
       th.parentNode.appendChild(to);
     }
-  });
-  
-  $(document.body).append(table);
+  };
 
+  function renderSequenceTable(sequenceIndex) {
+    // flatten and merge first sequence
+    var _data = {};
+    Object.keys(data).forEach(function(browser) {
+      _data[browser] = data[browser].sequences[sequenceIndex] || [];
+    });
+
+    var table = sequenceTable(_data, sequenceTableOptions);
+    $(document.body).append(table);
+  }
+
+  for (var i = 0; i < numberOfSequences; i++) {
+    renderSequenceTable(i);
+  }
 });
