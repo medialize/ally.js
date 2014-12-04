@@ -1,6 +1,10 @@
 define(function defineMapKeycode(require) {
   'use strict';
 
+  // TODO: see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.key
+  // (outdated) polyfill: https://github.com/termi/DOM-Keyboard-Event-Level-3-polyfill
+  // (trivial) map-o-fill: https://gist.github.com/andyearnshaw/11333894
+
   var map = {
     // Element Focus
     tab: 9,
