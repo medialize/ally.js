@@ -14,54 +14,83 @@ require.config({
 require([
   'underscore',
   'jquery',
-  'sequence-comparison-table/sequence-table-body',
+  'sequence-comparison-table/sequence-table',
   './data/all'
-], function (_, $, sequenceTableBody, data) {
+], function (_, $, sequenceTable, data) {
 
+  var eventMap = {};
   Object.keys(data).forEach(function(browser) {
     data[browser].sequences = [];
     data[browser].events.forEach(function(sequence) {
       var _sequence = sequence.map(function(event) {
-        return event.key = event.event + ': ' + event.target + ' (' + event.related + ')';
+        var key = event.key = event.event + ': ' + event.target + ' (' + event.related + ')';
+        eventMap[key] = event;
+        return key;
       });
 
       data[browser].sequences.push(_sequence);
     });
   });
 
-
-  function setVersions($versions) {
-    // fill in proper versions for each browser column
-    $versions.children().each(function() {
-      var $cell = $(this);
-      var key = $cell.attr('data-column');
-      var version = data[key] && data[key].platform && data[key].platform.version;
-      if (!version) {
-        return;
-      }
-
-      $cell
-        .text(version.split('.').slice(0, 2).join('.'))
-        .attr('title', data[key].platform.ua);
-    });
-  }
-
-  var $table = $('#event-sequence-table');
-  var $versions = $table.find('.versions');
-  setVersions($versions);
-  
   // flatten and merge first sequence
   var _data = {};
   Object.keys(data).forEach(function(browser) {
     _data[browser] = data[browser].sequences[1];
   });
 
-  var tbody = sequenceTableBody(_data, {
-    columns: $versions.children().toArray().slice(1).map(function(element) {
-      return element.getAttribute('data-column');
-    }),
+  var table = sequenceTable(_data, {
+    columns: [
+      'expected',
+      'firefox-stable',
+      'ie-11',
+      'chrome-stable',
+      'safari-6_2',
+      'safari-iphone',
+    ],
+    columnNames: function(th, key) {
+      if (key === '') {
+        th.textContent = 'Element';
+
+        var from = document.createElement('th');
+        from.textContent = 'target';
+        th.parentNode.appendChild(from);
+
+        var to = document.createElement('th');
+        to.textContent = 'related';
+        th.parentNode.appendChild(to);
+        return;
+      }
+
+      if (!data[key] || !data[key].platform) {
+        th.textContent = key;
+        return;
+      }
+
+      var version =  data[key].platform.version && data[key].platform.version.split('.').slice(0, 2).join('.') || key;
+      th.textContent = version;
+      th.title = data[key].platform.ua;
+    },
+    columnGroups: {
+      '': ['', '', '', 'expected'],
+      'Firefox': ['firefox-stable'],
+      'Internet Explorer': ['ie-11'],
+      'Chrome': ['chrome-stable'],
+      'Safari': ['safari-6_2', 'safari-iphone'],
+    },
+    titleCell: function(th, options) {
+      var event = eventMap[options.sequenceItem];
+      th.textContent = event.event;
+
+      var from = document.createElement('th');
+      from.textContent = event.target;
+      th.parentNode.appendChild(from);
+
+      var to = document.createElement('th');
+      to.textContent = event.related;
+      th.parentNode.appendChild(to);
+    }
   });
   
-  $table.find('.items').replaceWith(tbody);
+  $(document.body).append(table);
 
 });

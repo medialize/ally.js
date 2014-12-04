@@ -44,7 +44,7 @@
     <code>[autofocus]</code> has no effect on tabbing-order when entering a shadow-root, i.e. it is completely ignored after page-load.
   </p>
 
-  <p>Running <code>shadowHost.focus()</code> has no effect (unless it happens to be focusable by itself).</p>
+  <p>Running <code>shadowHost.focus()</code> has no effect (unless it happens to be focusable by itself). The ShadowRoot is not informed of the focus request.</p>
   <p><code>KeyEvent</code> does not leak shadowed content, but is posing the same problem as <code>&lt;video&gt;</code> in IE11 in respect to <kbd>TAB</kbd> not necessarily chaning <code>document.activeElement</code>.</p>
 
   <p>Note: for Firefox the setting <code>dom.webcomponents.enabled</code> needs to be set to <code>true</code></p>
@@ -55,7 +55,6 @@
     http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
     http://w3c.github.io/webcomponents/spec/shadow/#active-element
     http://www.w3.org/TR/shadow-dom/#active-element
-
 
     access to shadowed activeElement:
     shadowHostElement.shadowRoot.activeElement

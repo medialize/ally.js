@@ -36,6 +36,6 @@
     "jquery": "~2.1.1",
     "jquery.ui": "~1.11.2",
     "platform": "~1.2.0",
-    "sequence-comparison-table": "~0.1.0"
+    "sequence-comparison-table": "~0.2.0"
   }
 }
