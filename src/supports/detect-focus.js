@@ -38,9 +38,11 @@ define(function defineSupportsDetectFocus(require) {
   //  {string} element name
   //  {function} callback that returns a DOMElement
   // callback: (optional)
-  //  {function} callback(element) to manipulate element prior to focus-test.
+  //  {function} callback(element, wrapper) to manipulate element prior to focus-test.
   //             Can return DOMElement to define focus target (default: element)
-  function detectFocus(nodeName, callback) {
+  // validate: (optional)
+  //  {function} callback(element) to manipulate test-result
+  function detectFocus(nodeName, callback, validate) {
     // wrap tests in an element hidden from screen readers to prevent them
     // from announcing focus, which can be quite irritating to the user
     var wrapper = document.createElement('div');
@@ -50,15 +52,16 @@ define(function defineSupportsDetectFocus(require) {
     // create dummy element to test focusability of
     var element = typeof nodeName === 'string' ? document.createElement(nodeName) : nodeName();
     // allow callback to further specify dummy element
-    var focus = callback && callback(element) || element;
+    var focus = callback && callback(element, wrapper) || element;
     // element needs to be part of the DOM to be focusable
-    wrapper.appendChild(element);
+    !element.parentNode && wrapper.appendChild(element);
     document.body.appendChild(wrapper);
     // remember what had focus to restore after test
     var previousActiveElement = document.activeElement;
     // test if the element with invalid tabindex can be focused
     focus.focus && focus.focus();
-    var allowsFocus = document.activeElement === focus;
+    // validate test's result
+    var allowsFocus = validate ? validate(element) : document.activeElement === focus;
     // restore focus to what it was before test and cleanup
     previousActiveElement.focus();
     document.body.removeChild(wrapper);
@@ -67,9 +70,9 @@ define(function defineSupportsDetectFocus(require) {
 
   // cache detected support so we don't have to bother screen readers with unstoppable focus changes
   // and flood the console with net::ERR_INVALID_URL errors for audio/video tests
-  function detectFocusSupport(testName, nodeName, callback) {
+  function detectFocusSupport(testName, nodeName, callback, validate) {
     if (typeof cache[testName] !== 'boolean') {
-      cache[testName] = detectFocus(nodeName, callback);
+      cache[testName] = detectFocus(nodeName, callback, validate);
       writeLocalStorage(cacheKey, cache);
     }
 
