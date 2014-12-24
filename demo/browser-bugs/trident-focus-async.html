@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Trident: focus event not synchronous</title>
+</head>
+<body>
+
+  <p>
+    In IE11 <code>focus</code> events are dispatched asynchronously, while <code>focusin</code> events are dispatched synchronously.
+    In IE12 both events are dispatched synchronously (but in the wrong order).
+  </p>
+  <hr>
+
+  <input type="text">
+  <a href="#void">link</a>
+
+  <hr>
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['input', 'a'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      var element = document.querySelector(selector);
+      element.addEventListener('focus', function(event) {
+        log.textContent += selector + ': [Focus Event] ' + event.target.nodeName + '\n';
+      }, false);
+      element.addEventListener('focusin', function(event) {
+        log.textContent += selector + ': [FocusIn Event] ' + event.target.nodeName + '\n';
+      }, false);
+      
+      element.focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+
+    });
+
+  </script>
+</body>
+</html>
