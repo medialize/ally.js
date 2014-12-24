@@ -4,6 +4,7 @@ define(function defineDemoEventSequenceData(require) {
     'chrome-stable': require('./chrome-stable'),
     'firefox-stable': require('./firefox-stable'),
     'ie-11': require('./ie-11'),
+    'ie-12': require('./ie-12'),
     'safari-6_2': require('./safari-6.2'),
     'safari-iphone': require('./safari-iphone'),
   };

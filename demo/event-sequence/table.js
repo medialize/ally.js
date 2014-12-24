@@ -39,6 +39,7 @@ require([
       'expected',
       'firefox-stable',
       'ie-11',
+      'ie-12',
       'chrome-stable',
       'safari-6_2',
       'safari-iphone',
@@ -69,7 +70,7 @@ require([
     columnGroups: {
       '': ['', '', '', 'expected'],
       'Firefox': ['firefox-stable'],
-      'Internet Explorer': ['ie-11'],
+      'Internet Explorer': ['ie-11', 'ie-12'],
       'Chrome': ['chrome-stable'],
       'Safari': ['safari-6_2', 'safari-iphone'],
     },
