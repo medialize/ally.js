@@ -2,16 +2,19 @@
 
 a11y.js (pronounced "ally js", pun intended) is a dependency-free library covering generic accessibility topics. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to a11y.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
 
+
 ---
 
 
 ## Goals
 
 * [x] simplify managing focus
-* [ ] simplify WAI-ARIA keyboard interactions
-* [ ] simplify working with aria attributes 
+* [ ] simplify WAI-ARIA keyboard interactions for defined ARIA roles
+* [ ] simplify working with aria attributes
   * allow toggling states
   * simplify referencing things like `aria-describedby="…unique-id-required…"`
+* [ ] simplify providing "help layer" explaining available keyboard commands
+
 
 ---
 
@@ -76,7 +79,9 @@ require.config({
 });
 ```
 
+
 ---
+
 
 ## Changelog
 
