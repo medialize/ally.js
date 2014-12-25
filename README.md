@@ -92,6 +92,7 @@ require.config({
 
 * improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
+* adding warning to browser support detection when document does not have focus
 * fixing linting errors
 
 

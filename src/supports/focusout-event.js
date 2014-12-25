@@ -15,7 +15,7 @@ define(function defineSupportsFocusoutEvent(require) {
 
     element.addEventListener('focusout', function() {
       received = true;
-    });
+    }, true);
 
     return target;
   }, function(element) {

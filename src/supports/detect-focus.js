@@ -3,6 +3,14 @@ define(function defineSupportsDetectFocus(require) {
   'use strict';
 
   function readLocalStorage(key) {
+    if (!document.hasFocus()) {
+      // if the document does not have focus when tests are executed, focus() may
+      // not be handled properly and eventy may not be dispatched immediately.
+      // This can happen when a document is reloaded while Developer Tools have focus.
+      console.warn('document requires focus for a11y support tests');
+      return {};
+    }
+
     var data;
     try {
       data = window.localStorage && window.localStorage.getItem(key);
@@ -18,6 +26,13 @@ define(function defineSupportsDetectFocus(require) {
   }
 
   function writeLocalStorage(key, value) {
+    if (!document.hasFocus()) {
+      // if the document does not have focus when tests are executed, focus() may
+      // not be handled properly and eventy may not be dispatched immediately.
+      // This can happen when a document is reloaded while Developer Tools have focus.
+      return;
+    }
+
     try {
       window.localStorage && window.localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {}
@@ -34,7 +49,6 @@ define(function defineSupportsDetectFocus(require) {
 
   cache.userAgent = userAgent;
 
-
   // nodeName:
   //  {string} element name
   //  {function} callback that returns a DOMElement
@@ -50,13 +64,13 @@ define(function defineSupportsDetectFocus(require) {
     wrapper.setAttribute('aria-live', 'off');
     wrapper.setAttribute('aria-busy', 'true');
     wrapper.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(wrapper);
     // create dummy element to test focusability of
     var element = typeof nodeName === 'string' ? document.createElement(nodeName) : nodeName();
     // allow callback to further specify dummy element
     var focus = callback && callback(element, wrapper) || element;
     // element needs to be part of the DOM to be focusable
     !element.parentNode && wrapper.appendChild(element);
-    document.body.appendChild(wrapper);
     // remember what had focus to restore after test
     var previousActiveElement = document.activeElement;
     // test if the element with invalid tabindex can be focused
