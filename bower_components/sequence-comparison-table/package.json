@@ -1,0 +1,40 @@
+{
+  "name": "sequence-comparison-table",
+  "version": "0.2.0",
+  "description": "tools to help making sense of sequences",
+  "author": {
+    "name": "Rodney Rehm",
+    "url": "http://rodneyrehm.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodneyrehm/sequence-comparison-table.git"
+  },
+  "main": "src/sequence-table.js",
+  "files": [
+    "src/map-indexes.js",
+    "src/map-sequences.js",
+    "src/merge-array.js",
+    "src/sequence-table-body.js",
+    "src/sequence-table.js",
+    "LICENSE.txt"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "grunt lint"
+  },
+  "keywords": [
+    "array",
+    "merge",
+    "union",
+    "diff",
+    "compare",
+    "table"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jshint-stylish": "~0.1.5",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}

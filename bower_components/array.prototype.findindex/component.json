@@ -1,0 +1,14 @@
+{
+  "name": "Array.prototype.findIndex",
+  "repo": "paulmillr/Array.prototype.findIndex",
+  "description": "Array.prototype.findIndex ES6 polyfill.",
+  "version": "1.0.0",
+  "keywords": ["Array.prototype.findIndex", "findIndex", "es6"],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

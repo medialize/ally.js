@@ -1,0 +1,34 @@
+{
+  "name": "sequence-comparison-table",
+  "version": "0.2.0",
+  "authors": [
+    "Rodney Rehm <rodney.rehm@medialize.de>"
+  ],
+  "description": "tools to help making sense of sequences",
+  "keywords": [
+    "array",
+    "merge",
+    "union",
+    "diff",
+    "compare",
+    "table"
+  ],
+  "main": [
+    "src/sequence-table.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "demo",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.15"
+  }
+}

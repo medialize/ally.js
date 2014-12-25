@@ -1,0 +1,19 @@
+{
+  "name": "Array.prototype.findIndex",
+  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/paulmillr/Array.prototype.findIndex",
+  "authors": [
+    "Paul Miller <http://paulmillr.com>"
+  ],
+  "description": "Array.prototype.findIndex ES6 polyfill.",
+  "keywords": ["Array.prototype.findIndex", "findIndex", "es6"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
