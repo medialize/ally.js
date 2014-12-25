@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>WebKit Mouse/Touch Events Can Focus Parent Element</title>
+	<style>
+	  body :focus {
+	    outline: 3px solid red;
+	  }
+	</style>
+</head>
+<body>
+
+  <p>
+    Up to and including WebKit r177730 a focusable element could get focus when a nested focusable element is clicked.
+    This bug was also present in Blink prior to Chrome 39.
+  </p>
+
+  <hr>
+
+  <p>When the <code>&lt;a&gt;</code> element is clicked, the <code>&lt;div&gt;</code> is getting the focus.</p>
+  <div tabindex="-1">
+    <a href="#foo">some link</a>
+  </div>
+
+  <p>Explicitly setting <code>&lt;a tabindex&gt;</code> prevents the parent from getting focus</p>
+  <div tabindex="-1">
+    <a href="#foo" tabindex="-1">some link</a>
+  </div>
+
+</body>
+</html>
