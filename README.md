@@ -85,7 +85,7 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.0.1) ###
+### 0.0.1 (December 25th 2014) ###
 
 * initial release "focus"
 
