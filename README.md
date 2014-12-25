@@ -34,7 +34,8 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 ### Working Around Browser Bugs
 
-* [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) -- to work around focus-click bug in [Blink](#todo-bug-link) and [WebKit](#todo-bug-link)
+* [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) -- to work around a bug in [WebKit](https://bugs.webkit.org/show_bug.cgi?id=139945) where a parent `[tabindex="-1"]` element can get focus when clicking on a nested `<a>`
+* [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html) -- to work around a behavior in Safari and Firefox on Mac OS X where clicking on certain form elements would not give them focus
 
 
 ### Development / Debugging
@@ -89,7 +90,8 @@ require.config({
 
 ### master (will become 0.0.2) ###
 
-* improving `fix-browser/pointer-focus-parent` for fewer dom interaction and less code
+* improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer dom interaction and less code
+* adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
 
 
 ### 0.0.1 (December 25th 2014) ###
