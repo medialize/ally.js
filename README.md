@@ -1,6 +1,8 @@
-# a11y.js
+# ally.js
 
-a11y.js (pronounced "ally js", pun intended) is a dependency-free **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to a11y.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
+ally.js is a dependency-free **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
+
+Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a library to help with ARIA states.
 
 
 ---
@@ -10,7 +12,7 @@ a11y.js (pronounced "ally js", pun intended) is a dependency-free **Library to h
 
 * [x] simplify managing focus
 * [ ] simplify WAI-ARIA keyboard interactions for defined ARIA roles
-* [ ] simplify working with aria attributes
+* [ ] simplify working with aria attributes (only if [a11y.js](https://github.com/IBM-Watson/a11y.js) doesn't cover all of this already)
   * allow toggling states
   * simplify referencing things like `aria-describedby="…unique-id-required…"`
 * [ ] simplify providing "help layer" explaining available keyboard commands
@@ -28,11 +30,11 @@ a11y.js (pronounced "ally js", pun intended) is a dependency-free **Library to h
 
 ### Handling Interaction
 
-* [`focus/trap`](http://medialize.github.io/a11y.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
+* [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
 
 ### Working Around Browser Bugs
 
-* [`fix-browser/pointer-focus-parent`](http://medialize.github.io/a11y.js/examples/fix-pointer-focus-parent.html) -- to work around focus-click bug in [Blink](#todo-bug-link) and [WebKit](#todo-bug-link)
+* [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) -- to work around focus-click bug in [Blink](#todo-bug-link) and [WebKit](#todo-bug-link)
 
 
 ### Development / Debugging
@@ -62,8 +64,8 @@ a11y.js (pronounced "ally js", pun intended) is a dependency-free **Library to h
 ```js
 require.config({
   paths: {
-    'a11y': 'bower_components/a11y.js/src',
-    // shims required by a11y.js
+    'ally': 'bower_components/ally.js/src',
+    // shims required by ally.js
     'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
     'CSS.escape': 'bower_components/CSS.escape/css.escape',
   },
@@ -92,4 +94,4 @@ require.config({
 
 ## License
 
-a11y.js is published under the [MIT License](http://opensource.org/licenses/mit-license).
+ally.js is published under the [MIT License](http://opensource.org/licenses/mit-license).

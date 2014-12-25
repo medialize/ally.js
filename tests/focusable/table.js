@@ -1,7 +1,7 @@
 require.config({
   paths: {
-    a11y: '../../src',
-    // shims required by a11y.js
+    ally: '../../src',
+    // shims required by ally.js
     'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
     'CSS.escape': '../../bower_components/CSS.escape/css.escape',
     // stuff used for testing and co
@@ -25,7 +25,7 @@ require([
     _.chain(data).values().pluck('focusEvent').value(),
     _.chain(data).values().pluck('noFocusMethod').value(),
     _.chain(data).values().pluck('tabOrder').value(),
-    _.chain(data).values().pluck('a11y').filter().pluck('focusable').value(),
+    _.chain(data).values().pluck('ally').filter().pluck('focusable').value(),
   ]).flatten().unique().filter().value();
 
   var $table = $('#focusable-table');
@@ -110,7 +110,7 @@ require([
   $subline.find('.meta').remove();
   $subline.prepend('<td colspan="2">');
   $subline.find('th').replaceWith(function() {
-    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">a11y.js</th>');
+    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">ally.js</th>');
   });
 
   $scriptTable.find('tbody tr').each(function() {
@@ -121,16 +121,16 @@ require([
       var $browserCell = $(this);
       var browser = $browserCell.attr('data-column');
       var browserSupported = $browserCell.attr('data-supported') === 'yes';
-      var a11ySupported = data[browser].a11y.focusable.indexOf(selector) !== -1;
+      var allySupported = data[browser].ally.focusable.indexOf(selector) !== -1;
 
-      var $a11yCell = $('<td>?</td>').insertAfter($browserCell)
-        .text(a11ySupported ? 'yes' : 'no')
-        .attr('data-supported', a11ySupported ? 'yes' : 'no')
-        .attr('data-correct', browserSupported === a11ySupported ? 'yes' : 'no');
+      var $allyCell = $('<td>?</td>').insertAfter($browserCell)
+        .text(allySupported ? 'yes' : 'no')
+        .attr('data-supported', allySupported ? 'yes' : 'no')
+        .attr('data-correct', browserSupported === allySupported ? 'yes' : 'no');
 
       // make browser versions distinguishable
       $browserCell.css('border-left', '3px solid black');
-      $a11yCell.css('border-right', '3px solid black');
+      $allyCell.css('border-right', '3px solid black');
     })
   });
 
@@ -312,7 +312,7 @@ require([
   $subline.find('.meta').remove();
   $subline.prepend('<td colspan="1">');
   $subline.find('th').replaceWith(function() {
-    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">a11y.js</th>');
+    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">ally.js</th>');
   });
 
 
@@ -320,7 +320,7 @@ require([
 
   // flatten() but maintaining order
   _selectors = Object.keys(data).map(function(browser) {
-    return data[browser].a11y.tabOrder
+    return data[browser].ally.tabOrder
   });
   selectors = mergeArrays.apply(null, [selectors].concat(_selectors));
 
@@ -328,8 +328,8 @@ require([
   Object.keys(data).forEach(function(browser) {
     var list = data[browser].tabOrder;
     data[browser].interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, list));
-    var _list = data[browser].a11y.tabOrder;
-    data[browser].a11y.interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, _list));
+    var _list = data[browser].ally.tabOrder;
+    data[browser].ally.interlockedTabOrder = selectors.map(getFoldedArrayIndexMapper(selectors, _list));
   });
 
   // add rows of actual data
@@ -344,9 +344,9 @@ require([
       var $cell = $(this);
       var browser = $cell.attr('data-column');
       var _index = data[browser].interlockedTabOrder[index];
-      var _aIndex = data[browser].a11y.interlockedTabOrder[index];
+      var _aIndex = data[browser].ally.interlockedTabOrder[index];
       var focusable = data[browser].focusable.indexOf(selector) !== -1;
-      var aFocusable = data[browser].a11y.focusable.indexOf(selector) !== -1;
+      var aFocusable = data[browser].ally.focusable.indexOf(selector) !== -1;
 
       $cell.text(_index !== null ? _index : '')
          .attr('data-tabbable', _index !== null  ? 'yes' : 'no')

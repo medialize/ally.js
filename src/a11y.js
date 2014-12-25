@@ -1,4 +1,4 @@
-define(function defineA11y(require) {
+define(function defineAlly(require) {
   'use strict';
 
   return {

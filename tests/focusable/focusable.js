@@ -1,8 +1,8 @@
 require.config({
   urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
-    a11y: '../../src',
-    // shims required by a11y.js
+    ally: '../../src',
+    // shims required by ally.js
     'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
     'CSS.escape': '../../bower_components/CSS.escape/css.escape',
     // stuff used for testing and co
@@ -29,7 +29,7 @@ function captureStuff() {
     focusRedirection: null,
     noFocusMethod: null,
     tabOrder: null,
-    a11y: {
+    ally: {
       focusable: null,
       tabOrder: null,
     },
@@ -118,8 +118,8 @@ function captureStuff() {
     });
 
     require([
-      'a11y/dom/query-focusable',
-      'a11y/dom/query-tabbable',
+      'ally/dom/query-focusable',
+      'ally/dom/query-tabbable',
       'platform',
       'jquery',
       'jquery.ui/core'
@@ -139,8 +139,8 @@ function captureStuff() {
       });
       // save results
       results.platform = platform;
-      results.a11y.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
-      results.a11y.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
+      results.ally.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
+      results.ally.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
       results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
       results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
       // reset buffers

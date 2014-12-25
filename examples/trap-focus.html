@@ -8,7 +8,7 @@
   
   <h1>Trap Focus In A Sub-Tree Of The DOM</h1>
   <p>
-    a11y.js provides the method <code>a11y/focus/trap</code> to make sure only
+    ally.js provides the method <code>ally/focus/trap</code> to make sure only
     descendants of a given element can befocused (i.e. become the activeElement).
     This behavior is <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">considered best practice by WAI ARIA by when presenting modal dialogs</a>.
   </p>
@@ -23,7 +23,7 @@
 
   <h2 id="usage">Usage</h2>
   <pre>// load focus/trap
-var trapFocus = require('a11y/focus/trap');
+var trapFocus = require('ally/focus/trap');
 // acquire context
 var context = document.getElementById('element-to-keep-focus-in');
 
@@ -56,7 +56,7 @@ disengage();</pre>
   <script src="../bower_components/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['a11y/focus/trap'], function(trapFocus) {
+    require(['ally/focus/trap'], function(trapFocus) {
       var context = document.getElementById('container');
       var button = document.getElementById('activate');
 

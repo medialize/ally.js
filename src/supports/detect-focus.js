@@ -23,7 +23,7 @@ define(function defineSupportsDetectFocus(require) {
   }
 
   var userAgent = window.navigator.userAgent;
-  var cacheKey = 'a11y-focus-cache';
+  var cacheKey = 'ally-focus-cache';
   var cache = readLocalStorage(cacheKey);
 
   // update the cache if the user agent changes (newer version, etc)
