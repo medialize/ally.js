@@ -1,9 +1,9 @@
-define(function defineFocusContainByFocusEvent(require) {
+define(function defineFocusTrapByFocusEvent(require) {
   'use strict';
 
-  var queryTabbable = require('../../dom/query-tabbable');
+  var queryTabbable = require('../dom/query-tabbable');
 
-  function handleContainByFocusEvent(event) {
+  function handleTrapByFocusEvent(event) {
     var unrelated = event.relatedTarget === null || event.relatedTarget === this.ownerDocument;
 
     // Node.compareDocumentPosition is available since IE9
@@ -15,7 +15,7 @@ define(function defineFocusContainByFocusEvent(require) {
     var sequence = queryTabbable(this);
     if (!sequence.length) {
       // the context might've become void meanwhile
-      this._unregisterContainFocusHandler && this._unregisterContainFocusHandler();
+      this._untrapFocusHandler && this._untrapFocusHandler();
       return;
     }
 
@@ -27,5 +27,5 @@ define(function defineFocusContainByFocusEvent(require) {
     target.focus();
   }
 
-  return handleContainByFocusEvent;
+  return handleTrapByFocusEvent;
 });

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Contain Focus To A Sub-Tree Of The DOM</title>
+  <title>Trap Focus In A Sub-Tree Of The DOM</title>
 </head>
 <body>
   
-  <h1>Contain Focus To A Sub-Tree Of The DOM</h1>
+  <h1>Trap Focus In A Sub-Tree Of The DOM</h1>
   <p>
-    a11y.js provides the method <code>a11y/focus/contain</code> to make sure only
+    a11y.js provides the method <code>a11y/focus/trap</code> to make sure only
     descendants of a given element can befocused (i.e. become the activeElement).
     This behavior is <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">considered best practice by WAI ARIA by when presenting modal dialogs</a>.
   </p>
@@ -22,24 +22,24 @@
   </p>
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/contain
-var containFocus = require('a11y/focus/contain');
+  <pre>// load focus/trap
+var trapFocus = require('a11y/focus/trap');
 // acquire context
 var context = document.getElementById('element-to-keep-focus-in');
 
-// activate containing the focus to descendants of context
-var disengage = containFocus(context);
+// activate containing the focus in context (including descendants)
+var disengage = trapFocus(context);
 
-// activate containing the focus to descendants of context,
+// activate containing the focus in context (including descendants),
 // focusing the first tabbable element
-var disengage = containFocus(context, true);
+var disengage = trapFocus(context, true);
 
 // stop containing the focus
 disengage();</pre>
 
 
   <h2 id="example">Example</h2>
-  <p>Press the "contain focus" button below, you will not be able to escape the three middle <code>&lt;input&gt;</code> elements until you press the button "stop containing focus".</p>
+  <p>Press the "trap focus" button below, you will not be able to escape the three middle <code>&lt;input&gt;</code> elements until you press the button "stop trapping focus".</p>
 
   <hr>
   <button type="button" id="activate">loading…</button>
@@ -56,23 +56,23 @@ disengage();</pre>
   <script src="../bower_components/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['a11y/focus/contain'], function(containFocus) {
+    require(['a11y/focus/trap'], function(trapFocus) {
       var context = document.getElementById('container');
       var button = document.getElementById('activate');
 
-      var stopContainingFocus;
+      var stopTrappingFocus;
       button.addEventListener('click', function() {
-        if (stopContainingFocus) {
-          stopContainingFocus();
-          stopContainingFocus = null;
-          button.textContent = 'contain focus';
+        if (stopTrappingFocus) {
+          stopTrappingFocus();
+          stopTrappingFocus = null;
+          button.textContent = 'trap focus';
         } else {
-          stopContainingFocus = containFocus(context, true);
-          button.textContent = 'stop containing focus';
+          stopTrappingFocus = trapFocus(context, true);
+          button.textContent = 'stop trapping focus';
         }
       }, false);
 
-      button.textContent = 'contain focus';
+      button.textContent = 'trap focus';
     });
   </script>
 </body>

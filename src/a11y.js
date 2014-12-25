@@ -10,7 +10,7 @@ define(function defineA11y(require) {
       focusable: require('./dom/is-focusable'),
       tabbable: require('./dom/is-tabbable'),
     },
-    containFocus: require('./focus/contain'),
+    trapFocus: require('./focus/trap'),
     map: {
       keycode: require('./map/keycode'),
     },

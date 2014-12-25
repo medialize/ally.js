@@ -1,4 +1,4 @@
-define(function defineFocusContainByKeyEvent(require) {
+define(function defineFocusTrapByKeyEvent(require) {
   'use strict';
 
   /*
@@ -8,8 +8,8 @@ define(function defineFocusContainByKeyEvent(require) {
       If they are, go with contain-by-focusevent instead!
    */
 
-  var queryTabbable = require('../../dom/query-tabbable');
-  var keycode = require('../../map/keycode');
+  var queryTabbable = require('../dom/query-tabbable');
+  var keycode = require('../map/keycode');
 
   function wrap(sequence, element, forward) {
     if (sequence[0] === element && !forward) {
@@ -30,7 +30,7 @@ define(function defineFocusContainByKeyEvent(require) {
     return false;
   }
 
-  function handleContainByKeyEvent(event) {
+  function handleTrapByKeyEvent(event) {
     var code = event.which || event.keyCode;
     if (code !== keycode.tab) {
       return;
@@ -39,7 +39,7 @@ define(function defineFocusContainByKeyEvent(require) {
     var sequence = queryTabbable(this);
     if (!sequence.length) {
       // the context might've become void meanwhile
-      this._unregisterContainFocusHandler && this._unregisterContainFocusHandler();
+      this._untrapFocusHandler && this._untrapFocusHandler();
       return;
     }
 
@@ -48,5 +48,5 @@ define(function defineFocusContainByKeyEvent(require) {
     }
   };
 
-  return handleContainByKeyEvent;
+  return handleTrapByKeyEvent;
 });
