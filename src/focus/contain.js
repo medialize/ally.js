@@ -29,7 +29,8 @@ define(function defineFocusContain(require) {
     // focus another element in a focus handler, because that would emit two FocusEvents to
     // the Accessibility API and cause screen readers to alert two focus changes where only
     // one should've happened. That's why we intercept the KeyEvent and do things manually…
-    //  Gecko: https://bugzilla.mozilla.org/show_bug.cgi?id=962251 (implement FocusEvent(focusout))
+    //  Gecko: https://bugzilla.mozilla.org/show_bug.cgi?id=687787 (implement FocusEvent(focusout))
+    //  Gecko: https://bugzilla.mozilla.org/show_bug.cgi?id=962251 (no FocusEvent(blur).relatedTarget)
     //  Trident: https://connect.microsoft.com/IE/Feedback/Details/814285 (no FocusEvent(blur).relatedTarget)
     //  Blink: https://code.google.com/p/chromium/issues/detail?id=378163 (about to remove FocusEvent(focusout)?)
     if (!context.compareDocumentPosition || !canDispatchFocusout) {
