@@ -1,4 +1,5 @@
-define(function defineDomSortTabindex(/*require*/) {
+/*jshint unused:vars */
+define(function defineDomSortTabindex(require) {
   'use strict';
 
   function sortTabindex(elements) {

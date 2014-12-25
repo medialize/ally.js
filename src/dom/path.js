@@ -1,4 +1,5 @@
-define(function defineDomPath(/*require*/) {
+/*jshint unused:vars */
+define(function defineDomPath(require) {
   'use strict';
 
   // [elem, elem.parent, elem.parent.parent, …, html]

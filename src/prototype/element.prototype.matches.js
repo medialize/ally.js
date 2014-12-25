@@ -1,4 +1,5 @@
-define(function definePrototypeElementPrototypeMatches(/*require*/) {
+/*jshint unused:vars */
+define(function definePrototypeElementPrototypeMatches(require) {
   'use strict';
 
   // Element.prototype.matches may not be available under that name

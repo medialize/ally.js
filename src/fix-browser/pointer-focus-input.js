@@ -2,7 +2,8 @@
  * Clicking on form field does not necessarily assign it focus in Safari and Firefox on Mac OS X.
  * While not a browser bug, it may be considered undesired behavior.
  */
-define(function defineFixBrowserPointerFocusInput(/*require*/) {
+/*jshint unused:vars */
+define(function defineFixBrowserPointerFocusInput(require) {
   'use strict';
 
   var inputPattern = /^(input|button)$/;

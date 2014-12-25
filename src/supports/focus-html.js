@@ -1,4 +1,4 @@
-define(function defineSupportsFocusDocumentElement(/*require*/) {
+define(function defineSupportsFocusDocumentElement(require) {
   'use strict';
 
   var detectFocus = require('./detect-focus');

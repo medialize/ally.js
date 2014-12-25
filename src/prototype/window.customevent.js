@@ -1,4 +1,5 @@
-define(function definePrototypeWindowCustomevent(/*require*/) {
+/*jshint unused:vars */
+define(function definePrototypeWindowCustomevent(require) {
   'use strict';
 
   if (window.CustomEvent) {

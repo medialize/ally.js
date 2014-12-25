@@ -1,4 +1,5 @@
-define(function defineSupportsDetectFocus(/*require*/) {
+/*jshint unused:vars */
+define(function defineSupportsDetectFocus(require) {
   'use strict';
 
   function readLocalStorage(key) {

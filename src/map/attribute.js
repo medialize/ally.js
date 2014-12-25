@@ -1,4 +1,5 @@
-define(function defineMapAttribute(/*require*/) {
+/*jshint unused:vars */
+define(function defineMapAttribute(require) {
   'use strict';
 
   /*

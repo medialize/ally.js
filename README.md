@@ -90,8 +90,9 @@ require.config({
 
 ### master (will become 0.0.2) ###
 
-* improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer dom interaction and less code
+* improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
+* fixing linting errors
 
 
 ### 0.0.1 (December 25th 2014) ###
