@@ -1,6 +1,6 @@
 {
   "node": true,
-  "browser": false,
+  "browser": true,
   "esnext": false,
   "bitwise": false,
   "camelcase": true,
@@ -20,12 +20,6 @@
   "smarttabs": true,
   "expr": true,
   "globals": {
-    "describe": false,
-    "it": false,
-    "before": false,
-    "beforeEach": false,
-    "after": false,
-    "afterEach": false,
     "define": false
   }
 }

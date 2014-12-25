@@ -14,7 +14,7 @@ define(function defineDomQueryTabbable(require) {
 
     var elements = queryFocusable(context).filter(isTabbable);
     return sortTabindex(elements);
-  };
+  }
 
   return queryTabbable;
 });

@@ -19,7 +19,7 @@ define(function defineSupportsFocusoutEvent(require) {
 
     return target;
   }, function(element) {
-    return "onfocusout" in element || received;
+    return 'onfocusout' in element || received;
   });
 
   return canDispatchFocusout;

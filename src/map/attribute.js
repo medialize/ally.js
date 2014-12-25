@@ -1,4 +1,4 @@
-defined(function defineMapAttribute(require) {
+define(function defineMapAttribute(/*require*/) {
   'use strict';
 
   /*

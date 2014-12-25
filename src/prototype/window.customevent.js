@@ -1,4 +1,4 @@
-define(function definePrototypeWindowCustomevent(require) {
+define(function definePrototypeWindowCustomevent(/*require*/) {
   'use strict';
 
   if (window.CustomEvent) {
@@ -17,7 +17,7 @@ define(function definePrototypeWindowCustomevent(require) {
 
     evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
     return evt;
-  };
+  }
   
   CustomEvent.prototype = window.Event.prototype;
   window.CustomEvent = CustomEvent;

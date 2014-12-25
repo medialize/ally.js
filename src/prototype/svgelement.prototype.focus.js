@@ -1,4 +1,4 @@
-define(function definePrototypeSvgElementPrototypeFocus(require) {
+define(function definePrototypeSvgElementPrototypeFocus(/*require*/) {
   'use strict';
   
   // Firefox and IE11 do not "properly" inherit the focus() method.

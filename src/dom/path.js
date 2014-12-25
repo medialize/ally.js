@@ -1,4 +1,4 @@
-define(function defineDomPath(require) {
+define(function defineDomPath(/*require*/) {
   'use strict';
 
   // [elem, elem.parent, elem.parent.parent, …, html]

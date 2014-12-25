@@ -19,7 +19,7 @@ define(function defineFixBrowserPointerFocusParent(require) {
   var isFocusable = require('../dom/is-focusable');
   var isValidTabIndex = require('../dom/is-valid-tabindex');
 
-  function preventFocusParent(context, entryEvent, exitEvents) {
+  function preventFocusParent(context, entryEvent) {
     // add [tabindex="0"] to the element that is about to be clicked
     // if it does not already have an explicit tabindex (attribute).
     // By applying an explicit tabindex, WebKit will not go look for
@@ -45,7 +45,6 @@ define(function defineFixBrowserPointerFocusParent(require) {
 
       // add cleanup to the RunLoop
       (window.setImmediate || window.setTimeout)(function() {
-        console.log("caught", event.type, "reverting");
         _focusableElement.removeAttribute('tabindex');
       }, 0);
     }

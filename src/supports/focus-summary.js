@@ -5,7 +5,7 @@ define(function defineSupportsFocusSummary(require) {
 
   var canFocusSummary = detectFocus('can-focus-summary', 'details', function(element) {
     element.innerHTML = '<summary>foo</summary><p>content</p>';
-    return element.firstElementChild
+    return element.firstElementChild;
   });
 
   return canFocusSummary;

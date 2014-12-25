@@ -4,6 +4,7 @@ define(function defineFocusTrapByFocusEvent(require) {
   var queryTabbable = require('../dom/query-tabbable');
 
   function handleTrapByFocusEvent(event) {
+    /*jshint validthis:true */
     var unrelated = event.relatedTarget === null || event.relatedTarget === this.ownerDocument;
 
     // Node.compareDocumentPosition is available since IE9

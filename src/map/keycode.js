@@ -1,4 +1,4 @@
-define(function defineMapKeycode(require) {
+define(function defineMapKeycode(/*require*/) {
   'use strict';
 
   // TODO: see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.key

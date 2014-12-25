@@ -58,7 +58,7 @@ define(function defineDomIsVisible(require) {
 
     // an <a> in <svg> does not necessarily have intrinsic dimensions, but its focusable anyways
     if (element.ownerSVGElement && nodeName === 'a') {
-      return false
+      return false;
     }
 
     // [contenteditable]:empty has no height in Firefox

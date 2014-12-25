@@ -25,6 +25,7 @@ define(function defineSelectorFocusable(require) {
   // TODO: decide if elements in ::shadow should be identified as focusable as well
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  /*jshint laxbreak: true */
   var selector = 'body,'
     // Firefox, IE11 can focus <html>
     + (canFocusHtml ? 'html,' : '')
@@ -55,6 +56,7 @@ define(function defineSelectorFocusable(require) {
     + '[tabindex],'
     // editing hosts
     + '[contenteditable]';
+  /*jshint laxbreak: false */
 
   return selector;
 });

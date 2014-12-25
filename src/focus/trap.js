@@ -58,7 +58,7 @@ define(function defineFocusTrap(require) {
     }
 
     return context._untrapFocusHandler;
-  };
+  }
 
   return trapFocus;
 });

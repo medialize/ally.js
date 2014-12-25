@@ -1,4 +1,4 @@
-define(function defineSupportsDetectFocus(require) {
+define(function defineSupportsDetectFocus(/*require*/) {
   'use strict';
 
   function readLocalStorage(key) {
