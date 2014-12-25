@@ -10,7 +10,7 @@
  * This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
  * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 40.
  */
-define(function defineFocusFixPointerFocus(require) {
+define(function defineFixBrowserPointerFocusParent(require) {
   'use strict';
 
   require('array.prototype.findindex');
@@ -18,7 +18,7 @@ define(function defineFocusFixPointerFocus(require) {
   var path = require('../dom/path');
   var isFocusable = require('../dom/is-focusable');
 
-  function preventFocus(context, entryEvent, exitEvent) {
+  function preventFocusParent(context, entryEvent, exitEvent) {
     // remove [tabindex="-1"] from the element that is about to be clicked
     // so the element (and its parents) cannot be given focus after the 
     // entryEvent (mousedown, touchstart) is processed. Restore tabindex 
@@ -87,15 +87,15 @@ define(function defineFocusFixPointerFocus(require) {
   }
 
   // export convenience wrapper to engage pointer-focus prevention
-  function fixPointerFocus(context) {
-    var allowMouse = preventFocus(context || document, 'mousedown', 'mouseup');
-    var allowTouch = preventFocus(context || document, 'touchstart', 'touchend');
+  function fixPointerFocusParent(context) {
+    var allowMouse = preventFocusParent(context || document, 'mousedown', 'mouseup');
+    var allowTouch = preventFocusParent(context || document, 'touchstart', 'touchend');
     // return callback to disengage the pointer-focus prevention
-    return function undoFixPointerFocus() {
+    return function undoFixPointerFocusParent() {
       allowMouse();
       allowTouch();
     };
   }
 
-  return fixPointerFocus;
+  return fixPointerFocusParent;
 });

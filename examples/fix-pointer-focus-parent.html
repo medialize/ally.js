@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Parent Browser Bug</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+    
+    #ficken:focus { outline: 3px solid red; }
+    #bumsen:focus { outline: 3px solid blue; }
+  </style>
+</head>
+<body>
+  
+  <h1>Fix Pointer Focus Parent Browser Bug</h1>
+  <p>
+    a11y.js provides the method <code>a11y/fix-browser/pointer-focus</code> to workaround an issue in Blink and WebKit causing
+    focus given by <code>MouseEvent</code> and <code>TouchEvent</code> to be given to the next parent element accepting focus,
+    rather than the element the event was dispatched to.
+  </p>
+
+
+  <h2 id="usage">Usage</h2>
+  <pre>// load fixPointerFocusParent()
+var fixPointerFocusParent = require('a11y/fix-browser/pointer-focus-parent');
+// acquire context
+var context = document.getElementById('element-to-fix');
+
+// activate the fix on a specific sub-tree (for every browser)
+var disengage = fixPointerFocusParent(context);
+
+// activate the fix for the entire document (for every browser)
+var disengage = fixPointerFocusParent();
+
+// disable the fix
+disengage();</pre>
+
+
+  <h2 id="example">Example</h2>
+  <p>Click on both links and observe which element is getting focus.</p>
+  <h3>Natural Browser Behavior</h3>
+  <div tabindex="-1">
+    <a href="#foo">some link</a>
+  </div>
+  <h3>Fixed Behavior</h3>
+  <div tabindex="-1" id="fix-pointer-focus">
+    <a href="#foo">some link</a>
+  </div>
+
+  <script src="../bower_components/requirejs/require.js"></script>
+  <script src="main.js"></script>
+  <script>
+
+    require(['a11y/fix-browser/pointer-focus-parent'], function(fixPointerFocusParent) {
+      var context = document.getElementById('fix-pointer-focus');
+      fixPointerFocusParent(context);
+    });
+  </script>
+</body>
+</html>

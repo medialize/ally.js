@@ -29,7 +29,8 @@ a11y.js (pronounced "ally js", pun intended) is a dependency-free library coveri
 
 ### Working Around Browser Bugs
 
-* `fix-browser/pointer-focus` -- to work around focus-click bug in [Blink](#todo-bug-link) and [WebKit](#todo-bug-link)
+* [`fix-browser/pointer-focus-parent`](http://medialize.github.io/a11y.js/examples/fix-pointer-focus-parent.html) -- to work around focus-click bug in [Blink](#todo-bug-link) and [WebKit](#todo-bug-link)
+
 
 ### Development / Debugging
 
