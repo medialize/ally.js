@@ -4,6 +4,6 @@ require.config({
   }
 });
 
-require(['a11y/focus/fix-pointer-focus'], function (fixPointerFocus) {
+require(['a11y/fix-browser/pointer-focus'], function (fixPointerFocus) {
   fixPointerFocus(document);
 });
