@@ -8,7 +8,7 @@
  *   </div>
  *
  * This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
- * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 40.
+ * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
  */
 define(function defineFixBrowserPointerFocusParent(require) {
   'use strict';
@@ -17,17 +17,15 @@ define(function defineFixBrowserPointerFocusParent(require) {
 
   var path = require('../dom/path');
   var isFocusable = require('../dom/is-focusable');
+  var isValidTabIndex = require('../dom/is-valid-tabindex');
 
-  function preventFocusParent(context, entryEvent, exitEvent) {
-    // remove [tabindex="-1"] from the element that is about to be clicked
-    // so the element (and its parents) cannot be given focus after the 
-    // entryEvent (mousedown, touchstart) is processed. Restore tabindex 
-    // attributes (attributes, not properties!) on exitEvent 
-    // (mouseup, touchstart) so programmatic focus remains possible
+  function preventFocusParent(context, entryEvent, exitEvents) {
+    // add [tabindex="0"] to the element that is about to be clicked
+    // if it does not already have an explicit tabindex (attribute).
+    // By applying an explicit tabindex, WebKit will not go look for
+    // the first valid tabindex in the element's parents.
     function hideTabindex(event) {
-      // remember the elements we hacked
-      var revert = [];
-      // obtain the DOM hierarchy path of the element about to be clicked on,
+      // // obtain the DOM hierarchy path of the element about to be clicked on,
       var _path = path(event.target);
       // find the first element that is actually focusable
       var _firstFocusableIndex = _path.findIndex(isFocusable);
@@ -36,45 +34,20 @@ define(function defineFixBrowserPointerFocusParent(require) {
         return;
       }
 
-      // clean the negative tabindexes of every parent of the focusable element, 
-      // as the click would otherwise simply focus a parent element in Chrome
-      // related bug: https://code.google.com/p/chromium/issues/detail?id=350738#c12
-      _path.slice(_firstFocusableIndex + 1).forEach(function(node) {
-        // need to use the attribute, not the property, because
-        // node.tabIndex === -1 - even if the tabindex attribute was not set,
-        // where getAttribute('tabindex') === null if it is not present.
-        var tabindex = node.getAttribute('tabindex');
-        if (!tabindex || parseInt(tabindex, 10) >= 0) {
-          // [tabindex="0"] can be tabbed to, so we'll allow focus by mouse/touch
-          return;
-        }
-
-        // hide the tabindex from the browser, this is where we disengage browser's
-        node.setAttribute('data-disabled-tabindex', tabindex);
-        node.removeAttribute('tabindex');
-        revert.push(node);
-      });
-
-      if (!revert.length) {
-        // there's nothing to revert, so skip that
+      var _focusableElement = _path[_firstFocusableIndex];
+      if (_focusableElement.hasAttribute('tabindex') && isValidTabIndex(_focusableElement)) {
+        // if it already has tabindex, we're good
         return;
       }
 
-      function restoreTabindex() {
-        while (revert.length) {
-          var node = revert.pop();
-          // restore the tabindex we previously hid from the browser
-          var tabindex = node.getAttribute('data-disabled-tabindex');
-          node.setAttribute('tabindex', tabindex);
-          node.removeAttribute('data-disabled-tabindex');
-        }
+      // assign explicit tabindex, as implicit tabindex is the problem
+      _focusableElement.setAttribute('tabindex', 0);
 
-        // we only needed to listen to this event once, so kill it.
-        document.removeEventListener(exitEvent, restoreTabindex, false);
-      }
-
-      // engage pointer-focus hack undo
-      document.addEventListener(exitEvent, restoreTabindex, false);
+      // add cleanup to the RunLoop
+      (window.setImmediate || window.setTimeout)(function() {
+        console.log("caught", event.type, "reverting");
+        _focusableElement.removeAttribute('tabindex');
+      }, 0);
     }
 
     // engage pointer-focus hack
@@ -88,8 +61,8 @@ define(function defineFixBrowserPointerFocusParent(require) {
 
   // export convenience wrapper to engage pointer-focus prevention
   function fixPointerFocusParent(context) {
-    var allowMouse = preventFocusParent(context || document, 'mousedown', 'mouseup');
-    var allowTouch = preventFocusParent(context || document, 'touchstart', 'touchend');
+    var allowMouse = preventFocusParent(context || document, 'mousedown');
+    var allowTouch = preventFocusParent(context || document, 'touchstart');
     // return callback to disengage the pointer-focus prevention
     return function undoFixPointerFocusParent() {
       allowMouse();

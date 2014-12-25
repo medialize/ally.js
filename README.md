@@ -87,6 +87,11 @@ require.config({
 
 ## Changelog
 
+### master (will become 0.0.2) ###
+
+* improving `fix-browser/pointer-focus-parent` for fewer dom interaction and less code
+
+
 ### 0.0.1 (December 25th 2014) ###
 
 * initial release "focus"
