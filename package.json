@@ -1,8 +1,8 @@
 {
-  "name": "a11y.js",
+  "name": "ally.js",
   "version": "0.0.1",
   "description": "Library to help applications with accessibility concerns",
-  "main": "src/a11y.js",
+  "main": "src/ally.js",
   "directories": {
     "example": "examples",
     "test": "tests"
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/medialize/a11y.js.git"
+    "url": "https://github.com/medialize/ally.js.git"
   },
   "keywords": [
     "accessibility",
@@ -25,7 +25,7 @@
   "author": "Rodney Rehm <rodney.rehm@medialize.de> (http://rodneyrehm.de/en/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/medialize/a11y.js/issues"
+    "url": "https://github.com/medialize/ally.js/issues"
   },
-  "homepage": "https://github.com/medialize/a11y.js"
+  "homepage": "https://github.com/medialize/ally.js"
 }

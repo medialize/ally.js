@@ -226,7 +226,7 @@ define(function defineDemoFocusableIE11(require) {
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}"
     ],
-    "a11y": {
+    "ally": {
       "focusable": [
         "BODY",
         "input[type=text]",

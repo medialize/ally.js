@@ -1,9 +1,9 @@
 require.config({
   paths: {
-    a11y: '../../src'
+    ally: '../../src'
   }
 });
 
-require(['a11y/fix-browser/pointer-focus'], function (fixPointerFocus) {
+require(['ally/fix-browser/pointer-focus'], function (fixPointerFocus) {
   fixPointerFocus(document);
 });
