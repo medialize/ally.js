@@ -2,7 +2,6 @@
 
 ## TODO: Investigate
 
-* http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-dialog-element
 * `audio` vs. `audio[controls]` in Firefox, IE11
 * `video` vs. `video[controls]` in Firefox, IE11 (Chrome, Safari ignore it entirely)
 
