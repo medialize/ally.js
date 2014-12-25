@@ -1,6 +1,6 @@
 # a11y.js
 
-a11y.js (pronounced "ally js", pun intended) is a dependency-free library covering generic accessibility topics. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to a11y.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
+a11y.js (pronounced "ally js", pun intended) is a dependency-free **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to a11y.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
 
 
 ---
@@ -85,7 +85,7 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.1.0) ###
+### master (will become 0.0.1) ###
 
 * initial release "focus"
 

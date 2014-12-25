@@ -1,10 +1,10 @@
 {
   "name": "a11y.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
-    "Rodney Rehm <rodney.rehm@medialize.de>"
+    "Rodney Rehm <rodney.rehm@medialize.de> (http://rodneyrehm.de/en/)"
   ],
-  "description": "suite of JavaScript functions and workflows to help applications with accessibility concerns",
+  "description": "Library to help applications with accessibility concerns",
   "keywords": [
     "accessibility",
     "a11y",
@@ -17,9 +17,11 @@
   "private": true,
   "ignore": [
     "**/.*",
+    "*.md",
+    "*.html",
     "node_modules",
     "bower_components",
-    "demo",
+    "examples",
     "test",
     "tests"
   ],
