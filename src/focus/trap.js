@@ -19,6 +19,7 @@ define(function defineFocusTrap(require) {
   var queryTabbable = require('../dom/query-tabbable');
   var trapByFocusEvent = require('./trap.focusevent');
   var trapByKeyEvent = require('./trap.keyevent');
+  var observeBodyFocus = require('./trap.observe-body');
   var canDispatchFocusout = require('../supports/focusout-event');
 
   function trapFocus(context, focusFirst) {
@@ -39,6 +40,8 @@ define(function defineFocusTrap(require) {
       _handle = trapByKeyEvent.bind(context);
       _event = 'keydown';
       _capture = false;
+      // unlike focusout the keyevents can't detect when context lost focus
+      observeBodyFocus(context);
     }
 
     var sequence = queryTabbable(context);
@@ -51,6 +54,9 @@ define(function defineFocusTrap(require) {
     context._untrapFocusHandler = function untrapFocus() {
       context.removeEventListener(_event, _handle, _capture);
       delete context._untrapFocusHandler;
+
+      context._undoObserveBodyFocus && context._undoObserveBodyFocus();
+      context._undoCaptureBodyFocus && context._undoCaptureBodyFocus();
     };
 
     if (focusFirst) {
