@@ -1,53 +1,7 @@
-/*jshint unused:vars */
 define(function defineSupportsDetectFocus(require) {
   'use strict';
 
-  function readLocalStorage(key) {
-    if (!document.hasFocus()) {
-      // if the document does not have focus when tests are executed, focus() may
-      // not be handled properly and eventy may not be dispatched immediately.
-      // This can happen when a document is reloaded while Developer Tools have focus.
-      console.warn('document requires focus for a11y support tests');
-      return {};
-    }
-
-    var data;
-    try {
-      data = window.localStorage && window.localStorage.getItem(key);
-      if (data) {
-        data = JSON.parse(data);
-      } else {
-        data = {};
-      }
-    } catch (e) {
-      data = {};
-    }
-    return data;
-  }
-
-  function writeLocalStorage(key, value) {
-    if (!document.hasFocus()) {
-      // if the document does not have focus when tests are executed, focus() may
-      // not be handled properly and eventy may not be dispatched immediately.
-      // This can happen when a document is reloaded while Developer Tools have focus.
-      return;
-    }
-
-    try {
-      window.localStorage && window.localStorage.setItem(key, JSON.stringify(value));
-    } catch (e) {}
-  }
-
-  var userAgent = window.navigator.userAgent;
-  var cacheKey = 'ally-focus-cache';
-  var cache = readLocalStorage(cacheKey);
-
-  // update the cache if the user agent changes (newer version, etc)
-  if (cache.userAgent !== userAgent) {
-    cache = {};
-  }
-
-  cache.userAgent = userAgent;
+  var cache = require('./supports-cache');
 
   // nodeName:
   //  {string} element name
@@ -86,12 +40,13 @@ define(function defineSupportsDetectFocus(require) {
   // cache detected support so we don't have to bother screen readers with unstoppable focus changes
   // and flood the console with net::ERR_INVALID_URL errors for audio/video tests
   function detectFocusSupport(testName, nodeName, callback, validate) {
-    if (typeof cache[testName] !== 'boolean') {
-      cache[testName] = detectFocus(nodeName, callback, validate);
-      writeLocalStorage(cacheKey, cache);
+    var value = cache.get(testName);
+    if (typeof value !== 'boolean') {
+      value = detectFocus(nodeName, callback, validate);
+      cache.set(testName, value);
     }
 
-    return cache[testName];
+    return value;
   }
 
   return detectFocusSupport;
