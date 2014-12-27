@@ -96,6 +96,7 @@ require.config({
 * improving [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
 * fixing `event/active-element` to be dispatched on `document` rather than `document.body`
 * adding `supports/supports-cache` to store browser compatibility data
+* improving `selector/focusable` (and `dom/query-focusable`) by also finding focusable shadowed elements (ShadowDOM)
 * fixing linting errors
 
 
