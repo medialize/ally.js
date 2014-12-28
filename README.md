@@ -27,6 +27,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 * `dom/query-focusable`, `dom/is-focusable` - to obtain a list of focusable elements within a given DOM element
 * `dom/query-tabbable`, `dom/is-tabbable` - to obtain a list of tabbable elements within a given DOM element
+* `dom/query-tabsequence` - to obtain the exact order of tabbable elements within a given DOM element
 
 ### Handling Interaction
 
@@ -94,6 +95,7 @@ require.config({
 * adding warning to browser support detection when document does not have focus
 * adding `supports/supports-cache` to store browser compatibility data
 * adding `focus/first` to identify and focus the first `[autofocus]` or `[tabindex=0]` element
+* adding `dom/query-domsequence` to separate sorting and mutating the list from `dom/query-tabbable`
 * improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
 * improving [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
 * improving `selector/focusable` (and `dom/query-focusable`) by also finding focusable shadowed elements (ShadowDOM)

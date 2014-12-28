@@ -119,11 +119,11 @@ function captureStuff() {
 
     require([
       'ally/dom/query-focusable',
-      'ally/dom/query-tabbable',
+      'ally/dom/query-tabsequence',
       'platform',
       'jquery',
       'jquery.ui/core'
-    ], function (queryFocusable, queryTabbable, platform, $) {
+    ], function (queryFocusable, queryTabsequence, platform, $) {
       // save results
       results.focusEvents = focusEventHistory.filter(ignore);
       // reset buffers
@@ -140,7 +140,7 @@ function captureStuff() {
       // save results
       results.platform = platform;
       results.ally.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
-      results.ally.tabOrder = queryTabbable(document).map(elementName).filter(ignore);
+      results.ally.tabOrder = queryTabsequence(document).map(elementName).filter(ignore);
       results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
       results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
       // reset buffers
