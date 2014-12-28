@@ -15,7 +15,7 @@ define(function defineSupportsCache(require) {
       // if the document does not have focus when tests are executed, focus() may
       // not be handled properly and eventy may not be dispatched immediately.
       // This can happen when a document is reloaded while Developer Tools have focus.
-      console.warn('document requires focus for a11y support tests');
+      window.console && window.console.warn && console.warn('document requires focus for a11y support tests');
       return {};
     }
 
