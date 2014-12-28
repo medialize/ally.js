@@ -8,7 +8,7 @@ define(function defineFocusTrap(require) {
       trapFocus(context) returns a function to disengage containing the focus.
       This function is also exposed on context._untrapFocusHandler;
 
-      Having multiple (nested) contexts containing the focus is technically possible.
+      Having multiple (nested) contexts containing the focus is technically not possible.
 
       Note: It is, unlike the native <dialog> implementation in Blink,
       not possible to tab to the browser chrome while focusContain() is active.
@@ -27,9 +27,6 @@ define(function defineFocusTrap(require) {
     var _handle = trapByFocusEvent.bind(context);
     var _event = 'focusout';
     var _capture = true;
-
-    // TODO: verify behavior with [tabindex=1] in the mix (see dialog)
-    // TODO: enable stacking of capture contexts (remember last focus before leaving)
 
     // Gecko and Trident don't expose relatedTarget on blur events and it does not support focusout
     // so there is no way to react to a focus event before it actually happened. We cannot

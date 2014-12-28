@@ -17,12 +17,6 @@ define(function defineSelectorFocusable(require) {
   var canFocusSummary = require('../supports/focus-summary');
   var supportsCssShadow = require('../supports/css-shadow');
 
-  // TODO: investigate SVG's focusable attribute
-  //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
-  //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
-  //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
-  //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
-
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   /*jshint laxbreak: true */
   var selector = 'body,'

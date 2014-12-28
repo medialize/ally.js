@@ -18,10 +18,6 @@ define(function defineDomQueryTabbable(require) {
   }
 
   function queryTabsequence(context, includeContext) {
-
-    // TODO: [tabbing-order] in Firefox and IE filter out <area>s and inject them where the associated <img usemap> occurs in DOM sequence
-    // TODO: figure out what impact shadow dom has with ::shadow [tabindex="123"]
-
     var elements = queryTabbable(context, includeContext);
     elements = sortTabindex(elements);
 
