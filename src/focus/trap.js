@@ -17,15 +17,19 @@ define(function defineFocusTrap(require) {
    */
 
   var queryTabbable = require('../dom/query-tabbable');
+  var focusFirst = require('./first');
   var trapByFocusEvent = require('./trap.focusevent');
   var trapByKeyEvent = require('./trap.keyevent');
   var observeBodyFocus = require('./trap.observe-body');
   var canDispatchFocusout = require('../supports/focusout-event');
 
-  function trapFocus(context, focusFirst) {
+  function trapFocus(context, _focusFirst) {
     var _handle = trapByFocusEvent.bind(context);
     var _event = 'focusout';
     var _capture = true;
+
+    // TODO: verify behavior with [tabindex=1] in the mix (see dialog)
+    // TODO: enable stacking of capture contexts (remember last focus before leaving)
 
     // Gecko and Trident don't expose relatedTarget on blur events and it does not support focusout
     // so there is no way to react to a focus event before it actually happened. We cannot
@@ -59,8 +63,8 @@ define(function defineFocusTrap(require) {
       context._undoCaptureBodyFocus && context._undoCaptureBodyFocus();
     };
 
-    if (focusFirst) {
-      sequence[0].focus();
+    if (_focusFirst) {
+      focusFirst(sequence);
     }
 
     return context._untrapFocusHandler;

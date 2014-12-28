@@ -32,6 +32,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 ### Handling Interaction
 
 * [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
+* `focus/first` -- to identify the element that should receive focus upon entering a new context
 
 ### Working Around Browser Bugs
 
@@ -94,7 +95,7 @@ require.config({
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
 * adding warning to browser support detection when document does not have focus
 * adding `supports/supports-cache` to store browser compatibility data
-* adding `focus/first` to identify and focus the first `[autofocus]` or `[tabindex=0]` element
+* adding `focus/first` to identify and focus the first `[autofocus]` or non positive tabindex (`[tabindex=1]`) element
 * adding `dom/query-domsequence` to separate sorting and mutating the list from `dom/query-tabbable`
 * improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
 * improving [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
