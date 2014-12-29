@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Gecko: FlexBox Order Affects Tabbing Sequence</title>
+  <meta charset="utf-8" />
+  <title>Gecko: FlexBox Order Affects Tabbing Sequence</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
 </head>
 <body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1116140
+  -->
 
   <p>
     In Gecko the CSS <a href="http://dev.w3.org/csswg/css-flexbox/#order-property">property <code>order</code></a> affects tabbing sequence,
