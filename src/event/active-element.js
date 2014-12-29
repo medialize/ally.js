@@ -34,7 +34,7 @@ define(function defineEventActiveElement(require) {
         }
       });
 
-      document.body.dispatchEvent(activeElementEvent);
+      document.dispatchEvent(activeElementEvent);
       previousActiveElement = document.activeElement;
     }
 

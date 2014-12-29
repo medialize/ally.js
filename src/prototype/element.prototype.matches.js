@@ -1,3 +1,4 @@
+/*jshint unused:vars */
 define(function definePrototypeElementPrototypeMatches(require) {
   'use strict';
 

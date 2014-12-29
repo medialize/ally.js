@@ -1,3 +1,4 @@
+/*jshint unused:vars */
 define(function defineDomSortTabindex(require) {
   'use strict';
 
@@ -46,7 +47,7 @@ define(function defineDomSortTabindex(require) {
     var _elements = indexes.sort().map(function(tabIndex) {
       return map[tabIndex];
     }).reduceRight(function(previous, current) {
-      return current.concat(previous)
+      return current.concat(previous);
     }, normal);
 
     return _elements;

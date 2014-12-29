@@ -15,16 +15,10 @@ define(function defineSelectorFocusable(require) {
   var canFocusTable = require('../supports/focus-table');
   var canFocusFieldset = require('../supports/focus-fieldset');
   var canFocusSummary = require('../supports/focus-summary');
-
-  // TODO: investigate SVG's focusable attribute
-  //   https://bugzilla.mozilla.org/show_bug.cgi?id=409404
-  //   SVG-Tiny 1.2 defines the focusable attribute: http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr
-  //   SVG 2 does not mention the focusable attribute: https://svgwg.org/svg2-draft/interact.html#Focus
-  //   waiting for feedback from Doug - https://twitter.com/shepazu/status/526800017516814337
-
-  // TODO: decide if elements in ::shadow should be identified as focusable as well
+  var supportsCssShadow = require('../supports/css-shadow');
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  /*jshint laxbreak: true */
   var selector = 'body,'
     // Firefox, IE11 can focus <html>
     + (canFocusHtml ? 'html,' : '')
@@ -55,6 +49,12 @@ define(function defineSelectorFocusable(require) {
     + '[tabindex],'
     // editing hosts
     + '[contenteditable]';
+  /*jshint laxbreak: false */
+
+  // where ShadowDOM is supported, we also want the shadowed focusable elemenets
+  if (supportsCssShadow) {
+    selector += ', ::shadow ' + selector.replace(/\s*,\s*/g, ',').split(',').join(', ::shadow ');
+  }
 
   return selector;
 });

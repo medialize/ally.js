@@ -6,15 +6,10 @@ define(function defineDomQueryTabbable(require) {
 
   var queryFocusable = require('./query-focusable');
   var isTabbable = require('./is-tabbable');
-  var sortTabindex = require('./sort-tabindex');
 
-  function queryTabbable(context) {
-
-    // TODO: [tabbing-order] filter out <area> and inject them where <img usemap> occurs (like trident does it)
-
-    var elements = queryFocusable(context).filter(isTabbable);
-    return sortTabindex(elements);
-  };
+  function queryTabbable(context, includeContext) {
+    return queryFocusable(context, includeContext).filter(isTabbable);
+  }
 
   return queryTabbable;
 });

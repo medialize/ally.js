@@ -8,7 +8,7 @@ define(function defineFocusTrap(require) {
       trapFocus(context) returns a function to disengage containing the focus.
       This function is also exposed on context._untrapFocusHandler;
 
-      Having multiple (nested) contexts containing the focus is technically possible.
+      Having multiple (nested) contexts containing the focus is technically not possible.
 
       Note: It is, unlike the native <dialog> implementation in Blink,
       not possible to tab to the browser chrome while focusContain() is active.
@@ -17,11 +17,13 @@ define(function defineFocusTrap(require) {
    */
 
   var queryTabbable = require('../dom/query-tabbable');
+  var focusFirst = require('./first');
   var trapByFocusEvent = require('./trap.focusevent');
   var trapByKeyEvent = require('./trap.keyevent');
+  var observeBodyFocus = require('./trap.observe-body');
   var canDispatchFocusout = require('../supports/focusout-event');
 
-  function trapFocus(context, focusFirst) {
+  function trapFocus(context, _focusFirst) {
     var _handle = trapByFocusEvent.bind(context);
     var _event = 'focusout';
     var _capture = true;
@@ -39,6 +41,8 @@ define(function defineFocusTrap(require) {
       _handle = trapByKeyEvent.bind(context);
       _event = 'keydown';
       _capture = false;
+      // unlike focusout the keyevents can't detect when context lost focus
+      observeBodyFocus(context);
     }
 
     var sequence = queryTabbable(context);
@@ -51,14 +55,17 @@ define(function defineFocusTrap(require) {
     context._untrapFocusHandler = function untrapFocus() {
       context.removeEventListener(_event, _handle, _capture);
       delete context._untrapFocusHandler;
+
+      context._undoObserveBodyFocus && context._undoObserveBodyFocus();
+      context._undoCaptureBodyFocus && context._undoCaptureBodyFocus();
     };
 
-    if (focusFirst) {
-      sequence[0].focus();
+    if (_focusFirst) {
+      focusFirst(sequence);
     }
 
     return context._untrapFocusHandler;
-  };
+  }
 
   return trapFocus;
 });

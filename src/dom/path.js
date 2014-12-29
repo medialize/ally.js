@@ -1,3 +1,4 @@
+/*jshint unused:vars */
 define(function defineDomPath(require) {
   'use strict';
 

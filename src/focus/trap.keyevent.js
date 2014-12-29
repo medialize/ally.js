@@ -31,6 +31,7 @@ define(function defineFocusTrapByKeyEvent(require) {
   }
 
   function handleTrapByKeyEvent(event) {
+    /*jshint validthis:true */
     var code = event.which || event.keyCode;
     if (code !== keycode.tab) {
       return;
@@ -44,9 +45,9 @@ define(function defineFocusTrapByKeyEvent(require) {
     }
 
     if (wrap(sequence, event.target, !event.shiftKey)) {
-      event.preventDefault()
+      event.preventDefault();
     }
-  };
+  }
 
   return handleTrapByKeyEvent;
 });

@@ -3,7 +3,7 @@ define(function defineSupportsFocusDocumentElement(require) {
 
   var detectFocus = require('./detect-focus');
 
-  var canFocusDocumentElement = detectFocus('can-focus-document-element', 'div', function(element) {
+  var canFocusDocumentElement = detectFocus('can-focus-document-element', 'div', function(/*element*/) {
     return document.documentElement;
   });
 

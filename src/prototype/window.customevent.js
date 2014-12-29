@@ -1,3 +1,4 @@
+/*jshint unused:vars */
 define(function definePrototypeWindowCustomevent(require) {
   'use strict';
 
@@ -17,7 +18,7 @@ define(function definePrototypeWindowCustomevent(require) {
 
     evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
     return evt;
-  };
+  }
   
   CustomEvent.prototype = window.Event.prototype;
   window.CustomEvent = CustomEvent;

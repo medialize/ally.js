@@ -9,11 +9,19 @@
     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
   -->
   <p>
-    When opening a dialog through <code>.openModal()</code> the first focusable (yes, even <code>[tabindex="-1"]</code>) gets focus, unless a form element has <code>[autofocus]</code>.
-    Positive tabindex <code>[tabindex="1"]</code> is prepended to the tab-order, making it accessible directly through <kbd>Shift + Tab</kbd> or after a full loop through the browser chrome (address bar, etc.).
+    When opening a dialog through <code>.openModal()</code> the first focusable (yes, even <code>[tabindex="-1"]</code>) gets focus,
+    unless a form element has <code>[autofocus]</code>. Positive tabindex (<code>[tabindex="1"]</code>) is prepended to the tab-order,
+    making it accessible directly through <kbd>Shift + Tab</kbd> or after a full loop through the browser chrome (address bar, etc.).
+    If the first focusable DOM element has a positive tabindex (<code>[tabindex="3"]</code>), the tabbing-sequence is entered at that
+    point, continuing with <code>[tabindex="4"]</code> on <kbd>Tab</kbd> and going back to <code>[tabindex="2"]</code> on
+    <kbd>Shift Tab</kbd>. While opening the dialog <code>[autofocus]</code> is respected, it is ignored upon the document gaining focus
+    again, after focus was on browser UI. In this case, the tabbing sequence starts with <code>[tabindex="1"]</code> if available,
+    otherwise with the first focusable DOM element.
   </p>
-  <p>Note that it is not possible to focus the browser chrome from script.</p>
+
+  <p>Note: it is not possible to focus the browser chrome from script.</p>
   <p>Note: <code>&lt;dialog&gt;</code> is currently <a href="http://caniuse.com/#feat=dialog">only supported by Blink</a>.</p>
+
 
   <dialog id="favDialog">
     <form method="dialog">
@@ -21,7 +29,7 @@
         <p>
           <div id="focusable" tabindex="-1">focusable</div>
           <input type="text" id="plain">
-          <input type="text" id="with-autofocus" au-tofocus>
+          <input type="text" id="with-autofocus" autofocus>
           <input type="text" id="with-tabindex" tabindex="1">
         </p>
       </section>

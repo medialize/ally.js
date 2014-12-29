@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Input OSX Behavior</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fix Pointer Focus Input OSX Behavior</h1>
+  <p>
+    ally.js provides the method <code>ally/fix-browser/pointer-focus-input</code> to workaround an issue in
+    Safari and Firefox <strong>on Mac OS X</strong>, where focus would not be given to certain form elements
+    upon <code>mousedown</code>. This is not a browser bug, it is <em>desired behavior by the OSX platform</em>.
+  </p>
+
+  <p>
+    <q>In Firefox for Mac, Chrome and Safari,
+    some types of form field don’t take the focus at all when clicked with the mouse; this behavior is limited
+    to fields which have no typed input, such as radios, checkboxes, buttons, color-pickers and sliders.</q>
+    <cite>-- <a href="http://www.sitepoint.com/when-do-elements-take-the-focus/">When Do Elements Take the Focus?</a></cite>
+  </p>
+
+  <p class="note">
+    In Firefox the <code>&lt;label&gt;</code> element causes form fields to get focus upon being clicked,
+    even if the form field itself would not get focus because of the ominous platform conventions.</p>
+  </p>
+
+
+  <h2 id="usage">Usage</h2>
+  <pre>// load fixPointerFocusInput()
+var fixPointerFocusInput = require('ally/fix-browser/pointer-focus-input');
+// acquire context
+var context = document.getElementById('element-to-fix');
+
+// activate the fix on a specific sub-tree (for every browser)
+var disengage = fixPointerFocusInput(context);
+
+// activate the fix for the entire document (for every browser)
+var disengage = fixPointerFocusInput();
+
+// disable the fix
+disengage();</pre>
+
+
+  <h2 id="example">Example</h2>
+  <p>Click on an element to see if it gets focus upon <code>mousedown</code></p>
+  <h3>Natural Browser Behavior</h3>
+  <div>
+    <p><label><input type="checkbox"> checkbox</label></p>
+    <p>
+      <label><input type="radio" name="natural"> radio 1</label>
+      <label><input type="radio" name="natural"> radio 2</label>
+    </p>
+    <p><label><input type="range" min="0" max="100"> slider</label></p>
+    <p><button type="button">button</button></p>
+    <p><input type="button" value="input button"></p>
+  </div>
+  <h3>Fixed Behavior</h3>
+  <div id="fix-pointer-focus">
+    <p><label><input type="checkbox"> checkbox</label></p>
+    <p>
+      <label><input type="radio" name="fixed"> radio 1</label>
+      <label><input type="radio" name="fixed"> radio 2</label>
+    </p>
+    <p><label><input type="range" min="0" max="100"> slider</label></p>
+    <p><button type="button">button</button></p>
+    <p><input type="button" value="input button"></p>
+  </div>
+
+  <script src="../bower_components/requirejs/require.js"></script>
+  <script src="main.js"></script>
+  <script>
+    require(['ally/fix-browser/pointer-focus-input'], function(fixPointerFocusInput) {
+      var context = document.getElementById('fix-pointer-focus');
+      fixPointerFocusInput(context);
+    });
+  </script>
+</body>
+</html>

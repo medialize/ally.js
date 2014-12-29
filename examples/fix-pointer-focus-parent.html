@@ -13,9 +13,10 @@
   
   <h1>Fix Pointer Focus Parent Browser Bug</h1>
   <p>
-    ally.js provides the method <code>ally/fix-browser/pointer-focus</code> to workaround an issue in Blink and WebKit causing
-    focus given by <code>MouseEvent</code> and <code>TouchEvent</code> to be given to the next parent element accepting focus,
-    rather than the element the event was dispatched to.
+    ally.js provides the method <code>ally/fix-browser/pointer-focus-parent</code> to workaround an issue in old Blink and
+    <a href="https://bugs.webkit.org/show_bug.cgi?id=139945">WebKit</a> causing focus given by <code>MouseEvent</code> and
+    <code>TouchEvent</code> to be given to the next parent element accepting focus, rather than the element the event was
+    dispatched to.
   </p>
 
 
@@ -49,7 +50,6 @@ disengage();</pre>
   <script src="../bower_components/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-
     require(['ally/fix-browser/pointer-focus-parent'], function(fixPointerFocusParent) {
       var context = document.getElementById('fix-pointer-focus');
       fixPointerFocusParent(context);

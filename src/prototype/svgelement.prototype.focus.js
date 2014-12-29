@@ -1,3 +1,4 @@
+/*jshint unused:vars */
 define(function definePrototypeSvgElementPrototypeFocus(require) {
   'use strict';
   

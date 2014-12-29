@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Gecko: Image maps skipping elements</title>
+  <meta charset="utf-8" />
+  <title>Gecko: Image maps skipping elements</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
 </head>
 <body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1116126
+  -->
 
   <p>
     In Gecko referencing the same <code>&lt;map&gt;</code> from multiple images will hide *all* tabbable elements between the first and last image using that map.

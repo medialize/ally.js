@@ -2,12 +2,21 @@ define(function defineFocusTrapByFocusEvent(require) {
   'use strict';
 
   var queryTabbable = require('../dom/query-tabbable');
+  var captureBodyFocus = require('./trap.capture-body');
 
   function handleTrapByFocusEvent(event) {
+    /*jshint validthis:true */
     var unrelated = event.relatedTarget === null || event.relatedTarget === this.ownerDocument;
 
+    // if there is no related target, we're focusing <body>, which is ok,
+    // but once <body> loses focus again, we need to retarget focus to context
+    if (unrelated) {
+      captureBodyFocus(this, 'focusin');
+      return;
+    }
+
     // Node.compareDocumentPosition is available since IE9
-    if (!unrelated && this.compareDocumentPosition(event.relatedTarget) & Node.DOCUMENT_POSITION_CONTAINED_BY) {
+    if (this.compareDocumentPosition(event.relatedTarget) & Node.DOCUMENT_POSITION_CONTAINED_BY) {
       // the focus target is within the context, all is fine, go back to sleep
       return;
     }
