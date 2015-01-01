@@ -18,7 +18,7 @@
 * focusing `<object data="some.svg">` does not dispatch `focus` event, but properly updates `document.activeElement`
 * `area` only becomes focusable after at least one image with the proper `usemap` set is fully loaded
 * `area` never becomes focusable when only broken images use the `map`
-* `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.
+* ~~`SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.~~
 * `SVGElement` does not have the `tabIndex` property (that is linked to `tabindex` attribute)
 * `document.body.focus.call(svgElement);` fails with `TypeError: 'focus' called on an object that does not implement interface HTMLElement.`
 * `table tr{collapse} td a{visible}` not rendered, but can be tabbed to
@@ -33,7 +33,7 @@
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
-* any `<svg>` element can be made focusable and tabbable by adding a focus event handler
+* ~~any `<svg>` element can be made focusable and tabbable by adding a focus event handler~~
 * `object[usemap]` (with a PNG) renders the image but ignores the image map completely
 * `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
 
@@ -44,7 +44,7 @@
 * `fieldset[tabindex=0][disabled]` is focusable but should not as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled)
 * `<video>` is *not* focusable at all, not even `<video controls>`
 * the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
-* any `<svg>` element can be made focusable and tabbable by adding a focus event handler
+* ~~any `<svg>` element can be made focusable and tabbable by adding a focus event handler~~
 * `object[usemap]` (with a PNG) renders the image but ignores the image map completely
 * `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
 
@@ -58,7 +58,7 @@
 * focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
 * `<video>` is focusable, although it should only be focusable when the `controls` attribute is present
 * `HTMLElement.focus()` does not execute synchronously, i.e. `element.addEventListener('focus', function(){ console.log("focus", this) }, false); $0.focus(); console.log("active", document.activeElement);` prints `"active", "focus"` (other browsers print `"focus", "active"`) - http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focus
-* `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`
+* ~~`SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to. It can be made available easily: `SVGElement.prototype.focus = HTMLElement.prototype.focus;`~~
 * `SVGElement` does not have the `tabIndex` property (that is linked to `tabindex` attribute)
 * `table tr{collapse} td a{visible}` rendered, but has `element.offsetHeight === 0`
 * `table` and `td` are naturally focusable
