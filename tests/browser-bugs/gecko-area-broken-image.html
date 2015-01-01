@@ -3,22 +3,37 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Gecko: area not focusable for broken image</title>
+	<style>
+	  img {
+	    width: 100px;
+	    height: 100px;
+	  }
+
+	  img:-moz-broken {
+	    background: red;
+	  }
+	</style>
 </head>
 <body>
 
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=8131
+    https://bugzilla.mozilla.org/show_bug.cgi?id=964058
+  -->
+
   <p>
     In Gecko the <code>&lt;area&gt;</code> elements in this test never become focusable because there is no fully loaded <code>&lt;img&gt;</code> using the <code>&lt;map&gt;</code>.
-    Blink, WebKit and Trident don't care and make the <code>&lt;area&gt;</code> focusable anyway.
+    Blink, WebKit and Trident don't care and make the <code>&lt;area&gt;</code> focusable anyway. They're available to the mouse, if the <code>&lt;img&gt;</code> was given large enough dimensions.
   </p>
 
-  <p></p>
 
   <map name="image-maps-1">
     <area href="#void" shape="rect" coords="63,19,144,45" id="first-area">
     <area href="#void" shape="rect" coords="63,59,144,85" id="second-area">
   </map>
 
-  <img usemap="#image-maps-1" src="data:image/png;base64,broken-image-test" alt="broken image" id="map-image">
+  <img usemap="#image-maps-1" src="data:image/png;base64,broken-image-test" alt="hello broken image" id="map-image">
+
 
   <pre></pre>
   <script>
