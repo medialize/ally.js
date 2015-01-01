@@ -25,10 +25,15 @@ define(function definePrototypeSvgElementPrototypeFocus(require) {
     document.body.focus.call(s);
     // HTMLElement's focus() can also deal with SVGElement, so go crazy!
     SVGElement.prototype.focus = HTMLElement.prototype.focus;
+    SVGElement.prototype.blur = HTMLElement.prototype.blur;
   } catch(e) {
     SVGElement.prototype.focus = function() {
       // at least make apparent what is going wrong
       window.console && window.console.warn && window.console.warn('SVGElement.focus() not possible');
+    };
+    SVGElement.prototype.blur = function() {
+      // at least make apparent what is going wrong
+      window.console && window.console.warn && window.console.warn('SVGElement.blur() not possible');
     };
   }
 
