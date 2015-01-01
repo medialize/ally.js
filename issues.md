@@ -16,7 +16,7 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 * [x] `area` only becomes focusable after at least one image with the proper `usemap` set is fully loaded
 * [x] `area` never becomes focusable when only broken images use the `map`
 * [x] `SVGElement.focus()` does not exist, so elements cannot be focused programmatically, but they can be tabbed to.
-* [ ] `SVGElement` does not have the `tabIndex` property (that is linked to `tabindex` attribute)
+* [ ] `SVGElement` does not have the `tabIndex` property (that is linked to `tabindex` attribute) [SVG2](https://svgwg.org/svg2-draft/interact.html#sequential-focus-navigation-and-the-tabindex-attribute)
 * [ ] `document.body.focus.call(svgElement);` fails with `TypeError: 'focus' called on an object that does not implement interface HTMLElement.`
 * [ ] `table tr{collapse} td a{visible}` not rendered, but can be tabbed to
 * [ ] `object[usemap]` (with a PNG) makes the image map available to mouse, but neither `object` nor `area` are focusable or tabbable
@@ -48,8 +48,7 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 
 ## Trident (Internet Explorer) ##
 
-* [ ] `[tabindex=""]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === '-32768'` (where every other browser declares `element.tabIndex === -1` and element.getAttribute('tabindex') === '')
-* [ ] `[tabindex="invalid-value"]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === 'invalid-value'` (where every other browser declares `element.tabIndex === -1`)
+* [x] `[tabindex=""]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === '-32768'` (where every other browser declares `element.tabIndex === -1` and element.getAttribute('tabindex') === '')
 * [ ] the `<img>` is focusable in `<a href="#foo"><img ismap …>`
 * [ ] `<table>`, `<td>`, `<fieldset>` are focusable
 * [ ] focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)

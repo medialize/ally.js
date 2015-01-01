@@ -5,4 +5,5 @@
 * CSS order property (Flexbox) affects document tabbing sequence - [Gecko 1116140](https://bugzilla.mozilla.org/show_bug.cgi?id=1116140)
 * focus event listener on arbitrary SVGElement makes it focusable - [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024)
 * SVGElement.prototype.focus is missing - [Gecko 1116966](https://bugzilla.mozilla.org/show_bug.cgi?id=1116966), [Trident 1072662](https://connect.microsoft.com/IE/feedback/details/1072662)
+* empty tabindex [tabindex=""] parsed and exposed as [tabindex="-32768"] - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)
 
