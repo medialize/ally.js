@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: parsing of empty tabindex attribute yields strange property value</title>
+  <style>
+    input[tabindex=""] {
+      background: blue;
+    }
+    input[tabindex="-32768"] {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://connect.microsoft.com/IE/feedback/details/1072965
+  -->
+
+  <p>
+    IE11 fails to properly parse empty <code>tabindex</code> attribute. While <code>[tabindex=""]</code>
+    yields the DOM property value <code>element.tabIndex === 0</code> (like Gecko, Blink, WebKit),
+    but IE11 returns a weird DOM attribute value <code>element.getAttribute('tabindex') === '-32768'</code>.
+    The same value is exposed to CSS as well, as <code>input[tabindex="-32768"]</code> is the matching selector.
+    This is also true for IE12 (Windows 10 developer preview).
+  </p>
+
+
+  <input id="valid" type="text" value="tabindex=&quot;2&quot;" tabindex="2">
+  <input id="invalid" type="text" value="tabindex=&quot;invalid-value&quot;" tabindex="invalid-value">
+  <input id="empty" type="text" value="tabindex=&quot;&quot;" tabindex="">
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['#valid', '#invalid', '#empty'].forEach(function(selector) {
+      var element = document.querySelector(selector);
+      log.textContent += selector + '[' + element.value + ']: tabindex attribute: "' + element.getAttribute('tabindex') + '", tabIndex property: "' + element.tabIndex + '"\n';
+    });
+
+  </script>
+</body>
+</html>
