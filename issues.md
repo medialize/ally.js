@@ -48,7 +48,7 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 
 ## Trident (Internet Explorer) ##
 
-* [x] `[tabindex=""]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === '-32768'` (where every other browser declares `element.tabIndex === -1` and element.getAttribute('tabindex') === '')
+* [x] `[tabindex=""]` evaluates to `element.tabIndex === 0` but `element.getAttribute('tabindex') === '-32768'`
 * [ ] the `<img>` is focusable in `<a href="#foo"><img ismap …>`
 * [ ] `<table>`, `<td>`, `<fieldset>` are focusable
 * [ ] focus on `<img usemap="#my-map">` is redirected to first `<area>` of `<map name="my-map">` (no other browser does this)
