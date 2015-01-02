@@ -85,3 +85,4 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 * maybe ditch `tabindex` in favor of `focusable` and `tabbable` flags?
 * maybe add `tab-group=":string:"` and `tab-order=":integer:"` to solve the problem of *global* `tabindex="2"` in a more localized (yet still global) way - much like `<input type="radio" name=":string:">` works. `tabindex` is renamed to `tab-order` to avoid confusion with the existing standard. `tab-group` is added to allow declaration of "buckets", to which the tab-order-index is being restricted.
 * maybe allow cancellation of `FocusEvent`, which would prevent the browser from bringing that element into the viewport, it can be done by script through `Element.scrollElementIntoView()`
+* drop `object[usemap]` as no browser implemented this properly
