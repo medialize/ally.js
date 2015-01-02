@@ -11,9 +11,22 @@
 </head>
 <body>
 
+  <!--
+    Not filing this in any browser because I have no idea why you'd want to do this in the first place.
+    It doesn't work at all for interactive content such as SVG and SWF.
+    It works for still images like PNG and JPG, but for those we already have the <img> element.
+    If anything, I'd drop this from the spec.
+
+    »The usemap attribute, if present while the object element represents an image,
+    can indicate that the object has an associated image map. The attribute must be
+    ignored if the object element doesn't represent an image.«
+    http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element
+  -->
+
   <p>
     Chrome ignores the image map of <code>&lt;object usemap&gt;</code> completely, but renders the image fine.
-    IE11 and Firefox render the image and the image map is accessible by mouse, but neither focusable nor tabbable.
+    Firefox render the image and the image map is accessible by mouse and can be focused by script, but it's not tabbable.
+    IE11 renders the image and the image map is accessible by mouse, but neither focusable nor tabbable.
   </p>
 
 
