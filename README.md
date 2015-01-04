@@ -28,11 +28,14 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 * `dom/query-focusable`, `dom/is-focusable` - to obtain a list of focusable elements within a given DOM element
 * `dom/query-tabbable`, `dom/is-tabbable` - to obtain a list of tabbable elements within a given DOM element
 * `dom/query-tabsequence` - to obtain the exact order of tabbable elements within a given DOM element
+* [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) - to obtain the list of ShadowDOM host elements containing the actually focused element
+
 
 ### Handling Interaction
 
 * [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
 * `focus/first` -- to identify the element that should receive focus upon entering a new context
+
 
 ### Working Around Browser Bugs
 
@@ -93,6 +96,7 @@ require.config({
 ### master (will become 0.0.2) ###
 
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
+* adding [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) to identify the actually focsued element and its host elements in ShadowDOM
 * adding warning to browser support detection when document does not have focus
 * adding `supports/supports-cache` to store browser compatibility data
 * adding `focus/first` to identify and focus the first `[autofocus]` or non positive tabindex (`[tabindex=1]`) element
