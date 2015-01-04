@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: positive tabindex elements within ShadowDOM are properly sorted into document's tabbing sequence</title>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1117552
+  -->
+
+  <p>
+    Gecko sorts elements with <code>[tabindex=1]</code> into the document's tabbing sequence as if they were not hidden away in a ShadowRoot. 
+    <a href="http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation">Shadow DOM 6.2 Focus Navgation</a> says that all the 
+    (entire) tabbing sequence of the ShadowRoot must be inserted into the document's tabbing sequence at <em>one</em> point.
+  </p>
+
+  <p class="note">
+    In Firefox the <a href="about:config">setting</a> <code>dom.webcomponents.enabled</code>
+    needs to be set to <code>true</code> to enable ShadowDOM support.
+  </p>
+
+  <input type="text" tabindex="1" id="document-tabindex-1">
+  <input type="text" tabindex="0" id="document-tabindex-0">
+  <div id="first-shadow-host"></div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    if (document.body.shadowRoot === undefined) {
+      log.textContent = 'Your browser does not support ShadowDOM';
+    } else {
+
+      // create shadow dom structure:
+      // body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input
+      var firstShadowHost = document.getElementById('first-shadow-host');
+      var firstShadowRoot = firstShadowHost.createShadowRoot();
+      firstShadowRoot.innerHTML = '<div id="second-shadow-host"></div>';
+      var secondShadowHost = firstShadowRoot.getElementById('second-shadow-host');
+      var secondShadowRoot = secondShadowHost.createShadowRoot();
+      secondShadowRoot.innerHTML = '<input id="shadow-tabindex-1" type="text" value="::shadow ::shadow #first-input[tabindex=1]" tabindex="1">'
+        + '<input id="shadow-tabindex-0" type="text" value="::shadow ::shadow #second-input">';
+      var inputs = secondShadowRoot.querySelectorAll('input');
+
+      log.textContent = 'created ShadowDOM structure:\n'
+        + 'body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input\n\n';
+        + 'focused the input\n\n';
+
+      document.addEventListener('focus', function(event) {
+        log.textContent += 'focus event: ' + (event.target.id || event.target.nodeName) 
+          + ' - ' + (event.relatedTarget && (event.relatedTarget.id || event.relatedTarget.nodeName)) + '\n';
+      }, true);
+
+    }
+  </script>
+</body>
+</html>
