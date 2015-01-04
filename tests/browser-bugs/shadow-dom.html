@@ -39,8 +39,8 @@
     This effectively allows finding all focusable elements in the <a href="http://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
   </p>
   <p>
-    Firefox does not add shadowed elements with <code>[tabindex="1"]</code> to the document's tablist.
-    Chrome treats the shadow root as the context in which tabindex order is determined, i.e. shadow-dom localizes the effects of <code>[tabindex="1"]</code> to the shadow root.
+    Firefox adds shadowed elements with <code>[tabindex="1"]</code> to the document's tablist in the global order.
+    Chrome (correctly) treats the shadow root as the context in which tabindex order is determined, i.e. shadow-dom localizes the effects of <code>[tabindex="1"]</code> to the shadow root.
   </p>
   <p>
     Chrome focuses the very first element with <code>[autofocus]</code> regardless of it being shadowed or not.
