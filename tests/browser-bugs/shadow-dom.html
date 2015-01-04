@@ -34,8 +34,8 @@
   </p>
   <p>Firefox 34 does not expose <code>ShadowRoot.host</code> but that is already fixed in Firefox 37.</p>
   <p>
-    Firefox does not know either CSS pseudo <code>::shadow</code> nor <code>/deep/</code> (nor <code>&gt;&gt;</code> of Selectors Level 4)
-    and thus cannot "easily" query shadow hosts. Chrome supports the pseudo class, but only if a descendant of ::shadow is queried.
+    Firefox does not know either CSS pseudo <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1112251"><code>::shadow</code></a> nor <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1117572"><code>&gt;&gt;&gt;</code></a> (formerly <code>/deep/</code>)
+    and thus cannot "easily" query shadow hosts. Chrome supports the pseudo element, but only if a descendant of <code>::shadow</code> is queried. Chrome has not yet switched from <code>/deep/</code> to <code>&gt;&gt;&gt;</code> (<a href="https://code.google.com/p/chromium/issues/detail?id=446051">Bug 446051</a>)
     This effectively allows finding all focusable elements in the <a href="http://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
   </p>
   <p>
@@ -59,6 +59,7 @@
     http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
     http://w3c.github.io/webcomponents/spec/shadow/#active-element
 
+    http://dev.w3.org/csswg/css-scoping-1/#shadow-pseudoelement
     http://dev.w3.org/csswg/css-scoping/#shadow-pseudoelement - ::shadow
     http://dev.w3.org/csswg/css-scoping/#deep-combinator - /deep/ vs. >>>
 
@@ -133,7 +134,7 @@
         '*::shadow > :first-child',
         'input, ::shadow input',
         'html /deep/ :first-child',
-        'html >> :first-child',
+        'html >>> :first-child',
       ].forEach(function(selector) {
         try {
           var elements = document.querySelectorAll(selector);
