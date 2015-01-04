@@ -103,7 +103,7 @@ require.config({
 * adding `dom/query-domsequence` to separate sorting and mutating the list from `dom/query-tabbable`
 * improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
 * improving [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
-* improving `selector/focusable` (and `dom/query-focusable`) by also finding focusable shadowed elements (ShadowDOM)
+* improving `selector/focusable` (thus `dom/query-focusable`) by also finding focusable shadowed elements (via `>>>` or `/deep/`, ShadowDOM) - [#11](https://github.com/medialize/ally.js/issues/11)
 * fixing `event/active-element` to be dispatched on `document` rather than `document.body`
 * fixing `prototype/svgelement.prototoype.focus` to also cover `SVGElement.prototype.blur`
 * fixing linting errors
