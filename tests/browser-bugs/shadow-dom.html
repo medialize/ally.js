@@ -5,7 +5,10 @@
 	<title>Shadow DOM</title>
 
   <style>
-    div::shadow input {
+    html ::shadow /deep/ input {
+      border: 1px solid blue;
+    }
+    ::shadow input {
       border: 1px solid red;
     }
 
@@ -29,9 +32,10 @@
     Chrome 39 focuses shadowed content and only reports the shadow-host to <code>document.activeElement</code> and the <code>FocusEvent</code>.
     Unlinke Chrome, Firefox dispatches a new <code>FocusEvent</code> for every activeElement change within a shadow-host.
   </p>
+  <p>Firefox 34 does not expose <code>ShadowRoot.host</code> but that is already fixed in Firefox 37.</p>
   <p>
-    Firefox does not know the CSS pseudo <code>::shadow</code> and thus cannot "easily" query shadow hosts.
-    Chrome supports the pseudo class, but only if a descendant of ::shadow is queried.
+    Firefox does not know either CSS pseudo <code>::shadow</code> nor <code>/deep/</code> (nor <code>&gt;&gt;</code> of Selectors Level 4)
+    and thus cannot "easily" query shadow hosts. Chrome supports the pseudo class, but only if a descendant of ::shadow is queried.
     This effectively allows finding all focusable elements in the <a href="http://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
   </p>
   <p>
@@ -44,8 +48,8 @@
     <code>[autofocus]</code> has no effect on tabbing-order when entering a shadow-root, i.e. it is completely ignored after page-load.
   </p>
 
-  <p>Running <code>shadowHost.focus()</code> has no effect (unless it happens to be focusable by itself). The ShadowRoot is not informed of the focus request.</p>
-  <p><code>KeyEvent</code> does not leak shadowed content, but is posing the same problem as <code>&lt;video&gt;</code> in IE11 in respect to <kbd>TAB</kbd> not necessarily chaning <code>document.activeElement</code>.</p>
+  <p>[Specification] Running <code>shadowHost.focus()</code> has no effect (unless it happens to be focusable by itself). The ShadowRoot is not informed of the focus request.</p>
+  <p><code>KeyEvent</code> does not leak shadowed content, but is posing the same problem as <code>&lt;video&gt;</code> in IE11 in respect to <kbd>TAB</kbd> not necessarily changing <code>document.activeElement</code>.</p>
 
   <p>Note: for Firefox the setting <code>dom.webcomponents.enabled</code> needs to be set to <code>true</code></p>
 
@@ -54,7 +58,6 @@
     http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events
     http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
     http://w3c.github.io/webcomponents/spec/shadow/#active-element
-    http://www.w3.org/TR/shadow-dom/#active-element
 
     http://dev.w3.org/csswg/css-scoping/#shadow-pseudoelement - ::shadow
     http://dev.w3.org/csswg/css-scoping/#deep-combinator - /deep/ vs. >>>
@@ -95,7 +98,7 @@
       log.textContent += 'no activeElement on host and root\n';
     }
 
-    root.innerHTML = '<input type="text" id="second" autofocus><input type="text" id="third" tabindex="3"><span id="shadowed-inner"></span>';
+    root.innerHTML = '<input type="text" id="second" autofocus><div><input type="text" id="third" tabindex="3"></div><span id="shadowed-inner"></span>';
     root.addEventListener('focus', function(event) {
       log.textContent += 'shadow.focus: ' + (event.target.id || event.target.nodeName) + '\n';
     }, true);
@@ -123,7 +126,15 @@
 
     var logShadowSelectors = function(message) {
       log.textContent += message;
-      ['::shadow', '*::shadow', '::shadow > :first-child', '*::shadow > :first-child', 'input, ::shadow input'].forEach(function(selector) {
+      [
+        '::shadow',
+        '*::shadow',
+        '::shadow > :first-child',
+        '*::shadow > :first-child',
+        'input, ::shadow input',
+        'html /deep/ :first-child',
+        'html >> :first-child',
+      ].forEach(function(selector) {
         try {
           var elements = document.querySelectorAll(selector);
           var _elements = [].map.call(elements, function(element) {

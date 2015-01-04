@@ -47,7 +47,7 @@
       document.querySelector(selector).focus();
       log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
     });
-    
+
     setTimeout(function(){
       ['object', '#upper', '#lower'].forEach(function(selector) {
         document.activeElement && document.activeElement.blur();

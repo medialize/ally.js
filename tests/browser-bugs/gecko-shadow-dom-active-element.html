@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: wrong activeElement when focusing element in ShadowDOM</title>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1117535
+  -->
+
+  <p>
+    Gecko (Firefox Nightly 37.0a1 (2015-01-04)) leaks shadowed elements to <code>document.activeElement</code> (though not through <code>FocusEvent</code>)
+    and it does not implement <code>ShadowRoot.activeElement</code>.
+    See <a href="http://w3c.github.io/webcomponents/spec/shadow/#active-element">Shadow DOM 6.3 Active Element</a>
+  </p>
+
+  <p>
+    Expected values are <code>document.activeElement = '#first-shadow-host'</code>
+    and <code>firstShadowRoot.activeElement = '#second-shadow-host'</code>.
+  </p>
+
+  <p>
+    Note: I peg this bug to be the cause for Gecko dispatching <code>FocusEvent</code>s if the focus stayed
+    within the same ShadowRoot and there shouldn't be a change to <code>document.activeElement</code>. At least
+    I consider this a bug per <a href="http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">Shadow DOM 5.8 Event Dispatch</a>: <q cite="http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">If the relatedTarget and target are the same for a given node, its the event listeners must not be invoked.</q>
+  </p>
+
+  <p class="note">
+    In Firefox the <a href="about:config">setting</a> <code>dom.webcomponents.enabled</code>
+    needs to be set to <code>true</code> to enable ShadowDOM support.
+  </p>
+
+
+  <div id="first-shadow-host"></div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    if (document.body.shadowRoot === undefined) {
+      log.textContent = 'Your browser does not support ShadowDOM';
+    } else {
+
+      // create shadow dom structure:
+      // body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input
+      var firstShadowHost = document.getElementById('first-shadow-host');
+      var firstShadowRoot = firstShadowHost.createShadowRoot();
+      firstShadowRoot.innerHTML = '<div id="second-shadow-host"></div>';
+      var secondShadowHost = firstShadowRoot.getElementById('second-shadow-host');
+      var secondShadowRoot = secondShadowHost.createShadowRoot();
+      secondShadowRoot.innerHTML = '<input id="input" type="text" value="::shadow ::shadow input">';
+      var input = secondShadowRoot.querySelector('input');
+
+      input.focus();
+
+      log.textContent = 'created ShadowDOM structure:\n'
+        + 'body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input\n\n';
+        + 'focused the input\n\n';
+
+      log.textContent += 'document.activeElement = ' + document.activeElement.id + '\n';
+      log.textContent += 'firstShadowRoot.activeElement = ' + (firstShadowRoot.activeElement && firstShadowRoot.activeElement.id || firstShadowRoot.activeElement === undefined && 'undefined' || 'null') + '\n';
+    }
+  </script>
+</body>
+</html>
