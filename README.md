@@ -94,7 +94,7 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.0.2) ###
+### 0.0.2 (January 5th 2015) ###
 
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
 * adding [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) to identify the actually focsued element and its host elements in ShadowDOM
