@@ -17,7 +17,7 @@ define(function defineDomActiveElements(require) {
   }
 
   function walkFromShadowedElement() {
-    var hosts = shadowHostAncestors(document.activeElement).reverse();
+    var hosts = shadowHostAncestors(document.activeElement);
     return [document.activeElement].concat(hosts);
   }
 

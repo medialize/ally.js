@@ -55,6 +55,7 @@ Some Tools to actually "see" what you're doing, more in [web components punch li
 * [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS) (Windows, Trial)
 * [ZoomText](http://www.aisquared.com/zoomtext/more/zoomtext_magnifier_reader/) (Windows, Trial)
 
+[…and how to use them](http://www.paciellogroup.com/blog/2015/01/basic-screen-reader-commands-for-accessibility-testing/)
 
 ### Tools for Visualizing the Accessibility Tree
 

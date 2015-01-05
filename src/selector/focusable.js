@@ -15,7 +15,7 @@ define(function defineSelectorFocusable(require) {
   var canFocusTable = require('../supports/focus-table');
   var canFocusFieldset = require('../supports/focus-fieldset');
   var canFocusSummary = require('../supports/focus-summary');
-  var supportsCssShadow = require('../supports/css-shadow');
+  var cssShadowPiercingDeepCombinator = require('../supports/css-shadow-piercing-deep-combinator');
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   /*jshint laxbreak: true */
@@ -51,9 +51,9 @@ define(function defineSelectorFocusable(require) {
     + '[contenteditable]';
   /*jshint laxbreak: false */
 
-  // where ShadowDOM is supported, we also want the shadowed focusable elemenets
-  if (supportsCssShadow) {
-    selector += ', ::shadow ' + selector.replace(/\s*,\s*/g, ',').split(',').join(', ::shadow ');
+  // where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
+  if (cssShadowPiercingDeepCombinator) {
+    selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + cssShadowPiercingDeepCombinator + ' ');
   }
 
   return selector;
