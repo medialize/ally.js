@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: sequential navigation failure for negative tabindex on ShadowHost</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+
+    html /deep/ :focus {
+      outline: 3px solid hotpink;
+    }
+
+    html >>> :focus {
+      outline: 3px solid hotpink;
+    }
+
+    div[tabindex] {
+      background: silver;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=446584
+  -->
+
+  <p>
+    Blink (Chrome Canary 41) will not move focus to the input element in the <code>ShadowRoot</code> of an
+    <code>ShadowHost</code> with <code>[tabindex="-1"]</code>, but it does properly focus the input element
+    for <code>ShadowHost</code> with <code>[tabindex="0"]</code>. Gecko properly handles both.
+  </p>
+
+  <hr>
+  <p>
+    Hit <kbd>Tab</kbd> to advance in sequential navigation.
+    Click on the last div and hit <kbd>Tab</kbd> to see that without ShadowDOM sequential navigation works fine.
+  </p>
+  <input type="text" value="before">
+  <div id="first-shadow-host" tabindex="-1"></div>
+  <div id="second-shadow-host" tabindex="0"></div>
+  <input type="text" value="after">
+  <div tabindex="-1">
+    <input type="text" value="div[tabindex=&quot;-1&quot;]">
+  </div>
+
+  <script>
+
+    if (document.body.shadowRoot === undefined) {
+      alert('Your browser does not support ShadowDOM');
+    } else {
+
+      // create shadow dom structure:
+      // body > #first-shadow-host > ShadowRoot > input
+      // body > #second-shadow-host > ShadowRoot > input
+
+      var firstShadowHost = document.getElementById('first-shadow-host');
+      var firstShadowRoot = firstShadowHost.createShadowRoot();
+      firstShadowRoot.innerHTML = '<input type="text" value="tabindex=&quot;-1&quot; on host">';
+
+      var secondShadowHost = document.getElementById('second-shadow-host');
+      var secondShadowRoot = secondShadowHost.createShadowRoot();
+      secondShadowRoot.innerHTML = '<input type="text" value="tabindex=&quot;0&quot; on host">';
+
+      firstShadowHost.focus();
+    }
+  </script>
+</body>
+</html>

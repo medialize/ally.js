@@ -72,17 +72,15 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 
 ## Specification ##
 
-* [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) does not allow trailing whitespace, but every browser permits them
-* `link[itemprop][href]` should be focusable as per [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute) but no browser does this
-* `object[usemap]` is not supported by any browser
-* expected tabbing order for image maps is not defined (and thus quite inconsistent across implementations)
-* behavior for image maps with broken images is not defined, see [proposal](https://bugzilla.mozilla.org/show_bug.cgi?id=8131#c16)
-* missing DOM interface `Element.focusableElements` to query the browser's list of focusable descendants
-* missing DOM property `Element.focusable` to query if the given element can be focused
-* missing DOM interface `Element.tabbableElements` to query the browser's list of tabbable descendants
-* missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires
-* missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires
-* maybe ditch `tabindex` in favor of `focusable` and `tabbable` flags?
-* maybe add `tab-group=":string:"` and `tab-order=":integer:"` to solve the problem of *global* `tabindex="2"` in a more localized (yet still global) way - much like `<input type="radio" name=":string:">` works. `tabindex` is renamed to `tab-order` to avoid confusion with the existing standard. `tab-group` is added to allow declaration of "buckets", to which the tab-order-index is being restricted.
-* maybe allow cancellation of `FocusEvent`, which would prevent the browser from bringing that element into the viewport, it can be done by script through `Element.scrollElementIntoView()`
-* drop `object[usemap]` as no browser implemented this properly
+* [ ] [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) does not allow trailing whitespace, but every browser permits them
+* [ ] `link[itemprop][href]` should be focusable as per [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute) but no browser does this
+* [x] `object[usemap]` is not supported by any browser, deprecate it?
+* [ ] expected tabbing order for image maps is not defined (and thus quite inconsistent across implementations)
+* [ ] behavior for image maps with broken images is not defined, see [proposal](https://bugzilla.mozilla.org/show_bug.cgi?id=8131#c16)
+* [ ] missing DOM interface `Element.focusableElements` to query the browser's list of focusable descendants
+* [ ] missing DOM property `Element.focusable` to query if the given element can be focused
+* [ ] missing DOM interface `Element.tabbableElements` to query the browser's list of tabbable descendants
+* [ ] missing HTML attribute `tabcontaier` to make the browser contain tabbing to descendants of that element - something the implementation of `<dialog>` requires (script interception prevents focus from reaching browser UI)
+* [ ] maybe ditch `tabindex` in favor of `focusable` and `tabbable` flags?
+* [ ] maybe add `tab-group=":string:"` and `tab-order=":integer:"` to solve the problem of *global* `tabindex="2"` in a more localized (yet still global) way - much like `<input type="radio" name=":string:">` works. `tabindex` is renamed to `tab-order` to avoid confusion with the existing standard. `tab-group` is added to allow declaration of "buckets", to which the tab-order-index is being restricted.
+* [ ] maybe allow cancellation of `FocusEvent`, which would prevent the browser from bringing that element into the viewport, it can be done by script through `Element.scrollElementIntoView()`
