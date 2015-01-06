@@ -7,6 +7,12 @@
 <body>
   <!--
     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+
+
+    A dialog element can be both a control group owner object and a focusable area,
+    if it has both an open attribute specified and a tabindex attribute specified and is being rendered.
+    http://www.w3.org/html/wg/drafts/html/master/editing.html#focusing-steps
+
   -->
   <p>
     When opening a dialog through <code>.openModal()</code> the first focusable (yes, even <code>[tabindex="-1"]</code>) gets focus,
