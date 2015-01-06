@@ -18,4 +18,5 @@
 
 * [object element usemap should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756)
 * [[Shadow]: how is the autofocus attribute supposed to be handled?](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27757)
+* [[Specifiction] Extending Element-level focus APIs](http://discourse.specifiction.org/t/extending-element-level-focus-apis/726)
 
