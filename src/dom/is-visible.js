@@ -11,10 +11,15 @@ define(function defineDomIsVisible(require) {
   // <object> may have no dimension but is still focusable
   var notDimensionBoundElementsPattern = /^(audio|object)$/;
 
+  function computedStyle(element, property) {
+    return window.getComputedStyle(element, null)
+      .getPropertyValue(property);
+  }
+
   function notDisplayed(_path) {
     return _path.some(function(element) {
       // display:none is not visible (optimized away at layout)
-      return element.style.display === 'none';
+      return computedStyle(element, 'display') === 'none';
     });
   }
 
@@ -23,7 +28,7 @@ define(function defineDomIsVisible(require) {
     // NOTE: a nested element can reverse visibility:hidden|collapse by explicitly setting visibility:visible
     // NOTE: visibility can be ["", "visible", "hidden", "collapse"]
     var hidden = _path.findIndex(function(element) {
-      var visibility = element.style.visibility;
+      var visibility = computedStyle(element, 'visibility');
       return visibility === 'hidden' || visibility === 'collapse';
     });
 
@@ -33,7 +38,7 @@ define(function defineDomIsVisible(require) {
     }
 
     var visible = _path.findIndex(function(element) {
-      return element.style.visibility === 'visible';
+      return computedStyle(element, 'visibility') === 'visible';
     });
 
     if (visible === -1) {
