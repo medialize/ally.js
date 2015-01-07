@@ -1,6 +1,6 @@
 # ally.js
 
-ally.js is a dependency-free **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
+ally.js is a dependency-free (well, some shims, yes) **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
 
 Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a library to help with ARIA states.
 
@@ -93,6 +93,15 @@ require.config({
 
 
 ## Changelog
+
+### 0.0.3 (January 7th 2015) ###
+
+* adding [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html)
+* adding `dom/focus-target` to find the first focusable element in an element's ancestry
+* improving [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) for less complexity
+* improving `fix-browser` by only engaging handlers for affected browsers (yes, *user agent sniffing*, deal with it)
+* fixing `dom/is-visible` to look at computed styles, not the element's styles (duh!)
+
 
 ### 0.0.2 (January 5th 2015) ###
 
