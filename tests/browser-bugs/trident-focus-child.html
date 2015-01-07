@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: display:flex on focusable element causes children to be focusable</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+  </style>
+</head>
+<body id="body">
+
+  <p>
+    In Trident the children (not descendants) of an element are made focusable,
+    if the element is focusable/tabbable and has <code>display: flex</code>.
+  </p>
+
+
+  <div>
+    <a id="first-link" href="#" style="display: flex;">
+      <span id="first-span">hello</span>
+      <span id="other-first-span">world</span>
+    </a>
+  </div>
+
+  <div>
+    <div id="first-div" href="#" style="display: flex;" tabindex="0">
+      <span id="first-span-div">
+        hello
+        <div id="first-span-div-nested">my precious</div>
+      </span>
+      <span id="other-first-span-div">world</span>
+    </a>
+   </div>
+
+  <div>
+    <a id="second-link" href="#">
+      <span id="second-span">hello</span>
+      <span id="other-second-span">world</span>
+    </a>
+  </div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.id + ', activeElement: ' + document.activeElement.id + '\n';
+    }, true);
+
+    ['#first-span', '#first-link', '#second-span', '#second-link'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      var element = document.querySelector(selector);
+      element.focus();
+      log.textContent += 'focusing ' + selector + ' activeElement: ' + document.activeElement.id + '\n';
+    });
+
+  </script>
+
+</body>
+</html>
