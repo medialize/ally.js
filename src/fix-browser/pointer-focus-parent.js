@@ -16,6 +16,15 @@ define(function defineFixBrowserPointerFocusParent(require) {
   var focusTarget = require('../dom/focus-target');
   var isValidTabIndex = require('../dom/is-valid-tabindex');
 
+  // This fix is only relevant to WebKit
+  var userAgent = window.navigator.userAgent;
+  var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1) && userAgent.indexOf('Chrome') === -1;
+  if (!engage) {
+    return function fixPointerFocusParentNotAppliccable() {
+      return function undoFixPointerFocusParentNotAppliccable(){};
+    };
+  }
+
   // add [tabindex="0"] to the (focusable) element that is about to be clicked
   // if it does not already have an explicit tabindex (attribute).
   // By applying an explicit tabindex, WebKit will not go look for

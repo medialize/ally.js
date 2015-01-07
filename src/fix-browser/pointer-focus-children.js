@@ -17,6 +17,15 @@ define(function defineFixBrowserPointerFocusParent(require) {
 
   var focusTarget = require('../dom/focus-target');
 
+  // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
+  var userAgent = window.navigator.userAgent;
+  var engage = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
+  if (!engage) {
+    return function fixPointerFocusChildrenNotAppliccable() {
+      return function undoFixPointerFocusChildrenNotAppliccable(){};
+    };
+  }
+
   function handleBeforeFocusEvent(event) {
     // find the element that would receive focus
     var target = focusTarget(event.target);
@@ -55,7 +64,7 @@ define(function defineFixBrowserPointerFocusParent(require) {
     }
 
     // IE10 requires prefix, IE11 does not
-    var eventName = "onpointerdown" in document ? 'pointerdown' : 'MSPointerDown';
+    var eventName = 'onpointerdown' in document ? 'pointerdown' : 'MSPointerDown';
     context.addEventListener(eventName, handleBeforeFocusEvent, true);
 
     // return callback to disengage pointer-focus hack
