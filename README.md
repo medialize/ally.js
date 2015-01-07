@@ -94,7 +94,7 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.0.3) ###
+### 0.0.3 (January 7th 2015) ###
 
 * adding [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html)
 * adding `dom/focus-target` to find the first focusable element in an element's ancestry
