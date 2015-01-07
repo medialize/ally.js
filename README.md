@@ -94,6 +94,11 @@ require.config({
 
 ## Changelog
 
+### master (will become 0.0.3) ###
+
+* adding `dom/focus-target` to find the first focusable element in an element's ancestry
+
+
 ### 0.0.2 (January 5th 2015) ###
 
 * adding [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html)
