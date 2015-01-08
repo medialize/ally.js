@@ -1,6 +1,11 @@
 /*
  * Clicking on form field does not necessarily assign it focus in Safari and Firefox on Mac OS X.
  * While not a browser bug, it may be considered undesired behavior.
+ * https://bugs.webkit.org/show_bug.cgi?id=22261
+ * https://bugs.webkit.org/show_bug.cgi?id=118043
+ *
+ * Note: This behavior can be turned off in Firefox by changing the
+ * option `accessibility.mouse_focuses_formcontrol` in about:config
  */
 /*jshint unused:vars */
 define(function defineFixBrowserPointerFocusInput(require) {
