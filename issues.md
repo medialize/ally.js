@@ -32,7 +32,7 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 * [ ] the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
 * [x] any `<svg>` element can be made focusable and tabbable by adding a focus event handler
 * [ ] `object[usemap]` (with a PNG) renders the image but ignores the image map completely
-* [ ] `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
+* [x] `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
 
 
 ## WebKit (Safari) ##
@@ -43,7 +43,7 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 * [ ] the `<a>` element has `element.offsetHeight === 0` while `element.firstElementChild.offsetHeight === 10` in `<svg><a xlink:href="#foo"><text>foo`
 * [x] any `<svg>` element can be made focusable and tabbable by adding a focus event handler
 * [ ] `object[usemap]` (with a PNG) renders the image but ignores the image map completely
-* [ ] `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
+* [x] `<area>` are added to the tabbing order in plain document order, not "in place of the `<img usemap>`"
 
 
 ## Trident (Internet Explorer) ##
@@ -74,8 +74,8 @@ See [issues-filed.md](issues-filed.md) for a list of opened issues. Items are ma
 
 * [ ] `link[itemprop][href]` should be focusable as per [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute) but no browser does this
 * [x] `object[usemap]` is not supported by any browser, deprecate it?
-* [ ] expected tabbing order for image maps is not defined (and thus quite inconsistent across implementations)
-* [ ] behavior for image maps with broken images is not defined, see [proposal](https://bugzilla.mozilla.org/show_bug.cgi?id=8131#c16)
+* [x] expected tabbing order for image maps is not defined (and thus quite inconsistent across implementations)
+* [x] behavior for image maps with broken images is not defined, see [proposal](https://bugzilla.mozilla.org/show_bug.cgi?id=8131#c16), and processing behavior described in [HTML5](http://www.w3.org/TR/html5/embedded-content-0.html#image-map)
 * [x] missing DOM interface `Element.focusableElements` to query the browser's list of focusable descendants
 * [x] missing DOM property `Element.focusable` to query if the given element can be focused
 * [x] missing DOM interface `Element.tabbableElements` to query the browser's list of tabbable descendants
