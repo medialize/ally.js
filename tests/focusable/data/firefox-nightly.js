@@ -5,14 +5,14 @@ define(function defineDemoFocusableFirefoxNightly(require) {
 
   return {
     "platform": {
-      "description": "Firefox 36.0 on OS X 10.8",
+      "description": "Firefox 37.0 on OS X 10.8",
       "layout": "Gecko",
       "manufacturer": null,
       "name": "Firefox",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:36.0) Gecko/20100101 Firefox/36.0",
-      "version": "36.0",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:37.0) Gecko/20100101 Firefox/37.0",
+      "version": "37.0",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -60,12 +60,15 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "[tabindex=\"\"]",
       "[tabindex=hello]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -104,12 +107,15 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "[tabindex=\"\"]",
       "[tabindex=hello]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -128,6 +134,7 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -160,7 +167,8 @@ define(function defineDemoFocusableFirefoxNightly(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}"
     ],
     "ally": {
       "focusable": [
@@ -204,18 +212,22 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "[tabindex=\"\"]",
         "[tabindex=hello]",
         "[tabindex=3 ]",
+        "[tabindex=3x]",
         "fieldset input",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "[tabindex=1]",
         "[tabindex=+2]",
         "[tabindex= +2]",
         "[tabindex=3 ]",
+        "[tabindex=3x]",
         "input[type=text]",
         "input[type=password]",
         "input[type=checkbox]",
@@ -247,7 +259,8 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     },
     "jquery": {
@@ -292,7 +305,9 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -332,7 +347,8 @@ define(function defineDemoFocusableFirefoxNightly(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     }
   };

@@ -59,8 +59,8 @@ function captureStuff() {
 
   // collect focus events
   function logFocusEvent(event) {
-    if (event.target && event.target.nodeName === 'BODY' && !event.relatedTarget) {
-      // IE-11: ignore repeated focus events on <body> as they are irrelevant to data-collection
+    if (event.target && (event.target.nodeName === 'BODY' ||  event.target.nodeName === 'HTML') && !event.relatedTarget) {
+      // IE10 and IE11: ignore repeated focus events on <body> and <html> as they are irrelevant to data-collection
       return;
     }
 

@@ -65,7 +65,9 @@ define(function defineDemoFocusableIE11(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -167,6 +169,10 @@ define(function defineDemoFocusableIE11(require) {
       "table tbody tr{collapse} td{visible} a",
       "HTML",
       "table tbody tr{collapse} td a{visible}",
+      "HTML",
+      "a{flexbox}",
+      "HTML",
+      "[tabindex=\"-1\"]{flexbox}",
       "HTML"
     ],
     "focusRedirection": [
@@ -224,7 +230,8 @@ define(function defineDemoFocusableIE11(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}"
     ],
     "ally": {
       "focusable": [
@@ -247,7 +254,6 @@ define(function defineDemoFocusableIE11(require) {
         "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "iframe",
-        "audio",
         "audio[controls]",
         "video",
         "video[controls]",
@@ -276,7 +282,9 @@ define(function defineDemoFocusableIE11(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "[tabindex=1]",
@@ -300,7 +308,6 @@ define(function defineDemoFocusableIE11(require) {
         "map.invalid-image area[href].lower",
         "a:has([ismap])",
         "iframe",
-        "audio",
         "audio[controls]",
         "video",
         "video[controls]",
@@ -321,7 +328,8 @@ define(function defineDemoFocusableIE11(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     },
     "jquery": {
@@ -365,7 +373,9 @@ define(function defineDemoFocusableIE11(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -403,7 +413,8 @@ define(function defineDemoFocusableIE11(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     }
   };

@@ -5,14 +5,14 @@ define(function defineDemoFocusableSafari6(require) {
 
   return {
     "platform": {
-      "description": "Safari 6.2 on OS X 10.8.5",
+      "description": "Safari 6.2.2 on OS X 10.8.5",
       "layout": "WebKit",
       "manufacturer": null,
       "name": "Safari",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/600.1.17 (KHTML, like Gecko) Version/6.2 Safari/537.85.10",
-      "version": "6.2",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/6.2.2 Safari/537.85.11",
+      "version": "6.2.2",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -60,13 +60,16 @@ define(function defineDemoFocusableSafari6(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -113,13 +116,16 @@ define(function defineDemoFocusableSafari6(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -131,6 +137,7 @@ define(function defineDemoFocusableSafari6(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -164,7 +171,8 @@ define(function defineDemoFocusableSafari6(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}"
     ],
     "ally": {
       "focusable": [
@@ -214,7 +222,9 @@ define(function defineDemoFocusableSafari6(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "[tabindex=1]",
@@ -259,7 +269,8 @@ define(function defineDemoFocusableSafari6(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     },
     "jquery": {
@@ -301,7 +312,9 @@ define(function defineDemoFocusableSafari6(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -338,7 +351,8 @@ define(function defineDemoFocusableSafari6(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     }
   };
