@@ -5,14 +5,14 @@ define(function defineDemoFocusableWebkitNightly(require) {
 
   return {
     "platform": {
-      "description": "WebKit Nightly 601.1.10 (like Safari 7+) on OS X 10.8.5",
+      "description": "WebKit Nightly 601.1.14 (like Safari 8+) on OS X 10.8.5",
       "layout": "WebKit",
       "manufacturer": null,
       "name": "WebKit Nightly",
       "prerelease": "alpha",
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/601.1.10+ (KHTML, like Gecko) Version/6.2 Safari/537.85.10",
-      "version": "601.1.10",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/601.1.14+ (KHTML, like Gecko) Version/6.2.2 Safari/537.85.11",
+      "version": "601.1.14",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -60,13 +60,16 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -113,13 +116,16 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -131,6 +137,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -164,7 +171,8 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}"
     ],
     "ally": {
       "focusable": [
@@ -214,7 +222,9 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "[tabindex=1]",
@@ -259,7 +269,8 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     },
     "jquery": {
@@ -301,7 +312,9 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -338,7 +351,8 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     }
   };

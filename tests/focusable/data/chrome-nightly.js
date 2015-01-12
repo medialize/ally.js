@@ -5,14 +5,14 @@ define(function defineDemoFocusableChromeCanary(require) {
 
   return {
     "platform": {
-      "description": "Chrome 41.0.2218.0 on OS X 10.8.5",
+      "description": "Chrome 41.0.2272.2 on OS X 10.8.5",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2218.0 Safari/537.36",
-      "version": "41.0.2218.0",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.2 Safari/537.36",
+      "version": "41.0.2272.2",
       "os": {
         "architecture": 32,
         "family": "OS X",
@@ -60,13 +60,16 @@ define(function defineDemoFocusableChromeCanary(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -113,13 +116,16 @@ define(function defineDemoFocusableChromeCanary(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "fieldset[tabindex=0][disabled]",
       "fieldset input",
       "{hidden} > a{visible}",
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -131,6 +137,7 @@ define(function defineDemoFocusableChromeCanary(require) {
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
+      "[tabindex=3x]",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -164,7 +171,8 @@ define(function defineDemoFocusableChromeCanary(require) {
       "{hidden} > {visible} > a",
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
-      "table tbody tr{collapse} td a{visible}"
+      "table tbody tr{collapse} td a{visible}",
+      "a{flexbox}"
     ],
     "ally": {
       "focusable": [
@@ -207,20 +215,26 @@ define(function defineDemoFocusableChromeCanary(require) {
         "[tabindex=1]",
         "[tabindex=+2]",
         "[tabindex= +2]",
+        "[tabindex=\"\"]",
+        "[tabindex=hello]",
         "[tabindex=3 ]",
+        "[tabindex=3x]",
         "fieldset[tabindex=0][disabled]",
         "fieldset input",
         "{hidden} > a{visible}",
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "[tabindex=1]",
         "[tabindex=+2]",
         "[tabindex= +2]",
         "[tabindex=3 ]",
+        "[tabindex=3x]",
         "input[type=text]",
         "input[type=password]",
         "input[type=checkbox]",
@@ -259,7 +273,8 @@ define(function defineDemoFocusableChromeCanary(require) {
         "{hidden} > {visible} > a",
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     },
     "jquery": {
@@ -301,7 +316,9 @@ define(function defineDemoFocusableChromeCanary(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}",
+        "[tabindex=\"-1\"]{flexbox}"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -338,7 +355,8 @@ define(function defineDemoFocusableChromeCanary(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
-        "table tbody tr{collapse} td a{visible}"
+        "table tbody tr{collapse} td a{visible}",
+        "a{flexbox}"
       ]
     }
   };

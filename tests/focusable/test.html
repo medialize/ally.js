@@ -7,6 +7,15 @@
 	  body :focus {
 	    outline: 2px solid hotpink;
 	  }
+
+    .flexbox {
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .flexbox > span {
+      display: block;
+    }
 	</style>
 </head>
 <body onload="window.isLoaded=true;">
@@ -236,6 +245,7 @@
     <div tabindex="" data-label="[tabindex=&quot;&quot;]">empty tabindex</div>
     <div tabindex="hello" data-label="[tabindex=hello]">tabindex <code>hello</code></div>
     <div tabindex="3 " data-label="[tabindex=3 ]">tabindex <code>3 </code></div>
+    <div tabindex="3x" data-label="[tabindex=3x]">tabindex <code>3x</code></div>
 
 
     <h3 id="disabled-and-tabindex">Disabled And Tabindex</h3>
@@ -335,6 +345,19 @@
       <a href="#void" style="display:inline" data-label="{none} > a{inline}">link</a>
     </div>
     <a href="#void" style="display:none" data-label="a{none}">link</a>
+  </article>
+
+  <article>
+    <h2 id="css-flexbox">CSS <code>flexbox</code> (IE issue)</h2>
+
+    <a href="#void" data-label="a{flexbox}" class="flexbox">
+      <span data-label="a{flexbox} > span">link</span>
+    </a>
+
+    <div tabindex="-1" data-label="[tabindex=&quot;-1&quot;]{flexbox}" class="flexbox">
+      <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span1">hello</span>
+      <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span2">world</span>
+    </a>
   </article>
 
   <hr>
