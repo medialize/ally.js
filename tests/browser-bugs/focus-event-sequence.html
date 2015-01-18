@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DOM Level 3: FocusEvent sequence</title>
+</head>
+<body>
+
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=449857
+    https://bugs.webkit.org/show_bug.cgi?id=140596
+  -->
+
+  <p>
+    According to <a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#events-focusevent-event-order">DOM Level 3 Events - Focus Event Order</a>
+    the dispatch sequence should be <code>focusout</code>, <code>focusin</code>, <code>blur</code>, <code>focus</code>.
+    But Blink, WebKit and Trident (IE 12 Win10 Tec Preview) all show the sequence <code>blur</code>, <code>focusout</code>, <code>focus</code>, <code>focusin</code>.
+  </p>
+
+  <input type="text" value="first" id="first">
+  <input type="text" value="second" id="second">
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    document.getElementById('first').focus();
+    log.textContent += 'focusing #first for context, #second in 500ms\n';
+    
+    document.addEventListener('focusout', function(event) {
+      log.textContent += 'focusout (target: ' + event.target.id + ', relatedTarget: ' + (event.relatedTarget && event.relatedTarget.id) + ')\n';
+    }, true);
+    document.addEventListener('focusin', function(event) {
+      log.textContent += 'focusin (target: ' + event.target.id + ', relatedTarget: ' + (event.relatedTarget && event.relatedTarget.id) + ')\n';
+    }, true);
+    document.addEventListener('blur', function(event) {
+      log.textContent += 'blur (target: ' + event.target.id + ', relatedTarget: ' + (event.relatedTarget && event.relatedTarget.id) + ')\n';
+    }, true);
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus (target: ' + event.target.id + ', relatedTarget: ' + (event.relatedTarget && event.relatedTarget.id) + ')\n';
+    }, true);
+
+    setTimeout(function() {
+      log.textContent += 'focusing #second\n';
+      document.getElementById('second').focus();
+    }, 500);
+  </script>
+
+</body>
+</html>
