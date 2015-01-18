@@ -13,7 +13,7 @@
 * Rename "Selecting Through Shadows Selector" from "/deep" to ">>>" - [Blink 446051](https://code.google.com/p/chromium/issues/detail?id=446051)
 * sequential navigation failure for negative tabindex on ShadowHost - [Blink 446584](https://code.google.com/p/chromium/issues/detail?id=446584)
 * area elements added to document sequential navigation order in DOM order instead of in place of referencing image - [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
-* DOM Level 3: FocusEvent sequence - [Blink 449857](https://code.google.com/p/chromium/issues/detail?id=449857), [WebKit 140596](https://bugs.webkit.org/show_bug.cgi?id=140596)
+* DOM Level 3: FocusEvent sequence - [Blink 449857](https://code.google.com/p/chromium/issues/detail?id=449857), [WebKit 140596](https://bugs.webkit.org/show_bug.cgi?id=140596), [Trident 1092647](https://connect.microsoft.com/IE/feedback/details/1092647)
 
 
 ## Specification Issues Filed
