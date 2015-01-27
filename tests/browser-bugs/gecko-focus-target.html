@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko :target not focused on page load</title>
+  <style>
+    html :target {
+      background: rgba(250, 0, 0, 0.5);
+    }
+    html :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <p>HTML5 defines the <code>:target</code> must be focused in <a href="http://www.w3.org/TR/html5/browsers.html#scroll-to-fragid">navigating to a fragment identifier</a>. Gecko (Firefox 35) fails to do so, while Blink, WebKit and Trident (IE11) properly focus the target.</p>
+
+  <a href="#gustav" id="gustav">gustav</a>
+
+  <script>
+    if (location.hash.replace('#', '') !== 'gustav') {
+      location.hash = 'gustav';
+    }
+  </script>
+
+</body>
+</html>
