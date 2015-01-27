@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>event-sequence</title>
+  <meta charset="utf-8" />
+  <title>event-sequence</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+  </style>
 </head>
 <body>
 
@@ -11,8 +16,8 @@
 
   <input type="text" data-label="first">
   <input type="text" data-label="second">
-  <div tabindex="0" data-label="third">third</div>
-  <div tabindex="-1" data-label="fourth"><a href="#void" data-label="fifth">fifth</a></div>
+  <div onclick="" tabindex="0" data-label="third">third</div>
+  <div onclick="" tabindex="-1" data-label="fourth"><a href="#void" data-label="fifth">fifth</a></div>
 
 
   <hr>

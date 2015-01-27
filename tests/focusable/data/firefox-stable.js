@@ -5,18 +5,18 @@ define(function defineDemoFocusableFirefox(require) {
 
   return {
     "platform": {
-      "description": "Firefox 34.0 on OS X 10.8",
+      "description": "Firefox 35.0 on OS X 10.10",
       "layout": "Gecko",
       "manufacturer": null,
       "name": "Firefox",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:34.0) Gecko/20100101 Firefox/34.0",
-      "version": "34.0",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0",
+      "version": "35.0",
       "os": {
         "architecture": 32,
         "family": "OS X",
-        "version": "10.8"
+        "version": "10.10"
       }
     },
     "focusable": [
@@ -68,7 +68,11 @@ define(function defineDemoFocusableFirefox(require) {
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
       "a{flexbox}",
-      "[tabindex=\"-1\"]{flexbox}"
+      "[tabindex=\"-1\"]{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]",
+      "canvas > [tabindex=-1]"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -115,7 +119,11 @@ define(function defineDemoFocusableFirefox(require) {
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
       "a{flexbox}",
-      "[tabindex=\"-1\"]{flexbox}"
+      "[tabindex=\"-1\"]{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]",
+      "canvas > [tabindex=-1]"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -153,6 +161,7 @@ define(function defineDemoFocusableFirefox(require) {
       "audio[controls]",
       "video",
       "video[controls]",
+      "embed",
       "keygen",
       "details a[href]",
       "details[open] a[href]",
@@ -168,7 +177,10 @@ define(function defineDemoFocusableFirefox(require) {
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
-      "a{flexbox}"
+      "a{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]"
     ],
     "ally": {
       "focusable": [
@@ -220,7 +232,11 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}",
         "a{flexbox}",
-        "[tabindex=\"-1\"]{flexbox}"
+        "[tabindex=\"-1\"]{flexbox}",
+        "canvas > input",
+        "canvas > a",
+        "canvas > [tabindex=0]",
+        "canvas > [tabindex=-1]"
       ],
       "tabOrder": [
         "[tabindex=1]",
@@ -260,7 +276,10 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}",
-        "a{flexbox}"
+        "a{flexbox}",
+        "canvas > input",
+        "canvas > a",
+        "canvas > [tabindex=0]"
       ]
     },
     "jquery": {
@@ -307,7 +326,11 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}",
         "a{flexbox}",
-        "[tabindex=\"-1\"]{flexbox}"
+        "[tabindex=\"-1\"]{flexbox}",
+        "canvas > input",
+        "canvas > a",
+        "canvas > [tabindex=0]",
+        "canvas > [tabindex=-1]"
       ],
       "tabOrder": [
         "input[type=text]",
@@ -348,7 +371,10 @@ define(function defineDemoFocusableFirefox(require) {
         "table tbody tr{collapse} td a",
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}",
-        "a{flexbox}"
+        "a{flexbox}",
+        "canvas > input",
+        "canvas > a",
+        "canvas > [tabindex=0]"
       ]
     }
   };

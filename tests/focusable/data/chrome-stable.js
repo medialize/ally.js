@@ -5,18 +5,18 @@ define(function defineDemoFocusableChrome(require) {
 
   return {
     "platform": {
-      "description": "Chrome 39.0.2171.95 on OS X 10.8.5",
+      "description": "Chrome 40.0.2214.93 on OS X 10.10.1",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36",
-      "version": "39.0.2171.95",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36",
+      "version": "40.0.2214.93",
       "os": {
         "architecture": 32,
         "family": "OS X",
-        "version": "10.8.5"
+        "version": "10.10.1"
       }
     },
     "focusable": [
@@ -69,7 +69,11 @@ define(function defineDemoFocusableChrome(require) {
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
       "a{flexbox}",
-      "[tabindex=\"-1\"]{flexbox}"
+      "[tabindex=\"-1\"]{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]",
+      "canvas > [tabindex=-1]"
     ],
     "focusEvents": [
       "input[type=text]",
@@ -125,7 +129,11 @@ define(function defineDemoFocusableChrome(require) {
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
       "a{flexbox}",
-      "[tabindex=\"-1\"]{flexbox}"
+      "[tabindex=\"-1\"]{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]",
+      "canvas > [tabindex=-1]"
     ],
     "focusRedirection": [
       "label[for=\"label-target\"] --- input[type=text]",
@@ -172,7 +180,10 @@ define(function defineDemoFocusableChrome(require) {
       "table tbody tr td a",
       "table tbody tr{collapse} td{visible} a",
       "table tbody tr{collapse} td a{visible}",
-      "a{flexbox}"
+      "a{flexbox}",
+      "canvas > input",
+      "canvas > a",
+      "canvas > [tabindex=0]"
     ],
     "ally": {
       "focusable": [
