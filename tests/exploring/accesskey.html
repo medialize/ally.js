@@ -38,6 +38,10 @@
       http://www.w3.org/html/wg/drafts/html/master/editing.html#dom-accesskeylabel
 
     IE12 accepts ALT+key and ALT+SHIFT+key, but ALT+SHIFT+C opens current page in new window
+
+    Multiple letter support
+      no: Firefox, Internet Explorer
+      yes: Chrome, Safari
   -->
 
   <p>MAC: To activate accesskey in Firefox and Chrome, hit <kbd>Ctrl Alt $Letter</kbd>, ($Letter: [a,…,f]) </p>
@@ -52,6 +56,7 @@
   <p>default activation include focus?</p>
   <span id="alpha" tabindex="-1" accesskey="a 0 1">alpha</span>
   <div id="bravo" tabindex="0" accesskey="b">bravo</div>
+  <div id="yankee" tabindex="0" accesskey="a b y">yankee</div>
 
 
   <!--
