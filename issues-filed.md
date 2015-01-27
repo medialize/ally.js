@@ -14,6 +14,7 @@
 * sequential navigation failure for negative tabindex on ShadowHost - [Blink 446584](https://code.google.com/p/chromium/issues/detail?id=446584)
 * area elements added to document sequential navigation order in DOM order instead of in place of referencing image - [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
 * DOM Level 3: FocusEvent sequence - [Blink 449857](https://code.google.com/p/chromium/issues/detail?id=449857), [WebKit 140596](https://bugs.webkit.org/show_bug.cgi?id=140596), [Trident 1092647](https://connect.microsoft.com/IE/feedback/details/1092647)
+* :target element not focused properly when element with autofocus attribute exists - [WebKit 140963](https://bugs.webkit.org/show_bug.cgi?id=140963)
 
 
 ## Specification Issues Filed
@@ -21,5 +22,7 @@
 * [object element usemap should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756)
 * [[Shadow]: how is the autofocus attribute supposed to be handled?](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27757)
 * [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787)
+* [initial focus precedence: autofocus or fragment identifier](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27912)
+* [focusing steps don't contain scrolling an element into view](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27913)
 * [[Specifiction] Extending Element-level focus APIs](http://discourse.specifiction.org/t/extending-element-level-focus-apis/726)
 
