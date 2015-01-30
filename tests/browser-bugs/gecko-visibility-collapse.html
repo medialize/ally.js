@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Gecko: visibility:collapse and focusable children</title>
+	<style>
+	  html :focus {
+	    outline: 3px solid hotpink;
+	  }
+	</style>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1128036
+  -->
+
+  <p>
+    Gecko will not render a <code>visibility:visible</code> descendant of a <code>&lt;tr style=&quot;visibility:collapse&quot;&gt;</code>, but will leave it focusable and in the tabbing order.
+  </p>
+
+  <hr>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><a id="before" href="#void">before</a></td>
+      </tr>
+      <tr style="visibility:collapse">
+        <td><a id="visible" href="#void" style="visibility: visible">collapsed visible</a></td>
+      </tr>
+      <tr>
+        <td><a id="after" href="#void">after</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus event: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+    
+    var before = document.getElementById('before');
+    var visible = document.getElementById('visible');
+    log.textContent += 'before.offsetHeight: ' + before.offsetHeight + '\n';
+    before.focus();
+    log.textContent += 'visible.offsetHeight: ' + visible.offsetHeight + '\n';
+    visible.focus();
+  </script>
+</body>
+</html>

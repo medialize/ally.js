@@ -18,6 +18,7 @@
 * focusing of disabled fieldset element is not prevented - [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
 * consecutive object elements break document tabbing order - [Trident 1109008](https://connect.microsoft.com/IE/feedback/details/1109008)
 * object element with SVG content is not focusable, with SWF content it is - [Trident 1109020](https://connect.microsoft.com/IE/feedback/details/1109020)
+* visible descendants of collapsed table row are not rendered but focused and tabbable - [Gecko 1128036](https://bugzilla.mozilla.org/show_bug.cgi?id=1128036)
 
 
 ## Specification Issues Filed
