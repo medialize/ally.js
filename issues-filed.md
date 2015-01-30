@@ -20,6 +20,7 @@
 * object element with SVG content is not focusable, with SWF content it is - [Trident 1109020](https://connect.microsoft.com/IE/feedback/details/1109020)
 * visible descendants of collapsed table row are not rendered but focused and tabbable - [Gecko 1128036](https://bugzilla.mozilla.org/show_bug.cgi?id=1128036)
 * audio element without valid source is not rendered but focusable - [Gecko 1128047](https://bugzilla.mozilla.org/show_bug.cgi?id=1128047)
+* invalid tabindex value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
 
 
 ## Specification Issues Filed
