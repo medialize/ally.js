@@ -14,6 +14,7 @@
   <!--
     https://code.google.com/p/chromium/issues/detail?id=382901
     https://bugzilla.mozilla.org/show_bug.cgi?id=840187
+    https://bugs.webkit.org/show_bug.cgi?id=140963
   -->
   
   <p>Blink and Gecko ignore the URL's fragment (hash) if there is an element with <code>[autofocus]</code> on the page.</p>
@@ -51,10 +52,12 @@
       focus: INPUT
   -->
   
-  <a href="#foo">jump to anchor, then reload</a>
+  <a href="#foo">jump to inert anchor, then reload</a>
+  <a href="#bam">jump to tabbable anchor, then reload</a>
   <input type="text" autofocus>
   <div style="height: 1000px"></div>
   <div id="foo">yup</div>
+  <div id="bam" tabindex="0">yup</div>
   <a name="bar">html4 anchor</a>
 
   <pre>working…</pre>

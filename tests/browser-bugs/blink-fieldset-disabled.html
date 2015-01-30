@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: disabled fieldset still focusable</title>
+  <style>
+    html :focus {
+      outline: 2px solid hotpink;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=453847
+    https://bugs.webkit.org/show_bug.cgi?id=141086
+  -->
+
+  <p>
+    Blink and WebKit do not prevent focusing of disabled fieldsets as required by
+    <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>
+  </p>
+
+  <fieldset tabindex="0" disabled>
+    <legend>disabled fieldset</legend>
+    <p>should not be focusable</p>
+  </fieldset>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    log.textContent += 'activeElement: ' + document.activeElement.nodeName + '\n';
+
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.nodeName + '\n';
+    }, true);
+
+    var fieldset = document.querySelector('fieldset');
+    fieldset.focus();
+  </script>
+
+</body>
+</html>

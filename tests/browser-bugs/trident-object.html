@@ -11,8 +11,12 @@
 </head>
 <body>
 
+  <!--
+    https://connect.microsoft.com/IE/feedback/details/1109008
+  -->
+
   <p>
-    Trident (Internet Explorer 11) freaks out when it encounters two consecutive <code>&lt;object&gt;</code> elements while tabbing through the document.
+    Trident (Internet Explorer 11) and Spartan freak out when it encounters two consecutive <code>&lt;object&gt;</code> elements while tabbing through the document.
     It will get stuck on the second <code>&lt;object&gt;</code> and then only tab through its browser chrome (location, tabs, menu),
     but never get back the document. If you put something tabbable (not only focusable!) in between, everything is fine.
   </p>
