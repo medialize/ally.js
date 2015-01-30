@@ -5,18 +5,18 @@ define(function defineDemoFocusableChrome(require) {
 
   return {
     "platform": {
-      "description": "Chrome 40.0.2214.93 on OS X 10.10.1",
+      "description": "Chrome 40.0.2214.94 on OS X 10.10.2",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36",
-      "version": "40.0.2214.93",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36",
+      "version": "40.0.2214.94",
       "os": {
         "architecture": 32,
         "family": "OS X",
-        "version": "10.10.1"
+        "version": "10.10.2"
       }
     },
     "focusable": [
@@ -53,6 +53,7 @@ define(function defineDemoFocusableChrome(require) {
       "svg a[xlink|href]",
       "[contenteditable]:empty",
       "[contenteditable]",
+      "[contenteditable][tabindex=-1]",
       "[tabindex=-2]",
       "[tabindex=-1]",
       "[tabindex=0]",
@@ -113,6 +114,7 @@ define(function defineDemoFocusableChrome(require) {
       "svg rect",
       "[contenteditable]:empty",
       "[contenteditable]",
+      "[contenteditable][tabindex=-1]",
       "[tabindex=-2]",
       "[tabindex=-1]",
       "[tabindex=0]",
@@ -220,6 +222,7 @@ define(function defineDemoFocusableChrome(require) {
         "svg a[xlink|href]",
         "[contenteditable]:empty",
         "[contenteditable]",
+        "[contenteditable][tabindex=-1]",
         "[tabindex=-2]",
         "[tabindex=-1]",
         "[tabindex=0]",
@@ -313,6 +316,7 @@ define(function defineDemoFocusableChrome(require) {
         "object[src=svg]",
         "object[src=svg][height=0]",
         "object[usemap]",
+        "[contenteditable][tabindex=-1]",
         "[tabindex=-2]",
         "[tabindex=-1]",
         "[tabindex=0]",
