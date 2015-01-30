@@ -16,6 +16,8 @@
 * DOM Level 3: FocusEvent sequence - [Blink 449857](https://code.google.com/p/chromium/issues/detail?id=449857), [WebKit 140596](https://bugs.webkit.org/show_bug.cgi?id=140596), [Trident 1092647](https://connect.microsoft.com/IE/feedback/details/1092647)
 * :target element not focused properly when element with autofocus attribute exists - [WebKit 140963](https://bugs.webkit.org/show_bug.cgi?id=140963)
 * focusing of disabled fieldset element is not prevented - [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
+* consecutive object elements break document tabbing order - [Trident 1109008](https://connect.microsoft.com/IE/feedback/details/1109008)
+* object element with SVG content is not focusable, with SWF content it is - [Trident 1109020](https://connect.microsoft.com/IE/feedback/details/1109020)
 
 
 ## Specification Issues Filed
