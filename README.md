@@ -29,7 +29,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 * `dom/query-tabbable`, `dom/is-tabbable` - to obtain a list of tabbable elements within a given DOM element
 * `dom/query-tabsequence` - to obtain the exact order of tabbable elements within a given DOM element
 * [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) - to obtain the list of ShadowDOM host elements containing the actually focused element
-
+* [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html) - to obtain how much of an element is currently visible on screen
 
 ### Handling Interaction
 
@@ -93,6 +93,11 @@ require.config({
 
 
 ## Changelog
+
+### master (will become 0.0.4) ###
+
+* adding [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html)
+
 
 ### 0.0.3 (January 7th 2015) ###
 
