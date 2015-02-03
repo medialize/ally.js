@@ -11,10 +11,23 @@
     .flex {
       display: -ms-flexbox;
       display: flex;
+      width: 300px;
     }
 
     .flex > span {
+      -ms-flex: 1 1 100px;
+          flex: 1 1 10px;
       display: block;
+      transition:
+        visibility 1s 0.5s linear,
+        background-color 1s 0s ease-in-out;
+    }
+
+    .flex > span:hover {
+      background-color: green;
+    }
+    .flex > span:active {
+      background-color: blue;
     }
   </style>
 </head>
@@ -24,6 +37,10 @@
   <p>
     ally.js provides the method <code>ally/fix-browser/pointer-focus-children</code> to workaround an issue in Internet Explorer 10 and 11
     where focusable elements with <code>display: flex;</code> would inherit being focusable onto their children (not descendants).
+  </p>
+
+  <p class="note">
+    CSS Transitions are disabled for any styles changed on <code>mousedown</code> (and <code>:active</code>) on the erroneously focusable child elements.
   </p>
 
   <p class="note">
@@ -51,8 +68,8 @@ disengage();</pre>
   <p>Click on both words "one" and observe which element is getting focus.</p>
   <h3>Natural Browser Behavior</h3>
   <div tabindex="-1" class="flex">
-    <span style="flex: 1 1 10px; ">one</span>
-    <span>two</span>
+    <span style="flex: 1 1 10px;">one</span>
+    <span style="flex: 1 1 10px;">two</span>
   </div>
   <h3>Fixed Behavior</h3>
   <div tabindex="-1" id="fix-pointer-focus" class="flex">

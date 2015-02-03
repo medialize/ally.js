@@ -97,6 +97,7 @@ require.config({
 ### master (will become 0.0.4) ###
 
 * adding [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html)
+* fixing [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html) to temporarily disable transitions
 
 
 ### 0.0.3 (January 7th 2015) ###
