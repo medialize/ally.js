@@ -43,17 +43,22 @@ define(function defineFixBrowserPointerFocusParent(require) {
 
     // hide all children, because hidden elements can't get focus
     // remember previous element style (not necessarily computed style)
-    // to undo hiding later
+    // to undo hiding later. Reset transitions as well, in case visibility
+    // is to be transitioned. This will effectively kill all transitions
+    // that are executed on mousedown / :active
     var reverse = [].map.call(target.children, function(element) {
       var visibility = element.style.visibility || '';
+      var transition = element.style.transition || '';
       element.style.visibility = 'hidden';
-      return [element, visibility];
+      element.style.transition = 'none';
+      return [element, visibility, transition];
     });
 
     // add cleanup (undo hide) to the RunLoop
     window.setImmediate(function() {
       reverse.forEach(function(item) {
         item[0].style.visibility = item[1];
+        item[0].style.transition = item[2];
       });
     });
   }

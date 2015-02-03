@@ -31,11 +31,13 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 * [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) - to obtain the list of ShadowDOM host elements containing the actually focused element
 * [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html) - to obtain how much of an element is currently visible on screen
 
+
 ### Handling Interaction
 
 * [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
 * `focus/first` -- to identify the element that should receive focus upon entering a new context
 * [`focus/within`](http://medialize.github.io/ally.js/examples/focus-within.html) -- to "polyfill" [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
+* [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) -- to focus an element once it is fully visible in the viewport
 
 
 ### Working Around Browser Bugs
@@ -94,9 +96,11 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.0.4) ###
+### 0.0.4 (February 3rd 2015) ###
 
 * adding [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html)
+* adding [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html)
+* fixing [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html) to temporarily disable transitions
 
 
 ### 0.0.3 (January 7th 2015) ###
