@@ -5,6 +5,7 @@ define(function defineFocusWhenVisible(require) {
     focus an element once it became fully visible in the viewport
   */
 
+  var isFocusable = require('../dom/is-focusable');
   var isVisible = require('../dom/is-visible');
   var visibleQuotient = require('../dom/visible-quotient');
 
@@ -15,7 +16,7 @@ define(function defineFocusWhenVisible(require) {
       percentVisible = 1;
     }
 
-    if (isVisible(element) && visibleQuotient(element) >= percentVisible) {
+    if (isFocusable(element) && isVisible(element) && visibleQuotient(element) >= percentVisible) {
       // element is already visible, trivial escape
       element.focus();
       return;
@@ -30,7 +31,7 @@ define(function defineFocusWhenVisible(require) {
     document.body.addEventListener('focus', abort, true);
 
     var focusWhenReady = function() {
-      if (!isVisible(element) || visibleQuotient(element) < percentVisible) {
+      if (!isFocusable(element) || !isVisible(element) || visibleQuotient(element) < percentVisible) {
         raf = requestAnimationFrame(focusWhenReady);
         return;
       }
