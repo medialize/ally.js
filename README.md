@@ -96,7 +96,7 @@ require.config({
 
 ## Changelog
 
-### master (will become 0.0.4) ###
+### 0.0.4 (February 3rd 2015) ###
 
 * adding [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html)
 * adding [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html)
