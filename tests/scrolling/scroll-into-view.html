@@ -72,6 +72,12 @@
     http://dev.w3.org/csswg/cssom-view/#dom-element-scrollintoview
   -->
 
+  <button type="button" data-type="needed-true"><code>Element.scrollIntoViewIfNeeded(true)</code></button>
+  <button type="button" data-type="needed-false"><code>Element.scrollIntoViewIfNeeded(false)</code></button>
+  <button type="button" data-type="true"><code>Element.scrollIntoView(true)</code></button>
+  <button type="button" data-type="false"><code>Element.scrollIntoView(false)</code></button>
+
+  <div style="height:100vh"></div>
 
   <h2>Vertical Scrolling</h2>
 
@@ -174,13 +180,40 @@
     <div class="fourth" tabindex="0">fourth thing</div>
   </div>
 
+  <div style="height:100vh"></div>
 
   <script>
-    [].forEach.call(document.getElementsByClassName('second'), function(element, index) {
-      setTimeout(function() {
-        element.scrollIntoView();
-      }, 1000 * index);
-    });
+    function scrollIntoView(type) {
+      [].forEach.call(document.querySelectorAll('body > div'), function(element, index) {
+        element.scrollLeft = 0;
+        element.scrollTop = 0;
+      });      
+
+      [].forEach.call(document.getElementsByClassName('second'), function(element, index) {
+        setTimeout(function() {
+          switch (type) {
+            case 'needed-true':
+            case 'needed-false':
+              if (!element.scrollIntoViewIfNeeded) {
+                alert('Element.scrollIntoViewIfNeeded() is not supported in this browser!');
+                break;
+              }
+
+              element.scrollIntoViewIfNeeded(type === '#needed-true');
+              break;
+            default: 
+              element.scrollIntoView(type === 'true');
+          }
+        }, 1000 * index);
+      });
+    }
+
+    document.addEventListener('click', function(event) {
+      var type = event.target.getAttribute('data-type');
+      if (type) {
+        scrollIntoView(type);
+      }
+    }, true);
   </script>
 
 </body>
