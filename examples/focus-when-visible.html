@@ -50,7 +50,8 @@
     <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.focus"><code>Element.focus()</code></a> scrolls the
     element into view if it isn't already. In situations where content is not revealed immediately, but through a transition
     or animation <code>ally/focus/when-visible</code> will set focus to the element once it is fully visible on screen -
-    regardless of the method you used to hide/show the element.
+    regardless of the method you used to hide/show the element. Additionally to the visibility, the function will also wait
+    for the element to become focusable.
   </p>
   <p>
     The function executes exactly once, meaning it won't focus the target element every time it comes into view. Focusing is

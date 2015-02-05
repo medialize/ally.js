@@ -96,6 +96,11 @@ require.config({
 
 ## Changelog
 
+### master (will become 0.0.5) ###
+
+* improving [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to also wait until an element becomes focusable
+
+
 ### 0.0.4 (February 3rd 2015) ###
 
 * adding [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html)
