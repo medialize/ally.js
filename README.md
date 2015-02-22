@@ -44,6 +44,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 * [`fix-browser/pointer-focus-parent`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-parent.html) -- to work around a bug in [WebKit](https://bugs.webkit.org/show_bug.cgi?id=139945) where a parent `[tabindex="-1"]` element can get focus when clicking on a nested `<a>`
 * [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html) -- to work around a behavior in Safari and Firefox on Mac OS X where clicking on certain form elements would not give them focus
+* [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html) to work around a bug in IE10 and IE11 where children of `display:flex;` are made focusable when they shouldn't be
 
 
 ### Development / Debugging
