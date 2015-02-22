@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>focus outline styles</title>
+	<style>
+	  .custom-focus:focus {
+	    outline: 1px solid red;
+	    transition:
+	      outline-width 0.2s ease-out,
+	      outline-color 0.2s ease-out,
+	      outline-offset 0.2s ease-out;
+	  }
+	  .without-appearance {
+	    -webkit-appearance: none;
+  	     -moz-appearance: none;
+  	      -ms-appearance: none;
+  	          appearance: none;
+	  }
+    .dimensions {
+      min-height: 15px;
+      min-width: 15px;
+      border: 1px solid black;
+      vertical-align: bottom;
+    }
+	  .custom-style {
+	    border: 1px solid green;
+	    background: #ccffcc;
+	  }
+	</style>
+</head>
+<body>
+
+  <p>This page is used for manual tests to gather intel about native focus styles in various browsers.</p>
+  
+  <hr>
+
+  <input type="text" value="appearance: textfield" class="custom-focus">
+  <input type="text" value="appearance: none" class="custom-focus without-appearance">
+
+  <hr>
+
+  <input type="text" value="appearance: textfield">
+  <input type="text" value="appearance: none" class="without-appearance">
+
+  <hr>
+  
+  <a href="#" style="color: green">some link</a>
+  <a href="#" style="color: green" class="custom-focus">some link</a>
+
+  <hr>
+
+  x
+  <input type="checkbox" name="alpha">
+  x
+  <input type="checkbox" name="alpha" class="without-appearance dimensions">
+  x
+
+  <hr>
+
+  x
+  <input type="checkbox" name="bravo" class="custom-focus">
+  x
+  <input type="checkbox" name="bravo" class="custom-focus without-appearance dimensions">
+  x
+
+ <hr>
+
+  x
+  <input type="radio" name="charlie">
+  x
+  <input type="radio" name="charlie" class="without-appearance dimensions">
+  x
+
+  <hr>
+
+  x
+  <input type="radio" name="delta" class="custom-focus">
+  x
+  <input type="radio" name="delta" class="custom-focus without-appearance dimensions">
+  x
+
+  <hr>
+
+  <button type="button">appearance: button</button>
+  &nbsp;
+  <button type="button" class="without-appearance">appearance: none</button>
+  &nbsp;
+  <button type="button" class="custom-style">custom style</button>
+
+  <hr>
+
+  <button type="button" class="custom-focus">appearance: button</button>
+  &nbsp;
+  <button type="button" class="custom-focus without-appearance">appearance: none</button>
+  &nbsp;
+  <button type="button" class="custom-focus custom-style">custom style</button>
+
+  <hr>
+
+  <textarea cols="15" rows="3">appearance: textfield-multiline</textarea>
+  &nbsp;
+  <textarea cols="15" rows="3" class="without-appearance">appearance: none</textarea>
+  &nbsp;
+  <textarea cols="15" rows="3" class="custom-style">custom style</textarea>
+
+  <hr>
+
+  <textarea cols="15" rows="3" class="custom-focus">appearance: textfield-multiline</textarea>
+  &nbsp;
+  <textarea cols="15" rows="3" class="custom-focus without-appearance">appearance: none</textarea>
+  &nbsp;
+  <textarea cols="15" rows="3" class="custom-focus custom-style">custom style</textarea>
+
+  <hr>
+
+  <div tabindex="0" style="display:inline-block;" class="">native style</div>
+  &nbsp;
+  <div tabindex="0" style="display:inline-block;" class="custom-focus">custom style</div>
+
+</body>
+</html>
