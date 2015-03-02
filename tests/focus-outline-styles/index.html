@@ -65,7 +65,12 @@
     <label><input type="checkbox" name="show-browser" value="ie11" checked> IE11</label>
   </p>
 
-  <p>The following table was generated (more precisely "manually cut from screenshots") by <a href="test.html">test.html</a></p>
+  <h1>Default Browser Focus Outline Styles</h1>
+
+  <p>
+    The following table was created manually by screenshotting and slicing <a href="test.html">test.html</a>.
+    The Panel above allows filtering the table and switching normal/focus styles (toggled by <kbd>space</kbd>).
+  </p>
   <table data-show="focus">
     <thead>
       <tr>
@@ -929,6 +934,16 @@
     styleSelector.addEventListener('click', updateHash, true);
     window.addEventListener('hashchange', importHash);
     importHash();
+
+    document.addEventListener('keypress', function(event) {
+      if (event.keyCode === 32) {
+        event.preventDefault();
+        var target = elements.style.filter(function(element){ return !checked(element) })[0];
+        target.focus();
+        target.checked = true;
+        updateHash();
+      }
+    }, true);
 
   </script>
 
