@@ -65,7 +65,12 @@
     <label><input type="checkbox" name="show-browser" value="ie11" checked> IE11</label>
   </p>
 
-  <p>The following table was generated (more precisely "manually cut from screenshots") by <a href="test.html">test.html</a></p>
+  <h1>Default Browser Focus Outline Styles</h1>
+
+  <p>
+    The following table was created manually by screenshotting and slicing <a href="test.html">test.html</a>.
+    The Panel above allows filtering the table and switching normal/focus styles (toggled by <kbd>space</kbd>).
+  </p>
   <table data-show="focus">
     <thead>
       <tr>
@@ -858,6 +863,16 @@
   </table>
 
   <script>
+    if (!Array.from) {
+      // yes, I know this is not a true polyfill.
+      // Don't copy and use this anywhere else, instead use
+      // https://www.npmjs.com/package/array.from
+      // or https://github.com/paulmillr/es6-shim
+      Array.from = function(collection) {
+        return [].slice.call(collection, 0);
+      };
+    }
+
     var table = document.querySelector('table');
     var styleSelector = document.getElementById('style-select');
 
@@ -877,19 +892,58 @@
       });
     }
 
-    showStyle(styleSelector.querySelector('[name="show-style"]:checked'));
-    [].forEach.call(styleSelector.querySelector('[name="show-key"]'), showKey);
-    [].forEach.call(styleSelector.querySelector('[name="show-browser"]'), showBrowser);
+    var elements = {
+      style: Array.from(styleSelector.querySelectorAll('[name="show-style"]')),
+      key: Array.from(styleSelector.querySelectorAll('[name="show-key"]')),
+      browser: Array.from(styleSelector.querySelectorAll('[name="show-browser"]')),
+    };
 
-    styleSelector.addEventListener('click', function(event) {
-      if (event.target.name === 'show-style') {
-        showStyle(event.target);
-      } else if (event.target.name === 'show-key') {
-        showKey(event.target);
-      } else if (event.target.name === 'show-browser') {
-        showBrowser(event.target);
+    function checked(element) {
+      return element.checked;
+    }
+
+    function value(element) {
+      return element.value;
+    }
+
+    function updateTable() {
+      showStyle(elements.style.filter(checked)[0]);
+      elements.key.forEach(showKey);
+      elements.browser.forEach(showBrowser);
+    }
+
+    function updateHash() {
+      var _style = value(elements.style.filter(checked)[0])
+      var _keys = elements.key.filter(checked).map(value).join(',');
+      var _browsers = elements.browser.filter(checked).map(value).join(',');
+      location.hash = 'style=' + _style + '&key=' + _keys + '&browser=' + _browsers;
+    }
+
+    function importHash() {
+      location.hash.replace(/^#/, '').split('&').forEach(function(token) {
+        var tokens = token.split('=');
+        var values = tokens[1] && tokens[1].split(',') || [];
+        elements[tokens[0]] && elements[tokens[0]].forEach(function(element) {
+          element.checked = !values.length || values.indexOf(element.value) !== -1;
+        });
+      });
+
+      updateTable();
+    }
+
+    styleSelector.addEventListener('click', updateHash, true);
+    window.addEventListener('hashchange', importHash);
+    importHash();
+
+    document.addEventListener('keypress', function(event) {
+      if (event.keyCode === 32) {
+        event.preventDefault();
+        var target = elements.style.filter(function(element){ return !checked(element) })[0];
+        target.focus();
+        target.checked = true;
+        updateHash();
       }
-    });
+    }, true);
 
   </script>
 

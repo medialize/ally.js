@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>click focus behavior</title>
+	<style>
+	  .custom-focus:focus {
+	    outline: 1px solid red;
+	  }
+	</style>
+</head>
+<body>
+
+  <h1>Click Focus Behavior</h1>
+
+  <p>
+    This page is used for manual tests to gather intel about focus being given / focus styles being applied on click.
+  </p>
+
+  <p>
+    While every browser on every system renders the native focus outline of a div upon pressing <kbd>Tab</kbd>,
+    behavior for <code>click</code> seems to vary.
+    However, custom focus outlines are always rendered upon <code>click</code>.
+  </p>
+  <p>
+    IE11 will not render the native focus outline upon click.
+  </p>
+  <p>
+    Firefox on Windows will not render the native focus outline upon click unless the <kbd>Tab</kbd> has been pressed at least once.
+    Firefox on Mac will render the native outline upon click.
+  </p>
+  <p>
+    Chrome on Windows and Mac always renders the native focus outline upon click.
+  </p>
+  <p>
+    Safari always renders the native focus outline upon click.
+  </p>
+
+  <hr>
+
+  <h2>Tabbable div</h2>
+  
+  <div tabindex="0" style="display:inline-block;" data-label="tabbable div with native focus outline style" class="">native style</div>
+  &nbsp;
+  <div tabindex="0" style="display:inline-block;" data-label="tabbable div with custom focus outline style" class="custom-focus">custom style</div>
+
+  <h2>Focusable div</h2>
+  
+  <div tabindex="-1" style="display:inline-block;" data-label="focusable div with native focus outline style" class="">native style</div>
+  &nbsp;
+  <div tabindex="-1" style="display:inline-block;" data-label="focusable div with custom focus outline style" class="custom-focus">custom style</div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'Focus: ' + (event.target.getAttribute('data-label') || event.target.nodeName) + "\n";
+    }, true);
+    document.addEventListener('click', function(event) {
+      log.textContent += 'Click: ' + (event.target.getAttribute('data-label') || event.target.nodeName) + "\n";
+    }, true);
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode !== 9) {
+        return;
+      }
+      log.textContent += 'TAB key pressed\n';
+    }, true);
+  </script>
+</body>
+</html>

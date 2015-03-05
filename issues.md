@@ -26,6 +26,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * audio element without valid source is not rendered but focusable - [Gecko 1128047](https://bugzilla.mozilla.org/show_bug.cgi?id=1128047)
 * invalid tabindex value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
 * Focus Link Target (sequential focus navigation starting point) - [Blink 454172](https://code.google.com/p/chromium/issues/detail?id=454172), [WebKit 141136](https://bugs.webkit.org/show_bug.cgi?id=141136), [Trident 1111056](https://connect.microsoft.com/IE/feedback/details/1111056)
+* element.scrollIntoView() confused by scroll-behavior:smooth; [Gecko 1139745](https://bugzilla.mozilla.org/show_bug.cgi?id=1139745)
 
 
 ## Filed Specification Issues

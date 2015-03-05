@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: scroll-behavior property and scrollIntoView()</title>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1139745
+  -->
+
+  <h1><code>scroll-behavior:smooth</code> confuses <code>scrollIntoView()</code></h1>
+
+  <p>
+    In Firefox Nightly <code>39.0a1 (2015-03-02)</code> the DOM method <code>Element.scrollIntoView()</code>
+    scrolls to different positions depending on the scroll container and body having
+    <code>scroll-behavior:smooth</code> set or not.
+  </p>
+  <p>
+    Note: Varying target position seems to depend on the position the element had before scrolling.
+    Try scrolling the container to some other position, go back to top, hit a button.
+    E.g. hit scrollIntoView(true) with smooth enabled two times to experience this.
+    First you'll see the container scrolled out of view. 
+    Second you'll see the container properly aligned to top
+  </p>
+
+  <hr>
+  <h2><code>scroll-behavior:smooth</code> on container and body</h2>
+  <button id="top-smooth-smooth">scrollIntoView(true)</button>
+  <button id="bottom-smooth-smooth">scrollIntoView(false)</button>
+  <hr>
+  <h2><code>scroll-behavior:smooth</code> on container and <code>scroll-behavior:auto</code> on body</h2>
+  <button id="top-smooth-auto">scrollIntoView(true)</button>
+  <button id="bottom-smooth-auto">scrollIntoView(false)</button>
+  <hr>
+  <h2><code>scroll-behavior:auto</code> on container and body</h2>
+  <button id="top-auto-auto">scrollIntoView(true)</button>
+  <button id="bottom-auto-auto">scrollIntoView(false)</button>
+  <hr>
+
+  <div style="height: 100vh">filler top</div>
+  <div style="overflow:auto; height: 300px; border: 1px solid silver">
+    <div style="height: 300px">filler before</div>
+    <div id="target" style="height: 300px; background: #ccffff">target</div>
+    <div style="height: 300px">filler after</div>
+  </div>
+  <div style="height: 100vh">filler bottom</div>
+
+  <script>
+    var target = document.getElementById('target');
+    var scrollContainer = target.parentElement;
+    
+    document.getElementById('top-smooth-smooth').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // go smooth
+        scrollContainer.style.scrollBehavior = 'smooth';
+        document.body.style.scrollBehavior = 'smooth';
+        // scroll element into view, align it to the top
+        target.scrollIntoView(true);
+      }, 200)
+    }, true);
+    document.getElementById('bottom-smooth-smooth').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // go smooth
+        scrollContainer.style.scrollBehavior = 'smooth';
+        document.body.style.scrollBehavior = 'smooth';
+        // scroll element into view, align it to the bottom
+        target.scrollIntoView(false);
+      }, 200)
+    }, true);
+
+    document.getElementById('top-smooth-auto').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // go smooth
+        scrollContainer.style.scrollBehavior = 'smooth';
+        // scroll element into view, align it to the top
+        target.scrollIntoView(true);
+      }, 200)
+    }, true);
+    document.getElementById('bottom-smooth-auto').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // go smooth
+        scrollContainer.style.scrollBehavior = 'smooth';
+        // scroll element into view, align it to the bottom
+        target.scrollIntoView(false);
+      }, 200)
+    }, true);
+
+    document.getElementById('top-auto-auto').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // scroll element into view, align it to the top
+        target.scrollIntoView(true);
+      }, 200)
+    }, true);
+    document.getElementById('bottom-auto-auto').addEventListener('click', function() {
+      // reset to auto so reset of scroll position happens immedately
+      scrollContainer.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+      // reset scroll position in case we're running the test again
+      scrollContainer.scrollLeft = 0;
+
+      setTimeout(function() {
+        // scroll element into view, align it to the bottom
+        target.scrollIntoView(false);
+      }, 200)
+    }, true);
+  </script>
+
+</body>
+</html>
