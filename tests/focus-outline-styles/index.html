@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>index</title>
+	<title>Default Browser Focus Outline Styles</title>
 	<style>
     body {
       padding-top: 60px;
@@ -935,7 +935,7 @@
     window.addEventListener('hashchange', importHash);
     importHash();
 
-    document.addEventListener('keypress', function(event) {
+    document.addEventListener('keydown', function(event) {
       if (event.keyCode === 32) {
         event.preventDefault();
         var target = elements.style.filter(function(element){ return !checked(element) })[0];

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: text-indent messes up custom focus outline</title>
+  <style>
+    button {
+      margin-left: 200px;
+    }
+    button > span {
+      display: inline-block;
+    }
+    .hide-text {
+      text-indent: -999999em;
+    }
+    .custom-focus:focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1112717
+    https://bugzilla.mozilla.org/show_bug.cgi?id=133165
+  -->
+
+  <h1><code>text-indent</code> messes up custom focus outline</h1>
+
+  <p>
+    Hit <kbd>Tab</kbd> to cycle through the input elements and observe how native and custom focus outlines
+    differ for buttons using text-indent to visually hide text
+  </p>
+
+  <hr>
+
+  <h2>native focus outline</h2>
+  <button type="button" class="hide-text">text</button>
+
+  <h2>custom focus outline</h2>
+  <button type="button" class="hide-text custom-focus">text</button>
+
+  <h2>native focus outline (text in span)</h2>
+  <button type="button" class=""><span class="hide-text">text</span></button>
+
+  <h2>custom focus outline (text in span)</h2>
+  <button type="button" class="custom-focus"><span class="hide-text">text</span></button>
+
+</body>
+</html>
