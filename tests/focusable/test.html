@@ -16,6 +16,13 @@
     .flexbox > span {
       display: block;
     }
+
+    .user-modify {
+      -webkit-user-modify: read-write;
+         -moz-user-modify: read-write;
+          -ms-user-modify: read-write;
+              user-modify: read-write;
+    }
 	</style>
 </head>
 <body onload="window.isLoaded=true;">
@@ -359,6 +366,14 @@
       <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span1">hello</span>
       <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span2">world</span>
     </div>
+  </article>
+
+  <article>
+    <h2 id="css-user-modify">CSS <code>user-modify</code></h2>
+
+    <span href="#void" data-label="span{user-modify}" class="user-modify">
+      hello world
+    </span>
   </article>
 
   <article>
