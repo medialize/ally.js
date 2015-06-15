@@ -99,8 +99,8 @@ require.config({
 
 ### master (will become 0.0.5) ###
 
-* improving [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to also wait until an element becomes focusable
-
+* adding [`dom/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to execute callback when an element becomes visible
+* improving [`dom/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to also wait until an element becomes focusable
 
 ### 0.0.4 (February 3rd 2015) ###
 

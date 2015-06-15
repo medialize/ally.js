@@ -6,9 +6,15 @@ define(function defineFocusWhenVisible(require) {
   */
 
   var whenVisible = require('../dom/when-visible');
+  var isFocusable = require('../dom/is-focusable');
 
   function focus(element) {
+    if (!isFocusable(element)) {
+      return false;
+    }
+
     element.focus();
+    return true;
   }
 
   return function(element, percentVisible) {
