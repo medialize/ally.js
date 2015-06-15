@@ -8,6 +8,7 @@ define(function defineDemoFocusableData(require) {
     'ie-10': require('./ie-10'),
     'ie-11': require('./ie-11'),
     'ie-12': require('./ie-12'),
+    'ios-8': require('./ios-8'),
     'safari-6_2': require('./safari-6.2'),
     'webkit-nightly': require('./webkit-nightly'),
   };
