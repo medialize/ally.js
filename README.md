@@ -97,6 +97,10 @@ require.config({
 
 ## Changelog
 
+### 0.0.6 (June 17th 2015) ###
+
+* fixing [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html) to subtract scrollbars from visible space
+
 ### 0.0.5 (June 15th 2015) ###
 
 * adding [`dom/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to execute callback when an element becomes visible
