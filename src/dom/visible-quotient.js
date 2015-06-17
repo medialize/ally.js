@@ -35,11 +35,28 @@ define(function defineDomVisibleQuotient(require) {
     };
   }
 
-  function getBoundingClientRectWithArea(element) {
+  function getInnerBoundingClientRect(element) {
     // convenience for the .reduce() in getScrollableParentRect()
     var rect = element.getBoundingClientRect();
-    rect.area = rect.width * rect.height;
-    return rect;
+
+    // remove the width of the scrollbar because that
+    // area is not really considered visible
+    // NOTE: assuming scrollbar is always to the right and bottom
+    var scrollbarWidth = element.offsetWidth - element.clientWidth;
+    var scrollbarHeight = element.offsetHeight - element.clientHeight;
+    // cannot mutate rect because it has readonly properties
+    var _rect = {
+      top: rect.top,
+      left: rect.left,
+      right: rect.right - scrollbarWidth,
+      bottom: rect.bottom - scrollbarHeight,
+      width: rect.width - scrollbarWidth,
+      height: rect.height - scrollbarHeight,
+      area: 0,
+    };
+
+    _rect.area = _rect.width * _rect.height;
+    return _rect;
   }
 
   function isOverflowingElement(element) {
@@ -77,14 +94,14 @@ define(function defineDomVisibleQuotient(require) {
 
     // identify the currently visible intersection of all scrolling container parents
     return scrollingContainers.reduce(function(previous, current) {
-      var rect = getBoundingClientRectWithArea(current);
+      var rect = getInnerBoundingClientRect(current);
       var intersection = getIntersectingRect(rect, previous);
       // identify the smallest scrolling container so we know how much space
       // our element can fill at the most - note that this is NOT the area
       // of the intersection, intersection is just abused as a vehicle
       intersection.area = Math.min(rect.area, previous.area);
       return intersection;
-    }, getBoundingClientRectWithArea(scrollingContainers[0]));
+    }, getInnerBoundingClientRect(scrollingContainers[0]));
   }
 
   function visibleQuotient(element) {
