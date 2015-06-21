@@ -2,6 +2,8 @@
 define(function defineMapKeycode(require) {
   'use strict';
 
+  // https://github.com/keithamus/jwerty/blob/master/jwerty.js
+
   var map = {
     // Element Focus
     tab: 9,

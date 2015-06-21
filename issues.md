@@ -28,6 +28,9 @@ This document is used for collecting all the bugs reported and issues raised bec
 * Focus Link Target (sequential focus navigation starting point) - [Blink 454172](https://code.google.com/p/chromium/issues/detail?id=454172), [WebKit 141136](https://bugs.webkit.org/show_bug.cgi?id=141136), [Trident 1111056](https://connect.microsoft.com/IE/feedback/details/1111056)
 * element.scrollIntoView() confused by scroll-behavior:smooth; - [Gecko 1139745](https://bugzilla.mozilla.org/show_bug.cgi?id=1139745)
 
+* chrome `audio[controls][tabindex=-1]` (and video) still tabbable
+* firefox `embed[tabindex=-1]` still tabbable
+
 
 ## Filed Specification Issues
 
