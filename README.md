@@ -103,6 +103,7 @@ require.config({
 ### master ###
 
 * adding `event/shadow-focus` to emit custom event when focus changes within the Shadow DOM - extracted from `focus/within`
+* adding `event/interaction-type-listener` to track user input to differentiate keyboard and pointer input
 
 ### 0.0.6 (June 17th 2015) ###
 
