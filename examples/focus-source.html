@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>focus source detection - pointer, keyboard, script</title>
+  <style>
+    body :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] > body :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] > body :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] > body :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] > body :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+    p[data-had-focus] {
+      display: none;
+    }
+    html.focus-source-pointer p[data-had-focus="pointer"],
+    html.focus-source-key p[data-had-focus="key"],
+    html.focus-source-script p[data-had-focus="script"] {
+      display: block;
+    }
+
+    /* separate blocks because ">>>" or "/deep/" might not be supported and thus render the selector void */
+    .example >>> :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] .example >>> :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] .example >>> :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] .example >>> :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] .example >>> :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+    .example /deep/ :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] .example /deep/ :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] .example /deep/ :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] .example /deep/ :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] .example /deep/ :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <h1>Focus Source Detection - pointer, keyboard, script</h1>
+  <p>
+    Utility to differentiate the causes of focus change for when different
+    visual styles need to applied. The utility identifies <code>pointer</code> (mouse, touch),
+    <code>key</code> (keyboard) and <code>script</code> as sources for an element being focused.
+    The information is made available to CSS via <code>&lt;html data-focus-source=&quot;key&quot;&gt;</code>.
+    The classes <code>focus-source-key</code>, <code>focus-source-pointer</code>, <code>focus-source-script</code>
+    are made available on <code>&lt;html&gt;</code> when the respective focus source occurs for the first time.
+    When the utility is initialized, the focus source is <code>initial</code>.
+  </p>
+
+  <h2 id="usage">Usage</h2>
+  <pre>// load focus/source
+var engageFocusSource = require('ally/focus/source');
+
+// activate focus source detection
+var focusSource = engageFocusSource();
+
+// get current focus source
+focusSource.current(); // "key", "pointer", "script"
+
+// test if a focus source has occured before
+focusSource.used("key"); // true, false
+
+// make the next focus event set a specified source
+// regardless of the identified interaction type
+// false acts as a reset
+focusSource.next("pointer");
+
+// make the next focus event set the current source
+// alias for: focusSource.next(focusSource.current());
+// false acts as a reset
+focusSource.repeat();
+
+// make all focus events set a specified source
+// regardless of the identified interaction type
+// false acts as a reset
+focusSource.lock("pointer");
+
+// stop focus focus source detection
+focusSource.disengage();</pre>
+
+  <h2 id="example">Example</h2>
+  <p>
+    lalala
+  </p>
+  <hr>
+  <button type="button" id="focus-pass">loading…</button>
+  <button type="button" id="focus-repeat">loading…</button>
+  <button type="button" id="focus-lock" aria-pressed="false">loading…</button>
+  <hr>
+
+  <input id="before-input" type="text" value="before styled">
+  <div class="example">
+    <div id="first-shadow-host"></div>
+    <div>
+      <input id="outer-input" type="text" value="outer input">
+    </div>
+  </div>
+  <input id="after-input" type="text" value="after styled">
+
+  <hr>
+  <p data-had-focus="pointer">focus was set by pointer at least once</p>
+  <p data-had-focus="key">focus was set by keyboard at least once</p>
+  <p data-had-focus="script">focus was set by script at least once</p>
+  <hr>
+  <pre id="example-log"></pre>
+
+  <script src="../bower_components/requirejs/require.js"></script>
+  <script src="main.js"></script>
+  <script>
+    var log = document.getElementById('example-log');
+    var buttonPass = document.getElementById('focus-pass');
+    var buttonRepeat = document.getElementById('focus-repeat');
+    var buttonLock = document.getElementById('focus-lock');
+
+    require(['ally/focus/source', 'ally/event/interaction-type-listener'], function(engageFocusSource, engageInteractionTypeListener) {
+      var focusSource = engageFocusSource();
+      var listener = engageInteractionTypeListener();
+      var input;
+
+      buttonPass.textContent = 'focus';
+      buttonPass.addEventListener('click', function() {
+        log.textContent += '\n' + 'passing focus';
+        input.focus();
+      }, false);
+
+      buttonRepeat.textContent = 'focus (repeat)';
+      buttonRepeat.addEventListener('click', function() {
+        log.textContent += '\n' + 'passing focus with focusSource.repeat()';
+        focusSource.repeat();
+        input.focus();
+      }, false);
+
+      buttonLock.textContent = 'focus (lock)';
+      buttonLock.addEventListener('click', function() {
+        if (this.getAttribute('aria-pressed') !== 'true') {
+          this.setAttribute('aria-pressed', 'true');
+          buttonLock.textContent = 'unlock';
+          log.textContent += '\n' + 'passing focus with focusSource.lock(focusSource.current())';
+          focusSource.lock(focusSource.current());
+          input.focus();
+          
+        } else {
+          this.setAttribute('aria-pressed', 'false');
+          buttonLock.textContent = 'focus (lock)';
+          focusSource.lock(false);
+        }
+      }, false);
+
+      document.documentElement.addEventListener('focus', function() {
+        var interactionType = listener.get();
+        /*jshint laxbreak: true */
+        log.textContent += '\n focused by ' + document.documentElement.getAttribute('data-focus-source');
+        /*jshint laxbreak: false */
+      }, true);
+
+      // create shadow dom structure:
+      if (document.body.shadowRoot === undefined) {
+        log.textContent = 'Not engaging ShadowDOM support, because browser does not support it';
+        input = document.getElementById('before-input');
+      } else {
+        // body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input
+        var firstShadowHost = document.getElementById('first-shadow-host');
+        var firstShadowRoot = firstShadowHost.createShadowRoot();
+        firstShadowRoot.innerHTML = '<div id="second-shadow-host"></div><div id="third-shadow-host"></div>';
+
+        var secondShadowHost = firstShadowRoot.getElementById('second-shadow-host');
+        var secondShadowRoot = secondShadowHost.createShadowRoot();
+        secondShadowRoot.innerHTML = '<input id="first-input" type="text" value="::shadow ::shadow input">';
+
+        var thirdShadowHost = firstShadowRoot.getElementById('third-shadow-host');
+        var thirdShadowRoot = thirdShadowHost.createShadowRoot();
+        thirdShadowRoot.innerHTML = '<input id="second-input" type="text" value="::shadow ::shadow input">';
+
+        input = secondShadowRoot.querySelector('input');
+      }
+
+      var input = document.getElementById('before-input')
+      input.focus();
+    });
+
+  </script>
+</body>
+</html>
