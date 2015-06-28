@@ -46,6 +46,9 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 * [`fix-browser/pointer-focus-input`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-input.html) -- to work around a behavior in Safari and Firefox on Mac OS X where clicking on certain form elements would not give them focus
 * [`fix-browser/pointer-focus-children`](http://medialize.github.io/ally.js/examples/fix-pointer-focus-children.html) to work around a bug in IE10 and IE11 where children of `display:flex;` are made focusable when they shouldn't be
 
+### Events
+
+* `event/shadow-focus` -- dispatched when focus changes within the Shadow DOM
 
 ### Development / Debugging
 
@@ -96,6 +99,10 @@ require.config({
 
 
 ## Changelog
+
+### master ###
+
+* adding `event/shadow-focus` to emit custom event when focus changes within the Shadow DOM - extracted from `focus/within`
 
 ### 0.0.6 (June 17th 2015) ###
 
