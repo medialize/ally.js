@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Touch Focus Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div {
+      border: 3px solid silver;
+    }
+    :active {
+      border: 3px solid blue;
+    }
+    :focus {
+      outline: 3px solid red;
+    }
+    .tap-highlight {
+      /* https://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/ */
+      -webkit-tap-highlight-color: #CCFFF;
+    }
+    .user-select {
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/user-select */
+      -webkit-user-select: none;
+              user-select: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+  
+  <div class="focus" tabindex="0" onmousedown="">focus</div>
+  <hr>
+  <div class="focus tap-highlight" tabindex="0" onmousedown="">focus tap-highlight</div>
+  <hr>
+  <div class="focus tap-highlight user-select" tabindex="0" onmousedown="">focus tap-highlight user-select</div>
+
+  <hr>
+
+  <div class="focus" tabindex="0" ontouchstart="">focus</div>
+  <hr>
+  <div class="focus tap-highlight" tabindex="0" ontouchstart="">focus tap-highlight</div>
+  <hr>
+  <div class="focus tap-highlight user-select" tabindex="0" ontouchstart="">focus tap-highlight user-select</div>
+
+</body>
+</html>
