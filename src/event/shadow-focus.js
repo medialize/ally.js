@@ -1,8 +1,15 @@
 define(function defineEventShadowFocus(require) {
   'use strict';
 
-  require('../prototype/window.customevent');
-  var cssShadowPiercingDeepCombinator = require('../supports/css-shadow-piercing-deep-combinator');
+  /*
+    alternate implementation: https://github.com/cdata/focus-observer
+  */
+
+  if (!document.body.createShadowRoot) {
+    // no need to initialize any of this if we don't have Shadow DOM available
+    return;
+  }
+
   var activeElements = require('../dom/active-elements');
 
   var blurTimer;
@@ -39,7 +46,12 @@ define(function defineEventShadowFocus(require) {
       bubbles: false,
       cancelable: false,
       detail: {
+        // complete focus ancestry
         elements: _active,
+        // the actually focused element
+        active: _active[0],
+        // shadow host ancestry
+        hosts: _active.slice(1)
       }
     });
 
