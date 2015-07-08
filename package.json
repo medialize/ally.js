@@ -1,6 +1,6 @@
 {
   "name": "ally.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Library to help applications with accessibility concerns",
   "main": "src/ally.js",
   "directories": {
