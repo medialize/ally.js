@@ -9,6 +9,12 @@
   },
   "scripts": {
     "test": "exit 0",
+    "clean": "rm -rf dist/*",
+    "watch": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
+    "build": "npm run build-common && npm run build-amd && npm run build-global",
+    "build-common": "babel --source-maps --modules common --out-dir dist/common src",
+    "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
+    "build-global": "babel --source-maps --out-file dist/ally.js src/a11y.js",
     "lint": "eslint $(glob-cli src/**/*.js)"
   },
   "repository": {
