@@ -16,6 +16,13 @@
     .flexbox > span {
       display: block;
     }
+
+    .user-modify {
+      -webkit-user-modify: read-write;
+         -moz-user-modify: read-write;
+          -ms-user-modify: read-write;
+              user-modify: read-write;
+    }
 	</style>
 </head>
 <body onload="window.isLoaded=true;">
@@ -35,17 +42,30 @@
     <h2 id="form-elements">Form Elements</h2>
   
     <input type="text" id="label-target" data-label="input[type=text]">
+    <input type="text" id="label-target-focusable" data-label="input[type=text][tabindex=-1]" tabindex="-1">
     <input type="password" data-label="input[type=password]">
+    <input type="password" data-label="input[type=password][tabindex=-1]" tabindex="-1">
     <input type="checkbox" data-label="input[type=checkbox]">
+    <input type="checkbox" data-label="input[type=checkbox][tabindex=-1]" tabindex="-1">
     <input type="radio" name="void-form-elements-1" data-label="input[type=radio]">
+    <input type="radio" name="void-form-elements-1" data-label="input[type=radio][tabindex=-1]" tabindex="-1">
     <input type="submit" data-label="input[type=submit]">
+    <input type="submit" data-label="input[type=submit][tabindex=-1]" tabindex="-1">
     <input type="reset" data-label="input[type=reset]">
+    <input type="reset" data-label="input[type=reset][tabindex=-1]" tabindex="-1">
     <input type="hidden" data-label="input[type=hidden]">
+    <input type="hidden" data-label="input[type=hidden][tabindex=-1]" tabindex="-1">
     <select data-label="select"><option>option</option></select>
+    <select data-label="select[tabindex=-1]" tabindex="-1"><option>option</option></select>
     <textarea rows="1" cols="10" data-label="textarea"></textarea>
+    <textarea rows="1" cols="10" data-label="textarea[tabindex=-1]" tabindex="-1"></textarea>
     <button type="button" data-label="button[type=button]">button</button>
+    <button type="button" data-label="button[type=button][tabindex=-1]" tabindex="-1">button</button>
     <label data-label="label">label</label>
+    <label data-label="label[tabindex=-1]" tabindex="-1">label</label>
     <label for="label-target" data-label="label[for=&quot;label-target&quot;]">label</label>
+    <label for="label-target-focusable" data-label="label[for=&quot;label-target-focusable&quot;]">label</label>
+    <label for="label-target" data-label="label[for=&quot;label-target&quot;][tabindex=-1]" tabindex="-1">label</label>
   </article>
 
   <!-- http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled -->
@@ -103,6 +123,21 @@
     <img src="../media/image-map.png" alt="no map associated" data-label="img">
 
     <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].second">
+
+    <map name="image-maps-focusable-1">
+      <area tabindex="-1" href="#void" shape="rect" coords="63,19,144,45" data-label="area[href][tabindex=-1].upper">
+      <area tabindex="-1" href="#void" shape="rect" coords="63,59,144,85" data-label="area[href][tabindex=-1].lower">
+    </map>
+
+    <img usemap="#image-maps-focusable-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].focusable">
+
+    <map name="image-maps-focusable-2">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[tabindex=-1] area[href].upper">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="img[tabindex=-1] area[href].lower">
+    </map>
+
+    <img tabindex="-1" usemap="#image-maps-focusable-2" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap][tabindex=-1]">
+
   </article>
 
   <article>
@@ -111,6 +146,12 @@
     <a href="#void" data-label="a:has([ismap])">
       <img ismap src="../media/image-map.png" alt="clickable anywhere" data-label="a > img[ismap]">
     </a>
+    <a href="#void" data-label="a[tabindex=-1]:has([ismap])" tabindex="-1">
+      <img ismap src="../media/image-map.png" alt="clickable anywhere" data-label="a[tabindex=-1] > img[ismap]">
+    </a>
+    <a href="#void" data-label="a:has([ismap][tabindex=-1])">
+      <img ismap tabindex="-1" src="../media/image-map.png" alt="clickable anywhere" data-label="a > img[ismap][tabindex=-1]">
+    </a>
   </article>
 
   <!-- http://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
@@ -118,6 +159,10 @@
     <h2 id="browsing-contexts">Browsing Contexts</h2>
     
     <iframe src="iframe.html" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="iframe.html" name="iframe-2" width="200" height="100" data-label="iframe[tabindex=-1]" tabindex="-1"></iframe>
   </article>
 
   <!--
@@ -139,6 +184,12 @@
       <p>no &lt;audio&gt; support</p>
     </audio>
 
+    <audio controls data-label="audio[controls][tabindex=-1]" tabindex="-1">
+      <source src="../media/test.mp3"></source>
+      <source src="../media/test.ogg"></source>
+      <p>no &lt;audio&gt; support</p>
+    </audio>
+
     <video poster="../media/test.poster.png" data-label="video">
       <source src="../media/test.mp4"></source>
       <source src="../media/test.webm"></source>
@@ -153,9 +204,37 @@
       <p>no &lt;video&gt; support</p>
     </video>
 
+    <video poster="../media/test.poster.png" controls data-label="video[controls][tabindex=-1]" tabindex="-1">
+      <source src="../media/test.mp4"></source>
+      <source src="../media/test.webm"></source>
+      <source src="../media/test.ogv"></source>
+      <p>no &lt;video&gt; support</p>
+    </video>
+
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
 
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed[tabindex=-1]" tabindex="-1">
+
+    <div tabindex="0" data-label="ignore"></div>
+
     <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen[tabindex=-1]" tabindex="-1">
+  </article>
+
+  <article>
+    <h2 id="scrollable-content">Scrollable Content</h2>
+
+    <div data-label="div{scroll-container-horizontal}" style="width: 100px; height: 50px;">
+      <div data-label="div{scroll-body-horizontal}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-vertical}" style="width: 300px; height: 100px;">
+      <div data-label="div{scroll-body-vertical}" style="width: 200px; height: 400px;">scrollable content</div>
+    </div>
   </article>
 
   <article>
@@ -163,6 +242,16 @@
 
     <details data-label="details">
       <summary data-label="details summary">Collapsed Details</summary>
+      <a href="#void" data-label="details a[href]">link</a>
+    </details>
+
+    <details data-label="details[tabindex=-1]" tabindex="-1">
+      <summary data-label="details[tabindex=-1] summary">Collapsed Details</summary>
+      <a href="#void" data-label="details a[href]">link</a>
+    </details>
+
+    <details data-label="details">
+      <summary data-label="details summary[tabindex=-1]" tabindex="-1">Collapsed Details</summary>
       <a href="#void" data-label="details a[href]">link</a>
     </details>
 
@@ -187,6 +276,13 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=-1]" tabindex="-1">
+      <param name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+
+    <div tabindex="0" data-label="ignore"></div>
+
     <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
@@ -195,6 +291,10 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg]"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg][tabindex=-1]" tabindex="-1"></object>
 
     <div tabindex="0" data-label="ignore"></div>
 
@@ -213,9 +313,39 @@
   <article>
     <h2 id="svg">SVG</h2>
 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg">
       <a xlink:href="#void" data-label="svg a[xlink|href]">
         <text x="10" y="20" data-label="svg a[xlink|href] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[tabindex=-1]" tabindex="-1">
+      <a xlink:href="#void" data-label="svg[tabindex=-1] a[xlink|href]">
+        <text x="10" y="20" data-label="svg[tabindex=-1] a[xlink|href] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=0])">
+      <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=0]" tabindex="0">
+        <text x="10" y="20" data-label="svg a[xlink|href][tabindex=0] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=-1])">
+      <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=-1]" tabindex="-1">
+        <text x="10" y="20" data-label="svg a[xlink|href][tabindex=-1] text">a link</text>
       </a>
       <text x="10" y="20" data-label="svg text">just text, no link</text>
       <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
@@ -251,6 +381,9 @@
 
     <h3 id="disabled-and-tabindex">Disabled And Tabindex</h3>
     <fieldset disabled tabindex="0" data-label="fieldset[tabindex=0][disabled]"></fieldset>
+
+    <h3 id="disabled-and-focusable">Disabled And Focusable</h3>
+    <fieldset disabled tabindex="-1" data-label="fieldset[tabindex=-1][disabled]"></fieldset>
   </article>
 
   <article>
@@ -362,11 +495,24 @@
   </article>
 
   <article>
+    <h2 id="css-user-modify">CSS <code>user-modify</code></h2>
+
+    <span href="#void" data-label="span{user-modify}" class="user-modify">
+      hello world
+    </span>
+    <span href="#void" data-label="span{user-modify}[tabindex=-1]" class="user-modify" tabindex="-1">
+      hello world
+    </span>
+  </article>
+
+  <article>
     <h2 id="canvas-content">children of <code>canvas</code> element</h2>
 
     <canvas width="150" height="150" data-label="canvas">
       <input type="text" data-label="canvas > input">
+      <input type="text" data-label="canvas > input[tabindex=-1]" tabindex="-1">
       <a href="#void" data-label="canvas > a">hello</a>
+      <a href="#void" data-label="canvas > a[tabindex=-1]" tabindex="-1">hello</a>
       <span tabindex="0" data-label="canvas > [tabindex=0]">hello</span>
       <span tabindex="-1" data-label="canvas > [tabindex=-1]">hello</span>
     </canvas>

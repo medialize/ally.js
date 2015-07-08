@@ -61,7 +61,7 @@ disengage();</pre>
     focusable elements to verify that the <code>ally-focus-within</code> class is properly removed.
   </p>
   <hr>
-  <input id="before-input" type="text" value="before styled focus-within">
+  <input id="before-input" type="text" value="before styled">
   <div class="example">
     <div id="first-shadow-host"></div>
     <div>
@@ -75,7 +75,7 @@ disengage();</pre>
     </svg>
 
   </div>
-  <input id="after-input" type="text" value="after styled focus-within">
+  <input id="after-input" type="text" value="after styled">
   <hr>
 
 
@@ -83,13 +83,15 @@ disengage();</pre>
   <script src="main.js"></script>
   <script>
     var log = document.getElementById('log');
-    if (document.body.shadowRoot === undefined) {
-      log.textContent = 'Your browser does not support ShadowDOM';
-    } else {
-      require(['ally/focus/within'], function(focusWithin) {
-        focusWithin();
+    require(['ally/focus/within'], function(focusWithin) {
+      var disengage = focusWithin();
+      var input;
 
-        // create shadow dom structure:
+      // create shadow dom structure:
+      if (document.body.shadowRoot === undefined) {
+        log.textContent = 'Not engaging ShadowDOM support, because browser does not support it';
+        input = document.getElementById('before-input');
+      } else {
         // body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input
         var firstShadowHost = document.getElementById('first-shadow-host');
         var firstShadowRoot = firstShadowHost.createShadowRoot();
@@ -103,10 +105,11 @@ disengage();</pre>
         var thirdShadowRoot = thirdShadowHost.createShadowRoot();
         thirdShadowRoot.innerHTML = '<input id="second-input" type="text" value="::shadow ::shadow input">';
 
-        var input = secondShadowRoot.querySelector('input');
-        input.focus();
-      });
-    }
+        input = secondShadowRoot.querySelector('input');
+      }
+
+      input.focus();
+    });
   </script>
 </body>
 </html>

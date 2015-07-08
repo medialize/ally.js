@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>latent autofocus insertion</title>
+  <style>
+    html :focus {
+      outline: 3px solid red;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Latent autofocus insertion</h1>
+  <p>Manual test to see how do browsers behave when <code>&lt;input &hellip; autofocus&gt;</code> is added after the document was loaded</p>
+
+  <input type="text" autofocus value="first">
+
+  <script>
+    setTimeout(function() {
+      var el = document.createElement('input');
+      el.setAttribute('autofocus', '');
+      el.type = 'text';
+      el.value = 'second';
+      document.body.appendChild(el);
+    }, 2000);
+  </script>
+
+</body>
+</html>

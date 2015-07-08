@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>element focused on page load</title>
+</head>
+<body>
+
+  <h1>Focus Sequence For Fragment-Links with Various Targets</h1>
+  <p>Does the browser focus the element identified by the Fragment URL upon page load?</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>target</th>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Safari</th>
+      <th>IE11</th>
+      <th>Spartan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><a href="input.html#target">input</a></th>
+      <td data-focus="yes">yes</td>
+      <td data-focus="no">no</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+    </tr>
+    <tr>
+      <th><a href="tabbable.html#target">tabbable</a></th>
+      <td data-focus="yes">yes</td>
+      <td data-focus="no">no</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+    </tr>
+    <tr>
+      <th><a href="focusable.html#target">focusable</a></th>
+      <td data-focus="yes">yes</td>
+      <td data-focus="no">no</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+      <td data-focus="yes">yes</td>
+    </tr>
+    <tr>
+      <th><a href="inert.html#target">inert</a></th>
+      <td data-focus="no">no</td>
+      <td data-focus="no">no</td>
+      <td data-focus="no">no</td>
+      <td data-focus="no">no</td>
+      <td data-focus="no">no</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

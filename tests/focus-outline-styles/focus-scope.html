@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>click focus behavior</title>
+	<style>
+	  html {
+	    margin: 10px;
+	  }
+	  html:focus {
+	    outline: 5px solid red;
+	  }
+	  body:focus {
+	    outline: 3px solid blue;
+	  }
+	  :focus {
+	    background: green;
+	  }
+	</style>
+</head>
+<body>
+
+  <h1>:focus scope</h1>
+
+  <p>
+    This page is used for manual tests to gather intel about what <code>:focus</code> actually selects.</p>
+  </p>
+
+  <p>
+    IE11 always applies <code>:focus</code> to <code>html</code>
+  </p>
+
+  <hr>
+
+  <div tabindex="0" onmousedown="" style="display:inline-block;" data-label="tabbable div with native focus outline style" class="">
+    native style
+    <input type="text" value="some input">
+  </div>
+
+</body>
+</html>

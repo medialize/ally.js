@@ -5,18 +5,18 @@ define(function defineDemoEventSequenceFirefox(require) {
 
   return {
     "platform": {
-      "description": "IE 12.0 32-bit (platform preview) on Windows 10 64-bit",
+      "description": "IE 12.10162 (platform preview) on Windows NT 10.0 64-bit",
       "layout": "Trident",
       "manufacturer": null,
       "name": "IE",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0",
-      "version": "12.0",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10162",
+      "version": "12.10162",
       "os": {
         "architecture": 64,
-        "family": "Windows",
-        "version": "10"
+        "family": "Windows NT",
+        "version": "10.0"
       }
     },
     "events": [
@@ -27,27 +27,27 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
-          "target": "BODY",
-          "related": "none"
-        },
-        {
-          "event": "focusout",
-          "target": "BODY",
-          "related": "none"
-        },
-        {
-          "event": "keydown",
-          "target": "BODY",
-          "related": "none"
-        },
-        {
           "event": "focus",
           "target": "first",
           "related": "none"
         },
         {
           "event": "focusin",
+          "target": "first",
+          "related": "none"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "first",
+          "related": "none"
+        },
+        {
+          "event": "active-element",
+          "target": "first",
+          "related": "BODY"
+        },
+        {
+          "event": "keyup",
           "target": "first",
           "related": "none"
         }
@@ -59,22 +59,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "first",
-          "related": "none"
+          "related": "second"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "first",
+          "related": "second"
+        },
+        {
+          "event": "blur",
           "target": "first",
           "related": "second"
         },
         {
           "event": "focus",
           "target": "second",
-          "related": "none"
+          "related": "first"
         },
         {
           "event": "focusin",
+          "target": "second",
+          "related": "first"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "second",
+          "related": "first"
+        },
+        {
+          "event": "active-element",
           "target": "second",
           "related": "first"
         },
@@ -91,22 +106,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "second",
-          "related": "none"
+          "related": "third"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "second",
+          "related": "third"
+        },
+        {
+          "event": "blur",
           "target": "second",
           "related": "third"
         },
         {
           "event": "focus",
           "target": "third",
-          "related": "none"
+          "related": "second"
         },
         {
           "event": "focusin",
+          "target": "third",
+          "related": "second"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "third",
+          "related": "second"
+        },
+        {
+          "event": "active-element",
           "target": "third",
           "related": "second"
         },
@@ -123,22 +153,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "third",
-          "related": "none"
+          "related": "fifth"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "third",
+          "related": "fifth"
+        },
+        {
+          "event": "blur",
           "target": "third",
           "related": "fifth"
         },
         {
           "event": "focus",
           "target": "fifth",
-          "related": "none"
+          "related": "third"
         },
         {
           "event": "focusin",
+          "target": "fifth",
+          "related": "third"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "fifth",
+          "related": "third"
+        },
+        {
+          "event": "active-element",
           "target": "fifth",
           "related": "third"
         },
@@ -155,24 +200,24 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
-          "target": "fifth",
-          "related": "none"
-        },
-        {
           "event": "focusout",
           "target": "fifth",
           "related": "none"
         },
         {
-          "event": "blur",
-          "target": "BODY",
+          "event": "DOMFocusOut",
+          "target": "fifth",
           "related": "none"
         },
         {
-          "event": "focusout",
-          "target": "BODY",
+          "event": "blur",
+          "target": "fifth",
           "related": "none"
+        },
+        {
+          "event": "active-element",
+          "target": "BODY",
+          "related": "fifth"
         }
       ],
       [
@@ -195,6 +240,16 @@ define(function defineDemoEventSequenceFirefox(require) {
           "event": "focusin",
           "target": "first",
           "related": "none"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "first",
+          "related": "none"
+        },
+        {
+          "event": "active-element",
+          "target": "first",
+          "related": "BODY"
         },
         {
           "event": "pointerup",
@@ -224,22 +279,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "first",
-          "related": "none"
+          "related": "second"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "first",
+          "related": "second"
+        },
+        {
+          "event": "blur",
           "target": "first",
           "related": "second"
         },
         {
           "event": "focus",
           "target": "second",
-          "related": "none"
+          "related": "first"
         },
         {
           "event": "focusin",
+          "target": "second",
+          "related": "first"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "second",
+          "related": "first"
+        },
+        {
+          "event": "active-element",
           "target": "second",
           "related": "first"
         },
@@ -271,22 +341,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "second",
-          "related": "none"
+          "related": "third"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "second",
+          "related": "third"
+        },
+        {
+          "event": "blur",
           "target": "second",
           "related": "third"
         },
         {
           "event": "focus",
           "target": "third",
-          "related": "none"
+          "related": "second"
         },
         {
           "event": "focusin",
+          "target": "third",
+          "related": "second"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "third",
+          "related": "second"
+        },
+        {
+          "event": "active-element",
           "target": "third",
           "related": "second"
         },
@@ -318,22 +403,37 @@ define(function defineDemoEventSequenceFirefox(require) {
           "related": "none"
         },
         {
-          "event": "blur",
+          "event": "focusout",
           "target": "third",
-          "related": "none"
+          "related": "fifth"
         },
         {
-          "event": "focusout",
+          "event": "DOMFocusOut",
+          "target": "third",
+          "related": "fifth"
+        },
+        {
+          "event": "blur",
           "target": "third",
           "related": "fifth"
         },
         {
           "event": "focus",
           "target": "fifth",
-          "related": "none"
+          "related": "third"
         },
         {
           "event": "focusin",
+          "target": "fifth",
+          "related": "third"
+        },
+        {
+          "event": "DOMFocusIn",
+          "target": "fifth",
+          "related": "third"
+        },
+        {
+          "event": "active-element",
           "target": "fifth",
           "related": "third"
         },

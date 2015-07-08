@@ -10,6 +10,7 @@ define(function defineFocusWithin(require) {
   var cssShadowPiercingDeepCombinator = require('../supports/css-shadow-piercing-deep-combinator');
   var activeElements = require('../dom/active-elements');
   var path = require('../dom/path');
+  require('../event/shadow-focus');
 
   // NOTE: require classList polyfill may be necessary
   // http://caniuse.com/#feat=classlist available since IE10
@@ -18,29 +19,9 @@ define(function defineFocusWithin(require) {
 
   var className = 'ally-focus-within';
   var blurTimer;
-  var blurElement;
 
-  function handleElementBlurEvent() {
-    /*jshint validthis:true */
-
-    // once() - sometimes I miss jQuery's simplicity…
-    this.removeEventListener('blur', handleElementBlurEvent, true);
-    // abort any handlers that come from document blur handler
-    (window.clearImmediate || window.clearTimeout)(blurTimer);
-    blurTimer = (window.setImmediate || window.setTimeout)(function() {
-      applyFocusWithinClass();
-    });
-  }
-
-  function observeElementBlurEvent(element) {
-    // call us when we're leaving the element
-    element.addEventListener('blur', handleElementBlurEvent, true);
-    // remember the element so it can be covered by disengageFocusWithin
-    blurElement = element;
-  }
-
-  function applyFocusWithinClass() {
-    var _active = activeElements();
+  function applyFocusWithinClass(active) {
+    var _active = active || activeElements();
     var selector = '.' + className;
     if (cssShadowPiercingDeepCombinator) {
       // select elements in shadow dom as well
@@ -74,12 +55,6 @@ define(function defineFocusWithin(require) {
 
       element.classList.add(className);
     });
-
-    // because we don't get blur events dispatched for focus changes
-    // in nested ShadowDOMs, we need to observe those manually
-    if (_active.length > 1) {
-      observeElementBlurEvent(_active[0]);
-    }
   }
 
   function handleDocumentBlurEvent() {
@@ -100,16 +75,21 @@ define(function defineFocusWithin(require) {
     applyFocusWithinClass();
   }
 
+  function handleShadowFocusEvent(event) {
+    applyFocusWithinClass(event.detail.elements);
+  }
+
   function engageFocusWithin() {
     document.addEventListener('blur', handleDocumentBlurEvent, true);
     document.addEventListener('focus', handleDocumentFocusEvent, true);
+    document.addEventListener('shadow-focus', handleShadowFocusEvent, true);
     applyFocusWithinClass();
 
     return function disengageFocusWithin() {
       (window.clearImmediate || window.clearTimeout)(blurTimer);
       document.removeEventListener('blur', handleDocumentBlurEvent, true);
       document.removeEventListener('focus', handleDocumentFocusEvent, true);
-      blurElement && blurElement.removeEventListener('blur', handleElementBlurEvent, true);
+      document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
 
       var selector = '.' + className;
       if (cssShadowPiercingDeepCombinator) {

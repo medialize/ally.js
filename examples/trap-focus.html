@@ -20,6 +20,15 @@
     Note: It may be possible to break out of the given <var>context</var> by means of script or <code>MouseEvent</code>.
     It is the developer's responsibility to prevent that from happening, should they wish to.
   </p>
+  <p class="warn">
+    Warning: Trapping focus is <em>deprecated</em> and superseded by
+    <a href="disable-focus.html">inert subtrees - disabling focus</a>.
+    Although this pattern is considered best practice by WAI ARIA,
+    it cannot be implemented properly (in a robust way) with the tools
+    available in current browsers. Working with inert subtrees has
+    its own set of problems, but they seem far less likely to break
+    for any given user than trapping focus could and would.
+  </p>
 
   <h2 id="usage">Usage</h2>
   <pre>// load focus/trap

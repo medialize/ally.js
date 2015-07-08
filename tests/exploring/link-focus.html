@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>link-focus</title>
+</head>
+<body id="body">
+
+  <h1>Exploring Link Focus</h1>
+
+  <p>With `:target` supposedly getting focus upon link activation, the question arises what the concrete focus sequence is</p>
+  
+  <hr>
+  <input type="text">
+  <a href="#target" id="a-target">target</a>, <a href="#void" id="a-void">void</a>
+  <div id="target" tabindex="-1">link target</div>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'Focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+    document.addEventListener('blur', function(event) {
+      log.textContent += 'Blur: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+  </script>
+
+</body>
+</html>
