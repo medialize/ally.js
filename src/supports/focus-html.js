@@ -1,11 +1,8 @@
-define(function defineSupportsFocusDocumentElement(require) {
-  'use strict';
 
-  var detectFocus = require('./detect-focus');
+import detectFocus from './detect-focus';
 
-  var canFocusDocumentElement = detectFocus('can-focus-document-element', 'div', function(/*element*/) {
-    return document.documentElement;
-  });
-
-  return canFocusDocumentElement;
+var canFocusDocumentElement = detectFocus('can-focus-document-element', 'div', function(/*element*/) {
+  return document.documentElement;
 });
+
+export default canFocusDocumentElement;

@@ -31,7 +31,7 @@ node_modules/.bin/babel --source-maps --modules common --out-dir dist/common src
 # build only the AMD variant
 node_modules/.bin/babel --source-maps --modules amd --out-dir dist/amd src
 # build only the global variant
-node_modules/.bin/babel --source-maps --out-file dist/ally.js src/a11y.js
+node_modules/.bin/babel --source-maps --out-file dist/ally.js src/ally.js
 
 # keep compiling to dist/amd while working on src
 node_modules/.bin/babel --watch --source-maps --modules amd --out-dir dist/amd src

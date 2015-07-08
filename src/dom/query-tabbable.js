@@ -1,15 +1,10 @@
-define(function defineDomQueryTabbable(require) {
-  'use strict';
 
-  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-  // http://www.w3.org/WAI/PF/aria-practices/#keyboard
+// http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+// http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
-  var queryFocusable = require('./query-focusable');
-  var isTabbable = require('./is-tabbable');
+import queryFocusable from './query-focusable';
+import isTabbable from './is-tabbable';
 
-  function queryTabbable(context, includeContext) {
-    return queryFocusable(context, includeContext).filter(isTabbable);
-  }
-
-  return queryTabbable;
-});
+export default function queryTabbable(context, includeContext) {
+  return queryFocusable(context, includeContext).filter(isTabbable);
+}

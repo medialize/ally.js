@@ -1,17 +1,12 @@
-define(function defineEventShadowFocus(require) {
-  'use strict';
 
-  /*
-    alternate implementation: https://github.com/cdata/focus-observer
-  */
+/*
+  alternate implementation: https://github.com/cdata/focus-observer
+*/
 
-  if (!document.body.createShadowRoot) {
-    // no need to initialize any of this if we don't have Shadow DOM available
-    return;
-  }
+import activeElements from '../dom/active-elements';
 
-  var activeElements = require('../dom/active-elements');
-
+// no need to initialize any of this if we don't have Shadow DOM available
+if (document.body.createShadowRoot) {
   var blurTimer;
   var blurElement;
 
@@ -68,4 +63,4 @@ define(function defineEventShadowFocus(require) {
   }
 
   observeShadowFocus();
-});
+}

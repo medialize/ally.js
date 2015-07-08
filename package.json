@@ -14,7 +14,7 @@
     "build": "npm run build-common && npm run build-amd && npm run build-global",
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
-    "build-global": "babel --source-maps --out-file dist/ally.js src/a11y.js",
+    "build-global": "babel --source-maps --out-file dist/ally.js src/ally.js",
     "lint": "eslint $(glob-cli src/**/*.js)"
   },
   "repository": {

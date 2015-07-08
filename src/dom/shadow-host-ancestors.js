@@ -1,21 +1,16 @@
-define(function defineDomShadowHostAncestors(require) {
-  'use strict';
 
-  var shadowHost = require('./shadow-host');
+import shadowHost from './shadow-host';
 
-  function shadowHostAncestors(element) {
-    var list = [];
-    while (element) {
-      element = shadowHost(element);
-      if (!element) {
-        break;
-      }
-
-      list.push(element);
+export default function shadowHostAncestors(element) {
+  var list = [];
+  while (element) {
+    element = shadowHost(element);
+    if (!element) {
+      break;
     }
 
-    return list;
+    list.push(element);
   }
 
-  return shadowHostAncestors;
-});
+  return list;
+}

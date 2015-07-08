@@ -1,11 +1,8 @@
-define(function defineDomIsShadowed(require) {
-  'use strict';
 
-  var shadowHost = require('./shadow-host');
+import shadowHost from './shadow-host';
 
-  function isShadowed(element) {
-    return Boolean(shadowHost(element));
-  }
+function isShadowed(element) {
+  return Boolean(shadowHost(element));
+}
 
-  return isShadowed;
-});
+export default isShadowed;

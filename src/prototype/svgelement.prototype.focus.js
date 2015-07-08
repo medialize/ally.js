@@ -1,20 +1,14 @@
-/*jshint unused:vars */
-define(function definePrototypeSvgElementPrototypeFocus(require) {
-  'use strict';
-  
-  // Firefox and IE11 do not "properly" inherit the focus() method.
-  // That may be because SVGElement inherits from Element and focus() is defined on HTMLElement.
-  // WebKit and Blink - probably by accident - defined focus() on Element, which is why focusing SVGElements works fine.
 
-  // Firefox' focus() implementation validates the execution context, it demands being called on instances of HTMLElement,
-  // which is why simply copying HTMLElement's focus over to SVGElement ends in the following exception:
-  // TypeError: 'focus' called on an object that does not implement interface HTMLElement.
-  // this works fine in IE11, though.
+// Firefox and IE11 do not "properly" inherit the focus() method.
+// That may be because SVGElement inherits from Element and focus() is defined on HTMLElement.
+// WebKit and Blink - probably by accident - defined focus() on Element, which is why focusing SVGElements works fine.
 
-  if (SVGElement.prototype.focus) {
-    return;
-  }
+// Firefox' focus() implementation validates the execution context, it demands being called on instances of HTMLElement,
+// which is why simply copying HTMLElement's focus over to SVGElement ends in the following exception:
+// TypeError: 'focus' called on an object that does not implement interface HTMLElement.
+// this works fine in IE11, though.
 
+if (!SVGElement.prototype.focus) {
   // remember what had focus to restore after test
   var previousActiveElement = document.activeElement;
   try {
@@ -39,6 +33,4 @@ define(function definePrototypeSvgElementPrototypeFocus(require) {
 
   // restore focus to what it was before test and cleanup
   previousActiveElement.focus();
-
-  return;
-});
+}

@@ -1,31 +1,30 @@
 /*
- * Children of focusable elements with display:flex are focusable.
- * Because focus can be given to focusable (not tabbable) elements
- * by mouse, we have to counter this behavior, so the correct element
- * becomes the activeElement (i.e. receives focus).
- * 
- * Example:
- *   <div tabindex="-1" style="display:flex">
- *     <span>I would receive focus</span>
- *   </div>
- *
- * This (wrong) behavior was observed in Internet Explorer 10 and 11.
- * It is fixed in IE12 (Win10 IE Tec Preview)
- */
-define(function defineFixBrowserPointerFocusParent(require) {
-  'use strict';
+* Children of focusable elements with display:flex are focusable.
+* Because focus can be given to focusable (not tabbable) elements
+* by mouse, we have to counter this behavior, so the correct element
+* becomes the activeElement (i.e. receives focus).
+* 
+* Example:
+*   <div tabindex="-1" style="display:flex">
+*     <span>I would receive focus</span>
+*   </div>
+*
+* This (wrong) behavior was observed in Internet Explorer 10 and 11.
+* It is fixed in IE12 (Win10 IE Tec Preview)
+*/
 
-  var focusTarget = require('../dom/focus-target');
+import focusTarget from '../dom/focus-target';
 
-  // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-  var userAgent = window.navigator.userAgent;
-  var engage = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
-  if (!engage) {
-    return function fixPointerFocusChildrenNotAppliccable() {
-      return function undoFixPointerFocusChildrenNotAppliccable(){};
-    };
-  }
+// This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
+var userAgent = window.navigator.userAgent;
+var engage = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
+var fixPointerFocusChildren;
 
+if (!engage) {
+  fixPointerFocusChildren = function fixPointerFocusChildrenNotAppliccable() {
+    return function undoFixPointerFocusChildrenNotAppliccable(){};
+  };
+} else {
   function handleBeforeFocusEvent(event) {
     // find the element that would receive focus
     var target = focusTarget(event.target);
@@ -63,7 +62,7 @@ define(function defineFixBrowserPointerFocusParent(require) {
     });
   }
 
-  function fixPointerFocusChildren(context) {
+  fixPointerFocusChildren = function fixPointerFocusChildren(context) {
     if (!context) {
       context = document;
     }
@@ -77,6 +76,6 @@ define(function defineFixBrowserPointerFocusParent(require) {
       context.removeEventListener(eventName, handleBeforeFocusEvent, true);
     };
   }
+}
 
-  return fixPointerFocusChildren;
-});
+export default fixPointerFocusChildren;

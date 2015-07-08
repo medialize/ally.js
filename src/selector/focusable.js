@@ -1,60 +1,58 @@
-define(function defineSelectorFocusable(require) {
-  'use strict';
+// NOTE: this selector MUST *never* be used directly,
+// always go through dom/query-focusable or dom/is-focusable.js
+// there are too many edge cases that they could be covered in
+// a simple CSS selector…
 
-  // NOTE: this selector MUST *never* be used directly,
-  // always go through dom/query-focusable or dom/is-focusable.js
-  // there are too many edge cases that they could be covered in
-  // a simple CSS selector…
+import '../prototype/svgelement.prototype.focus';
 
-  require('../prototype/svgelement.prototype.focus');
-  var canFocusAudioWithoutControls = require('../supports/focus-audio-without-controls');
-  var canFocusVideoWithoutControls =  require('../supports/focus-video-without-controls');
-  var canFocusHtml = require('../supports/focus-html');
-  var canFocusSvg = require('../supports/focus-svg');
-  var canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
-  var canFocusTable = require('../supports/focus-table');
-  var canFocusFieldset = require('../supports/focus-fieldset');
-  var canFocusSummary = require('../supports/focus-summary');
-  var cssShadowPiercingDeepCombinator = require('../supports/css-shadow-piercing-deep-combinator');
+import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
+import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
+import canFocusHtml from '../supports/focus-html';
+import canFocusSvg from '../supports/focus-svg';
+var canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
+import canFocusTable from '../supports/focus-table';
+import canFocusFieldset from '../supports/focus-fieldset';
+import canFocusSummary from '../supports/focus-summary';
+import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 
-  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-  /*jshint laxbreak: true */
-  var selector = 'body,'
-    // Firefox, IE11 can focus <html>
-    + (canFocusHtml ? 'html,' : '')
-    // IE11 can focus <table> and <td>
-    + (canFocusTable ? 'table, td,' : '')
-    // IE11 can focus <fieldset>
-    + (canFocusFieldset ? 'fieldset,' : '')
-    // supporting <svg>
-    + (canFocusSvgMethod && canFocusSvg ? 'svg,' : '')
-    // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-    // Firefox cannot focus <svg> child elements from script
-    + (canFocusSvgMethod ? 'svg a[*|href],' : '')
-    // + 'svg, svg *,' in chrome as *every* svg element is focusable
-    // navigational elements
-    + 'a[href],'
-    // validity determined by dom/is-valid-area.js
-    + 'area[href],'
-    // validity determined by dom/is-disabled.js
-    + 'input, select, textarea, button,'
-    // browsing context containers
-    + 'iframe, object, embed,'
-    // interactive content
-    + 'keygen,'
-    + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
-    + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
-    + (canFocusSummary ? 'summary,' : '')
-    // validity determined by dom/is-valid-tabindex.js
-    + '[tabindex],'
-    // editing hosts
-    + '[contenteditable]';
-  /*jshint laxbreak: false */
+// http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+/*jshint laxbreak: true */
+var selector = 'body,'
+  // Firefox, IE11 can focus <html>
+  + (canFocusHtml ? 'html,' : '')
+  // IE11 can focus <table> and <td>
+  + (canFocusTable ? 'table, td,' : '')
+  // IE11 can focus <fieldset>
+  + (canFocusFieldset ? 'fieldset,' : '')
+  // supporting <svg>
+  + (canFocusSvgMethod && canFocusSvg ? 'svg,' : '')
+  // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
+  // Firefox cannot focus <svg> child elements from script
+  + (canFocusSvgMethod ? 'svg a[*|href],' : '')
+  // + 'svg, svg *,' in chrome as *every* svg element is focusable
+  // navigational elements
+  + 'a[href],'
+  // validity determined by dom/is-valid-area.js
+  + 'area[href],'
+  // validity determined by dom/is-disabled.js
+  + 'input, select, textarea, button,'
+  // browsing context containers
+  + 'iframe, object, embed,'
+  // interactive content
+  + 'keygen,'
+  + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
+  + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
+  + (canFocusSummary ? 'summary,' : '')
+  // validity determined by dom/is-valid-tabindex.js
+  + '[tabindex],'
+  // editing hosts
+  + '[contenteditable]';
+/*jshint laxbreak: false */
 
-  // where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
-  if (cssShadowPiercingDeepCombinator) {
-    selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + cssShadowPiercingDeepCombinator + ' ');
-  }
+// where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
+if (cssShadowPiercingDeepCombinator) {
+  selector += ', html ' + cssShadowPiercingDeepCombinator + ' '
+    + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + cssShadowPiercingDeepCombinator + ' ');
+}
 
-  return selector;
-});
+export default selector;

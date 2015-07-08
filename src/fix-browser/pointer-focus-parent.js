@@ -10,21 +10,19 @@
  * This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
  * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
  */
-define(function defineFixBrowserPointerFocusParent(require) {
-  'use strict';
 
-  var focusTarget = require('../dom/focus-target');
-  var isValidTabIndex = require('../dom/is-valid-tabindex');
+import focusTarget from '../dom/focus-target';
+import isValidTabIndex from '../dom/is-valid-tabindex';
 
-  // This fix is only relevant to WebKit
-  var userAgent = window.navigator.userAgent;
-  var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1) && userAgent.indexOf('Chrome') === -1;
-  if (!engage) {
-    return function fixPointerFocusParentNotAppliccable() {
-      return function undoFixPointerFocusParentNotAppliccable(){};
-    };
-  }
-
+// This fix is only relevant to WebKit
+var userAgent = window.navigator.userAgent;
+var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1) && userAgent.indexOf('Chrome') === -1;
+var fixPointerFocusParent;
+if (!engage) {
+  fixPointerFocusParent = function fixPointerFocusParentNotAppliccable() {
+    return function undoFixPointerFocusParentNotAppliccable(){};
+  };
+} else {
   // add [tabindex="0"] to the (focusable) element that is about to be clicked
   // if it does not already have an explicit tabindex (attribute).
   // By applying an explicit tabindex, WebKit will not go look for
@@ -47,7 +45,7 @@ define(function defineFixBrowserPointerFocusParent(require) {
   }
 
   // export convenience wrapper to engage pointer-focus prevention
-  function fixPointerFocusParent(context) {
+  fixPointerFocusParent = function fixPointerFocusParent(context) {
     if (!context) {
       context = document;
     }
@@ -61,6 +59,6 @@ define(function defineFixBrowserPointerFocusParent(require) {
       context.removeEventListener('touchstart', handleBeforeFocusEvent, true);
     };
   }
+}
 
-  return fixPointerFocusParent;
-});
+export default fixPointerFocusParent;

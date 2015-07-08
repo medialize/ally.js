@@ -1,17 +1,11 @@
-/*jshint unused:vars */
-define(function defineDomPath(require) {
-  'use strict';
 
-  // [elem, elem.parent, elem.parent.parent, …, html]
-  // will not contain the shadowRoot (DOCUMENT_FRAGMENT_NODE) and shadowHost
-  function path(element) {
-    var _path = [];
-    while (element) {
-      _path.push(element);
-      element = element.parentElement;
-    }
-    return _path;
+// [elem, elem.parent, elem.parent.parent, …, html]
+// will not contain the shadowRoot (DOCUMENT_FRAGMENT_NODE) and shadowHost
+export default function path(element) {
+  var _path = [];
+  while (element) {
+    _path.push(element);
+    element = element.parentElement;
   }
-
-  return path;
-});
+  return _path;
+}
