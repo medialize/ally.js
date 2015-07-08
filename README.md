@@ -34,11 +34,12 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 ### Handling Interaction
 
-* [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div))
+* [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) -- to render elements inert and remove them from the document's focus navigation sequence
+* [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div)) - *deprecated!*, use [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) instead!
 * `focus/first` -- to identify the element that should receive focus upon entering a new context
 * [`focus/within`](http://medialize.github.io/ally.js/examples/focus-within.html) -- to "polyfill" [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 * [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) -- to focus an element once is fully visible in the viewport
-
+* [`focus/source`](http://medialize.github.io/ally.js/examples/focus-source.html) -- to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
 
 ### Working Around Browser Bugs
 
@@ -104,16 +105,21 @@ require.config({
 
 * adding `event/shadow-focus` to emit custom event when focus changes within the Shadow DOM - extracted from `focus/within`
 * adding `event/interaction-type-listener` to track user input to differentiate keyboard and pointer input
-* adding `focus/source` to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
+* adding [`focus/source`](http://medialize.github.io/ally.js/examples/focus-source.html) to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
+* adding [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) to render elements inert and remove them from the document's focus navigation sequence
+* deprecating [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html), use [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) instead
+
 
 ### 0.0.6 (June 17th 2015) ###
 
 * fixing [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html) to subtract scrollbars from visible space
 
+
 ### 0.0.5 (June 15th 2015) ###
 
 * adding [`dom/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to execute callback when an element becomes visible
 * improving [`dom/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) to also wait until an element becomes focusable
+
 
 ### 0.0.4 (February 3rd 2015) ###
 
