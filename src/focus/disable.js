@@ -3,11 +3,11 @@ import nodeArray from '../dom/node-array';
 import queryFocusable from '../dom/query-focusable';
 
 /*
-  inert attribute was [removed](https://html5.org/r/8536) [tweet by steve](https://twitter.com/stevefaulkner/status/443075900201259008) 
-  but definition of [inert subtrees](http://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees) remains. 
+  inert attribute was [removed](https://html5.org/r/8536) [tweet by steve](https://twitter.com/stevefaulkner/status/443075900201259008)
+  but definition of [inert subtrees](http://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees) remains.
 
   [implementation idea by Vasilis](http://codepen.io/vasilisvg/pen/scowI)
-  [inert attribute polyfill by GoogleChrome](https://github.com/GoogleChrome/inert-polyfill) 
+  [inert attribute polyfill by GoogleChrome](https://github.com/GoogleChrome/inert-polyfill)
 
   [Gecko Bug: Inert Attribute](https://bugzilla.mozilla.org/show_bug.cgi?id=921504)
   [Chromium Bug: Inert Attribute](https://code.google.com/p/chromium/issues/detail?id=269846)
@@ -18,7 +18,9 @@ import queryFocusable from '../dom/query-focusable';
 var observeExcept = null;
 
 function disabledFocus() {
+  /*eslint-disable no-console */
   console.warn('trying to focus inert element', this);
+  /*eslint-enable no-console */
 }
 
 function makeElementInert(element) {
@@ -95,7 +97,7 @@ var observer = window.MutationObserver && new MutationObserver(function(mutation
     } else if (mutation.type === 'attribute' && !filterExemptedElements(mutation.target)) {
       makeElementInert(mutation.target);
     }
-  });    
+  });
 });
 
 var observerConfig = {

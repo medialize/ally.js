@@ -15,7 +15,7 @@ if (!SVGElement.prototype.focus) {
     // create a dummy <svg> so we can check if HTMLElement's focus() can deal with it
     var d = document.createElement('div');
     d.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"></svg>';
-    var s =  d.firstElementChild;
+    var s = d.firstElementChild;
     document.body.focus.call(s);
     // HTMLElement's focus() can also deal with SVGElement, so go crazy!
     SVGElement.prototype.focus = HTMLElement.prototype.focus;

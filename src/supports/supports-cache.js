@@ -11,7 +11,9 @@ function readLocalStorage(key) {
     // if the document does not have focus when tests are executed, focus() may
     // not be handled properly and eventy may not be dispatched immediately.
     // This can happen when a document is reloaded while Developer Tools have focus.
+    /*eslint-disable no-console */
     window.console && window.console.warn && console.warn('document requires focus for a11y support tests');
+    /*eslint-enable no-console */
     return {};
   }
 
@@ -33,14 +35,18 @@ function writeLocalStorage(key, value) {
     // This can happen when a document is reloaded while Developer Tools have focus.
     try {
       window.localStorage && window.localStorage.removeItem(key);
-    } catch(e) {}
+    } catch(e) {
+      // ignore
+    }
 
     return;
   }
 
   try {
     window.localStorage && window.localStorage.setItem(key, JSON.stringify(value));
-  } catch (e) {}
+  } catch (e) {
+    // ignore
+  }
 }
 
 var userAgent = window.navigator.userAgent;
@@ -61,5 +67,5 @@ export default {
   set: function setCacheValue(key, value) {
     cache[key] = value;
     writeLocalStorage(cacheKey, cache);
-  }
+  },
 };

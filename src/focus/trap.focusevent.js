@@ -30,6 +30,6 @@ export default function handleTrapByFocusEvent(event) {
   // true if there was no relatedTarget (forcing first element to be selected)
   var forward = unrelated || event.target.compareDocumentPosition(event.relatedTarget) & Node.DOCUMENT_POSITION_FOLLOWING;
   // jump to first or last element
-  var target = sequence[forward ? 0 : (sequence.length -1)];
+  var target = sequence[forward ? 0 : (sequence.length - 1)];
   target.focus();
 }

@@ -13,7 +13,7 @@ export default function nodeArray(input) {
   if (input instanceof Node) {
     return [input];
   }
-  
+
   if (typeof input === 'string') {
     input = document.querySelectorAll(input);
   }

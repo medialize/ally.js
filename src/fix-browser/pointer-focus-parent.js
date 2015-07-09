@@ -1,7 +1,7 @@
 /*
  * Clicking on a link that has a focusable element in its ancestry [tabindex="-1"],
  * can lead to that parental element gaining focus, instead of the link.
- * 
+ *
  * Example:
  *   <div tabindex="-1">
  *     <a href="#foo">click me</a>
@@ -19,15 +19,15 @@ var userAgent = window.navigator.userAgent;
 var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1) && userAgent.indexOf('Chrome') === -1;
 var fixPointerFocusParent;
 if (!engage) {
-  fixPointerFocusParent = function fixPointerFocusParentNotAppliccable() {
-    return function undoFixPointerFocusParentNotAppliccable(){};
+  fixPointerFocusParent = function() {
+    return function(){};
   };
 } else {
   // add [tabindex="0"] to the (focusable) element that is about to be clicked
   // if it does not already have an explicit tabindex (attribute).
   // By applying an explicit tabindex, WebKit will not go look for
   // the first valid tabindex in the element's parents.
-  function handleBeforeFocusEvent(event) {
+  let handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
     var target = focusTarget(event.target);
     if (!target || target.hasAttribute('tabindex') && isValidTabIndex(target)) {
@@ -42,10 +42,10 @@ if (!engage) {
     (window.setImmediate || window.setTimeout)(function() {
       target.removeAttribute('tabindex');
     }, 0);
-  }
+  };
 
   // export convenience wrapper to engage pointer-focus prevention
-  fixPointerFocusParent = function fixPointerFocusParent(context) {
+  fixPointerFocusParent = function(context) {
     if (!context) {
       context = document;
     }
@@ -58,7 +58,7 @@ if (!engage) {
       context.removeEventListener('mousedown', handleBeforeFocusEvent, true);
       context.removeEventListener('touchstart', handleBeforeFocusEvent, true);
     };
-  }
+  };
 }
 
 export default fixPointerFocusParent;

@@ -13,13 +13,13 @@ var userAgent = window.navigator.userAgent;
 var engage = userAgent.indexOf('Mac OS X') !== -1 && (userAgent.indexOf('Version/') !== -1 || userAgent.indexOf('Firefox/') !== -1);
 var fixPointerFocusInput;
 if (!engage) {
-  fixPointerFocusInput = function fixPointerFocusParentNotAppliccable() {
-    return function undoFixPointerFocusParentNotAppliccable(){};
+  fixPointerFocusInput = function() {
+    return function(){};
   };
 } else {
   var inputPattern = /^(input|button)$/;
 
-  function handleMouseDownEvent(event) {
+  let handleMouseDownEvent = function(event) {
     if (event.defaultPrevented || !event.target.nodeName.toLowerCase().match(inputPattern)) {
       // abort if the mousedown event was cancelled
       return;
@@ -29,9 +29,9 @@ if (!engage) {
     (window.setImmediate || window.setTimeout)(function() {
       event.target.focus();
     });
-  }
+  };
 
-  function handleMouseUpEvent(event) {
+  let handleMouseUpEvent = function(event) {
     if (event.defaultPrevented || event.target.nodeName.toLowerCase() !== 'label') {
       // abort if the mouseup event was cancelled
       return;
@@ -39,18 +39,18 @@ if (!engage) {
 
     // <label> will redirect focus to the appropriate input element on its own
     event.target.focus();
-  }
+  };
 
-  fixPointerFocusInput = function fixPointerFocusInput(context) {
+  fixPointerFocusInput = function(context) {
     context.addEventListener('mousedown', handleMouseDownEvent, false);
     // <label> elements redirect focus upon mouseup, not mousedown
     context.addEventListener('mouseup', handleMouseUpEvent, false);
 
-    return function undoFixPointerFocusInput() {
+    return function() {
       context.removeEventListener('mousedown', handleMouseDownEvent, false);
       context.removeEventListener('mouseup', handleMouseUpEvent, false);
     };
-  }
+  };
 }
 
 export default fixPointerFocusInput;

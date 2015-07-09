@@ -34,7 +34,7 @@ export default {
   // http://www.w3.org/TR/wai-aria/states_and_properties#aria-grabbed
   'aria-grabbed': {
     'default': undefined,
-    'values': ['true', 'false', undefined]
+    'values': ['true', 'false', undefined],
   },
   // http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
   'aria-hidden': {

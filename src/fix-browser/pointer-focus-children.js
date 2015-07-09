@@ -3,7 +3,7 @@
 * Because focus can be given to focusable (not tabbable) elements
 * by mouse, we have to counter this behavior, so the correct element
 * becomes the activeElement (i.e. receives focus).
-* 
+*
 * Example:
 *   <div tabindex="-1" style="display:flex">
 *     <span>I would receive focus</span>
@@ -21,11 +21,11 @@ var engage = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident
 var fixPointerFocusChildren;
 
 if (!engage) {
-  fixPointerFocusChildren = function fixPointerFocusChildrenNotAppliccable() {
-    return function undoFixPointerFocusChildrenNotAppliccable(){};
+  fixPointerFocusChildren = function() {
+    return function(){};
   };
 } else {
-  function handleBeforeFocusEvent(event) {
+  let handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
     var target = focusTarget(event.target);
     if (!target || target === event.target) {
@@ -60,9 +60,9 @@ if (!engage) {
         item[0].style.transition = item[2];
       });
     });
-  }
+  };
 
-  fixPointerFocusChildren = function fixPointerFocusChildren(context) {
+  fixPointerFocusChildren = function(context) {
     if (!context) {
       context = document;
     }
@@ -72,10 +72,10 @@ if (!engage) {
     context.addEventListener(eventName, handleBeforeFocusEvent, true);
 
     // return callback to disengage pointer-focus hack
-    return function undoFixPointerFocusChildren() {
+    return function() {
       context.removeEventListener(eventName, handleBeforeFocusEvent, true);
     };
-  }
+  };
 }
 
 export default fixPointerFocusChildren;

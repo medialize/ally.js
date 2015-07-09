@@ -25,7 +25,7 @@ export default {
   capsLock: 20,
   ctrl: 17,
   alt: 18,
-  command:  224,
+  command: 224,
   pause: 19,
 
   // Content Manipulation

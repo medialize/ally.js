@@ -22,9 +22,8 @@ export default function observeBodyFocus(context) {
           // the focus target is within the context, all is fine, go back to sleep
           return;
         }
-        
       }
-      
+
       if (document.activeElement !== document.body) {
         // we have focused something we were not supposed to be able to focus
         // instead of forcing focus right back into context, we'll allow focus on <body>

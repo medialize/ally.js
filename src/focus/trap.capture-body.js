@@ -17,7 +17,7 @@ export default function captureBodyFocus(context, eventName) {
       return;
     }
 
-    // we blindly go for the first element, mostly because we don't 
+    // we blindly go for the first element, mostly because we don't
     // have any indication of direction at this point.
     sequence[0].focus();
   }

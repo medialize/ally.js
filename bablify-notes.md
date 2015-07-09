@@ -1,5 +1,12 @@
 # Working With The ally.js Source
 
+The goal is to be able to write ES6 (specifically make use of the ES6 Module Syntax) while still providing maximum convenience when it comes to consuming the library (compiled UMD bundle, AMD modules, CommonJS modules, ES6 modules).
+
+To stay lean, we don't allow external dependencies - aside from a few hand picked shims.
+
+To stay out of the "too many tools" debate, build infrastructure has to work via npm (configured via `package.json`) - no grunt, gulp, broccoli, … allowed (or required).
+
+
 ## Compiling ally.js
 
 ```sh
@@ -78,7 +85,7 @@ See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
 
 Since ally.js is using the ES6 Module Syntax - and [eslint](https://github.com/eslint/eslint) does not support that yet - we're using [babel-eslint](https://github.com/babel/babel-eslint) as the parser in eslint (configured via `.eslintrc`).
 
-See eslint docs for [configuration options](http://eslint.org/docs/user-guide/configuring).
+See `.eslintrc` for our configuration and eslint docs to understand the [rules](http://eslint.org/docs/rules).
 
 Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally (for now?):
 

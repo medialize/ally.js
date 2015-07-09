@@ -15,7 +15,7 @@ export default function runWhenVisible(callback, element, percentVisible) {
 
   if (isVisible(element) && visibleQuotient(element) >= percentVisible && callback(element) !== false) {
     // element is already visible, trivial escape
-    return;
+    return null;
   }
 
   var raf;

@@ -10,13 +10,13 @@ if (typeof combinator !== 'string') {
   try {
     document.querySelector('html >>> :first-child');
     combinator = '>>>';
-  } catch (e) {
+  } catch (noArrowArrowArrow) {
     try {
       // old syntax supported at least up to Chrome 41
       // https://code.google.com/p/chromium/issues/detail?id=446051
       document.querySelector('html /deep/ :first-child');
       combinator = '/deep/';
-    } catch (e) {
+    } catch (noDeep) {
       combinator = '';
     }
   }

@@ -17,4 +17,4 @@ function focus(element) {
 
 export default function(element, percentVisible) {
   return whenVisible(focus, element, percentVisible);
-};
+}
