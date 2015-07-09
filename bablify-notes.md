@@ -1,24 +1,21 @@
 # Working With The ally.js Source
 
-
-## Compiling
-
-The `src` directory contains ES6 which needs to be compiled to ES5 for broader browser support. In order to make consumption easier, all files are compiled to CommonJS and AMD module formats and made available in `dist/amd` and `dist/common`. To make ally.js available without any module system (undesired but common scenario), `dist/ally.js` contains the entirety of ally.js in a single file exposing `window.ally`.
-
-### Usage
+## Compiling ally.js
 
 ```sh
-# build CommonJS, AMD and global variants
+# build everything
 npm run build
-# build only the CommonJS variant
-npm run build-common
-# build only the AMD variant
-npm run build-amd
-# build only the global variant
-npm run build-global
+# remove everything in dist
+npm run clean
+```
 
-# keep compiling to dist/amd while working on src
-npm run watch
+### Compiling ally.js to a single UMD bundle
+
+ally.js is made available in one convenient file, consumable as a browser global (`window.ally`), via AMD and CommonJS (exposed in UMD). The source is compiled to the distributable by [browserify](https://github.com/substack/node-browserify) using [babelify](https://github.com/babel/babelify) to resolve the ES6 modules.
+
+```sh
+# build the UMD bundle
+npm run build-umd
 # remove everything in dist
 npm run clean
 ```
@@ -26,17 +23,51 @@ npm run clean
 Stop that `npm run` bollocks, gimme real CLI:
 
 ```sh
-# build only the CommonJS variant
-node_modules/.bin/babel --source-maps --modules common --out-dir dist/common src
-# build only the AMD variant
-node_modules/.bin/babel --source-maps --modules amd --out-dir dist/amd src
-# build only the global variant
-node_modules/.bin/babel --source-maps --out-file dist/ally.js src/ally.js
-
-# keep compiling to dist/amd while working on src
-node_modules/.bin/babel --watch --source-maps --modules amd --out-dir dist/amd src
+node_modules/.bin/browserify \
+  src/ally.js \
+  --debug \
+  --standalone ally \
+  --transform babelify \
+  --outfile dist/ally.js
 # remove everything in dist
 rm -rf dist/*
+```
+
+### Converting to AMD and CommonJS
+
+To allow developers to use selected features (rather than import everything), the ES6 source (`src`) is made available in ES5 via AMD and CommonJS in `dist/amd` and `dist/common`.
+
+```sh
+# convert to CommonJS modules
+npm run build-common
+# convert to AMD modules
+npm run build-amd
+# keep converting to dist/amd while working on src
+npm run watch-amd
+```
+
+Stop that `npm run` bollocks, gimme real CLI:
+
+```sh
+# convert to CommonJS modules
+node_modules/.bin/babel \
+  --source-maps \
+  --modules common \
+  --out-dir dist/common \
+  src
+# convert to AMD modules
+node_modules/.bin/babel \
+  --source-maps \
+  --modules amd \
+  --out-dir dist/amd \
+  src
+# keep converting to dist/amd while working on src
+node_modules/.bin/babel \
+  --watch \
+  --source-maps \
+  --modules amd \
+  --out-dir dist/amd \
+  src
 ```
 
 See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)

@@ -10,11 +10,11 @@
   "scripts": {
     "test": "exit 0",
     "clean": "rm -rf dist/*",
-    "watch": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
-    "build": "npm run build-common && npm run build-amd && npm run build-global",
+    "build": "npm run build-umd && npm run build-common && npm run build-amd",
+    "build-umd": "node_modules/.bin/browserify src/ally.js --debug --standalone ally --transform babelify --outfile dist/ally.js",
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
-    "build-global": "babel --source-maps --out-file dist/ally.js src/ally.js",
+    "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
     "lint": "eslint $(glob-cli src/**/*.js)"
   },
   "repository": {
@@ -46,6 +46,12 @@
   "devDependencies": {
     "babel": "^5.6.14",
     "babel-eslint": "^3.1.23",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
     "glob-cli": "^1.0.0"
+  },
+  "dependencies": {
+    "array.prototype.findindex": "^1.0.0",
+    "css.escape": "^0.2.1"
   }
 }
