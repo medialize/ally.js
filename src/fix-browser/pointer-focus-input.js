@@ -14,7 +14,7 @@ var engage = userAgent.indexOf('Mac OS X') !== -1 && (userAgent.indexOf('Version
 var fixPointerFocusInput;
 if (!engage) {
   fixPointerFocusInput = function() {
-    return function(){};
+    return function() {};
   };
 } else {
   var inputPattern = /^(input|button)$/;

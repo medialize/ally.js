@@ -22,7 +22,7 @@ var fixPointerFocusChildren;
 
 if (!engage) {
   fixPointerFocusChildren = function() {
-    return function(){};
+    return function() {};
   };
 } else {
   let handleBeforeFocusEvent = function(event) {

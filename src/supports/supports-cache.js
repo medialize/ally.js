@@ -18,6 +18,7 @@ function readLocalStorage(key) {
   }
 
   var data;
+
   try {
     data = window.localStorage && window.localStorage.getItem(key);
     data = data ? JSON.parse(data) : {};

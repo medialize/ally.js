@@ -7,6 +7,7 @@ import shadowHostAncestors from './shadow-host-ancestors';
 
 function walkToShadowedElement() {
   var list = [document.activeElement];
+
   while (list[0] && list[0].shadowRoot) {
     list.unshift(list[0].shadowRoot.activeElement);
   }

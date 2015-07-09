@@ -20,7 +20,7 @@ var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Andr
 var fixPointerFocusParent;
 if (!engage) {
   fixPointerFocusParent = function() {
-    return function(){};
+    return function() {};
   };
 } else {
   // add [tabindex="0"] to the (focusable) element that is about to be clicked

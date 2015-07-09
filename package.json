@@ -15,7 +15,7 @@
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
-    "lint": "eslint $(glob-cli src/**/*.js)"
+    "lint": "eslint $(glob-cli src/**/*.js) && jscs src"
   },
   "repository": {
     "type": "git",
@@ -48,7 +48,9 @@
     "babel-eslint": "^3.1.23",
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
-    "glob-cli": "^1.0.0"
+    "eslint": "^0.24.0",
+    "glob-cli": "^1.0.0",
+    "jscs": "^1.13.1"
   },
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",

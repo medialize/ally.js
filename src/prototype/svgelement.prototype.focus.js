@@ -11,6 +11,7 @@
 if (!SVGElement.prototype.focus) {
   // remember what had focus to restore after test
   var previousActiveElement = document.activeElement;
+
   try {
     // create a dummy <svg> so we can check if HTMLElement's focus() can deal with it
     var d = document.createElement('div');

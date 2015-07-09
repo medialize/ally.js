@@ -14,11 +14,10 @@ if (!Element.prototype.matches) {
   if (!prefixed) {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element.matches#Polyfill
     Element.prototype.matches = function matchesSelectorPolyfill(selector) {
-      var element = this;
-      var matches = (element.document || element.ownerDocument).querySelectorAll(selector);
+      var matches = (this.document || this.ownerDocument).querySelectorAll(selector);
       var i = 0;
 
-      while (matches[i] && matches[i] !== element) {
+      while (matches[i] && matches[i] !== this) {
         i++;
       }
 

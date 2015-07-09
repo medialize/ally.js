@@ -2,6 +2,7 @@
 export default function shadowHost(element) {
   // walk up to the root
   var container = null;
+
   while (element) {
     container = element;
     element = element.parentNode;

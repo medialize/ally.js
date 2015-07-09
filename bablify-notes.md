@@ -83,11 +83,11 @@ See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
 
 ## Linting
 
-Since ally.js is using the ES6 Module Syntax - and [eslint](https://github.com/eslint/eslint) does not support that yet - we're using [babel-eslint](https://github.com/babel/babel-eslint) as the parser in eslint (configured via `.eslintrc`).
+Since ally.js is using the ES6 Module Syntax - and [eslint](https://github.com/eslint/eslint) does not support that yet - we're using [babel-eslint](https://github.com/babel/babel-eslint) as the parser in eslint (configured via `.eslintrc`). See the docs to understand the [rules](http://eslint.org/docs/rules).
 
-See `.eslintrc` for our configuration and eslint docs to understand the [rules](http://eslint.org/docs/rules).
+While code style is validated using eslint, code format is verified using [jscs](http://jscs.info/overview.html) (configured via `.jscsrc`).
 
-Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally (for now?):
+**Note:** Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally (for now?):
 
 ```sh
 npm install -g babel-eslint
@@ -102,5 +102,6 @@ npm run lint
 Stop that `npm run` bollocks, gimme real CLI:
 
 ```sh
-eslint src/**/*.js
+node_modules/.bin/eslint src/**/*.js
+node_modules/.bin/jscs src
 ```

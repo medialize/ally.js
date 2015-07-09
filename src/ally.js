@@ -5,7 +5,6 @@ import isFocusable from './dom/is-focusable';
 import isTabbable from './dom/is-tabbable';
 import keycode from './map/keycode';
 
-
 export default {
   query: {
     focusable: queryFocusable,
