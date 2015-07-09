@@ -7,8 +7,8 @@ import isFocusable from './is-focusable';
 
 export default function queryFocusable(context, includeContext) {
   // alias document to document.documentElement for convenience
-  if (context.nodeType === 9) {
-    context = context.documentElement;
+  if (!context || context.nodeType === 9) {
+    context = document.documentElement;
   }
 
   var elements = context.querySelectorAll(selector);
