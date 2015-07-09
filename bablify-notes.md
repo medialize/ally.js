@@ -30,12 +30,23 @@ npm run clean
 Stop that `npm run` bollocks, gimme real CLI:
 
 ```sh
+# build the UMD bundle
 node_modules/.bin/browserify \
   src/ally.js \
   --debug \
   --standalone ally \
   --transform babelify \
-  --outfile dist/ally.js
+  | exorcist dist/ally.js.map > dist/ally.js
+# minify the UMD bundle
+node_modules/.bin/uglifyjs \
+  dist/ally.js \
+  --in-source-map dist/ally.js.map \
+  --source-map dist/ally.min.js.map \
+  --preamble '/*! ally.js */' \
+  --screw-ie8 \
+  --mangle \
+  --compress \
+  --output dist/ally.min.js
 # remove everything in dist
 rm -rf dist/*
 ```
