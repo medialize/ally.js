@@ -15,6 +15,7 @@
   * `event/interaction-type-listener.js`
   * `event/shadow-focus.js`
   * `focus/source.js`
+  * `focus/within.js`
 * adapting to general dis/engage with options API:
   * `fix-browser/pointer-focus-children.js`
   * `fix-browser/pointer-focus-input.js`

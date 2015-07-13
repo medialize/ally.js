@@ -5,22 +5,24 @@
   see http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo
 */
 
-import '../event/shadow-focus';
+import shadowFocus from '../event/shadow-focus';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 import activeElements from '../dom/active-elements';
 import path from '../dom/path';
+import decorateSingleton from '../util/decorate-singleton';
 
-// NOTE: require classList polyfill may be necessary
+// NOTE: require classList polyfill may be necessary (not available on SVGElement)
 // http://caniuse.com/#feat=classlist available since IE10
 // https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills#classlist
 // https://developer.mozilla.org/en-US/docs/Web/API/Element.classList
 
-var className = 'ally-focus-within';
-var blurTimer;
+const className = 'ally-focus-within';
+let blurTimer;
+let shadowHandle;
 
 function applyFocusWithinClass(active) {
-  var _active = active || activeElements();
-  var selector = '.' + className;
+  const _active = active || activeElements();
+  let selector = '.' + className;
   if (cssShadowPiercingDeepCombinator) {
     // select elements in shadow dom as well
     selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;
@@ -30,9 +32,9 @@ function applyFocusWithinClass(active) {
   }
 
   // identify the elements that currently have :focus-within
-  var _current = [].slice.call(document.querySelectorAll(selector), 0);
+  const _current = [].slice.call(document.querySelectorAll(selector), 0);
   // get the path (ancestry) of each ShadowRoot and merge them into a flat list
-  var elements = _active.map(path).reduce(function(previous, current) {
+  const elements = _active.map(path).reduce(function(previous, current) {
     return current.concat(previous);
   }, []);
 
@@ -77,27 +79,31 @@ function handleShadowFocusEvent(event) {
   applyFocusWithinClass(event.detail.elements);
 }
 
-export default function engageFocusWithin() {
+function disengage() {
+  shadowHandle.disengage();
+  (window.clearImmediate || window.clearTimeout)(blurTimer);
+  document.removeEventListener('blur', handleDocumentBlurEvent, true);
+  document.removeEventListener('focus', handleDocumentFocusEvent, true);
+  document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
+
+  var selector = '.' + className;
+  if (cssShadowPiercingDeepCombinator) {
+    // select elements in shadow dom as well
+    selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;
+  }
+
+  // remove any remaining ally-within-focus occurrences
+  [].forEach.call(document.querySelectorAll(selector), function(element) {
+    element.classList.remove(className);
+  });
+}
+
+function engage() {
+  shadowHandle = shadowFocus();
   document.addEventListener('blur', handleDocumentBlurEvent, true);
   document.addEventListener('focus', handleDocumentFocusEvent, true);
   document.addEventListener('shadow-focus', handleShadowFocusEvent, true);
   applyFocusWithinClass();
-
-  return function disengageFocusWithin() {
-    (window.clearImmediate || window.clearTimeout)(blurTimer);
-    document.removeEventListener('blur', handleDocumentBlurEvent, true);
-    document.removeEventListener('focus', handleDocumentFocusEvent, true);
-    document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
-
-    var selector = '.' + className;
-    if (cssShadowPiercingDeepCombinator) {
-      // select elements in shadow dom as well
-      selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;
-    }
-
-    // remove any remaining ally-within-focus occurrences
-    [].forEach.call(document.querySelectorAll(selector), function(element) {
-      element.classList.remove(className);
-    });
-  };
 }
+
+export default decorateSingleton({ engage, disengage });
