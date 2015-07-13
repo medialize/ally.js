@@ -12,7 +12,7 @@
     "clean": "rm -rf dist/*",
     "build": "npm run build-umd && npm run build-umd-min && npm run build-common && npm run build-amd",
     "build-umd": "browserify src/ally.js --debug --standalone ally --transform babelify | exorcist dist/ally.js.map > dist/ally.js",
-    "build-umd-min": "uglifyjs dist/ally.js --in-source-map dist/ally.js.map --source-map dist/ally.min.js.map --preamble '/*! ally.js */' --screw-ie8 --mangle --compress --output dist/ally.min.js",
+    "build-umd-min": "npm run banner && uglifyjs dist/ally.js --in-source-map dist/ally.js.map --source-map dist/ally.min.js.map --preamble \"/*! ${npm_package_name} - v${npm_package_version} - ${npm_package_homepage} - ${npm_package_license} License */\" --screw-ie8 --mangle --compress --output dist/ally.min.js",
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
