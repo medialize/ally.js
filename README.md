@@ -13,6 +13,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 * `dom/query-focusable`, `dom/is-focusable` - to obtain a list of focusable elements within a given DOM element
 * `dom/query-tabbable`, `dom/is-tabbable` - to obtain a list of tabbable elements within a given DOM element
 * `dom/query-tabsequence` - to obtain the exact order of tabbable elements within a given DOM element
+* `dom/query-first-tabbable` -- to identify the element that should receive focus with a given context
 * [`dom/active-elements`](http://medialize.github.io/ally.js/examples/active-elements.html) - to obtain the list of ShadowDOM host elements containing the actually focused element
 * [`dom/visible-quotient`](http://medialize.github.io/ally.js/examples/visible-quotient.html) - to obtain how much of an element is currently visible on screen
 * `dom/when-visible` - to execute a callback once an element is fully visible in the viewport
@@ -21,7 +22,6 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 * [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) -- to render elements inert and remove them from the document's focus navigation sequence
 * [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div)) - *deprecated!*, use [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) instead!
-* `focus/first` -- to identify the element that should receive focus upon entering a new context
 * [`focus/within`](http://medialize.github.io/ally.js/examples/focus-within.html) -- to "polyfill" [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 * [`focus/when-visible`](http://medialize.github.io/ally.js/examples/focus-when-visible.html) -- to focus an element once is fully visible in the viewport
 * [`focus/source`](http://medialize.github.io/ally.js/examples/focus-source.html) -- to allow styling of `:focus` dependent on user input (keyboard, pinter, script)

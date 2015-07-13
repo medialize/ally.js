@@ -5,6 +5,7 @@
 * moving dependencies from bower to npm
 * moving source from AMD to ES6 Module Syntax
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
+* adding `dom/query-first-tabbable` to find the first keyboard focusable element in a sub-tree
 
 ### Breaking Changes
 
@@ -18,7 +19,7 @@
   * `fix-browser/pointer-focus-input.js`
   * `fix-browser/pointer-focus-parent.js`
   * `focus/disable.js`
-
+* dropping `focus/first` in favor of `dom/query-first-tabbable`
 
 ## 0.0.7 (July 8th 2015) ##
 
