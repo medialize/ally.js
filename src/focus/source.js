@@ -5,21 +5,21 @@
 
 // TODO: touches detection in interaction-type-listener line 55
 
-import '../event/shadow-focus';
+import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeListener from '../event/interaction-type-listener';
+import decorateSingleton from '../util/decorate-singleton';
 
 // interface to read interaction-type-listener state
-var listener;
-// prevent multiple "phyiscal" instances but act like you could have multiple
-var _engaged = 0;
+let interactionTypeHandler;
+let shadowHandle;
 // keep track of last focus source
-var current = null;
+let current = null;
 // overwrite focus source for use with the every upcoming focus event
-var lock = null;
+let lock = null;
 // overwrite focus source for use with the next focus event
-var next = null;
+let next = null;
 // keep track of ever having used a particular input method to change focus
-var used = {
+let used = {
   pointer: false,
   key: false,
   script: false,
@@ -27,9 +27,9 @@ var used = {
 };
 
 function handleFocusEvent(event) {
-  var source = '';
+  let source = '';
   if (event.type === 'focus' || event.type === 'shadow-focus') {
-    var interactionType = listener.get();
+    const interactionType = interactionTypeHandler.get();
     source = lock || next
       || interactionType.pointer && 'pointer'
       || interactionType.key && 'key'
@@ -73,38 +73,37 @@ function lockFocusSource(source) {
   lock = source;
 }
 
-function disengageFocusSourceListener(force) {
-  _engaged--;
-  if (_engaged && force !== true) {
-    // someone is still using the listener, so don't kill it just yet
-    return;
-  }
-
-  // reset to former state
+function disengage() {
+  // clear dom state
   handleFocusEvent({type: 'blur'});
-  listener.disengage();
+  // kill interaction type identification listener
+  interactionTypeHandler.disengage();
+  // kill shadow-focus event dispatcher
+  shadowHandle.disengage();
   document.removeEventListener('shadow-focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('blur', handleFocusEvent, true);
 }
 
-export default function engageFocusSourceListener() {
-  if (!_engaged) {
-    listener = engageInteractionTypeListener();
-    handleFocusEvent({type: 'initial'});
-    // handlers to modify the focused element
-    document.addEventListener('shadow-focus', handleFocusEvent, true);
-    document.documentElement.addEventListener('focus', handleFocusEvent, true);
-    document.documentElement.addEventListener('blur', handleFocusEvent, true);
-  }
+function engage() {
+  // enable the shadow-focus event dispatcher
+  shadowHandle = shadowFocus();
+  // handlers to modify the focused element
+  document.addEventListener('shadow-focus', handleFocusEvent, true);
+  // enable the interaction type identification listener
+  interactionTypeHandler = engageInteractionTypeListener();
+  // set up initial dom state
+  handleFocusEvent({type: 'initial'});
+  document.documentElement.addEventListener('focus', handleFocusEvent, true);
+  document.documentElement.addEventListener('blur', handleFocusEvent, true);
 
-  _engaged++;
   return {
     used: getUsedFocusSource,
     current: getCurrentFocusSource,
     next: setNextFocusSource,
     lock: lockFocusSource,
     repeat: repeatFocusSource,
-    disengage: disengageFocusSourceListener,
   };
 }
+
+export default decorateSingleton({ engage, disengage });
