@@ -16,7 +16,6 @@ import canFocusSummary from '../supports/focus-summary';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 
 // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-/*jshint laxbreak: true */
 var selector = 'body,'
   // Firefox, IE11 can focus <html>
   + (canFocusHtml ? 'html,' : '')
@@ -47,7 +46,6 @@ var selector = 'body,'
   + '[tabindex],'
   // editing hosts
   + '[contenteditable]';
-/*jshint laxbreak: false */
 
 // where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
 if (cssShadowPiercingDeepCombinator) {

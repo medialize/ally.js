@@ -30,12 +30,10 @@ function handleFocusEvent(event) {
   var source = '';
   if (event.type === 'focus' || event.type === 'shadow-focus') {
     var interactionType = listener.get();
-    /*jshint laxbreak: true */
     source = lock || next
       || interactionType.pointer && 'pointer'
       || interactionType.key && 'key'
       || 'script';
-    /*jshint laxbreak: false */
 
     // next focus source is set only once
     next = null;

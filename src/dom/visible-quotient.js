@@ -60,10 +60,8 @@ function getInnerBoundingClientRect(element) {
 function isOverflowingElement(element) {
   var style = window.getComputedStyle(element, null);
   var value = 'visible';
-  /*jshint laxbreak: true */
   return style.getPropertyValue('overflow-x') !== value
     && style.getPropertyValue('overflow-y') !== value;
-  /*jshint laxbreak: false */
 }
 
 function isScrollableElement(element) {
@@ -73,10 +71,8 @@ function isScrollableElement(element) {
   }
 
   // an element is scrollable when it is smaller than its content
-  /*jshint laxbreak: true */
   return element.offsetHeight < element.scrollHeight
     || element.offsetWidth < element.scrollWidth;
-  /*jshint laxbreak: false */
 }
 
 function getScrollableParentRect(element) {

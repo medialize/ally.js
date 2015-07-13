@@ -8,11 +8,9 @@ var focusableElementsPattern = /^(fieldset|table|td|body)$/;
 function isTabbable(element) {
   var nodeName = element.nodeName.toLowerCase();
   // null: not set, true: tabbable, false: focusable
-  /*jshint laxbreak: true */
   var tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
     ? parseInt(element.getAttribute('tabindex'), 10) >= 0
     : null;
-  /*jshint laxbreak: false */
 
   // Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
   if (element.hasAttribute('contenteditable')) {

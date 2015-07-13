@@ -194,9 +194,7 @@ focusSource.disengage();</pre>
 
       document.documentElement.addEventListener('focus', function() {
         var interactionType = listener.get();
-        /*jshint laxbreak: true */
         log.textContent += '\n focused by ' + document.documentElement.getAttribute('data-focus-source');
-        /*jshint laxbreak: false */
       }, true);
 
       // create shadow dom structure:

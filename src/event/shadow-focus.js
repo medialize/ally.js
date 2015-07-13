@@ -28,7 +28,6 @@ if (!document.body.createShadowRoot) {
   let handleFocusChange;
 
   const handleElementBlurEvent = function() {
-    /*jshint validthis:true */
     blurElement = this;
     // once() - sometimes I miss jQuery's simplicity…
     this.removeEventListener('blur', handleElementBlurEvent, true);

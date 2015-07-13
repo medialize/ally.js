@@ -29,7 +29,6 @@ function wrap(sequence, element, forward) {
 }
 
 export default function handleTrapByKeyEvent(event) {
-  /*jshint validthis:true */
   var code = event.which || event.keyCode;
   if (code !== keycode.tab) {
     return;

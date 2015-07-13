@@ -3,7 +3,6 @@ import queryTabbable from '../dom/query-tabbable';
 import captureBodyFocus from './trap.capture-body';
 
 export default function handleTrapByFocusEvent(event) {
-  /*jshint validthis:true */
   var unrelated = event.relatedTarget === null || event.relatedTarget === this.ownerDocument;
 
   // if there is no related target, we're focusing <body>, which is ok,
