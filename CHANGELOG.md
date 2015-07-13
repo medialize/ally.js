@@ -4,7 +4,11 @@
 
 * moving dependencies from bower to npm
 * moving source from AMD to ES6 Module Syntax
-* adding ES6 build infrastructure
+* adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
+
+### Breaking Changes
+
+* `src/` was ES5 and AMD, it is now ES6, AMD components are now available at `dist/amd/`
 
 
 ## 0.0.7 (July 8th 2015) ##

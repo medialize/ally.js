@@ -1,6 +1,6 @@
 # ally.js - Accessibility Made Simpler
 
-ally.js is a dependency-free (well, some shims, yes) **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
+ally.js is a dependency-free (well, some shims, yes) **Library to help applications with accessibility concerns**. The intention is to separate these generic components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
 
 Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a library to help with ARIA states.
 
