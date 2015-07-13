@@ -1,15 +1,15 @@
 /*
- * Clicking on a link that has a focusable element in its ancestry [tabindex="-1"],
- * can lead to that parental element gaining focus, instead of the link.
- *
- * Example:
- *   <div tabindex="-1">
- *     <a href="#foo">click me</a>
- *   </div>
- *
- * This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
- * It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
- */
+  Clicking on a link that has a focusable element in its ancestry [tabindex="-1"],
+  can lead to that parental element gaining focus, instead of the link.
+
+  Example:
+    <div tabindex="-1">
+      <a href="#foo">click me</a>
+    </div>
+
+  This (wrong) behavior was observed in Chrome 38, iOS8, Safari 6.2, WebKit r175131
+  It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
+*/
 
 import focusTarget from '../dom/focus-target';
 import isValidTabIndex from '../dom/is-valid-tabindex';

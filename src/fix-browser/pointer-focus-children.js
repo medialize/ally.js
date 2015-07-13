@@ -1,16 +1,16 @@
 /*
-* Children of focusable elements with display:flex are focusable.
-* Because focus can be given to focusable (not tabbable) elements
-* by mouse, we have to counter this behavior, so the correct element
-* becomes the activeElement (i.e. receives focus).
-*
-* Example:
-*   <div tabindex="-1" style="display:flex">
-*     <span>I would receive focus</span>
-*   </div>
-*
-* This (wrong) behavior was observed in Internet Explorer 10 and 11.
-* It is fixed in IE12 (Win10 IE Tec Preview)
+  Children of focusable elements with display:flex are focusable.
+  Because focus can be given to focusable (not tabbable) elements
+  by mouse, we have to counter this behavior, so the correct element
+  becomes the activeElement (i.e. receives focus).
+
+  Example:
+    <div tabindex="-1" style="display:flex">
+      <span>I would receive focus</span>
+    </div>
+
+  This (wrong) behavior was observed in Internet Explorer 10 and 11.
+  It is fixed in IE12 (Win10 IE Tec Preview)
 */
 
 import focusTarget from '../dom/focus-target';
