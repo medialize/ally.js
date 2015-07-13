@@ -13,10 +13,11 @@
   * `event/active-element.js`
   * `event/interaction-type-listener.js`
   * `event/shadow-focus.js`
-* adapting to general dis/engage with context API:
+* adapting to general dis/engage with options API:
   * `fix-browser/pointer-focus-children.js`
   * `fix-browser/pointer-focus-input.js`
   * `fix-browser/pointer-focus-parent.js`
+  * `focus/disable.js`
 
 
 ## 0.0.7 (July 8th 2015) ##
