@@ -1,34 +1,33 @@
 
 import cache from './supports-cache';
 
-// nodeName:
+// options.element:
 //  {string} element name
-//  {function} callback that returns a DOMElement
-// callback: (optional)
+// options.mutate: (optional)
 //  {function} callback(element, wrapper) to manipulate element prior to focus-test.
 //             Can return DOMElement to define focus target (default: element)
-// validate: (optional)
+// options.validate: (optional)
 //  {function} callback(element) to manipulate test-result
-function detectFocus(nodeName, callback, validate) {
+function detectFocus(options) {
   // wrap tests in an element hidden from screen readers to prevent them
   // from announcing focus, which can be quite irritating to the user
-  var wrapper = document.createElement('div');
+  const wrapper = document.createElement('div');
   wrapper.setAttribute('aria-live', 'off');
   wrapper.setAttribute('aria-busy', 'true');
   wrapper.setAttribute('aria-hidden', 'true');
   document.body.appendChild(wrapper);
   // create dummy element to test focusability of
-  var element = typeof nodeName === 'string' ? document.createElement(nodeName) : nodeName();
+  const element = typeof options.element === 'string' ? document.createElement(options.element) : options.element();
   // allow callback to further specify dummy element
-  var focus = callback && callback(element, wrapper) || element;
+  const focus = options.mutate && options.mutate(element, wrapper) || element;
   // element needs to be part of the DOM to be focusable
   !element.parentNode && wrapper.appendChild(element);
   // remember what had focus to restore after test
-  var previousActiveElement = document.activeElement;
+  const previousActiveElement = document.activeElement;
   // test if the element with invalid tabindex can be focused
   focus.focus && focus.focus();
   // validate test's result
-  var allowsFocus = validate ? validate(element) : document.activeElement === focus;
+  const allowsFocus = options.validate ? options.validate(element) : document.activeElement === focus;
   // restore focus to what it was before test and cleanup
   previousActiveElement.focus();
   document.body.removeChild(wrapper);
@@ -37,14 +36,12 @@ function detectFocus(nodeName, callback, validate) {
 
 // cache detected support so we don't have to bother screen readers with unstoppable focus changes
 // and flood the console with net::ERR_INVALID_URL errors for audio/video tests
-function detectFocusSupport(testName, nodeName, callback, validate) {
-  var value = cache.get(testName);
+export default function(options) {
+  let value = cache.get(options.name);
   if (typeof value !== 'boolean') {
-    value = detectFocus(nodeName, callback, validate);
-    cache.set(testName, value);
+    value = detectFocus(options);
+    cache.set(options.name, value);
   }
 
   return value;
 }
-
-export default detectFocusSupport;

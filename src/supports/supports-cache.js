@@ -17,7 +17,7 @@ function readLocalStorage(key) {
     return {};
   }
 
-  var data;
+  let data;
 
   try {
     data = window.localStorage && window.localStorage.getItem(key);
@@ -50,9 +50,9 @@ function writeLocalStorage(key, value) {
   }
 }
 
-var userAgent = window.navigator.userAgent;
-var cacheKey = 'ally-supports-cache';
-var cache = readLocalStorage(cacheKey);
+const userAgent = window.navigator.userAgent;
+const cacheKey = 'ally-supports-cache';
+let cache = readLocalStorage(cacheKey);
 
 // update the cache if the user agent changes (newer version, etc)
 if (cache.userAgent !== userAgent) {

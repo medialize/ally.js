@@ -1,8 +1,10 @@
 
 import detectFocus from './detect-focus';
 
-var canFocusDocumentElement = detectFocus('can-focus-document-element', 'div', function(/*element*/) {
-  return document.documentElement;
+export default detectFocus({
+  name: 'can-focus-document-element',
+  element: 'div',
+  mutate: function(/*element*/) {
+    return document.documentElement;
+  },
 });
-
-export default canFocusDocumentElement;

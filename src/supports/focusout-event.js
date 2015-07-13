@@ -2,22 +2,24 @@
 
 import detectFocus from './detect-focus';
 
-var received = false;
-var canDispatchFocusout = detectFocus('can-dispatch-focusout', 'input', function(element, wrapper) {
+let received = false;
+export default detectFocus({
+  name: 'can-dispatch-focusout',
+  element: 'input',
+  mutate: function(element, wrapper) {
+    wrapper.appendChild(element);
+    element.focus();
 
-  wrapper.appendChild(element);
-  element.focus();
+    let target = document.createElement('input');
+    wrapper.appendChild(target);
 
-  var target = document.createElement('input');
-  wrapper.appendChild(target);
+    element.addEventListener('focusout', function() {
+      received = true;
+    }, true);
 
-  element.addEventListener('focusout', function() {
-    received = true;
-  }, true);
-
-  return target;
-}, function(element) {
-  return 'onfocusout' in element || received;
+    return target;
+  },
+  validate: function(element) {
+    return 'onfocusout' in element || received;
+  },
 });
-
-export default canDispatchFocusout;

@@ -4,8 +4,9 @@
 
 import cache from './supports-cache';
 
-var testName = 'supports-css-shadow-piercing-deep-combinator';
-var combinator = cache.get(testName);
+const testName = 'supports-css-shadow-piercing-deep-combinator';
+let combinator = cache.get(testName);
+
 if (typeof combinator !== 'string') {
   try {
     document.querySelector('html >>> :first-child');

@@ -1,8 +1,10 @@
 
 import detectFocus from './detect-focus';
 
-var canFocusTable = detectFocus('can-focus-table', 'table', function(element) {
-  element.innerHTML = '<tr><td>cell</td></tr>';
+export default detectFocus({
+  name: 'can-focus-table',
+  element: 'table',
+  mutate: function(element) {
+    element.innerHTML = '<tr><td>cell</td></tr>';
+  },
 });
-
-export default canFocusTable;
