@@ -16,19 +16,15 @@
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
-    "lint": "eslint $(glob-cli src/**/*.js) && jscs src"
+    "lint": "eslint $(glob-cli src/**/*.js) && jscs src".
+    "precommit": "npm run lint",
+    "prepush": "npm test",
+    "postmerge": "npm install",
+    "postrewrite": "npm install"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/medialize/ally.js.git"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test",
-      "post-merge": "npm install",
-      "post-rewrite": "npm install"
-    }
   },
   "keywords": [
     "accessibility",
@@ -51,6 +47,7 @@
     "browserify": "^10.2.4",
     "eslint": "^0.24.0",
     "glob-cli": "^1.0.0",
+    "husky": "^0.8.1",
     "jquery": "^2.1.4",
     "jquery-ui": "git://github.com/jquery/jquery-ui.git#1.11.4",
     "jscs": "^1.13.1",

@@ -117,6 +117,8 @@ node_modules/.bin/eslint src/**/*.js
 node_modules/.bin/jscs src
 ```
 
+Linting is done automatically via git hooks by way of [husky](https://www.npmjs.com/package/husky).
+
 ----
 
 ## ES6 in older browsers
