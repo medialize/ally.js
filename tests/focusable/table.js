@@ -1,12 +1,12 @@
 require.config({
   paths: {
-    ally: '../../src',
+    ally: '../../dist/amd',
     // shims required by ally.js
-    'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
-    'CSS.escape': '../../bower_components/CSS.escape/css.escape',
+    'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+    'css.escape': '../../node_modules/css.escape/css.escape',
     // stuff used for testing and co
-    'underscore': '../../bower_components/underscore/underscore',
-    'jquery': '../../bower_components/jquery/dist/jquery',
+    'underscore': '../../node_modules/underscore/underscore',
+    'jquery': '../../node_modules/jquery/dist/jquery',
   }
 });
 

@@ -78,10 +78,10 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 ```js
 require.config({
   paths: {
-    'ally': 'bower_components/ally.js/src',
+    'ally': 'node_modules/ally.js/src',
     // shims required by ally.js
-    'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
-    'CSS.escape': 'bower_components/CSS.escape/css.escape',
+    'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
+    'css.escape': 'node_modules/css.escape/css.escape',
   },
 
   // alias array.prototype.findindex to es6-shim

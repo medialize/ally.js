@@ -1,6 +1,6 @@
 require.config({
   paths: {
-    ally: '../../src'
+    ally: '../../dist/amd'
   }
 });
 

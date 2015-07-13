@@ -1,5 +1,5 @@
 
-import 'CSS.escape';
+import 'css.escape';
 import isVisible from './is-visible';
 import path from './path';
 import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';

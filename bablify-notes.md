@@ -116,3 +116,28 @@ Stop that `npm run` bollocks, gimme real CLI:
 node_modules/.bin/eslint src/**/*.js
 node_modules/.bin/jscs src
 ```
+
+----
+
+## ES6 in older browsers
+
+Currently only a single ES6 function (Array.prototype.findIndex) is used in ally.js. Should we choose to use more ES6 functions, possibly things like `Set` and `Map`, we would have to include the [babel polyfill](http://babeljs.io/docs/usage/polyfill/) in our distribution
+
+```js
+npm install babel-core
+cat node_modules/babel-core/browser-polyfill.js dist/ally.js > dist/ally.old-browser.js
+```
+
+---
+
+## External Dependencies
+
+The ally.js not only contains the library but also a lot of browser capability tests in the `tests` directory and the website in the `gh-pages` branch. To make all that stuff run a couple of dependencies have to be made available, that are *not* required to run the core library itself, but since don't have custom `dependencies` namespaces available in npm, the following packages are referenced as `devDependencies` as well:
+
+* [requirejs](https://www.npmjs.com/package/requirejs)
+* [underscore](https://www.npmjs.com/package/underscore)
+* [sequence-comparison-table](https://www.npmjs.com/package/sequence-comparison-table)
+* [jquery](https://www.npmjs.com/package/jquery)
+* [jquery-ui](https://www.npmjs.com/package/jquery) wtf? `"jquery-ui": "https://github.com/jquery/jquery-ui.git#1.11.4",` possibly `https://github.com/components/jqueryui`
+* [platform](https://www.npmjs.com/package/platform)
+

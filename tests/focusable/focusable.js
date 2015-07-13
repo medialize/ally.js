@@ -1,15 +1,15 @@
 require.config({
   urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
-    ally: '../../src',
+    ally: '../../dist/amd',
     // shims required by ally.js
-    'array.prototype.findindex': '../../bower_components/array.prototype.findindex/index',
-    'CSS.escape': '../../bower_components/CSS.escape/css.escape',
+    'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+    'css.escape': '../../node_modules/css.escape/css.escape',
     // stuff used for testing and co
-    'platform': '../../bower_components/platform/platform',
-    'underscore': '../../bower_components/underscore/underscore',
-    'jquery': '../../bower_components/jquery/dist/jquery',
-    'jquery.ui': '../../bower_components/jquery.ui/ui',
+    'platform': '../../node_modules/platform/platform',
+    'underscore': '../../node_modules/underscore/underscore',
+    'jquery': '../../node_modules/jquery/dist/jquery',
+    'jquery-ui': '../../node_modules/jquery-ui/ui',
   }
 });
 
@@ -122,7 +122,7 @@ function captureStuff() {
       'ally/dom/query-tabsequence',
       'platform',
       'jquery',
-      'jquery.ui/core'
+      'jquery-ui/core'
     ], function (queryFocusable, queryTabsequence, platform, $) {
       // save results
       results.focusEvents = focusEventHistory.filter(ignore);

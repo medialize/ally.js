@@ -3,7 +3,7 @@ require.config({
   paths: {
     ally: '../dist/amd',
     // shims required by ally.js
-    'array.prototype.findindex': '../bower_components/array.prototype.findindex/index',
-    'CSS.escape': '../bower_components/CSS.escape/css.escape',
+    'array.prototype.findindex': '../node_modules/array.prototype.findindex/index',
+    'css.escape': '../node_modules/css.escape/css.escape',
   }
 });
