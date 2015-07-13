@@ -21,7 +21,9 @@
     This allows an application to make sure no element other than the exempted can be focused.
     This is method is superior to <a href="./trap-focus.html">trapping focus</a> because it allows
     cycling through the browser UI and is not as prone to break for spatial focus navigation
-    (i.e. any sort of focus navigation that does not use the <kbd>Tab</kbd> key).
+    (i.e. any sort of focus navigation that does not use the <kbd>Tab</kbd> key). The major benefit
+    of disabling focus of elements is that in turn we do not have to meddle with the user's interaction
+    to actually change focus - we can leave that to the browser.
   <p>
     The <code>inert</code> attribute was <a href="https://html5.org/r/8536">removed from HTML5</a>,
     because people thought <a href="http://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees">inert subtrees</a>
