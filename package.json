@@ -16,7 +16,7 @@
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
-    "lint": "eslint $(glob-cli src/**/*.js) && jscs src".
+    "lint": "eslint $(glob-cli src/**/*.js) && jscs src",
     "precommit": "npm run lint",
     "prepush": "npm test",
     "postmerge": "npm install",
