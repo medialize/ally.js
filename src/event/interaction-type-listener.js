@@ -3,21 +3,25 @@
   Observe keyboard-, pointer-, mouse- and touch-events so that a query for
   the current interaction type can be made at any time. For pointer interaction
   this observer is limited to pointer button down/up - move is not observed!
+
+  USAGE:
+    var listener = engage();
+    listener.get() === {pointer: Boolean, key: Boolean}
 */
 
-// counters to track primary input
-var _activePointers = 0;
-var _activeKeys = 0;
-// prevent multiple "phyiscal" instances but act like you could have multiple
-var _engaged = 0;
+import decorateSingleton from '../util/decorate-singleton';
 
-var pointerStartEvents = [
+// counters to track primary input
+let _activePointers = 0;
+let _activeKeys = 0;
+
+const pointerStartEvents = [
   'touchstart',
   'pointerdown',
   'MSPointerDown',
   'mousedown',
 ];
-var pointerEndEvents = [
+const pointerEndEvents = [
   'touchend',
   'touchcancel',
   'pointerup',
@@ -100,13 +104,7 @@ function getInteractionType() {
   };
 }
 
-function disengageInteractionTypeListener(force) {
-  _engaged--;
-  if (_engaged && force !== true) {
-    // someone is still using the listener, so don't kill it just yet
-    return;
-  }
-
+function disengage() {
   window.removeEventListener('blur', handleWindowBlurEvent, false);
   document.documentElement.removeEventListener('keydown', handleKeyStartEvent, true);
   document.documentElement.removeEventListener('keyup', handleKeyEndEvent, true);
@@ -118,26 +116,22 @@ function disengageInteractionTypeListener(force) {
   });
 }
 
-function engageInteractionTypeListener() {
-  if (!_engaged) {
-    // window blur must be in bubble phase so it won't capture regular blurs
-    window.addEventListener('blur', handleWindowBlurEvent, false);
-    // handlers to identify the method of focus change
-    document.documentElement.addEventListener('keydown', handleKeyStartEvent, true);
-    document.documentElement.addEventListener('keyup', handleKeyEndEvent, true);
-    pointerStartEvents.forEach(function(event) {
-      document.documentElement.addEventListener(event, handlePointerStartEvent, true);
-    });
-    pointerEndEvents.forEach(function(event) {
-      document.documentElement.addEventListener(event, handlePointerEndEvent, true);
-    });
-  }
+function engage() {
+  // window blur must be in bubble phase so it won't capture regular blurs
+  window.addEventListener('blur', handleWindowBlurEvent, false);
+  // handlers to identify the method of focus change
+  document.documentElement.addEventListener('keydown', handleKeyStartEvent, true);
+  document.documentElement.addEventListener('keyup', handleKeyEndEvent, true);
+  pointerStartEvents.forEach(function(event) {
+    document.documentElement.addEventListener(event, handlePointerStartEvent, true);
+  });
+  pointerEndEvents.forEach(function(event) {
+    document.documentElement.addEventListener(event, handlePointerEndEvent, true);
+  });
 
-  _engaged++;
   return {
-    disengage: disengageInteractionTypeListener,
     get: getInteractionType,
   };
 }
 
-export default engageInteractionTypeListener;
+export default decorateSingleton({ engage, disengage });

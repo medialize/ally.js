@@ -8,18 +8,21 @@
 * option `accessibility.mouse_focuses_formcontrol` in about:config
 */
 
-// This fix is only relevant to Safari and Firefox on OSX
-var userAgent = window.navigator.userAgent;
-var engage = userAgent.indexOf('Mac OS X') !== -1 && (userAgent.indexOf('Version/') !== -1 || userAgent.indexOf('Firefox/') !== -1);
-var fixPointerFocusInput;
-if (!engage) {
-  fixPointerFocusInput = function() {
-    return function() {};
-  };
-} else {
-  var inputPattern = /^(input|button)$/;
+import decorateContext from '../util/decorate-context';
 
-  let handleMouseDownEvent = function(event) {
+let engage;
+let disengage;
+const userAgent = window.navigator.userAgent;
+// This fix is only relevant to Safari and Firefox on OSX
+const relevantToCurrentBrowser = userAgent.indexOf('Mac OS X') !== -1
+  && (userAgent.indexOf('Version/') !== -1 || userAgent.indexOf('Firefox/') !== -1);
+
+if (!relevantToCurrentBrowser) {
+  engage = function() {};
+} else {
+  const inputPattern = /^(input|button)$/;
+
+  const handleMouseDownEvent = function(event) {
     if (event.defaultPrevented || !event.target.nodeName.toLowerCase().match(inputPattern)) {
       // abort if the mousedown event was cancelled
       return;
@@ -31,7 +34,7 @@ if (!engage) {
     });
   };
 
-  let handleMouseUpEvent = function(event) {
+  const handleMouseUpEvent = function(event) {
     if (event.defaultPrevented || event.target.nodeName.toLowerCase() !== 'label') {
       // abort if the mouseup event was cancelled
       return;
@@ -41,16 +44,16 @@ if (!engage) {
     event.target.focus();
   };
 
-  fixPointerFocusInput = function(context) {
-    context.addEventListener('mousedown', handleMouseDownEvent, false);
+  engage = function(element) {
+    element.addEventListener('mousedown', handleMouseDownEvent, false);
     // <label> elements redirect focus upon mouseup, not mousedown
-    context.addEventListener('mouseup', handleMouseUpEvent, false);
+    element.addEventListener('mouseup', handleMouseUpEvent, false);
+  };
 
-    return function() {
-      context.removeEventListener('mousedown', handleMouseDownEvent, false);
-      context.removeEventListener('mouseup', handleMouseUpEvent, false);
-    };
+  disengage = function(element) {
+    element.removeEventListener('mousedown', handleMouseDownEvent, false);
+    element.removeEventListener('mouseup', handleMouseUpEvent, false);
   };
 }
 
-export default fixPointerFocusInput;
+export default decorateContext({ engage, disengage });

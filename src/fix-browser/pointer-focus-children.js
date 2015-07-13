@@ -14,27 +14,29 @@
 */
 
 import focusTarget from '../dom/focus-target';
+import decorateContext from '../util/decorate-context';
 
+let engage;
+let disengage;
+const userAgent = window.navigator.userAgent;
 // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-var userAgent = window.navigator.userAgent;
-var engage = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
-var fixPointerFocusChildren;
+const relevantToCurrentBrowser = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
+// IE10 requires prefix, IE11 does not
+const eventName = 'onpointerdown' in document ? 'pointerdown' : 'MSPointerDown';
 
-if (!engage) {
-  fixPointerFocusChildren = function() {
-    return function() {};
-  };
+if (!relevantToCurrentBrowser) {
+  engage = function() {};
 } else {
-  let handleBeforeFocusEvent = function(event) {
+  const handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
-    var target = focusTarget(event.target);
+    const target = focusTarget(event.target);
     if (!target || target === event.target) {
       // there's nothing to focus, or we're focusing the element clicked on
       return;
     }
 
     // if the focus target does not have display:flex we're good
-    var display = window.getComputedStyle(target, null).getPropertyValue('display');
+    const display = window.getComputedStyle(target, null).getPropertyValue('display');
     // flex, flexbox, -ms-flex, inline-flexbox (yeah, whatever…)
     if (display.indexOf('flex') === -1) {
       return;
@@ -45,9 +47,9 @@ if (!engage) {
     // to undo hiding later. Reset transitions as well, in case visibility
     // is to be transitioned. This will effectively kill all transitions
     // that are executed on mousedown / :active
-    var reverse = [].map.call(target.children, function(element) {
-      var visibility = element.style.visibility || '';
-      var transition = element.style.transition || '';
+    const reverse = [].map.call(target.children, function(element) {
+      const visibility = element.style.visibility || '';
+      const transition = element.style.transition || '';
       element.style.visibility = 'hidden';
       element.style.transition = 'none';
       return [element, visibility, transition];
@@ -62,20 +64,13 @@ if (!engage) {
     });
   };
 
-  fixPointerFocusChildren = function(context) {
-    if (!context) {
-      context = document;
-    }
+  engage = function(element) {
+    element.addEventListener(eventName, handleBeforeFocusEvent, true);
+  };
 
-    // IE10 requires prefix, IE11 does not
-    var eventName = 'onpointerdown' in document ? 'pointerdown' : 'MSPointerDown';
-    context.addEventListener(eventName, handleBeforeFocusEvent, true);
-
-    // return callback to disengage pointer-focus hack
-    return function() {
-      context.removeEventListener(eventName, handleBeforeFocusEvent, true);
-    };
+  disengage = function(element) {
+    element.removeEventListener(eventName, handleBeforeFocusEvent, true);
   };
 }
 
-export default fixPointerFocusChildren;
+export default decorateContext({ engage, disengage });

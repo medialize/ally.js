@@ -9,6 +9,14 @@
 ### Breaking Changes
 
 * `src/` was ES5 and AMD, it is now ES6, AMD components are now available at `dist/amd/`
+* adapting to general dis/engage API:
+  * `event/active-element.js`
+  * `event/interaction-type-listener.js`
+  * `event/shadow-focus.js`
+* adapting to general dis/engage with context API:
+  * `fix-browser/pointer-focus-children.js`
+  * `fix-browser/pointer-focus-input.js`
+  * `fix-browser/pointer-focus-parent.js`
 
 
 ## 0.0.7 (July 8th 2015) ##

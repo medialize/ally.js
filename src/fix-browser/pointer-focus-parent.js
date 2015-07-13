@@ -13,23 +13,25 @@
 
 import focusTarget from '../dom/focus-target';
 import isValidTabIndex from '../dom/is-valid-tabindex';
+import decorateContext from '../util/decorate-context';
 
+let engage;
+let disengage;
+const userAgent = window.navigator.userAgent;
 // This fix is only relevant to WebKit
-var userAgent = window.navigator.userAgent;
-var engage = (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1) && userAgent.indexOf('Chrome') === -1;
-var fixPointerFocusParent;
-if (!engage) {
-  fixPointerFocusParent = function() {
-    return function() {};
-  };
+const relevantToCurrentBrowser = userAgent.indexOf('Chrome') === -1
+  && (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1);
+
+if (!relevantToCurrentBrowser) {
+  engage = function() {};
 } else {
   // add [tabindex="0"] to the (focusable) element that is about to be clicked
   // if it does not already have an explicit tabindex (attribute).
   // By applying an explicit tabindex, WebKit will not go look for
   // the first valid tabindex in the element's parents.
-  let handleBeforeFocusEvent = function(event) {
+  const handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
-    var target = focusTarget(event.target);
+    const target = focusTarget(event.target);
     if (!target || target.hasAttribute('tabindex') && isValidTabIndex(target)) {
       // there's nothing to focus, or the element already has tabindex, we're good
       return;
@@ -44,21 +46,15 @@ if (!engage) {
     }, 0);
   };
 
-  // export convenience wrapper to engage pointer-focus prevention
-  fixPointerFocusParent = function(context) {
-    if (!context) {
-      context = document;
-    }
+  engage = function(element) {
+    element.addEventListener('mousedown', handleBeforeFocusEvent, true);
+    element.addEventListener('touchstart', handleBeforeFocusEvent, true);
+  };
 
-    context.addEventListener('mousedown', handleBeforeFocusEvent, true);
-    context.addEventListener('touchstart', handleBeforeFocusEvent, true);
-
-    // return callback to disengage the pointer-focus prevention
-    return function undoFixPointerFocusParent() {
-      context.removeEventListener('mousedown', handleBeforeFocusEvent, true);
-      context.removeEventListener('touchstart', handleBeforeFocusEvent, true);
-    };
+  disengage = function(element) {
+    element.removeEventListener('mousedown', handleBeforeFocusEvent, true);
+    element.removeEventListener('touchstart', handleBeforeFocusEvent, true);
   };
 }
 
-export default fixPointerFocusParent;
+export default decorateContext({ engage, disengage });

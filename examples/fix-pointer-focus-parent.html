@@ -27,17 +27,18 @@
   <h2 id="usage">Usage</h2>
   <pre>// load fixPointerFocusParent()
 var fixPointerFocusParent = require('ally/fix-browser/pointer-focus-parent');
-// acquire context
-var context = document.getElementById('element-to-fix');
 
-// activate the fix on a specific sub-tree (for every browser)
-var disengage = fixPointerFocusParent(context);
+// activate the fix on a specific sub-tree
+var handle = fixPointerFocusParent({
+  // context can be: String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+  context: document.getElementById('element-to-fix');
+});
 
-// activate the fix for the entire document (for every browser)
-var disengage = fixPointerFocusParent();
+// activate the fix for the entire document
+var handle = fixPointerFocusParent();
 
 // disable the fix
-disengage();</pre>
+handle.disengage();</pre>
 
 
   <h2 id="example">Example</h2>
@@ -55,8 +56,9 @@ disengage();</pre>
   <script src="main.js"></script>
   <script>
     require(['ally/fix-browser/pointer-focus-parent'], function(fixPointerFocusParent) {
-      var context = document.getElementById('fix-pointer-focus');
-      fixPointerFocusParent(context);
+      fixPointerFocusParent({
+        context: document.getElementById('fix-pointer-focus')
+      });
     });
   </script>
 </body>

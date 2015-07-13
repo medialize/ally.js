@@ -1,18 +1,35 @@
 
 /*
-  alternate implementation: https://github.com/cdata/focus-observer
+  Utility to observe focus changes within Shadow DOMs.
+
+  USAGE:
+    engage();
+    document.body.addEventListener('shadow-focus', function(event) {
+      // event.detail.elements: complete focus ancestry (array of nodes)
+      // event.detail.active: the actually focused element within the Shadow DOM
+      // event.detail.hosts: the shadow host ancestry of the active element
+    }, false);
+
+  Alternate implementation: https://github.com/cdata/focus-observer
 */
 
 import activeElements from '../dom/active-elements';
+import decorateSingleton from '../util/decorate-singleton';
 
-// no need to initialize any of this if we don't have Shadow DOM available
-if (document.body.createShadowRoot) {
+let engage;
+let disengage;
+
+if (!document.body.createShadowRoot) {
+  // no need to initialize any of this if we don't have Shadow DOM available
+  engage = disengage = function() {};
+} else {
   let blurTimer;
+  let blurElement;
   let handleFocusChange;
 
-  let handleElementBlurEvent = function() {
+  const handleElementBlurEvent = function() {
     /*jshint validthis:true */
-
+    blurElement = this;
     // once() - sometimes I miss jQuery's simplicity…
     this.removeEventListener('blur', handleElementBlurEvent, true);
     // abort any handlers that come from document blur handler
@@ -22,20 +39,20 @@ if (document.body.createShadowRoot) {
     });
   };
 
-  let observeElementBlurEvent = function(element) {
+  const observeElementBlurEvent = function(element) {
     // call us when we're leaving the element
     element.addEventListener('blur', handleElementBlurEvent, true);
   };
 
   handleFocusChange = function() {
-    var _active = activeElements();
+    const _active = activeElements();
     if (_active.length === 1) {
       return;
     }
 
     // listen for blur so we know when to re-validate
     observeElementBlurEvent(_active[0]);
-    var shadowFocusEvent = new CustomEvent('shadow-focus', {
+    const shadowFocusEvent = new CustomEvent('shadow-focus', {
       bubbles: false,
       cancelable: false,
       detail: {
@@ -51,14 +68,20 @@ if (document.body.createShadowRoot) {
     document.dispatchEvent(shadowFocusEvent);
   };
 
-  let handleDocumentFocusEvent = function() {
+  const handleDocumentFocusEvent = function() {
     (window.clearImmediate || window.clearTimeout)(blurTimer);
     handleFocusChange();
   };
 
-  let observeShadowFocus = function() {
+  engage = function() {
     document.addEventListener('focus', handleDocumentFocusEvent, true);
   };
 
-  observeShadowFocus();
+  disengage = function() {
+    (window.clearImmediate || window.clearTimeout)(blurTimer);
+    blurElement && blurElement.removeEventListener('blur', handleElementBlurEvent, true);
+    document.removeEventListener('focus', handleDocumentFocusEvent, true);
+  };
 }
+
+export default decorateSingleton({ engage, disengage });
