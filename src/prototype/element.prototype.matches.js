@@ -2,7 +2,8 @@
 // Element.prototype.matches may not be available under that name
 
 if (!Element.prototype.matches) {
-  var prefixed = 'webkitMatchesSelector mozMatchesSelector msMatchesSelector'.split(' ').some(function(key) {
+  // first try to unprefix an existing implementation
+  const prefixed = 'webkitMatchesSelector mozMatchesSelector msMatchesSelector'.split(' ').some(function(key) {
     if (!Element.prototype[key]) {
       return false;
     }
@@ -14,14 +15,14 @@ if (!Element.prototype.matches) {
   if (!prefixed) {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element.matches#Polyfill
     Element.prototype.matches = function matchesSelectorPolyfill(selector) {
-      var matches = (this.document || this.ownerDocument).querySelectorAll(selector);
-      var i = 0;
+      const matches = (this.document || this.ownerDocument).querySelectorAll(selector);
+      let i = 0;
 
       while (matches[i] && matches[i] !== this) {
         i++;
       }
 
-      return matches[i] ? true : false;
+      return Boolean(matches[i]);
     };
 
   }

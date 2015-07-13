@@ -9,14 +9,14 @@ import canFocusAudioWithoutControls from '../supports/focus-audio-without-contro
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 import canFocusHtml from '../supports/focus-html';
 import canFocusSvg from '../supports/focus-svg';
-var canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
+let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
 import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusSummary from '../supports/focus-summary';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 
 // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-var selector = 'body,'
+let selector = 'body,'
   // Firefox, IE11 can focus <html>
   + (canFocusHtml ? 'html,' : '')
   // IE11 can focus <table> and <td>
@@ -28,7 +28,7 @@ var selector = 'body,'
   // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
   // Firefox cannot focus <svg> child elements from script
   + (canFocusSvgMethod ? 'svg a[*|href],' : '')
-  // + 'svg, svg *,' in chrome as *every* svg element is focusable
+  // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
   // navigational elements
   + 'a[href],'
   // validity determined by dom/is-valid-area.js
