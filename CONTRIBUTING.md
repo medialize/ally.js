@@ -113,8 +113,8 @@ npm run lint
 Stop that `npm run` bollocks, gimme real CLI:
 
 ```sh
-node_modules/.bin/eslint src/**/*.js
-node_modules/.bin/jscs src
+node_modules/.bin/eslint {src/**/*.js,test/**/*.js}
+node_modules/.bin/jscs {src,test}
 ```
 
 Linting is done automatically via git hooks by way of [husky](https://www.npmjs.com/package/husky).

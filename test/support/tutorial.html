@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Intern tutorial</title>
+  </head>
+  <body>
+    <p id="greeting">Please enter your name</p>
+    <form id="loginForm">
+      <input id="nameField" type="text" placeholder="Your name">
+      <input type="submit" value="Submit">
+    </form>
+
+    <script>
+      var greeting = document.getElementById('greeting');
+      var loginForm = document.getElementById('loginForm');
+      var nameField = document.getElementById('nameField');
+
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        greeting.textContent = 'Hello, ' + nameField.value + '!';
+        nameField.value = '';
+      }, false);
+    </script>
+  </body>
+</html>
