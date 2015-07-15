@@ -22,6 +22,7 @@
   * `focus/within.js`
 * adapting to unified dis/engage with options API:
   * `when/visible.js` (was `dom/when-visible.js`)
+  * `when/focusable.js` (was `focus/when-visible.js`)
   * `fix-browser/pointer-focus-children.js`
   * `fix-browser/pointer-focus-input.js`
   * `fix-browser/pointer-focus-parent.js`

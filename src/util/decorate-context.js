@@ -6,25 +6,26 @@
 
 import nodeArray from '../dom/node-array';
 
-function destruct(/* options = {force: false} */) {
+function destruct(/* {force: false} */) {
   this.context.forEach(this.disengage);
   this.context = null;
   this.engage = null;
   this.disengage = null;
 }
 
-function initialize(options = {context: document}) {
-  this.context = nodeArray(options.context);
+function initialize({context}) {
+  this.context = nodeArray(context || document);
   this.context.forEach(this.engage);
   return destruct.bind(this);
 }
 
 function noop() {}
 
-export default function(options = {engage: noop, disengage: noop}) {
+export default function({engage, disengage}) {
   let data = {
-    engage: options.engage || noop,
-    disengage: options.disengage || noop,
+    engage: engage || noop,
+    disengage: disengage || noop,
+    context: null,
   };
 
   return initialize.bind(data);
