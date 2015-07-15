@@ -41,7 +41,7 @@
 
   <h1>Focus An Element Once It Became Visible</h1>
   <p>
-    ally.js provides the method <code>ally/focus/when-visible</code> to set focus to an element once it became visible.
+    ally.js provides the method <code>ally/when/focusable</code> to set focus to an element once it became visible.
     An element is considered visible when <code>ally/dom/is-visible</code> determined the element can be rendered and
     <a href="visible-quotient.html"><code>ally/dom/visible-quotient</code></a> identified the element as being fully
     rendered in the viewport.
@@ -49,7 +49,7 @@
   <p>
     <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.focus"><code>Element.focus()</code></a> scrolls the
     element into view if it isn't already. In situations where content is not revealed immediately, but through a transition
-    or animation <code>ally/focus/when-visible</code> will set focus to the element once it is fully visible on screen -
+    or animation <code>ally/when/focusable</code> will set focus to the element once it is fully visible on screen -
     regardless of the method you used to hide/show the element. Additionally to the visibility, the function will also wait
     for the element to become focusable.
   </p>
@@ -61,24 +61,34 @@
 
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/when-visible
-var focusWhenVisible = require('ally/focus/when-visible');
-// acquire element to focus
-var element = document.getElementById('element-to-focus');
+  <pre>// load when/focusable
+var focusWhenVisible = require('ally/when/focusable');
 
-// register focus to be applied
-var abortFocusing = focusWhenVisible(element);
-// kick of your revealing mechanism
-element.style.top = 100;
+// register focus to be applied when the element is focusable and visible
+var handle = focusWhenVisible({
+  // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+  context: document.getElementById('element-to-focus'),
+  // when/focus compatible callback function
+  callback: function(element) {
+    // the context is passed back as element for convenience
+    element.focus();
+    // upon return of the callback handle.disengage() is executed internally,
+    // to prevent disengaging, to keep polling, return false
+  },
+  // [optional] percentage of area of the context element to be visible in the viewport
+  // default is 1, be careful with lower values because browsers 
+  // may scroll the element the into view
+  area: 1,
+});
 
-// register focus to be applied when element is 95% visible (caution!)
-var abortFocusing = focusWhenVisible(element, 0.95);
 // kick of your revealing mechanism
-element.style.top = 100;
+element.style.top = '100px';
 
 // abort focusing the target element
 // no operation performed if focus was already given
-abortFocusing();</pre>
+// the method is called automatically should any element
+// gain focus prior to the callback being executed
+handle.disengage();</pre>
 
 
   <h2 id="example">Example</h2>
@@ -104,15 +114,15 @@ abortFocusing();</pre>
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/focus/when-visible', 'ally/map/keycode'], function(focusWhenVisible, keyCode) {
+    require(['ally/when/focusable', 'ally/map/keycode'], function(focusWhenVisible, keyCode) {
       var button = document.getElementById('activate');
       var log = document.getElementById('example-log');
       var element = document.querySelector('.thing');
-      var abortFocusWhenVisible;
+      var handle;
 
       document.addEventListener('focus', function(event) {
         if (event.target === element) {
-          abortFocusWhenVisible = null;
+          handle = null;
           log.textContent += 'focused!\n';
           return;
         }
@@ -129,9 +139,9 @@ abortFocusing();</pre>
       }, true);
 
       document.addEventListener('keydown', function(event) {
-        if (event.keyCode === keyCode.escape && abortFocusWhenVisible) {
+        if (event.keyCode === keyCode.escape && handle) {
           log.textContent += 'aborted focus when visible!\n';
-          abortFocusWhenVisible();
+          handle.disengage();
         }
       }, true);
 
@@ -142,7 +152,12 @@ abortFocusing();</pre>
           return;
         }
 
-        abortFocusWhenVisible = focusWhenVisible(element);
+        handle = focusWhenVisible({
+          context: element,
+          callback: function(element) {
+            element.focus();
+          },
+        });
 
         log.textContent = 'started…\n';
         button.textContent = 'reset';

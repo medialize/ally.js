@@ -6,22 +6,28 @@
 * moving source from AMD to ES6 Module Syntax
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
 * adding `dom/query-first-tabbable` (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
+* unifying API of all functions, see breaking changes below
 
 ### Breaking Changes
 
-* `src/` was ES5 and AMD, it is now ES6, AMD components are now available at `dist/amd/`
-* adapting to general dis/engage API:
+* `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
+* dropping `focus/first` in favor of `dom/query-first-tabbable`
+* renaming `dom/when-visible.js` to `when/visible.js`
+* renaming `focus/when-visible.js` to `when/focusable.js`
+* adapting to unified dis/engage API:
   * `event/active-element.js`
   * `event/interaction-type-listener.js`
   * `event/shadow-focus.js`
   * `focus/source.js`
   * `focus/within.js`
-* adapting to general dis/engage with options API:
+* adapting to unified dis/engage with options API:
+  * `when/visible.js` (was `dom/when-visible.js`)
   * `fix-browser/pointer-focus-children.js`
   * `fix-browser/pointer-focus-input.js`
   * `fix-browser/pointer-focus-parent.js`
   * `focus/disable.js`
-* dropping `focus/first` in favor of `dom/query-first-tabbable`
+* adapting to unified options API:
+  * `dom/query-first-tabbable` (was `focus/first`)
 
 
 ## 0.0.7 (July 8th 2015) ##
