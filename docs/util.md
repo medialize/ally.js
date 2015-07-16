@@ -5,6 +5,10 @@ the util infrastructure does not contain any functionality relevant to a user of
 
 ## Contribution Notes
 
+### Context To Element
+
+`util/context-to-element.js` is an internal convenience function to hide grabbing the first element of `dom/node-array` or throwing an `TypeError` if nothing was found. It is unclear if this "convenience" may cause developers to complain about indirected stack traces.
+
 ### Decorate Singleton
 
 `util/decorate-singleton.js` is a decorator wrapping a component's setup (`engage`) and teardown (`disengage`) functions in a way that exposes the component with the following trivialized signature:
