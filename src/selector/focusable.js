@@ -1,5 +1,5 @@
 // NOTE: this selector MUST *never* be used directly,
-// always go through dom/query-focusable or dom/is-focusable.js
+// always go through query/focusable or dom/is-focusable.js
 // there are too many edge cases that they could be covered in
 // a simple CSS selector…
 

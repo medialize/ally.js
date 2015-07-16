@@ -16,7 +16,7 @@
 */
 
 import nodeArray from '../dom/node-array';
-import queryFocusable from '../dom/query-focusable';
+import queryFocusable from '../query/focusable';
 
 let inertOptions = {
   context: null,
@@ -138,7 +138,7 @@ export default function(options = {context: document, filter: null}) {
   inertOptions.filter = nodeArray(options.filter);
   // find all focusable elements within the given contexts
   let focusable = inertOptions.context
-    .map(element => queryFocusable(element))
+    .map(element => queryFocusable({context: element}))
     .reduce((previous, current) => previous.concat(current), []);
 
   renderInert(focusable);

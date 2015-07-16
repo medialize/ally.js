@@ -118,8 +118,8 @@ function captureStuff() {
     });
 
     require([
-      'ally/dom/query-focusable',
-      'ally/dom/query-tabsequence',
+      'ally/query/focusable',
+      'ally/query/tabsequence',
       'platform',
       'jquery',
       'jquery-ui/core'
@@ -139,8 +139,13 @@ function captureStuff() {
       });
       // save results
       results.platform = platform;
-      results.ally.focusable = queryFocusable(document, true).map(elementName).filter(ignore);
-      results.ally.tabOrder = queryTabsequence(document).map(elementName).filter(ignore);
+      results.ally.focusable = queryFocusable({
+        context: document,
+        includeContext: true,
+      }).map(elementName).filter(ignore);
+      results.ally.tabOrder = queryTabsequence({
+        context: document
+      }).map(elementName).filter(ignore);
       results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
       results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
       // reset buffers

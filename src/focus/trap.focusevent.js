@@ -1,5 +1,5 @@
 
-import queryTabbable from '../dom/query-tabbable';
+import queryTabbable from '../query/tabbable';
 import captureBodyFocus from './trap.capture-body';
 
 export default function handleTrapByFocusEvent(event) {
@@ -18,7 +18,7 @@ export default function handleTrapByFocusEvent(event) {
     return;
   }
 
-  var sequence = queryTabbable(this);
+  var sequence = queryTabbable({context: this});
   if (!sequence.length) {
     // the context might've become void meanwhile
     this._untrapFocusHandler && this._untrapFocusHandler();

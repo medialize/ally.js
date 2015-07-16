@@ -1,6 +1,6 @@
 
 /*
-    focusFirst() finds the first suitable element to receive focus in the given context.
+    query/firstTabbable() finds the first suitable element to receive focus in the given context.
     If an element has [autofocus] return that element, otherwise return the first element
     in document order that does *not* have a positive tabIndex (e.g. as [tabindex="1"]),
     otherwise return the context itself, if it is focusable.
@@ -13,9 +13,9 @@
  */
 
 import 'array.prototype.findindex';
-import queryTabbable from './query-tabbable';
-import isFocusable from './is-focusable';
-import nodeArray from './node-array';
+import queryTabbable from './tabbable';
+import isFocusable from '../dom/is-focusable';
+import nodeArray from '../dom/node-array';
 
 function hasAutofocus(element) {
   // [autofocus] actually only works on form element, but who cares?
@@ -26,21 +26,21 @@ function hasNoPositiveTabindex(element) {
   return element.tabIndex <= 0;
 }
 
-export default function(options = {context: document.body, ignoreAutoFocus: false, defaultToContext: false}) {
-  const context = nodeArray(options.context)[0];
+export default function({context, ignoreAutofocus, defaultToContext}) {
+  context = nodeArray(context || document.body)[0];
 
   if (!context) {
     return null;
   }
 
-  const sequence = queryTabbable(context);
+  const sequence = queryTabbable({context});
   let index = -1;
 
   if (!sequence.length) {
     return null;
   }
 
-  if (!options.ignoreAutofocus) {
+  if (!ignoreAutofocus) {
     // prefer [autofocus]
     index = sequence.findIndex(hasAutofocus);
   }
@@ -50,7 +50,7 @@ export default function(options = {context: document.body, ignoreAutoFocus: fals
     index = sequence.findIndex(hasNoPositiveTabindex);
   }
 
-  if (index === -1 && options.defaultToContext && isFocusable(context)) {
+  if (index === -1 && defaultToContext && isFocusable(context)) {
     return context;
   }
 

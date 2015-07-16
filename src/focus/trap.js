@@ -14,7 +14,7 @@
     see http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div
  */
 
-import queryTabbable from '../dom/query-tabbable';
+import queryTabbable from '../query/tabbable';
 import focusFirst from './first';
 import trapByFocusEvent from './trap.focusevent';
 import trapByKeyEvent from './trap.keyevent';
@@ -43,7 +43,7 @@ export default function trapFocus(context, _focusFirst) {
     observeBodyFocus(context);
   }
 
-  var sequence = queryTabbable(context);
+  var sequence = queryTabbable({context});
   if (!sequence.length) {
     // cannot contain focus in something without anything to focus
     return null;

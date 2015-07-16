@@ -3,9 +3,11 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import selector from '../selector/focusable';
-import isFocusable from './is-focusable';
+import isFocusable from '../dom/is-focusable';
+import nodeArray from '../dom/node-array';
 
-export default function queryFocusable(context, includeContext) {
+export default function({context, includeContext}) {
+  context = nodeArray(context)[0];
   // alias document to document.documentElement for convenience
   if (!context || context.nodeType === 9) {
     context = document.documentElement;

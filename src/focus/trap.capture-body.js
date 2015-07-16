@@ -1,11 +1,11 @@
 
-import queryTabbable from '../dom/query-tabbable';
+import queryTabbable from '../query/tabbable';
 
 // redirect the first focusin/focus event to the first tabbable element in context
 export default function captureBodyFocus(context, eventName) {
   function handleFocusEvent(event) {
     context._undoCaptureBodyFocus && context._undoCaptureBodyFocus();
-    var sequence = queryTabbable(context);
+    var sequence = queryTabbable({context});
     if (!sequence.length) {
       // the context might've become void meanwhile
       context._untrapFocusHandler && context._untrapFocusHandler();
