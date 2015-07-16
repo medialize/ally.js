@@ -11,7 +11,7 @@
   It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
 */
 
-import focusTarget from '../dom/focus-target';
+import getFocusTarget from '../get/focus-target';
 import isValidTabIndex from '../dom/is-valid-tabindex';
 import decorateContext from '../util/decorate-context';
 
@@ -31,7 +31,7 @@ if (!relevantToCurrentBrowser) {
   // the first valid tabindex in the element's parents.
   const handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
-    const target = focusTarget(event.target);
+    const target = getFocusTarget({context: event.target});
     if (!target || target.hasAttribute('tabindex') && isValidTabIndex(target)) {
       // there's nothing to focus, or the element already has tabindex, we're good
       return;

@@ -13,7 +13,7 @@
   Alternate implementation: https://github.com/cdata/focus-observer
 */
 
-import activeElements from '../dom/active-elements';
+import getActiveElements from '../get/active-elements';
 import decorateSingleton from '../util/decorate-singleton';
 
 let engage;
@@ -44,7 +44,7 @@ if (!document.body.createShadowRoot) {
   };
 
   handleFocusChange = function() {
-    const _active = activeElements();
+    const _active = getActiveElements();
     if (_active.length === 1) {
       return;
     }

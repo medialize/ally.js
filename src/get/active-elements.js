@@ -3,7 +3,7 @@
 // [0+n] is the hierarchy of shadow-doms with [length -1] being the top most shadow-host
 
 import isShadowed from './is-shadowed';
-import shadowHostAncestors from './shadow-host-ancestors';
+import getShadowHostParents from './shadow-host-parents';
 
 function walkToShadowedElement() {
   var list = [document.activeElement];
@@ -16,17 +16,16 @@ function walkToShadowedElement() {
 }
 
 function walkFromShadowedElement() {
-  var hosts = shadowHostAncestors(document.activeElement);
+  var hosts = getShadowHostParents(document.activeElement);
   return [document.activeElement].concat(hosts);
 }
 
-function getActiveElements() {
-  // Firefox currently leaks the shadowed element - https://bugzilla.mozilla.org/show_bug.cgi?id=1117535
+export default function() {
+  // Firefox currently leaks the shadowed element
+  // @browser-issue https://bugzilla.mozilla.org/show_bug.cgi?id=1117535
   if (isShadowed(document.activeElement)) {
     return walkFromShadowedElement();
   }
 
   return walkToShadowedElement();
 }
-
-export default getActiveElements;

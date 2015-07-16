@@ -1,6 +1,6 @@
 
 import 'array.prototype.findindex';
-import path from './path';
+import getParents from '../get/parents';
 
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered
@@ -88,7 +88,7 @@ function isVisible(element) {
     return true;
   }
 
-  var _path = path(element);
+  var _path = getParents({context: element});
   return !Boolean(notDisplayed(_path) || notVisible(_path) || noDimension(element));
 }
 

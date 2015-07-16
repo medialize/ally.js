@@ -1,8 +1,8 @@
 
-import shadowHost from './shadow-host';
+import getShadowHost from '../get/shadow-host';
 
 function isShadowed(element) {
-  return Boolean(shadowHost(element));
+  return Boolean(getShadowHost({context: element}));
 }
 
 export default isShadowed;

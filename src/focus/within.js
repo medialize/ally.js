@@ -7,8 +7,8 @@
 
 import shadowFocus from '../event/shadow-focus';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
-import activeElements from '../dom/active-elements';
-import path from '../dom/path';
+import getActiveElements from '../get/active-elements';
+import getParents from '../get/parents';
 import decorateSingleton from '../util/decorate-singleton';
 
 // NOTE: require classList polyfill may be necessary (not available on SVGElement)
@@ -21,7 +21,7 @@ let blurTimer;
 let shadowHandle;
 
 function applyFocusWithinClass(active) {
-  const _active = active || activeElements();
+  let _active = active || getActiveElements();
   let selector = '.' + className;
   if (cssShadowPiercingDeepCombinator) {
     // select elements in shadow dom as well
@@ -34,7 +34,7 @@ function applyFocusWithinClass(active) {
   // identify the elements that currently have :focus-within
   const _current = [].slice.call(document.querySelectorAll(selector), 0);
   // get the path (ancestry) of each ShadowRoot and merge them into a flat list
-  const elements = _active.map(path).reduce(function(previous, current) {
+  const elements = _active.map((context) => getParents({context})).reduce(function(previous, current) {
     return current.concat(previous);
   }, []);
 
@@ -71,7 +71,7 @@ function handleDocumentFocusEvent() {
   // NOTE: we could overcome Firefox 34 issue of not supporting ShadowRoot.host by
   // passing event.target (which references the first-level ShadowHost), but that
   // would require applyFocusWithinClass() to distinguish between the argument and
-  // activeElements().
+  // getActiveElements().
   applyFocusWithinClass();
 }
 

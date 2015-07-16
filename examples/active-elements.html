@@ -8,7 +8,7 @@
   
   <h1>Active Elements (punching through ShadowDOM)</h1>
   <p>
-    ally.js provides the method <code>ally/dom/active-elements</code> to get a list of elements that are focused.
+    ally.js provides the method <code>ally/get/active-elements</code> to get a list of elements that are focused.
     This is necessary for determining which ShadowDOM hosts and elements are the <code>activeElement</code>
     in their respective contexts. The method is useful to work around an <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1117535">issue in Gecko</a>
     where <code>document.activeElement</code> can reference a shadowed element and ShadowRoot.activeElement is not exposed.
@@ -27,10 +27,10 @@
 
 
   <h2 id="usage">Usage</h2>
-  <pre>// load dom/active-elements
-var activeElements = require('ally/dom/active-elements');
+  <pre>// load get/active-elements
+var getActiveElements = require('ally/get/active-elements');
 // acquire context
-var elements = activeElements();
+var elements = getActiveElements();
 
 // elements[0] is always the the element actually having focus
 // elements[elements.length -1] is the ShadowHost closest to document</pre>
@@ -50,7 +50,7 @@ var elements = activeElements();
     if (document.body.shadowRoot === undefined) {
       log.textContent = 'Your browser does not support ShadowDOM';
     } else {
-      require(['ally/dom/active-elements'], function(activeElements) {
+      require(['ally/get/active-elements'], function(getActiveElements) {
 
         // create shadow dom structure:
         // body > #first-shadow-host > ShadowRoot > #second-shadow-host > ShadowRoot > input
@@ -64,12 +64,12 @@ var elements = activeElements();
 
         input.focus();
 
-        var activeElementsPath = activeElements().map(function(element) {
+        var activeElementsPath = getActiveElements().map(function(element) {
           return element.id;
         });
 
         log.textContent += 'document.activeElement = ' + document.activeElement.id + '\n'
-          + 'activeElements() = ' + JSON.stringify(activeElementsPath, null, 2) + '\n';
+          + 'getActiveElements() = ' + JSON.stringify(activeElementsPath, null, 2) + '\n';
 
       });
     }

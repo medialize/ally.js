@@ -1,5 +1,5 @@
 
-import path from './path';
+import getParents from '../get/parents';
 
 function getIntersectingRect(one, two) {
   // identify the rectangle that _element and _container overlap in
@@ -79,7 +79,7 @@ function getScrollableParentRect(element) {
   // get largest possible space constrained by scrolling containers
 
   // find scrollable parents
-  var scrollingContainers = path(element).slice(1).filter(isScrollableElement);
+  var scrollingContainers = getParents({context: element}).slice(1).filter(isScrollableElement);
 
   if (!scrollingContainers.length) {
     // no containers, no joy

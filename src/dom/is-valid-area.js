@@ -1,7 +1,7 @@
 
 import 'css.escape';
 import isVisible from './is-visible';
-import path from './path';
+import getParents from '../get/parents';
 import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
@@ -39,7 +39,7 @@ function isValidArea(element) {
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-  var childOfInteractive = path(img).slice(1).some(function(_element) {
+  var childOfInteractive = getParents({context: img}).slice(1).some(function(_element) {
     var name = _element.nodeName.toLowerCase();
     return name === 'button' || name === 'a';
   });

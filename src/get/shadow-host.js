@@ -1,7 +1,14 @@
 
-export default function shadowHost(element) {
+import nodeArray from '../dom/node-array';
+
+export default function({context}) {
+  let element = nodeArray(context)[0];
+  if (!element) {
+    throw new TypeError('get/shadow-host requires valid options.context');
+  }
+
   // walk up to the root
-  var container = null;
+  let container = null;
 
   while (element) {
     container = element;

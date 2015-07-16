@@ -1,5 +1,5 @@
 
-import path from './path';
+import getParents from '../get/parents';
 import canFocusDisabledFieldset from '../supports/focus-fieldset-disabled';
 
 // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
@@ -17,7 +17,8 @@ function isDisabledFieldset(element) {
 
 function isDisabled(element) {
   var nodeName = element.nodeName.toLowerCase();
-  return disabledElementsPattern.test(nodeName) && (element.disabled || path(element).some(isDisabledFieldset));
+  return disabledElementsPattern.test(nodeName)
+    && (element.disabled || getParents({context: element}).some(isDisabledFieldset));
 }
 
 export default isDisabled;

@@ -13,7 +13,7 @@
   It is fixed in IE12 (Win10 IE Tec Preview)
 */
 
-import focusTarget from '../dom/focus-target';
+import getFocusTarget from '../get/focus-target';
 import decorateContext from '../util/decorate-context';
 
 let engage;
@@ -29,7 +29,7 @@ if (!relevantToCurrentBrowser) {
 } else {
   const handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
-    const target = focusTarget(event.target);
+    const target = getFocusTarget({context: event.target});
     if (!target || target === event.target) {
       // there's nothing to focus, or we're focusing the element clicked on
       return;
