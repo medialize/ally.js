@@ -1,8 +1,8 @@
 
 import queryFocusable from './query/focusable';
 import queryTabbable from './query/tabbable';
-import isFocusable from './dom/is-focusable';
-import isTabbable from './dom/is-tabbable';
+import isFocusable from './is/focusable';
+import isTabbable from './is/tabbable';
 import keycode from './map/keycode';
 
 export default {

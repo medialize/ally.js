@@ -3,7 +3,7 @@
   execute a callback once an element became fully visible in the viewport
 */
 
-import isVisible from '../dom/is-visible';
+import isVisible from '../is/visible';
 import visibleQuotient from '../dom/visible-quotient';
 import nodeArray from '../dom/node-array';
 

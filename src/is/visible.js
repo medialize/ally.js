@@ -1,9 +1,12 @@
 
+// determine if an element is rendered
+// NOTE: that does not mean an element is visible in the viewport, see dom/visible-quotient
+
 import 'array.prototype.findindex';
 import getParents from '../get/parents';
 
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
-// <area> is not rendered
+// <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
 var notRenderedElementsPattern = /^(area)$/;
 // <audio src="#unknown"> has no height in Firefox but is focusable
 // <object> may have no dimension but is still focusable
@@ -82,7 +85,7 @@ function noDimension(element) {
   return result;
 }
 
-function isVisible(element) {
+export default function(element) {
   var nodeName = element.nodeName.toLowerCase();
   if (notRenderedElementsPattern.test(nodeName)) {
     return true;
@@ -91,5 +94,3 @@ function isVisible(element) {
   var _path = getParents({context: element});
   return !Boolean(notDisplayed(_path) || notVisible(_path) || noDimension(element));
 }
-
-export default isVisible;

@@ -14,7 +14,7 @@
 
 import 'array.prototype.findindex';
 import queryTabbable from './tabbable';
-import isFocusable from '../dom/is-focusable';
+import isFocusable from '../is/focusable';
 import nodeArray from '../dom/node-array';
 
 function hasAutofocus(element) {

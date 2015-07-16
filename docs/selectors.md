@@ -3,7 +3,7 @@
 
 The selectors contain query selectors ("css selectors") used by DOM methods. They should *not* be used directly. Instead use the appropriate modules provided in the `dom` namespace.
 
-It is impossible to query focusable elements by way of CSS selector alone, because certain element states can not be identified using CSS. You should therefore not use `selector/focusable.js` directly, but instead refer to `query/focusable.js` and `dom/is-focusable.js`.
+It is impossible to query focusable elements by way of CSS selector alone, because certain element states can not be identified using CSS. You should therefore not use `selector/focusable.js` directly, but instead refer to `query/focusable.js` and `is/focusable.js`.
 
 ## Contribution Notes
 

@@ -1,4 +1,6 @@
 
+// determine if an element can be focused
+
 // http://www.w3.org/TR/html5/editing.html#focus-management
 
 // NOTE: The following known issues exist:
@@ -10,12 +12,12 @@
 
 import '../prototype/element.prototype.matches';
 import selector from '../selector/focusable';
-import isVisible from './is-visible';
-import isDisabled from './is-disabled';
-import isValidTabindex from './is-valid-tabindex';
-import isValidArea from './is-valid-area';
+import isVisible from './visible';
+import isDisabled from './disabled';
+import isValidTabindex from './valid-tabindex';
+import isValidArea from './valid-area';
 
-function isFocusable(element) {
+export default function(element) {
   var focusable = selector;
   var nodeName = element.nodeName.toLowerCase();
 
@@ -59,5 +61,3 @@ function isFocusable(element) {
 
   return element.matches(focusable);
 }
-
-export default isFocusable;

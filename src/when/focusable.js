@@ -4,7 +4,7 @@
 */
 
 import whenVisible from './visible';
-import isFocusable from '../dom/is-focusable';
+import isFocusable from '../is/focusable';
 
 export default function({context, callback, area}) {
   if (typeof callback !== 'function') {

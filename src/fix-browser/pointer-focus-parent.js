@@ -12,7 +12,7 @@
 */
 
 import getFocusTarget from '../get/focus-target';
-import isValidTabIndex from '../dom/is-valid-tabindex';
+import isValidTabIndex from '../is/valid-tabindex';
 import decorateContext from '../util/decorate-context';
 
 let engage;

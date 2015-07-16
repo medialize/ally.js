@@ -1,4 +1,6 @@
 
+// Determine if an element is disabled (i.e. not editable)
+
 import getParents from '../get/parents';
 import canFocusDisabledFieldset from '../supports/focus-fieldset-disabled';
 
@@ -6,6 +8,9 @@ import canFocusDisabledFieldset from '../supports/focus-fieldset-disabled';
 var disabledElementsPattern = /^(input|select|textarea|button|fieldset)$/;
 
 // fieldset[tabindex=0][disabled] should not be focusable, but Blink and WebKit disagree
+// @specification http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
+// @browser-issue Chromium https://crbug.com/453847
+// @browser-issue WebKit https://bugs.webkit.org/show_bug.cgi?id=141086
 if (canFocusDisabledFieldset) {
   disabledElementsPattern = /^(input|select|textarea|button)$/;
 }
@@ -15,10 +20,8 @@ function isDisabledFieldset(element) {
   return nodeName === 'fieldset' && element.disabled;
 }
 
-function isDisabled(element) {
+export default function(element) {
   var nodeName = element.nodeName.toLowerCase();
-  return disabledElementsPattern.test(nodeName)
-    && (element.disabled || getParents({context: element}).some(isDisabledFieldset));
+  return Boolean(disabledElementsPattern.test(nodeName)
+    && (element.disabled || getParents({context: element}).some(isDisabledFieldset)));
 }
-
-export default isDisabled;

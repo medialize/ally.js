@@ -3,7 +3,7 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import queryFocusable from './focusable';
-import isTabbable from '../dom/is-tabbable';
+import isTabbable from '../is/tabbable';
 
 export default function({context, includeContext}) {
   return queryFocusable({context, includeContext}).filter(isTabbable);

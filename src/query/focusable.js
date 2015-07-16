@@ -3,7 +3,7 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import selector from '../selector/focusable';
-import isFocusable from '../dom/is-focusable';
+import isFocusable from '../is/focusable';
 import nodeArray from '../dom/node-array';
 
 export default function({context, includeContext}) {

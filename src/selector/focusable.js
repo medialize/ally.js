@@ -1,5 +1,5 @@
 // NOTE: this selector MUST *never* be used directly,
-// always go through query/focusable or dom/is-focusable.js
+// always go through query/focusable or is/focusable.js
 // there are too many edge cases that they could be covered in
 // a simple CSS selector…
 
@@ -31,9 +31,9 @@ let selector = 'body,'
   // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
   // navigational elements
   + 'a[href],'
-  // validity determined by dom/is-valid-area.js
+  // validity determined by is/valid-area.js
   + 'area[href],'
-  // validity determined by dom/is-disabled.js
+  // validity determined by is/disabled.js
   + 'input, select, textarea, button,'
   // browsing context containers
   + 'iframe, object, embed,'
@@ -42,7 +42,7 @@ let selector = 'body,'
   + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
   + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
   + (canFocusSummary ? 'summary,' : '')
-  // validity determined by dom/is-valid-tabindex.js
+  // validity determined by is/valid-tabindex.js
   + '[tabindex],'
   // editing hosts
   + '[contenteditable]';

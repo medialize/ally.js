@@ -1,13 +1,15 @@
 
+// determine if an <area> element is being properly used by and <img> via a <map>
+
 import 'css.escape';
-import isVisible from './is-visible';
+import isVisible from './visible';
 import getParents from '../get/parents';
 import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
-function isValidArea(element) {
+export default function(element) {
   var nodeName = element.nodeName.toLowerCase();
   if (nodeName !== 'area') {
     return true;
@@ -50,5 +52,3 @@ function isValidArea(element) {
 
   return true;
 }
-
-export default isValidArea;

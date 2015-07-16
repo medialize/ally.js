@@ -1,11 +1,13 @@
 
-import isValidTabindex from './is-valid-tabindex';
+// determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
+
+import isValidTabindex from './valid-tabindex';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
 var focusableElementsPattern = /^(fieldset|table|td|body)$/;
 
-function isTabbable(element) {
+export default function(element) {
   var nodeName = element.nodeName.toLowerCase();
   // null: not set, true: tabbable, false: focusable
   var tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
@@ -34,5 +36,3 @@ function isTabbable(element) {
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   return element.tabIndex >= 0;
 }
-
-export default isTabbable;

@@ -5,7 +5,7 @@
 
 import 'array.prototype.findindex';
 import getParents from '../get/parents';
-import isFocusable from '../dom/is-focusable';
+import isFocusable from '../is/focusable';
 import contextToElement from '../util/context-to-element';
 
 export default function({context}) {
