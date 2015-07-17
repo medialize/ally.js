@@ -26,15 +26,13 @@ function hasNoPositiveTabindex(element) {
   return element.tabIndex <= 0;
 }
 
-export default function({context, ignoreAutofocus, defaultToContext}) {
-  context = nodeArray(context || document.body)[0];
-
-  if (!context) {
-    return null;
-  }
-
-  const sequence = queryTabbable({context});
+export default function({context, sequence, ignoreAutofocus, defaultToContext}) {
   let index = -1;
+
+  if (!sequence) {
+    context = nodeArray(context || document.body)[0];
+    sequence = queryTabbable({ context });
+  }
 
   if (!sequence.length) {
     return null;
@@ -50,7 +48,7 @@ export default function({context, ignoreAutofocus, defaultToContext}) {
     index = sequence.findIndex(hasNoPositiveTabindex);
   }
 
-  if (index === -1 && defaultToContext && isFocusable(context)) {
+  if (index === -1 && defaultToContext && context && isFocusable(context)) {
     return context;
   }
 

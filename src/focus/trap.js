@@ -1,5 +1,7 @@
 
 /*
+    NOTE: use focus/disable instead!
+
     Trap focus within a given element, wrapping focus to first/last element when boundaries are hit.
     This is useful when making sure that you cannot escape a modal dialog.
 
@@ -15,16 +17,59 @@
  */
 
 import queryTabbable from '../query/tabbable';
-import focusFirst from './first';
-import trapByFocusEvent from './trap.focusevent';
-import trapByKeyEvent from './trap.keyevent';
-import observeBodyFocus from './trap.observe-body';
+import queryFirstTabbable from '../query/first-tabbable';
+import trapByFocusEvent from './trap/focusevent';
+import trapByKeyEvent from './trap/keyevent';
+import observeBodyFocus from './trap/observe-body';
 import canDispatchFocusout from '../supports/focusout-event';
+import contextToElement from '../util/context-to-element';
 
-export default function trapFocus(context, _focusFirst) {
-  var _handle = trapByFocusEvent.bind(context);
-  var _event = 'focusout';
-  var _capture = true;
+export default function trapFocus({context, focusFirst}) {
+  let element = contextToElement({
+    message: 'focus/trap requires valid options.context',
+    context,
+  });
+
+  const sequence = queryTabbable({context: element});
+  if (!sequence.length) {
+    // cannot contain focus in something without anything to focus
+    return null;
+  }
+
+  let eventHandle;
+  let bodyFocusHandle;
+
+  let _handler = trapByFocusEvent;
+  let _event = 'focusout';
+  let _capture = true;
+
+  const trappedSequence = function() {
+    const _sequence = queryTabbable({context: element});
+    if (!_sequence.length) {
+      // the context might've become void meanwhile
+      disengage();
+      return false;
+    }
+
+    return _sequence;
+  };
+
+  const handleEvent = function(event) {
+    eventHandle = _handler({
+      trappedSequence,
+      element,
+      event,
+    });
+  };
+
+  const disengage = function() {
+    element.removeEventListener(_event, handleEvent, _capture);
+    eventHandle && eventHandle.disengage();
+    bodyFocusHandle && bodyFocusHandle.disengage();
+    eventHandle = null;
+    bodyFocusHandle = null;
+    _handler = null;
+  };
 
   // Gecko and Trident don't expose relatedTarget on blur events and it does not support focusout
   // so there is no way to react to a focus event before it actually happened. We cannot
@@ -35,32 +80,24 @@ export default function trapFocus(context, _focusFirst) {
   //  Gecko: https://bugzilla.mozilla.org/show_bug.cgi?id=962251 (no FocusEvent(blur).relatedTarget)
   //  Trident: https://connect.microsoft.com/IE/Feedback/Details/814285 (no FocusEvent(blur).relatedTarget)
   //  Blink: https://code.google.com/p/chromium/issues/detail?id=378163 (about to remove FocusEvent(focusout)?)
-  if (!context.compareDocumentPosition || !canDispatchFocusout) {
-    _handle = trapByKeyEvent.bind(context);
+  if (!element.compareDocumentPosition || !canDispatchFocusout) {
+    _handler = trapByKeyEvent;
     _event = 'keydown';
     _capture = false;
     // unlike focusout the keyevents can't detect when context lost focus
-    observeBodyFocus(context);
+    bodyFocusHandle = observeBodyFocus({
+      trappedSequence,
+      element,
+    });
   }
 
-  var sequence = queryTabbable({context});
-  if (!sequence.length) {
-    // cannot contain focus in something without anything to focus
-    return null;
+  element.addEventListener(_event, handleEvent, _capture);
+
+  if (focusFirst) {
+    // TODO: the sequence does not work
+    const focusTarget = queryFirstTabbable({ sequence });
+    focusTarget && focusTarget.focus();
   }
 
-  context.addEventListener(_event, _handle, _capture);
-  context._untrapFocusHandler = function untrapFocus() {
-    context.removeEventListener(_event, _handle, _capture);
-    delete context._untrapFocusHandler;
-
-    context._undoObserveBodyFocus && context._undoObserveBodyFocus();
-    context._undoCaptureBodyFocus && context._undoCaptureBodyFocus();
-  };
-
-  if (_focusFirst) {
-    focusFirst(sequence);
-  }
-
-  return context._untrapFocusHandler;
+  return { disengage };
 }

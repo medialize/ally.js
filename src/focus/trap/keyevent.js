@@ -6,8 +6,7 @@
     If they are, go with contain-by-focusevent instead!
  */
 
-import queryTabbable from '../query/tabbable';
-import keycode from '../map/keycode';
+import keycode from '../../map/keycode';
 
 function wrap(sequence, element, forward) {
   if (sequence[0] === element && !forward) {
@@ -28,16 +27,14 @@ function wrap(sequence, element, forward) {
   return false;
 }
 
-export default function handleTrapByKeyEvent(event) {
+export default function({event, trappedSequence}) {
   var code = event.which || event.keyCode;
   if (code !== keycode.tab) {
     return;
   }
 
-  var sequence = queryTabbable({context: this});
-  if (!sequence.length) {
-    // the context might've become void meanwhile
-    this._untrapFocusHandler && this._untrapFocusHandler();
+  const sequence = trappedSequence();
+  if (!sequence) {
     return;
   }
 

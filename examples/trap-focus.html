@@ -33,18 +33,17 @@
   <h2 id="usage">Usage</h2>
   <pre>// load focus/trap
 var trapFocus = require('ally/focus/trap');
-// acquire context
-var context = document.getElementById('element-to-keep-focus-in');
 
 // activate containing the focus in context (including descendants)
-var disengage = trapFocus(context);
-
-// activate containing the focus in context (including descendants),
-// focusing the first tabbable element
-var disengage = trapFocus(context, true);
+var handle = trapFocus({
+  // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+  context: document.getElementById('element-to-keep-focus-in'),
+  // focusing the first tabbable element in context
+  focusFirst: true,
+});
 
 // stop containing the focus
-disengage();</pre>
+handle.disengage();</pre>
 
 
   <h2 id="example">Example</h2>
@@ -69,14 +68,17 @@ disengage();</pre>
       var context = document.getElementById('container');
       var button = document.getElementById('activate');
 
-      var stopTrappingFocus;
+      var handle;
       button.addEventListener('click', function() {
-        if (stopTrappingFocus) {
-          stopTrappingFocus();
-          stopTrappingFocus = null;
+        if (handle) {
+          handle.disengage();
+          handle = null;
           button.textContent = 'trap focus';
         } else {
-          stopTrappingFocus = trapFocus(context, true);
+          handle = trapFocus({
+            context: context, 
+            focusFirst: true,
+          });
           button.textContent = 'stop trapping focus';
         }
       }, false);
