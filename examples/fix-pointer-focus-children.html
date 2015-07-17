@@ -35,7 +35,7 @@
   
   <h1>Fix Pointer Focus Children Browser Bug</h1>
   <p>
-    ally.js provides the method <code>ally/fix-browser/pointer-focus-children</code> to workaround an issue in Internet Explorer 10 and 11
+    ally.js provides the method <code>ally/fix/pointer-focus-children</code> to workaround an issue in Internet Explorer 10 and 11
     where focusable elements with <code>display: flex;</code> would inherit being focusable onto their children (not descendants).
   </p>
 
@@ -50,7 +50,7 @@
 
   <h2 id="usage">Usage</h2>
   <pre>// load fixPointerFocusChildren()
-var fixPointerFocusChildren = require('ally/fix-browser/pointer-focus-children');
+var fixPointerFocusChildren = require('ally/fix/pointer-focus-children');
 
 // activate the fix on a specific sub-tree
 var handle = fixPointerFocusChildren({
@@ -81,7 +81,7 @@ handle.disengage();</pre>
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/fix-browser/pointer-focus-children'], function(fixPointerFocusChildren) {
+    require(['ally/fix/pointer-focus-children'], function(fixPointerFocusChildren) {
       fixPointerFocusChildren({
         context: document.getElementById('fix-pointer-focus')
       });

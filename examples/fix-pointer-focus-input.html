@@ -13,7 +13,7 @@
 
   <h1>Fix Pointer Focus Input OSX Behavior</h1>
   <p>
-    ally.js provides the method <code>ally/fix-browser/pointer-focus-input</code> to workaround an issue in
+    ally.js provides the method <code>ally/fix/pointer-focus-input</code> to workaround an issue in
     Safari and Firefox <strong>on Mac OS X</strong>, where focus would not be given to certain form elements
     upon <code>mousedown</code>. This is not a browser bug, it is <em>desired behavior by the OSX platform</em>.
   </p>
@@ -37,7 +37,7 @@
 
   <h2 id="usage">Usage</h2>
   <pre>// load fixPointerFocusInput()
-var fixPointerFocusInput = require('ally/fix-browser/pointer-focus-input');
+var fixPointerFocusInput = require('ally/fix/pointer-focus-input');
 
 // activate the fix on a specific sub-tree
 var handle = fixPointerFocusInput({
@@ -80,7 +80,7 @@ handle.disengage();</pre>
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/fix-browser/pointer-focus-input'], function(fixPointerFocusInput) {
+    require(['ally/fix/pointer-focus-input'], function(fixPointerFocusInput) {
       fixPointerFocusInput({
         context: document.getElementById('fix-pointer-focus')
       });

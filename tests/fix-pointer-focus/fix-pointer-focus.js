@@ -4,6 +4,6 @@ require.config({
   }
 });
 
-require(['ally/fix-browser/pointer-focus'], function (fixPointerFocus) {
+require(['ally/fix/pointer-focus'], function (fixPointerFocus) {
   fixPointerFocus(document);
 });
