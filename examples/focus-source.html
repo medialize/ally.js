@@ -158,9 +158,9 @@ focusSource.disengage();</pre>
     var buttonRepeat = document.getElementById('focus-repeat');
     var buttonLock = document.getElementById('focus-lock');
 
-    require(['ally/style/focus-source', 'ally/event/interaction-type-listener'], function(engageFocusSource, engageInteractionTypeListener) {
+    require(['ally/style/focus-source', 'ally/observe/interaction-type'], function(engageFocusSource, engageInteractionTypeObserver) {
       var focusSource = engageFocusSource();
-      var listener = engageInteractionTypeListener();
+      var observer = engageInteractionTypeObserver();
       var input;
 
       buttonPass.textContent = 'focus';
@@ -193,7 +193,7 @@ focusSource.disengage();</pre>
       }, false);
 
       document.documentElement.addEventListener('focus', function() {
-        var interactionType = listener.get();
+        var interactionType = observer.get();
         log.textContent += '\n focused by ' + document.documentElement.getAttribute('data-focus-source');
       }, true);
 

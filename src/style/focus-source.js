@@ -6,7 +6,7 @@
 // TODO: touches detection in interaction-type-listener line 55
 
 import shadowFocus from '../event/shadow-focus';
-import engageInteractionTypeListener from '../event/interaction-type-listener';
+import engageInteractionTypeObserver from '../observe/interaction-type';
 import decorateSingleton from '../util/decorate-singleton';
 
 // interface to read interaction-type-listener state
@@ -90,8 +90,8 @@ function engage() {
   shadowHandle = shadowFocus();
   // handlers to modify the focused element
   document.addEventListener('shadow-focus', handleFocusEvent, true);
-  // enable the interaction type identification listener
-  interactionTypeHandler = engageInteractionTypeListener();
+  // enable the interaction type identification observer
+  interactionTypeHandler = engageInteractionTypeObserver();
   // set up initial dom state
   handleFocusEvent({type: 'initial'});
   document.documentElement.addEventListener('focus', handleFocusEvent, true);
