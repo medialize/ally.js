@@ -1,34 +1,42 @@
 # ally.js Change Log
 
-## master (likely 0.1.0) ##
+## master (becoming 1.0.0) ##
 
 * moving dependencies from bower to npm
 * moving source from AMD to ES6 Module Syntax
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
-* adding `dom/query-first-tabbable` (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
-* unifying API of all functions, see breaking changes below
+* adding `query/first-tabbable` (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
+* unifying API of all functions, see the [API docs](docs/api/index.md)
 
 ### Breaking Changes
 
 * `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
-* dropping `focus/first` in favor of `dom/query-first-tabbable`
-* renaming `dom/when-visible.js` to `when/visible.js`
-* renaming `focus/when-visible.js` to `when/focusable.js`
-* adapting to unified dis/engage API:
-  * `event/active-element.js`
-  * `event/interaction-type-listener.js`
-  * `event/shadow-focus.js`
-  * `focus/source.js`
-  * `focus/within.js`
-* adapting to unified dis/engage with options API:
-  * `when/visible.js` (was `dom/when-visible.js`)
-  * `when/focusable.js` (was `focus/when-visible.js`)
-  * `fix-browser/pointer-focus-children.js`
-  * `fix-browser/pointer-focus-input.js`
-  * `fix-browser/pointer-focus-parent.js`
-  * `focus/disable.js`
-* adapting to unified options API:
-  * `dom/query-first-tabbable` (was `focus/first`)
+* dropping `focus/first` in favor of `query/first-tabbable`
+* see the [API docs](docs/api/index.md) for the new function signatures
+* renaming files in `src`:
+  * `dom/active-elements.js` to `get/active-elements.js`
+  * `dom/focus-target.js` to `get/focus-target.js`
+  * `dom/is-disabled.js` to `is/disabled.js`
+  * `dom/is-focusable.js` to `is/focusable.js`
+  * `dom/is-shadowed.js` to `is/shadowed.js`
+  * `dom/is-tabbable.js` to `is/tabbable.js`
+  * `dom/is-valid-area.js` to `is/valid-area.js`
+  * `dom/is-valid-tabindex.js` to `is/valid-tabindex.js`
+  * `dom/is-visible.js` to `is/visible.js`
+  * `dom/node-array.js` to `util/node-array.js`
+  * `dom/path.js` to `get/parents.js`
+  * `dom/query-focusable.js` to `query/focusable.js`
+  * `dom/query-tabbable.js` to `query/tabbable.js`
+  * `dom/query-tabsequence.js` to `query/tabsequence.js`
+  * `dom/shadow-host-ancestors.js` to `get/shadow-host-parents.js`
+  * `dom/when-visible.js` to `when/visible.js`
+  * `dom/shadow-host.js` to `get/shadow-host.js`
+  * `dom/sort-tabindex.js` to `util/sort-elements-by-tabindex.js`
+  * `dom/visible-quotient.js` to `util/visible-area.js`
+  * `event/interaction-type-listener.js` to `observe/interaction-type.js`
+  * `focus/source.js` to `style/focus-source.js`
+  * `focus/when-visible.js` to `when/focusable.js`
+  * `focus/within.js` to `style/focus-within.js`
 
 
 ## 0.0.7 (July 8th 2015) ##
