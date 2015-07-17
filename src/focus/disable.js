@@ -15,7 +15,7 @@
   [WebKit Bug: Inert Subtree](https://bugs.webkit.org/show_bug.cgi?id=110952)
 */
 
-import nodeArray from '../dom/node-array';
+import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
 
 let inertOptions = {

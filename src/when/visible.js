@@ -4,8 +4,8 @@
 */
 
 import isVisible from '../is/visible';
-import visibleQuotient from '../dom/visible-quotient';
-import nodeArray from '../dom/node-array';
+import visibleArea from '../util/visible-area';
+import nodeArray from '../util/node-array';
 
 export default function({context, callback, area}) {
   if (context === undefined) {
@@ -21,7 +21,7 @@ export default function({context, callback, area}) {
     throw new TypeError('when/visible requires valid options.context');
   }
 
-  if (isVisible(element) && visibleQuotient(element) >= area && callback(element) !== false) {
+  if (isVisible(element) && visibleArea(element) >= area && callback(element) !== false) {
     // element is already visible, trivial escape
     return null;
   }
@@ -32,7 +32,7 @@ export default function({context, callback, area}) {
   };
 
   var runWhenReady = function() {
-    if (!isVisible(element) || visibleQuotient(element) < area || callback(element) === false) {
+    if (!isVisible(element) || visibleArea(element) < area || callback(element) === false) {
       raf = requestAnimationFrame(runWhenReady);
       return;
     }

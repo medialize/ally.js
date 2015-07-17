@@ -1,7 +1,7 @@
 
 // input may be undefined, selector-tring, Node, NodeList, HTMLCollection, array of Nodes
 // yes, to some extent this is a bad replica of jQuery's constructor function
-export default function nodeArray(input) {
+export default function(input) {
   if (!input) {
     return [];
   }

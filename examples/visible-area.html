@@ -44,7 +44,7 @@
 
   <h1>Determine How Much Of An Element Is Visible On Screen</h1>
   <p>
-    ally.js provides the method <code>ally/dom/visible-quotient</code> to determine how much of an
+    ally.js provides the method <code>ally/util/visible-area</code> to determine how much of an
     element is currently visible in the viewport. The function accounts for nested scrolling containers,
     CSS <code>transform</code> and positioned elements.
   </p>
@@ -56,12 +56,12 @@
   </p>
 
   <h2 id="usage">Usage</h2>
-  <pre>// load dom/visible-quotient
-var visibleQuotient = require('ally/dom/visible-quotient');
+  <pre>// load util/visible-area
+var visibleArea = require('ally/util/visible-area');
 // acquire element to test
 var element = document.getElementById('element-to-get-visible-area-of');
 // calculate percentage of currently visible area
-var visiblePercentage = visibleQuotient(element);
+var visiblePercentage = visibleArea(element);
 // returns value between 0 (not visible at all) and 1 (fully visible)</pre>
 
   <h2 id="example">Example</h2>
@@ -105,7 +105,7 @@ var visiblePercentage = visibleQuotient(element);
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/dom/visible-quotient'], function(visibleQuotient) {
+    require(['ally/util/visible-area'], function(visibleArea) {
       var button = document.getElementById('activate');
       var log = document.getElementById('example-log');
 
@@ -123,7 +123,7 @@ var visiblePercentage = visibleQuotient(element);
           buffer.push(
             element.getAttribute('data-name') + ' element:'
             + '\n  calculated: '
-            + visibleQuotient(element)
+            + visibleArea(element)
             + '\n    expected: '
             + element.getAttribute('data-expect')
           );

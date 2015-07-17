@@ -3,7 +3,7 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import queryTabbable from './tabbable';
-import sortTabindex from '../dom/sort-tabindex';
+import sortTabindex from '../util/sort-elements-by-tabindex';
 
 function moveContextToBeginning(elements, context) {
   const pos = elements.indexOf(context);

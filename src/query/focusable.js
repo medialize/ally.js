@@ -4,7 +4,7 @@
 
 import selector from '../selector/focusable';
 import isFocusable from '../is/focusable';
-import nodeArray from '../dom/node-array';
+import nodeArray from '../util/node-array';
 
 export default function({context, includeContext}) {
   context = nodeArray(context)[0];

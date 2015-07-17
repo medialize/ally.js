@@ -1,6 +1,6 @@
 
 // determine if an element is rendered
-// NOTE: that does not mean an element is visible in the viewport, see dom/visible-quotient
+// NOTE: that does not mean an element is visible in the viewport, see util/visible-area
 
 import 'array.prototype.findindex';
 import getParents from '../get/parents';

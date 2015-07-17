@@ -1,5 +1,5 @@
 
-export default function sortTabindex(elements) {
+export default function(elements) {
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.tabIndex
   // elements with tabIndex "0" (including tabbableElements without tabIndex) should be navigated in the order they appear.
   // elements with a positive tabIndex:

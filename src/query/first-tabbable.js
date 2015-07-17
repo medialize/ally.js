@@ -15,7 +15,7 @@
 import 'array.prototype.findindex';
 import queryTabbable from './tabbable';
 import isFocusable from '../is/focusable';
-import nodeArray from '../dom/node-array';
+import nodeArray from '../util/node-array';
 
 function hasAutofocus(element) {
   // [autofocus] actually only works on form element, but who cares?

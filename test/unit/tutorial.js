@@ -1,7 +1,7 @@
 define([
   'intern!object',
   'intern/chai!expect',
-  'ally/dom/node-array',
+  'ally/util/node-array',
 ], function(registerSuite, expect, nodeArray) {
   registerSuite({
     name: 'unit-tutorial',

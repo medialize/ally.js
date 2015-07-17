@@ -4,7 +4,7 @@
   dis/engage and context API format
 */
 
-import nodeArray from '../dom/node-array';
+import nodeArray from '../util/node-array';
 
 function destruct(/* {force: false} */) {
   this.context.forEach(this.disengage);

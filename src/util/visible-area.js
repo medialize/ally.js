@@ -98,7 +98,7 @@ function getScrollableParentRect(element) {
   }, getInnerBoundingClientRect(scrollingContainers[0]));
 }
 
-export default function visibleQuotient(element) {
+export default function(element) {
   // dimensions of the element itself
   var _element = element.getBoundingClientRect();
   // dimensions of the viewport
