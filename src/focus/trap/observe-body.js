@@ -1,5 +1,5 @@
 
-import captureBodyFocus from '.capture-body';
+import captureBodyFocus from './capture-body';
 
 // as FocusEvent.relatedTarget is not reliable, we'll engage focus capturing via a timeout
 // that is aborted by focus - that way, only a blur that causes the <body> to receive focus

@@ -1,5 +1,5 @@
 
-import captureBodyFocus from '.capture-body';
+import captureBodyFocus from './capture-body';
 
 export default function handleTrapByFocusEvent({event, element, trappedSequence}) {
   const unrelated = event.relatedTarget === null || event.relatedTarget === element.ownerDocument;
