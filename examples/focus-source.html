@@ -93,8 +93,8 @@
   </p>
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/source
-var engageFocusSource = require('ally/focus/source');
+  <pre>// load style/focus-source
+var engageFocusSource = require('ally/style/focus-source');
 
 // activate focus source detection
 var focusSource = engageFocusSource();
@@ -158,7 +158,7 @@ focusSource.disengage();</pre>
     var buttonRepeat = document.getElementById('focus-repeat');
     var buttonLock = document.getElementById('focus-lock');
 
-    require(['ally/focus/source', 'ally/event/interaction-type-listener'], function(engageFocusSource, engageInteractionTypeListener) {
+    require(['ally/style/focus-source', 'ally/event/interaction-type-listener'], function(engageFocusSource, engageInteractionTypeListener) {
       var focusSource = engageFocusSource();
       var listener = engageInteractionTypeListener();
       var input;

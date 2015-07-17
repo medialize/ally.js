@@ -27,7 +27,7 @@
   
   <h1>:focus-within "Polyfill"</h1>
   <p>
-    ally.js provides the method <code>ally/focus/within</code> to "polyfill" the pseudo-class
+    ally.js provides the method <code>ally/style/focus-within</code> to "polyfill" the pseudo-class
     <a href="http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo"><code>:focus-within</code></a>.
     Since we cannot (easily) shim pseudo-classes, this function applies the class <code>ally-focus-within</code>
     to all the elements that would match <code>:focus-within</code>. This method pierces the ShadowDOM and works with SVG.
@@ -44,8 +44,8 @@
 
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/within
-var focusWithin = require('ally/focus/within');
+  <pre>// load style/focus-within
+var focusWithin = require('ally/style/focus-within');
 
 // activate focus-within "polyfill"
 var handle = focusWithin();
@@ -83,8 +83,8 @@ handle.disengage();</pre>
   <script src="main.js"></script>
   <script>
     var log = document.getElementById('log');
-    require(['ally/focus/within'], function(focusWithin) {
-      var disengage = focusWithin();
+    require(['ally/style/focus-within'], function(engageFocusWithin) {
+      var handle = engageFocusWithin();
       var input;
 
       // create shadow dom structure:
