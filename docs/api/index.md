@@ -45,6 +45,11 @@ When creating web applications or UI widgets these modules may come in handy.
 * focusable({NodeArray[1], Function, decimal}) : {Function}
 * visible({NodeArray[1], Function, decimal}) : {Function}
 
+## ally/map/*
+
+* attribute : Object
+* keycode : Object
+
 ---
 
 # ally.js API (Developer Modules)
@@ -71,11 +76,6 @@ When creating libraries these modules may come in handy.
 ## ally/observe/*
 
 * interaction-type() : {Function, Function}
-
-## ally/map/*
-
-* attribute : Object
-* keycode : Object
 
 ---
 
