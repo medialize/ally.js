@@ -3,11 +3,14 @@
 
 When creating web applications or UI widgets these modules may come in handy.
 
-## ally/fix/*          ("ally/fix/*")
+## `ally/fix/*` Countering Browser Bugs
 
-* pointer-focus-children({NodeArray}) : {Function}
-* pointer-focus-input({NodeArray}) : {Function}
-* pointer-focus-parent({NodeArray}) : {Function}
+Every software has its problems - so do browsers. The `ally/fix` namespace contains utilities to combat things browsers get wrong.
+
+* [`ally/fix/pointer-focus-children`](fix/pointer-focus-children.md) (Internet Explorer 10 - 11)
+* [`ally/fix/pointer-focus-input`](fix/pointer-focus-input.md) (Safari and Firefox on Mac OS X)
+* [`ally/fix/pointer-focus-parent`](fix/pointer-focus-parent.md) (WebKit and old Blink)
+
 
 ## ally/style/*
 
