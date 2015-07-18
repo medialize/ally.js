@@ -55,7 +55,6 @@ function handlePointerEndEvent(event) {
     // https://w3c.github.io/pointerevents/#widl-PointerEvent-isPrimary
     return;
   } else if (event.touches) {
-    // TODO: figure out if this really works on apple
     _activePointers = event.touches.length;
     return;
   }

@@ -1,9 +1,26 @@
 
 /*
-  what is this?
-*/
+  add data-focus-source attribute to html element containing "key", "pointer" or "script"
+  depending on the input method used to change focus.
 
-// TODO: touches detection in interaction-type-listener line 55
+  USAGE:
+    style/focus-source()
+
+    body :focus {
+      outline: 1px solid grey;
+    }
+
+    html[data-focus-source="key"] body :focus {
+      outline: 5px solid red;
+    }
+
+    html[data-focus-source="key"] body :focus {
+      outline: 1px solid blue;
+    }
+
+  NOTE: I don't have a GamePad to test, if you do and you want to
+  implement an observer for https://w3c.github.io/gamepad/ - send a PR!
+*/
 
 import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeObserver from '../observe/interaction-type';

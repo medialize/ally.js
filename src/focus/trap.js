@@ -94,7 +94,6 @@ export default function trapFocus({context, focusFirst}) {
   element.addEventListener(_event, handleEvent, _capture);
 
   if (focusFirst) {
-    // TODO: the sequence does not work
     const focusTarget = queryFirstTabbable({ sequence });
     focusTarget && focusTarget.focus();
   }

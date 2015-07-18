@@ -35,7 +35,7 @@ Stuff I still need to read…
 
 ## Interesting Concepts
 
-* [FreeFocus: arrow-key focus navigation](https://github.com/Flamefork/freefocus)
+* [FreeFocus: arrow-key focus navigation](https://github.com/Flamefork/freefocus) and [for GamePad](https://gist.github.com/cvan/343ab139223f3b5dd2cc)
 * [animated :focus transitions](http://n12v.com/focus-transition/)
   * https://github.com/NV/flying-focus/
   * https://jonathanstark.com/labs/flying-focus/
