@@ -22,8 +22,8 @@ module.exports = function($, data) {
     }
 
     href = href
-      .replace(/\/README\.md$/, '/index.html')
-      .replace(/\.md$/, '.html');
+      .replace(/\/README\.md(#.*)?$/, '/index.html$1')
+      .replace(/\.md(#.*)?$/, '.html$1');
     $this.attr('href', href);
   });
 
