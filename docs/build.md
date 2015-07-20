@@ -4,6 +4,11 @@ layout: doc-page.html
 
 # Build Infrastructure
 
+The build infrastructure consists of a few tools made available through `npm run` commands.
+
+This document is concerned with building the JavaScript source code. See [Documentation Infrastructure](docs.md) for how the documentation and website are generated.
+
+
 ## Compiling ally.js
 
 ```sh
@@ -104,7 +109,7 @@ npm install -g babel-eslint
 ### Usage
 
 ```sh
-npm run lint
+npm run lint-js
 ```
 
 Stop that `npm run` bollocks, gimme real CLI:
@@ -116,7 +121,7 @@ node_modules/.bin/jscs {src,test}
 
 Linting is done automatically via git hooks by way of [husky](https://www.npmjs.com/package/husky).
 
-----
+---
 
 ## ES6 in older browsers
 

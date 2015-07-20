@@ -27,9 +27,9 @@ Considering the following markup, clicking on one of the `<span>` elements would
 
 ---
 
-> **Note:** CSS Transitions are disabled for any styles changed on <code>mousedown</code> (and <code>:active</code>) on the erroneously focusable child elements.
-
-> **Node:** Only engaged for Internet Explorer 10 and 11 (detected via user agent sniffing).
+> **Note:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
+---
+> **Note:** Only engaged for Internet Explorer 10 and 11 (detected via user agent sniffing).
 
 
 ## Demo

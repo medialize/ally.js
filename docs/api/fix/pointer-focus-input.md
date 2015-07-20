@@ -4,16 +4,16 @@ layout: doc-api.html
 
 # ally.fix.pointerFocusInput (`ally/fix/pointer-focus-input`)
 
-This *Browser Bug Workaround* targets an issue in Safari and Firefox <strong>on Mac OS X</strong>, where focus would not be given to certain form elements upon `mousedown`. This is *not* a browser bug, it is *desired behavior by the OSX platform*. Use this feature only if you require the elements to receive focus (e.g. for custom styling).
+This *Browser Bug Workaround* targets an issue in Safari and Firefox **on Mac OS X**, where focus would not be given to certain form elements upon `mousedown`. This is *not* a browser bug, it is *desired behavior by the OSX platform*. Use this feature only if you require the elements to receive focus (e.g. for custom styling).
 
 > In Firefox for Mac, Chrome and Safari, some types of form field don’t take the focus at all when clicked with the mouse; this behavior is limited to fields which have no typed input, such as radios, checkboxes, buttons, color-pickers and sliders.
 > -- [When Do Elements Take the Focus?](http://www.sitepoint.com/when-do-elements-take-the-focus/)
 
 ---
 
-> **Note:** In Firefox the <code>&lt;label&gt;</code> element causes form fields to get focus upon being clicked,
+> **Note:** In Firefox the `<label>` element causes form fields to get focus upon being clicked,
 even if the form field itself would not get focus because of the ominous platform conventions.
-
+---
 > **Node:** Only engaged for Safari and Firefox on Mac OS X (detected via user agent sniffing).
 
 

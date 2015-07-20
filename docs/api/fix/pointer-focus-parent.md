@@ -17,8 +17,8 @@ Considering the following markup, clicking on the `<a>` element would focus the 
 
 ---
 
-> **Note:** CSS Transitions are disabled for any styles changed on <code>mousedown</code> (and <code>:active</code>) on the erroneously focusable child elements.
-
+> **Note:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
+---
 > **Node:** Only engaged for WebKit (detected via user agent sniffing).
 
 
