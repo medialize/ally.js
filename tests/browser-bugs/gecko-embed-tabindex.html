@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: Embed element not removed from tab sequence</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1185657
+  -->
+  
+  <p>
+    Gecko does not prevent <code>&lt;embed tabindex=&quot;-1&quot;&gt;</code> getting focus when using the <kbd>Tab</kbd> key.
+    There is currently no sane way to prevent that other than visually hiding the element using <code>visibility: hidden</code>.
+  </p>
+
+  <hr>
+
+  <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
+
+  <hr>
+  
+  <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed[tabindex=-1]" tabindex="-1">
+
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>
