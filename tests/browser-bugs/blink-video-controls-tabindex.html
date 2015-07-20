@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: Video element not removed from tab sequence</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=512133
+  -->
+  
+  <p>
+    Blink does not prevent <code>&lt;video controls tabindex=&quot;-1&quot;&gt;</code> getting focus when using the <kbd>Tab</kbd> key.
+    I assume this is because the player controls are provided in a ShadowRoot that does not realize its ShadowHost was removed from the
+    document's tab sequence (by way of `tabindex="-1"`). Focusing the video element by <kbd>Tab</kbd> can be avoided by removing the
+    <code>controls</code> attribute, but I assume that has other undesired side effects.
+  </p>
+
+  <p>Note that you need to hit <kbd>Tab</kbd> several times because the video controls are also in the tab sequence, but you won't *see* them actually having focus.</p>
+  <p>Also note that the second video element (the one not supposed to get focus), emits a <code>focus</code> event, but does not render the focus outline</p>
+
+  <hr>
+
+  <video controls data-label="video[controls]">
+    <source src="../media/test.mov"></source>
+    <source src="../media/test.ogv"></source>
+    <source src="../media/test.mp4"></source>
+    <source src="../media/test.webm"></source>
+    <p>no &lt;audio&gt; support</p>
+  </video>
+
+  <hr>
+  
+  <video controls tabindex="-1" data-label="video[controls][tabindex=-1]">
+    <source src="../media/test.mov"></source>
+    <source src="../media/test.ogv"></source>
+    <source src="../media/test.mp4"></source>
+    <source src="../media/test.webm"></source>
+    <p>no &lt;audio&gt; support</p>
+  </video>
+
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>
