@@ -6,6 +6,7 @@ layout: doc-listing.html
 
 When creating web applications or UI widgets these modules may come in handy.
 
+
 ## `ally/fix/*` Countering Browser Bugs
 
 Every software has its problems - so do browsers. The `ally/fix` namespace contains utilities to combat things browsers get wrong.
@@ -14,6 +15,7 @@ Every software has its problems - so do browsers. The `ally/fix` namespace conta
 * [`ally/fix/pointer-focus-input`](fix/pointer-focus-input.md) (Safari and Firefox on Mac OS X)
 * [`ally/fix/pointer-focus-parent`](fix/pointer-focus-parent.md) (WebKit and old Blink)
 
+
 ## `ally/style/*` Extended `:focus` Styling
 
 Sometimes `:focus` is not enough for communicating your application's intentions properly.
@@ -21,14 +23,14 @@ Sometimes `:focus` is not enough for communicating your application's intentions
 * [`ally/style/focus-source`](style/focus-source.md) provides `html[focus-source="pointer|key|script"]`
 * [`ally/style/focus-within`](style/focus-within.md) polyfills `:focus-within` with `.ally-focus-within`
 
-## ally/focus/*
 
-* `disable({NodeArray, NodeArray}) : {Function}`
-* `trap({NodeArray[1], bool}) : {Function}`
-  * `trap/capture-body (contributor notes)`
-  * `trap/focusevent (contributor notes)`
-  * `trap/keyevent (contributor notes)`
-  * `trap/observe-body (contributor notes)`
+## `ally/focus/*` Altering Browser Focus Behavior
+
+While it's best to use standardized features and leave browsers to figure things out, specifications sometimes leave us hanging in limbo.
+
+* [`ally/focus/disable`](focus/disable.md) renders elements inert to prevent any user interaction
+* [`ally/focus/trap`](focus/trap.md) contains focus in a given sub-tree of the document
+
 
 ## ally/query/* {context, …}
 
