@@ -74,7 +74,7 @@ require([
 });
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules
+See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 
 ## Related Resources

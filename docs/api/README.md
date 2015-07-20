@@ -14,10 +14,12 @@ Every software has its problems - so do browsers. The `ally/fix` namespace conta
 * [`ally/fix/pointer-focus-input`](fix/pointer-focus-input.md) (Safari and Firefox on Mac OS X)
 * [`ally/fix/pointer-focus-parent`](fix/pointer-focus-parent.md) (WebKit and old Blink)
 
-## ally/style/*
+## `ally/style/*` Extended `:focus` Styling
 
-* `focus-source() : {Function}`
-* `focus-within() : {Function}`
+Sometimes `:focus` is not enough for communicating your application's intentions properly.
+
+* [`ally/style/focus-source`](style/focus-source.md) provides `html[focus-source="pointer|key|script"]`
+* [`ally/style/focus-within`](style/focus-within.md) polyfills `:focus-within` with `.ally-focus-within`
 
 ## ally/focus/*
 

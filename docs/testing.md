@@ -6,7 +6,7 @@ layout: doc-page.html
 
 The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](http://theintern.github.io/leadfoot/) for interacting with browsers.
 
-> **NOTE:** Unlike ally.js, the tests are not written in ES6, but follow Intern's ES5 and AMD scheme.
+> **Note:** Unlike ally.js, the tests are not written in ES6, but follow Intern's ES5 and AMD scheme.
 
 The test infrastructure is located in the `test` directory. Note that the `tests` directory is occupied by manual browser support tests.
 
