@@ -7,5 +7,7 @@
 
 ---
 
+The [stable](https://github.com/medialize/ally.js/tree/stavke) branch reflects the state of the latest released version. We work in [master](https://github.com/medialize/ally.js/tree/master) - and that's where your PRs need to go. The stable branch is only ever merged from master to create a new release.
+
 * [Building ally.js](docs/build.md)
 * [Documenting ally.js](docs/docs.md)
