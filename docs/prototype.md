@@ -1,3 +1,6 @@
+---
+layout: doc-page.html
+---
 
 # Prototype Polyfills
 

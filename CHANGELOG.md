@@ -6,13 +6,13 @@
 * moving source from AMD to ES6 Module Syntax
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
 * adding `query/first-tabbable` (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
-* unifying API of all functions, see the [API docs](docs/api/index.md)
+* unifying API of all functions, see the [API docs](docs/api/)
 
 ### Breaking Changes
 
 * `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
 * dropping `focus/first` in favor of `query/first-tabbable`
-* see the [API docs](docs/api/index.md) for the new function signatures
+* see the [API docs](docs/api/) for the new function signatures
 * renaming files in `src`:
   * `dom/active-elements.js` to `get/active-elements.js`
   * `dom/focus-target.js` to `get/focus-target.js`

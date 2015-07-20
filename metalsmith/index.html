@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+  <title>{{ pkg.name }}</title>
+</head>
+<body>
+  <h1>{{ pkg.name }}</h1>
+  <p>{{ pkg.description }}</p>
+
+  {{> table-of-contents }}
+  
+  {{{ contents }}}
+
+</body>
+</html>

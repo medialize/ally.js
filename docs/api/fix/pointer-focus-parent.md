@@ -1,3 +1,6 @@
+---
+layout: doc-api.html
+---
 
 # ally.fix.pointerFocusParent (`ally/fix/pointer-focus-parent`)
 
@@ -77,5 +80,5 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ---
 
-Back to the [API Documentation](../index.md).
+Back to the [API Documentation](../README.md).
 

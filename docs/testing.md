@@ -1,3 +1,6 @@
+---
+layout: doc-page.html
+---
 
 # ally.js Test Infrastructure
 

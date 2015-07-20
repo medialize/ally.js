@@ -1,3 +1,6 @@
+---
+layout: doc-page.html
+---
 
 # Getting Started With ally.js
 
@@ -101,5 +104,5 @@ console.log("loaded version of ally.js", allyVersion);
 
 ---
 
-Continue with checking out one of the [Tutorials](tutorials/index.md) or head on to the [API Documentation](api/index.md)
+Continue with checking out one of the [Tutorials](tutorials/README.md) or head on to the [API Documentation](api/README.md)
 

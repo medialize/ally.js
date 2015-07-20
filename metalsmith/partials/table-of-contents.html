@@ -1,0 +1,5 @@
+{{#each toc}}
+  {{#if @first}}<ul id="table-of-contents">{{/if}}
+  <li><a href="#{{ id }}">{{ text }}</a></li>
+  {{#if @last}}</ul>{{/if}}
+{{/each}}

@@ -1,3 +1,6 @@
+---
+layout: doc-page.html
+---
 
 # Supports - Browser compatibility
 
