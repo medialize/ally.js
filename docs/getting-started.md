@@ -4,23 +4,7 @@ layout: doc-page.html
 
 # Getting Started With ally.js
 
-## What Is ally.js?
-
-ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily.
-
-
-## Which Problems Does ally.js Solve?
-
-ally.js is primarily concerned with focus navigation:
-
-* Identify and absorb browser differences regarding which elements are considered focusable
-* Query the DOM for all focusable or tabbable (keyboard focusable) elements
-* Trap focus navigation in a DOM sub-tree
-* Make DOM sub-trees inert (i.e. disable all element's from being focused or interacted with)
-* Identify focused elements and focus changes within Shadow DOM
-* Provide `:focus-within` (CSS Selectors Level 4) Polyfill
-* Determine how focus changed (keyboard, mouse, script) to apply different focus outline styles
-* Determine when an element is focusable and visible in the viewport to prevent browsers from scrolling the element into view upon focus
+ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API Documentation](api/README.md) to learn what the library actually provides.
 
 
 ## Installing And Loading ally.js
