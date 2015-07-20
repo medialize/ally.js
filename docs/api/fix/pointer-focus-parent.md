@@ -15,11 +15,10 @@ Considering the following markup, clicking on the `<a>` element would focus the 
 </div>
 ```
 
----
 
-> **Note:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
----
-> **Node:** Only engaged for WebKit (detected via user agent sniffing).
+## Notes
+
+* **NOTE:** Only engaged for WebKit (detected via user agent sniffing).
 
 
 ## Demo

@@ -25,11 +25,11 @@ Considering the following markup, clicking on one of the `<span>` elements would
 </a>
 ```
 
----
 
-> **Note:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
----
-> **Note:** Only engaged for Internet Explorer 10 and 11 (detected via user agent sniffing).
+## Notes
+
+* **NOTE:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
+* **NOTE:** Only engaged for Internet Explorer 10 and 11 (detected via user agent sniffing).
 
 
 ## Demo

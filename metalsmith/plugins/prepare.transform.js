@@ -54,4 +54,23 @@ module.exports = function($, data) {
     });
   });
 
+  // replace NOTE: and WARNING: lists by proper blocks
+  $('ul li strong').each(function() {
+    var $label = $(this);
+    var $li = $label.parent();
+    var $ul = $li.parent();
+    var label = $label.text();
+    if (label !== 'NOTE:' && label !== 'WARNING:') {
+      return;
+    }
+
+    var $div = $('<div>').attr('class', label === 'NOTE:' ? 'note' : 'warning');
+    $div.append($li.html());
+    $ul.after($div);
+    $li.remove();
+    if (!$ul.children().length) {
+      $ul.remove();
+    }
+  });
+
 }

@@ -47,9 +47,11 @@ body /deep/ .ally-focus-within {
 }
 ```
 
-> **Note:** In Firefox the [setting](about:config) `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
----
-> **Note:** Firefox 34 does not expose `ShadowRoot.host`, coupled with `document.activeElement` pointing to the wrong element, we cannot find the first ShadowHost and can thus not apply `focus-within` properly. The `ShadowRoot.host` issue has been fixed in Firefox 37 (at the latest).
+
+## Notes
+
+* **NOTE:** In Firefox the [setting](about:config) `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
+* **NOTE:** Firefox 34 does not expose `ShadowRoot.host`, coupled with `document.activeElement` pointing to the wrong element, we cannot find the first ShadowHost and can thus not apply `focus-within` properly. The `ShadowRoot.host` issue has been fixed in Firefox 37 (at the latest).
 
 
 ## Demo
