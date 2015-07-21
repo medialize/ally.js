@@ -19,6 +19,7 @@ The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 * **WARNING:** In Firefox the `<embed>` element can not be removed from the document's tab sequence by setting `[tabindex="-1"]` - [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
 * **WARNING:** Any element not found focusable by [`ally/query/focusable`](../query/focusable.md#Notes) is not made inert either
+* **WARNING:** Unlike the name may suggest, the elements' `disabled` property is *not* modified, so the [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled) state does not change. While the user is prevented from interacting with the element, its state is not communicated to prevent undesired style changes.
 
 
 ## Demo

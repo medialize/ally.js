@@ -32,7 +32,7 @@ While it's best to use standardized features and leave browsers to figure things
 * [`ally/focus/trap`](focus/trap.md) contains focus in a given sub-tree of the document
 
 
-## `ally/query/*` Asking The DOM
+## `ally/query/*` Finding Elements
 
 In order to work with focusable elements, we must first know which elements we're supposed to work with.
 
@@ -42,15 +42,17 @@ In order to work with focusable elements, we must first know which elements we'r
 * [`ally/query/tabsequence`](query/tabsequence.md) finds all keyboard focusable elements respecting the `[tabindex]` order
 
 
-## ally/is/* (Node)
+## `ally/is/*` Element State
 
-* `is-disabled(Node) : bool`
-* `is-focusable(Node) : bool`
-* `is-shadowed(Node) : bool`
-* `is-tabbable(Node) : bool`
-* `is-valid-area(Node) : bool`
-* `is-valid-tabindex(Node) : bool`
-* `is-visible(Node) : bool`
+Unlike any other ally modules, the `is/*` components do not take take `options.context` argument, but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+
+* [`ally/is/disabled`](is/disabled.md) returns true if the element is `:disabled`
+* [`ally/is/focusable`](is/focusable.md) returns true if the element is considered focusable
+* [`ally/is/shadowed`](is/shadowed.md) returns true if the element is the descendant of a `ShadowRoot`
+* [`ally/is/tabbable`](is/tabbable.md) returns true if the element is considered keyboard focusable ("tabbable")
+* [`ally/is/valid-area`](is/valid-area.md) returns true if the `<area>` element is properly used via `<map>` by an `<img>`
+* [`ally/is/valid-tabindex`](is/valid-tabindex.md) returns true if the element's `tabindex` attribute value is sound
+* [`ally/is/visible`](is/visible.md) returns true if the element is rendered (n)
 
 ## ally/when/*
 
