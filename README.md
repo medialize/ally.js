@@ -1,5 +1,10 @@
-
 # ally.js - Accessibility Made Simpler
+
+---
+
+[![Join the chat at https://gitter.im/medialize/ally.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/medialize/ally.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+---
 
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. Its goal is to be **A library to help applications with accessibility concerns**. The intention is to separate these generic components from actual applications and other libraries.
 
