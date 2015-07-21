@@ -31,6 +31,7 @@ var config = {
   },
   // MD029: false, // Ordered list item prefix
   // MD030: false, // Spaces after list markers
+  MD033: ['kbd'],
   // MD034: false, // Bare URL used
   // MD040: false,  // Fenced code blocks should have a language specified
 };
@@ -38,9 +39,11 @@ var config = {
 var result = markdownlint.sync({
   files: glob.sync('**/*.md', {cwd: cwd, realpath: true}),
   config: config
-}).toString();
+});
 
-if (result) {
-  console.error(String(result));
+var resultString = result.toString();
+if (resultString) {
+  console.error(resultString);
   process.exit(1);
 }
+
