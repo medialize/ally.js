@@ -63,10 +63,11 @@ Especially when dealing with transitional user interfaces we need to know when a
 * [`ally/when/visible`](when/visible.md) executes a callback once an element is visible in the viewport
 
 
-## ally/map/*
+## `ally/map/*` Values
 
-* `attribute : Object`
-* `keycode : Object`
+* [`ally/map/attribute`](map/attribute.md) maps WAI-ARIA states and properties
+* [`ally/map/keycode`](map/keycode.md) maps control keys to readable names
+
 
 ---
 
