@@ -5,18 +5,18 @@ define(function defineDemoFocusableWebkitNightly(require) {
 
   return {
     "platform": {
-      "description": "WebKit Nightly 601.1.37 (like Safari 8+) on OS X 10.10.3",
+      "description": "WebKit Nightly 602.1.1 (like Safari 8+) on OS X 10.10.4",
       "layout": "WebKit",
       "manufacturer": null,
       "name": "WebKit Nightly",
       "prerelease": "alpha",
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/601.1.37+ (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3",
-      "version": "601.1.37",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/602.1.1+ (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12",
+      "version": "602.1.1",
       "os": {
         "architecture": 32,
         "family": "OS X",
-        "version": "10.10.3"
+        "version": "10.10.4"
       }
     },
     "focusable": [
@@ -275,8 +275,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
       "span{user-modify}",
       "canvas > input",
       "canvas > a",
-      "canvas > [tabindex=0]",
-      "[tabindex=1]"
+      "canvas > [tabindex=0]"
     ],
     "ally": {
       "focusable": [
@@ -300,6 +299,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "button[type=button]",
         "button[type=button][tabindex=-1]",
         "label[tabindex=-1]",
+        "label[tabindex=0]",
         "label[for=\"label-target\"][tabindex=-1]",
         "a[href]",
         "a[href=\"\"]",
@@ -380,6 +380,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "select",
         "textarea",
         "button[type=button]",
+        "label[tabindex=0]",
         "a[href]",
         "a[href=\"\"]",
         "area[href].upper",
@@ -440,6 +441,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "button[type=button]",
         "button[type=button][tabindex=-1]",
         "label[tabindex=-1]",
+        "label[tabindex=0]",
         "label[for=\"label-target\"][tabindex=-1]",
         "a[href]",
         "a[href=\"\"]",
@@ -504,6 +506,7 @@ define(function defineDemoFocusableWebkitNightly(require) {
         "select",
         "textarea",
         "button[type=button]",
+        "label[tabindex=0]",
         "a[href]",
         "a[href=\"\"]",
         "area[href].upper",

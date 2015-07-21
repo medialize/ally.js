@@ -5,18 +5,18 @@ define(function defineDemoFocusableChromeCanary(require) {
 
   return {
     "platform": {
-      "description": "Chrome 45.0.2437.4 on OS X 10.10.3",
+      "description": "Chrome 46.0.2461.0 on OS X 10.10.4",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2437.4 Safari/537.36",
-      "version": "45.0.2437.4",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2461.0 Safari/537.36",
+      "version": "46.0.2461.0",
       "os": {
         "architecture": 32,
         "family": "OS X",
-        "version": "10.10.3"
+        "version": "10.10.4"
       }
     },
     "focusable": [
@@ -301,6 +301,7 @@ define(function defineDemoFocusableChromeCanary(require) {
         "button[type=button]",
         "button[type=button][tabindex=-1]",
         "label[tabindex=-1]",
+        "label[tabindex=0]",
         "label[for=\"label-target\"][tabindex=-1]",
         "a[href]",
         "a[href=\"\"]",
@@ -383,6 +384,7 @@ define(function defineDemoFocusableChromeCanary(require) {
         "select",
         "textarea",
         "button[type=button]",
+        "label[tabindex=0]",
         "a[href]",
         "a[href=\"\"]",
         "area[href].upper",
@@ -441,6 +443,7 @@ define(function defineDemoFocusableChromeCanary(require) {
         "button[type=button]",
         "button[type=button][tabindex=-1]",
         "label[tabindex=-1]",
+        "label[tabindex=0]",
         "label[for=\"label-target\"][tabindex=-1]",
         "a[href]",
         "a[href=\"\"]",
@@ -505,6 +508,7 @@ define(function defineDemoFocusableChromeCanary(require) {
         "select",
         "textarea",
         "button[type=button]",
+        "label[tabindex=0]",
         "a[href]",
         "a[href=\"\"]",
         "area[href].upper",
