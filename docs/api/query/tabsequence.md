@@ -66,11 +66,11 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/query/focusable`](focusable.md)
 * [`ally/query/tabbable`](tabbable.md)
 * [`ally/is/tabbable`](../is/tabbable.md) used to filter focusable elements
-* [`ally/util/sort-elements-by-tabindex`](../../util.md#sort-elements-by-tabindex) used to order positive `[tabindex]` values
+* [`ally/util/sort-elements-by-tabindex`](../util.md#sort-elements-by-tabindex) used to order positive `[tabindex]` values
 * [HTML5 7.4.1 The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/query/tabsequence.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/query/tabsequence.md)

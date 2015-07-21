@@ -9,7 +9,7 @@ Executes a callback once an element fulfills `ally/is/focusable` and is visible 
 [`Element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.focus) scrolls the element into view if it isn't already. In situations where content is not revealed immediately, but through a transition
 or animation this can be a problem if the element is focused to early.
 
-The callback executes once the predicates [`ally/is/visible`](../is/visible.md), [`ally/is/focusable`](../is/focusable.md) and [`ally/util/visible-area`](../../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
+The callback executes once the predicates [`ally/is/visible`](../is/visible.md), [`ally/is/focusable`](../is/focusable.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 The callback function executes exactly once, meaning it won't focus the target element every time it comes into view. Waiting for the callback to execute is aborted automatically should another element have gotten focus prior to the context element coming fully into view. The callback is executed immediately if the context element is already fully visible and focusable.
 
@@ -89,7 +89,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/when/visible`](visible.md) is used internally to wait until element is visible in viewport, before checking if it is focusable
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/when/focusable.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/when/focusable.md)

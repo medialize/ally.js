@@ -8,6 +8,7 @@ The supports infrastructure is a set of tests determining browser behavior and c
 
 For the tests to run properly, the document needs to have focus during execution. If it does not, e.g. because the browser's DevTools have focus, the warning »document requires focus for a11y support tests« will be logged to the console and the cache is voided.
 
+
 ## Available Compatibility Tests
 
 | test name | return type | description |
@@ -25,6 +26,12 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
 | focusout-event | boolean | true if `focusout` is dispatched synchronously |
 
+
 ## Contribution Notes
 
 Tests go in `src/supports` and either use the `./detect-focus.js` helper like most of the tests, or the `./supports-cache.js` API directly, like `./css-shadow-piercing-deep-combinator.js` shows.
+
+
+---
+
+Back to the [API Documentation](./README.md).

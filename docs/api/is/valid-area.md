@@ -59,7 +59,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [HTML5 4.7.13 Image Maps](http://www.w3.org/TR/html5/embedded-content-0.html#image-maps)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/is/valid-area.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/is/valid-area.md)

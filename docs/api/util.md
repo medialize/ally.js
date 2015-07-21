@@ -13,9 +13,11 @@ the util infrastructure does not contain any functionality relevant to a user of
 
 Internally ally.js prefers to use Arrays of Nodes, but when accepting input from the outside we're not sure what we get. NodeList, HTMLCollection, jQuery object, a single Node or even just a string (to run through [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)) - `util/node-array.js` converts everything to array.
 
+
 ### Context To Element
 
 `util/context-to-element.js` is an internal convenience function to hide grabbing the first element of `util/node-array` or throwing an `TypeError` if nothing was found. It is unclear if this "convenience" may cause developers to complain about indirected stack traces.
+
 
 ### Decorate Singleton
 
@@ -36,7 +38,6 @@ The "singleton" aspect here is that a components `engage()` function can be invo
 
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object, returned to the caller and cached for subsequent calls to the decorated `engage()` function.
 
----
 
 ### Decorate Options.context
 
@@ -62,12 +63,18 @@ Unlike the singleton decorator, the context decorator allows multiple concurrent
 
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object and returned to the caller. Unlike the singleton decorator, the context decorator returns a unique result object for every `engage()` invocation.
 
----
+
 
 ### Sort Elements By Tabindex
 
 `util/sort-elements-by-tabindex` is a function to sort a list of elements in such a way that elements with a positive tabindex (e.g. `[tabindex="4"]`) come first in ascending order and the other nodes remain in DOM order.
 
+
 ### Calculate An Element's Visible Area
 
 `util/visible-area` calculates the fraction of the area that is visible in the viewport (`1` fully visible, `0` not visible at all, `0.5` half the element is visible, the rest is hidden by *scroll containers*)
+
+
+---
+
+Back to the [API Documentation](./README.md).

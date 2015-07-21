@@ -6,7 +6,7 @@ layout: doc-api.html
 
 Executes a callback once an element is visible in the viewport
 
-The callback executes once the predicates [`ally/is/visible`](../is/visible.md) and [`ally/util/visible-area`](../../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
+The callback executes once the predicates [`ally/is/visible`](../is/visible.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 The callback function executes exactly once, meaning it won't focus the target element every time it comes into view. Waiting for the callback to execute is aborted automatically should another element have gotten focus prior to the context element coming fully into view. The callback is executed immediately if the context element is already fully visible and focusable.
 
@@ -86,7 +86,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/when/focusable`](focusable.md)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/when/visible.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/when/visible.md)

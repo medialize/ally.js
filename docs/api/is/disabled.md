@@ -56,7 +56,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/is/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/is/disabled.md)

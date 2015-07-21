@@ -139,7 +139,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/style/focus-within`](focus-within.md)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/style/focus-source.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/style/focus-source.md)

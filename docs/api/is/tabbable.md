@@ -54,7 +54,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/query/tabbable`](../query/tabbable.md) is using this to provide a higher level API
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/is/tabbable.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/is/tabbable.md)

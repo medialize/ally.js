@@ -71,14 +71,14 @@ Especially when dealing with transitional user interfaces we need to know when a
 
 ---
 
-# ally.js API (Developer Modules)
+## Developer Modules
 
 When creating libraries these modules may come in handy.
 
 * **NOTE:** When you find yourself using one of these in your application code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
 * **NOTE:** These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `ally.min.js`.
 
-## ally/get/* {context}
+### ally/get/* {context}
 
 * `active-elements() : Array<Node>`
 * `focus-target(Node) : Node|null`
@@ -86,45 +86,25 @@ When creating libraries these modules may come in handy.
 * `shadow-host-ancestors(Node) : Array<Node>`
 * `shadow-host(Node) : Node|null`
 
-## ally/event/*
+### ally/event/*
 
 * `active-element() : {Function}`
 * `shadow-focus() : {Function}`
 
-## ally/observe/*
+### ally/observe/*
 
 * `interaction-type() : {Function, Function}`
 
 ---
 
-# ally.js API (Contributor Modules)
+## Contributor Modules
 
 When working on ally.js these modules may come in handy.
 
 * **NOTE:** When you find yourself using one of these in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
 * **NOTE:** These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `ally.min.js`.
 
-## ally/prototype/*
-
-* `element.prototype.matches : void`
-* `svgelement.prototype.focus : void`
-* `window.customevent : void`
-
-## ally/selector/*
-
-* `focusable : string`
-
-## ally/supports/*
-
-* `detect-focus({Node|Function, Function, Function}) : bool`
-* `supports-cache : {Function, Function}`
-* `css-shadow-piercing-deep-combinator : string`
-* `* : bool`
-
-## ally/util/*
-
-* `decorate-context({Function, Function}) : {Function, …}`
-* `decorate-singleton({Function, Function}) : {Function, …}`
-* `node-array(mixed) : Array<Node>`
-* `sort-elements-by-tabindex(Array<Node>) : Array<Node>`
-* `visible-area(Node) : decimal`
+* [`ally/prototype/*`](prototype.md)
+* [`ally/selector/*`](selector.md)
+* [`ally/supports/*`](supports.md)
+* [`ally/util/*`](util.md)

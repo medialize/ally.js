@@ -51,7 +51,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/map/keycode`](keycode.md)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/map/attribute.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/map/keycode.md)

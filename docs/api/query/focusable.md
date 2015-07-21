@@ -80,7 +80,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [Which Elements Are Considered Focusable By ally.js?](http://medialize.github.io/ally.js/tests/focusable/table.html#javascript-support)
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/query/focusable.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/query/focusable.md)

@@ -75,7 +75,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/query/focusable`](../query/focusable.md) used to identify the elements to make inert
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/focus/disable.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/focus/disable.md)

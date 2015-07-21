@@ -14,13 +14,15 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 ---
 
+
 ## What Is ally.js?
 
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily.
 
+
 ## Which Problems Does ally.js Solve?
 
-ally.js is primarily concerned with focus navigation:
+ally.js 1.0.0 is primarily concerned with focus navigation:
 
 * Identify and absorb browser differences regarding which elements are considered focusable
 * Query the DOM for all focusable or tabbable (keyboard focusable) elements
@@ -34,6 +36,7 @@ ally.js is primarily concerned with focus navigation:
 Have a look at the [API Documentation](docs/api/README.md).
 
 ---
+
 
 ## Requirements
 
@@ -51,8 +54,8 @@ Have a look at the [API Documentation](docs/api/README.md).
 
 ## Resources
 
-* [Website](http://medialize.github.io/ally.js)
-* [API Documentation](docs/api/README.md)
+* [Website](http://medialize.github.io/ally.js/)
+* [Documentation](docs/README.md)
 * [CONTRIBUTING.md](CONTRIBUTING.md) explaining how to author, test, document and build ally.js
 * [CHANGELOG.md](CHANGELOG.md) detailing what changed over time
 

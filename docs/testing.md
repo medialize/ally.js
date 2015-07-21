@@ -2,7 +2,7 @@
 layout: doc-page.html
 ---
 
-# ally.js Test Infrastructure
+# Test Infrastructure
 
 The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](http://theintern.github.io/leadfoot/) for interacting with browsers.
 

@@ -51,10 +51,10 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/is/tabbable`](tabbable.md)
 * [`ally/is/valid-area`](valid-area.md)
 * [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/util/visible-area`](../../util.md#Calculate-An-Element-s-Visible-Area) can be used to determine how much of an element is actually visible in the viewport
+* [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) can be used to determine how much of an element is actually visible in the viewport
 
 
-## Contributor Notes
+## Contribution Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/is/visible.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/is/visible.md)
