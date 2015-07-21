@@ -70,15 +70,15 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap.js)
-* [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/focus/trap.md)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/focus/trap.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/focus/trap.md)
 
 The module consists of several components:
 
-* [`trap/focusevent`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/capture-body.js) to react to `focusout` events and intercept focus change
-* [`trap/keyevent`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/capture-body.js) to react to <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> and intercept focus change (in Firefox)
-* [`trap/observe-body`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/observe-body.js) to observe the document's `focus` events to intercept focus changes caused by `script` and `MouseEvent` (in Firefo)
-* [`trap/capture-body`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/capture-body.js) to wait for any element to get focus in order to redirect focus back into the context (to allow nothing being focused as a valid state of the trap)
+* [`trap/focusevent`](https://github.com/medialize/ally.js/blob/master/src/focus/trap/capture-body.js) to react to `focusout` events and intercept focus change
+* [`trap/keyevent`](https://github.com/medialize/ally.js/blob/master/src/focus/trap/capture-body.js) to react to <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> and intercept focus change (in Firefox)
+* [`trap/observe-body`](https://github.com/medialize/ally.js/blob/master/src/focus/trap/observe-body.js) to observe the document's `focus` events to intercept focus changes caused by `script` and `MouseEvent` (in Firefo)
+* [`trap/capture-body`](https://github.com/medialize/ally.js/blob/master/src/focus/trap/capture-body.js) to wait for any element to get focus in order to redirect focus back into the context (to allow nothing being focused as a valid state of the trap)
 
 
 ---

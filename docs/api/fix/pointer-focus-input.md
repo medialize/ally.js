@@ -69,8 +69,8 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/build-modules/src/fix/pointer-focus-input.js)
-* [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/fix/pointer-focus-input.md)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/fix/pointer-focus-input.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-input.md)
 
 
 ---

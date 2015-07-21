@@ -91,8 +91,8 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/build-modules/src/when/focusable.js)
-* [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/when/focusable.md)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/when/focusable.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/focusable.md)
 
 
 ---

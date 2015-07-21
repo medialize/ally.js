@@ -72,8 +72,8 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/build-modules/src/query/tabsequence.js)
-* [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/query/tabsequence.md)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/query/tabsequence.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/tabsequence.md)
 
 
 ---

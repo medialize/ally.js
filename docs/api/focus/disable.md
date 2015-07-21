@@ -77,8 +77,8 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/build-modules/src/focus/disable.js)
-* [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/focus/disable.md)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/focus/disable.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/focus/disable.md)
 
 
 ---
