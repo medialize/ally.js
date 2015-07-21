@@ -1,4 +1,4 @@
-# Browser Issues Filed
+# Issues Filed
 
 This document is used for collecting all the bugs reported and issues raised because of my investigating how focus works and creating ally.js.
 

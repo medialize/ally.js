@@ -17,6 +17,7 @@ layout: index.html
 * [CHANGELOG](https://github.com/medialize/ally.js/tree/master/CHANGELOG.md)
 * [GOALS](https://github.com/medialize/ally.js/tree/master/GOALS.md)
 * [CONTRIBUTING](https://github.com/medialize/ally.js/tree/master/CONTRIBUTING.md)
+* [Filed Issues (Browsers & Specifications)](https://github.com/medialize/ally.js/tree/master/issues.md)
 
 
 ## License

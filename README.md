@@ -58,6 +58,7 @@ Have a look at the [API Documentation](docs/api/README.md).
 * [Documentation](docs/README.md)
 * [CONTRIBUTING.md](CONTRIBUTING.md) explaining how to author, test, document and build ally.js
 * [CHANGELOG.md](CHANGELOG.md) detailing what changed over time
+* [Filed Issues (Browsers & Specifications)](issues.md)
 
 
 ## License
