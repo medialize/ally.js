@@ -11,6 +11,9 @@ Determines if an element is considered focusable.
 
 See [`ally/query/focusable`](../query/focusable.md#Notes)
 
+* **NOTE:** In Internet Explorer 10-11 `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable because it doesn't have an `element.offsetHeight`.
+* **NOTE:** In WebKit and Blink `SVGElements` that have been made focusable by adding a focus event listener are not identified as focusable
+
 
 ## Demo
 

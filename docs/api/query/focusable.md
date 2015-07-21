@@ -20,7 +20,7 @@ The "full picture" of [which elements are considered focusable](http://medialize
 * **WARNING:** Internet Explorer 10 - 11, as well as Edge consider the `<img>` of `<a href="#"><img ismap></a>` keyboard focusable, see [issue 20](https://github.com/medialize/ally.js/issues/20).
 * **WARNING:** Internet Explorer 10 - 11 consider the children of a focusable element focusable as well, if the container uses Flexbox layout (e.g. `display: flex`).
 * **WARNING:** Internet Explorer 10 - 11 consider any scrollable element focusable, see [issue 21](https://github.com/medialize/ally.js/issues/21).
-* **WARNING:** Firefox cannot focus `SVGElement`s by script, see [Gecko 1116966](https://bugzilla.mozilla.org/show_bug.cgi?id=1116966)
+* **WARNING:** Firefox cannot focus `SVGElement`s by script, thus no SVG element is considered focusable, see [Gecko 1116966](https://bugzilla.mozilla.org/show_bug.cgi?id=1116966)
 * **WARNING:** WebKit and Blink make any `SVGElement` focusable that has a `focus` event listener attached, see [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024)
 * **WARNING:** The `<object>` element is not reliably focusable, SWF content won't focus in Firefox, SVG content is not focusable in Internet Explorer 10 - 11 and MS Edge
 
