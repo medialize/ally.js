@@ -80,6 +80,7 @@ The module consists of several components:
 * [`trap/observe-body`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/observe-body.js) to observe the document's `focus` events to intercept focus changes caused by `script` and `MouseEvent` (in Firefo)
 * [`trap/capture-body`](https://github.com/medialize/ally.js/blob/build-modules/src/focus/trap/capture-body.js) to wait for any element to get focus in order to redirect focus back into the context (to allow nothing being focused as a valid state of the trap)
 
+
 ---
 
 Back to the [API Documentation](../README.md).

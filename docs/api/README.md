@@ -32,12 +32,15 @@ While it's best to use standardized features and leave browsers to figure things
 * [`ally/focus/trap`](focus/trap.md) contains focus in a given sub-tree of the document
 
 
-## ally/query/* {context, …}
+## `ally/query/*` Asking The DOM
 
-* `first-tabbable({NodeArray[1], bool, bool}) : Node|null`
-* `focusable({NodeArray[1], bool}) : Array<Node>`
-* `tabbable({NodeArray[1], bool}) : Array<Node>`
-* `tabsequence({NodeArray[1], bool}) : Array<Node>`
+In order to work with focusable elements, we must first know which elements we're supposed to work with.
+
+* [`ally/query/first-tabbable`](query/first-tabbable.md) finds the first keyboard focusable element
+* [`ally/query/focusable`](query/focusable.md) finds all focusable elements
+* [`ally/query/tabbable`](query/tabbable.md) finds all keyboard focusable elements
+* [`ally/query/tabsequence`](query/tabsequence.md) finds all keyboard focusable elements respecting the `[tabindex]` order
+
 
 ## ally/is/* (Node)
 

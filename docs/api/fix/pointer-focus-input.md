@@ -12,8 +12,7 @@ This *Browser Bug Workaround* targets an issue in Safari and Firefox **on Mac OS
 
 ## Notes
 
-* **NOTE:** In Firefox the `<label>` element causes form fields to get focus upon being clicked,
-even if the form field itself would not get focus because of the ominous platform conventions.
+* **NOTE:** In Firefox the `<label>` element causes form fields to get focus upon being clicked, even if the form field itself would not get focus because of the ominous platform conventions.
 * **NOTE:** Only engaged for Safari and Firefox on Mac OS X (detected via user agent sniffing).
 
 
@@ -72,6 +71,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/fix/pointer-focus-input.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/fix/pointer-focus-input.md)
+
 
 ---
 

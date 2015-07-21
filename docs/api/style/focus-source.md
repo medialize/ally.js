@@ -54,6 +54,10 @@ html[data-focus-source="pointer"] /deep/ :focus {
 }
 ```
 
+## Notes
+
+* **NOTE:** We are unaware of any best practices concerning different focus outline styling depending on user interaction device
+
 
 ## Demo
 
@@ -139,6 +143,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/style/focus-source.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/style/focus-source.md)
+
 
 ---
 

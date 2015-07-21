@@ -1,5 +1,6 @@
 ---
 layout: doc-api.html
+tags: shadow-dom
 ---
 
 # ally.focus.disable (`ally/focus/disable`)
@@ -13,6 +14,7 @@ The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536
 
 ## Notes
 
+* **NOTE:** `ShadowHost`s are pierced and `ShadowRoot` content is made inert as well (except for closed shadow trees).
 * **NOTE:** Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden.
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 * **WARNING:** In Firefox the `<embed>` element can not be removed from the document's tab sequence by setting `[tabindex="-1"]` - [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
@@ -69,12 +71,14 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 ## Related Resources
 
 * [`ally/focus/trap`](trap.md)
+* [`ally/query/focusable`](../query/focusable.md) used to identify the elements to make inert
 
 
 ## Contributor Notes
 
 * [module source](https://github.com/medialize/ally.js/blob/build-modules/src/focus/disable.js)
 * [document source](https://github.com/medialize/ally.js/blob/build-modules/docs/api/focus/disable.md)
+
 
 ---
 
