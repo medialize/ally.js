@@ -23,8 +23,7 @@
     "lint-md": "node scripts/markdownlint.js",
     "precommit": "npm run lint",
     "prepush": "npm test",
-    "postmerge": "npm install",
-    "postrewrite": "npm install"
+    "postmerge": "npm install"
   },
   "repository": {
     "type": "git",
