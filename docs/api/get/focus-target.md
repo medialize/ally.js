@@ -47,7 +47,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Related Resources
 
-* [`ally/get/active-element`](active-element.md)
+* [`ally/get/active-elements`](active-elements.md)
 * [`ally/get/parents`](parents.md)
 * [`ally/get/shadow-host-parents`](shadow-host-parents.md)
 * [`ally/get/shadow-host`](shadow-host.md)

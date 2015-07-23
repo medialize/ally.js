@@ -2,7 +2,7 @@
 layout: doc-page.html
 ---
 
-# Selectors
+# Selector
 
 The selectors contain query selectors ("css selectors") used by DOM methods. They should *not* be used directly. Instead use the appropriate modules provided in the `dom` namespace.
 
