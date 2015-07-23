@@ -26,11 +26,10 @@ if (!document.body.createShadowRoot) {
   let blurTimer;
   let blurElement;
   let handleFocusChange;
+  let stopHandleElementBlurEvent;
 
   const handleElementBlurEvent = function() {
-    blurElement = this;
-    // once() - sometimes I miss jQuery's simplicity…
-    this.removeEventListener('blur', handleElementBlurEvent, true);
+    stopHandleElementBlurEvent();
     // abort any handlers that come from document blur handler
     (window.clearImmediate || window.clearTimeout)(blurTimer);
     blurTimer = (window.setImmediate || window.setTimeout)(function() {
@@ -41,11 +40,19 @@ if (!document.body.createShadowRoot) {
   const observeElementBlurEvent = function(element) {
     // call us when we're leaving the element
     element.addEventListener('blur', handleElementBlurEvent, true);
+    blurElement = element;
+  };
+
+  stopHandleElementBlurEvent = function() {
+    // once() - sometimes I miss jQuery's simplicity…
+    blurElement && blurElement.removeEventListener('blur', handleElementBlurEvent, true);
+    blurElement = null;
   };
 
   handleFocusChange = function() {
     const _active = getActiveElements();
     if (_active.length === 1) {
+      stopHandleElementBlurEvent();
       return;
     }
 
