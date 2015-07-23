@@ -10,7 +10,7 @@ export default function({context}) {
   });
 
   while (element) {
-    element = getShadowHost(element);
+    element = getShadowHost({context: element});
     if (!element) {
       break;
     }

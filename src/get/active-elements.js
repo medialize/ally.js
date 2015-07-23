@@ -16,7 +16,7 @@ function walkToShadowedElement() {
 }
 
 function walkFromShadowedElement() {
-  var hosts = getShadowHostParents(document.activeElement);
+  var hosts = getShadowHostParents({context: document.activeElement});
   return [document.activeElement].concat(hosts);
 }
 
