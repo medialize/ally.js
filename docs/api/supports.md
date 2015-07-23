@@ -43,7 +43,7 @@ GET data:video/mp4;base64,video-focus-test net::ERR_INVALID_URL
 GET data:image/png;base64,broken-image-test net::ERR_INVALID_URL
 ```
 
-Focus feature detection works by temporarily adding certain elements to the DOM. For some reason Google Chrome logs invalid Data URIs as a network error of type invalid URL to the console. The Network panel has the option "Hide data URLs" that prevents these resources from showing up there as well.
+Focus feature detection works by temporarily adding certain elements to the DOM. For some reason Google Chrome logs invalid Data URIs as a network error of type invalid URL to the console. The Console tab's filter option knows "Hide network messages". The Network panel has the option "Hide data URLs" that prevents these resources from showing up there as well.
 
 
 ## Contribution Notes

@@ -78,22 +78,32 @@ When creating libraries these modules may come in handy.
 * **NOTE:** When you find yourself using one of these in your application code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
 * **NOTE:** These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `ally.min.js`.
 
-### ally/get/* {context}
 
-* `active-elements() : Array<Node>`
-* `focus-target(Node) : Node|null`
-* `parents(Node) : Array<Node>`
-* `shadow-host-ancestors(Node) : Array<Node>`
-* `shadow-host(Node) : Node|null`
+### `ally/get/*` DOM Traversal
 
-### ally/event/*
+Sometimes you need some DOM traversal utilities
 
-* `active-element() : {Function}`
-* `shadow-focus() : {Function}`
+* [`ally/get/active-elements`](get/active-elements.md) identifies the `ShadowHost` ancestry of the active element
+* [`ally/get/focus-target`](get/focus-target.md)
+* [`ally/get/parents`](get/parents.md)
+* [`ally/get/shadow-host-parents`](get/shadow-host-parents.md)
+* [`ally/get/shadow-host`](get/shadow-host.md)
 
-### ally/observe/*
 
-* `interaction-type() : {Function, Function}`
+### `ally/event/*` Event Dispatchers
+
+Emitting events when there's no standardized equivalent
+
+* [`ally/event/active-element`](event/active-element.md)
+* [`ally/event/shadow-focus`](event/shadow-focus.md)
+
+
+### `ally/observe/*` Event Listeners
+
+Translate volatile events to stateful interfaces
+
+* [`ally/observe/interaction-type`](observe/interaction-type.md) observes user interaction method to distinguish pointer and keyboard actions
+
 
 ---
 
