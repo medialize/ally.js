@@ -5,12 +5,21 @@
 * To stay lean, we don't want to add external dependencies unless we absolutely have to.
 * To stay out of the "too many tools" debate, build infrastructure has to work via npm (configured via `package.json`).
 
+## Found an Issue?
+
+If you found a bug (or think you found a bug) in the code or docs, please [file an issue](https://github.com/medialize/ally.js/issues/new). If you're able to fix the problem yourself, please [submit a pull request](#contributing-code).
+
+
+## Want a Feature?
+
+You can *request* a new feature by [filing an issue](https://github.com/medialize/ally.js/issues/new). If you would like to *implement* a new feature, please first [filing an issue](https://github.com/medialize/ally.js/issues/new) with a proposal for your work, so we can help you make sure your efforts don't go to waste. ally.js tackles low- and mid-level API problems in regard to anything a web application has to do to "become accessible". ally.js is *not* a UI framework, it does *not* aim to replace jQuery and it's *not* a general-purpose-web-utility-swiss-army-knife.
+
 
 ## Contributing Code
 
 The [stable](https://github.com/medialize/ally.js/tree/stavke) branch reflects the state of the latest released version. We work in [master](https://github.com/medialize/ally.js/tree/master) - and that's where your PRs need to go. The stable branch is only ever merged from master to create a new release.
 
-We try to follow Angular's [Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines)
+We try to follow Angular's [Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines). Following their [Submitting a Pull Request](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-submitting-a-pull-request-pr) guide isn't the worst idea, although *at this point* we're not the pedantic bunch.
 
 * [Building ally.js](docs/build.md)
 * [Documenting ally.js](docs/docs.md)
