@@ -57,7 +57,7 @@ define({
 
   // Non-functional test suite(s) to run in each browser
   suites: [
-    'test/unit/tutorial.js',
+    'test/unit/util.node-array.test.js',
   ],
 
   // Functional test suite(s) to run in each browser once non-functional tests are completed
