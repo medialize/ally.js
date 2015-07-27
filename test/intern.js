@@ -64,6 +64,7 @@ define({
 
   // Non-functional test suite(s) to run in each browser
   suites: [
+    'test/unit/get.active-elements.test.js',
     'test/unit/util.context-to-element.test.js',
     'test/unit/util.decorate-context.test.js',
     'test/unit/util.decorate-singleton.test.js',
