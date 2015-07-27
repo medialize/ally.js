@@ -55,13 +55,6 @@ define({
     packages: [ { name: 'ally', location: 'dist/amd/' } ],
   },
 
-  // https://theintern.github.io/intern/#option-reporters
-  reporters: [
-    'Console',
-    // see https://theintern.github.io/intern/#reporter-lcov
-    'LcovHtml',
-  ],
-
   // Non-functional test suite(s) to run in each browser
   suites: [
     'test/unit/util.context-to-element.test.js',
