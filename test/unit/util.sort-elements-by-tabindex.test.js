@@ -13,11 +13,12 @@ define([
       fixture = document.createElement('div');
       fixture.id = 'intern-dom-fixture';
       fixture.innerHTML = [
-        '<input type="text" data-label="4">',
+        '<input type="text" data-label="5">',
         '<div tabindex="2" data-label="2"></div>',
-        '<div tabindex="-1" data-label="5"></div>',
-        '<div tabindex="0" data-label="6"></div>',
+        '<div tabindex="-1" data-label="6"></div>',
+        '<div tabindex="0" data-label="7"></div>',
         '<div tabindex="3" data-label="3"></div>',
+        '<div tabindex="3" data-label="4"></div>',
         '<div tabindex="1" data-label="1"></div>',
       ].join('');
       document.body.appendChild(fixture);
@@ -33,7 +34,7 @@ define([
       var sequence = res.map(function(element) {
         return element.getAttribute('data-label');
       }).join(',');
-      expect(sequence).to.equal('1,2,3,4,5,6');
+      expect(sequence).to.equal('1,2,3,4,5,6,7');
     },
   });
 });
