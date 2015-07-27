@@ -1,8 +1,9 @@
 define([
   'intern!object',
   'intern/chai!expect',
+  '../helper/fixtures/custom.fixture',
   'ally/util/node-array',
-], function(registerSuite, expect, nodeArray) {
+], function(registerSuite, expect, customFixture, nodeArray) {
 
   registerSuite(function() {
     var fixture;
@@ -11,17 +12,14 @@ define([
       name: 'util/node-array',
 
       beforeEach: function() {
-        fixture = document.createElement('div');
-        fixture.id = 'intern-dom-fixture';
-        fixture.innerHTML = [
+        fixture = customFixture([
           '<div class="test-foo"></div>',
           '<div class="test-foo"></div>',
           '<div id="test-bar"></div>',
-        ].join('');
-        document.body.appendChild(fixture);
+        ].join(''));
       },
       afterEach: function() {
-        fixture.parentNode.removeChild(fixture);
+        fixture.remove();
         fixture = null;
       },
 

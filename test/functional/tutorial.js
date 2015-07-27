@@ -7,7 +7,7 @@ define([
     name: 'functional-tutorial',
     firstTest: function() {
       return this.remote
-        .get(require.toUrl('test/support/tutorial.html'))
+        .get(require.toUrl('test/helper/tutorial.html'))
         .setFindTimeout(5000)
         .findById('nameField')
           .click()

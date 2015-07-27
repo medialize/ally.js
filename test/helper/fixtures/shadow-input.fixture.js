@@ -9,6 +9,7 @@ define([], function() {
       },
     };
 
+    fixture.root.id = 'intern-dom-fixture';
     fixture.root.innerHTML = [
       '<input id="outer-input" type="text" value="outer-input">',
       '<div id="first-shadow-host" class="shadow-host"></div>',

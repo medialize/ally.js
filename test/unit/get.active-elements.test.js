@@ -1,7 +1,7 @@
 define([
   'intern!object',
   'intern/chai!expect',
-  '../support/fixtures/shadow-input.fixture',
+  '../helper/fixtures/shadow-input.fixture',
   'ally/get/active-elements',
 ], function(registerSuite, expect, shadowInputfixture, getActiveElements) {
 
