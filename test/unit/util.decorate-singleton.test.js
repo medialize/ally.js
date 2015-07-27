@@ -127,5 +127,28 @@ define([
       one.disengage({force: true});
       expect(engaged).to.equal(false);
     },
+
+    'custom handle': function() {
+      var engaged = false;
+      var decorated = decorateSingleton({
+        engage: function() {
+          engaged = true;
+          return {
+            world: 123,
+          };
+        },
+        disengage: function() {
+          engaged = false;
+        },
+      });
+
+      var handle = decorated();
+      decorated();
+      expect(engaged).to.equal(true);
+      expect(handle.world).to.equal(123);
+
+      handle.disengage({force: true});
+      expect(engaged).to.equal(false);
+    },
   });
 });
