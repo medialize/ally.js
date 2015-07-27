@@ -51,6 +51,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/get/shadow-host-parents.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/shadow-host-parents.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.shadow-host-parents.test.js)
 
 
 ---

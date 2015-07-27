@@ -59,6 +59,7 @@ define({
     'test/unit/get.active-elements.test.js',
     'test/unit/get.focus-target.test.js',
     'test/unit/get.parents.test.js',
+    'test/unit/get.shadow-host-parents.test.js',
     'test/unit/util.context-to-element.test.js',
     'test/unit/util.decorate-context.test.js',
     'test/unit/util.decorate-singleton.test.js',
