@@ -41,6 +41,10 @@ define({
   loader: {
     // Packages that should be registered with the loader in each testing environment
     packages: [ { name: 'ally', location: 'dist/amd/' } ],
+    paths: {
+      'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
+      'css.escape': 'node_modules/css.escape/css.escape',
+    },
   },
 
   // https://theintern.github.io/intern/#option-reporters
@@ -53,6 +57,7 @@ define({
   // Non-functional test suite(s) to run in each browser
   suites: [
     'test/unit/get.active-elements.test.js',
+    'test/unit/get.focus-target.test.js',
     'test/unit/util.context-to-element.test.js',
     'test/unit/util.decorate-context.test.js',
     'test/unit/util.decorate-singleton.test.js',

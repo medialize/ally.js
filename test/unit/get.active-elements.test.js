@@ -3,7 +3,7 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   'ally/get/active-elements',
-], function(registerSuite, expect, shadowInputfixture, getActiveElements) {
+], function(registerSuite, expect, shadowInputFixture, getActiveElements) {
 
   registerSuite(function() {
     var fixture;
@@ -12,7 +12,7 @@ define([
       name: 'get/active-elements',
 
       beforeEach: function() {
-        fixture = shadowInputfixture();
+        fixture = shadowInputFixture();
       },
       afterEach: function() {
         fixture.remove();
