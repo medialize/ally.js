@@ -10,7 +10,7 @@
   upon initialization result.disengage is added and returned to the consumer.
 */
 
-function destruct({force}) {
+function destruct({force} = {}) {
   if (force) {
     this.instances = 0;
   } else {
@@ -24,8 +24,9 @@ function destruct({force}) {
 }
 
 function initialize() {
-  if (!this.instances) {
-    this._result;
+  if (this.instances) {
+    this.instances++;
+    return this._result;
   }
 
   this.instances++;
@@ -37,7 +38,7 @@ function initialize() {
 
 function noop() {}
 
-export default function({engage, disengage}) {
+export default function({engage, disengage} = {}) {
   let data = {
     engage: engage || noop,
     disengage: disengage || noop,
