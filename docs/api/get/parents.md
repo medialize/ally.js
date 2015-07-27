@@ -52,6 +52,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/get/parents.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/parents.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.parents.test.js)
 
 
 ---
