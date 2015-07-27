@@ -63,6 +63,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/valid-area.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/valid-area.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.valid-area.test.js)
 
 
 ---
