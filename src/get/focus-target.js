@@ -8,7 +8,7 @@ import getParents from '../get/parents';
 import isFocusable from '../is/focusable';
 import contextToElement from '../util/context-to-element';
 
-export default function({context}) {
+export default function({context} = {}) {
   const element = contextToElement({
     message: 'get/focus-target requires valid options.context',
     context,

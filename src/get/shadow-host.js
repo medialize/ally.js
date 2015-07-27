@@ -1,7 +1,7 @@
 
 import nodeArray from '../util/node-array';
 
-export default function({context}) {
+export default function({context} = {}) {
   let element = nodeArray(context)[0];
   if (!element) {
     throw new TypeError('get/shadow-host requires valid options.context');

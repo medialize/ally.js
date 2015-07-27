@@ -32,6 +32,11 @@ define([
         fixture = null;
       },
 
+      'invalid context': function() {
+        expect(function() {
+          getFocusTarget();
+        }).to.throw(TypeError, 'get/focus-target requires valid options.context');
+      },
       'direct target': function() {
         var target = getFocusTarget({
           context: '#self',

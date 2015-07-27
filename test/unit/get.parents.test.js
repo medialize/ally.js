@@ -23,6 +23,11 @@ define([
         fixture = null;
       },
 
+      'invalid context': function() {
+        expect(function() {
+          getParents();
+        }).to.throw(TypeError, 'get/parents requires valid options.context');
+      },
       parents: function() {
         var target = getParents({
           context: '#target',

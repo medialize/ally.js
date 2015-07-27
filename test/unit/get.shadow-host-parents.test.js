@@ -19,6 +19,11 @@ define([
         fixture = null;
       },
 
+      'invalid context': function() {
+        expect(function() {
+          getShadowHostParents();
+        }).to.throw(TypeError, 'get/shadow-host-parents requires valid options.context');
+      },
       none: function() {
         var target = fixture.root;
         var shadowParents = getShadowHostParents({
