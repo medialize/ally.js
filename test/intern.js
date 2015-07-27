@@ -75,6 +75,7 @@ define({
     'test/unit/get.shadow-host.test.js',
     'test/unit/is.disabled.test.js',
     'test/unit/is.focusable.test.js',
+    'test/unit/is.tabbable.test.js',
     'test/unit/util.context-to-element.test.js',
     'test/unit/util.decorate-context.test.js',
     'test/unit/util.decorate-singleton.test.js',
