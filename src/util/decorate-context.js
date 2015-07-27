@@ -13,15 +13,17 @@ function destruct(/* {force: false} */) {
   this.disengage = null;
 }
 
-function initialize({context}) {
+function initialize({context} = {}) {
   this.context = nodeArray(context || document);
   this.context.forEach(this.engage);
-  return destruct.bind(this);
+  return {
+    disengage: destruct.bind(this),
+  };
 }
 
 function noop() {}
 
-export default function({engage, disengage}) {
+export default function({engage, disengage} = {}) {
   let data = {
     engage: engage || noop,
     disengage: disengage || noop,
