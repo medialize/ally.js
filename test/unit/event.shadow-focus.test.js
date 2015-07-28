@@ -111,6 +111,10 @@ define([
         waitForDone = function() {
           // make sure no events are collected after disengaging the event emitter
           handleEvent = deferred.rejectOnError(function() {
+            if (event.type === 'focus') {
+              return;
+            }
+
             throw new Error('event handler not disengaged');
           });
 
