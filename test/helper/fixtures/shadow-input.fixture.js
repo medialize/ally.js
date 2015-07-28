@@ -13,10 +13,14 @@ define([], function() {
     fixture.root.innerHTML = [
       '<input id="outer-input" type="text" value="outer-input">',
       '<div id="first-shadow-host" class="shadow-host"></div>',
+      '<div>',
+        '<input id="after-input" type="text" value="after-input">',
+      '</div>',
     ].join('');
 
     (context || document.body).appendChild(fixture.root);
     fixture.input.outer = document.getElementById('outer-input');
+    fixture.input.after = document.getElementById('after-input');
 
     if (document.body.shadowRoot === undefined) {
       // NOTE: Shadow DOM is not supported
