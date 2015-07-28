@@ -53,8 +53,8 @@ function engage() {
 }
 
 function disengage() {
-  raf = false;
   cancelAnimationFrame(raf);
+  raf = false;
 }
 
 export default decorateSingleton({ engage, disengage });
