@@ -40,14 +40,20 @@ function observeActiveElement() {
     previousActiveElement = document.activeElement;
   }
 
+  if (raf === false) {
+    return;
+  }
+
   raf = requestAnimationFrame(observeActiveElement);
 }
 
 function engage() {
+  raf = true;
   observeActiveElement();
 }
 
 function disengage() {
+  raf = false;
   cancelAnimationFrame(raf);
 }
 
