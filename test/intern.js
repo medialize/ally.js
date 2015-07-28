@@ -41,16 +41,9 @@ define({
   // Name of the tunnel class to use for WebDriver tests
   tunnel: 'SauceLabsTunnel',
 
-  // The desired AMD loader to use when running unit tests (client.html/client.js). Omit to use the default Dojo
-  // loader
-  useLoader: {
-    'host-node': 'dojo/dojo',
-    'host-browser': 'node_modules/dojo/dojo.js',
-  },
-
   // Configuration options for the module loader; any AMD configuration options supported by the specified AMD loader
   // can be used here
-  loader: {
+  loaderOptions: {
     // Packages that should be registered with the loader in each testing environment
     packages: [ { name: 'ally', location: 'dist/amd/' } ],
     paths: {
@@ -63,7 +56,16 @@ define({
   reporters: [
     'Console',
     // see https://theintern.github.io/intern/#reporter-lcov
-    'LcovHtml',
+    {
+      id: 'LcovHtml',
+      directory: 'reports/coverage/',
+      watermarks: {
+        statements: [ 50, 80 ],
+        lines: [ 50, 80 ],
+        functions: [ 50, 80 ],
+        branches: [ 50, 80 ],
+      },
+    },
   ],
 
   // Non-functional test suite(s) to run in each browser

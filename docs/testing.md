@@ -14,7 +14,7 @@ Intern handles both unit and functional tests. Unit tests are the ones that veri
 
 For local development the command `npm run test` can be used to spawn an instance of ChromeDriver interfacing with Google Chrome and automatically executing the tests setup defined in `test/local.js`. To run tests against a whole battery of browsers we use [SauceLabs' Open Source tier](https://saucelabs.com/opensource) (under the user `allyjs`). To run those locally, you'll need the secret access key (which you'll only get if you're a core contributor, sorry). The results of all tests executed on SauceLab's infrastructure are [made public](https://saucelabs.com/u/allyjs).
 
-Coverage reports are made available in the directory `html-reports`.
+Coverage reports are made available in the directory `reports/coverage`.
 
 > TODO: The tests should be run automatically via [TravisCI](https://theintern.github.io/intern/#ci-travis)
 
