@@ -35,6 +35,10 @@ define([
       },
 
       lifecycle: function() {
+        if (!fixture.shadow.first) {
+          this.skip('Shadow DOM not supported');
+        }
+
         var deferred = this.async(1000);
         var handle = eventShadowFocus();
         var waitForOuter;

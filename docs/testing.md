@@ -27,7 +27,7 @@ You can run the unit tests in any browser by navigating to the following URL:
 http://{{your-host}}/{{path-to}}/ally.js/node_modules/intern/client.html?config=test/browser
 ```
 
-(we're not using `test/intern` or `test/local` in the browser because of the `reporters` those configurations load)
+(we're not using `test/sauce` or `test/local` in the browser because of the `reporters` those configurations load)
 
 
 ## Locally Running All Tests In The Browser
@@ -60,11 +60,11 @@ export SAUCE_ACCESS_KEY=nope
 
 # run all tests
 ./node_modules/.bin/intern-runner \
-  config=test/intern
+  config=test/sauce
 
 # run selected suites
 ./node_modules/.bin/intern-runner \
-  config=test/intern \
+  config=test/sauce \
   suites=test/unit/tutorial \
   functionalSuites=tests/functional/tutorial
 ```
