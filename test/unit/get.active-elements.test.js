@@ -15,12 +15,14 @@ define([
         fixture = shadowInputFixture();
       },
       afterEach: function() {
+        // blur shadowed activeElements before removal
+        // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535#c5
+        document.activeElement.blur();
         fixture.remove();
         fixture = null;
       },
 
       'inactive document': function() {
-        document.activeElement.blur();
         var active = getActiveElements();
         expect(active.length).to.equal(1);
         expect(active[0]).to.equal(document.body);

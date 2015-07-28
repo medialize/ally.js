@@ -83,7 +83,7 @@ function handleShadowFocusEvent(event) {
 }
 
 function disengage() {
-  shadowHandle.disengage();
+  shadowHandle && shadowHandle.disengage();
   (window.clearImmediate || window.clearTimeout)(blurTimer);
   document.removeEventListener('blur', handleDocumentBlurEvent, true);
   document.removeEventListener('focus', handleDocumentFocusEvent, true);

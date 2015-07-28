@@ -8,6 +8,7 @@ define([
   registerSuite(function() {
     var fixture;
     var events;
+    var handle;
     var handleEvent;
     var collectActiveEvents = function(event) {
       events.push(events.detail);
@@ -26,6 +27,8 @@ define([
         document.addEventListener('active-element', collectActiveEvents, true);
       },
       afterEach: function() {
+        // make sure a failed test cannot leave listeners behind
+        handle && handle.disengage();
         document.removeEventListener('active-element', collectActiveEvents, true);
         fixture.remove();
         fixture = null;
@@ -34,7 +37,7 @@ define([
 
       lifecycle: function() {
         var deferred = this.async(1000);
-        var handle = eventActiveElement();
+        handle = eventActiveElement();
         var first = document.getElementById('first');
         var second = document.getElementById('second');
         var waitForFirst;

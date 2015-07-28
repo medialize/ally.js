@@ -96,7 +96,7 @@ function disengage() {
   // kill interaction type identification listener
   interactionTypeHandler.disengage();
   // kill shadow-focus event dispatcher
-  shadowHandle.disengage();
+  shadowHandle && shadowHandle.disengage();
   document.removeEventListener('shadow-focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('blur', handleFocusEvent, true);

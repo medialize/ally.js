@@ -2,33 +2,36 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
+  'ally/supports/css-shadow-piercing-deep-combinator',
   'ally/style/focus-within',
-], function(registerSuite, expect, shadowInputFixture, styleFocusWithin) {
-
-  function mapNames(elements, glue) {
-    return [].map.call(elements, function(element) {
-      return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
-    }).join(glue || ', ');
-  }
-
-  function focusWithinElements(context) {
-    return mapNames((context || document).querySelectorAll('.ally-focus-within'));
-  }
+], function(registerSuite, expect, shadowInputFixture, cssShadowPiercingDeepCombinator, styleFocusWithin) {
 
   registerSuite(function() {
     var fixture;
     var handle;
 
+    function mapNames(elements, glue) {
+      return [].map.call(elements, function(element) {
+        return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
+      }).join(glue || ', ');
+    }
+
+    function focusWithinElements(context) {
+      return mapNames((context || document).querySelectorAll('.ally-focus-within'));
+    }
+
     return {
       name: 'style/focus-within',
 
       beforeEach: function() {
-        document.activeElement.blur();
         fixture = shadowInputFixture();
-        fixture.root.offsetHeight;
       },
       afterEach: function() {
+        // make sure a failed test cannot leave listeners behind
         handle && handle.disengage();
+        // blur shadowed activeElements before removal
+        // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535#c5
+        document.activeElement.blur();
         fixture.remove();
         fixture = null;
       },
@@ -38,7 +41,8 @@ define([
 
         handle = styleFocusWithin();
         expect(handle.disengage).to.be.a('function');
-        expect(document.activeElement).to.equal(document.body);
+
+        expect(document.activeElement).to.equal(document.body, 'foobar');
         expect(focusWithinElements()).to.equal('html, body', 'after engage');
 
         handle.disengage();
@@ -60,9 +64,10 @@ define([
         expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, div, #after-input', 'after sequence');
       },
       'follow focus into Shadow DOM': function() {
-        if (!fixture.shadow.first) {
-          this.skip('Shadow DOM not supported');
+        if (!cssShadowPiercingDeepCombinator) {
+          this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
+
         var deferred = this.async(500);
         expect(focusWithinElements()).to.equal('', 'before engage');
 

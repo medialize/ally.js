@@ -8,6 +8,7 @@ define([
   registerSuite(function() {
     var fixture;
     var events;
+    var handle;
     var handleEvent;
     var collectShadowFocusEvents = function(event) {
       events.push(events.detail);
@@ -27,6 +28,8 @@ define([
         document.addEventListener('focus', collectFocusEvents, true);
       },
       afterEach: function() {
+        // make sure a failed test cannot leave listeners behind
+        handle && handle.disengage();
         document.removeEventListener('shadow-focus', collectShadowFocusEvents, true);
         document.removeEventListener('focus', collectFocusEvents, true);
         fixture.remove();
@@ -40,7 +43,7 @@ define([
         }
 
         var deferred = this.async(1000);
-        var handle = eventShadowFocus();
+        handle = eventShadowFocus();
         var waitForOuter;
         var waitForFirst;
         var waitForSecond;
