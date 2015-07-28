@@ -51,6 +51,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/event/shadow-focus.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/event/shadow-focus.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/event.shadow-focus.test.js)
 * does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support Shadow DOM
 
 
