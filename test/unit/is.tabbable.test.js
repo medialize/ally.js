@@ -2,8 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
+  'ally/is/focusable',
   'ally/is/tabbable',
-], function(registerSuite, expect, focusableFixture, isTabbable) {
+], function(registerSuite, expect, focusableFixture, isFocusable, isTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -19,22 +20,50 @@ define([
         fixture = null;
       },
 
-      'inert elements': function() {
-        Object.keys(fixture.inert).forEach(function(key) {
-          expect(isTabbable(fixture.inert[key])).to.equal(false, key);
-        });
+      'inert div': function() {
+        var element = document.getElementById('inert-div');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
-      'focusable elements': function() {
-        Object.keys(fixture.focusable).forEach(function(key) {
-          expect(isTabbable(fixture.focusable[key])).to.equal(false, key);
-        });
+      'tabindex="-1"': function() {
+        var element = document.getElementById('tabindex--1');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
-      'tabbable elements': function() {
-        Object.keys(fixture.tabbable).forEach(function(key) {
-          expect(isTabbable(fixture.tabbable[key])).to.equal(true, key);
-        });
+      'tabindex="0"': function() {
+        var element = document.getElementById('tabindex-0');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
       },
-
+      'tabindex="1"': function() {
+        var element = document.getElementById('tabindex-1');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+      },
+      'anchor (<a> without href)': function() {
+        var element = document.getElementById('anchor');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      link: function() {
+        var element = document.getElementById('link');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+      },
+      'link with tabindex="-1"': function() {
+        var element = document.getElementById('link-tabindex--1');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      input: function() {
+        var element = document.getElementById('input');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+      },
+      'input with tabindex="-1"': function() {
+        var element = document.getElementById('input-tabindex--1');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      'disabled input': function() {
+        var element = document.getElementById('input-disabled');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      'input type="hidden"': function() {
+        var element = document.getElementById('input-hidden');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
     };
   });
 });

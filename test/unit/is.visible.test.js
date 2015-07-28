@@ -14,6 +14,9 @@ define([
       beforeEach: function() {
         fixture = customFixture([
           '<div id="visible-div">asd</div>',
+          // empty content
+          '<div id="empty-div"></div>',
+          '<span id="empty-span"></span>',
           // HTML5 hidden attribute
           '<div hidden id="hidden-div">asd</div>',
           // CSS display property
@@ -21,6 +24,7 @@ define([
           // CSS visibility property
           '<div style="visibility: hidden;" id="visibility-hidden-div">asd</div>',
           '<div style="visibility: hidden;">',
+            '<div id="visibility-hidden-child-div">asd</div>',
             '<div style="visibility: visible;">',
               '<div id="visibility-hidden-visible-div">asd</div>',
             '</div>',
@@ -59,6 +63,14 @@ define([
         var element = document.getElementById('visible-div');
         expect(isVisible(element)).to.equal(true);
       },
+      'empty div': function() {
+        var element = document.getElementById('empty-div');
+        expect(isVisible(element)).to.equal(true);
+      },
+      'empty span': function() {
+        var element = document.getElementById('empty-span');
+        expect(isVisible(element)).to.equal(true);
+      },
       'HTML5 hidden attribute': function() {
         var element = document.getElementById('hidden-div');
         if (element.hidden === undefined) {
@@ -73,6 +85,10 @@ define([
       },
       'CSS visibility:hidden': function() {
         var element = document.getElementById('visibility-hidden-div');
+        expect(isVisible(element)).to.equal(false);
+      },
+      'CSS visibility:hidden child': function() {
+        var element = document.getElementById('visibility-hidden-child-div');
         expect(isVisible(element)).to.equal(false);
       },
       'CSS visibility:hidden and reverted visibility:visible': function() {
