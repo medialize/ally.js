@@ -2,22 +2,17 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
+  '../helper/elements-string',
   'ally/supports/css-shadow-piercing-deep-combinator',
   'ally/style/focus-within',
-], function(registerSuite, expect, shadowInputFixture, cssShadowPiercingDeepCombinator, styleFocusWithin) {
+], function(registerSuite, expect, shadowInputFixture, elementsString, cssShadowPiercingDeepCombinator, styleFocusWithin) {
 
   registerSuite(function() {
     var fixture;
     var handle;
 
-    function mapNames(elements, glue) {
-      return [].map.call(elements, function(element) {
-        return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
-      }).join(glue || ', ');
-    }
-
     function focusWithinElements(context) {
-      return mapNames((context || document).querySelectorAll('.ally-focus-within'));
+      return elementsString((context || document).querySelectorAll('.ally-focus-within'));
     }
 
     return {

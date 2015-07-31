@@ -6,7 +6,7 @@ import selector from '../selector/focusable';
 import isFocusable from '../is/focusable';
 import nodeArray from '../util/node-array';
 
-export default function({context, includeContext}) {
+export default function({context, includeContext} = {}) {
   context = nodeArray(context)[0];
   // alias document to document.documentElement for convenience
   if (!context || context.nodeType === 9) {

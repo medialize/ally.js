@@ -17,10 +17,12 @@ define([], function() {
       '<div tabindex="-1" id="tabindex--1">a</div>',
       '<div tabindex="0" id="tabindex-0">a</div>',
       '<div tabindex="foo" id="tabindex-1">a</div>',
-      // link elements
-      '<a id="anchor">nope</a>',
-      '<a href="#" id="link">yep</a>',
-      '<a tabindex="-1" href="#" id="link-tabindex--1">maybe</a>',
+      '<div class="context">',
+        // link elements
+        '<a id="anchor">nope</a>',
+        '<a href="#" id="link">yep</a>',
+        '<a tabindex="-1" href="#" id="link-tabindex--1">maybe</a>',
+      '</div>',
       // input elements
       '<input type="text" id="input">',
       '<input type="text" tabindex="-1" id="input-tabindex--1">',
