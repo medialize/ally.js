@@ -69,6 +69,7 @@ define([
       'test/unit/query.first-tabbable.test.js',
       'test/unit/query.focusable.test.js',
       'test/unit/query.tabbable.test.js',
+      'test/unit/query.tabsequence.test.js',
       'test/unit/style.focus-within.test.js',
       'test/unit/util.context-to-element.test.js',
       'test/unit/util.decorate-context.test.js',
