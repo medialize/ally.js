@@ -16,7 +16,8 @@ define([], function() {
       '<div id="inert-div">a</div>',
       '<div tabindex="-1" id="tabindex--1">a</div>',
       '<div tabindex="0" id="tabindex-0">a</div>',
-      '<div tabindex="foo" id="tabindex-1">a</div>',
+      '<div tabindex="1" id="tabindex-1">a</div>',
+      '<div tabindex="bad" id="tabindex-bad">a</div>',
       '<div class="context">',
         // link elements
         '<a id="anchor">nope</a>',

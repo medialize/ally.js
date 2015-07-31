@@ -5,6 +5,6 @@
 import queryFocusable from './focusable';
 import isTabbable from '../is/tabbable';
 
-export default function({context, includeContext}) {
+export default function({context, includeContext} = {}) {
   return queryFocusable({context, includeContext}).filter(isTabbable);
 }

@@ -35,6 +35,10 @@ define([
         var element = document.getElementById('tabindex-1');
         expect(isFocusable(element)).to.equal(true);
       },
+      'tabindex="bad"': function() {
+        var element = document.getElementById('tabindex-bad');
+        expect(isFocusable(element)).to.equal(false);
+      },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');
         expect(isFocusable(element)).to.equal(false);
