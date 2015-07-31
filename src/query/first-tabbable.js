@@ -26,7 +26,7 @@ function hasNoPositiveTabindex(element) {
   return element.tabIndex <= 0;
 }
 
-export default function({context, sequence, ignoreAutofocus, defaultToContext}) {
+export default function({context, sequence, ignoreAutofocus, defaultToContext} = {}) {
   let index = -1;
 
   if (!sequence) {
@@ -34,16 +34,12 @@ export default function({context, sequence, ignoreAutofocus, defaultToContext}) 
     sequence = queryTabbable({ context });
   }
 
-  if (!sequence.length) {
-    return null;
-  }
-
-  if (!ignoreAutofocus) {
+  if (sequence.length && !ignoreAutofocus) {
     // prefer [autofocus]
     index = sequence.findIndex(hasAutofocus);
   }
 
-  if (index === -1) {
+  if (sequence.length && index === -1) {
     // ignore positive [tabindex]
     index = sequence.findIndex(hasNoPositiveTabindex);
   }

@@ -66,6 +66,7 @@ define([
       'test/unit/is.valid-area.test.js',
       'test/unit/is.valid-tabindex.test.js',
       'test/unit/is.visible.test.js',
+      'test/unit/query.first-tabbable.test.js',
       'test/unit/query.focusable.test.js',
       'test/unit/query.tabbable.test.js',
       'test/unit/style.focus-within.test.js',
