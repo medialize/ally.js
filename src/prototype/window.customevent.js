@@ -1,7 +1,7 @@
 
 if (!window.CustomEvent) {
   // https://developer.mozilla.org/en/docs/Web/API/CustomEvent#Polyfill
-  const CustomEvent = function CustomEvent(event, params) {
+  const CustomEvent = function CustomEventPolyfill(event, params) {
     const evt = document.createEvent('CustomEvent');
 
     !params && (params = {
