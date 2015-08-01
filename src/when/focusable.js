@@ -6,7 +6,7 @@
 import whenVisible from './visible';
 import isFocusable from '../is/focusable';
 
-export default function({context, callback, area}) {
+export default function({context, callback, area} = {}) {
   if (typeof callback !== 'function') {
     throw new TypeError('when/focusable requires options.callback to be a function');
   }
@@ -22,7 +22,7 @@ export default function({context, callback, area}) {
   let handle = whenVisible({ context, callback: filterCallback, area });
   let disengage = function() {
     document.body.removeEventListener('focus', disengage, true);
-    handle.disengage();
+    handle && handle.disengage();
   };
 
   document.body.addEventListener('focus', disengage, true);

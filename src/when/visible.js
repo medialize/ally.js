@@ -7,9 +7,13 @@ import isVisible from '../is/visible';
 import visibleArea from '../util/visible-area';
 import nodeArray from '../util/node-array';
 
-export default function({context, callback, area}) {
+export default function({context, callback, area} = {}) {
+  if (typeof callback !== 'function') {
+    throw new TypeError('when/visible requires options.callback to be a function');
+  }
+
   if (context === undefined) {
-    throw new TypeError('when/visible requires options.context');
+    throw new TypeError('when/visible requires valid options.context');
   }
 
   if (typeof area !== 'number') {
