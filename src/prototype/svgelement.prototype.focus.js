@@ -22,11 +22,11 @@ if (!SVGElement.prototype.focus) {
     SVGElement.prototype.focus = HTMLElement.prototype.focus;
     SVGElement.prototype.blur = HTMLElement.prototype.blur;
   } catch(e) {
-    SVGElement.prototype.focus = function() {
+    SVGElement.prototype.focus = function focusPolyfill() {
       // at least make apparent what is going wrong
       window.console && window.console.warn && window.console.warn('SVGElement.focus() not possible');
     };
-    SVGElement.prototype.blur = function() {
+    SVGElement.prototype.blur = function blurPolyfill() {
       // at least make apparent what is going wrong
       window.console && window.console.warn && window.console.warn('SVGElement.blur() not possible');
     };

@@ -1,15 +1,11 @@
 define([
   'intern!object',
   'intern/chai!expect',
+  '../helper/function-name',
   'ally/prototype/element.prototype.matches',
-], function(registerSuite, expect) {
+], function(registerSuite, expect, getFunctionName) {
 
   registerSuite(function() {
-
-    function getFunctionName(func) {
-      var s = String(func).match(/function\s+([^\(]+)\(/);
-      return s && s[1] || null;
-    }
 
     return {
       name: 'prototype/element.prototype.matches',

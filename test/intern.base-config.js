@@ -67,6 +67,7 @@ define([
       'test/unit/is.valid-tabindex.test.js',
       'test/unit/is.visible.test.js',
       'test/unit/prototype.element.prototype.matches.test.js',
+      'test/unit/prototype.svgelement.prototype.focus.test.js',
       'test/unit/query.first-tabbable.test.js',
       'test/unit/query.focusable.test.js',
       'test/unit/query.tabbable.test.js',
