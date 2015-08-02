@@ -143,6 +143,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/style/focus-source.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-source.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-source.test.js)
 
 
 ---

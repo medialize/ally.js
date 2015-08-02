@@ -7,7 +7,7 @@ define([
     name: 'functional-tutorial',
     firstTest: function() {
       return this.remote
-        .get(require.toUrl('test/helper/tutorial.html'))
+        .get(require.toUrl('test/pages/tutorial.html'))
         .setFindTimeout(5000)
 
         // shifting focus via TAB does not seem possible

@@ -93,6 +93,11 @@ function lockFocusSource(source) {
 function disengage() {
   // clear dom state
   handleFocusEvent({type: 'blur'});
+  current = lock = next = null;
+  Object.keys(used).forEach(function(key) {
+    document.documentElement.classList.remove('focus-source-' + key);
+    used[key] = false;
+  });
   // kill interaction type identification listener
   interactionTypeHandler.disengage();
   // kill shadow-focus event dispatcher
@@ -100,6 +105,7 @@ function disengage() {
   document.removeEventListener('shadow-focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('focus', handleFocusEvent, true);
   document.documentElement.removeEventListener('blur', handleFocusEvent, true);
+  document.documentElement.removeAttribute('data-focus-source');
 }
 
 function engage() {

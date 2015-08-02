@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Children Browser Bug</title>
+  <style>
+    .flex {
+      display: -ms-flexbox;
+      display: flex;
+      width: 300px;
+    }
+
+    .flex > span {
+      display: block;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="parent-fail" tabindex="-1" class="flex">
+    <span id="target-fail">one</span>
+    <span>two</span>
+  </div>
+
+  <div id="parent-fixed" tabindex="-1" class="flex">
+    <span id="target-fixed">one</span>
+    <span>two</span>
+  </div>
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+      }
+    });
+
+    require(['ally/fix/pointer-focus-children'], function(fixPointerFocusChildren) {
+      fixPointerFocusChildren({
+        context: '#parent-fixed',
+      });
+    });
+  </script>
+</body>
+</html>
