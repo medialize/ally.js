@@ -9,6 +9,18 @@ define([
       return this.remote
         .get(require.toUrl('test/helper/tutorial.html'))
         .setFindTimeout(5000)
+
+        // shifting focus via TAB does not seem possible
+        // https://code.google.com/p/chromedriver/issues/detail?id=762
+        // .pressKeys([ '\u0009' ]) // Tab - key: 9
+        // .sleep(100000)
+
+        // // http://theintern.github.io/leadfoot/Command.html#getActiveElement
+        // .getActiveElement().getProperty('id')
+        // .then(function(activeElementId) {
+        //   expect(activeElementId).to.equal('nameField');
+        // })
+
         .findById('nameField')
           .click()
           .type('Elaine')

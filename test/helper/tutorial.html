@@ -7,8 +7,8 @@
   <body>
     <p id="greeting">Please enter your name</p>
     <form id="loginForm">
-      <input id="nameField" type="text" placeholder="Your name">
-      <input type="submit" value="Submit">
+      <input id="nameField" type="text" placeholder="Your name" autofocus>
+      <input type="submit" value="Submit" id="submitField">
     </form>
 
     <script>
@@ -21,6 +21,19 @@
         greeting.textContent = 'Hello, ' + nameField.value + '!';
         nameField.value = '';
       }, false);
+
+      document.addEventListener('focus', function(event) {
+        var x = document.createElement('p');
+        x.textContent = event.target.id || event.target.nodeName;
+        document.body.appendChild(x);
+      }, true);
+
+      document.addEventListener('keydown', function(event) {
+        var x = document.createElement('p');
+        x.textContent = 'key: ' + event.keyCode;
+        document.body.appendChild(x);
+      }, true);
+
     </script>
   </body>
 </html>
