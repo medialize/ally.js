@@ -54,6 +54,9 @@ define([
     suites: [
       'test/unit/event.active-element.test.js',
       'test/unit/event.shadow-focus.test.js',
+      'test/unit/fix.pointer-focus-children.test.js',
+      'test/unit/fix.pointer-focus-input.test.js',
+      'test/unit/fix.pointer-focus-parent.test.js',
       'test/unit/get.active-elements.test.js',
       'test/unit/get.focus-target.test.js',
       'test/unit/get.parents.test.js',
