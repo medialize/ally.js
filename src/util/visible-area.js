@@ -134,5 +134,6 @@ export default function(element) {
   // scrollable parents are aligned properly
   var area = _element.width * _element.height;
   var maxArea = Math.min(area, _area.area);
-  return _visible.width * _visible.height / maxArea;
+  // Firefox may return sub-pixel bounding client rect
+  return Math.round(_visible.width) * Math.round(_visible.height) / maxArea;
 }

@@ -80,6 +80,7 @@ define([
       'test/unit/util.decorate-singleton.test.js',
       'test/unit/util.node-array.test.js',
       'test/unit/util.sort-elements-by-tabindex.test.js',
+      'test/unit/util.visible-area.test.js',
       'test/unit/when.focusable.test.js',
       'test/unit/when.visible.test.js',
     ],
