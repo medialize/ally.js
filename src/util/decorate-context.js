@@ -7,6 +7,10 @@
 import nodeArray from '../util/node-array';
 
 function destruct(/* {force: false} */) {
+  if (!this.context) {
+    return;
+  }
+
   this.context.forEach(this.disengage);
   this.context = null;
   this.engage = null;
