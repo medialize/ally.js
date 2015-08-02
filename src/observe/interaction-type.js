@@ -104,6 +104,7 @@ function getInteractionType() {
 }
 
 function disengage() {
+  _activePointers = _activeKeys = 0;
   window.removeEventListener('blur', handleWindowBlurEvent, false);
   document.documentElement.removeEventListener('keydown', handleKeyStartEvent, true);
   document.documentElement.removeEventListener('keyup', handleKeyEndEvent, true);

@@ -66,6 +66,7 @@ define([
       'test/unit/is.valid-area.test.js',
       'test/unit/is.valid-tabindex.test.js',
       'test/unit/is.visible.test.js',
+      'test/unit/observe.interaction-type.test.js',
       'test/unit/prototype.element.prototype.matches.test.js',
       'test/unit/prototype.svgelement.prototype.focus.test.js',
       'test/unit/prototype.window.customevent.test.js',
