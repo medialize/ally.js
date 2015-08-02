@@ -26,9 +26,11 @@ define([
         fixture.target = document.getElementById('target');
 
         // move target out of view by making the parent scrollable
-        fixture.outer.setAttribute('style', 'box-sizing: border-box; width: 200px; height: 50px; overflow: hidden;');
-        fixture.inner.setAttribute('style', 'box-sizing: border-box; width: 1000px; height: 50px; padding-left: 200px;');
-        fixture.target.setAttribute('style', 'box-sizing: border-box; width: 200px; height: 50px;');
+        // #outer must be 1px larger than #target for area to reach 1 in Firefox
+        var reset = 'box-sizing: border-box; margin:0; padding:0; border:0;';
+        fixture.outer.setAttribute('style', reset + ' width: 201px; height: 50px; overflow: hidden;');
+        fixture.inner.setAttribute('style', reset + ' width: 1000px; height: 50px; padding-left: 200px;');
+        fixture.target.setAttribute('style', reset + ' width: 200px; height: 50px;');
         fixture.outer.scrollLeft = 0;
       },
       afterEach: function() {
