@@ -58,6 +58,7 @@ define([
       'test/unit/fix.pointer-focus-input.test.js',
       'test/unit/fix.pointer-focus-parent.test.js',
       'test/unit/focus.disable.test.js',
+      'test/unit/focus.trap.test.js',
       'test/unit/get.active-elements.test.js',
       'test/unit/get.focus-target.test.js',
       'test/unit/get.parents.test.js',
