@@ -160,7 +160,10 @@ class InertSubtree {
 
   handleMutation(mutation) {
     if (mutation.type === 'childList') {
-      const addedNodes = nodeArray(mutation.addedNodes).filter(this.filterContext);
+      const addedNodes = nodeArray(mutation.addedNodes)
+        .filter(node => node.nodeType === Node.ELEMENT_NODE)
+        .filter(this.filterContext);
+
       this.renderInert(addedNodes);
     } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
       makeElementInert(mutation.target);
