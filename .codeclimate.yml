@@ -1,0 +1,15 @@
+languages:
+  Ruby: false
+  JavaScript: true
+  PHP: false
+  Python: false
+exclude_paths:
+- bower_components
+- node_modules
+- dist
+- docs
+- examples
+- metalsmith
+- reports
+- scripts
+- tests
