@@ -4,6 +4,7 @@ node_js:
 - '0.12'
 - 'iojs'
 script:
+- mkdir reports
 - npm run build-amd
 - npm run test-ci
 after_script:
