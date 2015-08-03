@@ -49,6 +49,7 @@
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "cheerio": "^0.19.0",
+    "codeclimate-test-reporter": "^0.1.0",
     "dalek-driver-chrome": "git://github.com/dalekjs/dalek-driver-chrome.git#0410d81",
     "eslint": "^0.24.0",
     "exorcist": "^0.4.0",

@@ -6,3 +6,5 @@ node_js:
 script:
 - npm run build-amd
 - npm run test-ci
+after_script:
+- node_modules/.bin/codeclimate-test-reporter < reports/lcov.info

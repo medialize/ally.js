@@ -48,6 +48,20 @@ define([
           branches: [ 50, 80 ],
         },
       },
+      {
+        id: 'Lcov',
+        filename: 'reports/lcov.info',
+        watermarks: {
+          statements: [ 50, 80 ],
+          lines: [ 50, 80 ],
+          functions: [ 50, 80 ],
+          branches: [ 50, 80 ],
+        },
+      },
+      {
+        id: 'JUnit',
+        filename: 'reports/junit.xml',
+      },
     ],
 
     // Non-functional test suite(s) to run in each browser
