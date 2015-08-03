@@ -2,9 +2,6 @@ language: node_js
 sudo: false
 node_js:
 - '0.12'
-script:
-- mkdir reports
-- npm run build-amd
-- npm run test-ci
+script: mkdir reports && npm run build-amd && npm run test-ci && echo "all done"
 after_script:
 - node_modules/.bin/codeclimate-test-reporter < reports/lcov.info
