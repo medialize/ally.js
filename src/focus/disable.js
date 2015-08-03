@@ -18,11 +18,6 @@
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
 
-let inertOptions = {
-  context: null,
-  filter: null,
-};
-
 function disabledFocus() {
   /*eslint-disable no-console */
   console.warn('trying to focus inert element', this);
@@ -75,46 +70,6 @@ function undoElementInert(element) {
   }
 }
 
-function filterElements(element) {
-  if (element === document.body && !element.hasAttribute('tabindex')) {
-    // ignore the body (default focus element) unless it was made focusable
-    return false;
-  }
-
-  // ignore elements within the exempted sub-trees
-  return !inertOptions.filter.some(function(_except) {
-    // Node.compareDocumentPosition is available since IE9
-    return element === _except || _except.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-  });
-}
-
-function filterContext(element) {
-  // ignore elements that are not within the context sub-trees
-  return inertOptions.context.some(function(_context) {
-    // Node.compareDocumentPosition is available since IE9
-    return element === _context || _context.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-  });
-}
-
-function renderInert(elements) {
-  elements.filter(filterElements).forEach(makeElementInert);
-}
-
-// http://caniuse.com/#search=mutation
-// https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-// not supporting IE10 via Mutation Events, because they're too expensive
-// https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events
-const observer = window.MutationObserver && new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.type === 'childList') {
-      const addedNodes = nodeArray(mutation.addedNodes).filter(filterContext);
-      renderInert(addedNodes);
-    } else if (mutation.type === 'attribute' && !filterElements(mutation.target) && filterContext(mutation.target)) {
-      makeElementInert(mutation.target);
-    }
-  });
-});
-
 const observerConfig = {
   attributes: true,
   childList: true,
@@ -122,31 +77,98 @@ const observerConfig = {
   attributeFilter: ['tabindex'],
 };
 
-function disengage() {
-  inertOptions.filter = null;
-  inertOptions.context = null;
-  observer && observer.disconnect();
-  nodeArray('[data-inert-tabindex]').forEach(undoElementInert);
-}
+class InertSubtree {
+  constructor({context, filter} = {}) {
+    this._context = nodeArray(context || document.documentElement);
+    this._filter = nodeArray(filter);
 
-export default function(options = {context: document, filter: null}) {
-  if (!inertOptions.context) {
-    disengage();
+    this.disengage = this.disengage.bind(this);
+    this.handleMutations = this.handleMutations.bind(this);
+    this.handleMutation = this.handleMutation.bind(this);
+    this.renderInert = this.renderInert.bind(this);
+    this.filterContext = this.filterContext.bind(this);
+    this.filterElements = this.filterElements.bind(this);
+
+    const focusable = this._context
+      // find all focusable elements within the given contexts
+      .map(element => queryFocusable({context: element}))
+      // flatten nested arrays
+      .reduce((previous, current) => previous.concat(current), []);
+
+    this.renderInert(focusable);
+    this.startObserver();
   }
 
-  inertOptions.context = nodeArray(options.context);
-  inertOptions.filter = nodeArray(options.filter);
-  // find all focusable elements within the given contexts
-  let focusable = inertOptions.context
-    .map(element => queryFocusable({context: element}))
-    .reduce((previous, current) => previous.concat(current), []);
+  disengage() {
+    if (!this._context) {
+      return;
+    }
 
-  renderInert(focusable);
-  observer && observer.observe(
-    // we don't need to observe the entire document unless there are multiple contexts in play
-    inertOptions.context.length === 1 ? inertOptions.context[0] : document.documentElement,
-    observerConfig
-  );
+    this._context.forEach(function(element) {
+      [].forEach.call(element.querySelectorAll('[data-inert-tabindex]'), undoElementInert);
+    });
 
-  return { disengage };
+    this._filter = null;
+    this._context = null;
+    this._observer && this._observer.disconnect();
+  }
+
+  renderInert(elements) {
+    elements.filter(this.filterElements).forEach(makeElementInert);
+  }
+
+  filterContext(element) {
+    // ignore elements that are not within the context sub-trees
+    return this._context.some(function(_context) {
+      // Node.compareDocumentPosition is available since IE9
+      return element === _context || _context.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+    });
+  }
+
+  filterElements(element) {
+    if (element === document.body && !element.hasAttribute('tabindex')) {
+      // ignore the body (default focus element) unless it was made focusable
+      return false;
+    }
+
+    // ignore elements within the exempted sub-trees
+    return !this._filter.some(function(_except) {
+      // Node.compareDocumentPosition is available since IE9
+      return element === _except || _except.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+    });
+  }
+
+  startObserver() {
+    if (!window.MutationObserver) {
+      // not supporting IE10 via Mutation Events, because they're too expensive
+      // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events
+      return;
+    }
+    // http://caniuse.com/#search=mutation
+    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+    this._observer = new MutationObserver(this.handleMutations);
+    this._observer.observe(
+      // we don't need to observe the entire document unless there are multiple contexts in play
+      this._context.length === 1 ? this._context[0] : document.documentElement,
+      observerConfig
+    );
+  }
+
+  handleMutations(mutations) {
+    mutations.forEach(this.handleMutation);
+  }
+
+  handleMutation(mutation) {
+    if (mutation.type === 'childList') {
+      const addedNodes = nodeArray(mutation.addedNodes).filter(this.filterContext);
+      this.renderInert(addedNodes);
+    } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
+      makeElementInert(mutation.target);
+    }
+  }
+}
+
+export default function({context, filter} = {}) {
+  var service = new InertSubtree({context, filter});
+  return { disengage: service.disengage };
 }
