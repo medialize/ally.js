@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "node test/run-local.js",
-    "test-ci": "SAUCE_USERNAME=$ALLY_SAUCE_USERNAME; SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY; intern-runner config=test/sauce",
+    "test-ci": "intern-runner config=test/sauce",
     "clean": "rm -rf dist/*",
     "build": "npm run build-umd && npm run build-umd-min && npm run build-common && npm run build-amd && npm run build-docs",
     "build-umd": "browserify src/ally.js --debug --standalone ally --transform babelify | exorcist dist/ally.js.map > dist/ally.js",

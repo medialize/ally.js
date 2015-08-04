@@ -20,7 +20,8 @@ define([
     // Note that the `build` capability will be filled in with the current commit ID from the Travis CI environment
     // automatically
     capabilities: {
-      'selenium-version': '2.41.0',
+      // Firefox Dev on SauceLabs does not like the version
+      // 'selenium-version': '2.41.0',
     },
 
     // Configuration options for the module loader; any AMD configuration options supported by the specified AMD loader
@@ -106,9 +107,9 @@ define([
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed
-    functionalSuites: [
-      'test/functional/fix.pointer-focus-children.test.js',
-    ],
+    // functionalSuites: [
+    //   'test/functional/fix.pointer-focus-children.test.js',
+    // ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
     excludeInstrumentation: /^(?:tests|test|examples|node_modules)\//,
