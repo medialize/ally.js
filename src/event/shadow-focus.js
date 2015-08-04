@@ -14,7 +14,7 @@
 */
 
 import getActiveElements from '../get/active-elements';
-import decorateSingleton from '../util/decorate-singleton';
+import decorateService from '../util/decorate-service';
 
 let engage;
 let disengage;
@@ -90,4 +90,4 @@ if (!document.body.createShadowRoot) {
   };
 }
 
-export default decorateSingleton({ engage, disengage });
+export default decorateService({ engage, disengage });

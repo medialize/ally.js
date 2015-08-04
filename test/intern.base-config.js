@@ -98,7 +98,7 @@ define([
       'test/unit/style.focus-source.test.js',
       'test/unit/util.context-to-element.test.js',
       'test/unit/util.decorate-context.test.js',
-      'test/unit/util.decorate-singleton.test.js',
+      'test/unit/util.decorate-service.test.js',
       'test/unit/util.node-array.test.js',
       'test/unit/util.sort-elements-by-tabindex.test.js',
       'test/unit/util.visible-area.test.js',

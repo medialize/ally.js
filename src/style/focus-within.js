@@ -12,7 +12,7 @@ import shadowFocus from '../event/shadow-focus';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
-import decorateSingleton from '../util/decorate-singleton';
+import decorateService from '../util/decorate-service';
 
 // NOTE: require classList polyfill may be necessary (not available on SVGElement)
 // http://caniuse.com/#feat=classlist available since IE10
@@ -109,4 +109,4 @@ function engage() {
   applyFocusWithinClass();
 }
 
-export default decorateSingleton({ engage, disengage });
+export default decorateService({ engage, disengage });

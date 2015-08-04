@@ -24,7 +24,7 @@
 
 import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeObserver from '../observe/interaction-type';
-import decorateSingleton from '../util/decorate-singleton';
+import decorateService from '../util/decorate-service';
 
 // interface to read interaction-type-listener state
 let interactionTypeHandler;
@@ -129,4 +129,4 @@ function engage() {
   };
 }
 
-export default decorateSingleton({ engage, disengage });
+export default decorateService({ engage, disengage });

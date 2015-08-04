@@ -19,7 +19,7 @@
 */
 
 import '../prototype/window.customevent';
-import decorateSingleton from '../util/decorate-singleton';
+import decorateService from '../util/decorate-service';
 
 let previousActiveElement = document.activeElement;
 let raf;
@@ -57,4 +57,4 @@ function disengage() {
   raf = false;
 }
 
-export default decorateSingleton({ engage, disengage });
+export default decorateService({ engage, disengage });

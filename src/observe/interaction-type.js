@@ -9,7 +9,7 @@
     listener.get() === {pointer: Boolean, key: Boolean}
 */
 
-import decorateSingleton from '../util/decorate-singleton';
+import decorateService from '../util/decorate-service';
 
 // counters to track primary input
 let _activePointers = 0;
@@ -134,4 +134,4 @@ function engage() {
   };
 }
 
-export default decorateSingleton({ engage, disengage });
+export default decorateService({ engage, disengage });

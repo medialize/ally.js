@@ -1,16 +1,16 @@
 define([
   'intern!object',
   'intern/chai!expect',
-  'ally/util/decorate-singleton',
-], function(registerSuite, expect, decorateSingleton) {
+  'ally/util/decorate-service',
+], function(registerSuite, expect, decorateService) {
 
   registerSuite(function() {
     return {
-      name: 'util/decorate-singleton',
+      name: 'util/decorate-service',
 
       lifecycle: function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
           },
@@ -30,7 +30,7 @@ define([
       },
       'engage only': function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
           },
@@ -48,7 +48,7 @@ define([
       },
       'disengage only': function() {
         var engaged = true;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           disengage: function() {
             engaged = false;
           },
@@ -66,7 +66,7 @@ define([
       },
       'handle identity': function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
           },
@@ -88,7 +88,7 @@ define([
       },
       'double disengage': function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
           },
@@ -108,7 +108,7 @@ define([
       },
       'force disengage': function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
           },
@@ -126,7 +126,7 @@ define([
       },
       'custom handle': function() {
         var engaged = false;
-        var decorated = decorateSingleton({
+        var decorated = decorateService({
           engage: function() {
             engaged = true;
             return {

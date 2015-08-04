@@ -19,9 +19,9 @@ Internally ally.js prefers to use Arrays of Nodes, but when accepting input from
 `util/context-to-element.js` is an internal convenience function to hide grabbing the first element of `util/node-array` or throwing an `TypeError` if nothing was found. It is unclear if this "convenience" may cause developers to complain about indirected stack traces.
 
 
-### Decorate Singleton
+### Decorate Service
 
-`util/decorate-singleton.js` is a decorator wrapping a component's setup (`engage`) and teardown (`disengage`) functions in a way that exposes the component with the following trivialized signature:
+`util/decorate-service.js` is a decorator wrapping a component's setup (`engage`) and teardown (`disengage`) functions in a way that exposes the component with the following trivialized signature:
 
 ```js
 function engage() {
@@ -34,7 +34,7 @@ function engage() {
 }
 ```
 
-The "singleton" aspect here is that a components `engage()` function can be invoked from anyone anywhere anytime without having to track if the component has already been initialized before. This is made possible by a simple reference counter. If three components `engage()` but only two `disengage()`, the `component.disengage()` is never executed. Only after the last reference has been `disengage()`d, the component is told to teardown. It is possible to force teardown by executing `disengage({force: true})`.
+The "service" aspect here is that a components `engage()` function can be invoked from anyone anywhere anytime without having to track if the component has already been initialized before. This is made possible by a simple reference counter. If three components `engage()` but only two `disengage()`, the `component.disengage()` is never executed. Only after the last reference has been `disengage()`d, the component is told to teardown. It is possible to force teardown by executing `disengage({force: true})`.
 
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object, returned to the caller and cached for subsequent calls to the decorated `engage()` function.
 
