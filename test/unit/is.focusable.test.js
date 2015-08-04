@@ -2,8 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
+  'ally/supports/focus-invalid-tabindex',
   'ally/is/focusable',
-], function(registerSuite, expect, focusableFixture, isFocusable) {
+], function(registerSuite, expect, focusableFixture, canFocusInvalidTabindex, isFocusable) {
 
   registerSuite(function() {
     var fixture;
@@ -37,7 +38,7 @@ define([
       },
       'tabindex="bad"': function() {
         var element = document.getElementById('tabindex-bad');
-        expect(isFocusable(element)).to.equal(false);
+        expect(isFocusable(element)).to.equal(canFocusInvalidTabindex);
       },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');

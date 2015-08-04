@@ -3,8 +3,9 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/elements-string',
+  'ally/supports/focus-invalid-tabindex',
   'ally/query/focusable',
-], function(registerSuite, expect, focusableFixture, elementsString, queryFocusable) {
+], function(registerSuite, expect, focusableFixture, elementsString, canFocusInvalidTabindex, queryFocusable) {
 
   registerSuite(function() {
     var fixture;
@@ -23,6 +24,10 @@ define([
       document: function() {
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1, #link, #link-tabindex--1, #input, #input-tabindex--1';
         var result = queryFocusable();
+
+        if (canFocusInvalidTabindex) {
+          expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1, #tabindex-bad, #link, #link-tabindex--1, #input, #input-tabindex--1';
+        }
 
         expect(elementsString(result)).to.equal(expected);
       },

@@ -45,7 +45,7 @@ export default function(element) {
   }
 
   // NOTE: elements marked as inert are not focusable,
-  // but I have no idea what would make an element inert
+  // but that property is not exposed to the DOM
   // http://www.w3.org/TR/html5/editing.html#inert
 
   // for invalid tabindex values, simply ignore the tabindex,
@@ -56,7 +56,8 @@ export default function(element) {
   //   and if so, what its relative order should be.
   //   - http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   if (!isValidTabindex(element)) {
-    focusable = focusable.replace('[tabindex],', '');
+    // remove [tabindex], /deep/ [tabindex], >>> [tabindex]
+    focusable = focusable.replace(/,([^,]*)\[tabindex\],/g, ',');
   }
 
   return element.matches(focusable);

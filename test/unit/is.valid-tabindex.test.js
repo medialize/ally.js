@@ -18,7 +18,7 @@ define([
           '<div id="tabindex--1" tabindex="-1"></div>',
           '<div id="tabindex-0" tabindex="0"></div>',
           '<div id="tabindex-1" tabindex="1"></div>',
-          '<div id="tabindex-foobar" tabindex="foobar"></div>',
+          '<div id="tabindex-bad" tabindex="bad"></div>',
           '<div id="tabindex-empty" tabindex=""></div>',
         ].join(''));
       },
@@ -44,7 +44,7 @@ define([
         expect(isValidTabindex(element)).to.equal(true);
       },
       'tabindex "foobar"': function() {
-        var element = document.getElementById('tabindex-foobar');
+        var element = document.getElementById('tabindex-bad');
         expect(isValidTabindex(element)).to.equal(canFocusInvalidTabindex);
       },
       'tabindex ""': function() {
