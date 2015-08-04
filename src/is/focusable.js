@@ -18,8 +18,12 @@ import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 
 export default function(element) {
-  var focusable = selector;
-  var nodeName = element.nodeName.toLowerCase();
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+    throw new TypeError('is/focusable requires an argument of type Element');
+  }
+
+  let focusable = selector;
+  const nodeName = element.nodeName.toLowerCase();
 
   // input[type="hidden"] cannot be focused
   if (nodeName === 'input' && element.type === 'hidden') {

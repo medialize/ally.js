@@ -29,6 +29,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isDisabled(null);
+        }).to.throw(TypeError, 'is/disabled requires an argument of type Element');
+      },
       'non-input': function() {
         var element = document.getElementById('non-input');
         var res = isDisabled(element);

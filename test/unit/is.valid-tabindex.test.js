@@ -27,6 +27,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isValidTabindex(null);
+        }).to.throw(TypeError, 'is/valid-tabindex requires an argument of type Element');
+      },
       'non-tabindex': function() {
         var element = document.getElementById('non-tabindex');
         expect(isValidTabindex(element)).to.equal(true);

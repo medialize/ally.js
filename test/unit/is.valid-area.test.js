@@ -49,6 +49,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isValidArea(null);
+        }).to.throw(TypeError, 'is/valid-area requires an argument of type Element');
+      },
       'div element': function() {
         var element = document.getElementById('non-area');
         expect(isValidArea(element)).to.equal(true);

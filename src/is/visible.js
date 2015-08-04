@@ -7,7 +7,7 @@ import getParents from '../get/parents';
 
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
-var notRenderedElementsPattern = /^(area)$/;
+const notRenderedElementsPattern = /^(area)$/;
 
 function computedStyle(element, property) {
   return window.getComputedStyle(element, null)
@@ -25,8 +25,8 @@ function notVisible(_path) {
   // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L109-L114
   // NOTE: a nested element can reverse visibility:hidden|collapse by explicitly setting visibility:visible
   // NOTE: visibility can be ["", "visible", "hidden", "collapse"]
-  var hidden = _path.findIndex(function(element) {
-    var visibility = computedStyle(element, 'visibility');
+  const hidden = _path.findIndex(function(element) {
+    const visibility = computedStyle(element, 'visibility');
     return visibility === 'hidden' || visibility === 'collapse';
   });
 
@@ -35,7 +35,7 @@ function notVisible(_path) {
     return false;
   }
 
-  var visible = _path.findIndex(function(element) {
+  const visible = _path.findIndex(function(element) {
     return computedStyle(element, 'visibility') === 'visible';
   });
 
@@ -54,11 +54,15 @@ function notVisible(_path) {
 }
 
 export default function(element) {
-  var nodeName = element.nodeName.toLowerCase();
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+    throw new TypeError('is/visible requires an argument of type Element');
+  }
+
+  const nodeName = element.nodeName.toLowerCase();
   if (notRenderedElementsPattern.test(nodeName)) {
     return true;
   }
 
-  var _path = getParents({context: element});
+  const _path = getParents({context: element});
   return !Boolean(notDisplayed(_path) || notVisible(_path));
 }

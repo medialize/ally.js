@@ -19,6 +19,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isShadowed(null);
+        }).to.throw(TypeError, 'is/shadowed requires an argument of type Element');
+      },
       'non shadowed': function() {
         expect(isShadowed(fixture.input.outer)).to.equal(false);
       },

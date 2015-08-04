@@ -59,6 +59,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isVisible(null);
+        }).to.throw(TypeError, 'is/visible requires an argument of type Element');
+      },
       div: function() {
         var element = document.getElementById('visible-div');
         expect(isVisible(element)).to.equal(true);

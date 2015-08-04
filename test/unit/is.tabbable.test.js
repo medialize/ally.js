@@ -20,6 +20,11 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          isTabbable(null);
+        }).to.throw(TypeError, 'is/tabbable requires an argument of type Element');
+      },
       'inert div': function() {
         var element = document.getElementById('inert-div');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);

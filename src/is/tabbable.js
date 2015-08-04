@@ -5,12 +5,16 @@ import isValidTabindex from './valid-tabindex';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
-var focusableElementsPattern = /^(fieldset|table|td|body)$/;
+const focusableElementsPattern = /^(fieldset|table|td|body)$/;
 
 export default function(element) {
-  var nodeName = element.nodeName.toLowerCase();
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+    throw new TypeError('is/tabbable requires an argument of type Element');
+  }
+
+  const nodeName = element.nodeName.toLowerCase();
   // null: not set, true: tabbable, false: focusable
-  var tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
+  const tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
     ? parseInt(element.getAttribute('tabindex'), 10) >= 0
     : null;
 

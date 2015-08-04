@@ -10,12 +10,16 @@ import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
 export default function(element) {
-  var nodeName = element.nodeName.toLowerCase();
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+    throw new TypeError('is/valid-area requires an argument of type Element');
+  }
+
+  const nodeName = element.nodeName.toLowerCase();
   if (nodeName !== 'area') {
     return true;
   }
 
-  var map = element.parentElement;
+  const map = element.parentElement;
 
   // an <area> matches the area[href] selector even if it is not applicable
   if (!map.name || !element.href || map.nodeName.toLowerCase() !== 'map') {
@@ -30,7 +34,7 @@ export default function(element) {
   //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
   //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
   // the image must be valid and loaded for the map to take effect
-  var img = document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]');
+  const img = document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]');
   if (!img || !isVisible(img) || img.offsetWidth <= 0 || img.offsetHeight <= 0) {
     return false;
   }
@@ -42,8 +46,8 @@ export default function(element) {
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-  var childOfInteractive = getParents({context: img}).slice(1).some(function(_element) {
-    var name = _element.nodeName.toLowerCase();
+  const childOfInteractive = getParents({context: img}).slice(1).some(function(_element) {
+    const name = _element.nodeName.toLowerCase();
     return name === 'button' || name === 'a';
   });
 
