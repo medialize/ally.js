@@ -5,14 +5,14 @@ define(function defineDemoFocusableChrome(require) {
 
   return {
     "platform": {
-      "description": "Chrome 44.0.2403.107 on OS X 10.10.4",
+      "description": "Chrome 44.0.2403.125 on OS X 10.10.4",
       "layout": "Blink",
       "manufacturer": null,
       "name": "Chrome",
       "prerelease": null,
       "product": null,
-      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36",
-      "version": "44.0.2403.107",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36",
+      "version": "44.0.2403.125",
       "os": {
         "architecture": 32,
         "family": "OS X",
