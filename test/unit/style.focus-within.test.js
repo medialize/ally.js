@@ -56,7 +56,7 @@ define([
 
         fixture.input.after.focus();
         expect(document.activeElement).to.equal(fixture.input.after);
-        expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, div, #after-input', 'after sequence');
+        expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, #after-wrapper, #after-input', 'after sequence');
       },
       'follow focus into Shadow DOM': function() {
         if (!cssShadowPiercingDeepCombinator) {
@@ -99,7 +99,7 @@ define([
           // make sure classes are removed upon leaving the ShadowRoot
           fixture.input.after.focus();
           expect(focusWithinElements())
-            .to.equal('html, body, #intern-dom-fixture, div, #after-input', 'after sequence');
+            .to.equal('html, body, #intern-dom-fixture, #after-wrapper, #after-input', 'after sequence');
           expect(focusWithinElements(fixture.shadow.first.shadowRoot))
             .to.equal('', 'after sequence in first host');
           expect(focusWithinElements(fixture.shadow.second.shadowRoot))
