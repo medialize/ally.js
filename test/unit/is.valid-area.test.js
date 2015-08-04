@@ -58,10 +58,14 @@ define([
         expect(isValidArea(element)).to.equal(false);
       },
       'area in connected map': function() {
-        var element = document.getElementById('image-map-area');
-        expect(isValidArea(element)).to.equal(true, 'valid area');
-        element = document.getElementById('image-map-area-nolink');
-        expect(isValidArea(element)).to.equal(false, 'no href');
+        // Firefox may not immediately show img.complete for DataURIs
+        var deferred = this.async(500);
+        setTimeout(deferred.callback(function() {
+          var element = document.getElementById('image-map-area');
+          expect(isValidArea(element)).to.equal(true, 'valid area');
+          element = document.getElementById('image-map-area-nolink');
+          expect(isValidArea(element)).to.equal(false, 'no href');
+        }), 200);
       },
       'area in map for img in link': function() {
         var element = document.getElementById('interactive-map-area');
