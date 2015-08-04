@@ -9,11 +9,11 @@ import nodeArray from '../util/node-array';
 
 export default function({context, callback, area} = {}) {
   if (typeof callback !== 'function') {
-    throw new TypeError('when/visible requires options.callback to be a function');
+    throw new TypeError('when/visible-area requires options.callback to be a function');
   }
 
   if (context === undefined) {
-    throw new TypeError('when/visible requires valid options.context');
+    throw new TypeError('when/visible-area requires valid options.context');
   }
 
   if (typeof area !== 'number') {
@@ -22,7 +22,7 @@ export default function({context, callback, area} = {}) {
 
   let element = nodeArray(context)[0];
   if (!element) {
-    throw new TypeError('when/visible requires valid options.context');
+    throw new TypeError('when/visible-area requires valid options.context');
   }
 
   if (isVisible(element) && visibleArea(element) >= area && callback(element) !== false) {

@@ -2,15 +2,15 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
-  'ally/when/visible',
-], function(registerSuite, expect, customFixture, whenVisible) {
+  'ally/when/visible-area',
+], function(registerSuite, expect, customFixture, whenVisibleArea) {
 
   registerSuite(function() {
     var fixture;
     var handle;
 
     return {
-      name: 'when/visible',
+      name: 'when/visible-area',
 
       beforeEach: function() {
         fixture = customFixture([
@@ -41,26 +41,26 @@ define([
 
       'invalid invocation': function() {
         expect(function() {
-          handle = whenVisible();
-        }).to.throw(TypeError, 'when/visible requires options.callback to be a function');
+          handle = whenVisibleArea();
+        }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
 
         expect(function() {
-          handle = whenVisible({
+          handle = whenVisibleArea({
             context: document.body,
           });
-        }).to.throw(TypeError, 'when/visible requires options.callback to be a function');
+        }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
 
         expect(function() {
-          handle = whenVisible({
+          handle = whenVisibleArea({
             callback: function() {},
           });
-        }).to.throw(TypeError, 'when/visible requires valid options.context');
+        }).to.throw(TypeError, 'when/visible-area requires valid options.context');
       },
       'visible initially': function() {
         var deferred = this.async(500);
         // scroll to 100% visibility
         fixture.outer.scrollLeft = 200;
-        handle = whenVisible({
+        handle = whenVisibleArea({
           context: '#target',
           callback: deferred.callback(function() {
             expect(fixture.outer.scrollLeft).to.equal(200);
@@ -69,7 +69,7 @@ define([
       },
       'scroll parent, area: 1': function() {
         var deferred = this.async(500);
-        handle = whenVisible({
+        handle = whenVisibleArea({
           context: '#target',
           callback: deferred.callback(function() {
             expect(fixture.outer.scrollLeft).to.equal(200);
@@ -86,7 +86,7 @@ define([
       },
       'scroll parent, area: 0.5': function() {
         var deferred = this.async(500);
-        handle = whenVisible({
+        handle = whenVisibleArea({
           context: '#target',
           area: 0.5,
           callback: deferred.callback(function() {
@@ -105,7 +105,7 @@ define([
       'repeat callback': function() {
         var deferred = this.async(500);
         var counter = 3;
-        handle = whenVisible({
+        handle = whenVisibleArea({
           context: '#target',
           callback: deferred.rejectOnError(function() {
             expect(fixture.outer.scrollLeft).to.equal(200);
@@ -125,7 +125,7 @@ define([
       },
       'disengage observer': function() {
         var deferred = this.async(500);
-        handle = whenVisible({
+        handle = whenVisibleArea({
           context: '#target',
           callback: deferred.rejectOnError(function() {
             throw new Error('should have been aborted');

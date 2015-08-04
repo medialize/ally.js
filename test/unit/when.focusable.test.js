@@ -54,7 +54,7 @@ define([
           handle = whenFocusable({
             callback: function() {},
           });
-        }).to.throw(TypeError, 'when/visible requires valid options.context');
+        }).to.throw(TypeError, 'when/visible-area requires valid options.context');
       },
       'visible initially': function() {
         var deferred = this.async(500);

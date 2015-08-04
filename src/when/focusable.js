@@ -3,7 +3,7 @@
   trigger a callback once the context element is focusable and is fully visible in the viewport
 */
 
-import whenVisible from './visible';
+import whenVisibleArea from './visible-area';
 import isFocusable from '../is/focusable';
 
 export default function({context, callback, area} = {}) {
@@ -19,7 +19,7 @@ export default function({context, callback, area} = {}) {
     return callback(element);
   };
 
-  let handle = whenVisible({ context, callback: filterCallback, area });
+  let handle = whenVisibleArea({ context, callback: filterCallback, area });
   let disengage = function() {
     document.body.removeEventListener('focus', disengage, true);
     handle && handle.disengage();

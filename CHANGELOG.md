@@ -29,7 +29,7 @@
   * `dom/query-tabbable.js` to `query/tabbable.js`
   * `dom/query-tabsequence.js` to `query/tabsequence.js`
   * `dom/shadow-host-ancestors.js` to `get/shadow-host-parents.js`
-  * `dom/when-visible.js` to `when/visible.js`
+  * `dom/when-visible.js` to `when/visible-area.js`
   * `dom/shadow-host.js` to `get/shadow-host.js`
   * `dom/sort-tabindex.js` to `util/sort-elements-by-tabindex.js`
   * `dom/visible-quotient.js` to `util/visible-area.js`

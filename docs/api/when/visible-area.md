@@ -2,7 +2,7 @@
 layout: doc-api.html
 ---
 
-# ally.when.visible (`ally/when/visible`)
+# ally.when.visibleArea (`ally/when/visible-area`)
 
 Executes a callback once an element is visible in the viewport
 
@@ -29,7 +29,7 @@ TODO: figure out how to integrate demo
 <script src="path/to/ally.min.js"></script>
 <script>
   // wait until context element is visible in the viewport
-  var handle = ally.when.visible({
+  var handle = ally.when.visibleArea({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
     context: '#element-to-focus',
@@ -54,10 +54,10 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/when/visible'
-], function(whenVisible) {
+  'ally/when/visible-area'
+], function(whenVisibleArea) {
   // wait until context element is visible in the viewport
-  var handle = whenVisible({
+  var handle = whenVisibleArea({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
     context: '#element-to-focus',
@@ -88,9 +88,9 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/master/src/when/visible.js)
-* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/visible.md)
-* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/when.visible.test.js)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/when/visible-area.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/visible-area.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/when.visible-area.test.js)
 
 
 ---

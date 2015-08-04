@@ -60,7 +60,7 @@ Unlike any other ally modules, the `is/*` components do not take take `options.c
 Especially when dealing with transitional user interfaces we need to know when an element can be safely focused.
 
 * [`ally/when/focusable`](when/focusable.md) executes a callback once an element fulfills `ally/is/focusable` and is visible in the viewport
-* [`ally/when/visible`](when/visible.md) executes a callback once an element is visible in the viewport
+* [`ally/when/visible-area`](when/visible-area.md) executes a callback once an element is visible in the viewport
 
 
 ## `ally/map/*` Values

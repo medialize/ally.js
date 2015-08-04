@@ -103,7 +103,7 @@ define([
       'test/unit/util.sort-elements-by-tabindex.test.js',
       'test/unit/util.visible-area.test.js',
       'test/unit/when.focusable.test.js',
-      'test/unit/when.visible.test.js',
+      'test/unit/when.visible-area.test.js',
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed
