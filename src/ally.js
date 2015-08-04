@@ -25,6 +25,8 @@ import visible from './is/visible';
 import attribute from './map/attribute';
 import keycode from './map/keycode';
 
+import version from './version';
+
 export default {
   fix: {
     pointerFocusChildren,
@@ -63,4 +65,6 @@ export default {
     attribute,
     keycode,
   },
+
+  version,
 };
