@@ -105,7 +105,7 @@ define([
       },
       'zero dimension div': function() {
         var element = document.getElementById('zero-dimension-div');
-        expect(isVisible(element)).to.equal(false);
+        expect(isVisible(element)).to.equal(true);
       },
       'contenteditable attribute': function() {
         var element = document.getElementById('contenteditable-div');

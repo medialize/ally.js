@@ -8,9 +8,6 @@ import getParents from '../get/parents';
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
 var notRenderedElementsPattern = /^(area)$/;
-// <audio src="#unknown"> has no height in Firefox but is focusable
-// <object> may have no dimension but is still focusable
-var notDimensionBoundElementsPattern = /^(audio|object)$/;
 
 function computedStyle(element, property) {
   return window.getComputedStyle(element, null)
@@ -56,35 +53,6 @@ function notVisible(_path) {
   return false;
 }
 
-function noDimension(element) {
-  var nodeName = element.nodeName.toLowerCase();
-  if (notDimensionBoundElementsPattern.test(nodeName)) {
-    return false;
-  }
-
-  // an <a> in <svg> does not necessarily have intrinsic dimensions, but its focusable anyways
-  if (element.ownerSVGElement && nodeName === 'a') {
-    return false;
-  }
-
-  // [contenteditable]:empty has no height in Firefox
-  var emptyContenteditableFirefoxBug = element.hasAttribute('contenteditable') && element.childNodes.length === 0;
-  var _minHeight;
-  if (emptyContenteditableFirefoxBug) {
-    _minHeight = element.style.minHeight;
-    element.style.minHeight = '10px';
-  }
-
-  // https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js#L6-L15
-  var result = element.offsetWidth <= 0 || element.offsetHeight <= 0;
-
-  if (emptyContenteditableFirefoxBug) {
-    element.style.minHeight = _minHeight;
-  }
-
-  return result;
-}
-
 export default function(element) {
   var nodeName = element.nodeName.toLowerCase();
   if (notRenderedElementsPattern.test(nodeName)) {
@@ -92,5 +60,5 @@ export default function(element) {
   }
 
   var _path = getParents({context: element});
-  return !Boolean(notDisplayed(_path) || notVisible(_path) || noDimension(element));
+  return !Boolean(notDisplayed(_path) || notVisible(_path));
 }
