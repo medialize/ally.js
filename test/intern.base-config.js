@@ -91,6 +91,7 @@ define([
       'test/unit/prototype.svgelement.prototype.focus.test.js',
       'test/unit/prototype.window.customevent.test.js',
       'test/unit/query.first-tabbable.test.js',
+      'test/unit/query.focusable.strict.test.js',
       'test/unit/query.focusable.test.js',
       'test/unit/query.tabbable.test.js',
       'test/unit/query.tabsequence.test.js',
