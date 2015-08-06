@@ -2,7 +2,7 @@
 import captureBodyFocus from './capture-body';
 
 export default function handleTrapByFocusEvent({event, element, trappedSequence}) {
-  const unrelated = event.relatedTarget === null || event.relatedTarget === element.ownerDocument;
+  const unrelated = event.relatedTarget === null || event.relatedTarget === element.ownerDocument || event.relatedTarget === document.body;
 
   // if there is no related target, we're focusing <body>, which is ok,
   // but once <body> loses focus again, we need to retarget focus to context

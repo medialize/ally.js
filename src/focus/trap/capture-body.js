@@ -4,6 +4,10 @@ export default function({eventName, trappedSequence}) {
   let disengage;
 
   const handleFocusEvent = function(event) {
+    if (event.target === document.body) {
+      return;
+    }
+
     disengage();
 
     const sequence = trappedSequence();
