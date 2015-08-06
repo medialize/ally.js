@@ -14,6 +14,10 @@ import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
 import decorateService from '../util/decorate-service';
 
+// preferring focusin/out because they are synchronous in IE10+11
+const focusEventName = 'onfocusin' in document ? 'focusin' : 'focus';
+const blurEventName = 'onfocusin' in document ? 'focusout' : 'blur';
+
 // NOTE: require classList polyfill may be necessary (not available on SVGElement)
 // http://caniuse.com/#feat=classlist available since IE10
 // https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills#classlist
@@ -85,8 +89,8 @@ function handleShadowFocusEvent(event) {
 function disengage() {
   shadowHandle && shadowHandle.disengage();
   (window.clearImmediate || window.clearTimeout)(blurTimer);
-  document.removeEventListener('blur', handleDocumentBlurEvent, true);
-  document.removeEventListener('focus', handleDocumentFocusEvent, true);
+  document.removeEventListener(blurEventName, handleDocumentBlurEvent, true);
+  document.removeEventListener(focusEventName, handleDocumentFocusEvent, true);
   document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
 
   var selector = '.' + className;
@@ -103,8 +107,8 @@ function disengage() {
 
 function engage() {
   shadowHandle = shadowFocus();
-  document.addEventListener('blur', handleDocumentBlurEvent, true);
-  document.addEventListener('focus', handleDocumentFocusEvent, true);
+  document.addEventListener(blurEventName, handleDocumentBlurEvent, true);
+  document.addEventListener(focusEventName, handleDocumentFocusEvent, true);
   document.addEventListener('shadow-focus', handleShadowFocusEvent, true);
   applyFocusWithinClass();
 }
