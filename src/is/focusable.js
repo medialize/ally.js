@@ -35,7 +35,7 @@ export default function(element) {
     return false;
   }
 
-  if (!isValidArea(element)) {
+  if (nodeName === 'area' && !isValidArea(element)) {
     return false;
   }
 
@@ -59,7 +59,11 @@ export default function(element) {
   //   flag is set and, if so, whether the element can be reached using sequential focus navigation,
   //   and if so, what its relative order should be.
   //   - http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-  if (!isValidTabindex(element)) {
+  if (element.hasAttribute('tabindex')) {
+    if (isValidTabindex(element)) {
+      return true;
+    }
+
     // remove [tabindex], /deep/ [tabindex], >>> [tabindex]
     focusable = focusable.replace(/,([^,]*)\[tabindex\],/g, ',');
   }

@@ -34,7 +34,7 @@ define([
       },
       'non-tabindex': function() {
         var element = document.getElementById('non-tabindex');
-        expect(isValidTabindex(element)).to.equal(true);
+        expect(isValidTabindex(element)).to.equal(false);
       },
       'tabindex "-1"': function() {
         var element = document.getElementById('tabindex--1');

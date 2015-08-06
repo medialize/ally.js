@@ -16,7 +16,7 @@ export default function(element) {
 
   const nodeName = element.nodeName.toLowerCase();
   if (nodeName !== 'area') {
-    return true;
+    return false;
   }
 
   const map = element.parentElement;

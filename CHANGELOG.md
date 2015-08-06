@@ -5,6 +5,7 @@
 * moving dependencies from bower to npm
 * moving source from AMD to ES6 Module Syntax
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
+* adding unit tests - [issue #2](https://github.com/medialize/ally.js/issues/2)
 * adding `query/first-tabbable` (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
 * unifying API of all functions, see the [API docs](docs/api/)
 
@@ -12,7 +13,9 @@
 
 * `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
 * dropping `focus/first` in favor of `query/first-tabbable`
-* see the [API docs](docs/api/) for the new function signatures
+* `dom/is-valid-area` now returns `false` for elements that are not `<area>`
+* `dom/is-valid-tabindex` now returns `false` for elements without `tabindex` attribute
+* see the [API docs](docs/api/README.md) for the new function signatures
 * renaming files in `src`:
   * `dom/active-elements.js` to `get/active-elements.js`
   * `dom/focus-target.js` to `get/focus-target.js`

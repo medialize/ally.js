@@ -56,7 +56,7 @@ define([
       },
       'div element': function() {
         var element = document.getElementById('non-area');
-        expect(isValidArea(element)).to.equal(true);
+        expect(isValidArea(element)).to.equal(false);
       },
       'area in disconnected map': function() {
         var element = document.getElementById('disconnected-map-area');

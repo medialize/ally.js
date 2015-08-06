@@ -12,8 +12,12 @@ export default function(element) {
     throw new TypeError('is/valid-tabindex requires an argument of type Element');
   }
 
+  if (!element.hasAttribute('tabindex')) {
+    return false;
+  }
+
   // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1128054
-  if (!element.hasAttribute('tabindex') || allowsInvalidValue) {
+  if (allowsInvalidValue) {
     return true;
   }
   // an element matches the tabindex selector even if its value is invalid
