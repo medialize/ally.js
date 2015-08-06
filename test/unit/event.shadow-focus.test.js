@@ -29,7 +29,7 @@ define([
       },
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage();
+        handle && handle.disengage({ force: true });
         document.removeEventListener('shadow-focus', collectShadowFocusEvents, true);
         document.removeEventListener('focus', collectFocusEvents, true);
         fixture.remove();

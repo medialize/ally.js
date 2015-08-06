@@ -13,7 +13,7 @@ define([
 
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage();
+        handle && handle.disengage({force: true});
       },
 
       lifecycle: function() {
