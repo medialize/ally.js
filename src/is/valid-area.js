@@ -35,13 +35,13 @@ export default function(element) {
   //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
   // the image must be valid and loaded for the map to take effect
   const img = document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]');
-  if (!img || !isVisible(img) || img.offsetWidth <= 0 || img.offsetHeight <= 0) {
+  if (!img || !isVisible(img)) {
     return false;
   }
 
   // Firefox only allows fully loaded images to reference image maps
   // https://stereochro.me/ideas/detecting-broken-images-js
-  if (!canFocusBrokenImageMaps && (!img.complete || !img.naturalHeight)) {
+  if (!canFocusBrokenImageMaps && (!img.complete || !img.naturalHeight || img.offsetWidth <= 0 || img.offsetHeight <= 0)) {
     return false;
   }
 

@@ -78,7 +78,7 @@ define([
       },
       'area in map for broken img': function() {
         var element = document.getElementById('broken-map-area');
-        expect(isValidArea(element)).to.equal(false);
+        expect(isValidArea(element)).to.equal(canFocusBrokenImageMap);
       },
     };
   });
