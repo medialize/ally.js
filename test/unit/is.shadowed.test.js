@@ -28,9 +28,17 @@ define([
         expect(isShadowed(fixture.input.outer)).to.equal(false);
       },
       shadowed: function() {
+        if (!fixture.shadow.first) {
+          this.skip('Shadow DOM not supported');
+        }
+
         expect(isShadowed(fixture.input.first)).to.equal(true);
       },
       'nested shadowed': function() {
+        if (!fixture.shadow.first) {
+          this.skip('Shadow DOM not supported');
+        }
+
         expect(isShadowed(fixture.input.second)).to.equal(true);
       },
     };
