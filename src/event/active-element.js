@@ -18,7 +18,7 @@
     }, true);
 */
 
-import '../prototype/window.customevent';
+import CustomEvent from '../prototype/window.customevent';
 import decorateService from '../util/decorate-service';
 
 let previousActiveElement = document.activeElement;

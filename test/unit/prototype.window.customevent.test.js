@@ -3,7 +3,7 @@ define([
   'intern/chai!expect',
   '../helper/function-name',
   'ally/prototype/window.customevent',
-], function(registerSuite, expect, getFunctionName) {
+], function(registerSuite, expect, getFunctionName, CustomEvent) {
 
   registerSuite(function() {
 
@@ -11,11 +11,11 @@ define([
       name: 'prototype/window.customevent',
 
       polyfilled: function() {
-        if (getFunctionName(window.CustomEvent) !== 'CustomEventPolyfill') {
+        if (getFunctionName(CustomEvent) !== 'CustomEventPolyfill') {
           this.skip('CustomEvent supported natively');
         }
 
-        expect(window.CustomEvent).to.be.a('function');
+        expect(CustomEvent).to.be.a('function');
       },
     };
   });
