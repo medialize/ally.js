@@ -3,8 +3,22 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   'ally/supports/focus-invalid-tabindex',
+  'ally/supports/focus-img-ismap',
+  'ally/supports/focus-scroll-container-without-overflow',
+  'ally/supports/focus-scroll-container',
+  'ally/supports/focus-scroll-body',
   'ally/is/focusable',
-], function(registerSuite, expect, focusableFixture, canFocusInvalidTabindex, isFocusable) {
+], function(
+  registerSuite,
+  expect,
+  focusableFixture,
+  canFocusInvalidTabindex,
+  canFocusImgIsmap,
+  canFocusScrollContainerWithoutOverflow,
+  canFocusScrollContainer,
+  canFocusScrollBody,
+  isFocusable
+) {
 
   registerSuite(function() {
     var fixture;
@@ -72,6 +86,31 @@ define([
       'input type="hidden"': function() {
         var element = document.getElementById('input-hidden');
         expect(isFocusable(element)).to.equal(false);
+      },
+      'contenteditable attribute': function() {
+        var element = document.getElementById('span-contenteditable');
+        expect(isFocusable(element)).to.equal(true);
+      },
+      'extended: CSS user-modify': function() {
+        var supports = document.body.style.WebkitUserModify !== undefined;
+        var element = document.getElementById('span-user-modify');
+        expect(isFocusable(element)).to.equal(supports);
+      },
+      'extended: img with ismap attribute': function() {
+        var element = document.getElementById('img-ismap');
+        expect(isFocusable(element)).to.equal(canFocusImgIsmap);
+      },
+      'extended: scroll container without overflow': function() {
+        var element = document.getElementById('scroll-container-without-overflow');
+        expect(isFocusable(element)).to.equal(canFocusScrollContainerWithoutOverflow);
+      },
+      'extended: scroll container': function() {
+        var element = document.getElementById('scroll-container');
+        expect(isFocusable(element)).to.equal(canFocusScrollContainer);
+      },
+      'extended: scroll body': function() {
+        var element = document.getElementById('scroll-body');
+        expect(isFocusable(element)).to.equal(canFocusScrollBody);
       },
     };
   });

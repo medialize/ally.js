@@ -21,7 +21,7 @@ define([
       },
 
       document: function() {
-        var expected = '#tabindex-0, #tabindex-1, #link, #input';
+        var expected = '#tabindex-0, #tabindex-1, #link, #input, #span-contenteditable, #img-ismap-link';
         var result = queryTabbable();
 
         expect(elementsString(result)).to.equal(expected);

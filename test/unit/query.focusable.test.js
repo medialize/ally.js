@@ -33,12 +33,12 @@ define([
       },
 
       document: function() {
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1, #link, #link-tabindex--1, #input, #input-tabindex--1';
         var result = queryFocusable();
-
-        if (canFocusInvalidTabindex) {
-          expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1, #tabindex-bad, #link, #link-tabindex--1, #input, #input-tabindex--1';
-        }
+        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + ', #link, #link-tabindex--1'
+          + ', #input, #input-tabindex--1, #span-contenteditable'
+          + ', #img-ismap-link';
 
         expect(elementsString(result)).to.equal(expected);
       },
@@ -104,9 +104,13 @@ define([
         fixture.root.appendChild(host);
         shadowInputFixture.createShadowRoot(fixture);
 
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1, #link, #link-tabindex--1, #input, #input-tabindex--1'
-          + ', #first-input, #second-input, #third-input';
         var result = queryFocusable();
+        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + ', #link, #link-tabindex--1'
+          + ', #input, #input-tabindex--1, #span-contenteditable'
+          + ', #img-ismap-link'
+          + ', #first-input, #second-input, #third-input';
 
         expect(elementsString(result)).to.equal(expected);
       },
