@@ -31,11 +31,19 @@ define([], function() {
   return {
     mouse: function(target, type, options) {
       var event = createMouseEvent(type, options || {});
-      target.dispatchEvent(event);
+      if (target) {
+        target.dispatchEvent(event);
+      }
+
+      return event;
     },
     key: function(target, type, options) {
       var event = createKeyEvent(type, options || {});
-      target.dispatchEvent(event);
+      if (target) {
+        target.dispatchEvent(event);
+      }
+
+      return event;
     },
   };
 

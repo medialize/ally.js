@@ -66,24 +66,27 @@ define([
         expect(type.key).to.equal(false, 'key-up key');
       },
       'skip modifier key': function() {
+        var spaceKey = {
+          key: 'Space',
+          keyCode: 16,
+        };
+
+        if (dispatchEvent.key(null, 'keydown', spaceKey).keyCode !== 16) {
+          this.skip('Synthetic shift event not detectable');
+        }
+
         handle = observeInteractionType();
 
         var type = handle.get();
         expect(type.pointer).to.equal(false, 'initial pointer');
         expect(type.key).to.equal(false, 'initial key');
 
-        dispatchEvent.key(document.documentElement, 'keydown', {
-          key: 'Space',
-          keyCode: 16,
-        });
+        dispatchEvent.key(document.documentElement, 'keydown', spaceKey);
         type = handle.get();
         expect(type.pointer).to.equal(false, 'key-down pointer');
         expect(type.key).to.equal(false, 'key-down key');
 
-        dispatchEvent.key(document.documentElement, 'keyup', {
-          key: 'Space',
-          keyCode: 16,
-        });
+        dispatchEvent.key(document.documentElement, 'keyup', spaceKey);
         type = handle.get();
         expect(type.pointer).to.equal(false, 'key-up pointer');
         expect(type.key).to.equal(false, 'key-up key');
