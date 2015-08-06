@@ -38,11 +38,12 @@ define([
         expect(handle.current).to.be.a('function');
         expect(handle.used).to.be.a('function');
 
-        expect(document.activeElement).to.equal(document.body, 'foobar');
+        expect(document.activeElement).to.equal(document.body, 'initial focus');
         expect(document.documentElement.getAttribute('data-focus-source')).to.equal('initial', 'attribute after engage');
         expect(handle.current()).to.equal('initial', 'current after engage');
 
         fixture.input.outer.focus();
+        expect(document.activeElement).to.equal(fixture.input.outer, 'focus shift');
         expect(document.documentElement.getAttribute('data-focus-source')).to.equal('script', 'attribute focus shift');
         expect(handle.current()).to.equal('script', 'current focus shift');
         expect(handle.used('initial')).to.equal(true, 'used(initial) focus shift');

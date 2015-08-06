@@ -26,6 +26,10 @@ import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeObserver from '../observe/interaction-type';
 import decorateService from '../util/decorate-service';
 
+// preferring focusin/out because they are synchronous in IE10+11
+const focusEventName = 'onfocusin' in document ? 'focusin' : 'focus';
+const blurEventName = 'onfocusin' in document ? 'focusout' : 'blur';
+
 // interface to read interaction-type-listener state
 let interactionTypeHandler;
 let shadowHandle;
@@ -45,7 +49,7 @@ let used = {
 
 function handleFocusEvent(event) {
   let source = '';
-  if (event.type === 'focus' || event.type === 'shadow-focus') {
+  if (event.type === focusEventName || event.type === 'shadow-focus') {
     const interactionType = interactionTypeHandler.get();
     source = lock || next
       || interactionType.pointer && 'pointer'
@@ -60,7 +64,7 @@ function handleFocusEvent(event) {
 
   document.documentElement.setAttribute('data-focus-source', source);
 
-  if (event.type !== 'blur') {
+  if (event.type !== blurEventName) {
     if (!used[source]) {
       document.documentElement.classList.add('focus-source-' + source);
     }
@@ -92,7 +96,7 @@ function lockFocusSource(source) {
 
 function disengage() {
   // clear dom state
-  handleFocusEvent({type: 'blur'});
+  handleFocusEvent({type: blurEventName});
   current = lock = next = null;
   Object.keys(used).forEach(function(key) {
     document.documentElement.classList.remove('focus-source-' + key);
@@ -103,8 +107,8 @@ function disengage() {
   // kill shadow-focus event dispatcher
   shadowHandle && shadowHandle.disengage();
   document.removeEventListener('shadow-focus', handleFocusEvent, true);
-  document.documentElement.removeEventListener('focus', handleFocusEvent, true);
-  document.documentElement.removeEventListener('blur', handleFocusEvent, true);
+  document.documentElement.removeEventListener(focusEventName, handleFocusEvent, true);
+  document.documentElement.removeEventListener(blurEventName, handleFocusEvent, true);
   document.documentElement.removeAttribute('data-focus-source');
 }
 
@@ -117,8 +121,8 @@ function engage() {
   interactionTypeHandler = engageInteractionTypeObserver();
   // set up initial dom state
   handleFocusEvent({type: 'initial'});
-  document.documentElement.addEventListener('focus', handleFocusEvent, true);
-  document.documentElement.addEventListener('blur', handleFocusEvent, true);
+  document.documentElement.addEventListener(focusEventName, handleFocusEvent, true);
+  document.documentElement.addEventListener(blurEventName, handleFocusEvent, true);
 
   return {
     used: getUsedFocusSource,
