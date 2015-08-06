@@ -25,7 +25,29 @@ define([], function() {
   }
 
   function createMouseEvent(type, options) {
-    return new MouseEvent(type, options);
+    if (typeof MouseEvent === 'function') {
+      return new MouseEvent(type, options);
+    }
+
+    var evt = document.createEvent('MouseEvent');
+    evt.initMouseEvent(type,
+      options.bubbles || true,
+      options.cancelable || true,
+      options.view || window,
+      options.detail || 1,
+      options.screenX || 0,
+      options.screenY || 0,
+      options.clientX || 0,
+      options.clientY || 0,
+      options.ctrlKey || false,
+      options.altKey || false,
+      options.shiftKey || false,
+      options.metaKey || false,
+      options.button || 0,
+      options.relatedTarget || null
+    );
+
+    return evt;
   }
 
   return {
