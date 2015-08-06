@@ -8,6 +8,11 @@ define([
   registerSuite(function() {
     var fixture;
 
+    function fixFloat(num) {
+      // expected 0.2500000190734878 to equal 0.25
+      return parseFloat(num.toFixed(5));
+    }
+
     return {
       name: 'util/visible-area',
 
@@ -37,52 +42,52 @@ define([
       },
 
       'scrolled 0%': function() {
-        expect(visibleArea(fixture.target)).to.equal(0);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0);
       },
       'scrolled 25%': function() {
         fixture.outer.scrollLeft = 50;
-        expect(visibleArea(fixture.target)).to.equal(0.25);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.25);
       },
       'scrolled 50%': function() {
         fixture.outer.scrollLeft = 100;
-        expect(visibleArea(fixture.target)).to.equal(0.5);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.5);
       },
       'scrolled 75%': function() {
         fixture.outer.scrollLeft = 150;
-        expect(visibleArea(fixture.target)).to.equal(0.75);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.75);
       },
       'scrolled 100%': function() {
         fixture.outer.scrollLeft = 200;
-        expect(visibleArea(fixture.target)).to.equal(1);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(1);
       },
       'scrolled 125%': function() {
         fixture.outer.scrollLeft = 250;
-        expect(visibleArea(fixture.target)).to.equal(0.75);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.75);
       },
       'translated 25%': function() {
         fixture.outer.scrollLeft = 0;
         fixture.inner.style.transform = 'translate3d(-50px, 0px, 0px)';
-        expect(visibleArea(fixture.target)).to.equal(0.25);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.25);
       },
       'translated 50%': function() {
         fixture.outer.scrollLeft = 0;
         fixture.inner.style.transform = 'translate3d(-100px, 0px, 0px)';
-        expect(visibleArea(fixture.target)).to.equal(0.5);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.5);
       },
       'translated 75%': function() {
         fixture.outer.scrollLeft = 0;
         fixture.inner.style.transform = 'translate3d(-150px, 0px, 0px)';
-        expect(visibleArea(fixture.target)).to.equal(0.75);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(0.75);
       },
       'translated 100%': function() {
         fixture.outer.scrollLeft = 0;
         fixture.inner.style.transform = 'translate3d(-200px, 0px, 0px)';
-        expect(visibleArea(fixture.target)).to.equal(1);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(1);
       },
       'translated 125%': function() {
         fixture.outer.scrollLeft = 0;
         fixture.inner.style.transform = 'translate3d(-250px, 0px, 0px)';
-        expect(visibleArea(fixture.target)).to.equal(.75);
+        expect(fixFloat(visibleArea(fixture.target))).to.equal(.75);
       },
     };
   });
