@@ -8,6 +8,10 @@ import isValidTabindex from './valid-tabindex';
 const focusableElementsPattern = /^(fieldset|table|td|body)$/;
 
 export default function(element) {
+  if (element === document) {
+    element = document.documentElement;
+  }
+
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/tabbable requires an argument of type Element');
   }

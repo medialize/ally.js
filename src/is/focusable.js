@@ -29,6 +29,10 @@ import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollBody from '../supports/focus-scroll-body';
 
 export default function(element) {
+  if (element === document) {
+    element = document.documentElement;
+  }
+
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/focusable requires an argument of type Element');
   }

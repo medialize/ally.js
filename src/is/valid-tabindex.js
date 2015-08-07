@@ -8,6 +8,10 @@ import allowsInvalidValue from '../supports/focus-invalid-tabindex';
 var validIntegerPattern = /^\s*(-|\+)?[0-9]+\s*$/;
 
 export default function(element) {
+  if (element === document) {
+    element = document.documentElement;
+  }
+
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/valid-tabindex requires an argument of type Element');
   }

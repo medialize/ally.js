@@ -54,6 +54,10 @@ function notVisible(_path) {
 }
 
 export default function(element) {
+  if (element === document) {
+    element = document.documentElement;
+  }
+
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/visible requires an argument of type Element');
   }
