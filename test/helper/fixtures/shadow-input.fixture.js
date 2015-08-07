@@ -44,11 +44,13 @@ define([], function() {
 
     fixture.root.id = 'intern-dom-fixture';
     fixture.root.innerHTML = [
+      /*eslint-disable indent */
       '<input id="outer-input" type="text" value="outer-input">',
       '<div id="first-shadow-host" class="shadow-host"></div>',
       '<div id="after-wrapper">',
         '<input id="after-input" type="text" value="after-input">',
       '</div>',
+      /*eslint-enable indent */
     ].join('');
 
     (context || document.body).appendChild(fixture.root);

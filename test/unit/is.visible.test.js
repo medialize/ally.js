@@ -13,6 +13,7 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<div id="visible-div">asd</div>',
           // empty content
           '<div id="empty-div"></div>',
@@ -52,6 +53,7 @@ define([
           '</map>',
           // unknown dimension elements
           '<audio id="unknown-dimension-audio" controls src="data:audio/mp3;base64,audio"></audio>',
+          /*eslint-enable indent */
         ].join(''));
       },
       afterEach: function() {

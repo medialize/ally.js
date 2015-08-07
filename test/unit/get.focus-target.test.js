@@ -13,6 +13,7 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<a id="self" href="#" data-label="self">',
             '<span data-label="self-wrap"><span data-label="self-inner">nested</span></span>',
           '</a>',
@@ -25,6 +26,7 @@ define([
           '<div data-label="none-outer">',
             '<span id="none" data-label="none-inner">nested</span>',
           '</div>',
+          /*eslint-enable indent */
         ].join(''));
       },
       afterEach: function() {

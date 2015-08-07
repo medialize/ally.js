@@ -14,11 +14,13 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<div id="outer">',
             '<div id="inner">',
               '<input type="text" id="target">',
             '</div>',
           '</div>',
+          /*eslint-enable indent */
         ].join(''));
 
         fixture.outer = document.getElementById('outer');

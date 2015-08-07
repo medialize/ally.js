@@ -29,6 +29,7 @@ function runTests() {
 }
 
 // start the driver
+/*eslint-disable no-console */
 driver.start(
   // callback invoked when driver is started
   runTests,
@@ -37,3 +38,4 @@ driver.start(
   // callback invoked when driver crashed after successful start
   console.error.bind(console)
 );
+/*eslint-enable no-console */

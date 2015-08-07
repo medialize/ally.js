@@ -13,9 +13,11 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<div>',
             '<span id="target">target</span>',
           '</div>',
+          /*eslint-disable indent */
         ].join(''));
       },
       afterEach: function() {

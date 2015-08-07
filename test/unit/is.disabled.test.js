@@ -14,6 +14,7 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<div tabindex="-1" id="non-input"></div>',
           '<input type="text" id="non-disabled-input">',
           '<input type="text" id="disabled-input" disabled>',
@@ -22,6 +23,7 @@ define([
           '</fieldset>',
           '<fieldset id="non-disabled-fieldset" tabindex="-1"></fieldset>',
           '<fieldset id="disabled-fieldset" tabindex="-1" disabled></fieldset>',
+          /*eslint-enable indent */
         ].join(''));
       },
       afterEach: function() {

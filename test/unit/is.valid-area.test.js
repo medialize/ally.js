@@ -14,6 +14,7 @@ define([
 
       beforeEach: function() {
         fixture = customFixture([
+          /*eslint-disable indent */
           '<div id="non-area"></div>',
           '<map name="disconnected-map">',
             '<area id="disconnected-map-area" href="#void" shape="rect" coords="63,19,144,45">',
@@ -42,6 +43,7 @@ define([
             '<area id="broken-map-area" href="#void" shape="rect" coords="63,19,144,45">',
           '</map>',
           '<img usemap="#broken-map" src="data:image/gif;base64,broken-image" alt="">',
+          /*eslint-enable indent */
         ].join(''));
       },
       afterEach: function() {

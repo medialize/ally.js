@@ -1,4 +1,5 @@
 {
+  "extends": "./.eslintrc-default",
   "parser": "babel-eslint",
   "settings": {
     "ecmascript": 6
@@ -29,7 +30,7 @@
   },
   "rules": {
     "comma-dangle": [1, "always-multiline"],
-    "indent": [2, 2],
+    "indent": [2, 2, {"SwitchCase": 1}],
     "no-catch-shadow": 0,
     "no-empty": 0,
     "no-multi-spaces": 1,

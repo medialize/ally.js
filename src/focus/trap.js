@@ -38,6 +38,7 @@ export default function trapFocus({context, focusFirst}) {
 
   let eventHandle;
   let bodyFocusHandle;
+  let disengage;
 
   let _handler = trapByFocusEvent;
   let _event = 'focusout';
@@ -62,7 +63,7 @@ export default function trapFocus({context, focusFirst}) {
     });
   };
 
-  const disengage = function() {
+  disengage = function() {
     element.removeEventListener(_event, handleEvent, _capture);
     eventHandle && eventHandle.disengage();
     bodyFocusHandle && bodyFocusHandle.disengage();

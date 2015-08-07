@@ -12,6 +12,7 @@ define([], function() {
 
     fixture.root.id = 'intern-dom-fixture';
     fixture.root.innerHTML = [
+      /*eslint-disable indent */
       // tabindex attribute
       '<div id="inert-div">a</div>',
       '<div tabindex="-1" id="tabindex--1">a</div>',
@@ -41,6 +42,7 @@ define([], function() {
       '<div id="scroll-container-without-overflow" style="width: 100px; height: 50px;">',
         '<div id="scroll-body-without-overflow" style="width: 500px; height: 40px;">scrollable content</div>',
       '</div>',
+      /*eslint-enable indent */
     ].join('');
 
     (context || document.body).appendChild(fixture.root);
