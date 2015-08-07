@@ -32,16 +32,6 @@ define([
         expect(element.matches('div')).to.equal(true);
         expect(element.matches('body')).to.equal(false);
       },
-      polyfilled: function() {
-        if (getFunctionName(Element.prototype.matches) !== 'matchesSelectorPolyfill') {
-          this.skip('Element.prototype.matches supported without polyfill');
-        }
-
-        var element = document.createElement('div');
-        expect(element.matches).to.be.a('function');
-        expect(element.matches('div')).to.equal(true);
-        expect(element.matches('body')).to.equal(false);
-      },
     };
   });
 });
