@@ -17,9 +17,14 @@ define([], function() {
       event.initKeyboardEvent(type, true, false, null, '', options.keyCode, null, '', false);
     }
 
-    // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
-    Object.defineProperty(event, 'keyCode', {value: options.keyCode});
-    Object.defineProperty(event, 'which', {value: options.keyCode});
+    try {
+      // Safari 7 does not like this: ATTEMPTING TO CHANGE VALUE OF A READONLY PROPERTY
+      // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
+      Object.defineProperty(event, 'keyCode', {value: options.keyCode});
+      Object.defineProperty(event, 'which', {value: options.keyCode});
+    } catch(e) {
+      // IGNORE
+    }
 
     return event;
   }
