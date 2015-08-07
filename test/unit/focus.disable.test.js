@@ -69,6 +69,10 @@ define([
         expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'out of filter');
       },
       'dom mutation': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
         var deferred = this.async(500);
 
         var input = document.createElement('input');
