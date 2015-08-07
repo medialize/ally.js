@@ -1,17 +1,6 @@
-define([], function() {
+define(['./custom.fixture'], function(customFixture) {
   return function(context) {
-    var fixture = {
-      root: document.createElement('div'),
-      focusable: {},
-      tabbable: {},
-      inert: {},
-      remove: function() {
-        fixture.root.parentNode.removeChild(fixture.root);
-      },
-    };
-
-    fixture.root.id = 'intern-dom-fixture';
-    fixture.root.innerHTML = [
+    return customFixture([
       /*eslint-disable indent */
       // tabindex attribute
       '<div id="inert-div">a</div>',
@@ -43,9 +32,6 @@ define([], function() {
         '<div id="scroll-body-without-overflow" style="width: 500px; height: 40px;">scrollable content</div>',
       '</div>',
       /*eslint-enable indent */
-    ].join('');
-
-    (context || document.body).appendChild(fixture.root);
-    return fixture;
+    ].join(''), context);
   };
 });

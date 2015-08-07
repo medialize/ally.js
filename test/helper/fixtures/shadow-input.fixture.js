@@ -1,4 +1,4 @@
-define([], function() {
+define(['./custom.fixture'], function(customFixture) {
 
   function createShadowRoot(fixture) {
     if (!fixture.shadow) {
@@ -33,17 +33,7 @@ define([], function() {
   }
 
   function createFixture(context) {
-    var fixture = {
-      root: document.createElement('div'),
-      shadow: {},
-      input: {},
-      remove: function() {
-        fixture.root.parentNode.removeChild(fixture.root);
-      },
-    };
-
-    fixture.root.id = 'intern-dom-fixture';
-    fixture.root.innerHTML = [
+    var fixture = customFixture([
       /*eslint-disable indent */
       '<input id="outer-input" type="text" value="outer-input">',
       '<div id="first-shadow-host" class="shadow-host"></div>',
@@ -51,11 +41,13 @@ define([], function() {
         '<input id="after-input" type="text" value="after-input">',
       '</div>',
       /*eslint-enable indent */
-    ].join('');
+    ].join(''), context);
 
-    (context || document.body).appendChild(fixture.root);
-    fixture.input.outer = document.getElementById('outer-input');
-    fixture.input.after = document.getElementById('after-input');
+    fixture.shadow = {};
+    fixture.input = {
+      outer: document.getElementById('outer-input'),
+      after: document.getElementById('after-input'),
+    };
 
     if (document.body.shadowRoot === undefined) {
       // NOTE: Shadow DOM is not supported

@@ -19,9 +19,6 @@ define([
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
         handle && handle.disengage({ force: true });
-        // blur shadowed activeElements before removal
-        // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535#c5
-        document.activeElement.blur();
         fixture.remove();
         fixture = null;
       },
