@@ -28,7 +28,12 @@ define([
           context: '.context',
         });
 
-        expect(document.activeElement).to.equal(document.body, 'initial');
+        if (document.activeElement === document.documentElement) {
+          // Internet Explorer 10 initially focuses <html>
+          // NOTE: blur() on document does nothing, you actually need to focus() the body
+          // document.activeElement.blur();
+          document.body.focus();
+        }
 
         document.getElementById('link').focus();
         expect(document.activeElement).to.equal(document.getElementById('link'), 'first');

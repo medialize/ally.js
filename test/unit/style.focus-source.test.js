@@ -35,7 +35,13 @@ define([
         expect(handle.current).to.be.a('function');
         expect(handle.used).to.be.a('function');
 
-        expect(document.activeElement).to.equal(document.body, 'initial focus');
+        if (document.activeElement === document.documentElement) {
+          // Internet Explorer 10 initially focuses <html>
+          // NOTE: blur() on document does nothing, you actually need to focus() the body
+          // document.activeElement.blur();
+          document.body.focus();
+        }
+
         expect(document.documentElement.getAttribute('data-focus-source')).to.equal('initial', 'attribute after engage');
         expect(handle.current()).to.equal('initial', 'current after engage');
 

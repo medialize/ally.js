@@ -34,7 +34,14 @@ define([
         handle = styleFocusWithin();
         expect(handle.disengage).to.be.a('function');
 
-        expect(document.activeElement).to.equal(document.body, 'foobar');
+        if (document.activeElement === document.documentElement) {
+          // Internet Explorer 10 initially focuses <html>
+          // NOTE: blur() on document does nothing, you actually need to focus() the body
+          // document.activeElement.blur();
+          document.body.focus();
+        }
+
+        expect(document.activeElement).to.equal(document.body, 'initial focus');
         expect(focusWithinElements()).to.equal('html, body', 'after engage');
 
         handle.disengage();
@@ -43,6 +50,13 @@ define([
       },
       'follow focus': function() {
         expect(focusWithinElements()).to.equal('', 'before engage');
+
+        if (document.activeElement === document.documentElement) {
+          // Internet Explorer 10 initially focuses <html>
+          // NOTE: blur() on document does nothing, you actually need to focus() the body
+          // document.activeElement.blur();
+          document.body.focus();
+        }
 
         handle = styleFocusWithin();
         expect(focusWithinElements()).to.equal('html, body', 'after engage');
