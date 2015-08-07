@@ -25,7 +25,10 @@ let previousActiveElement = document.activeElement;
 let raf;
 
 function observeActiveElement() {
-  if (document.activeElement !== previousActiveElement) {
+  if (document.activeElement === null) {
+    // IE10 does not redirect focus to <body> when the activeElement is removed
+    document.body.focus();
+  } else if (document.activeElement !== previousActiveElement) {
     // https://developer.mozilla.org/en/docs/Web/API/CustomEvent
     const activeElementEvent = new CustomEvent('active-element', {
       bubbles: false,

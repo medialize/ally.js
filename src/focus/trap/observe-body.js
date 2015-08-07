@@ -18,6 +18,11 @@ export default function({element, trappedSequence}) {
       //   return;
       // }
 
+      if (document.activeElement === null) {
+        // IE10 does not redirect focus to <body> when the activeElement is removed
+        document.body.focus();
+      }
+
       if (element.compareDocumentPosition) {
         if (element.compareDocumentPosition(document.activeElement) & Node.DOCUMENT_POSITION_CONTAINED_BY) {
           // the focus target is within the context, all is fine, go back to sleep

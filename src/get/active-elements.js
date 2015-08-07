@@ -21,6 +21,11 @@ function walkFromShadowedElement() {
 }
 
 export default function() {
+  if (document.activeElement === null) {
+    // IE10 does not redirect focus to <body> when the activeElement is removed
+    document.body.focus();
+  }
+
   // Firefox currently leaks the shadowed element
   // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535
   if (isShadowed(document.activeElement)) {
