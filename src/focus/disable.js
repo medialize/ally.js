@@ -29,10 +29,13 @@ function makeElementInert(element) {
   const tabIndex = element.getAttribute('tabindex');
   // IE11 parses tabindex="" as the value "-32768"
   element.setAttribute('data-inert-tabindex', tabIndex !== null && tabIndex !== '-32768' ? tabIndex : '');
+  // remember previous aria-disabled so we can restore it
+  const ariaDisabled = element.getAttribute('aria-disabled');
+  element.setAttribute('data-inert-aria-disabled', ariaDisabled || '');
+  element.setAttribute('aria-disabled', 'true');
   // remove element from sequential focus navigation order
   element.setAttribute('tabindex', '-1');
   // make sure no script can focus the element
-  // NOTE: we may need to check if hasOwn('focus') and restore
   element.focus = disabledFocus;
   // remember previous pointer events status so we can restore it
   const pointerEvents = element.style.pointerEvents || '';
@@ -43,6 +46,7 @@ function makeElementInert(element) {
   const nodeName = element.nodeName.toLowerCase();
   if (element.hasAttribute('controls') && (nodeName === 'video' || nodeName === 'audio')) {
     element.setAttribute('data-inert-controls', '');
+    element.removeAttribute('controls');
   }
 }
 
@@ -53,6 +57,15 @@ function undoElementInert(element) {
   const pointerEvents = element.getAttribute('data-inert-pointer-events');
   element.removeAttribute('data-inert-pointer-events');
   element.style.pointerEvents = pointerEvents;
+  // restore aria-disabled
+  const ariaDisabled = element.getAttribute('data-inert-aria-disabled');
+  element.removeAttribute('data-inert-aria-disabled');
+  if (ariaDisabled === '') {
+    // the element did not have a aria-disabled set before
+    element.removeAttribute('aria-disabled');
+  } else {
+    element.setAttribute('aria-disabled', ariaDisabled);
+  }
   // restore tabindex
   const tabIndex = element.getAttribute('data-inert-tabindex');
   element.removeAttribute('data-inert-tabindex');
