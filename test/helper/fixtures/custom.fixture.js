@@ -1,5 +1,12 @@
 define([], function() {
   return function(html, context) {
+    var previous = document.getElementById('intern-dom-fixture');
+    if (previous) {
+      // it appears as if Intern's afterEach() is not executed reliably in IE10
+      document.activeElement.blur();
+      previous.parentNode.removeChild(previous);
+    }
+
     var fixture = {
       root: document.createElement('div'),
       remove: function() {
