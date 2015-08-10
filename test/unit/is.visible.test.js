@@ -53,6 +53,9 @@ define([
           '</map>',
           // unknown dimension elements
           '<audio id="unknown-dimension-audio" controls src="data:audio/mp3;base64,audio"></audio>',
+          // details/summary
+          '<details id="details-closed"><summary id="summary"></summary> <a href="#void" id="details-closed-link">link</a></details>',
+          '<details id="details-open" open><summary id="summary"></summary> <a href="#void" id="details-open-link">link</a></details>',
           /*eslint-enable indent */
         ].join(''));
       },
@@ -85,6 +88,21 @@ define([
         }
 
         expect(isVisible(element)).to.equal(false);
+      },
+      'HTML5 closed details element children': function() {
+        var container = document.getElementById('details-closed');
+        var element = document.getElementById('details-closed-link');
+        var supports = container.open === undefined;
+        expect(isVisible(element)).to.equal(supports);
+      },
+      'HTML5 open details element children': function() {
+        var container = document.getElementById('details-open');
+        var element = document.getElementById('details-open-link');
+        if (container.open === undefined) {
+          this.skip('HTML5 details element not supported');
+        }
+
+        expect(isVisible(element)).to.equal(true);
       },
       'CSS display:none': function() {
         var element = document.getElementById('display-none-div');

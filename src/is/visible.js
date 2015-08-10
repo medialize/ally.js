@@ -53,6 +53,18 @@ function notVisible(_path) {
   return false;
 }
 
+function collapsedParent(_path) {
+  let offset = 1;
+  if (_path[0].nodeName.toLowerCase() === 'summary') {
+    offset = 2;
+  }
+
+  return _path.slice(offset).some(function(element) {
+    // "content children" of a closed details element are not visible
+    return element.nodeName.toLowerCase() === 'details' && element.open === false;
+  });
+}
+
 export default function(element) {
   if (element === document) {
     element = document.documentElement;
@@ -68,5 +80,5 @@ export default function(element) {
   }
 
   const _path = getParents({context: element});
-  return !Boolean(notDisplayed(_path) || notVisible(_path));
+  return !Boolean(notDisplayed(_path) || notVisible(_path) || collapsedParent(_path));
 }
