@@ -250,7 +250,8 @@ define(function defineDemoFocusableIOS8(require) {
         "table tbody tr td a",
         "table tbody tr{collapse} td{visible} a",
         "table tbody tr{collapse} td a{visible}"
-      ]
+      ],
+      "focusableStrict": []
     },
     "jquery": {
       "focusable": [

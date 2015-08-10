@@ -143,6 +143,11 @@ function captureStuff() {
         context: document,
         includeContext: true,
       }).map(elementName).filter(ignore);
+      results.ally.focusableStrict = queryFocusable({
+        context: document,
+        includeContext: true,
+        strategy: 'strict',
+      }).map(elementName).filter(ignore);
       results.ally.tabOrder = queryTabsequence({
         context: document
       }).map(elementName).filter(ignore);

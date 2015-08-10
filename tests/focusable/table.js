@@ -96,45 +96,47 @@ require([
     $_row.appendTo($tbody);
   });
 
+  function renderAllyComparison($scriptTable, system, strategy) {
+    // prepare table that shows support of libraries in given browser
+    $scriptTable.empty().append($table.children().clone());
+    $scriptTable.find('[data-column="notes"]').remove();
+    $scriptTable.find('thead td, thead th').not('.meta').attr('colspan', function() {
+      return ($(this).attr('colspan') || 1) * 2;
+    }).css('border', '3px solid black');
 
+    var $subline = $scriptTable.find('thead tr').last().clone().appendTo($scriptTable.children('thead'));
+    $subline.find('.meta').remove();
+    $subline.prepend('<td colspan="2">');
+    $subline.find('th').replaceWith(function() {
+      return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">' + system + '</th>');
+    });
+
+    $scriptTable.find('tbody tr').each(function() {
+      var $_row = $(this);
+      var selector = $_row.attr('data-selector');
+
+      $_row.children('td').not('.meta').each(function() {
+        var $browserCell = $(this);
+        var browser = $browserCell.attr('data-column');
+        var browserSupported = $browserCell.attr('data-supported') === 'yes';
+        var allySupported = data[browser][system][strategy].indexOf(selector) !== -1;
+
+        var $allyCell = $('<td>?</td>').insertAfter($browserCell)
+          .text(allySupported ? 'yes' : 'no')
+          .attr('data-supported', allySupported ? 'yes' : 'no')
+          .attr('data-correct', browserSupported === allySupported ? 'yes' : 'no');
+
+        // make browser versions distinguishable
+        $browserCell.css('border-left', '3px solid black');
+        $allyCell.css('border-right', '3px solid black');
+      })
+    });
+  }
 
   // prepare table that shows support of libraries in given browser
-  var $scriptTable = $('#script-focusable-table');
-  $scriptTable.empty().append($table.children().clone());
-  $scriptTable.find('[data-column="notes"]').remove();
-  $scriptTable.find('thead td, thead th').not('.meta').attr('colspan', function() {
-    return ($(this).attr('colspan') || 1) * 2;
-  }).css('border', '3px solid black');
-
-  var $subline = $scriptTable.find('thead tr').last().clone().appendTo($scriptTable.children('thead'));
-  $subline.find('.meta').remove();
-  $subline.prepend('<td colspan="2">');
-  $subline.find('th').replaceWith(function() {
-    return $('<th style="border-left: 3px solid black">Browser</th><th style="border-right: 3px solid black">ally.js</th>');
-  });
-
-  $scriptTable.find('tbody tr').each(function() {
-    var $_row = $(this);
-    var selector = $_row.attr('data-selector');
-
-    $_row.children('td').not('.meta').each(function() {
-      var $browserCell = $(this);
-      var browser = $browserCell.attr('data-column');
-      var browserSupported = $browserCell.attr('data-supported') === 'yes';
-      var allySupported = data[browser].ally.focusable.indexOf(selector) !== -1;
-
-      var $allyCell = $('<td>?</td>').insertAfter($browserCell)
-        .text(allySupported ? 'yes' : 'no')
-        .attr('data-supported', allySupported ? 'yes' : 'no')
-        .attr('data-correct', browserSupported === allySupported ? 'yes' : 'no');
-
-      // make browser versions distinguishable
-      $browserCell.css('border-left', '3px solid black');
-      $allyCell.css('border-right', '3px solid black');
-    })
-  });
-
-
+  renderAllyComparison($('#script-focusable-table'), 'ally', 'focusable');
+  renderAllyComparison($('#script-focusable-strict-table'), 'ally', 'focusableStrict');
+  renderAllyComparison($('#script-focusable-jquery-table'), 'jquery', 'focusable');
 
   $table = $('#focus-redirection-table');
   $tbody = $table.find('.items')
