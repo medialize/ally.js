@@ -3,8 +3,9 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
   'ally/supports/focus-invalid-tabindex',
+  'ally/supports/focus-tabindex-trailing-characters',
   'ally/is/valid-tabindex',
-], function(registerSuite, expect, customFixture, canFocusInvalidTabindex, isValidTabindex) {
+], function(registerSuite, expect, customFixture, canFocusInvalidTabindex, allowsTrailingCharacters, isValidTabindex) {
 
   registerSuite(function() {
     var fixture;
@@ -58,7 +59,7 @@ define([
       'tabindex "0char" (trailing non-numeric characters)': function() {
         var element = document.getElementById('tabindex-0-char');
         expect(element.tabIndex).to.equal(0);
-        expect(isValidTabindex(element)).to.equal(true);
+        expect(isValidTabindex(element)).to.equal(allowsTrailingCharacters);
       },
       'tabindex "1"': function() {
         var element = document.getElementById('tabindex-1');

@@ -2,10 +2,11 @@
 // determine if an element's tabindex attribute has a valid value
 
 import allowsInvalidValue from '../supports/focus-invalid-tabindex';
+import allowsTrailingCharacters from '../supports/focus-tabindex-trailing-characters';
 
 // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
 // NOTE: all browsers agree to allow trailing spaces as well
-var validIntegerPattern = /^\s*(-|\+)?[0-9]+.*$/;
+const validIntegerPattern = allowsTrailingCharacters ? /^\s*(-|\+)?[0-9]+.*$/ : /^\s*(-|\+)?[0-9]+\s*$/;
 
 export default function(element) {
   if (element === document) {
