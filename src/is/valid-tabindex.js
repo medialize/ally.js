@@ -5,7 +5,7 @@ import allowsInvalidValue from '../supports/focus-invalid-tabindex';
 
 // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
 // NOTE: all browsers agree to allow trailing spaces as well
-var validIntegerPattern = /^\s*(-|\+)?[0-9]+\s*$/;
+var validIntegerPattern = /^\s*(-|\+)?[0-9]+.*$/;
 
 export default function(element) {
   if (element === document) {

@@ -11,7 +11,7 @@ Determines if an element's `tabindex` attribute value is sound
 
 * empty tabindex `[tabindex=""]` parsed and exposed as `[tabindex="-32768"]` - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)
 * invalid `tabindex` value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
-
+* all browsers consider `[tabindex="3x"]` valid
 
 ## Demo
 
