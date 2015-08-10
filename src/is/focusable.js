@@ -173,13 +173,16 @@ export default function(element) {
     // scrollable containers are focusable Internet Explorer
     // scrollable containers are tabbable in Firefox
     // https://github.com/medialize/ally.js/issues/21
-    // Firefox requires proper overflow setting, IE does not
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
-    let overflow = style.getPropertyValue('overflow');
-    if (canFocusScrollContainerWithoutOverflow || overflow === 'auto' || overflow === 'scroll') {
-      // TODO: what about overflow-x and overflow-y?
+    if (canFocusScrollContainerWithoutOverflow) {
       return true;
     }
+    // Firefox requires proper overflow setting, IE does not
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+    return [
+      style.getPropertyValue('overflow'),
+      style.getPropertyValue('overflow-x'),
+      style.getPropertyValue('overflow-y'),
+    ].some(overflow => overflow === 'auto' || overflow === 'scroll');
   }
 
   const parent = element.parentElement || element.parentNode;
