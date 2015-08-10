@@ -37,6 +37,7 @@ define([
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
           + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
+          + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link';
 
@@ -108,6 +109,7 @@ define([
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
           + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
+          + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link'
           + ', #first-input, #second-input, #third-input';

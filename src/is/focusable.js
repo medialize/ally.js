@@ -24,6 +24,7 @@ import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusSummary from '../supports/focus-summary';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
+import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollBody from '../supports/focus-scroll-body';
@@ -62,11 +63,6 @@ export default function(element) {
     return false;
   }
 
-  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-  if (isValidTabindex(element)) {
-    return true;
-  }
-
   if (nodeName === 'input' || nodeName === 'select' || nodeName === 'button' || nodeName === 'textarea') {
     // disabled elements have been filtered out above, using isDisabled()
     return true;
@@ -102,6 +98,12 @@ export default function(element) {
     return true;
   }
 
+  if (nodeName === 'img' && element.hasAttribute('usemap') && isValidTabindex(element)) {
+    // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
+    // it appears the tabindex is overruled so focus is still forwarded to the <map>
+    return canFocusImgUsemapTabindex;
+  }
+
   // TODO: not not identify body as focusable
   if (nodeName === 'body') {
     return true;
@@ -134,6 +136,11 @@ export default function(element) {
     return true;
   }
 
+  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  if (isValidTabindex(element)) {
+    return true;
+  }
+
   const style = window.getComputedStyle(element, null);
   const userModify = style.webkitUserModify || '';
   if (userModify && userModify.indexOf('write') !== -1) {
@@ -145,9 +152,13 @@ export default function(element) {
   if (canFocusImgIsmap && nodeName === 'img' && element.hasAttribute('ismap')) {
     // IE10-11 considers the <img> in <a href><img ismap> focusable
     // https://github.com/medialize/ally.js/issues/20
-    return getParents({context: element}).some(
+    let hasLinkParent = getParents({context: element}).some(
       parent => parent.nodeName.toLowerCase() === 'a' && parent.hasAttribute('href')
     );
+
+    if (hasLinkParent) {
+      return true;
+    }
   }
 
   if (canFocusScrollContainer && (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth)) {

@@ -21,7 +21,7 @@ define([
       },
 
       document: function() {
-        var expected = '#tabindex-1, #tabindex-0, #link, #input, #span-contenteditable, #img-ismap-link';
+        var expected = '#tabindex-1, #tabindex-0, #link, #image-map-area, #input, #span-contenteditable, #img-ismap-link';
         var result = queryTabsequence();
 
         expect(elementsString(result)).to.equal(expected);

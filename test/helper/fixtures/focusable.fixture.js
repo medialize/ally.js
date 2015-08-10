@@ -14,6 +14,12 @@ define(['./custom.fixture'], function(customFixture) {
         '<a href="#" id="link">yep</a>',
         '<a tabindex="-1" href="#" id="link-tabindex--1">maybe</a>',
       '</div>',
+      // image map
+      '<map name="image-map">',
+        '<area id="image-map-area" href="#void" shape="rect" coords="63,19,144,45">',
+        '<area id="image-map-area-nolink" shape="rect" coords="63,19,144,45">',
+      '</map>',
+      '<img id="img-usemap" usemap="#image-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">',
       // input elements
       '<input type="text" id="input">',
       '<input type="text" tabindex="-1" id="input-tabindex--1">',

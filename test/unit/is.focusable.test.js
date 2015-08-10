@@ -4,6 +4,7 @@ define([
   '../helper/fixtures/focusable.fixture',
   'ally/supports/focus-invalid-tabindex',
   'ally/supports/focus-img-ismap',
+  'ally/supports/focus-img-usemap-tabindex',
   'ally/supports/focus-scroll-container-without-overflow',
   'ally/supports/focus-scroll-container',
   'ally/supports/focus-scroll-body',
@@ -14,6 +15,7 @@ define([
   focusableFixture,
   canFocusInvalidTabindex,
   canFocusImgIsmap,
+  canFocusImgUsemapTabindex,
   canFocusScrollContainerWithoutOverflow,
   canFocusScrollContainer,
   canFocusScrollBody,
@@ -90,6 +92,15 @@ define([
       'contenteditable attribute': function() {
         var element = document.getElementById('span-contenteditable');
         expect(isFocusable(element)).to.equal(true);
+      },
+      'img with usemap': function() {
+        var element = document.getElementById('img-usemap');
+        expect(isFocusable(element)).to.equal(false);
+      },
+      'img with usemap and tabindex': function() {
+        var element = document.getElementById('img-usemap');
+        element.setAttribute('tabindex', '-1');
+        expect(isFocusable(element)).to.equal(canFocusImgUsemapTabindex);
       },
       'extended: CSS user-modify': function() {
         var supports = document.body.style.webkitUserModify !== undefined;
