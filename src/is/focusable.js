@@ -162,7 +162,7 @@ export default function(element) {
     }
   }
 
-  const parent = element.parentElement;
+  const parent = element.parentElement || element.parentNode;
   if (canFocusScrollBody && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
     // scrollable bodies are focusable Internet Explorer
     // https://github.com/medialize/ally.js/issues/21
