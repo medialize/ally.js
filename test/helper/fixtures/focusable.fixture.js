@@ -21,6 +21,7 @@ define(['./custom.fixture'], function(customFixture) {
       '</map>',
       '<img id="img-usemap" usemap="#image-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">',
       // input elements
+      '<label id="label">text</label>',
       '<input type="text" id="input">',
       '<input type="text" tabindex="-1" id="input-tabindex--1">',
       '<input type="text" disabled id="input-disabled">',

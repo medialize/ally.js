@@ -5,6 +5,7 @@ define([
   'ally/supports/focus-invalid-tabindex',
   'ally/supports/focus-img-ismap',
   'ally/supports/focus-img-usemap-tabindex',
+  'ally/supports/focus-label-tabindex',
   'ally/supports/focus-scroll-container-without-overflow',
   'ally/supports/focus-scroll-container',
   'ally/supports/focus-scroll-body',
@@ -16,6 +17,7 @@ define([
   canFocusInvalidTabindex,
   canFocusImgIsmap,
   canFocusImgUsemapTabindex,
+  canFocusLabelTabindex,
   canFocusScrollContainerWithoutOverflow,
   canFocusScrollContainer,
   canFocusScrollBody,
@@ -101,6 +103,15 @@ define([
         var element = document.getElementById('img-usemap');
         element.setAttribute('tabindex', '-1');
         expect(isFocusable(element)).to.equal(canFocusImgUsemapTabindex);
+      },
+      'label element': function() {
+        var element = document.getElementById('label');
+        expect(isFocusable(element)).to.equal(false);
+      },
+      'label element with tabindex="-1"': function() {
+        var element = document.getElementById('label');
+        element.setAttribute('tabindex', '-1');
+        expect(isFocusable(element)).to.equal(canFocusLabelTabindex);
       },
       'extended: CSS user-modify': function() {
         var supports = document.body.style.webkitUserModify !== undefined;

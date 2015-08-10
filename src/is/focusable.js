@@ -19,6 +19,7 @@ let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.foc
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 import canFocusHtml from '../supports/focus-html';
+import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusSvg from '../supports/focus-svg';
 import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
@@ -47,6 +48,13 @@ export default function(element) {
 
   // input[type="hidden"] cannot be focused
   if (nodeName === 'input' && element.type === 'hidden') {
+    return false;
+  }
+
+  if (nodeName === 'label' && !canFocusLabelTabindex) {
+    // there's no way to make an element focusable other than by adding a tabindex,
+    // and focus behavior of the label element seems hard-wired to ignore tabindex
+    // in some browsers (like Gecko, Blink and WebKit)
     return false;
   }
 
