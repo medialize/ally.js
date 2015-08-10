@@ -46,7 +46,7 @@ define([
           + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #input, #input-tabindex--1, #span-contenteditable'
-          + (document.body.style.WebkitUserModify !== undefined ? ', #span-user-modify' : '')
+          + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
           + (canFocusImgIsmap ? ', #img-ismap' : '')
           + (canFocusScrollContainer ? ', #scroll-container' : '')
@@ -123,7 +123,7 @@ define([
           + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #input, #input-tabindex--1, #span-contenteditable'
-          + (document.body.style.WebkitUserModify !== undefined ? ', #span-user-modify' : '')
+          + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
           + (canFocusScrollContainer ? ', #scroll-container' : '')
           + ', #first-input, #second-input, #third-input';

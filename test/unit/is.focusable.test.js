@@ -92,7 +92,7 @@ define([
         expect(isFocusable(element)).to.equal(true);
       },
       'extended: CSS user-modify': function() {
-        var supports = document.body.style.WebkitUserModify !== undefined;
+        var supports = document.body.style.webkitUserModify !== undefined;
         var element = document.getElementById('span-user-modify');
         expect(isFocusable(element)).to.equal(supports);
       },

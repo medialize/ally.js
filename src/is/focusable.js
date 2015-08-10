@@ -135,7 +135,8 @@ export default function(element) {
   }
 
   const style = window.getComputedStyle(element, null);
-  if (style.getPropertyValue('-webkit-user-modify').indexOf('write') !== -1) {
+  const userModify = style.webkitUserModify || '';
+  if (userModify && userModify.indexOf('write') !== -1) {
     // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
     // https://github.com/medialize/ally.js/issues/17
     return true;
