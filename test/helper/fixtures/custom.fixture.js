@@ -3,6 +3,11 @@ define([], function() {
     var previous = document.getElementById('intern-dom-fixture');
     if (previous) {
       // it appears as if Intern's afterEach() is not executed reliably in IE10
+      if (document.activeElement === null) {
+        // IE10 does not redirect focus to <body> when the activeElement is removed
+        document.body.focus();
+      }
+
       document.activeElement.blur();
       previous.parentNode.removeChild(previous);
     }
