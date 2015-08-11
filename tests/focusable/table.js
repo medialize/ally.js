@@ -114,6 +114,7 @@ require([
     $scriptTable.find('tbody tr').each(function() {
       var $_row = $(this);
       var selector = $_row.attr('data-selector');
+      var hasMismatch = false;
 
       $_row.children('td').not('.meta').each(function() {
         var $browserCell = $(this);
@@ -126,10 +127,18 @@ require([
           .attr('data-supported', allySupported ? 'yes' : 'no')
           .attr('data-correct', browserSupported === allySupported ? 'yes' : 'no');
 
+        if (!hasMismatch && browserSupported !== allySupported) {
+          hasMismatch = true;
+        }
+
         // make browser versions distinguishable
         $browserCell.css('border-left', '3px solid black');
         $allyCell.css('border-right', '3px solid black');
-      })
+      });
+
+      if (!hasMismatch) {
+        $_row.hide();
+      }
     });
   }
 
