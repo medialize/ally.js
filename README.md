@@ -37,6 +37,10 @@ Have a look at the [API Documentation](docs/api/README.md).
 
 ---
 
+## Limitations
+
+* Internet Explorer 10, 11, Edge
+
 
 ## Requirements
 
