@@ -3,9 +3,9 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/elements-string',
-  'ally/supports/css-shadow-piercing-deep-combinator',
+  '../helper/supports',
   'ally/style/focus-within',
-], function(registerSuite, expect, shadowInputFixture, elementsString, cssShadowPiercingDeepCombinator, styleFocusWithin) {
+], function(registerSuite, expect, shadowInputFixture, elementsString, supports, styleFocusWithin) {
 
   registerSuite(function() {
     var fixture;
@@ -70,7 +70,7 @@ define([
         expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, #after-wrapper, #after-input', 'after sequence');
       },
       'follow focus into Shadow DOM': function() {
-        if (!cssShadowPiercingDeepCombinator) {
+        if (!supports.cssShadowPiercingDeepCombinator) {
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
 

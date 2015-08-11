@@ -4,11 +4,7 @@ define([
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/elements-string',
-  'ally/supports/focus-img-ismap',
-  'ally/supports/focus-invalid-tabindex',
-  'ally/supports/focus-scroll-container-without-overflow',
-  'ally/supports/focus-scroll-container',
-  'ally/supports/focus-scroll-body',
+  '../helper/supports',
   'ally/query/focusable',
 ], function(
   registerSuite,
@@ -16,11 +12,7 @@ define([
   focusableFixture,
   shadowInputFixture,
   elementsString,
-  canFocusImgIsmap,
-  canFocusInvalidTabindex,
-  canFocusScrollContainerWithoutOverflow,
-  canFocusScrollContainer,
-  canFocusScrollBody,
+  supports,
   queryFocusable
 ) {
 
@@ -43,16 +35,16 @@ define([
           strategy: 'strict',
         });
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
-          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
-          + (canFocusImgIsmap ? ', #img-ismap' : '')
-          + (canFocusScrollContainer ? ', #scroll-container' : '')
-          + (canFocusScrollBody ? ', #scroll-body' : '')
-          + (canFocusScrollContainerWithoutOverflow ? ', #scroll-container-without-overflow, #scroll-body-without-overflow' : '');
+          + (supports.canFocusImgIsmap ? ', #img-ismap' : '')
+          + (supports.canFocusScrollContainer ? ', #scroll-container' : '')
+          + (supports.canFocusScrollBody ? ', #scroll-body' : '')
+          + (supports.canFocusScrollContainerWithoutOverflow ? ', #scroll-container-without-overflow, #scroll-body-without-overflow' : '');
 
         expect(elementsString(result)).to.equal(expected);
       },
@@ -121,13 +113,13 @@ define([
           strategy: 'strict',
         });
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
-          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
-          + (canFocusScrollContainer ? ', #scroll-container' : '')
+          + (supports.canFocusScrollContainer ? ', #scroll-container' : '')
           + ', #first-input, #second-input, #third-input';
 
         expect(elementsString(result)).to.equal(expected);

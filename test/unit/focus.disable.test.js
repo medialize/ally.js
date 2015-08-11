@@ -2,9 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
-  'ally/supports/css-shadow-piercing-deep-combinator',
+  '../helper/supports',
   'ally/focus/disable',
-], function(registerSuite, expect, shadowInputFixture, cssShadowPiercingDeepCombinator, focusDisable) {
+], function(registerSuite, expect, shadowInputFixture, supports, focusDisable) {
 
   registerSuite(function() {
     var fixture;
@@ -90,7 +90,7 @@ define([
         }), 50);
       },
       'Shadow DOM': function() {
-        if (!cssShadowPiercingDeepCombinator) {
+        if (!supports.cssShadowPiercingDeepCombinator) {
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
 

@@ -2,10 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
-  'ally/supports/focus-invalid-tabindex',
-  'ally/supports/focus-tabindex-trailing-characters',
+  '../helper/supports',
   'ally/is/valid-tabindex',
-], function(registerSuite, expect, customFixture, canFocusInvalidTabindex, allowsTrailingCharacters, isValidTabindex) {
+], function(registerSuite, expect, customFixture, supports, isValidTabindex) {
 
   registerSuite(function() {
     var fixture;
@@ -59,7 +58,7 @@ define([
       'tabindex "0char" (trailing non-numeric characters)': function() {
         var element = document.getElementById('tabindex-0-char');
         expect(element.tabIndex).to.equal(0);
-        expect(isValidTabindex(element)).to.equal(allowsTrailingCharacters);
+        expect(isValidTabindex(element)).to.equal(supports.allowsTrailingCharacters);
       },
       'tabindex "1"': function() {
         var element = document.getElementById('tabindex-1');
@@ -70,13 +69,13 @@ define([
         var element = document.getElementById('tabindex-bad');
         // expect(element.tabIndex).to.equal(-1);
         // IE: 0, rest: -1
-        expect(isValidTabindex(element)).to.equal(canFocusInvalidTabindex);
+        expect(isValidTabindex(element)).to.equal(supports.canFocusInvalidTabindex);
       },
       'tabindex ""': function() {
         var element = document.getElementById('tabindex-empty');
         // expect(element.tabIndex).to.equal(-1);
         // IE: 0, rest: -1
-        expect(isValidTabindex(element)).to.equal(canFocusInvalidTabindex);
+        expect(isValidTabindex(element)).to.equal(supports.canFocusInvalidTabindex);
       },
     };
   });

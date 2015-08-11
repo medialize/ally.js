@@ -3,9 +3,8 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/dispatch-event',
-  'ally/supports/css-shadow-piercing-deep-combinator',
   'ally/style/focus-source',
-], function(registerSuite, expect, shadowInputFixture, dispatchEvent, cssShadowPiercingDeepCombinator, styleFocusSource) {
+], function(registerSuite, expect, shadowInputFixture, dispatchEvent, styleFocusSource) {
 
   registerSuite(function() {
     var fixture;

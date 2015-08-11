@@ -2,9 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
+  '../helper/supports',
   'ally/is/disabled',
-  'ally/supports/focus-fieldset-disabled',
-], function(registerSuite, expect, customFixture, isDisabled, canFocusDisabledFieldset) {
+], function(registerSuite, expect, customFixture, supports, isDisabled) {
 
   registerSuite(function() {
     var fixture;
@@ -64,7 +64,7 @@ define([
       'disabled fieldset': function() {
         var element = document.getElementById('disabled-fieldset');
         var res = isDisabled(element);
-        expect(res).to.equal(!canFocusDisabledFieldset);
+        expect(res).to.equal(!supports.canFocusDisabledFieldset);
       },
     };
   });

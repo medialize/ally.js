@@ -2,9 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'ally/supports/focusout-event',
+  '../helper/supports',
   'ally/focus/trap',
-], function(registerSuite, expect, focusableFixture, canFocusoutEvent, focusTrap) {
+], function(registerSuite, expect, focusableFixture, supports, focusTrap) {
 
   registerSuite(function() {
     var fixture;
@@ -41,7 +41,7 @@ define([
         document.getElementById('link-tabindex--1').focus();
         expect(document.activeElement).to.equal(document.getElementById('link-tabindex--1'), 'last');
 
-        if (canFocusoutEvent) {
+        if (supports.canFocusoutEvent) {
           document.getElementById('tabindex-0').focus();
           expect(document.activeElement).to.equal(document.getElementById('link'), 'outside before goes to first');
 

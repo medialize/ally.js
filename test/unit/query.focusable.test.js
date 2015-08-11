@@ -4,8 +4,7 @@ define([
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/elements-string',
-  'ally/supports/focus-invalid-tabindex',
-  'ally/supports/css-shadow-piercing-deep-combinator',
+  '../helper/supports',
   'ally/query/focusable',
 ], function(
   registerSuite,
@@ -13,8 +12,7 @@ define([
   focusableFixture,
   shadowInputFixture,
   elementsString,
-  canFocusInvalidTabindex,
-  cssShadowPiercingDeepCombinator,
+  supports,
   queryFocusable
 ) {
 
@@ -35,7 +33,7 @@ define([
       document: function() {
         var result = queryFocusable();
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
-          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'
@@ -96,7 +94,7 @@ define([
           this.skip('Shadow DOM not supported');
         }
 
-        if (!cssShadowPiercingDeepCombinator) {
+        if (!supports.cssShadowPiercingDeepCombinator) {
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
 
@@ -107,7 +105,7 @@ define([
 
         var result = queryFocusable();
         var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
-          + (canFocusInvalidTabindex ? ', #tabindex-bad' : '')
+          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + ', #input, #input-tabindex--1, #span-contenteditable'

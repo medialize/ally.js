@@ -2,9 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
-  'ally/supports/focus-broken-image-map',
+  '../helper/supports',
   'ally/is/valid-area',
-], function(registerSuite, expect, customFixture, canFocusBrokenImageMap, isValidArea) {
+], function(registerSuite, expect, customFixture, supports, isValidArea) {
 
   registerSuite(function() {
     var fixture;
@@ -80,7 +80,7 @@ define([
       },
       'area in map for broken img': function() {
         var element = document.getElementById('broken-map-area');
-        expect(isValidArea(element)).to.equal(canFocusBrokenImageMap);
+        expect(isValidArea(element)).to.equal(supports.canFocusBrokenImageMap);
       },
     };
   });

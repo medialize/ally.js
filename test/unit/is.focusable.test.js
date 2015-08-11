@@ -2,25 +2,13 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'ally/supports/focus-invalid-tabindex',
-  'ally/supports/focus-img-ismap',
-  'ally/supports/focus-img-usemap-tabindex',
-  'ally/supports/focus-label-tabindex',
-  'ally/supports/focus-scroll-container-without-overflow',
-  'ally/supports/focus-scroll-container',
-  'ally/supports/focus-scroll-body',
+  '../helper/supports',
   'ally/is/focusable',
 ], function(
   registerSuite,
   expect,
   focusableFixture,
-  canFocusInvalidTabindex,
-  canFocusImgIsmap,
-  canFocusImgUsemapTabindex,
-  canFocusLabelTabindex,
-  canFocusScrollContainerWithoutOverflow,
-  canFocusScrollContainer,
-  canFocusScrollBody,
+  supports,
   isFocusable
 ) {
 
@@ -61,7 +49,7 @@ define([
       },
       'tabindex="bad"': function() {
         var element = document.getElementById('tabindex-bad');
-        expect(isFocusable(element)).to.equal(canFocusInvalidTabindex);
+        expect(isFocusable(element)).to.equal(supports.canFocusInvalidTabindex);
       },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');
@@ -102,7 +90,7 @@ define([
       'img with usemap and tabindex': function() {
         var element = document.getElementById('img-usemap');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusable(element)).to.equal(canFocusImgUsemapTabindex);
+        expect(isFocusable(element)).to.equal(supports.canFocusImgUsemapTabindex);
       },
       'label element': function() {
         var element = document.getElementById('label');
@@ -111,28 +99,28 @@ define([
       'label element with tabindex="-1"': function() {
         var element = document.getElementById('label');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusable(element)).to.equal(canFocusLabelTabindex);
+        expect(isFocusable(element)).to.equal(supports.canFocusLabelTabindex);
       },
       'extended: CSS user-modify': function() {
-        var supports = document.body.style.webkitUserModify !== undefined;
+        var _supports = document.body.style.webkitUserModify !== undefined;
         var element = document.getElementById('span-user-modify');
-        expect(isFocusable(element)).to.equal(supports);
+        expect(isFocusable(element)).to.equal(_supports);
       },
       'extended: img with ismap attribute': function() {
         var element = document.getElementById('img-ismap');
-        expect(isFocusable(element)).to.equal(canFocusImgIsmap);
+        expect(isFocusable(element)).to.equal(supports.canFocusImgIsmap);
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');
-        expect(isFocusable(element)).to.equal(canFocusScrollContainerWithoutOverflow);
+        expect(isFocusable(element)).to.equal(supports.canFocusScrollContainerWithoutOverflow);
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusable(element)).to.equal(canFocusScrollContainer);
+        expect(isFocusable(element)).to.equal(supports.canFocusScrollContainer);
       },
       'extended: scroll body': function() {
         var element = document.getElementById('scroll-body');
-        expect(isFocusable(element)).to.equal(canFocusScrollBody);
+        expect(isFocusable(element)).to.equal(supports.canFocusScrollBody);
       },
     };
   });
