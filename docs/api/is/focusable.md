@@ -13,6 +13,7 @@ See [`ally/query/focusable`](../query/focusable.md#Notes)
 
 * **NOTE:** In Internet Explorer 10-11 `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable because it doesn't have an `element.offsetHeight`.
 * **NOTE:** In WebKit and Blink `SVGElements` that have been made focusable by adding a focus event listener are not identified as focusable
+* **NOTE:** Because the `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ), it is *not* considered focusable by ally.js.
 
 
 ## Demo

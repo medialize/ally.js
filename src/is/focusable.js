@@ -90,10 +90,6 @@ export default function(element) {
     return true;
   }
 
-  if (nodeName === 'keygen') {
-    return true;
-  }
-
   if (nodeName === 'audio' && (canFocusAudioWithoutControls || element.hasAttribute('controls'))) {
     return true;
   }
