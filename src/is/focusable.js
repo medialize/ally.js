@@ -17,18 +17,18 @@ import isValidArea from './valid-area';
 
 let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
-import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import canFocusHtml from '../supports/focus-html';
-import canFocusLabelTabindex from '../supports/focus-label-tabindex';
-import canFocusSvg from '../supports/focus-svg';
-import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
-import canFocusSummary from '../supports/focus-summary';
+import canFocusHtml from '../supports/focus-html';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
-import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
-import canFocusScrollContainer from '../supports/focus-scroll-container';
+import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusScrollBody from '../supports/focus-scroll-body';
+import canFocusScrollContainer from '../supports/focus-scroll-container';
+import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
+import canFocusSummary from '../supports/focus-summary';
+import canFocusSvg from '../supports/focus-svg';
+import canFocusTable from '../supports/focus-table';
+import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 
 export default function(element) {
   if (element === document) {
