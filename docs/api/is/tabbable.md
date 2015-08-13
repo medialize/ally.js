@@ -6,6 +6,8 @@ layout: doc-api.html
 
 Determines if an element is considered keyboard focusable ("tabbable").
 
+The function does *not* verify if an element is focusable. It expects input that is considered focusable, so `isTabbable(element)` does *not always* equal `isFocusable(element) && isTabbable(element)`.
+
 
 ## Notes
 
