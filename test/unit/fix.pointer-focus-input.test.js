@@ -9,13 +9,6 @@ define([
     var fixture;
     var handle;
 
-    // function isRelevantToBrowser() {
-    //   var userAgent = window.navigator.userAgent;
-    //   // This fix is only relevant to Safari and Firefox on OSX
-    //   return userAgent.indexOf('Mac OS X') !== -1
-    //     && (userAgent.indexOf('Version/') !== -1 || userAgent.indexOf('Firefox/') !== -1);
-    // }
-
     return {
       name: 'fix/pointer-focus-input',
 

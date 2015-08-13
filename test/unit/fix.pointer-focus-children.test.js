@@ -9,12 +9,6 @@ define([
     var fixture;
     var handle;
 
-    // function isRelevantToBrowser() {
-    //   var userAgent = window.navigator.userAgent;
-    //   // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-    //   return userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
-    // }
-
     return {
       name: 'fix/pointer-focus-children',
 

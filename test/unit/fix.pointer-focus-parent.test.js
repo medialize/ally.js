@@ -9,13 +9,6 @@ define([
     var fixture;
     var handle;
 
-    // function isRelevantToBrowser() {
-    //   var userAgent = window.navigator.userAgent;
-    //   // This fix is only relevant to WebKit
-    //   return userAgent.indexOf('Chrome') === -1
-    //     && (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1);
-    // }
-
     return {
       name: 'fix/pointer-focus-parent',
 

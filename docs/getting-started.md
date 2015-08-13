@@ -49,6 +49,7 @@ require.config({
     // provide paths to dependencies
     'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
     'css.escape': 'bower_components/css.escape/css.escape',
+    'platform': 'bower_components/platform/platform',
   }
 });
 ```

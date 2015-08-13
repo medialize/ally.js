@@ -11,16 +11,15 @@
   It is not a problem in Firefox 33, Internet Explorer 11, Chrome 39.
 */
 
+import platform from 'platform';
 import getFocusTarget from '../get/focus-target';
 import isValidTabIndex from '../is/valid-tabindex';
 import decorateContext from '../util/decorate-context';
 
 let engage;
 let disengage;
-const userAgent = window.navigator.userAgent;
 // This fix is only relevant to WebKit
-const relevantToCurrentBrowser = userAgent.indexOf('Chrome') === -1
-  && (userAgent.indexOf('AppleWebKit') !== -1 || userAgent.indexOf('Android') !== -1);
+const relevantToCurrentBrowser = platform.layout === 'WebKit';
 
 if (!relevantToCurrentBrowser) {
   engage = function() {};

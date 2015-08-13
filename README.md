@@ -51,6 +51,7 @@ Have a look at the [API Documentation](docs/api/README.md).
 
 ## Dependencies
 
+* [platform.js](https://github.com/bestiejs/platform.js) (because parsing the userAgent string yourself is ludicrous)
 * [ES5-shim](https://github.com/es-shims/es5-shim) (implicitly expected)
 * [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) (or complete [ES6-shim](https://github.com/paulmillr/es6-shim))
 * [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape)

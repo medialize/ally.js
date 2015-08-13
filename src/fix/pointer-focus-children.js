@@ -13,14 +13,14 @@
   It is fixed in IE12 (Win10 IE Tec Preview)
 */
 
+import platform from 'platform';
 import getFocusTarget from '../get/focus-target';
 import decorateContext from '../util/decorate-context';
 
 let engage;
 let disengage;
-const userAgent = window.navigator.userAgent;
 // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-const relevantToCurrentBrowser = userAgent.indexOf('Trident/6') !== -1 || userAgent.indexOf('Trident/7') !== -1;
+const relevantToCurrentBrowser = platform.name === 'IE' && (platform.version.match(/^(10|11)\./));
 // IE10 requires prefix, IE11 does not
 const eventName = 'onpointerdown' in document ? 'pointerdown' : 'MSPointerDown';
 
