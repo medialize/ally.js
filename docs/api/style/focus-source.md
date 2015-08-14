@@ -54,6 +54,9 @@ html[data-focus-source="pointer"] /deep/ :focus {
 }
 ```
 
+What ally.js calls "focus source" has been proposed (by others) as [`modality: keyboard` media query](https://github.com/bkardell/modality/blob/master/docs/modality-mq.md) and a [prollyfill](https://github.com/alice/modality) is available, too.
+
+
 ## Notes
 
 * **NOTE:** We are unaware of any best practices concerning different focus outline styling depending on user interaction device

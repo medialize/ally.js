@@ -20,6 +20,8 @@
 
   NOTE: I don't have a GamePad to test, if you do and you want to
   implement an observer for https://w3c.github.io/gamepad/ - send a PR!
+
+  Alternate implementation: https://github.com/alice/modality
 */
 
 import shadowFocus from '../event/shadow-focus';
