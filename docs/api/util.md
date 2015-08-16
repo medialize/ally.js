@@ -70,6 +70,11 @@ A component's `engage()` function may return an result object. The decorated `di
 `util/sort-elements-by-tabindex` is a function to sort a list of elements in such a way that elements with a positive tabindex (e.g. `[tabindex="4"]`) come first in ascending order and the other nodes remain in DOM order.
 
 
+### Retrieve Tabindex Value
+
+`util/tabindex-value` returns the value of the tabindex attribute (not property!) as an integer, or null for missing or invalid values
+
+
 ### Calculate An Element's Visible Area
 
 `util/visible-area` calculates the fraction of the area that is visible in the viewport (`1` fully visible, `0` not visible at all, `0.5` half the element is visible, the rest is hidden by *scroll containers*)

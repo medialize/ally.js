@@ -17,6 +17,7 @@
 
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
+import tabindexValue from '../util/tabindex-value';
 
 function disabledFocus() {
   /*eslint-disable no-console */
@@ -26,9 +27,8 @@ function disabledFocus() {
 
 function makeElementInert(element) {
   // remember previous tabindex so we can restore it
-  const tabIndex = element.getAttribute('tabindex');
-  // IE11 parses tabindex="" as the value "-32768"
-  element.setAttribute('data-inert-tabindex', tabIndex !== null && tabIndex !== '-32768' ? tabIndex : '');
+  const tabIndex = tabindexValue(element);
+  element.setAttribute('data-inert-tabindex', tabIndex !== null ? tabIndex : '');
   // remember previous aria-disabled so we can restore it
   const ariaDisabled = element.getAttribute('aria-disabled');
   element.setAttribute('data-inert-aria-disabled', ariaDisabled || '');

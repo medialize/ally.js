@@ -1,7 +1,7 @@
 
 // determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
 
-import isValidTabindex from './valid-tabindex';
+import tabindexValue from '../util/tabindex-value';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
@@ -18,9 +18,8 @@ export default function(element) {
 
   const nodeName = element.nodeName.toLowerCase();
   // null: not set, true: tabbable, false: focusable
-  const tabindex = element.hasAttribute('tabindex') && isValidTabindex(element)
-    ? parseInt(element.getAttribute('tabindex'), 10) >= 0
-    : null;
+  const _tabindex = tabindexValue(element);
+  const tabindex = _tabindex === null ? null : _tabindex >= 0;
 
   // Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
   if (element.hasAttribute('contenteditable')) {

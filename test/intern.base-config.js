@@ -104,6 +104,7 @@ define([
       'test/unit/util.decorate-service.test.js',
       'test/unit/util.node-array.test.js',
       'test/unit/util.sort-elements-by-tabindex.test.js',
+      'test/unit/util.tabindex-value.test.js',
       'test/unit/util.visible-area.test.js',
       'test/unit/when.focusable.test.js',
       'test/unit/when.visible-area.test.js',
