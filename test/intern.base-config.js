@@ -81,6 +81,7 @@ define([
       'test/unit/get.shadow-host-parents.test.js',
       'test/unit/get.shadow-host.test.js',
       'test/unit/is.disabled.test.js',
+      'test/unit/is.focus-relevant.test.js',
       'test/unit/is.focusable.test.js',
       'test/unit/is.shadowed.test.js',
       'test/unit/is.tabbable.test.js',

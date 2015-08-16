@@ -26,6 +26,9 @@ define(['./custom.fixture'], function(customFixture) {
       '<input type="text" tabindex="-1" id="input-tabindex--1">',
       '<input type="text" disabled id="input-disabled">',
       '<input type="hidden" id="input-hidden">',
+      '<fieldset disabled>',
+        '<input type="text" id="fieldset-disabled-input">',
+      '</fieldset>',
       // editing hosts
       '<span contenteditable id="span-contenteditable"></span>',
       '<span style="-webkit-user-modify: read-write" id="span-user-modify"></span>',

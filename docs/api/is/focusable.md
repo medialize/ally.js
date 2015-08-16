@@ -6,14 +6,12 @@ layout: doc-api.html
 
 Determines if an element is considered focusable.
 
+An element is considered focusable if it is script focusable ([is/focus-relevant](./focus-relevant.md)), visible and not disabled.
+
 
 ## Notes
 
-See [`ally/query/focusable`](../query/focusable.md#Notes)
-
-* **NOTE:** In Internet Explorer 10-11 `table tr{visibility:collapse} td a{visibility:visible}` is not identified as focusable because it doesn't have an `element.offsetHeight`.
-* **NOTE:** In WebKit and Blink `SVGElements` that have been made focusable by adding a focus event listener are not identified as focusable
-* **NOTE:** Because the `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ), it is *not* considered focusable by ally.js.
+See [`ally/is/focus-relevant`](./focus-relevant.md#Notes)
 
 
 ## Demo
@@ -50,6 +48,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 ## Related Resources
 
 * [`ally/is/disabled`](disabled.md)
+* [`ally/is/focus-relevant`](focus-relevant.md) is used to identify elements that can receive focus
 * [`ally/is/shadowed`](shadowed.md)
 * [`ally/is/tabbable`](tabbable.md)
 * [`ally/is/valid-area`](valid-area.md)

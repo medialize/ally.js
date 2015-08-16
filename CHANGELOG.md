@@ -10,6 +10,7 @@
 * unifying API of all functions, see the [API docs](docs/api/)
 * adding `strategy: 'strict'` option to `query/focusable` to find elements by filters unavailable to `querySelectorAll()` - i.e. Shadow DOM without the "Shadow Piercing Descendant Combinator", scrollable containers, `-webkit-user-modify: read-write` - [issue #17](https://github.com/medialize/ally.js/issues/17), [issue #21](https://github.com/medialize/ally.js/issues/21)
 * refactoring `is/focusable` to also identify "edge-cases" - [issue #17](https://github.com/medialize/ally.js/issues/17), [issue #20](https://github.com/medialize/ally.js/issues/20), [issue #21](https://github.com/medialize/ally.js/issues/21)
+* adding `is/focus-relevant` to identify technically focusable elements (refactored from `is/focusable`)
 * removing "dimension check" from `is/visible` - [issue #14](https://github.com/medialize/ally.js/issues/14)
 
 ### Breaking Changes

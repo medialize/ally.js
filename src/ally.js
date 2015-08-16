@@ -15,6 +15,7 @@ import queryTabbable from './query/tabbable';
 import queryTabsequence from './query/tabsequence';
 
 import disabled from './is/disabled';
+import focusRelevant from './is/focus-relevant';
 import focusable from './is/focusable';
 import shadowed from './is/shadowed';
 import tabbable from './is/tabbable';
@@ -53,6 +54,7 @@ export default {
 
   is: {
     disabled,
+    focusRelevant,
     focusable,
     shadowed,
     tabbable,
