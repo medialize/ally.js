@@ -103,12 +103,7 @@ class InertSubtree {
     this.filterContext = this.filterContext.bind(this);
     this.filterElements = this.filterElements.bind(this);
 
-    const focusable = this._context
-      // find all focusable elements within the given contexts
-      .map(element => queryFocusable({context: element}))
-      // flatten nested arrays
-      .reduce((previous, current) => previous.concat(current), []);
-
+    const focusable = this.listQueryFocusable(this._context);
     this.renderInert(focusable);
     this.startObserver();
   }
@@ -125,6 +120,14 @@ class InertSubtree {
     this._filter = null;
     this._context = null;
     this._observer && this._observer.disconnect();
+  }
+
+  listQueryFocusable(list) {
+    return list
+      // find all focusable elements within the given contexts
+      .map(element => queryFocusable({context: element, includeContext: true}))
+      // flatten nested arrays
+      .reduce((previous, current) => previous.concat(current), []);
   }
 
   renderInert(elements) {
@@ -174,10 +177,7 @@ class InertSubtree {
 
   handleMutation(mutation) {
     if (mutation.type === 'childList') {
-      const addedNodes = nodeArray(mutation.addedNodes)
-        .filter(node => node.nodeType === Node.ELEMENT_NODE)
-        .filter(this.filterContext);
-
+      const addedNodes = this.listQueryFocusable(nodeArray(mutation.addedNodes));
       this.renderInert(addedNodes);
     } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
       makeElementInert(mutation.target);

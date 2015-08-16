@@ -84,6 +84,30 @@ define([
           expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'added after the fact');
         }), 50);
       },
+      'dom mutation (single node)': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
+        var deferred = this.async(500);
+
+        var input = document.createElement('input');
+        input.id = 'dynamic-input';
+
+        handle = focusDisable({
+          context: '#intern-dom-fixture',
+          filter: '#after-wrapper, #outer-input',
+        });
+
+        expect(handle.disengage).to.be.a('function');
+        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
+        fixture.root.appendChild(input);
+
+        // dom mutation is observed asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'added after the fact');
+        }), 50);
+      },
       'Shadow DOM': function() {
         if (!supports.cssShadowPiercingDeepCombinator) {
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
