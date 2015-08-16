@@ -122,9 +122,15 @@ define([
         var element = document.getElementById('scroll-container');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusScrollContainer);
       },
-      'extended: scroll body': function() {
-        var element = document.getElementById('scroll-body');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusScrollBody);
+      'extended: child of focusable flexbox': function() {
+        var span = fixture.add([
+          /*eslint-disable indent */
+          '<div tabindex="-1" style="display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild.firstElementChild;
+        expect(isFocusRelevant(span)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
       },
     };
   });

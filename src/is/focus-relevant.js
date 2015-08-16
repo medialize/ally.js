@@ -11,6 +11,7 @@ import isValidArea from './valid-area';
 
 let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
+import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusHtml from '../supports/focus-html';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
@@ -171,6 +172,14 @@ export default function(element) {
     // scrollable bodies are focusable Internet Explorer
     // https://github.com/medialize/ally.js/issues/21
     return true;
+  }
+
+  // Children of focusable elements with display:flex are focusable in IE10-11
+  if (canFocusChildrenOfFocusableFlexbox) {
+    const parentStyle = window.getComputedStyle(parent, null);
+    if (parentStyle.display.indexOf('flex') > -1) {
+      return true;
+    }
   }
 
   // NOTE: elements marked as inert are not focusable,
