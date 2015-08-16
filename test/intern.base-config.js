@@ -83,6 +83,7 @@ define([
       'test/unit/is.disabled.test.js',
       'test/unit/is.focus-relevant.test.js',
       'test/unit/is.focusable.test.js',
+      'test/unit/is.only-tabbable.test.js',
       'test/unit/is.shadowed.test.js',
       'test/unit/is.tabbable.test.js',
       'test/unit/is.valid-area.test.js',

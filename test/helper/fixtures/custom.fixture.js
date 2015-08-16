@@ -21,6 +21,16 @@ define([], function() {
         document.activeElement.blur();
         fixture.root.parentNode.removeChild(fixture.root);
       },
+      add: function(_html, id) {
+        var div = document.createElement('div');
+        div.innerHTML = _html;
+        if (id) {
+          div.id = id;
+        }
+
+        fixture.root.appendChild(div);
+        return div;
+      },
     };
 
     fixture.root.id = 'intern-dom-fixture';

@@ -26,6 +26,7 @@ function disabledFocus() {
 }
 
 function makeElementInert(element) {
+  // FIXME: <svg tabindex="-1"> is still tabbable in IE
   // remember previous tabindex so we can restore it
   const tabIndex = tabindexValue(element);
   element.setAttribute('data-inert-tabindex', tabIndex !== null ? tabIndex : '');

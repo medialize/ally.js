@@ -49,6 +49,7 @@ Unlike any other ally modules, the `is/*` components do not take take `options.c
 * [`ally/is/disabled`](is/disabled.md) returns true if the element is `:disabled`
 * [`ally/is/focus-releavnt`](is/focus-relevant.md) returns true if the element is considered theoretically focusable
 * [`ally/is/focusable`](is/focusable.md) returns true if the element is considered focusable by script
+* [`ally/is/only-tabbable`](is/only-tabbable.md) returns true if the element is tabbable but not focusable
 * [`ally/is/shadowed`](is/shadowed.md) returns true if the element is the descendant of a `ShadowRoot`
 * [`ally/is/tabbable`](is/tabbable.md) returns true if the element is considered keyboard focusable ("tabbable")
 * [`ally/is/valid-area`](is/valid-area.md) returns true if the `<area>` element is properly used via `<map>` by an `<img>`

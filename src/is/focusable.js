@@ -10,6 +10,7 @@
 import isFocusRelevant from './focus-relevant';
 import isVisible from './visible';
 import isDisabled from './disabled';
+import isOnlyTabbable from './only-tabbable';
 
 export default function(element) {
   if (element === document) {
@@ -25,6 +26,11 @@ export default function(element) {
   }
 
   if (isDisabled(element)) {
+    return false;
+  }
+
+  if (isOnlyTabbable(element)) {
+    // some elements may be keyboard focusable, but not script focusable
     return false;
   }
 
