@@ -114,6 +114,10 @@ class InertSubtree {
     }
 
     this._context.forEach(function(element) {
+      if (element.hasAttribute('data-inert-tabindex')) {
+        undoElementInert(element);
+      }
+
       [].forEach.call(element.querySelectorAll('[data-inert-tabindex]'), undoElementInert);
     });
 
