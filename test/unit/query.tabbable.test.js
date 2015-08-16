@@ -25,6 +25,7 @@ define([
         var expected = '#tabindex-0, #tabindex-1, #link'
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg' : '')
+          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + ', #input, #span-contenteditable'
           + ', #img-ismap-link';
 

@@ -26,11 +26,6 @@ define([
           /*eslint-disable indent */
           '<label tabindex="0" id="label-tabindex-0">text</label>',
           '<label tabindex="-1" id="label-tabindex--1">text</label>',
-          '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
-            '<a xlink:href="#void" id="svg-link">',
-              '<text x="10" y="20" id="svg-link-text">text</text>',
-            '</a>',
-          '</svg>',
           /*eslint-enable indent */
         ].join(''), 'svg-container');
       },

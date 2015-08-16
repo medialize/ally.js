@@ -37,6 +37,7 @@ define([
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
+          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link';
 
@@ -108,6 +109,7 @@ define([
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
+          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link'
           + ', #first-input, #second-input, #third-input';

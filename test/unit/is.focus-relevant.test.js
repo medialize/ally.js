@@ -122,6 +122,19 @@ define([
         element.setAttribute('tabindex', '-1');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusLabelTabindex);
       },
+      'svg element': function() {
+        var element = document.getElementById('svg');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg && supports.canFocusSvgMethod);
+      },
+      'svg element with tabindex="-1"': function() {
+        var element = document.getElementById('svg');
+        element.setAttribute('tabindex', '-1');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvgMethod);
+      },
+      'svg link element': function() {
+        var element = document.getElementById('svg-link');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvgMethod);
+      },
       'extended: CSS user-modify': function() {
         var _supports = document.body.style.webkitUserModify !== undefined;
         var element = document.getElementById('span-user-modify');

@@ -9,7 +9,7 @@ import getParents from '../get/parents';
 import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 
-let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
+const canFocusSvgMethod = Boolean(Element.prototype.focus);
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusAreaTabindex from '../supports/focus-area-tabindex';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
@@ -125,17 +125,21 @@ export default function(element) {
     return true;
   }
 
-  if (canFocusSvgMethod && canFocusSvg && nodeName === 'svg') {
+  if (nodeName === 'svg') {
+    if (!canFocusSvgMethod) {
+      // Firefox and IE cannot focus SVG elements because SVGElement.prototype.focus is missing
+      return false;
+    }
     // NOTE: in Chrome this would be something like 'svg, svg *,' as *every* svg element with a focus event listener is focusable
-    return true;
+    return canFocusSvg || isValidTabindex(element);
   }
 
   // FIXME: svg a[xlink|href] has false negative in Chrome
   // FIXME: svg * has false positive in Firefox, IE
-  if (canFocusSvgMethod && element.matches('svg a[*|href]')) {
+  if (element.matches('svg a[*|href]')) {
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox cannot focus <svg> child elements from script
-    return true;
+    return canFocusSvgMethod;
   }
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
