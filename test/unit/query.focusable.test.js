@@ -36,6 +36,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link';
 
@@ -106,6 +107,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link'
           + ', #first-input, #second-input, #third-input';

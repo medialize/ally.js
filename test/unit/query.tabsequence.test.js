@@ -3,8 +3,9 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/elements-string',
+  '../helper/supports',
   'ally/query/tabsequence',
-], function(registerSuite, expect, focusableFixture, elementsString, queryTabsequence) {
+], function(registerSuite, expect, focusableFixture, elementsString, supports, queryTabsequence) {
 
   registerSuite(function() {
     var fixture;
@@ -21,9 +22,13 @@ define([
       },
 
       document: function() {
-        var expected = '#tabindex-1, #tabindex-0, #link, #image-map-area, #input, #span-contenteditable, #img-ismap-link';
-        var result = queryTabsequence();
+        var expected = '#tabindex-1, #tabindex-0, #link'
+          + ', #image-map-area'
+          + (supports.canFocusObjectSvg ? ', #object-svg' : '')
+          + ', #input, #span-contenteditable'
+          + ', #img-ismap-link';
 
+        var result = queryTabsequence();
         expect(elementsString(result)).to.equal(expected);
       },
 

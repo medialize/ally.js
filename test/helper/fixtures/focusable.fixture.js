@@ -1,4 +1,9 @@
 define(['./custom.fixture'], function(customFixture) {
+  const gifDataUri = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  const svgDataUri = 'data:image/svg+xml,base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtb'
+    + 'G5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0ic3ZnIj48dGV4dCB4PSIxMCIgeT0iMjAiIGlkPSJ'
+    + 'zdmctbGluay10ZXh0Ij50ZXh0PC90ZXh0Pjwvc3ZnPg==';
+
   return function(context) {
     return customFixture([
       /*eslint-disable indent */
@@ -19,7 +24,10 @@ define(['./custom.fixture'], function(customFixture) {
         '<area id="image-map-area" href="#void" shape="rect" coords="63,19,144,45">',
         '<area id="image-map-area-nolink" shape="rect" coords="63,19,144,45">',
       '</map>',
-      '<img id="img-usemap" usemap="#image-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">',
+      '<img id="img-usemap" usemap="#image-map" src="' + gifDataUri + '" alt="">',
+      // embedded content
+      '<object type="image/svg+xml" id="object-svg" data="' + svgDataUri + '" width="200" height="50"></object>',
+      '<object type="image/svg+xml" id="object-tabindex-svg" tabindex="-1" data="' + svgDataUri + '" width="200" height="50"></object>',
       // input elements
       '<label id="label">text</label>',
       '<input type="text" id="input">',

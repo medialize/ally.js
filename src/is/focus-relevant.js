@@ -18,6 +18,7 @@ import canFocusHtml from '../supports/focus-html';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
+import canFocusObjectSvg from '../supports/focus-object-svg';
 import canFocusScrollBody from '../supports/focus-scroll-body';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
@@ -69,6 +70,11 @@ export default function(element) {
 
   if (nodeName === 'object' && element.hasAttribute('usemap')) {
     // object[usemap] is not focusable in any browser
+    return false;
+  }
+
+  if (!canFocusObjectSvg && nodeName === 'object' && element.getAttribute('type') === 'image/svg+xml') {
+    // object[type="image/svg+xml"] is not focusable in Internet Explorer
     return false;
   }
 

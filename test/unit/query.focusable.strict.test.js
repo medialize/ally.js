@@ -38,6 +38,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
@@ -114,6 +115,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'

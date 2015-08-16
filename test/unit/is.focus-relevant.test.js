@@ -96,6 +96,14 @@ define([
         element.setAttribute('tabindex', '-1');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusImgUsemapTabindex);
       },
+      'object element referencing svg': function() {
+        var element = document.getElementById('object-svg');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
+      },
+      'object element with tabindex="-1" referencing svg': function() {
+        var element = document.getElementById('object-tabindex-svg');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
+      },
       'area element': function() {
         var element = document.getElementById('image-map-area');
         expect(isFocusRelevant(element)).to.equal(true);

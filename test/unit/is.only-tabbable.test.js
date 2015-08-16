@@ -26,10 +26,6 @@ define([
           /*eslint-disable indent */
           '<label tabindex="0" id="label-tabindex-0">text</label>',
           '<label tabindex="-1" id="label-tabindex--1">text</label>',
-          '<object type="image/svg+xml" id="object-svg" data="data:image/svg+xml,base64,',
-            'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk',
-            '5L3hsaW5rIiBpZD0ic3ZnIj48dGV4dCB4PSIxMCIgeT0iMjAiIGlkPSJzdmctbGluay10ZXh0Ij50ZXh0PC90ZXh0Pjwvc3ZnPg==',
-          '" width="200" height="50"></object>',
           '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
             '<a xlink:href="#void" id="svg-link">',
               '<text x="10" y="20" id="svg-link-text">text</text>',
