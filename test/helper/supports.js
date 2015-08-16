@@ -3,6 +3,7 @@ define(function(require) {
   return {
     allowsInvalidTabindexValue: require('ally/supports/focus-invalid-tabindex'),
     allowsTrailingCharacters: require('ally/supports/focus-tabindex-trailing-characters'),
+    canFocusAreaTabindex: require('ally/supports/focus-area-tabindex'),
     canFocusBrokenImageMap: require('ally/supports/focus-broken-image-map'),
     canFocusChildrenOfFocusableFlexbox: require('ally/supports/focus-children-of-focusable-flexbox'),
     canFocusDisabledFieldset: require('ally/supports/focus-fieldset-disabled'),

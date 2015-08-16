@@ -96,6 +96,15 @@ define([
         element.setAttribute('tabindex', '-1');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusImgUsemapTabindex);
       },
+      'area element': function() {
+        var element = document.getElementById('image-map-area');
+        expect(isFocusRelevant(element)).to.equal(true);
+      },
+      'area element with tabindex="-1"': function() {
+        var element = document.getElementById('image-map-area');
+        element.setAttribute('tabindex', '-1');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusAreaTabindex);
+      },
       'label element': function() {
         var element = document.getElementById('label');
         expect(isFocusRelevant(element)).to.equal(false);
