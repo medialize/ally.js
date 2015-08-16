@@ -52,12 +52,10 @@ define([
         expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
       },
       'context and filter': function() {
-        var input = document.createElement('input');
-        input.id = 'dynamic-input';
-        fixture.root.appendChild(input);
+        var input = fixture.add('<input id="dyamic-input">').firstElementChild;
 
         handle = focusDisable({
-          context: '#intern-dom-fixture',
+          context: fixture.root,
           filter: '#after-wrapper, #outer-input',
         });
         expect(handle.disengage).to.be.a('function');
@@ -72,18 +70,15 @@ define([
 
         var deferred = this.async(500);
 
-        var input = document.createElement('input');
-        input.id = 'dynamic-input';
-
         handle = focusDisable({
-          context: '#intern-dom-fixture',
+          context: fixture.root,
           filter: '#after-wrapper, #outer-input',
         });
 
         expect(handle.disengage).to.be.a('function');
         expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
-        fixture.root.appendChild(input);
 
+        var input = fixture.add('<input id="dyamic-input">').firstElementChild;
         // dom mutation is observed asynchronously
         setTimeout(deferred.callback(function() {
           expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'added after the fact');
@@ -95,7 +90,7 @@ define([
         }
 
         handle = focusDisable({
-          context: '#intern-dom-fixture',
+          context: fixture.root,
           filter: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
@@ -103,11 +98,8 @@ define([
         expect(fixture.input.first.hasAttribute('data-inert-tabindex')).to.equal(true, 'out of filter');
       },
       'concurrent instances': function() {
-        var container = document.createElement('div');
-        container.id = 'dynamic-wrapper';
-        container.innerHTML = '<input type="text" id="dynamic-input">';
-        fixture.root.appendChild(container);
-        var input = document.getElementById('dynamic-input');
+        var container = fixture.add('<input type="text" id="dynamic-input">', 'dynamic-wrapper');
+        var input = container.firstElementChild;
 
         handle = focusDisable({
           context: '#after-wrapper',

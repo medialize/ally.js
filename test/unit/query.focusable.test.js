@@ -64,25 +64,23 @@ define([
       },
 
       'children of <canvas>': function() {
-        var context = fixture.root.querySelector('.context');
-        context.innerHTML = '';
-
-        var canvas = document.createElement('canvas');
-        //  <canvas width="150" height="150" data-label="canvas">
-        canvas.innerHTML = [
-          '<input type="text" id="canvas-input">',
-          '<input type="text" id="canvas-input-tabindex--1" tabindex="-1">',
-          '<a href="#void" id="canvas-a">hello</a>',
-          '<a href="#void" id="canvas-a-tabindex--1" tabindex="-1">hello</a>',
-          '<span tabindex="0" id="canvas-span-tabindex-0">hello</span>',
-          '<span tabindex="-1" id="canvas-span-tabindex--1">hello</span>',
-        ].join('');
-        context.appendChild(canvas);
+        var container = fixture.add([
+          /*eslint-disable indent */
+          '<canvas>',
+            '<input type="text" id="canvas-input">',
+            '<input type="text" id="canvas-input-tabindex--1" tabindex="-1">',
+            '<a href="#void" id="canvas-a">hello</a>',
+            '<a href="#void" id="canvas-a-tabindex--1" tabindex="-1">hello</a>',
+            '<span tabindex="0" id="canvas-span-tabindex-0">hello</span>',
+            '<span tabindex="-1" id="canvas-span-tabindex--1">hello</span>',
+          '</canvas>',
+          /*eslint-enable indent */
+        ].join(''), 'canvas-container');
 
         var expected = '#canvas-input, #canvas-input-tabindex--1, #canvas-a, #canvas-a-tabindex--1'
           + ', #canvas-span-tabindex-0, #canvas-span-tabindex--1';
         var result = queryFocusable({
-          context: '.context',
+          context: container,
           includeContext: true,
         });
 
