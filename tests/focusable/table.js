@@ -96,7 +96,7 @@ require([
     $_row.appendTo($tbody);
   });
 
-  function renderAllyComparison($scriptTable, system, strategy) {
+  function renderAllyComparison($scriptTable, system, strategy, source) {
     // prepare table that shows support of libraries in given browser
     $scriptTable.empty().append($table.children().clone());
     $scriptTable.find('[data-column="notes"]').remove();
@@ -115,12 +115,25 @@ require([
       var $_row = $(this);
       var selector = $_row.attr('data-selector');
       var hasMismatch = false;
-
+      
+      if (source !== 'focusable') {
+        var _expected = data.expected[source].indexOf(selector) !== -1;
+        $_row.children('td').first()
+          .text(_expected ? 'yes' : 'no')
+          .attr('data-supported', _expected ? 'yes' : 'no');
+      }
+      
       $_row.children('td').not('.meta').each(function() {
         var $browserCell = $(this);
         var browser = $browserCell.attr('data-column');
-        var browserSupported = $browserCell.attr('data-supported') === 'yes';
+        var browserSupported = data[browser][source].indexOf(selector) !== -1;
         var allySupported = data[browser][system][strategy].indexOf(selector) !== -1;
+
+        if (source !== 'focusable') {
+          $browserCell
+            .text(browserSupported ? 'yes' : 'no')
+            .attr('data-supported', browserSupported ? 'yes' : 'no');
+        }
 
         var $allyCell = $('<td>?</td>').insertAfter($browserCell)
           .text(allySupported ? 'yes' : 'no')
@@ -143,9 +156,11 @@ require([
   }
 
   // prepare table that shows support of libraries in given browser
-  renderAllyComparison($('#script-focusable-table'), 'ally', 'focusable');
-  renderAllyComparison($('#script-focusable-strict-table'), 'ally', 'focusableStrict');
-  renderAllyComparison($('#script-focusable-jquery-table'), 'jquery', 'focusable');
+  renderAllyComparison($('#script-focusable-table'), 'ally', 'focusable', 'focusable');
+  renderAllyComparison($('#script-focusable-strict-table'), 'ally', 'focusableStrict', 'focusable');
+  renderAllyComparison($('#script-focusable-jquery-table'), 'jquery', 'focusable', 'focusable');
+  renderAllyComparison($('#script-focusable-tabbable-table'), 'ally', 'tabOrder', 'tabOrder');
+
 
   $table = $('#focus-redirection-table');
   $tbody = $table.find('.items')
