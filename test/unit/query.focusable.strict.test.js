@@ -40,6 +40,10 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusEmbed ? ', #embed' : '')
+          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
+          + (supports.canFocusEmbed && supports.canFocusObjectSvg ? ', #embed-svg' : '')
+          + (supports.canFocusEmbedTabindex && supports.canFocusObjectSvg ? ', #embed-tabindex-svg' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'
@@ -120,6 +124,10 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusEmbed ? ', #embed' : '')
+          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
+          + (supports.canFocusEmbed && supports.canFocusObjectSvg ? ', #embed-svg' : '')
+          + (supports.canFocusEmbedTabindex && supports.canFocusObjectSvg ? ', #embed-tabindex-svg' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'

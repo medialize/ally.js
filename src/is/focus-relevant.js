@@ -10,9 +10,11 @@ import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 
 const canFocusSvgMethod = Boolean(Element.prototype.focus);
-import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusAreaTabindex from '../supports/focus-area-tabindex';
+import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
+import canFocusEmbed from '../supports/focus-embed';
+import canFocusEmbedTabindex from '../supports/focus-embed-tabindex';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusHtml from '../supports/focus-html';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
@@ -78,9 +80,19 @@ export default function(element) {
     return false;
   }
 
-  if (nodeName === 'iframe' || nodeName === 'object' || nodeName === 'embed') {
+  if (nodeName === 'iframe' || nodeName === 'object') {
     // browsing context containers
     return true;
+  }
+
+  const validTabindex = isValidTabindex(element);
+
+  if (nodeName === 'embed') {
+    if (canFocusEmbed || (canFocusEmbedTabindex && validTabindex)) {
+      return true;
+    }
+
+    return false;
   }
 
   if (element.hasAttribute('contenteditable')) {
@@ -100,7 +112,7 @@ export default function(element) {
     return true;
   }
 
-  if (nodeName === 'img' && element.hasAttribute('usemap') && isValidTabindex(element)) {
+  if (nodeName === 'img' && element.hasAttribute('usemap') && validTabindex) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
     // it appears the tabindex is overruled so focus is still forwarded to the <map>
     return canFocusImgUsemapTabindex;
@@ -131,7 +143,7 @@ export default function(element) {
       return false;
     }
     // NOTE: in Chrome this would be something like 'svg, svg *,' as *every* svg element with a focus event listener is focusable
-    return canFocusSvg || isValidTabindex(element);
+    return canFocusSvg || validTabindex;
   }
 
   // FIXME: svg a[xlink|href] has false negative in Chrome
@@ -143,7 +155,7 @@ export default function(element) {
   }
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-  if (isValidTabindex(element)) {
+  if (validTabindex) {
     return true;
   }
 

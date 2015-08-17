@@ -143,6 +143,14 @@ define([
         var element = document.getElementById('svg-link');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusSvgMethod);
       },
+      'embed element': function() {
+        var element = document.getElementById('embed');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusEmbed);
+      },
+      'embed element with tabindex="0"': function() {
+        var element = document.getElementById('embed-tabindex-0');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusEmbedTabindex);
+      },
       'extended: CSS user-modify': function() {
         var _supports = document.body.style.webkitUserModify !== undefined;
         var element = document.getElementById('span-user-modify');

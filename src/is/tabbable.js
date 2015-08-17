@@ -17,11 +17,11 @@ export default function(element) {
   }
 
   const nodeName = element.nodeName.toLowerCase();
-  // null: not set, true: tabbable, false: focusable
   const _tabindex = tabindexValue(element);
   const tabindex = _tabindex === null ? null : _tabindex >= 0;
 
-  // Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
+  // NOTE: Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
+  // fixed in Firefox 40 the latest - https://bugzilla.mozilla.org/show_bug.cgi?id=1185657
   if (element.hasAttribute('contenteditable')) {
     // tabbing can still be disabled by explicitly providing [tabindex="-1"]
     return tabindex !== false;

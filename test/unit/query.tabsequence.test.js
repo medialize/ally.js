@@ -26,6 +26,9 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusEmbed ? ', #embed' : '')
+          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
+          + (supports.canFocusObjectSvg ? ', #embed-svg' : '')
           + ', #audio-controls'
           + ', #input, #span-contenteditable'
           + ', #img-ismap-link';

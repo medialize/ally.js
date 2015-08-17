@@ -1,6 +1,6 @@
 define(['./custom.fixture'], function(customFixture) {
   const gifDataUri = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-  const svgDataUri = 'data:image/svg+xml,base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtb'
+  const svgDataUri = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtb'
     + 'G5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0ic3ZnIj48dGV4dCB4PSIxMCIgeT0iMjAiIGlkPSJ'
     + 'zdmctbGluay10ZXh0Ij50ZXh0PC90ZXh0Pjwvc3ZnPg==';
 
@@ -33,6 +33,10 @@ define(['./custom.fixture'], function(customFixture) {
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
       '</svg>',
+      '<embed id="embed" type="video/mp4" src="data:video/mp4;base64,embed-focus-test" width="640" height="480">',
+      '<embed id="embed-tabindex-0" type="video/mp4" src="data:video/mp4;base64,embed-tabindex-focus-test" width="640" height="480" tabindex="0">',
+      '<embed type="image/svg+xml" id="embed-svg" data="' + svgDataUri + '" width="200" height="50">',
+      '<embed type="image/svg+xml" id="embed-tabindex-svg" tabindex="-1" data="' + svgDataUri + '" width="200" height="50">',
       // interactive content
       '<audio id="audio" src="data:audio/mp3;base64,audio-focus-test"></audio>',
       '<audio id="audio-controls" controls src="data:audio/mp3;base64,audio-focus-test"></audio>',
