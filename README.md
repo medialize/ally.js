@@ -2,6 +2,12 @@
 
 [![Join the chat at https://gitter.im/medialize/ally.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/medialize/ally.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+---
+
+**NOTE:** We're hard at work on version 1.0.0 in the [master](https://github.com/medialize/ally.js/tree/master/) branch.
+
+---
+
 ally.js is a dependency-free (well, some shims, yes) **Library to help applications with accessibility concerns**. The intention is to separate these components from actual applications. It is being developed along side another project and features get added to ally.js once they become necessary in the other application - or someone sends a PR. The ultimate goal is to make adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze.
 
 Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a library to help with ARIA states.
