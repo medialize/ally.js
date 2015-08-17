@@ -29,6 +29,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * element.scrollIntoView() confused by scroll-behavior:smooth; - [Gecko 1139745](https://bugzilla.mozilla.org/show_bug.cgi?id=1139745)
 * audio and video elements with controls cannot be removed from the focus navigation sequence - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 * embed element cannot be removed from the focus navigation sequence [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
+* embed element with tabindex="0" breaks sequential focus navigation [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
 
 
 ## Filed Specification Issues
