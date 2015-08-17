@@ -105,6 +105,14 @@ define([
         element.setAttribute('tabindex', '-1');
         expect(isFocusable(element)).to.equal(supports.canFocusLabelTabindex);
       },
+      'audio element': function() {
+        var element = document.getElementById('audio');
+        expect(isFocusable(element)).to.equal(supports.canFocusAudioWithoutControls);
+      },
+      'audio element with controls': function() {
+        var element = document.getElementById('audio-controls');
+        expect(isFocusable(element)).to.equal(true);
+      },
       'extended: CSS user-modify': function() {
         var _supports = document.body.style.webkitUserModify !== undefined;
         var element = document.getElementById('span-user-modify');

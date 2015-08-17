@@ -36,6 +36,11 @@ export default function(element) {
     return true;
   }
 
+  // In Internet Explorer the <audio> element is focusable, but not tabbable, and tabIndex property is wrong
+  if (nodeName === 'audio' && !element.hasAttribute('controls')) {
+    return false;
+  }
+
   // NOTE: rather make something tabbable that is only focusable,
   // than prevent something from being tabbable at all, this filter
   // can return elements that a browser does not deem tabbable (only focusable)

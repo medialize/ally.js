@@ -40,6 +40,8 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
+          + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'
@@ -118,6 +120,8 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
+          + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
           + ', #img-ismap-link'

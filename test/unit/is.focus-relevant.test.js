@@ -122,6 +122,14 @@ define([
         element.setAttribute('tabindex', '-1');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusLabelTabindex);
       },
+      'audio element': function() {
+        var element = document.getElementById('audio');
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusAudioWithoutControls);
+      },
+      'audio element with controls': function() {
+        var element = document.getElementById('audio-controls');
+        expect(isFocusRelevant(element)).to.equal(true);
+      },
       'svg element': function() {
         var element = document.getElementById('svg');
         expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg && supports.canFocusSvgMethod);

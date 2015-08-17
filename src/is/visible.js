@@ -80,5 +80,22 @@ export default function(element) {
   }
 
   const _path = getParents({context: element});
-  return !Boolean(notDisplayed(_path) || notVisible(_path) || collapsedParent(_path));
+
+  // in Internet Explorer <audio> has a default display: none, where others have display: inline
+  // but IE allows focusing <audio style="display:none">, but not <div display:none><audio>
+  // this is irrelevant to other browsers, as the controls attribute is required to make <audio> focusable
+  const isAudioWithoutControls = nodeName === 'audio' && !element.hasAttribute('controls');
+  if (notDisplayed(isAudioWithoutControls ? _path.slice(1) : _path)) {
+    return false;
+  }
+
+  if (notVisible(_path)) {
+    return false;
+  }
+
+  if (collapsedParent(_path)) {
+    return false;
+  }
+
+  return true;
 }

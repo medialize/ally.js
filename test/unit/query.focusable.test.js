@@ -38,6 +38,8 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
+          + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link';
 
@@ -110,6 +112,8 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
+          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
+          + ', #audio-controls'
           + ', #input, #input-tabindex--1, #span-contenteditable'
           + ', #img-ismap-link'
           + ', #first-input, #second-input, #third-input';

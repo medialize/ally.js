@@ -4,6 +4,7 @@ define(function(require) {
     allowsInvalidTabindexValue: require('ally/supports/focus-invalid-tabindex'),
     allowsTrailingCharacters: require('ally/supports/focus-tabindex-trailing-characters'),
     canFocusAreaTabindex: require('ally/supports/focus-area-tabindex'),
+    canFocusAudioWithoutControls: require('ally/supports/focus-audio-without-controls'),
     canFocusBrokenImageMap: require('ally/supports/focus-broken-image-map'),
     canFocusChildrenOfFocusableFlexbox: require('ally/supports/focus-children-of-focusable-flexbox'),
     canFocusDisabledFieldset: require('ally/supports/focus-fieldset-disabled'),

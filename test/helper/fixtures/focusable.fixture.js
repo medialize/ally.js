@@ -33,6 +33,9 @@ define(['./custom.fixture'], function(customFixture) {
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
       '</svg>',
+      // interactive content
+      '<audio id="audio" src="data:audio/mp3;base64,audio-focus-test"></audio>',
+      '<audio id="audio-controls" controls src="data:audio/mp3;base64,audio-focus-test"></audio>',
       // input elements
       '<label id="label">text</label>',
       '<input type="text" id="input">',
