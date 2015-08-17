@@ -7,16 +7,8 @@
  */
 
 function readLocalStorage(key) {
-  if (!document.hasFocus()) {
-    // if the document does not have focus when tests are executed, focus() may
-    // not be handled properly and eventy may not be dispatched immediately.
-    // This can happen when a document is reloaded while Developer Tools have focus.
-    /*eslint-disable no-console */
-    window.console && window.console.warn && console.warn('document requires focus for a11y support tests');
-    /*eslint-enable no-console */
-    return {};
-  }
-
+  // allow reading from storage to retrieve previous support results
+  // even while the document does not have focus
   let data;
 
   try {
@@ -32,7 +24,7 @@ function readLocalStorage(key) {
 function writeLocalStorage(key, value) {
   if (!document.hasFocus()) {
     // if the document does not have focus when tests are executed, focus() may
-    // not be handled properly and eventy may not be dispatched immediately.
+    // not be handled properly and events may not be dispatched immediately.
     // This can happen when a document is reloaded while Developer Tools have focus.
     try {
       window.localStorage && window.localStorage.removeItem(key);
