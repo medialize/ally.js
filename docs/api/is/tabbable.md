@@ -8,10 +8,14 @@ Determines if an element is considered keyboard focusable ("tabbable").
 
 The function does *not* verify if an element is focusable. It expects input that is considered focusable, so `isTabbable(element)` does *not always* equal `isFocusable(element) && isTabbable(element)`.
 
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+
 
 ## Notes
 
-See [`ally/query/tabbable`](../query/tabbable.md#Notes)
+See [`ally/is/focus-relevant`](./focus-relevant.md#Notes)
+
+* **NOTE:** there is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent string sniffing is done internally to fix mismatches.
 
 
 ## Demo

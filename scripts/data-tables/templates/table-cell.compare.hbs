@@ -1,0 +1,24 @@
+<td
+  headers="{{ identId }} {{ groupId }}-platform-{{ platform.ally.group }} {{ groupId }}-browser-{{ platform.ally.key }}"
+  data-focusable="{{ browser.focusable }}"
+  data-tabbable="{{ browser.tabbable }}"
+  data-focus-event="{{ browser.focusEvent }}"
+  data-focus-method="{{ browser.focusMethod }}"
+  data-tabindex="{{ browser.tabIndex }}"
+  data-row="{{ ident }}"
+  data-colum="{{ platform.ally.key }}"
+  {{#if cellData.match}}class="irrelevant-to-context"{{/if}}
+>
+  {{#if cellData.match}}
+    <span>{{ browser.label }}</span>
+  {{else}}
+    <span class="compare target" title="state of browser">{{ browser.label }}</span>
+    <span
+      class="compare mismatch"
+      title="state of {{ cellData.libraryName }}"
+      data-focusable="{{ cellData.focusable }}"
+      data-tabbable="{{ cellData.tabbable }}"
+    > {{ cellData.label }}</span>
+  {{/if}}
+
+</td>

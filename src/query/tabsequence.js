@@ -15,8 +15,8 @@ function moveContextToBeginning(elements, context) {
   return elements;
 }
 
-export default function({context, includeContext} = {}) {
-  let elements = queryTabbable({context, includeContext});
+export default function({context, includeContext, strategy} = {}) {
+  let elements = queryTabbable({context, includeContext, strategy});
   elements = sortTabindex(elements);
 
   if (includeContext) {

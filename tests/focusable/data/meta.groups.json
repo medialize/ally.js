@@ -1,0 +1,392 @@
+[
+  {
+    "label": "Document Elements",
+    "idents": {
+      "HTML": "<html>",
+      "BODY": "<body>"
+    }
+  },
+
+  {
+    "label": "Form Elements",
+    "idents": {
+      "button[type=button]": "<button type=\"button\">",
+      "input[type=checkbox]": "<input type=\"checkbox\">",
+      "input[type=password]": "<input type=\"password\">",
+      "input[type=radio]": "<input type=\"radio\">",
+      "input[type=submit]": "<input type=\"submit\">",
+      "input[type=text]": "<input type=\"text\">",
+      "input[type=reset]": "<input type=\"reset\">",
+      "select": "<select>",
+      "textarea": "<textarea>",
+
+      "button[type=button][tabindex=-1]": "<button type=\"button\" tabindex=\"-1\">",
+      "input[type=checkbox][tabindex=-1]": "<input type=\"checkbox\" tabindex=\"-1\">",
+      "input[type=password][tabindex=-1]": "<input type=\"password\" tabindex=\"-1\">",
+      "input[type=radio][tabindex=-1]": "<input type=\"radio\" tabindex=\"-1\">",
+      "input[type=submit][tabindex=-1]": "<input type=\"submit\" tabindex=\"-1\">",
+      "input[type=text][tabindex=-1]": "<input type=\"text\" tabindex=\"-1\">",
+      "input[type=reset][tabindex=-1]": "<input type=\"reset\" tabindex=\"-1\">",
+      "select[tabindex=-1]": "<select tabindex=\"-1\">",
+      "textarea[tabindex=-1]": "<textarea tabindex=\"-1\">"
+    }
+  },
+
+  {
+    "label": "Fieldset Element",
+    "idents": {
+      "fieldset": "<fieldset>",
+      "fieldset:empty": "<fieldset> without children",
+      "fieldset input": "<input> within <fieldset>",
+      "fieldset legend": "<legend> within <fieldset>",
+      "fieldset[disabled] input": "<input> within <fieldset disabled>",
+      "fieldset[tabindex=-1][disabled]": "<input> within <fieldset disabled tabindex=\"-1\">",
+      "fieldset[tabindex=0][disabled]": "<input> within <fieldset disabled tabindex=\"0\">"
+    },
+    "redundant": {
+      "fieldset": [
+        "fieldset:empty"
+      ]
+    }
+  },
+
+  {
+    "label": "Label Element",
+    "idents": {
+      "label[for=\"label-target\"]": "<label for=\"…\"> with <input id=\"…\">",
+      "label[for=\"label-target-focusable\"]": "<label for=\"…\"> with <input id=\"…\" tabindex=\"-1\">",
+      "label[for=\"label-target\"][tabindex=-1]": "<label tabindex=\"-1\" for=\"…\"> with <input id=\"…\" tabindex=\"-1\">",
+      "label[tabindex=-1]": "<label tabindex=\"-1\">",
+      "label[tabindex=0]": "<label tabindex=\"0\">"
+    },
+    "redundant": {
+      "label[for=\"label-target\"]": [
+        "label[for=\"label-target-focusable\"]"
+      ]
+    }
+  },
+
+  {
+    "label": "Editable Elements",
+    "idents": {
+      "[contenteditable]": "<div contenteditable>",
+      "[contenteditable]:empty": "<div contenteditable> without content",
+      "[contenteditable][tabindex=-1]": "<div contenteditable tabindex=\"-1\">",
+      "span{user-modify}": "<span style=\"user-modify: read-write\">",
+      "span{user-modify}[tabindex=-1]": "<span style=\"user-modify: read-write\" tabindex=\"-1\">"
+    },
+    "redundant": {
+      "[contenteditable]": [
+        "[contenteditable]:empty"
+      ]
+    }
+  },
+
+  {
+    "label": "Tabindex Attribute",
+    "idents": {
+      "[tabindex=-2]": "<div tabindex=\"-2\">",
+      "[tabindex=-1]": "<div tabindex=\"-1\">",
+      "[tabindex=0]": "<div tabindex=\"0\">",
+      "[tabindex=1]": "<div tabindex=\"1\">",
+      "[tabindex=+2]": "<div tabindex=\"+2\">",
+      "[tabindex= +2]": "<div tabindex=\" +2\">",
+      "[tabindex=3 ]": "<div tabindex=\"3 \">",
+      "[tabindex=3x]": "<div tabindex=\"3x\">",
+      "[tabindex=\"\"]": "<div tabindex=\"\">",
+      "[tabindex=hello]": "<div tabindex=\"hello\">",
+      "div[tabindex=-1]:empty": "<div tabindex=\"-1\"> without content",
+      "span[tabindex=-1]:empty": "<span tabindex=\"-1\"> without content",
+      "div[tabindex=0]:empty": "<div tabindex=\"0\"> without content",
+      "span[tabindex=0]:empty": "<span tabindex=\"0\"> without content",
+      "div{no-dimension}": "<div tabindex=\"0\" style=\"width:0; height:0;\">"
+    },
+    "redundant": {
+      "[tabindex=-1]": [
+        "div[tabindex=-1]:empty",
+        "span[tabindex=-1]:empty"
+      ],
+      "[tabindex=0]": [
+        "div[tabindex=0]:empty",
+        "span[tabindex=0]:empty",
+        "div{no-dimension}"
+      ]
+    }
+  },
+
+  {
+    "label": "Navigation Elements",
+    "idents": {
+      "link[itemprop][href]": "<link itemprop=\"url\" href=\"…\">",
+
+      "a[href=\"\"]": "<a href=\"\">",
+      "a[href]": "<a href=\"…\">",
+      "a[href][tabindex=-1]": "<a href=\"…\" tabindex=\"-1\">"
+    }
+  },
+
+  {
+    "label": "Image Maps",
+    "idents": {
+      "img[usemap].first": "<img usemap=\"#…\" src=\"…\">",
+      "img[usemap].focusable": "<img usemap=\"#…\" src=\"…\">",
+      "img[usemap].invalid": "<img usemap=\"#…\" src=\"…\"> with invalid image",
+      "img[usemap].second": "<img usemap=\"#…\" src=\"…\">",
+
+      "area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "area[href][tabindex=-1].lower": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "area[href][tabindex=-1].upper": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+
+      "img[usemap][tabindex=-1]": "<img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
+
+      "map.invalid-image area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image",
+      "map.invalid-image area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image"
+    },
+    "redundant": {
+      "img[usemap].first": [
+        "img[usemap].focusable",
+        "img[usemap].invalid",
+        "img[usemap].second"
+      ],
+      "map.invalid-image area[href].lower": [
+        "map.invalid-image area[href].upper"
+      ],
+      "img[tabindex=-1] area[href].lower": [
+        "img[tabindex=-1] area[href].upper"
+      ],
+      "area[href].upper": [
+        "area[href].lower"
+      ],
+      "area[href][tabindex=-1].lower": [
+        "area[href][tabindex=-1].upper"
+      ]
+    }
+  },
+
+  {
+    "label": "Media Elements",
+    "idents": {
+      "audio": "<audio>",
+      "audio[controls]": "<audio controls>",
+      "audio[controls][tabindex=-1]": "<audio constrols tabindex=\"-1\">",
+
+      "video": "<video>",
+      "video[controls]": "<video controls>",
+      "video[controls][tabindex=-1]": "<video constrols tabindex=\"-1\">"
+    }
+  },
+
+  {
+    "label": "Iframe Element",
+    "idents": {
+      "iframe": "<iframe src=\"…\">",
+      "iframe[tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\">"
+    }
+  },
+
+  {
+    "label": "Embed Element",
+    "idents": {
+      "embed": "<embed type=\"video/quicktime\" src=\"some.mov\">",
+      "embed[tabindex=-1]": "<embed type=\"video/quicktime\" src=\"some.mov\" tabindex=\"-1\">",
+      "embed[type=svg]": "<embed type=\"image/svg+xml\" data=\"some.svg\">",
+      "embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"-1\">",
+      "embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"0\">"
+    }
+  },
+
+  {
+    "label": "Object Element",
+    "idents": {
+      "object[src=swf]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\">",
+      "object[src=swf][height=0]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\" height=\"0\">",
+      "object[src=swf][tabindex=-1]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\" tabindex=\"-1\">",
+
+      "object[src=svg]": "<object type=\"image/svg+xml\" data=\"some.svg\">",
+      "object[src=svg][height=0]": "<object type=\"image/svg+xml\" data=\"some.svg\" height=\"0\">",
+      "object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"-1\">",
+
+      "object[usemap]": "<object type=\"image/png\" data=\"some.png\" usemap=\"#map\">"
+    },
+    "redundant": {
+      "object[src=swf]": [
+        "object[src=swf][height=0]"
+      ],
+      "object[src=svg]": [
+        "object[src=svg][height=0]"
+      ]
+    }
+  },
+
+  {
+    "label": "SVG Element",
+    "idents": {
+      "svg": "<svg>",
+      "svg[tabindex=-1]": "<svg tabindex=\"-1\">",
+      "svg:has(a[tabindex=-1])": "<svg> containing <a xlink:href=\"…\" tabindex=\"-1\">",
+      "svg:has(a[tabindex=0])": "<svg> containing <a xlink:href=\"…\" tabindex=\"0\">",
+
+      "svg a[xlink|href]": "<a xlink:href=\"…\"> within <svg>",
+      "svg a[xlink|href] text": "<text> within <a xlink:href=\"…\"> within <svg>",
+      "svg[tabindex=-1] a[xlink|href]": "<a xlink:href=\"…\"> within <svg tabindex=\"-1\">",
+      "svg[tabindex=-1] a[xlink|href] text": "<text> within <a xlink:href=\"…\"> within <svg tabindex=\"-1\">",
+
+      "svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <svg>",
+      "svg a[xlink|href][tabindex=-1] text": "<text> within <a xlink:href=\"…\" tabindex=\"-1\"> within <svg>",
+      "svg a[xlink|href][tabindex=0]": "<a xlink:href=\"…\" tabindex=\"0\"> within <svg>",
+      "svg a[xlink|href][tabindex=0] text": "<text> within <a xlink:href=\"…\" tabindex=\"0\"> within <svg>",
+
+      "svg rect": "<rect>",
+      "svg text": "<text>",
+      "svg rect[onfocus]": "<rect onfocus=\"\">"
+    }
+  },
+
+  {
+    "label": "Hidden Attribute",
+    "idents": {
+      "[hidden] input": "<input> within <div hidden>",
+      "[hidden][tabindex=-1]": "<div hidden tabindex=\"-1\">",
+      "[hidden][tabindex=-1] input": "<input> within <div hidden tabindex=\"-1\">",
+      "[hidden][tabindex=0]": "<div hidden tabindex=\"0\">",
+      "[hidden][tabindex=0] input": "<input> within <div hidden tabindex=\"0\">"
+    }
+  },
+
+  {
+    "label": "CSS Property Visibility",
+    "idents": {
+      "{hidden} > a{visible}": "<a href=\"…\" style=\"visibility: visible\"> within <div style=\"visibility: hidden\">",
+      "{hidden} > {visible} > a": "<a href=\"…\"> within <div style=\"visibility: visible\"> within <div style=\"visibility: hidden\">",
+
+      "table tbody tr td a": "<a href=\"…\"> within <td> within <tr>",
+      "table tbody tr{collapse} td a": "<a href=\"…\"> within <td> within <tr style=\"visibility: collapse\">",
+      "table tbody tr{collapse} td a{visible}": "<a href=\"…\" style=\"visibility: visible\"> within <td> within <tr style=\"visibility: collapse\">",
+      "table tbody tr{collapse} td{visible} a": "<a href=\"…\"> within <td style=\"visibility: visible\"> within <tr style=\"visibility: collapse\">"
+    }
+  },
+
+  {
+    "label": "Canvas Fallback Content Elements",
+    "idents": {
+      "canvas > [tabindex=-1]": "<span tabindex=\"-1\"> child of <canvas>",
+      "canvas > [tabindex=0]": "<span tabindex=\"0\"> child of <canvas>",
+      "canvas > a": "<a href=\"…\"> child of <canvas>",
+      "canvas > a[tabindex=-1]": "<a href=\"…\" tabindex=\"-1\"> child of <canvas>",
+      "canvas > input": "<input> child of <canvas>",
+      "canvas > input[tabindex=-1]": "<input tabindex=\"-1\"> child of <canvas>"
+    }
+  },
+
+  {
+    "label": "Details Element",
+    "idents": {
+      "details[tabindex=-1]": "<details tabindex=\"-1\">",
+
+      "details summary": "<summary> within <details>",
+      "details[tabindex=-1] summary": "<summary> within <details tabindex=\"-1\">",
+      "details summary[tabindex=-1]": "<summary tabindex=\"-1\"> within <details>",
+      "details[open] summary": "<summary> within <details open>",
+
+      "details a[href]": "<a href=\"…\"> within <details>",
+      "details[open] a[href]": "<a href=\"…\"> within <details open>"
+    }
+  },
+
+  {
+    "label": "Scrollable Elements",
+    "idents": {
+      "div{scroll-body-horizontal-scroll-x}": "<div> child of horizontally overflowing <div style=\"overflow-x: scroll\">",
+      "div{scroll-body-horizontal-scroll-y}": "<div> child of horizontally overflowing <div style=\"overflow-y: scroll\">",
+      "div{scroll-body-horizontal}": "<div> child of horizontally overflowing <div style=\"overflow: auto\">",
+      "div{scroll-body-overflow-hidden}": "<div> child of overflowing <div style=\"overflow: hidden\">",
+      "div{scroll-body-overflow-scroll}": "<div> child of overflowing <div style=\"overflow: scroll\">",
+      "div{scroll-body-overflow-visible}": "<div> child of overflowing <div style=\"overflow: visible\">",
+      "div{scroll-body-vertical-scroll-x}": "<div> child of vertically overflowing <div style=\"overflow-x: scroll\">",
+      "div{scroll-body-vertical-scroll-y}": "<div> child of vertically overflowing <div style=\"overflow-y: scroll\">",
+      "div{scroll-body-vertical}": "<div> child of vertially overflowing <div style=\"overflow: auto\">",
+      "div{scroll-container-horizontal-scroll-x}": "horizontally overflowing <div style=\"overflow-x: scroll\">",
+      "div{scroll-container-horizontal-scroll-y}": "horizontally overflowing <div style=\"overflow-y: scroll\">",
+      "div{scroll-container-horizontal}": "horizontally overflowing <div style=\"overflow: auto\">",
+      "div{scroll-container-overflow-hidden}": "overflowing <div style=\"overflow: hidden\">",
+      "div{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\">",
+      "div{scroll-container-overflow-visible}": "overflowing <div style=\"overflow: visible\">",
+      "div{scroll-container-vertical-scroll-x}": "vertically overflowing <div style=\"overflow-x: scroll\">",
+      "div{scroll-container-vertical-scroll-y}": "vertically overflowing <div style=\"overflow-x: scroll\">",
+      "div{scroll-container-vertical}": "vertially overflowing <div style=\"overflow: auto\">"
+    },
+    "redundant": {
+      "div{scroll-body-horizontal}": [
+        "div{scroll-body-vertical}"
+      ],
+      "div{scroll-container-horizontal}": [
+        "div{scroll-container-vertical}"
+      ],
+      "div{scroll-body-overflow-scroll}": [
+        "div{scroll-body-horizontal-scroll-x}",
+        "div{scroll-body-horizontal-scroll-y}",
+        "div{scroll-body-vertical-scroll-x}",
+        "div{scroll-body-vertical-scroll-y}"
+      ],
+      "div{scroll-container-overflow-scroll}": [
+        "div{scroll-container-horizontal-scroll-x}",
+        "div{scroll-container-horizontal-scroll-y}",
+        "div{scroll-container-vertical-scroll-x}",
+        "div{scroll-container-vertical-scroll-y}"
+      ]
+    }
+  },
+
+  {
+    "label": "Image Element Ismap Attribute",
+    "idents": {
+      "a:has([ismap])": "<a href=\"…\"> containing <img ismap src=\"…\">",
+      "a[tabindex=-1]:has([ismap])": "<a href=\"…\" tabindex=\"-1\"> containing <img ismap src=\"…\">",
+      "a:has([ismap][tabindex=-1])": "<a href=\"…\"> containing <img ismap src=\"…\" tabindex=\"-1\">",
+      "a > img[ismap][tabindex=-1]": "<img ismap src=\"…\" tabindex=\"-1\"> child of <a href=\"…\">",
+      "a > img[ismap]": "<img ismap src=\"…\"> child of <a href=\"…\">",
+      "a[tabindex=-1] > img[ismap]": "<img ismap src=\"…\"> child of <a href=\"…\" tabindex=\"-1\">"
+    }
+  },
+
+  {
+    "label": "CSS Flexbox Layout",
+    "idents": {
+      "a{flexbox}": "<a href=\"…\" style=\"display: flex\">",
+      "a{flexbox} > span": "<span> child of <a href=\"…\" style=\"display: flex\">",
+      "[tabindex=\"-1\"]{flexbox}": "<div tabindex=\"-1\" style=\"display: flex\">",
+      "[tabindex=\"-1\"]{flexbox} > span1": "<span> child of <div tabindex=\"-1\" style=\"display: flex\">",
+      "[tabindex=\"-1\"]{flexbox} > span2": "<span> child of <div tabindex=\"-1\" style=\"display: flex\">"
+    },
+    "redundant": {
+      "[tabindex=\"-1\"]{flexbox} > span1": [
+        "[tabindex=\"-1\"]{flexbox} > span2"
+      ]
+    }
+  },
+
+  {
+    "label": "Table Elements",
+    "idents": {
+      "table": "<table>",
+      "table tbody": "<tbody>",
+      "table thead": "<thead>",
+      "table tfoot": "<tfoot>",
+      "table thead tr td": "<td> within <thead>",
+      "table tbody tr td": "<td> within <tbody>",
+      "table tfoot tr td": "<td> within <tfoot>",
+      "table tbody tr{collapse} td{visible}": "<td style=\"visibility: visible\"> within <tr style=\"visibility: collapse\">"
+    }
+  },
+
+  {
+    "label": "Questionable Elements",
+    "idents": {
+      "keygen": "<keygen name=\"…\" challenge=\"…\" keytype=\"RSA\" keyparams=\"pqg-params\">",
+      "keygen[tabindex=-1]": "<keygen name=\"…\" challenge=\"…\" keytype=\"RSA\" keyparams=\"pqg-params\" tabindex=\"-1\">"
+    }
+  }
+]

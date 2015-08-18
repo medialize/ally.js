@@ -26,12 +26,12 @@ function hasNoPositiveTabindex(element) {
   return element.tabIndex <= 0;
 }
 
-export default function({context, sequence, ignoreAutofocus, defaultToContext} = {}) {
+export default function({context, sequence, strategy, ignoreAutofocus, defaultToContext} = {}) {
   let index = -1;
 
   if (!sequence) {
     context = nodeArray(context || document.body)[0];
-    sequence = queryTabbable({ context });
+    sequence = queryTabbable({ context, strategy });
   }
 
   if (sequence.length && !ignoreAutofocus) {

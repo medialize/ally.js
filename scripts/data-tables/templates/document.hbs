@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>{{ title }}</title>
+
+  <style id="prism-styles">{{ prismCss }}</style>
+  <style>
+    body {
+      margin: 0;
+      padding: 5px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table caption,
+    table th,
+    table td {
+      padding: 5px;
+      border: 1px solid #aaaaaa;
+      background: white;
+    }
+    table caption {
+      text-align: left;
+      background: #aaaaaa;
+      color: white;
+    }
+    tbody th {
+      text-align: left;
+      font-size: 14px;
+    }
+    tbody td {
+      text-align: center;
+    }
+    td > span.compare {
+      display: block;
+    }
+    td > span.compare.mismatch {
+      margin: 0 -5px -5px;
+      border: 5px solid red;
+    }
+
+    thead th[data-column="ident"] {
+      text-align: left;
+    }
+
+    table:not(#sticky-table-header) + table thead {
+      /*
+        visually hide consecutive headers
+        see http://w3c.github.io/wai-tutorials/forms/labels/#note-on-hiding-elements
+      */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    table td[data-focusable="true"],
+    table td > span.compare[data-focusable="true"] {
+      /* focusable */
+      background: #FFDC00;
+    }
+    table td[data-tabbable="true"],
+    table td > span.compare[data-tabbable="true"] {
+      /* tabbable */
+      background: #01FF70;
+    }
+    table td[data-focusable="false"][data-tabbable="true"],
+    table td > span.compare[data-focusable="false"][data-tabbable="true"] {
+      /* only tabbable */
+      background: #AAAAFF;
+    }
+    table td[data-focusable="false"][data-tabbable="false"],
+    table td > span.compare[data-focusable="false"][data-tabbable="false"] {
+      /* inert */
+      background: #DDDDDD;
+    }
+
+    table td.irrelevant-to-context {
+      opacity: 0.5;
+    }
+
+/*
+    td[data-supported="yes"] {
+      text-align: center;
+      background: #01ff70;
+    }
+    td[data-supported="no"] {
+      text-align: center;
+      background: #ff4136;
+    }
+    td[data-correct="no"] {
+      box-shadow: inset 0 0 0px 2px #0074d9;
+    }
+*/
+
+    #sticky-table-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0 5px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>{{ title }}</h1>
+
+  {{{ introduction }}}
+
+  {{#if groups}}
+    <nav id="table-of-contents">
+      <h1>Table Of Contents</h1>
+      <ul>
+      {{#each groups}}
+        <li><a href="#{{ id }}">{{ label }}</a></li>
+      {{/each}}
+      </ul>
+    </nav>
+  {{/if}}
+
+  {{{ table }}}
+
+  <script>
+
+    var headerTable;
+    var headerTableCaption;
+    var headerHeight = 0;
+
+    // make sure all tables have the same width
+    function justifyTableWidth() {
+      var tables = [].slice.call(document.querySelectorAll('table'), 0);
+      var dataCells = [].reduce.call(tables[0].querySelectorAll('col'), function(previous, current) {
+        return previous + (parseInt(current.style.width, 10) || 0);
+      }, 0);
+      var largestIdentWidth = 0;
+
+      tables.map(function(table) {
+        table.style.position = 'absolute';
+        table.style.width = 'auto';
+      });
+      tables.map(function(table) {
+        largestIdentWidth = Math.max(largestIdentWidth, table.querySelector('tbody th').offsetWidth);
+      });
+      tables.map(function(table) {
+        table.style.position = '';
+        table.style.width = (dataCells + largestIdentWidth) + 'px';
+      });
+    }
+
+    // create sticky header table from first actual table
+    function createHeaderTable() {
+      var firstTable = document.querySelector('table');
+      headerTable = firstTable.cloneNode(true);
+      [].forEach.call(headerTable.querySelectorAll('tbody, tfoot'), function(element) {
+        element.parentNode.removeChild(element);
+      });
+      [].forEach.call(headerTable.querySelectorAll('th, td'), function(element) {
+        element.setAttribute('id', '');
+      });
+
+      headerTableCaption = headerTable.querySelector('caption');
+      headerTableCaption.textContent = '';
+
+      headerTable.id = 'sticky-table-header';
+      headerTable.setAttribute('aria-hidden', 'true');
+      headerTable.style.width = firstTable.offsetWidth + 'px';
+      window.addEventListener('resize', function() {
+        headerTable.style.width = firstTable.offsetWidth + 'px';
+      }, true);
+
+      firstTable.parentNode.insertBefore(headerTable, firstTable);
+      headerHeight = headerTable.offsetHeight
+    }
+
+    // listen to scroll position to show/hide sticky header and update its caption
+    function bindHeaderTableScrolling() {
+      var headerCaption = headerTableCaption.textContent;
+      headerTable.style.display = 'none';
+
+      var timer;
+      var handleHeaderTable = function() {
+        if (headerTable.style.display !== 'none') {
+          headerTable.style.display = 'none';
+        }
+
+        var elementAtPoint = document.elementFromPoint(50, 0);
+        if (!elementAtPoint || !elementAtPoint.closest('table')) {
+          return;
+        }
+
+        // make sticky header follow horizontal scroll
+        var horizontalScrollOffset = (document.scrollingElement || document.body).scrollLeft
+          || document.documentElement.scrollLeft
+          || window.scrollX;
+
+        headerTable.style.left = (0 - horizontalScrollOffset) + 'px';
+
+        // identify the visible part of the table to update the sticky caption
+        var tableAtPoint = document.elementFromPoint(50, headerHeight + 20);
+        var table = tableAtPoint && tableAtPoint.closest('table');
+        var caption = table && table.querySelector('caption');
+
+        if (caption) {
+          if (caption.textContent !== headerCaption) {
+            headerCaption = caption.textContent;
+            headerTableCaption.textContent = headerCaption;
+          }
+
+          headerTable.style.display = '';
+        }
+      };
+
+      var handleScrollEvent = function() {
+        timer && clearTimeout(timer);
+        timer = setTimeout(handleHeaderTable, 50);
+      };
+
+      window.addEventListener('scroll', handleScrollEvent, true);
+    }
+
+    // add hight of header to fragment URI targets
+    function handleHashchangeEvent() {
+      var id = location.hash.slice(1);
+      var target = id && document.getElementById(id);
+      if (!target) {
+        return;
+      }
+
+      target.scrollIntoView({
+        block: 'start',
+        behavior: 'instant',
+      });
+
+      window.scrollBy(0, 0 - headerHeight);
+    }
+    function compensateHeaderTable() {
+      if (!window.scrollBy) {
+        return;
+      }
+
+      // https://developer.mozilla.org/en-US/docs/Web/Events/hashchange
+      window.addEventListener('hashchange', handleHashchangeEvent, true)
+    }
+
+    (function() {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+      if (!document.elementFromPoint || !document.body.closest) {
+        headerTable.style.display = 'none';
+        return;
+      }
+
+      justifyTableWidth();
+
+      createHeaderTable();
+      bindHeaderTableScrolling();
+
+      compensateHeaderTable();
+      document.body.addEventListener('load', function() {
+        handleHashchangeEvent();
+      });
+
+    })();
+
+  </script>
+
+</body>
+</html>

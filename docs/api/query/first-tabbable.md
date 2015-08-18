@@ -6,12 +6,16 @@ layout: doc-api.html
 
 Finds the first keyboard focusable ("tabbable") element in the DOM.
 
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
+
 
 ## Notes
 
-* **NOTE:** Google Chrome's `<dialog>` implementation will focus the first keyboard focusable element, even if it has `[tabindex="1"]`.
-* **WARNING:** Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored. Since `[tabindex="1"]` is considered bad practice we'll ignore it until someone complains.
-* **WARNING:** Any element not found focusable by [`ally/query/focusable`](focusable.md#Notes) is not found here either
+See [`ally/is/focus-relevant`](../is/focus-relevant.md#Notes)
+
+* **NOTE:** Google Chrome's `<dialog>` implementation will focus the first keyboard focusable element, even if it has `[tabindex="1"]`, ally.js does not.
+* **WARNING:** Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored.
+
 
 ## Demo
 

@@ -15,10 +15,10 @@ var config = {
   MD001: true, // Header levels should only increment by one level at a time
   MD002: true, // First header should be a h1 header
   MD003: { // Header should be `# first level #`
-    style: 'atx'
+    style: 'atx',
   },
   MD007: {  // Unordered list indentation
-    indent: 2
+    indent: 2,
   },
   MD012: false, // Multiple consecutive blank lines
   MD013: false, // Line length
@@ -27,7 +27,7 @@ var config = {
   // MD021: false, // Multiple spaces inside hashes on closed atx style header
   // MD024: false, // Multiple headers with the same content
   MD026: { // Trailing punctuation in header
-    punctuation: '.,;:!'
+    punctuation: '.,;:!',
   },
   // MD029: false, // Ordered list item prefix
   // MD030: false, // Spaces after list markers
@@ -38,12 +38,15 @@ var config = {
 
 var result = markdownlint.sync({
   files: glob.sync('**/*.md', {cwd: cwd, realpath: true}),
-  config: config
+  config: config,
 });
 
 var resultString = result.toString();
 if (resultString) {
+  /*eslint-disable no-console */
   console.error(resultString);
+  /*eslint-enable no-console */
+  /*eslint-disable no-process-exit */
   process.exit(1);
+  /*eslint-enable no-process-exit */
 }
-

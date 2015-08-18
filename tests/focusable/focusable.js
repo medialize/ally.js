@@ -21,6 +21,10 @@ function ignore(value) {
   return value !== 'ignore';
 }
 
+function ignoreByAttribute(element) {
+  return element.getAttribute('data-label') !== 'ignore';
+}
+
 function captureStuff() {
   var results = {
     platform: null,
@@ -29,8 +33,13 @@ function captureStuff() {
     focusRedirection: null,
     noFocusMethod: null,
     tabOrder: null,
+    tabIndex: null,
     ally: {
       focusable: null,
+      focusableStrict: null,
+      tabbable: null,
+      tabbableStrict: null,
+      onlyTabbable: null,
       tabOrder: null,
     },
     jquery: {
@@ -120,10 +129,12 @@ function captureStuff() {
     require([
       'ally/query/focusable',
       'ally/query/tabsequence',
+      'ally/query/tabbable',
+      'ally/is/only-tabbable',
       'platform',
       'jquery',
       'jquery-ui/core'
-    ], function (queryFocusable, queryTabsequence, platform, $) {
+    ], function (queryFocusable, queryTabsequence, queryTabbable, isOnlyTabbable, platform, $) {
       // save results
       results.focusEvents = focusEventHistory.filter(ignore);
       // reset buffers
@@ -139,6 +150,8 @@ function captureStuff() {
       });
       // save results
       results.platform = platform;
+
+      // ally
       results.ally.focusable = queryFocusable({
         context: document,
         includeContext: true,
@@ -148,11 +161,34 @@ function captureStuff() {
         includeContext: true,
         strategy: 'strict',
       }).map(elementName).filter(ignore);
+      results.ally.tabbable = queryTabbable({
+        context: document
+      }).map(elementName).filter(ignore);
+      results.ally.tabbableStrict = queryTabbable({
+        context: document,
+        includeContext: true,
+        strategy: 'strict',
+      }).map(elementName).filter(ignore);
       results.ally.tabOrder = queryTabsequence({
         context: document
       }).map(elementName).filter(ignore);
+
+      // jQueryUI
       results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
       results.jquery.tabOrder = $(':tabbable').toArray().map(elementName).filter(ignore);
+
+      // query-independent data
+      results.tabIndex = {};
+      results.ally.onlyTabbable = [];
+      [].filter.call(document.querySelectorAll('[data-label]'), ignoreByAttribute).forEach(function(element) {
+        // browser: tabIndex
+        var name = elementName(element);
+        results.tabIndex[name] = element.tabIndex;
+        if (isOnlyTabbable(element)) {
+          results.ally.onlyTabbable.push(name);
+        }
+      });
+
       // reset buffers
       activeElementHistory.length = 0;
       noFocusMethod.length = 0;

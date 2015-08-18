@@ -1,0 +1,64 @@
+<table id="{{ groupId }}" summary="{{ summary }}">
+  <caption>{{ caption }}</caption>
+
+  <colgroup>
+    <col data-column="ident">
+    {{#if expectedColumn}}
+      <col data-column="expected" style="width: 100px">
+    {{/if}}
+  </colgroup>
+  <colgroup>
+    {{#each browsers}}
+      {{#each versions}}
+        <col data-column="{{ ally.key }}" style="width: 100px">
+      {{/each}}
+    {{/each}}
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="{{ groupId }}-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+      {{#if expectedColumn}}
+        <th
+          id="{{ groupId }}-expected"
+          data-column="expected"
+          rowspan="2"
+        >Expected</th>
+      {{/if}}
+
+      {{#each browsers}}
+        <th
+          id="{{ ../groupId }}-platform-{{ group }}"
+          scope="colgroup"
+          colspan="{{ versions.length }}"
+        >{{ name }}</th>
+      {{/each}}
+
+    </tr>
+    <tr>
+
+      {{#each browsers}}
+        {{#each versions}}
+          <th
+            id="{{ ../../groupId }}-browser-{{ ally.key }}"
+            headers="{{ ../../groupId }}-platform-{{ ally.group }}"
+            scope="col"
+            data-column="{{ ally.key }}"
+            title="{{ description }}"
+          >{{ ally.version }}</th>
+        {{/each}}
+      {{/each}}
+
+    </tr>
+  </thead>
+  <tbody>
+
+    {{{ tbody }}}
+
+  </tbody>
+</table>

@@ -6,11 +6,14 @@ layout: doc-api.html
 
 Finds keyboard focusable ("tabbable") elements in the DOM and returns them in the order calculated based on `tabindex` attribute values.
 
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
+
 
 ## Notes
 
+See [`ally/is/focus-relevant`](../is/focus-relevant.md#Notes)
+
 * **WARNING:** `<area>` elements are provided in DOM order they occur, not in DOM order of the `<img>` elements that use them, see [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
-* **WARNING:** Any element not found focusable by [`ally/query/focusable`](focusable.md#Notes) is not found here either
 
 
 ## Demo
