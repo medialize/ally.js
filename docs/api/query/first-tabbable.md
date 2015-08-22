@@ -6,6 +6,8 @@ layout: doc-api.html
 
 Finds the first keyboard focusable ("tabbable") element in the DOM.
 
+See [`ally/query/focusable`](./focusable.md) for an explanation on the different query strategies.
+
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
 
 
@@ -41,6 +43,10 @@ TODO: figure out how to integrate demo
     // and no other keyboard focusable element could be found
     // defaults to false
     defaultToContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 </script>
 ```
@@ -65,6 +71,10 @@ require([
     // and no other keyboard focusable element could be found
     // defaults to false
     defaultToContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 });
 ```

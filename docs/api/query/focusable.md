@@ -6,6 +6,8 @@ layout: doc-api.html
 
 Finds focusable elements in the DOM.
 
+The query infrastructure provides two different implementations. The `"quick"` strategy uses [`document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) and is able to find *most* focusable elements. Elements that are made focusable by way of CSS properties cannot be queried that way, though. To allow finding *more* focusable elements, the `"strict"` strategy makes use of [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker) to "manually" iterate over the DOM. While the `"strict"` strategy provides more accurate results, it is slower than the `"quick"` strategy. The default strategy is `"quick"`.
+
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
 
 
@@ -32,6 +34,10 @@ TODO: figure out how to integrate demo
     // [optional] prepend the context DOM Element if it is focusable
     // defaults to false
     includeContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 </script>
 ```
@@ -51,6 +57,10 @@ require([
     // [optional] prepend the context DOM Element if it is focusable
     // defaults to false
     includeContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 });
 ```

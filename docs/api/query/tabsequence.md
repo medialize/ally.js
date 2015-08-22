@@ -6,6 +6,8 @@ layout: doc-api.html
 
 Finds keyboard focusable ("tabbable") elements in the DOM and returns them in the order calculated based on `tabindex` attribute values.
 
+See [`ally/query/focusable`](./focusable.md) for an explanation on the different query strategies.
+
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
 
 
@@ -36,6 +38,10 @@ TODO: figure out how to integrate demo
     // NOTE: the context is NOT sorted, but simply prepended
     // defaults to false
     includeContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 </script>
 ```
@@ -56,6 +62,10 @@ require([
     // NOTE: the context is NOT sorted, but simply prepended
     // defaults to false
     includeContext: true,
+    // [optional] strategy used to find elements
+    // can be "quick" or "strict"
+    // defaults to "quick"
+    strategy: "quick",
   });
 });
 ```
