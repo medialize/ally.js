@@ -1,6 +1,7 @@
 
 // determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
 
+import platform from 'platform';
 import tabindexValue from '../util/tabindex-value';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
@@ -33,7 +34,7 @@ export default function(element) {
 
   // in Trident and Gecko SVGElement does not know about the tabIndex property
   if (element.tabIndex === undefined) {
-    return true;
+    return false;
   }
 
   // In Internet Explorer the <audio> element is focusable, but not tabbable, and tabIndex property is wrong
@@ -41,9 +42,28 @@ export default function(element) {
     return false;
   }
 
-  // NOTE: rather make something tabbable that is only focusable,
-  // than prevent something from being tabbable at all, this filter
-  // can return elements that a browser does not deem tabbable (only focusable)
+  if (platform.name === 'Safari' && parseFloat(platform.version) < 9 && platform.os.family === 'iOS') {
+    // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
+    // this holds true even with external keyboards
+    let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
+      || nodeName === 'select'
+      || nodeName === 'textarea'
+      || element.hasAttribute('contenteditable');
+
+    if (!potentiallyTabbable) {
+      const style = window.getComputedStyle(element, null);
+      const userModify = style.webkitUserModify || '';
+      if (userModify && userModify.indexOf('write') !== -1) {
+        // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
+        // https://github.com/medialize/ally.js/issues/17
+        potentiallyTabbable = true;
+      }
+    }
+
+    if (!potentiallyTabbable) {
+      return false;
+    }
+  }
 
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   return element.tabIndex >= 0;
