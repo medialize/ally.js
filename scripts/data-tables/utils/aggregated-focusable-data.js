@@ -73,6 +73,13 @@ groups.forEach(function(group) {
     idents.add(ident);
     groupedIdents.add(ident);
   });
+  // create lookup table for redundant entries
+  group.duplicate = {};
+  Object.keys(group.redundant || {}).forEach(function(targetIdent) {
+    group.redundant[targetIdent].forEach(function(sourceIdent) {
+      group.duplicate[sourceIdent] = targetIdent;
+    });
+  });
 });
 
 // prepare the data for lookups
@@ -211,6 +218,7 @@ if (ungroupedIdents.length) {
     label: 'Elements Without Group',
     idents: ungroupedIdents,
     id: 'elements-without-group',
+    duplicate: [],
   });
 }
 

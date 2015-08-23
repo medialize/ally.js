@@ -90,6 +90,7 @@ module.exports = function({
     rows.push(_rowTemplate({
       ident,
       label: idents[ident],
+      duplicates: group.duplicate[ident] || '',
       labelHtml: beautifyIdentLabel(idents[ident], ident),
       groupId: group.id,
       identId,
