@@ -15,8 +15,8 @@
     }
   },
   "focusable": [
-    "HTML",
-    "BODY",
+    "html",
+    "body",
     "input[type=text]",
     "input[type=text][tabindex=-1]",
     "input[type=password]",
@@ -350,7 +350,7 @@
     "canvas > input",
     "canvas > a",
     "canvas > [tabindex=0]",
-    "HTML"
+    "html"
   ],
   "tabIndex": {
     "input[type=text]": 0,
@@ -541,8 +541,8 @@
   },
   "ally": {
     "focusable": [
-      "HTML",
-      "BODY",
+      "html",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",
@@ -636,8 +636,8 @@
       "canvas > [tabindex=-1]"
     ],
     "focusableStrict": [
-      "HTML",
-      "BODY",
+      "html",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",
@@ -811,7 +811,7 @@
       "canvas > [tabindex=0]"
     ],
     "tabbableStrict": [
-      "HTML",
+      "html",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",

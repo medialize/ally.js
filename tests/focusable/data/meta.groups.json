@@ -2,8 +2,8 @@
   {
     "label": "Document Elements",
     "idents": {
-      "HTML": "<html>",
-      "BODY": "<body>"
+      "html": "<html>",
+      "body": "<body>"
     }
   },
 
@@ -37,17 +37,20 @@
     "idents": {
       "fieldset": "<fieldset>",
       "fieldset:empty": "<fieldset> without children",
+      "fieldset[tabindex=-1][disabled]": "<fieldset disabled tabindex=\"-1\">",
+      "fieldset[tabindex=0][disabled]": "<fieldset disabled tabindex=\"0\">",
       "fieldset input": "<input> within <fieldset>",
       "fieldset legend": "<legend> within <fieldset>",
-      "fieldset[disabled] input": "<input> within <fieldset disabled>",
-      "fieldset[tabindex=-1][disabled]": "<input> within <fieldset disabled tabindex=\"-1\">",
-      "fieldset[tabindex=0][disabled]": "<input> within <fieldset disabled tabindex=\"0\">"
+      "fieldset[disabled] input": "<input> within <fieldset disabled>"
     },
     "redundant": {
       "fieldset": [
         "fieldset:empty"
       ]
-    }
+    },
+    "irrelevant": [
+      "fieldset input"
+    ]
   },
 
   {
@@ -171,11 +174,11 @@
     "idents": {
       "audio": "<audio>",
       "audio[controls]": "<audio controls>",
-      "audio[controls][tabindex=-1]": "<audio constrols tabindex=\"-1\">",
+      "audio[controls][tabindex=-1]": "<audio controls tabindex=\"-1\">",
 
       "video": "<video>",
       "video[controls]": "<video controls>",
-      "video[controls][tabindex=-1]": "<video constrols tabindex=\"-1\">"
+      "video[controls][tabindex=-1]": "<video controls tabindex=\"-1\">"
     }
   },
 
@@ -365,7 +368,11 @@
       "[tabindex=\"-1\"]{flexbox} > span1": [
         "[tabindex=\"-1\"]{flexbox} > span2"
       ]
-    }
+    },
+    "irrelevant": [
+      "a{flexbox}",
+      "[tabindex=\"-1\"]{flexbox}"
+    ]
   },
 
   {

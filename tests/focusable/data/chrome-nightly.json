@@ -15,7 +15,7 @@
     }
   },
   "focusable": [
-    "BODY",
+    "body",
     "input[type=text]",
     "input[type=text][tabindex=-1]",
     "input[type=password]",
@@ -500,7 +500,7 @@
   },
   "ally": {
     "focusable": [
-      "BODY",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",
@@ -592,7 +592,7 @@
       "canvas > [tabindex=-1]"
     ],
     "focusableStrict": [
-      "BODY",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",

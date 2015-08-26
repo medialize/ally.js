@@ -72,6 +72,7 @@
     "metalsmith-register-helpers": "^0.1.2",
     "mkdirp": "^0.5.1",
     "prismjs": "git+https://github.com/PrismJS/prism.git#master",
+    "remarkable": "^1.6.0",
     "requirejs": "^2.1.19",
     "sequence-comparison-table": "^0.2.1",
     "uglifyjs": "^2.4.10",

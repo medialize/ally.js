@@ -6,6 +6,9 @@
 
   <style id="prism-styles">{{ prismCss }}</style>
   <style>
+    [title] {
+      cursor: help;
+    }
     body {
       margin: 0;
       padding: 5px;
@@ -85,6 +88,61 @@
       opacity: 0.5;
     }
 
+    /* inline foot-note boxes */
+    tbody td {
+      position: relative;
+      padding: 12px 5px 5px;
+    }
+    tbody th {
+      position: relative;
+      padding: 5px 5px 12px 5px;
+    }
+    tbody th .notes {
+      bottom: 1px;
+      right: 1px;
+    }
+    tbody td .notes {
+      top: 1px;
+      left: 1px;
+    }
+    tbody .notes {
+      position: absolute;
+      line-height: 0;
+      font-size: 0;
+    }
+    tbody .notes .note {
+      display: inline-block;
+      padding: 2px;
+      font-size: 10px;
+      line-height: 8px;
+      color: #666;
+      background: #EEE;
+      text-decoration: none;
+    }
+    tbody .notes > .note + .note {
+      margin-left: 1px;
+    }
+    tbody .notes > .note.tabindex-value {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    tbody .notes > .note.warning {
+      color: white;
+      background: red;
+    }
+    #footnotes-list li:target {
+      background: #EEE;
+    }
+    #floating-footnote {
+      position: absolute;
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid black;
+      background: white;
+    }
+    #floating-footnote h3 {
+      margin-top: 0;
+    }
+
 /*
     td[data-supported="yes"] {
       text-align: center;
@@ -121,11 +179,26 @@
       {{#each groups}}
         <li><a href="#{{ id }}">{{ label }}</a></li>
       {{/each}}
+
+        <li><a href="#footnotes">Footnotes</a></li>
       </ul>
     </nav>
   {{/if}}
 
   {{{ table }}}
+
+  <h2 id="footnotes">Footnotes</h2>
+  <ul id="footnotes-list">
+    <li id="footnote-M">The DOM Element Interface is missing the focus method.</li>
+    <li id="footnote-E">The <code>focus</code> event is not emitted upon the element becoming the active element (<code>document.activeElement</code>).</li>
+
+    {{#each notes}}
+      <li id="footnote-{{ @key }}">
+        <h3>Note {{ @key }}</h3>
+        {{{ this }}}
+      </li>
+    {{/each}}
+  </ul>
 
   <script>
 
@@ -285,6 +358,70 @@
       });
     }
 
+    function bindFootnoteTooltip() {
+      var container = document.createElement('div');
+      container.id = 'floating-footnote';
+      container.hidden = true;
+      container.setAttribute('tabindex', '-1');
+      document.body.appendChild(container);
+
+      // position the tooltip below the anchor
+      document.body.addEventListener('focus', function(event) {
+        if (!event.target.classList.contains('note')) {
+          return;
+        }
+
+        var anchor = event.target;
+        var id = anchor.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        var position = anchor.getBoundingClientRect();
+        var scrollTop = (document.scrollingElement || document.body).scrollTop
+          || document.documentElement.scrollTop
+          || window.scrollY;
+
+        container.style.top = (scrollTop + position.top + position.height) + 'px';
+        if (position.left + 500 > window.innerWidth) {
+          container.style.left = '';
+          container.style.right = '5px';
+        } else {
+          container.style.left = position.left + 'px';
+          container.style.right = '';
+        }
+
+        container.hidden = false;
+        container.innerHTML = target.innerHTML;
+      }, true);
+
+      // allow selecting text / clicking things in the tooltip,
+      // but hide it when anything else is focused
+      var clickedOnContainer = false;
+      container.addEventListener('mousedown', function() {
+        clickedOnContainer = true;
+        setTimeout(function() {
+          clickedOnContainer = false;
+        }, 100);
+      }, true);
+      document.body.addEventListener('blur', function(event) {
+        if (clickedOnContainer) {
+          return;
+        }
+
+        container.hidden = true;
+      }, true);
+      container.addEventListener('blur', function(event) {
+        container.hidden = true;
+      }, true);
+
+      // abort jumping to the footnote, as we moved the relevant footnote into view on focus
+      document.body.addEventListener('click', function(event) {
+        if (!event.target.classList.contains('note') || container.hidden) {
+          return;
+        }
+
+        event.preventDefault();
+      }, true);
+    }
+
     (function() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
       // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
@@ -303,6 +440,10 @@
       document.body.addEventListener('load', function() {
         handleHashchangeEvent();
       });
+
+      if (document.body.hidden !== undefined) {
+        bindFootnoteTooltip();
+      }
 
     })();
 

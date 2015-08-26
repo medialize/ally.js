@@ -1,54 +1,179 @@
 {
-  "BODY": "default focus",
-  "HTML": "Firefox and IE11 focus HTML when entering or re-entering the document (when focus was on browser chrome)",
+  "html": "The `<html>` element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document.",
+  "body": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus.",
 
-  "audio": "<a href=\"http://www.w3.org/TR/html5/dom.html#interactive-content\">interactive content</a> only with <code>controls</code> attribute",
-  "video": "<a href=\"http://www.w3.org/TR/html5/dom.html#interactive-content\">interactive content</a> only with <code>controls</code> attribute",
+  "@fieldset-disabled-input": "should not be focusable as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
+  "fieldset[tabindex=0][disabled]": {
+    "alias": [
+      "fieldset[tabindex=-1][disabled]"
+    ],
+    "browsers": {
+      "chrome-stable": "@fieldset-disabled-input",
+      "chrome-nightly": "@fieldset-disabled-input",
+      "safari-8": "@fieldset-disabled-input",
+      "webkit-nightly": "@fieldset-disabled-input",
+      "android44-chrome": "@fieldset-disabled-input",
+      "ios-8": "@fieldset-disabled-input"
+    }
+  },
 
-  "table": "IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.",
-  "table thead tr td": "IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.",
-  "table tbody tr td": "IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.",
-  "table tbody tr{collapse} td{visible}": "IE11 makes <code>&lt;table&gt;</code> and <code>&lt;td&gt;</code> focusable.",
-  "table tbody tr{collapse} td a": "jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>",
-  "table tbody tr{collapse} td a{visible}": "jQuery <code>:visible</code> does not know about <code>visibility: collapse</code>",
-  "table tr{collapse} td a{visible}": "Firefox does not render the element, but it is tabbable. IE11 renders it, but it has `element.offsetHeight === 0`",
+  "label[for=\"label-target\"][tabindex=-1]": {
+    "alias": [
+      "label[tabindex=-1]",
+      "label[tabindex=0]"
+    ],
+    "general": "The activation behavior of the [`<label>`](http://www.w3.org/TR/html5/forms.html#the-label-element) element is not defined beyond »… should match the platform's label behavior.«"
+  },
 
-  "svg": "Focusable and tabbable in IE11. In Blink and Webkit SVG elements can be made focusable/tabbable by adding a <code>focus</code> event listener",
-  "svg a[xlink|href]": "Firefox and IE11 are missing <code>SVGElement.prototype.focus</code>",
-  "svg text": "In Blink and Webkit SVG elements can be made focusable/tabbable by adding a <code>focus</code> event listener",
-  "svg rect": "In Blink and Webkit SVG elements can be made focusable/tabbable by adding a <code>focus</code> event listener",
+  "span{user-modify}": "The CSS property [`user-modify`](http://www.w3.org/TR/2000/WD-css3-userint-20000216#user-modify) was proposed and dropped from [CSS UI Level 3](http://www.w3.org/TR/css3-ui/) and has thus not become a standard yet.",
 
-  "details a[href]": "Currently only supported in Blink, Webkit (<a href=\"http://caniuse.com/#feat=details\">caniuse</a>)",
-  "details summary": "Currently only supported in Blink, Webkit (<a href=\"http://caniuse.com/#feat=details\">caniuse</a>)",
-  "details[open] summary": "Currently only supported in Blink, Webkit (<a href=\"http://caniuse.com/#feat=details\">caniuse</a>)",
+  "@invalid-tabindex-value": "The value is invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "@empty-tabindex-ie11": "`tabindex=\"\"` is parsed to the value `-32768`. [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)",
+  "[tabindex=3 ]": "The value's trailing spaces are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "[tabindex=hello]": "@invalid-tabindex-value",
+  "[tabindex=\"\"]": {
+    "general": "@invalid-tabindex-value",
+    "browsers": {
+      "ie-10": "@empty-tabindex-ie11",
+      "ie-11": "@empty-tabindex-ie11"
+    }
+  },
 
-  "fieldset[tabindex=0][disabled]": "should not be focusable as per <a href=\"http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled\">disabled elements</a>",
+  "@image-map-firefox-loading": "The `<map>`'s `<area>`s are inert (not focusable) as long as the image is still loading.",
+  "area[href].upper": {
+    "browsers": {
+      "firefox-stable": "@image-map-firefox-loading",
+      "firefox-nightly": "@image-map-firefox-loading"
+    }
+  },
 
-  "link[itemprop][href]": "naturally focusable according to <a href=\"http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute\">HTML5 tabindex</a>",
-  "keygen": "<code>keygen</code> element is not supported in IE11",
-  "iframe": "Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly, see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=131784\">#131784</a>",
+  "area[href][tabindex=-1].lower": "In some browsers adding a `tabindex` attribute to an `<area>` element will make it inert (not focusable).",
+  "img[usemap][tabindex=-1]": "In some browsers `<img>` elements with an associated image map cannot be made focusable.",
+  "img[tabindex=-1] area[href].lower": "In some browsers the image map associated with an `<img>` element can be removed from the document's sequential navigation order by adding `tabindex=\"-1\"` to the `<img>` element.",
+  "map.invalid-image area[href].lower": "Some browsers will not make an image map focusable, if it is associated with an `<img>` that does have a proper image loaded.",
 
-  "a > img[ismap]": "see <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap\">&lt;img ismap&gt;</a>, focus should be the link-parent",
-  "area[href].upper": "Firefox requires the image using the map to be loaded",
-  "area[href].lower": "Firefox requires the image using the map to be loaded",
-  "map.invalid-image area[href].upper": "Maps belonging to broken images",
-  "map.invalid-image area[href].lower": "Maps belonging to broken images",
+  "audio": "`<audio>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
+  "video": "`<video>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
 
-  "object[src=svg]": "IE11 will not focus an svg object by script, but it is tabbable",
-  "object[src=svg][height=0]": "IE11 will not focus an svg object by script, but it is tabbable",
-  "object[usemap]": "No browser applies image maps to <code>object</code>",
+  "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
+  "iframe": {
+    "alias": [
+      "iframe[tabindex=-1]"
+    ],
+    "browsers": {
+      "firefox-stable": "@iframe-firefox",
+      "firefox-nightly": "@iframe-firefox"
+    }
+  },
 
-  "[contenteditable]:empty": "Firefox reports <code>element.offsetHeight === 0</code>, working around that internally",
+  "embed": {
+    "alias": [
+      "embed[tabindex=-1]",
+      "embed[type=svg]",
+      "embed[type=svg][tabindex=-1]",
+      "embed[type=svg][tabindex=0]"
+    ],
+    "general": "The behavior of the `<embed>` element depends on the content it presents. *More tests may be required in this space.*"
+  },
 
-  "without-event(iframe)": "see iframe",
-  "without-event(object[src=svg])": "see object[src=svg]",
-  "without-event(object[src=svg][height=0])": "see object[src=svg][height=0]",
+  "object": {
+    "alias": [
+      "object[src=swf]",
+      "object[src=swf][tabindex=-1]",
+      "object[src=svg]",
+      "object[src=svg][tabindex=-1]"
+    ],
+    "general": "The behavior of the `<object>` element depends on the content it presents. *More tests may be required in this space.*"
+  },
 
-  "via(img[usemap].first): area[href].upper": "upon focusing an image with associated &lt;map&gt;, IE will focus the first &lt;area&gt; of that map.",
-  "via(img[usemap].second): area[href].upper": "upon focusing an image with associated &lt;map&gt;, IE will focus the first &lt;area&gt; of that map.",
-  "via(label[for=\"label-target\"]): input[type=text]": "upon focusing <label for> the element identified by the for attribute gets focused",
+  "svg": {
+    "alias": [
+      "svg[tabindex=-1]",
+      "svg:has(a[tabindex=-1])",
+      "svg:has(a[tabindex=0])",
+      "svg a[xlink|href]",
+      "svg a[xlink|href] text",
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[tabindex=-1] a[xlink|href] text",
+      "svg a[xlink|href][tabindex=-1]",
+      "svg a[xlink|href][tabindex=-1] text",
+      "svg a[xlink|href][tabindex=0]",
+      "svg a[xlink|href][tabindex=0] text",
+      "svg rect",
+      "svg text",
+      "svg rect[onfocus]"
+    ],
+    "general": "[SVG 1.1](http://www.w3.org/TR/SVG/access.html) does not specify much in respect to accessibility. [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG) will bring the `tabindex` attribute. [SVG Tiny 1.2](http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr) knows the `focusable` attribute."
+  },
 
-  "[tabindex=\"\"]": "invalid according to <a href=\"http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers\">rules for parsing integers</a> required by <a href=\"http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute\">HTML5 tabindex</a>",
-  "[tabindex=3 ]": "invalid according to <a href=\"http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers\">rules for parsing integers</a> required by <a href=\"http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute\">HTML5 tabindex</a> but every browser permits it anyways",
-  "[tabindex=hello]": "invalid according to <a href=\"http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers\">rules for parsing integers</a> required by <a href=\"http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute\">HTML5 tabindex</a>"
+  "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
+  "svg rect[onfocus]": {
+    "browsers": {
+      "chrome-stable": "@svg-onfocus",
+      "chrome-nightly": "@svg-onfocus",
+      "safari-8": "@svg-onfocus",
+      "webkit-nightly": "@svg-onfocus",
+      "android44-chrome": "@svg-onfocus",
+      "ios-8": "@svg-onfocus"
+    }
+  },
+
+  "[hidden] input": {
+    "alias": [
+      "[hidden][tabindex=-1]",
+      "[hidden][tabindex=-1] input",
+      "[hidden][tabindex=0]",
+      "[hidden][tabindex=0] input"
+    ],
+    "browsers": {
+      "ie-10": "IE10 does not support the `hidden` attribute"
+    }
+  },
+
+  "details": {
+    "alias": [
+      "details[tabindex=-1]",
+      "details summary",
+      "details[tabindex=-1] summary",
+      "details summary[tabindex=-1]",
+      "details[open] summary",
+      "details a[href]",
+      "details[open] a[href]"
+    ],
+    "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1 and [not implemented everywhere](http://caniuse.com/#feat=details)."
+  },
+
+  "@ismap-ie-bug": "The [`ismap` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap) makes the `<img>` focusable (in addition to the parent `<a>`)",
+  "a > img[ismap]": {
+    "alias": [
+      "a[tabindex=-1] > img[ismap]"
+    ],
+    "browsers": {
+      "ie-10": "@ismap-ie-bug",
+      "ie-11": "@ismap-ie-bug",
+      "ie-12": "@ismap-ie-bug"
+    }
+  },
+
+  "@flexbox-ie-bug": "There is no indication that the focusability of an element can be inherited by its children, let alone triggered by flexbox layout.",
+  "a{flexbox} > span": {
+    "alias": [
+      "[tabindex=\"-1\"]{flexbox} > span1",
+      "[tabindex=\"-1\"]{flexbox} > span2"
+    ],
+    "browsers": {
+      "ie-10": "@flexbox-ie-bug",
+      "ie-11": "@flexbox-ie-bug"
+    }
+  },
+
+  "link[itemprop][href]": "naturally focusable according to [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+
+  "keygen": {
+    "alias": [
+      "keygen[tabindex=-1]"
+    ],
+    "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
+  }
+
 }

@@ -15,8 +15,8 @@
     }
   },
   "focusable": [
-    "HTML",
-    "BODY",
+    "html",
+    "body",
     "input[type=text]",
     "input[type=text][tabindex=-1]",
     "input[type=password]",
@@ -239,7 +239,7 @@
     "svg rect"
   ],
   "tabOrder": [
-    "HTML",
+    "html",
     "[tabindex=1]",
     "[tabindex=+2]",
     "[tabindex= +2]",
@@ -491,8 +491,8 @@
   },
   "ally": {
     "focusable": [
-      "HTML",
-      "BODY",
+      "html",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",
@@ -583,8 +583,8 @@
       "canvas > [tabindex=-1]"
     ],
     "focusableStrict": [
-      "HTML",
-      "BODY",
+      "html",
+      "body",
       "input[type=text]",
       "input[type=text][tabindex=-1]",
       "input[type=password]",

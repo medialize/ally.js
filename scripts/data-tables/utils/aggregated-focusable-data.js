@@ -1,86 +1,32 @@
 
-var path = require('path');
-var glob = require('glob');
+const path = require('path');
+const glob = require('glob');
 
-const platformGroups = {};
-function fixPlatform(platform, key) {
-  let mobile = false;
-  let platformFamily = platform.os.family === 'Windows NT' && 'Windows'
-    || platform.os.family;
-
-  let group = (platformFamily + '-' + platform.name).replace(/[^a-z0-9]+/ig, '-').toLowerCase();
-  let name = platform.name;
-  let version = platform.version.split('.').slice(0, 2).join('.');
-
-  // differentiate mobile platforms
-  var appendPlatformFamily = new Set(['iOS', 'Android']);
-  if (appendPlatformFamily.has(platform.os.family)) {
-    name += ' (' + platform.os.family + ')';
-    mobile = true;
-  }
-
-  platform.ally = {
-    key,
-    group,
-    name,
-    version,
-  };
-
-  if (!platformGroups[group]) {
-    platformGroups[group] = {
-      group,
-      name,
-      mobile,
-      browsers: [],
-    };
-  }
-
-  platformGroups[group].browsers.push(key);
-}
+const notes = require('./focusable.notes');
+const groups = require('./focusable.groups');
+const platforms = require('./platforms');
 
 // import data from tests/focusable
 const source = {};
-let notes;
-let groups;
 glob.sync('*.json', {
   cwd: path.resolve(__dirname, '../../../tests/focusable/data/'),
   realpath: true,
 }).sort().forEach(function(file) {
   const name = path.basename(file, '.json');
   const content = require(file);
-  if (name === 'meta.notes') {
-    notes = content;
-  } else if (name === 'meta.groups') {
-    groups = content;
-  } else {
-    fixPlatform(content.platform, name);
-    source[name] = content;
+
+  if (name.slice(0, 5) === 'meta.') {
+    return;
   }
+
+  platforms.add(content.platform, name);
+  source[name] = content;
 });
 
 // source data converted to Maps/Sets for improved lookups
 const mapped = new Map();
-// map of browsers (platform objects)
-const browsers = {};
 // hold all the keys we know
 const idents = new Set();
-const groupedIdents = new Set();
-groups.forEach(function(group) {
-  // add a key to be used for referencing the group in a data-table
-  group.id = group.label.replace(/[^a-z0-9]+/ig, '-').toLowerCase();
-  // flattened list of idents known to groups
-  Object.keys(group.idents).forEach(function(ident) {
-    idents.add(ident);
-    groupedIdents.add(ident);
-  });
-  // create lookup table for redundant entries
-  group.duplicate = {};
-  Object.keys(group.redundant || {}).forEach(function(targetIdent) {
-    group.redundant[targetIdent].forEach(function(sourceIdent) {
-      group.duplicate[sourceIdent] = targetIdent;
-    });
-  });
-});
 
 // prepare the data for lookups
 Object.keys(source).forEach(function(browser) {
@@ -113,10 +59,9 @@ Object.keys(source).forEach(function(browser) {
   const sourceData = source[browser];
   const mappedData = {};
   mapped.set(browser, mappedData);
-  browsers[browser] = sourceData.platform;
 
   // focusable, focusableEvents, noFocusMethod, tabOrder are simple arrays
-  ['focusable', 'focusableEvents', 'noFocusMethod', 'tabOrder'].forEach(function(key) {
+  ['focusable', 'focusEvents', 'noFocusMethod', 'tabOrder'].forEach(function(key) {
     // we're going to do a few lookups, so casting to set first to avoid indexOf() calls
     mappedData[key] = new Set(sourceData[key]);
     // build a list of all the test idents we have
@@ -164,13 +109,14 @@ Array.from(idents).sort().forEach(function(ident) {
 
   aggregated[ident] = result;
   mapped.forEach(function(browserData, browser) {
+    var tabindex = browserData.tabIndex.get(ident);
     result[browser] = {
       browser: {
         focusable: browserData.focusable.has(ident),
         tabbable: browserData.tabOrder.has(ident),
-        focusEvent: browserData.focusableEvents.has(ident),
+        focusEvent: browserData.focusEvents.has(ident),
         focusMethod: !browserData.noFocusMethod.has(ident),
-        tabIndex: browserData.tabIndex.get(ident),
+        tabIndex: tabindex !== undefined ? tabindex : 'null',
         label: null,
       },
       ally: {
@@ -211,45 +157,16 @@ Array.from(idents).sort().forEach(function(ident) {
   });
 });
 
-// create missing group
-const ungroupedIdents = Array.from(idents).filter(ident => !groupedIdents.has(ident));
-if (ungroupedIdents.length) {
-  groups.unshift({
-    label: 'Elements Without Group',
-    idents: ungroupedIdents,
-    id: 'elements-without-group',
-    duplicate: [],
-  });
-}
-
-// flat list of browser keys
-const columns = [];
-// show versions per platform in ascending order
-function sortBrowserVersions(a, b) {
-  return browsers[a].version > browsers[b].version ? 1 : -1;
-}
-// the expected column is not a real browser
-delete platformGroups['expected-expected'];
-// move mobile browsers to the end
-Object.keys(platformGroups).forEach(function(group) {
-  if (!platformGroups[group].mobile) {
-    return;
-  }
-
-  let tmp = platformGroups[group];
-  delete platformGroups[group];
-  platformGroups[group] = tmp;
-});
-// sort versions and create flat columns list
-Object.keys(platformGroups).forEach(function(group) {
-  platformGroups[group].browsers.sort(sortBrowserVersions).forEach(browser => columns.push(browser));
-});
+// make sense of that randomly imported mess
+platforms.sort();
+// we may have data that is not properly grouped
+groups.handleIdentsWithoutGroup(idents);
 
 module.exports = {
-  platforms: platformGroups,
-  columns,
-  browsers,
+  platforms: platforms.map,
+  columns: platforms.columns,
+  browsers: platforms.browsers,
   data: aggregated,
-  notes,
-  groups,
+  notes: notes,
+  groups: groups.list,
 };

@@ -67,10 +67,15 @@ function captureStuff() {
   }
 
   // collect focus events
+  var hasSeenFocusEvent = {};
   function logFocusEvent(event) {
     if (event.target && (event.target.nodeName === 'BODY' ||  event.target.nodeName === 'HTML') && !event.relatedTarget) {
-      // IE10 and IE11: ignore repeated focus events on <body> and <html> as they are irrelevant to data-collection
-      return;
+      if (hasSeenFocusEvent[event.target.nodeName]) {
+        // IE10 and IE11: ignore repeated focus events on <body> and <html> as they are irrelevant to data-collection
+        return;
+      }
+
+      hasSeenFocusEvent[event.target.nodeName] = true;
     }
 
     focusEventHistory.push(elementName(event.target));

@@ -67,6 +67,7 @@ module.exports = function({
     introduction,
     prismCss: prismCss,
     groups: source.groups.filter(group => !skippedGroups.has(group.id)),
+    notes: source.notes.list,
     table: tables.join('\n'),
   });
 

@@ -7,7 +7,17 @@
     id="{{ identId }}"
     headers="{{ groupId }}-ident"
     data-column="ident"
-  >{{{ labelHtml }}}</th>
+    data-notes="{{#each notes }} {{ this }} {{/each}}"
+  >
+    <span>{{{ labelHtml }}}</span>
+    {{#if hasNotes }}
+    <div class="notes">
+      {{#each notes }}
+      <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
+      {{/each}}
+    </div>
+    {{/if}}
+  </th>
 
   {{{ cells }}}
 

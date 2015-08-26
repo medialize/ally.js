@@ -69,6 +69,7 @@ module.exports = function({
       expected.identId = identId;
       expected.ident = ident;
 
+      expected.isInert = !expected.browser.focusable && !expected.browser.tabbable;
       cells.push(_cellTemplate(expected));
     }
 
@@ -84,16 +85,21 @@ module.exports = function({
         data.cellData = cellData(data);
       }
 
+      data.notes = source.notes.get(ident, browser);
+      data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
     });
 
+    const notes = source.notes.get(ident);
     rows.push(_rowTemplate({
-      ident,
-      label: idents[ident],
-      duplicates: group.duplicate[ident] || '',
-      labelHtml: beautifyIdentLabel(idents[ident], ident),
       groupId: group.id,
       identId,
+      ident,
+      label: idents[ident],
+      labelHtml: beautifyIdentLabel(idents[ident], ident),
+      duplicates: group.duplicate[ident] || '',
+      hasNotes: notes.length,
+      notes: notes,
       cells: cells.join('\n'),
     }));
   });
