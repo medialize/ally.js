@@ -30,7 +30,7 @@ export default function(element) {
     return true;
   }
 
-  if (element.parentNode instanceof SVGElement) {
+  if (element instanceof SVGElement && nodeName === 'a' && element.hasAttribute('xlink:href')) {
     // any focusable child of <svg> cannot be focused, but tabbed to
     return platform.name === 'IE' || platform.name === 'Firefox';
   }

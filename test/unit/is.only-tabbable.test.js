@@ -64,6 +64,10 @@ define([
         var element = document.getElementById('svg-link');
         expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE' || platform.name === 'Firefox');
       },
+      'svg text element': function() {
+        var element = document.getElementById('svg-link-text');
+        expect(isOnlyTabbable(element)).to.equal(false);
+      },
       'inert div': function() {
         var element = document.getElementById('inert-div');
         expect(isOnlyTabbable(element)).to.equal(false);
