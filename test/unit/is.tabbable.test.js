@@ -2,9 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
+  'platform',
   'ally/is/focusable',
   'ally/is/tabbable',
-], function(registerSuite, expect, focusableFixture, isFocusable, isTabbable) {
+], function(registerSuite, expect, focusableFixture, platform, isFocusable, isTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -69,6 +70,19 @@ define([
         var element = document.getElementById('input-hidden');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
+      'extended: scroll container without overflow': function() {
+        var element = document.getElementById('scroll-container-without-overflow');
+        expect(isFocusable(element)).to.equal(false);
+      },
+      'extended: scroll container': function() {
+        var element = document.getElementById('scroll-container');
+        expect(isFocusable(element)).to.equal(platform.name === 'Firefox');
+      },
+      'extended: scroll body': function() {
+        var element = document.getElementById('scroll-body');
+        expect(isFocusable(element)).to.equal(false);
+      },
+
     };
   });
 });

@@ -65,6 +65,22 @@ export default function(element) {
     }
   }
 
+  if (platform.name === 'Firefox') {
+    // Firefox considers scrollable containers keyboard focusable,
+    // even though their tabIndex property is -1
+    // NOTE: IE considers scrollable containers and bodies script focusable only
+    const style = window.getComputedStyle(element, null);
+    const canOverflow = [
+      style.getPropertyValue('overflow'),
+      style.getPropertyValue('overflow-x'),
+      style.getPropertyValue('overflow-y'),
+    ].some(overflow => overflow === 'auto' || overflow === 'scroll');
+
+    if (canOverflow) {
+      return true;
+    }
+  }
+
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   return element.tabIndex >= 0;
 }
