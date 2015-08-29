@@ -32,7 +32,7 @@ define([
 
       document: function() {
         var result = queryFocusable();
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
@@ -110,7 +110,7 @@ define([
         shadowInputFixture.createShadowRoot(fixture);
 
         var result = queryFocusable();
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'

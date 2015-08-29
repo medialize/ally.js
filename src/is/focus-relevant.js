@@ -16,7 +16,6 @@ import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-fo
 import canFocusEmbed from '../supports/focus-embed';
 import canFocusEmbedTabindex from '../supports/focus-embed-tabindex';
 import canFocusFieldset from '../supports/focus-fieldset';
-import canFocusHtml from '../supports/focus-html';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
@@ -116,15 +115,6 @@ export default function(element) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
     // it appears the tabindex is overruled so focus is still forwarded to the <map>
     return canFocusImgUsemapTabindex;
-  }
-
-  if (nodeName === 'body') {
-    return true;
-  }
-
-  if (canFocusHtml && nodeName === 'html') {
-    // Firefox, IE11 can focus <html>
-    return true;
   }
 
   if (canFocusTable && (nodeName === 'table' || nodeName === 'td')) {

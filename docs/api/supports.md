@@ -18,7 +18,6 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-broken-image-map | boolean | true if `<area>` is focusable although the `<img>` using the `<map>` is not properly loaded |
 | focus-fieldset-disabled | boolean | true if `<fieldset disabled>` is focusable |
 | focus-fieldset | boolean | true if `<fieldset>` is focusable |
-| focus-html | boolean | true if the `<html>` element is focusable |
 | focus-invalid-tabindex | boolean | true if `<div tabindex="invalid-value">` is focusable |
 | focus-summary | boolean | true if the browser implements `<details>` and `<summary>` is focusable |
 | focus-svg | boolean | true if any SVG element like `<text>` is focusable |

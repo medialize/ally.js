@@ -13,6 +13,7 @@
 * adding `is/focus-relevant` to identify technically focusable elements (refactored from `is/focusable`)
 * adding `is/only-tabbable` to identify elements that cannot be focused by script, but by keyboard
 * removing "dimension check" from `is/visible` - [issue #14](https://github.com/medialize/ally.js/issues/14)
+* `query/focusable` no longer considers `<html>` and `<body>` focusable - [issue #31](https://github.com/medialize/ally.js/issues/31)
 
 ### Breaking Changes
 

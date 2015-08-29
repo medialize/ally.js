@@ -7,7 +7,6 @@ import '../prototype/svgelement.prototype.focus';
 
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import canFocusHtml from '../supports/focus-html';
 import canFocusSvg from '../supports/focus-svg';
 let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
 import canFocusTable from '../supports/focus-table';
@@ -16,9 +15,7 @@ import canFocusSummary from '../supports/focus-summary';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 
 // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-let selector = 'body,'
-  // Firefox, IE11 can focus <html>
-  + (canFocusHtml ? 'html,' : '')
+let selector = ''
   // IE11 can focus <table> and <td>
   + (canFocusTable ? 'table, td,' : '')
   // IE11 can focus <fieldset>

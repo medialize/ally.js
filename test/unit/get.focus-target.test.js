@@ -65,7 +65,7 @@ define([
           context: '#none',
         });
 
-        expect(target.nodeName.toLowerCase()).to.equal('body');
+        expect(target).to.equal(null);
       },
     };
   });

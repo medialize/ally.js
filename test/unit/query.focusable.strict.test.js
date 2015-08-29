@@ -34,7 +34,7 @@ define([
         var result = queryFocusable({
           strategy: 'strict',
         });
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
@@ -118,7 +118,7 @@ define([
         var result = queryFocusable({
           strategy: 'strict',
         });
-        var expected = 'body, #tabindex--1, #tabindex-0, #tabindex-1'
+        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
