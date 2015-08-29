@@ -28,6 +28,7 @@ module.exports = function({
   skipExpected,
   cellTemplate,
   cellData,
+  rowData,
 }) {
   let _cellTemplate = resolveCellTemplate(cellTemplate);
   let skippedGroups = new Set();
@@ -41,6 +42,7 @@ module.exports = function({
       // custom handlebars template to make a <td>
       cellTemplate: _cellTemplate,
       cellData,
+      rowData,
 
       // original data to transform
       source,

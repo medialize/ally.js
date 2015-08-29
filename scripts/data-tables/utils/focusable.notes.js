@@ -46,6 +46,7 @@ Object.keys(source).forEach(function(ident) {
 
   index[ident] = {
     general: [],
+    ally: [],
     browsers: {},
   };
 
@@ -57,6 +58,8 @@ Object.keys(source).forEach(function(ident) {
     index[ident].browsers[browser] = [];
     importNotes(index[ident].browsers[browser], _browser);
   });
+
+  data.ally && importNotes(index[ident].ally, data.ally);
 
   data.alias && data.alias.forEach(function(_ident) {
     index[_ident] = index[ident];
@@ -70,17 +73,17 @@ map.forEach(function(key, message) {
 });
 
 module.exports = {
-  get: function(ident, browser) {
+  get: function(ident) {
     const _map = index[ident];
-    if (!_map) {
-      return [];
-    }
-
-    if (!browser) {
-      return _map.general || [];
-    }
-
-    return _map.browsers[browser] || [];
+    return _map && _map.general || [];
+  },
+  getBrowser: function(ident, browser) {
+    const _map = index[ident];
+    return _map && _map.browsers[browser] || [];
+  },
+  getAlly: function(ident) {
+    const _map = index[ident];
+    return _map && _map.ally || [];
   },
   list: notes,
 };

@@ -42,6 +42,7 @@ module.exports = function({
   skipExpected,
   cellTemplate,
   cellData,
+  rowData,
 }) {
   const _cellTemplate = cellTemplate || _cellTemplateDefault;
   var rows = [];
@@ -85,7 +86,7 @@ module.exports = function({
         data.cellData = cellData(data);
       }
 
-      data.notes = source.notes.get(ident, browser);
+      data.notes = source.notes.getBrowser(ident, browser);
       data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
     });
@@ -98,8 +99,8 @@ module.exports = function({
       label: idents[ident],
       labelHtml: beautifyIdentLabel(idents[ident], ident),
       duplicates: group.duplicate[ident] || '',
-      hasNotes: notes.length,
       notes: notes,
+      rowData: rowData && rowData(ident, sourceIdent) || {},
       cells: cells.join('\n'),
     }));
   });

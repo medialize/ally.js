@@ -7,7 +7,7 @@
   data-tabindex="{{ browser.tabIndex }}"
   data-row="{{ ident }}"
   data-colum="{{ platform.ally.key }}"
-  data-notes="{{#each browser.notes }} {{ this }} {{/each}}"
+  data-notes="{{#each notes }} {{ this }} {{/each}}"
 >
   <span>{{ browser.label }}</span>
   <div class="notes">
@@ -21,7 +21,7 @@
       {{/unless}}
     {{/unless}}
     {{#each notes }}
-    <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
+      <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
     {{/each}}
   </div>
 </td>

@@ -86,6 +86,11 @@ generateTableDocument({
       tabbable: !data.ally.focusableStrict && data.ally.onlyTabbable || data.ally.tabbableStrict,
     };
   },
+  rowData: function(ident) {
+    return {
+      notes: source.notes.getAlly(ident),
+    };
+  },
 });
 
 generateTableDocument({

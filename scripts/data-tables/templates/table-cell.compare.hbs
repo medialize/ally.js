@@ -7,6 +7,7 @@
   data-tabindex="{{ browser.tabIndex }}"
   data-row="{{ ident }}"
   data-colum="{{ platform.ally.key }}"
+  data-notes="{{#each notes }} {{ this }} {{/each}}"
   {{#if cellData.match}}class="irrelevant-to-context"{{/if}}
 >
   {{#if cellData.match}}
@@ -20,5 +21,21 @@
       data-tabbable="{{ cellData.tabbable }}"
     > {{ cellData.label }}</span>
   {{/if}}
-
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">{{ browser.tabIndex }}</span>
+    {{#unless browser.focusMethod }}
+      <a href="#footnote-M" class="note warning">M</a>
+    {{/unless}}
+    {{#unless isInert }}
+      {{#unless browser.focusEvent }}
+        <a href="#footnote-E" class="note warning">E</a>
+      {{/unless}}
+    {{/unless}}
+    {{#each notes }}
+      <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
+    {{/each}}
+    {{#each cellData.notes }}
+      <a href="#footnote-{{ this }}" class="note compare-target">{{ this }}</a>
+    {{/each}}
+  </div>
 </td>

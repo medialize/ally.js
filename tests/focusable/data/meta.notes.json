@@ -108,6 +108,7 @@
 
   "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
   "svg rect[onfocus]": {
+    "ally": "Elements made focusable by way of adding a `focus` event listener cannot be identified by ally.js",
     "browsers": {
       "chrome-stable": "@svg-onfocus",
       "chrome-nightly": "@svg-onfocus",
@@ -173,6 +174,7 @@
     "alias": [
       "keygen[tabindex=-1]"
     ],
+    "ally": "The `<keygen>` element is ignored by ally.js",
     "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
   }
 
