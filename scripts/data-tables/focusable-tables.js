@@ -59,6 +59,11 @@ generateTableDocument({
       tabbable: !data.ally.focusableQuick && data.ally.onlyTabbable || data.ally.tabbableQuick,
     };
   },
+  rowData: function(ident) {
+    return {
+      notes: source.notes.getAlly(ident),
+    };
+  },
 });
 
 generateTableDocument({
