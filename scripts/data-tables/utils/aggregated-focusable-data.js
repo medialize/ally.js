@@ -26,7 +26,7 @@ glob.sync('*.json', {
 // source data converted to Maps/Sets for improved lookups
 const mapped = new Map();
 // hold all the keys we know
-const idents = new Set();
+const idents = new Set(groups.idents);
 
 // prepare the data for lookups
 Object.keys(source).forEach(function(browser) {
