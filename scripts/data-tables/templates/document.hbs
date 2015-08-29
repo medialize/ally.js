@@ -143,20 +143,6 @@
       margin-top: 0;
     }
 
-/*
-    td[data-supported="yes"] {
-      text-align: center;
-      background: #01ff70;
-    }
-    td[data-supported="no"] {
-      text-align: center;
-      background: #ff4136;
-    }
-    td[data-correct="no"] {
-      box-shadow: inset 0 0 0px 2px #0074d9;
-    }
-*/
-
     #sticky-table-header {
       position: fixed;
       top: 0;
@@ -164,6 +150,26 @@
       margin: 0 5px;
       z-index: 1000;
     }
+    #sticky-table-header caption {
+      position: relative;
+    }
+    #sticky-table-header caption ul {
+      position: absolute;
+      display: none;
+      top: 14px;
+      left: 0px;
+      font-size: 14px;
+      background: white;
+      border: 2px solid #AAA;
+    }
+    #sticky-table-header caption ul li {
+      display: block;
+      margin: 0;
+    }
+    #sticky-table-header caption:hover ul {
+      display: block;
+    }
+
   </style>
 </head>
 <body>
@@ -238,8 +244,10 @@
         element.setAttribute('id', '');
       });
 
-      headerTableCaption = headerTable.querySelector('caption');
-      headerTableCaption.textContent = '';
+      var caption = headerTable.querySelector('caption');
+      headerTableCaption = document.createElement('span');
+      caption.innerHTML = '';
+      caption.appendChild(headerTableCaption);
 
       headerTable.id = 'sticky-table-header';
       headerTable.setAttribute('aria-hidden', 'true');
@@ -250,6 +258,12 @@
 
       firstTable.parentNode.insertBefore(headerTable, firstTable);
       headerHeight = headerTable.offsetHeight
+    }
+
+    function addTableOfContentsToStickyHeader() {
+      var toc = document.querySelector('#table-of-contents ul');
+      var list = toc.cloneNode(true);
+      headerTableCaption.parentNode.appendChild(list);
     }
 
     // listen to scroll position to show/hide sticky header and update its caption
@@ -296,6 +310,7 @@
       };
 
       window.addEventListener('scroll', handleScrollEvent, true);
+      handleScrollEvent();
     }
 
     // add hight of header to fragment URI targets
@@ -434,6 +449,7 @@
       justifyTableWidth();
 
       createHeaderTable();
+      addTableOfContentsToStickyHeader();
       bindHeaderTableScrolling();
 
       compensateHeaderTable();
