@@ -42,6 +42,16 @@ export default function(element) {
     return false;
   }
 
+  // In Chrome <audio controls tabindex="-1"> remains keyboard focusable
+  if (nodeName === 'audio' && element.hasAttribute('controls') && (platform.name === 'Chrome' || platform.name === 'Chrome Mobile')) {
+    return true;
+  }
+
+  // In Chrome and Firefox <video controls tabindex="-1"> remains keyboard focusable
+  if (nodeName === 'video' && element.hasAttribute('controls') && (platform.name === 'Chrome' || platform.name === 'Firefox')) {
+    return true;
+  }
+
   if (platform.name === 'Safari' && parseFloat(platform.version) < 9 && platform.os.family === 'iOS') {
     // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
