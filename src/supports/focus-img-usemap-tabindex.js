@@ -1,6 +1,7 @@
 
 import detectFocus from './detect-focus';
 
+// NOTE: https://github.com/medialize/ally.js/issues/35
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 export default detectFocus({
   name: 'can-focus-img-usemap-tabindex',

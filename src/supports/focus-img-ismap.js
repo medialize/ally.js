@@ -1,7 +1,8 @@
 
 import detectFocus from './detect-focus';
 
-// https://github.com/medialize/ally.js/issues/20
+// NOTE: https://github.com/medialize/ally.js/issues/35
+// fixes https://github.com/medialize/ally.js/issues/20
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap
 export default detectFocus({
   name: 'can-focus-img-ismap',

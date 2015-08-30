@@ -1,4 +1,5 @@
 
+import platform from 'platform';
 import detectFocus from './detect-focus';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
@@ -12,5 +13,15 @@ export default detectFocus({
       + 'src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">';
 
     return element.querySelector('area');
+  },
+  validate: function(element) {
+    if (platform.name === 'Firefox') {
+      // fixes https://github.com/medialize/ally.js/issues/35
+      // Firefox loads the DataURI asynchronously, causing a false-negative
+      return true;
+    }
+
+    const focus = element.querySelector('area');
+    return document.activeElement === focus;
   },
 });
