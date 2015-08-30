@@ -186,17 +186,23 @@ export default function(element) {
   }
 
   const parent = element.parentElement || element.parentNode;
-  if (canFocusScrollBody && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
-    // scrollable bodies are focusable Internet Explorer
-    // https://github.com/medialize/ally.js/issues/21
-    return true;
-  }
-
-  // Children of focusable elements with display:flex are focusable in IE10-11
-  if (canFocusChildrenOfFocusableFlexbox) {
-    const parentStyle = window.getComputedStyle(parent, null);
-    if (parentStyle.display.indexOf('flex') > -1) {
+  if (parent.nodeType === Node.ELEMENT_NODE) {
+    const parentNodeName = parent.nodeName.toLowerCase();
+    // need to exclude <table> as parent, otherwise direct children (<thead>, <tbody>)
+    // would be identified as scrollable in Internet Explorer, because
+    // there seems to be a an offsetWidth/scrollWidth mismatch
+    if (canFocusScrollBody && parentNodeName !== 'table' && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
+      // scrollable bodies are focusable Internet Explorer
+      // https://github.com/medialize/ally.js/issues/21
       return true;
+    }
+
+    // Children of focusable elements with display:flex are focusable in IE10-11
+    if (canFocusChildrenOfFocusableFlexbox) {
+      const parentStyle = window.getComputedStyle(parent, null);
+      if (parentStyle.display.indexOf('flex') > -1) {
+        return true;
+      }
     }
   }
 
