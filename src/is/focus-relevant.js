@@ -169,7 +169,10 @@ export default function(element) {
     }
   }
 
-  if (canFocusScrollContainer && (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth)) {
+  // need to exclude <html> from scroll detection, otherwise <body>
+  // would be identified as scrollable in Internet Explorer,
+  // because there seems to be a an offsetWidth/scrollWidth mismatch
+  if (canFocusScrollContainer && nodeName !== 'html' && (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth)) {
     // scrollable containers are focusable Internet Explorer
     // scrollable containers are tabbable in Firefox
     // https://github.com/medialize/ally.js/issues/21
@@ -188,10 +191,11 @@ export default function(element) {
   const parent = element.parentElement || element.parentNode;
   if (parent.nodeType === Node.ELEMENT_NODE) {
     const parentNodeName = parent.nodeName.toLowerCase();
+    const parentIsHtmlOrTable = parentNodeName === 'html' || parentNodeName === 'table';
     // need to exclude <table> as parent, otherwise direct children (<thead>, <tbody>)
-    // would be identified as scrollable in Internet Explorer, because
-    // there seems to be a an offsetWidth/scrollWidth mismatch
-    if (canFocusScrollBody && parentNodeName !== 'table' && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
+    // would be identified as scrollable in Internet Explorer, same goes for <html> and <body>,
+    // because there seems to be a an offsetWidth/scrollWidth mismatch
+    if (canFocusScrollBody && !parentIsHtmlOrTable && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
       // scrollable bodies are focusable Internet Explorer
       // https://github.com/medialize/ally.js/issues/21
       return true;
