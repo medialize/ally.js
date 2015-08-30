@@ -30,6 +30,7 @@
   "@invalid-tabindex-value": "The value is invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "@empty-tabindex-ie11": "`tabindex=\"\"` is parsed to the value `-32768`. [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)",
   "[tabindex=3 ]": "The value's trailing spaces are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "[tabindex=3x]": "The value's trailing non-numeric characters are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "[tabindex=hello]": "@invalid-tabindex-value",
   "[tabindex=\"\"]": {
     "general": "@invalid-tabindex-value",
@@ -170,12 +171,16 @@
 
   "link[itemprop][href]": "naturally focusable according to [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
 
+  "@firefox-keygen-select": "Firefox transforms `<keygen>` to `<select _moz-type=\"-mozilla-keygen\">` while parsing HTML.",
   "keygen": {
     "alias": [
       "keygen[tabindex=-1]"
     ],
+    "browsers": {
+      "firefox-stable": "@firefox-keygen-select",
+      "firefox-nightly": "@firefox-keygen-select"
+    },
     "ally": "The `<keygen>` element is ignored by ally.js",
     "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
   }
-
 }

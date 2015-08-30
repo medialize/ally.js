@@ -35,6 +35,18 @@ function importNotes(keys, data) {
   }
 }
 
+function addToIndex(_map, _index) {
+  _map.general.forEach(key => _index.general.push(key));
+  _map.ally.forEach(key => _index.ally.push(key));
+  Object.keys(_map.browsers).forEach(function(browser) {
+    if (!_index.browsers[browser]) {
+      _index.browsers[browser] = [];
+    }
+
+    _map.browsers[browser].forEach(key => _index.browsers[browser].push(key));
+  });
+}
+
 Object.keys(source).forEach(function(ident) {
   if (ident[0] === '@') {
     // resolve alias target
@@ -44,26 +56,47 @@ Object.keys(source).forEach(function(ident) {
     return;
   }
 
-  index[ident] = {
+  const _map = {
     general: [],
     ally: [],
     browsers: {},
   };
 
   const data = source[ident];
-  importNotes(index[ident].general, data.general || data);
+  importNotes(_map.general, data.general || data);
 
   data.browsers && Object.keys(data.browsers).forEach(function(browser) {
+    if (!_map.browsers[browser]) {
+      _map.browsers[browser] = [];
+    }
+
     const _browser = data.browsers[browser];
-    index[ident].browsers[browser] = [];
-    importNotes(index[ident].browsers[browser], _browser);
+    importNotes(_map.browsers[browser], _browser);
   });
 
-  data.ally && importNotes(index[ident].ally, data.ally);
+  data.ally && importNotes(_map.ally, data.ally);
 
   data.alias && data.alias.forEach(function(_ident) {
-    index[_ident] = index[ident];
+    if (!index[_ident]) {
+      index[_ident] = {
+        general: [],
+        ally: [],
+        browsers: {},
+      };
+    }
+
+    addToIndex(_map, index[_ident]);
   });
+
+  if (!index[ident]) {
+    index[ident] = {
+      general: [],
+      ally: [],
+      browsers: {},
+    };
+  }
+
+  addToIndex(_map, index[ident]);
 });
 
 const md = new Remarkable({});
