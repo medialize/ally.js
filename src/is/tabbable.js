@@ -37,19 +37,26 @@ export default function(element) {
     return false;
   }
 
-  // In Internet Explorer the <audio> element is focusable, but not tabbable, and tabIndex property is wrong
-  if (nodeName === 'audio' && !element.hasAttribute('controls')) {
-    return false;
+  if (nodeName === 'audio') {
+    if (!element.hasAttribute('controls')) {
+      // In Internet Explorer the <audio> element is focusable, but not tabbable, and tabIndex property is wrong
+      return false;
+    } else if (platform.name === 'Chrome' || platform.name === 'Chrome Mobile') {
+      // In Chrome <audio controls tabindex="-1"> remains keyboard focusable
+      return true;
+    }
   }
 
-  // In Chrome <audio controls tabindex="-1"> remains keyboard focusable
-  if (nodeName === 'audio' && element.hasAttribute('controls') && (platform.name === 'Chrome' || platform.name === 'Chrome Mobile')) {
-    return true;
-  }
-
-  // In Chrome and Firefox <video controls tabindex="-1"> remains keyboard focusable
-  if (nodeName === 'video' && element.hasAttribute('controls') && (platform.name === 'Chrome' || platform.name === 'Firefox')) {
-    return true;
+  if (nodeName === 'video') {
+    if (!element.hasAttribute('controls')) {
+      if (platform.name === 'IE') {
+        // In Internet Explorer the <video> element is focusable, but not tabbable, and tabIndex property is wrong
+        return false;
+      }
+    } else if (platform.name === 'Chrome' || platform.name === 'Firefox') {
+      // In Chrome and Firefox <video controls tabindex="-1"> remains keyboard focusable
+      return true;
+    }
   }
 
   if (platform.name === 'Safari' && parseFloat(platform.version) < 9 && platform.os.family === 'iOS') {
