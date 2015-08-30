@@ -59,6 +59,13 @@ export default function(element) {
     }
   }
 
+  if (nodeName === 'embed' || nodeName === 'object') {
+    if (platform.layout === 'Blink' || platform.layout === 'WebKit') {
+      // In all Blink and WebKit based browsers <embed> and <object> are never keyboard focusable, even with tabindex="0" set
+      return false;
+    }
+  }
+
   if (platform.name === 'Safari' && parseFloat(platform.version) < 9 && platform.os.family === 'iOS') {
     // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
