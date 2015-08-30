@@ -6,6 +6,25 @@ import isVisible from './visible';
 import getParents from '../get/parents';
 import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';
 
+export function getImageOfArea(element) {
+  const map = element.parentElement;
+
+  // an <area> matches the area[href] selector even if it is not applicable
+  if (!map.name || !element.href || map.nodeName.toLowerCase() !== 'map') {
+    return null;
+  }
+
+  // NOTE: image maps can also be applied to <object> with image content,
+  // but no browser supports this at the moment
+
+  // HTML5 specifies HTMLMapElement.images to be an HTMLCollection of all
+  // <img> and <object> referencing the <map> element, but no browser implements this
+  //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
+  //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
+  // the image must be valid and loaded for the map to take effect
+  return document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]') || null;
+}
+
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
@@ -19,22 +38,7 @@ export default function(element) {
     return false;
   }
 
-  const map = element.parentElement;
-
-  // an <area> matches the area[href] selector even if it is not applicable
-  if (!map.name || !element.href || map.nodeName.toLowerCase() !== 'map') {
-    return false;
-  }
-
-  // NOTE: image maps can also be applied to <object> with image content,
-  // but no browser supports this at the moment
-
-  // HTML5 specifies HTMLMapElement.images to be an HTMLCollection of all
-  // <img> and <object> referencing the <map> element, but no browser implements this
-  //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
-  //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
-  // the image must be valid and loaded for the map to take effect
-  const img = document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]');
+  const img = getImageOfArea(element);
   if (!img || !isVisible(img)) {
     return false;
   }

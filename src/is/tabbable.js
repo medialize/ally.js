@@ -3,6 +3,7 @@
 
 import platform from 'platform';
 import tabindexValue from '../util/tabindex-value';
+import {getImageOfArea} from './valid-area';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
@@ -102,14 +103,26 @@ export default function(element) {
     if (canOverflow) {
       return true;
     }
-  } else if (platform.name === 'IE') {
-    // IE considers scrollable containers and bodies script focusable only,
+  }
+
+  if (platform.name === 'IE') {
+    // IE degrades <area> to script focusable, if the image
+    // using the <map> has been given tabindex="-1"
+    if (nodeName === 'area') {
+      const img = getImageOfArea(element);
+      if (img && tabindexValue(img) < 0) {
+        return false;
+      }
+    }
+
+    // IE considers scrollable containers script focusable only,
     // even though their tabIndex property is 0
     if (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth) {
       return false;
     }
 
     const parent = element.parentNode;
+    // IE considers scrollable bodies script focusable only,
     if (parent.nodeType === Node.ELEMENT_NODE && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
       return false;
     }
