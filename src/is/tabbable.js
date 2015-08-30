@@ -92,7 +92,6 @@ export default function(element) {
   if (platform.name === 'Firefox') {
     // Firefox considers scrollable containers keyboard focusable,
     // even though their tabIndex property is -1
-    // NOTE: IE considers scrollable containers and bodies script focusable only
     const style = window.getComputedStyle(element, null);
     const canOverflow = [
       style.getPropertyValue('overflow'),
@@ -102,6 +101,17 @@ export default function(element) {
 
     if (canOverflow) {
       return true;
+    }
+  } else if (platform.name === 'IE') {
+    // IE considers scrollable containers and bodies script focusable only,
+    // even though their tabIndex property is 0
+    if (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth) {
+      return false;
+    }
+
+    const parent = element.parentNode;
+    if (parent.nodeType === Node.ELEMENT_NODE && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
+      return false;
     }
   }
 
