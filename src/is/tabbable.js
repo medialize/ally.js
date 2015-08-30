@@ -113,6 +113,13 @@ export default function(element) {
     if (parent.nodeType === Node.ELEMENT_NODE && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
       return false;
     }
+
+    // Children of focusable elements with display:flex are focusable in IE10-11,
+    // even though their tabIndex property suggests otherwise
+    const parentStyle = window.getComputedStyle(parent, null);
+    if (parentStyle.display.indexOf('flex') > -1) {
+      return false;
+    }
   }
 
   // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
