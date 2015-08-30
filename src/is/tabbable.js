@@ -4,6 +4,10 @@
 import platform from 'platform';
 import tabindexValue from '../util/tabindex-value';
 import {getImageOfArea} from './valid-area';
+import {
+  hasCssOverflowScroll,
+  isScrollableContainer,
+} from './focus-relevant';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
@@ -94,13 +98,7 @@ export default function(element) {
     // Firefox considers scrollable containers keyboard focusable,
     // even though their tabIndex property is -1
     const style = window.getComputedStyle(element, null);
-    const canOverflow = [
-      style.getPropertyValue('overflow'),
-      style.getPropertyValue('overflow-x'),
-      style.getPropertyValue('overflow-y'),
-    ].some(overflow => overflow === 'auto' || overflow === 'scroll');
-
-    if (canOverflow) {
+    if (hasCssOverflowScroll(style)) {
       return true;
     }
   }
@@ -117,13 +115,13 @@ export default function(element) {
 
     // IE considers scrollable containers script focusable only,
     // even though their tabIndex property is 0
-    if (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth) {
+    if (isScrollableContainer(element, nodeName)) {
       return false;
     }
 
     const parent = element.parentNode;
     // IE considers scrollable bodies script focusable only,
-    if (parent.nodeType === Node.ELEMENT_NODE && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
+    if (isScrollableContainer(parent, nodeName)) {
       return false;
     }
 

@@ -28,6 +28,30 @@ import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 
+export function hasCssOverflowScroll(style) {
+  return [
+    style.getPropertyValue('overflow'),
+    style.getPropertyValue('overflow-x'),
+    style.getPropertyValue('overflow-y'),
+  ].some(overflow => overflow === 'auto' || overflow === 'scroll');
+}
+
+export function isScrollableContainer(element, nodeName) {
+  if (nodeName !== 'div' && nodeName !== 'span') {
+    // Internet Explorer advances scrollable containers and bodies to focusable
+    // only if the scrollable container is <div> or <span> - this does *not*
+    // happen for <section>, <article>, …
+    return false;
+  }
+
+  const scrollableDimensions = element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth;
+  if (!scrollableDimensions) {
+    return false;
+  }
+
+  return true;
+}
+
 export default function(element) {
   if (element === document) {
     element = document.documentElement;
@@ -169,33 +193,25 @@ export default function(element) {
     }
   }
 
-  // need to exclude <html> from scroll detection, otherwise <body>
-  // would be identified as scrollable in Internet Explorer,
-  // because there seems to be a an offsetWidth/scrollWidth mismatch
-  if (canFocusScrollContainer && nodeName !== 'html' && (element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth)) {
-    // scrollable containers are focusable Internet Explorer
-    // scrollable containers are tabbable in Firefox
-    // https://github.com/medialize/ally.js/issues/21
+  // https://github.com/medialize/ally.js/issues/21
+  if (canFocusScrollContainer) {
     if (canFocusScrollContainerWithoutOverflow) {
+      // Internet Explorer does will consider the scrollable area focusable
+      // if the element is a <div> or a <span> and it is in fact scrollable,
+      // regardless of the CSS overflow property
+      if (isScrollableContainer(element, nodeName)) {
+        return true;
+      }
+    } else if (hasCssOverflowScroll(style)) {
+      // Firefox requires proper overflow setting, IE does not necessarily
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
       return true;
     }
-    // Firefox requires proper overflow setting, IE does not
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
-    return [
-      style.getPropertyValue('overflow'),
-      style.getPropertyValue('overflow-x'),
-      style.getPropertyValue('overflow-y'),
-    ].some(overflow => overflow === 'auto' || overflow === 'scroll');
   }
 
-  const parent = element.parentElement || element.parentNode;
-  if (parent.nodeType === Node.ELEMENT_NODE) {
-    const parentNodeName = parent.nodeName.toLowerCase();
-    const parentIsHtmlOrTable = parentNodeName === 'html' || parentNodeName === 'table';
-    // need to exclude <table> as parent, otherwise direct children (<thead>, <tbody>)
-    // would be identified as scrollable in Internet Explorer, same goes for <html> and <body>,
-    // because there seems to be a an offsetWidth/scrollWidth mismatch
-    if (canFocusScrollBody && !parentIsHtmlOrTable && (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth)) {
+  const parent = element.parentElement;
+  if (parent) {
+    if (canFocusScrollBody && isScrollableContainer(parent, nodeName)) {
       // scrollable bodies are focusable Internet Explorer
       // https://github.com/medialize/ally.js/issues/21
       return true;
