@@ -97,7 +97,7 @@
 * improving [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
 * improving `selector/focusable` (thus `dom/query-focusable`) by also finding focusable shadowed elements (via `>>>` or `/deep/`, ShadowDOM) - [#11](https://github.com/medialize/ally.js/issues/11)
 * fixing `event/active-element` to be dispatched on `document` rather than `document.body`
-* fixing `prototype/svgelement.prototoype.focus` to also cover `SVGElement.prototype.blur`
+* fixing `prototype/svgelement.prototype.focus` to also cover `SVGElement.prototype.blur`
 * fixing linting errors
 
 

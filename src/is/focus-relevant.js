@@ -9,7 +9,6 @@ import getParents from '../get/parents';
 import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 
-const canFocusSvgMethod = Boolean(Element.prototype.focus);
 import canFocusAreaTabindex from '../supports/focus-area-tabindex';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
@@ -25,6 +24,7 @@ import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
 import canFocusSummary from '../supports/focus-summary';
 import canFocusSvg from '../supports/focus-svg';
+import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 
