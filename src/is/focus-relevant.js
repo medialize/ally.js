@@ -8,6 +8,11 @@ import '../prototype/element.prototype.matches';
 import getParents from '../get/parents';
 import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
+import {
+  hasCssOverflowScroll,
+  isScrollableContainer,
+  isUserModifyWritable,
+} from './is.util';
 
 import canFocusAreaTabindex from '../supports/focus-area-tabindex';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
@@ -27,37 +32,6 @@ import canFocusSvg from '../supports/focus-svg';
 import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-
-export function isUserModifyWritable(style) {
-  // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
-  // https://github.com/medialize/ally.js/issues/17
-  const userModify = style.webkitUserModify || '';
-  return Boolean(userModify && userModify.indexOf('write') !== -1);
-}
-
-export function hasCssOverflowScroll(style) {
-  return [
-    style.getPropertyValue('overflow'),
-    style.getPropertyValue('overflow-x'),
-    style.getPropertyValue('overflow-y'),
-  ].some(overflow => overflow === 'auto' || overflow === 'scroll');
-}
-
-export function isScrollableContainer(element, nodeName) {
-  if (nodeName !== 'div' && nodeName !== 'span') {
-    // Internet Explorer advances scrollable containers and bodies to focusable
-    // only if the scrollable container is <div> or <span> - this does *not*
-    // happen for <section>, <article>, …
-    return false;
-  }
-
-  const scrollableDimensions = element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth;
-  if (!scrollableDimensions) {
-    return false;
-  }
-
-  return true;
-}
 
 export default function(element) {
   if (element === document) {

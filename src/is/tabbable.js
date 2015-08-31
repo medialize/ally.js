@@ -3,12 +3,12 @@
 
 import platform from 'platform';
 import tabindexValue from '../util/tabindex-value';
-import {getImageOfArea} from './valid-area';
 import {
+  getImageOfArea,
   hasCssOverflowScroll,
   isScrollableContainer,
   isUserModifyWritable,
-} from './focus-relevant';
+} from './is.util';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
