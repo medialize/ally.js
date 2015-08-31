@@ -1,6 +1,13 @@
 {
-  "html": "The `<html>` element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document.",
-  "body": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus.",
+  "@ally-doc-inert": "Considering the `<html>` and `<body>` element focusable should have no benefit to a website (unless explicitly made focusable by adding the `tabindex` attribute), which is why ally.js considers the `<html>` and `<body>` element inert.",
+  "html": {
+    "ally": "@ally-doc-inert",
+    "general": "The `<html>` element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document."
+  },
+  "body": {
+    "ally": "@ally-doc-inert",
+    "general": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus."
+  },
 
   "@fieldset-disabled-input": "should not be focusable as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
   "fieldset[tabindex=0][disabled]": {
