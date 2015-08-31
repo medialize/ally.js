@@ -88,11 +88,27 @@
   "embed": {
     "alias": [
       "embed[tabindex=-1]",
+      "embed[type=mp4]",
+      "embed[type=mp4][tabindex=-1]",
+      "embed[type=ogv]",
+      "embed[type=ogv][tabindex=-1]",
       "embed[type=svg]",
       "embed[type=svg][tabindex=-1]",
       "embed[type=svg][tabindex=0]"
     ],
-    "general": "The behavior of the `<embed>` element depends on the content it presents. *More tests may be required in this space.*"
+    "general": "The behavior of the `<embed>` element depends on the content type and browser plugin."
+  },
+
+  "-embed-video": {
+    "alias": [
+      "embed",
+      "embed[tabindex=-1]",
+      "embed[type=mp4]",
+      "embed[type=mp4][tabindex=-1]",
+      "embed[type=ogv]",
+      "embed[type=ogv][tabindex=-1]"
+    ],
+    "general": "The [`<video>` element](https://developer.mozilla.org/en/docs/Web/HTML/Element/video) should be used for embedding video content instead of [`<embed>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed). The HTML5 `<video>` element is supported [virtually everywhere](http://caniuse.com/#feat=video)."
   },
 
   "object": {
@@ -102,7 +118,7 @@
       "object[src=svg]",
       "object[src=svg][tabindex=-1]"
     ],
-    "general": "The behavior of the `<object>` element depends on the content it presents. *More tests may be required in this space.*"
+    "general": "The behavior of the `<object>` element depends on the content it presents. The most common content types used with `<object>` are `SVG` and `SWF`."
   },
 
   "svg": {

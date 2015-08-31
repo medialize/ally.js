@@ -197,6 +197,10 @@
     "idents": {
       "embed": "<embed type=\"video/quicktime\" src=\"some.mov\">",
       "embed[tabindex=-1]": "<embed type=\"video/quicktime\" src=\"some.mov\" tabindex=\"-1\">",
+      "embed[type=mp4]": "<embed type=\"video/mp4\" data=\"some.mp4\">",
+      "embed[type=mp4][tabindex=-1]": "<embed type=\"video/mp4\" data=\"some.mp4\" tabindex=\"-1\">",
+      "embed[type=ogv]": "<embed type=\"video/ogv\" data=\"some.ogv\">",
+      "embed[type=ogv][tabindex=-1]": "<embed type=\"video/ogv\" data=\"some.ogv\" tabindex=\"-1\">",
       "embed[type=svg]": "<embed type=\"image/svg+xml\" data=\"some.svg\">",
       "embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"-1\">",
       "embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"0\">"
