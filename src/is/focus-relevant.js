@@ -28,6 +28,13 @@ import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 
+export function isUserModifyWritable(style) {
+  // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
+  // https://github.com/medialize/ally.js/issues/17
+  const userModify = style.webkitUserModify || '';
+  return Boolean(userModify && userModify.indexOf('write') !== -1);
+}
+
 export function hasCssOverflowScroll(style) {
   return [
     style.getPropertyValue('overflow'),
@@ -174,10 +181,7 @@ export default function(element) {
   }
 
   const style = window.getComputedStyle(element, null);
-  const userModify = style.webkitUserModify || '';
-  if (userModify && userModify.indexOf('write') !== -1) {
-    // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
-    // https://github.com/medialize/ally.js/issues/17
+  if (isUserModifyWritable(style)) {
     return true;
   }
 

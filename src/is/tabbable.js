@@ -7,6 +7,7 @@ import {getImageOfArea} from './valid-area';
 import {
   hasCssOverflowScroll,
   isScrollableContainer,
+  isUserModifyWritable,
 } from './focus-relevant';
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
@@ -81,12 +82,7 @@ export default function(element) {
 
     if (!potentiallyTabbable) {
       const style = window.getComputedStyle(element, null);
-      const userModify = style.webkitUserModify || '';
-      if (userModify && userModify.indexOf('write') !== -1) {
-        // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
-        // https://github.com/medialize/ally.js/issues/17
-        potentiallyTabbable = true;
-      }
+      potentiallyTabbable = isUserModifyWritable(style);
     }
 
     if (!potentiallyTabbable) {
@@ -111,6 +107,12 @@ export default function(element) {
       if (img && tabindexValue(img) < 0) {
         return false;
       }
+    }
+
+    const style = window.getComputedStyle(element, null);
+    if (isUserModifyWritable(style)) {
+      // prevent being swallowed by the overzealous isScrollableContainer() below
+      return element.tabIndex >= 0;
     }
 
     // IE considers scrollable containers script focusable only,
