@@ -8,7 +8,7 @@ import '../prototype/svgelement.prototype.focus';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
 import canFocusSvg from '../supports/focus-svg';
-let canFocusSvgMethod = SVGElement.prototype.focus === HTMLElement.prototype.focus;
+import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusSummary from '../supports/focus-summary';
