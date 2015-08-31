@@ -57,13 +57,24 @@
   "video": "`<video>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
 
   "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
-  "iframe": {
+  "-firefox-iframe": {
     "alias": [
-      "iframe[tabindex=-1]"
+      "iframe",
+      "iframe[tabindex=-1]",
+      "iframe{focusable}",
+      "iframe{focusable}[tabindex=-1]"
     ],
     "browsers": {
       "firefox-stable": "@iframe-firefox",
       "firefox-nightly": "@iframe-firefox"
+    }
+  },
+
+  "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
+  "iframe": {
+    "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>`s keyboard focusable (tabbable).",
+    "browsers": {
+      "ie-12": "Microsoft Edge requires the `<iframe>`d document to contain a focusable element in order to make it keyboard accessible.\n\nThis is **undetectable** because we can't look inside all iframes, because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)."
     }
   },
 

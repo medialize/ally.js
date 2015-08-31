@@ -185,8 +185,10 @@
   {
     "label": "Iframe Element",
     "idents": {
-      "iframe": "<iframe src=\"…\">",
-      "iframe[tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\">"
+      "iframe": "<iframe src=\"…\"> without focusable content",
+      "iframe[tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\"> without focusable content",
+      "iframe{focusable}": "<iframe src=\"…\"> with focusable content",
+      "iframe{focusable}[tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\"> with focusable content"
     }
   },
 
