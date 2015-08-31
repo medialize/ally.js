@@ -145,6 +145,14 @@
     "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1 and [not implemented everywhere](http://caniuse.com/#feat=details)."
   },
 
+  "@ie-scroll-div": "Internet Explorer turns `<div>` and `<span>` elements focusable when they're scrollable, but does *not* do the same for other sectioning or block-level elements",
+  "section{scroll-container-overflow-scroll}": {
+    "browsers": {
+      "ie-10": "@ie-scroll-div",
+      "ie-11": "@ie-scroll-div"
+    }
+  },
+
   "@ismap-ie-bug": "The [`ismap` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap) makes the `<img>` focusable (in addition to the parent `<a>`)",
   "a > img[ismap]": {
     "alias": [

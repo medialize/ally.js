@@ -313,6 +313,10 @@
       "div{scroll-body-vertical}": "<div> child of vertially overflowing <div style=\"overflow: auto\">",
       "div{body-overflow-scroll}": "<div> child of not overflowing <div style=\"overflow: scroll\">",
       "div{body-overflow-auto}": "<div> child of not overflowing <div style=\"overflow: scroll\">",
+      "span{scroll-body-overflow-scroll}": "<div> child of overflowing <span style=\"overflow: scroll\">",
+      "section{scroll-body-overflow-scroll}": "<div> child of overflowing <section style=\"overflow: scroll\">",
+      "div-span{scroll-body-overflow-scroll}": "<span> child of overflowing <div style=\"overflow: scroll\">",
+      "div-section{scroll-body-overflow-scroll}": "<section> child of overflowing <div style=\"overflow: scroll\">",
       "div{scroll-container-horizontal-scroll-x}": "horizontally overflowing <div style=\"overflow-x: scroll\">",
       "div{scroll-container-horizontal-scroll-y}": "horizontally overflowing <div style=\"overflow-y: scroll\">",
       "div{scroll-container-horizontal}": "horizontally overflowing <div style=\"overflow: auto\">",
@@ -323,7 +327,11 @@
       "div{scroll-container-vertical-scroll-y}": "vertically overflowing <div style=\"overflow-x: scroll\">",
       "div{scroll-container-vertical}": "vertially overflowing <div style=\"overflow: auto\">",
       "div{container-overflow-scroll}": "not overflowing <div style=\"overflow: scroll\">",
-      "div{container-overflow-auto}": "not overflowing <div style=\"overflow: auto\">"
+      "div{container-overflow-auto}": "not overflowing <div style=\"overflow: auto\">",
+      "span{scroll-container-overflow-scroll}": "overflowing <span style=\"overflow: scroll\">",
+      "section{scroll-container-overflow-scroll}": "overflowing <section style=\"overflow: scroll\">",
+      "div-span{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\"> with content <span>",
+      "div-section{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\"> with content <section>"
     },
     "redundant": {
       "div{scroll-body-horizontal}": [
@@ -337,14 +345,22 @@
         "div{scroll-body-horizontal-scroll-x}",
         "div{scroll-body-horizontal-scroll-y}",
         "div{scroll-body-vertical-scroll-x}",
-        "div{scroll-body-vertical-scroll-y}"
+        "div{scroll-body-vertical-scroll-y}",
+        "span{scroll-body-overflow-scroll}",
+        "section{scroll-body-overflow-scroll}",
+        "div-span{scroll-body-overflow-scroll}",
+        "div-section{scroll-body-overflow-scroll}"
       ],
       "div{scroll-container-overflow-scroll}": [
         "div{scroll-container-horizontal-scroll-x}",
         "div{scroll-container-horizontal-scroll-y}",
         "div{scroll-container-vertical-scroll-x}",
         "div{scroll-container-vertical-scroll-y}",
-        "div{container-overflow-scroll}"
+        "div{container-overflow-scroll}",
+        "span{scroll-container-overflow-scroll}",
+        "section{scroll-container-overflow-scroll}",
+        "div-span{scroll-container-overflow-scroll}",
+        "div-section{scroll-container-overflow-scroll}"
       ]
     }
   },

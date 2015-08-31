@@ -11,7 +11,8 @@ function addPlatform(platform, key) {
   // only to be used for grouping desktop and mobile browsers separately
   let mobile = false;
   // "Windows" needs some aliasing, possibly required for other platforms, too
-  let platformFamily = platform.os.family === 'Windows NT' && 'Windows'
+  let platformFamily = (platform.os.family === 'Windows NT' && 'Windows')
+    || (platform.os.family.slice(0, 14) === 'Windows Server' && 'Windows')
     || platform.os.family;
 
   // id-attribute safe string for table references
