@@ -181,8 +181,13 @@ class InertSubtree {
 
   handleMutation(mutation) {
     if (mutation.type === 'childList') {
-      const addedNodes = this.listQueryFocusable(nodeArray(mutation.addedNodes));
-      this.renderInert(addedNodes);
+      const addedElements = nodeArray(mutation.addedNodes).filter(element => element.nodeType === Node.ELEMENT_NODE);
+      if (!addedElements.length) {
+        return;
+      }
+
+      const addedFocusableElements = this.listQueryFocusable(addedElements);
+      this.renderInert(addedFocusableElements);
     } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
       makeElementInert(mutation.target);
     }

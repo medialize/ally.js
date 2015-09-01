@@ -9,8 +9,12 @@ import queryFocusableQuick from './focusable.quick';
 export default function({context, includeContext, strategy = 'quick'} = {}) {
   context = nodeArray(context)[0];
   // alias document to document.documentElement for convenience
-  if (!context || context.nodeType === 9) {
+  if (!context || context.nodeType === Node.DOCUMENT_NODE) {
     context = document.documentElement;
+  }
+
+  if (context.nodeType !== Node.ELEMENT_NODE) {
+    throw new TypeError('query/focusable requires an argument of type Element');
   }
 
   if (strategy === 'quick') {
