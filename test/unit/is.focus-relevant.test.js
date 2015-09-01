@@ -144,7 +144,7 @@ define([
       },
       'svg element': function() {
         var element = document.getElementById('svg');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg && supports.canFocusSvgMethod);
+        expect(isFocusRelevant(element)).to.equal(false);
       },
       'svg element with tabindex="-1"': function() {
         var element = document.getElementById('svg');

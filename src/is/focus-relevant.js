@@ -28,7 +28,6 @@ import canFocusScrollBody from '../supports/focus-scroll-body';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
 import canFocusSummary from '../supports/focus-summary';
-import canFocusSvg from '../supports/focus-svg';
 import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
@@ -138,7 +137,7 @@ export default function(element) {
       return false;
     }
     // NOTE: in Chrome this would be something like 'svg, svg *,' as *every* svg element with a focus event listener is focusable
-    return canFocusSvg || validTabindex;
+    return validTabindex;
   }
 
   // FIXME: svg a[xlink|href] has false negative in Chrome

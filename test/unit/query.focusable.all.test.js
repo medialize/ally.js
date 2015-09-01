@@ -5,6 +5,7 @@ define([
   '../helper/fixtures/shadow-input.fixture',
   '../helper/elements-string',
   '../helper/supports',
+  'platform',
   'ally/query/focusable',
 ], function(
   registerSuite,
@@ -13,6 +14,7 @@ define([
   shadowInputFixture,
   elementsString,
   supports,
+  platform,
   queryFocusable
 ) {
 
@@ -40,7 +42,7 @@ define([
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
           + ', #object-svg'
-          + (supports.canFocusSvg ? ', #svg' : '')
+          + (platform.name === 'IE' ? ', #svg' : '')
           + (supports.canFocusObjectSvg ? ', #object-tabindex-svg' : '')
           + ', #svg-link'
           + (supports.canFocusEmbed ? ', #embed' : '')

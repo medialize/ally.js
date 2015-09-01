@@ -20,7 +20,6 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-fieldset | boolean | true if `<fieldset>` is focusable |
 | focus-invalid-tabindex | boolean | true if `<div tabindex="invalid-value">` is focusable |
 | focus-summary | boolean | true if the browser implements `<details>` and `<summary>` is focusable |
-| focus-svg | boolean | true if any SVG element like `<text>` is focusable |
 | focus-table | boolean | true if `<table>`, `<tr>` and `<td>` are focusable |
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
 | focusout-event | boolean | true if `focusout` is dispatched synchronously |

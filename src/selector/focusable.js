@@ -7,7 +7,6 @@ import '../prototype/svgelement.prototype.focus';
 
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import canFocusSvg from '../supports/focus-svg';
 import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
@@ -20,8 +19,6 @@ let selector = ''
   + (canFocusTable ? 'table, td,' : '')
   // IE11 can focus <fieldset>
   + (canFocusFieldset ? 'fieldset,' : '')
-  // supporting <svg>
-  + (canFocusSvgMethod && canFocusSvg ? 'svg,' : '')
   // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
   // Firefox cannot focus <svg> child elements from script
   + (canFocusSvgMethod ? 'svg a[*|href],' : '')
