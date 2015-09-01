@@ -34,7 +34,7 @@ While it's best to use standardized features and leave browsers to figure things
 
 ## `ally/query/*` Finding Elements
 
-In order to work with focusable elements, we must first know which elements we're supposed to work with.
+In order to work with focusable elements, we must first know which elements we're supposed to work with. See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
 * [`ally/query/first-tabbable`](query/first-tabbable.md) finds the first keyboard focusable element
 * [`ally/query/focusable`](query/focusable.md) finds all focusable elements
@@ -44,7 +44,7 @@ In order to work with focusable elements, we must first know which elements we'r
 
 ## `ally/is/*` Element State
 
-Unlike any other ally modules, the `is/*` components do not take take `options.context` argument, but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Unlike any other ally modules, the `is/*` components do not take take `options.context` argument, but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
 * [`ally/is/disabled`](is/disabled.md) returns true if the element is `:disabled`
 * [`ally/is/focus-releavnt`](is/focus-relevant.md) returns true if the element is considered theoretically focusable
