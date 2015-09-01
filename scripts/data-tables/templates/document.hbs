@@ -92,10 +92,14 @@
     tbody td {
       position: relative;
       padding: 12px 5px 5px;
+      /* z-index required to compensate position:relative causeing content to be rendered above borders */
+      z-index: -1;
     }
     tbody th {
       position: relative;
       padding: 5px 5px 12px 5px;
+      /* z-index required to compensate position:relative causeing content to be rendered above borders */
+      z-index: -1;
     }
     tbody th .notes {
       bottom: 1px;
