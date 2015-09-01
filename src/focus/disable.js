@@ -129,7 +129,7 @@ class InertSubtree {
   listQueryFocusable(list) {
     return list
       // find all focusable elements within the given contexts
-      .map(element => queryFocusable({context: element, includeContext: true}))
+      .map(element => queryFocusable({context: element, includeContext: true, strategy: 'all'}))
       // flatten nested arrays
       .reduce((previous, current) => previous.concat(current), []);
   }

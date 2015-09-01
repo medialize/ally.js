@@ -19,8 +19,8 @@ export default function({context, includeContext, strategy = 'quick'} = {}) {
 
   if (strategy === 'quick') {
     return queryFocusableQuick({context, includeContext});
-  } else if (strategy === 'strict') {
-    return queryFocusableStrict({context, includeContext});
+  } else if (strategy === 'strict' || strategy === 'all') {
+    return queryFocusableStrict({context, includeContext, strategy});
   }
 
   throw new TypeError('query/focusable requires option.strategy to be one of ["quick", "strict"]');
