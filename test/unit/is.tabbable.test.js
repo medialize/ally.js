@@ -72,15 +72,15 @@ define([
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');
-        expect(isFocusable(element)).to.equal(false);
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusable(element)).to.equal(platform.name === 'Firefox');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(platform.name === 'Firefox');
       },
       'extended: scroll body': function() {
         var element = document.getElementById('scroll-body');
-        expect(isFocusable(element)).to.equal(false);
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
 
     };

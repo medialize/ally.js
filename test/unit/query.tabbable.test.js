@@ -3,9 +3,10 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/elements-string',
+  'platform',
   '../helper/supports',
   'ally/query/tabbable',
-], function(registerSuite, expect, focusableFixture, elementsString, supports, queryTabbable) {
+], function(registerSuite, expect, focusableFixture, elementsString, platform, supports, queryTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -15,6 +16,10 @@ define([
 
       beforeEach: function() {
         fixture = focusableFixture();
+        // remove elements from tabbing test, because their behavior is undefined
+        [].forEach.call(document.querySelectorAll('#embed, #embed-tabindex-0, #embed-svg'), function(element) {
+          element.parentNode.removeChild(element);
+        });
       },
       afterEach: function() {
         fixture.remove();
@@ -22,19 +27,21 @@ define([
       },
 
       document: function() {
+        var deferred = this.async(500);
+
         var expected = '#tabindex-0, #tabindex-1, #link'
           + ', #image-map-area'
-          + (supports.canFocusObjectSvg ? ', #object-svg' : '')
+          + (platform.name === 'Firefox' ? ', #object-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
-          + (supports.canFocusEmbed ? ', #embed' : '')
-          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
-          + (supports.canFocusObjectSvg ? ', #embed-svg' : '')
           + ', #audio-controls'
           + ', #input, #span-contenteditable'
           + ', #img-ismap-link';
 
-        var result = queryTabbable();
-        expect(elementsString(result)).to.equal(expected);
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var result = queryTabbable();
+          expect(elementsString(result)).to.equal(expected);
+        }), 200);
       },
 
       context: function() {

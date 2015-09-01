@@ -105,13 +105,25 @@ define([
         expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
       },
       'area element': function() {
+        var deferred = this.async(500);
+
         var element = document.getElementById('image-map-area');
-        expect(isFocusRelevant(element)).to.equal(true);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(isFocusRelevant(element)).to.equal(true);
+        }), 200);
       },
       'area element with tabindex="-1"': function() {
+        var deferred = this.async(500);
+
         var element = document.getElementById('image-map-area');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusAreaTabindex);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(isFocusRelevant(element)).to.equal(supports.canFocusAreaTabindex);
+        }), 200);
       },
       'label element': function() {
         var element = document.getElementById('label');
