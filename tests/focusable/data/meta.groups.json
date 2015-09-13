@@ -347,7 +347,9 @@
       "span{scroll-container-overflow-scroll}": "overflowing <span style=\"overflow: scroll\">",
       "section{scroll-container-overflow-scroll}": "overflowing <section style=\"overflow: scroll\">",
       "div-span{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\"> with content <span>",
-      "div-section{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\"> with content <section>"
+      "div-section{scroll-container-overflow-scroll}": "overflowing <div style=\"overflow: scroll\"> with content <section>",
+      "div{container-overflow-scroll}[tabindex=-1]": "<div style=\"overflow: scroll\" tabindex=\"-1\">",
+      "div{body-overflow-scroll}[tabindex=-1]": "<div> child of <div style=\"overflow: scroll\" tabindex=\"-1\">"
     },
     "redundant": {
       "div{scroll-body-horizontal}": [
