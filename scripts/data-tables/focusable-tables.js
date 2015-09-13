@@ -1,16 +1,17 @@
 
-var path = require('path');
-var mkdirp = require('mkdirp');
+const path = require('path');
+const mkdirp = require('mkdirp');
 
-var targetDirectory = path.resolve(__dirname, '../../dist/docs/data-tables/');
+const targetDirectory = path.resolve(__dirname, '../../dist/docs/data-tables/');
 mkdirp.sync(targetDirectory);
 
-var generateTableDocument = require('./utils/generate-table-document');
+const generateTableDocument = require('./utils/generate-table-document');
+const highlightLabel = require('./utils/highlight-label');
 
 // actual browser compatibility data
-var source = require('./utils/aggregated-focusable-data');
+const source = require('./utils/aggregated-focusable-data');
 // convert source.browsers to a strcture suitable for table.hbs
-var browsers = source.platforms;
+const browsers = source.platforms;
 // replace browser-keys by their objects
 Object.keys(browsers).forEach(function(browser) {
   browsers[browser].versions = browsers[browser].browsers.map(key => source.browsers[key]);
@@ -121,6 +122,30 @@ generateTableDocument({
       label: data.jquery.label,
       focusable: data.jquery.focusable,
       tabbable: data.jquery.focusable,
+    };
+  },
+});
+
+generateTableDocument({
+  source: source,
+  browsers,
+  targetFile: path.resolve(targetDirectory, 'focusable.redirect.html'),
+  title: 'Focus Redirecting Elements - Browser Compatibility Table',
+  introduction: `<p>The following tables show which elements forward focus to another element in individual browsers
+    The tables are based on the <a href="http://medialize.github.io/test/focusable/test.html">focusable test document</a>.</p>`,
+  skipExpected: true,
+  skipIdents: function(sourceIdent) {
+    // skip rows without redirections
+    return !source.columns.some(function(browser) {
+      let data = sourceIdent[browser];
+      return data.browser.redirecting;
+    });
+  },
+  cellTemplate: 'table-cell.redirect.hbs',
+  cellData: function(data) {
+    let label = data.browser.redirecting && source.redirects[data.browser.redirecting];
+    return {
+      label: label && highlightLabel(label) || data.browser.redirecting || '',
     };
   },
 });

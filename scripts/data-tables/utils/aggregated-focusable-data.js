@@ -4,6 +4,7 @@ const glob = require('glob');
 
 const notes = require('./focusable.notes');
 const groups = require('./focusable.groups');
+const redirects = require(path.resolve(__dirname, '../../../tests/focusable/data/meta.redirects.json'));
 const platforms = require('./platforms');
 
 // import data from tests/focusable
@@ -116,6 +117,7 @@ Array.from(idents).sort().forEach(function(ident) {
         tabbable: browserData.tabOrder.has(ident),
         focusEvent: browserData.focusEvents.has(ident),
         focusMethod: !browserData.noFocusMethod.has(ident),
+        redirecting: browserData.redirections.get(ident) || null,
         tabIndex: tabindex !== undefined ? tabindex : 'null',
         label: null,
       },
@@ -167,6 +169,7 @@ module.exports = {
   columns: platforms.columns,
   browsers: platforms.browsers,
   data: aggregated,
-  notes: notes,
+  redirects,
+  notes,
   groups: groups.list,
 };

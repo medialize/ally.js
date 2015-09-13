@@ -78,10 +78,14 @@
       /* only tabbable */
       background: #AAAAFF;
     }
+    table td[data-redirecting="false"],
     table td[data-focusable="false"][data-tabbable="false"],
     table td > span.compare[data-focusable="false"][data-tabbable="false"] {
       /* inert */
       background: #DDDDDD;
+    }
+    table td[data-redirecting="true"] {
+      background: #6E92A1;
     }
 
     table td.irrelevant-to-context {

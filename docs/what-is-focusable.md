@@ -13,7 +13,7 @@ An HTML element can be a member of exactly one of the following five categories:
 * **forwards focus**: The element will forward focus to another element instead of receiving focus itself.
 
 
-The [Focusable Elements - Browser Compatibility Table](./data-tables/focusable.md) details in which category the various HTML elements fall per browser.
+The [Focusable Elements - Browser Compatibility Table](./data-tables/focusable.md) details in which category the various HTML elements fall per browser. [Focus Redirecting Elements](./data-tables/focusable.redirect.md) details the elements that forward focus to another element, instead of receiving focus themselves.
 
 ---
 

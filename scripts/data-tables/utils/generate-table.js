@@ -4,9 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
-// Prism is not properly checking if "self" actually exists
-global.self = {};
-var Prism = require('prismjs');
+const highlightLabel = require('./highlight-label');
 
 const tableTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/table.hbs'), {encoding: 'utf8'});
 const _tableTemplate = Handlebars.compile(tableTemplate);
@@ -17,18 +15,6 @@ const _rowTemplate = Handlebars.compile(rowTemplate);
 
 function clone(object) {
   return JSON.parse(JSON.stringify(object));
-}
-
-function beautifyIdentLabel(label, ident) {
-  if (label === ident) {
-    return '<code class="language-css">'
-      + Prism.highlight(label, Prism.languages.css, 'css')
-      + '</code>';
-  }
-
-  return '<code class="language-html">'
-    + Prism.highlight(label, Prism.languages.markup, 'html')
-    + '</code>';
 }
 
 var identCounter = 0;
@@ -97,7 +83,7 @@ module.exports = function({
       identId,
       ident,
       label: idents[ident],
-      labelHtml: beautifyIdentLabel(idents[ident], ident),
+      labelHtml: highlightLabel(idents[ident], ident),
       duplicates: group.duplicate[ident] || '',
       notes: notes,
       rowData: rowData && rowData(ident, sourceIdent) || {},
