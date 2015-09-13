@@ -56,15 +56,22 @@ function captureStuff() {
   var focusRedirection = [];
   var noFocusMethod = [];
 
-  // collect changes of document.activeElement  
+  // collect changes of document.activeElement
+  var _lasActiveElement = null;
   function observeActiveElement() {
     var _element = elementName(document.activeElement);
-    if (document.activeElement !== document.body && activeElementHistory[activeElementHistory.length - 1] !== _element) {
+    if (document.activeElement !== document.body && _lasActiveElement !== _element) {
+      _lasActiveElement = _element;
       activeElementHistory.push(_element);
     }
 
     requestAnimationFrame(observeActiveElement);
   }
+
+  // collect focus within iframe
+  window.iframeFocusEvent = function(event) {
+    activeElementHistory.push(elementName(event.target));
+  };
 
   // collect focus events
   var hasSeenFocusEvent = {};

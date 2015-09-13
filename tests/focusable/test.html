@@ -159,19 +159,19 @@
   <article>
     <h2 id="browsing-contexts">Browsing Contexts</h2>
     
-    <iframe src="iframe.html" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
+    <iframe src="iframe.html#iframe" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <iframe src="iframe.html" name="iframe-2" width="200" height="100" data-label="iframe[tabindex=-1]" tabindex="-1"></iframe>
+    <iframe src="iframe.html#iframe[tabindex=-1]" name="iframe-2" width="200" height="100" data-label="iframe[tabindex=-1]" tabindex="-1"></iframe>
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <iframe src="iframe-focusable.html" name="iframe-3" width="200" height="100" data-label="iframe{focusable}"></iframe>
+    <iframe src="iframe-focusable.html#iframe{focusable}" name="iframe-3" width="200" height="100" data-label="iframe{focusable}"></iframe>
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <iframe src="iframe-focusable.html" name="iframe-4" width="200" height="100" data-label="iframe{focusable}[tabindex=-1]" tabindex="-1"></iframe>
+    <iframe src="iframe-focusable.html#iframe{focusable}[tabindex=-1]" name="iframe-4" width="200" height="100" data-label="iframe{focusable}[tabindex=-1]" tabindex="-1"></iframe>
 
   </article>
 
@@ -619,6 +619,12 @@
   <hr>
   <h2 id="output-results">Results</h2>
   <pre id="results">click tab order to update the output of results</pre>
+
+  <script>
+    window.iframeFocusEvent = function(event) {
+      console.log("focus within iframe", event);
+    };
+  </script>
   <script src="../../node_modules/requirejs/require.js" data-main="focusable"></script>
 </body>
 </html>
