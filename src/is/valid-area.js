@@ -1,7 +1,6 @@
 
 // determine if an <area> element is being properly used by and <img> via a <map>
 
-import 'css.escape';
 import isVisible from './visible';
 import getParents from '../get/parents';
 import canFocusBrokenImageMaps from '../supports/focus-broken-image-map';

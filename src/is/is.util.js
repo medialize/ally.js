@@ -3,6 +3,8 @@
 // separate testing of this file's functions is not necessary,
 // as they're implicitly tested by way of the consumers
 
+import 'css.escape';
+
 export function isUserModifyWritable(style) {
   // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
   // https://github.com/medialize/ally.js/issues/17
