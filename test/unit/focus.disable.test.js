@@ -26,30 +26,44 @@ define([
       },
 
       lifecycle: function() {
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'before engaged');
+        expect(fixture.input.outer.disabled).to.equal(false, 'before engaged');
 
         handle = focusDisable();
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(true, 'after engaged');
+        expect(fixture.input.outer.disabled).to.equal(true, 'after engaged');
 
         handle.disengage();
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'after disengaged');
+        expect(fixture.input.outer.disabled).to.equal(false, 'after disengaged');
+      },
+      'non-input elements': function() {
+        var element = fixture.add('<div tabindex="0"></div>').firstElementChild;
+        expect(fixture.input.outer.disabled).to.equal(false, 'input before engaged');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'div before engaged');
+
+        handle = focusDisable();
+        expect(handle.disengage).to.be.a('function');
+        expect(fixture.input.outer.disabled).to.equal(true, 'after engaged');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(true, 'div after engaged');
+
+        handle.disengage();
+        expect(fixture.input.outer.disabled).to.equal(false, 'after disengaged');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'div after disengaged');
       },
       context: function() {
         handle = focusDisable({
           context: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'out of context');
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(true, 'in context');
+        expect(fixture.input.outer.disabled).to.equal(false, 'out of context');
+        expect(fixture.input.after.disabled).to.equal(true, 'in context');
       },
       filter: function() {
         handle = focusDisable({
           filter: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(true, 'out of filter');
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
+        expect(fixture.input.outer.disabled).to.equal(true, 'out of filter');
+        expect(fixture.input.after.disabled).to.equal(false, 'in filter');
       },
       'context and filter': function() {
         var input = fixture.add('<input id="dyamic-input">').firstElementChild;
@@ -59,9 +73,9 @@ define([
           filter: '#after-wrapper, #outer-input',
         });
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
-        expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'out of filter');
+        expect(fixture.input.outer.disabled).to.equal(false, 'in filter');
+        expect(fixture.input.after.disabled).to.equal(false, 'in filter');
+        expect(input.disabled).to.equal(true, 'out of filter');
       },
       'dom mutation': function() {
         if (!window.MutationObserver) {
@@ -76,12 +90,12 @@ define([
         });
 
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
+        expect(fixture.input.outer.disabled).to.equal(false, 'in filter');
 
         var input = fixture.add('<input id="dyamic-input">').firstElementChild;
         // dom mutation is observed asynchronously
         setTimeout(deferred.callback(function() {
-          expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'added after the fact');
+          expect(input.disabled).to.equal(true, 'added after the fact');
         }), 50);
       },
       'dom mutation (single node)': function() {
@@ -100,12 +114,12 @@ define([
         });
 
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
+        expect(fixture.input.outer.disabled).to.equal(false, 'in filter');
         fixture.root.appendChild(input);
 
         // dom mutation is observed asynchronously
         setTimeout(deferred.callback(function() {
-          expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'added after the fact');
+          expect(input.disabled).to.equal(true, 'added after the fact');
         }), 50);
       },
       'Shadow DOM': function() {
@@ -118,8 +132,8 @@ define([
           filter: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(false, 'in filter');
-        expect(fixture.input.first.hasAttribute('data-inert-tabindex')).to.equal(true, 'out of filter');
+        expect(fixture.input.after.disabled).to.equal(false, 'in filter');
+        expect(fixture.input.first.disabled).to.equal(true, 'out of filter');
       },
       'concurrent instances': function() {
         var container = fixture.add('<input type="text" id="dynamic-input">', 'dynamic-wrapper');
@@ -128,20 +142,20 @@ define([
         handle = focusDisable({
           context: '#after-wrapper',
         });
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false);
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(true, 'alpha after first handle');
-        expect(input.hasAttribute('data-inert-tabindex')).to.equal(false, 'bravo after first handle');
+        expect(fixture.input.outer.disabled).to.equal(false);
+        expect(fixture.input.after.disabled).to.equal(true, 'alpha after first handle');
+        expect(input.disabled).to.equal(false, 'bravo after first handle');
 
         handle2 = focusDisable({
           context: container,
         });
-        expect(fixture.input.outer.hasAttribute('data-inert-tabindex')).to.equal(false);
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(true, 'alpha after second handle');
-        expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'bravo after second handle');
+        expect(fixture.input.outer.disabled).to.equal(false);
+        expect(fixture.input.after.disabled).to.equal(true, 'alpha after second handle');
+        expect(input.disabled).to.equal(true, 'bravo after second handle');
 
         handle.disengage();
-        expect(fixture.input.after.hasAttribute('data-inert-tabindex')).to.equal(false, 'alpha after disengaging first handle');
-        expect(input.hasAttribute('data-inert-tabindex')).to.equal(true, 'bravo after disengaging first handle');
+        expect(fixture.input.after.disabled).to.equal(false, 'alpha after disengaging first handle');
+        expect(input.disabled).to.equal(true, 'bravo after disengaging first handle');
       },
     };
   });

@@ -16,11 +16,7 @@ The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536
 
 * **NOTE:** `ShadowHost`s are pierced and `ShadowRoot` content is made inert as well (except for closed shadow trees).
 * **NOTE:** Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden.
-* **NOTE:** Internet Explorer 10 - 11 leave `<fieldset disabled><input type="text|file">` editable, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488)
-* **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 * **WARNING:** Any element not identified as focus relevant by [`ally/is/focus-relevant`](../is/focus-relevant.md#Notes) and not identified as only tabbable by [`ally/is/only-tabbable`](../is/only-tabbable.md#Notes) is *not* made inert either. See the [identified elements using `strategy: "strict"` compatibility table](../../data-tables/focusable.strict.md).
-* **WARNING:** Unlike the name may suggest, the elements' `disabled` property is *not* modified, so the [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled) state does not change. While the user is prevented from interacting with the element, its state is not communicated to prevent undesired style changes.
-
 
 
 ## Demo
@@ -74,6 +70,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [`ally/focus/trap`](trap.md)
 * [`ally/query/focusable`](../query/focusable.md) used to identify the elements to make inert
+* [`ally/element/disabled`](../element/disabled.md) used to make elements inert
 
 
 ## Contribution Notes

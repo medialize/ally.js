@@ -23,6 +23,8 @@ import validArea from './is/valid-area';
 import validTabindex from './is/valid-tabindex';
 import visible from './is/visible';
 
+import elementDisabled from './is/disabled';
+
 import attribute from './map/attribute';
 import keycode from './map/keycode';
 
@@ -61,6 +63,10 @@ export default {
     validArea,
     validTabindex,
     visible,
+  },
+
+  element: {
+    disabled: elementDisabled,
   },
 
   map: {

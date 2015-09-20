@@ -14,6 +14,11 @@ export default function(element) {
     throw new TypeError('is/disabled requires an argument of type Element');
   }
 
+  if (element.hasAttribute('data-ally-disabled')) {
+    // treat ally's element/disabled like the DOM native element.disabled
+    return true;
+  }
+
   if (!isNativeDisabledSupported(element)) {
     // non-form elements do not support the disabled attribute
     return false;

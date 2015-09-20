@@ -57,6 +57,13 @@ Unlike any other ally modules, the `is/*` components do not take take `options.c
 * [`ally/is/visible`](is/visible.md) returns true if the element is rendered (but not necessarily visible in the viewport)
 
 
+## `ally/element/*` Manipulating Element State
+
+Making up for missing or lacking DOM mutation APIs.
+
+* [`ally/element/disabled`](element/disabled.md) disables all elements, not only form controls
+
+
 ## `ally/when/*` Reacting To Element State
 
 Especially when dealing with transitional user interfaces we need to know when an element can be safely focused.

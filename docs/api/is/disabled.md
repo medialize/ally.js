@@ -4,14 +4,13 @@ layout: doc-api.html
 
 # ally.is.disabled (`ally/is/disabled`)
 
-Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), i.e. not editable.
+Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`element/disabled`](../element/disabled.md) - i.e. not editable.
 
 
 ## Notes
 
-* **NOTE:** While the name suggests the same thing may be going on, [`ally/focus/disable`](../focus/disable.md) does *not* set the formal disabled state on form elements, so `ally/is/disabled` will *not* return true for inerted elements.
 * **NOTE:** The `<fieldset>` element can be disabled, inheriting the state onto all form elements it contains.
-* **NOTE:** WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themself, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
+* **NOTE:** WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themselves, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
 
 
 ## Demo
@@ -53,6 +52,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/is/valid-area`](valid-area.md)
 * [`ally/is/valid-tabindex`](valid-tabindex.md)
 * [`ally/is/visible`](visible.md)
+* [`ally/element/disabled`](../element/disabled.md)
 * [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 
 

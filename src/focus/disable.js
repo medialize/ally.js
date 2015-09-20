@@ -17,71 +17,14 @@
 
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
-import tabindexValue from '../util/tabindex-value';
-
-function disabledFocus() {
-  /*eslint-disable no-console */
-  console.warn('trying to focus inert element', this);
-  /*eslint-enable no-console */
-}
+import elementDisabled from '../element/disabled';
 
 function makeElementInert(element) {
-  // FIXME: <svg tabindex="-1"> is still tabbable in IE
-  // remember previous tabindex so we can restore it
-  const tabIndex = tabindexValue(element);
-  element.setAttribute('data-inert-tabindex', tabIndex !== null ? tabIndex : '');
-  // remember previous aria-disabled so we can restore it
-  const ariaDisabled = element.getAttribute('aria-disabled');
-  element.setAttribute('data-inert-aria-disabled', ariaDisabled || '');
-  element.setAttribute('aria-disabled', 'true');
-  // remove element from sequential focus navigation order
-  element.setAttribute('tabindex', '-1');
-  // make sure no script can focus the element
-  element.focus = disabledFocus;
-  // remember previous pointer events status so we can restore it
-  const pointerEvents = element.style.pointerEvents || '';
-  element.setAttribute('data-inert-pointer-events', pointerEvents);
-  // make sure no pointer interaction can access the element
-  element.style.pointerEvents = 'none';
-  // Chrome leaves <video controls tabindex="-1"> in document focus navigation sequence
-  const nodeName = element.nodeName.toLowerCase();
-  if (element.hasAttribute('controls') && (nodeName === 'video' || nodeName === 'audio')) {
-    element.setAttribute('data-inert-controls', '');
-    element.removeAttribute('controls');
-  }
+  return elementDisabled(element, true);
 }
 
 function undoElementInert(element) {
-  // restore original focus function from prototype
-  delete element.focus;
-  // restore to previous pointer interaction status
-  const pointerEvents = element.getAttribute('data-inert-pointer-events');
-  element.removeAttribute('data-inert-pointer-events');
-  element.style.pointerEvents = pointerEvents;
-  // restore aria-disabled
-  const ariaDisabled = element.getAttribute('data-inert-aria-disabled');
-  element.removeAttribute('data-inert-aria-disabled');
-  if (ariaDisabled === '') {
-    // the element did not have a aria-disabled set before
-    element.removeAttribute('aria-disabled');
-  } else {
-    element.setAttribute('aria-disabled', ariaDisabled);
-  }
-  // restore tabindex
-  const tabIndex = element.getAttribute('data-inert-tabindex');
-  element.removeAttribute('data-inert-tabindex');
-  if (tabIndex === '') {
-    // the element did not have a tabindex, but was naturally tabbable
-    element.removeAttribute('tabindex');
-  } else {
-    element.setAttribute('tabindex', tabIndex);
-  }
-  // restore <video controls>
-  const restoreControls = element.hasAttribute('data-inert-controls');
-  element.removeAttribute('data-inert-controls');
-  if (restoreControls) {
-    element.setAttribute('controls', '');
-  }
+  return elementDisabled(element, false);
 }
 
 const observerConfig = {
@@ -114,11 +57,8 @@ class InertSubtree {
     }
 
     this._context.forEach(function(element) {
-      if (element.hasAttribute('data-inert-tabindex')) {
-        undoElementInert(element);
-      }
-
-      [].forEach.call(element.querySelectorAll('[data-inert-tabindex]'), undoElementInert);
+      undoElementInert(element);
+      [].forEach.call(element.querySelectorAll('[data-ally-disabled], :disabled'), undoElementInert);
     });
 
     this._filter = null;
