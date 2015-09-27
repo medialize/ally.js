@@ -87,7 +87,9 @@
 
   "iframe{focusable} -> input": {
     "alias": [
-      "iframe{focusable}[tabindex=-1] -> input"
+      "iframe{focusable}[tabindex=-1] -> input",
+      "iframe{focusable} -> body",
+      "iframe -> body"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>` content inert",
     "general": "Technically the content of an iframe [can be accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting).\n\nHowever, this test is only verifying keyboard focusability."
