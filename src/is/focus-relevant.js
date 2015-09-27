@@ -140,8 +140,6 @@ export default function(element) {
     return validTabindex;
   }
 
-  // FIXME: svg a[xlink|href] has false negative in Chrome
-  // FIXME: svg * has false positive in Firefox, IE
   if (element.matches('svg a[*|href]')) {
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox cannot focus <svg> child elements from script

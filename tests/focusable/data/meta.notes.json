@@ -133,19 +133,46 @@
 
   "svg": {
     "alias": [
+      "svg",
       "svg[tabindex=-1]",
+      "svg[focusable=false]",
       "svg:has(a[tabindex=-1])",
       "svg:has(a[tabindex=0])",
+
       "svg a[xlink|href]",
       "svg a[xlink|href] text",
       "svg[tabindex=-1] a[xlink|href]",
       "svg[tabindex=-1] a[xlink|href] text",
+      "svg a[focusable=false]",
+
       "svg a[xlink|href][tabindex=-1]",
       "svg a[xlink|href][tabindex=-1] text",
       "svg a[xlink|href][tabindex=0]",
       "svg a[xlink|href][tabindex=0] text",
+
       "svg rect",
       "svg text",
+      "svg rect[tabindex=0]",
+      "svg rect[tabindex=-1]",
+      "svg rect[focusable=true]",
+
+      "svg[focusable=false] a[xlink|href]",
+
+      "svg{viewbox}",
+      "svg rect[tabindex=0]{viewbox}",
+      "svg rect[tabindex=-1]{viewbox}",
+      "svg rect[focusable=true]{viewbox}",
+
+      "svg{tiny}",
+      "svg{tiny} rect[focusable=true]",
+      "svg{tiny} rect[tabindex=0]",
+      "svg{tiny} a[focusable=false]",
+      "svg{tiny} a[tabindex=-1]",
+      "svg{tiny} rect[focusable=true][tabindex=-1]",
+      "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny}[focusable=false]",
+      "svg{tiny}[focusable=false] a",
+
       "svg rect[onfocus]"
     ],
     "general": "[SVG 1.1](http://www.w3.org/TR/SVG/access.html) does not specify much in respect to accessibility. [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG) will bring the `tabindex` attribute. [SVG Tiny 1.2](http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr) knows the `focusable` attribute."
