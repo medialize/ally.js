@@ -39,6 +39,7 @@
   "[tabindex=3 ]": "The value's trailing spaces are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "[tabindex=3x]": "The value's trailing non-numeric characters are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "[tabindex=hello]": "@invalid-tabindex-value",
+  "input[tabindex=hello]": "@invalid-tabindex-value",
   "[tabindex=\"\"]": {
     "general": "@invalid-tabindex-value",
     "browsers": {

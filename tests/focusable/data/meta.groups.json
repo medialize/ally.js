@@ -98,6 +98,7 @@
       "[tabindex=3x]": "<div tabindex=\"3x\">",
       "[tabindex=\"\"]": "<div tabindex=\"\">",
       "[tabindex=hello]": "<div tabindex=\"hello\">",
+      "input[tabindex=hello]": "<input tabindex=\"hello\">",
       "div[tabindex=-1]:empty": "<div tabindex=\"-1\"> without content",
       "span[tabindex=-1]:empty": "<span tabindex=\"-1\"> without content",
       "div[tabindex=0]:empty": "<div tabindex=\"0\"> without content",
