@@ -23,7 +23,7 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.html'),
   title: 'Focusable Elements - Browser Compatibility Table',
   introduction: `<p>The following tables show which elements individual browsers consider focusable or tabbable (keyboard focusable).
-    The tables are based on the <a href="http://medialize.github.io/test/focusable/test.html">focusable test document</a>.</p>`,
+    The tables are based on the <a href="http://medialize.github.io/ally.js/tests/focusable/test.html">focusable test document</a>.</p>`,
   skipExpected: false,
   skipIdents: function(sourceIdent) {
     // skip rows that are completely inert
@@ -132,7 +132,7 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.redirect.html'),
   title: 'Focus Redirecting Elements - Browser Compatibility Table',
   introduction: `<p>The following tables show which elements forward focus to another element in individual browsers
-    The tables are based on the <a href="http://medialize.github.io/test/focusable/test.html">focusable test document</a>.</p>`,
+    The tables are based on the <a href="http://medialize.github.io/ally.js/tests/focusable/test.html">focusable test document</a>.</p>`,
   skipExpected: true,
   skipIdents: function(sourceIdent) {
     // skip rows without redirections
