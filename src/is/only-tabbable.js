@@ -26,13 +26,22 @@ export default function(element) {
   }
 
   if (nodeName === 'svg' && platform.name === 'IE') {
-    // <svg tabindex="-1"> is still considered tabbable
-    return true;
+    return element.getAttribute('focusable') !== 'false';
   }
 
-  if (element instanceof SVGElement && nodeName === 'a' && element.hasAttribute('xlink:href')) {
-    // any focusable child of <svg> cannot be focused, but tabbed to
-    return platform.name === 'IE' || platform.name === 'Firefox';
+  if (element instanceof SVGElement) {
+    if (nodeName === 'a' && element.hasAttribute('xlink:href')) {
+      // any focusable child of <svg> cannot be focused, but tabbed to
+      if (platform.name === 'Firefox') {
+        return true;
+      }
+      if (platform.name === 'IE') {
+        return element.getAttribute('focusable') !== 'false';
+      }
+    }
+    if (platform.name === 'IE') {
+      return element.getAttribute('focusable') === 'true';
+    }
   }
 
   return false;
