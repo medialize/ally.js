@@ -9,9 +9,10 @@ Determines if an element's `tabindex` attribute value is sound
 
 ## Notes
 
-* empty tabindex `[tabindex=""]` parsed and exposed as `[tabindex="-32768"]` - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)
-* invalid `tabindex` value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
-* Gecko, Blink and WebKit consider `[tabindex="3x"]` valid
+* **NOTE:** empty tabindex `[tabindex=""]` parsed and exposed as `[tabindex="-32768"]` - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)
+* **WARNING:** invalid `tabindex` value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
+* **WARNING:** Gecko, Blink and WebKit consider `[tabindex="3x"]` valid
+* **WARNING:** only Blink and WebKit respect the `tabindex` attribute on SVGElements (defined in [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG))
 
 ## Demo
 

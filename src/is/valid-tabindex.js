@@ -21,6 +21,11 @@ export default function(element) {
     return false;
   }
 
+  // SVGElement does not support tabIndex, so it cannot be considered valid
+  if (element.tabIndex === undefined) {
+    return false;
+  }
+
   // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1128054
   if (allowsInvalidValue) {
     return true;
