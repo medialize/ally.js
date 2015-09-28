@@ -59,9 +59,12 @@ function handlePointerEndEvent(event) {
     return;
   }
 
-  // mouseup without prior mousedown
-  // (drag something out of the window)
-  _activePointers = Math.max(_activePointers - 1, 0);
+  // delay reset to when the current handlers are executed
+  (window.setImmediate || window.setTimeout)(function() {
+    // mouseup without prior mousedown
+    // (drag something out of the window)
+    _activePointers = Math.max(_activePointers - 1, 0);
+  });
 }
 
 function handleKeyStartEvent(event) {
@@ -91,9 +94,12 @@ function handleKeyEndEvent(event) {
       return;
   }
 
-  // keyup without prior keydown
-  // (may happen on CMD+R)
-  _activeKeys = Math.max(_activeKeys - 1, 0);
+  // delay reset to when the current handlers are executed
+  (window.setImmediate || window.setTimeout)(function() {
+    // keyup without prior keydown
+    // (may happen on CMD+R)
+    _activeKeys = Math.max(_activeKeys - 1, 0);
+  });
 }
 
 function getInteractionType() {

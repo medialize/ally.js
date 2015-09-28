@@ -119,12 +119,12 @@ function engage() {
   shadowHandle = shadowFocus();
   // handlers to modify the focused element
   document.addEventListener('shadow-focus', handleFocusEvent, true);
+  document.documentElement.addEventListener(focusEventName, handleFocusEvent, true);
+  document.documentElement.addEventListener(blurEventName, handleFocusEvent, true);
   // enable the interaction type identification observer
   interactionTypeHandler = engageInteractionTypeObserver();
   // set up initial dom state
   handleFocusEvent({type: 'initial'});
-  document.documentElement.addEventListener(focusEventName, handleFocusEvent, true);
-  document.documentElement.addEventListener(blurEventName, handleFocusEvent, true);
 
   return {
     used: getUsedFocusSource,

@@ -58,6 +58,7 @@ define([
         expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'after disengage');
       },
       key: function() {
+        var deferred = this.async(100);
         handle = styleFocusSource();
         expect(handle.used('initial')).to.equal(true, 'used focus shift');
 
@@ -77,10 +78,13 @@ define([
         expect(handle.used('key')).to.equal(true, 'used(key) after focus shift');
         expect(handle.used('pointer')).to.equal(false, 'used(pointer) after focus shift');
 
-        fixture.input.after.focus();
-        expect(handle.current()).to.equal('script', 'current() after second focus shift');
+        setTimeout(deferred.callback(function() {
+          fixture.input.after.focus();
+          expect(handle.current()).to.equal('script', 'current() after second focus shift');
+        }));
       },
       pointer: function() {
+        var deferred = this.async(100);
         handle = styleFocusSource();
 
         dispatchEvent.mouse(document.documentElement, 'mousedown', {});
@@ -93,10 +97,13 @@ define([
         expect(handle.used('key')).to.equal(false, 'used(key) after focus shift');
         expect(handle.used('pointer')).to.equal(true, 'used(pointer) after focus shift');
 
-        fixture.input.after.focus();
-        expect(handle.current()).to.equal('script', 'current() after second focus shift');
+        setTimeout(deferred.callback(function() {
+          fixture.input.after.focus();
+          expect(handle.current()).to.equal('script', 'current() after second focus shift');
+        }));
       },
       'next()': function() {
+        var deferred = this.async(100);
         handle = styleFocusSource();
 
         dispatchEvent.mouse(document.documentElement, 'mousedown', {});
@@ -109,10 +116,13 @@ define([
         fixture.input.after.focus();
         expect(handle.current()).to.equal('key', 'current() after second focus shift');
 
-        fixture.input.outer.focus();
-        expect(handle.current()).to.equal('script', 'current() after third focus shift');
+        setTimeout(deferred.callback(function() {
+          fixture.input.outer.focus();
+          expect(handle.current()).to.equal('script', 'current() after third focus shift');
+        }));
       },
       'repeat()': function() {
+        var deferred = this.async(100);
         handle = styleFocusSource();
 
         dispatchEvent.mouse(document.documentElement, 'mousedown', {});
@@ -125,8 +135,10 @@ define([
         fixture.input.after.focus();
         expect(handle.current()).to.equal('pointer', 'current() after second focus shift');
 
-        fixture.input.outer.focus();
-        expect(handle.current()).to.equal('script', 'current() after third focus shift');
+        setTimeout(deferred.callback(function() {
+          fixture.input.outer.focus();
+          expect(handle.current()).to.equal('script', 'current() after third focus shift');
+        }));
       },
       'lock()': function() {
         handle = styleFocusSource();

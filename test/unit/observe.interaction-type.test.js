@@ -26,6 +26,7 @@ define([
         expect(type.key).to.equal(false, 'initial key');
       },
       'detect mouse': function() {
+        var deferred = this.async(100);
         handle = observeInteractionType();
 
         var type = handle.get();
@@ -39,10 +40,17 @@ define([
 
         dispatchEvent.mouse(document.documentElement, 'mouseup', {});
         type = handle.get();
-        expect(type.pointer).to.equal(false, 'pointer-up pointer');
+        expect(type.pointer).to.equal(true, 'pointer-up pointer');
         expect(type.key).to.equal(false, 'pointer-up key');
+
+        setTimeout(deferred.callback(function() {
+          type = handle.get();
+          expect(type.pointer).to.equal(false, 'pointer-up pointer delayed');
+          expect(type.key).to.equal(false, 'pointer-up key delayed');
+        }));
       },
       'detect key': function() {
+        var deferred = this.async(100);
         handle = observeInteractionType();
 
         var type = handle.get();
@@ -63,7 +71,13 @@ define([
         });
         type = handle.get();
         expect(type.pointer).to.equal(false, 'key-up pointer');
-        expect(type.key).to.equal(false, 'key-up key');
+        expect(type.key).to.equal(true, 'key-up key');
+
+        setTimeout(deferred.callback(function() {
+          type = handle.get();
+          expect(type.pointer).to.equal(false, 'key-up pointer delayed');
+          expect(type.key).to.equal(false, 'key-up key delayed');
+        }));
       },
       'skip modifier key': function() {
         var spaceKey = {
