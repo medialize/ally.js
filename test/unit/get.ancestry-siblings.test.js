@@ -44,7 +44,7 @@ define([
         var path = target.map(function(element) {
           return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
         }).join(' ');
-        expect(path).to.equal('#sibling #uncle-1 #uncle-2 head');
+        expect(path.indexOf('#sibling #uncle-1 #uncle-2')).to.equal(0);
       },
     };
   });
