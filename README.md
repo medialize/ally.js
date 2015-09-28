@@ -42,7 +42,7 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 ### Handling Interaction
 
-* [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) -- to render elements inert and remove them from the document's focus navigation sequence
+* [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) -- to render elements insert and remove them from the document's focus navigation sequence
 * [`focus/trap`](http://medialize.github.io/ally.js/examples/trap-focus.html) -- to trap the *focus* within a given DOM element upon <kbd>Tab</kbd> ([ARIA Practices: Trapping Focus](http://www.w3.org/WAI/PF/aria-practices/#trap_focus_div)) - *deprecated!*, use [`focus/disable-focus`](http://medialize.github.io/ally.js/examples/disable-focus.html) instead!
 * `focus/first` -- to identify the element that should receive focus upon entering a new context
 * [`focus/within`](http://medialize.github.io/ally.js/examples/focus-within.html) -- to "polyfill" [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
