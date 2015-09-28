@@ -13,14 +13,16 @@ Elements that were made inert by `ally/element/disabled` can be identified in th
 The following things are done in order to make an element inert:
 
 * adding `tabindex="-1"` attribute to remove element from document's focus navigation sequence
+* adding the `focusable="false"` attribute on `SVGElement`
+* removing the `controls` attribute from `<audio>` and `<video>` elements
 * overwriting `element.focus()` to prevent focusing the element by script
 * adding the CSS property `pointer-events: none;` to prevent any interaction from mouse and touch
-* add `aria-disabled="true"` to inform the AccessibilityTree of the element's state
+* adding `aria-disabled="true"` to inform the AccessibilityTree of the element's state
 
 
 ## Notes
 
-* **NOTE:** Internet Explorer 10 - 11 leave `<fieldset disabled><input type="text|file">` editable, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488)
+* **WARNING:** Internet Explorer 10 - 11 leave `<fieldset disabled><input type="text|file">` editable, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that)
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 
 

@@ -17,6 +17,12 @@ define([
           /*eslint-disable indent */
           '<div tabindex="0" id="non-input"></div>',
           '<input type="text" id="input">',
+          '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
+            '<a xlink:href="#void" id="svg-link">',
+              '<text x="10" y="20" id="svg-link-text">text</text>',
+            '</a>',
+            '<text x="10" y="20" id="svg-text" focusable="true">text</text>',
+          '</svg>',
           /*eslint-enable indent */
         ].join(''));
       },
@@ -141,6 +147,36 @@ define([
 
         elementDisabled(element, false);
         expect(element.hasAttribute('controls')).to.equal(true, 'after disable undo');
+      },
+      'disable adds focusable="false"': function() {
+        var element = document.getElementById('svg-link');
+        expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+
+        elementDisabled(element, false);
+        expect(element.hasAttribute('focusable')).to.equal(false, 'after disable undo');
+      },
+      'disable restores focusable="true"': function() {
+        var element = document.getElementById('svg-text');
+        expect(element.getAttribute('focusable')).to.equal('true', 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+
+        elementDisabled(element, false);
+        expect(element.getAttribute('focusable')).to.equal('true', 'after disable undo');
+      },
+      'disable adds focusable="false" to <svg>': function() {
+        var element = document.getElementById('svg');
+        expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+
+        elementDisabled(element, false);
+        expect(element.hasAttribute('focusable')).to.equal(false, 'after disable undo');
       },
     };
   });

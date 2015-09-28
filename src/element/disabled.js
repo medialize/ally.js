@@ -38,6 +38,17 @@ function restoreAttributeValue(element, sourceAttribute, targetAttribute) {
   }
 }
 
+function toggleAttributeValue(element, attribute, value) {
+  const temporaryAttribute = 'data-inert-' + attribute;
+  if (value !== null) {
+    const _value = element.getAttribute(attribute);
+    element.setAttribute(temporaryAttribute, _value || '');
+    element.setAttribute(attribute, value);
+  } else {
+    restoreAttributeValue(element, temporaryAttribute, attribute);
+  }
+}
+
 function disableTabindex(element, disabledState) {
   if (disabledState) {
     const tabIndex = tabindexValue(element);
@@ -70,14 +81,17 @@ function disableVideoControls(element, disabledState) {
   }
 }
 
-function setAriaDisabled(element, disabledState) {
-  if (disabledState) {
-    const ariaDisabled = element.getAttribute('aria-disabled');
-    element.setAttribute('data-inert-aria-disabled', ariaDisabled || '');
-    element.setAttribute('aria-disabled', 'true');
-  } else {
-    restoreAttributeValue(element, 'data-inert-aria-disabled', 'aria-disabled');
+function disableSvgFocusable(element, disabledState) {
+  const nodeName = element.nodeName.toLowerCase();
+  if (nodeName !== 'svg' && !element.ownerSVGElement) {
+    return;
   }
+
+  toggleAttributeValue(element, 'focusable', disabledState ? 'false' : null);
+}
+
+function setAriaDisabled(element, disabledState) {
+  toggleAttributeValue(element, 'aria-disabled', disabledState ? 'true' : null);
 }
 
 function disableScriptFocus(element, disabledState) {
@@ -111,6 +125,7 @@ function setElementDisabled(element, disabledState) {
   disableScriptFocus(element, disabledState);
   disablePointerEvents(element, disabledState);
   disableVideoControls(element, disabledState);
+  disableSvgFocusable(element, disabledState);
 
   if (disabledState) {
     element.setAttribute('data-ally-disabled', 'true');
