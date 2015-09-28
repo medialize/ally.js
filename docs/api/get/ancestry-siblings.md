@@ -2,13 +2,24 @@
 layout: doc-api.html
 ---
 
-# ally.get.parents (`ally/get/parents`)
+# ally.get.ancestrySiblings (`ally/get/ancestry-siblings`)
 
-Identifies the parent elements
+Identifies the sibling elements of all parent elements
 
-Like [`jQuery.parents()`](http://api.jquery.com/parents/), except `ally/get/parents` doesn't have a filter arguments.
+The ancestry siblings contain *all* first nodes (looking from the root `html`) that do not contain the target element. For the following tree, the ancestry siblings of `"#target"` are `["#sibling", "#uncle-1", "#uncle-2"]`:
 
-The returned list is sorted as follows `[element, element.parent, element.parent.parent, …]`
+```html
+<div id="uncle-1">
+  <div id="cousin-1"></div>
+</div>
+<div id="parent">
+  <div id="target"></div>
+  <div id="sibling"></div>
+</div>
+<div id="uncle-2">
+  <div id="cousin-2"></div>
+</div>
+```
 
 
 ## Notes
@@ -24,13 +35,12 @@ TODO: figure out how to integrate demo
 ```html
 <script src="path/to/ally.min.js"></script>
 <script>
-  var elements = ally.get.parents({
+  var elements = ally.get.ancestrySiblings({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
     context: '#element-to-start-from',
   });
-  // elements is an array of HTMLElement and looks like
-  // [context, context.parent, context.parent.parent, …]
+  // elements is an array of HTMLElement
 </script>
 ```
 
@@ -38,15 +48,14 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/get/parents'
-], function(getParents) {
-  var elements = getParents({
+  'ally/get/ancestry-siblings'
+], function(getAncestrySiblings) {
+  var elements = getAncestrySiblings({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
     context: '#element-to-start-from',
   });
-  // elements is an array of HTMLElement and looks like
-  // [context, context.parent, context.parent.parent, …]
+  // elements is an array of HTMLElement
 });
 ```
 

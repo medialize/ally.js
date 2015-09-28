@@ -23,7 +23,9 @@ import validArea from './is/valid-area';
 import validTabindex from './is/valid-tabindex';
 import visible from './is/visible';
 
-import elementDisabled from './is/disabled';
+import elementDisabled from './element/disabled';
+import ancestrySiblings from './get/ancestry-siblings';
+import parents from './get/parents';
 
 import attribute from './map/attribute';
 import keycode from './map/keycode';
@@ -67,6 +69,11 @@ export default {
 
   element: {
     disabled: elementDisabled,
+  },
+
+  get: {
+    ancestrySiblings,
+    parents,
   },
 
   map: {

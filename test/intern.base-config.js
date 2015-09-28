@@ -77,6 +77,7 @@ define([
       'test/unit/focus.disable.test.js',
       'test/unit/focus.trap.test.js',
       'test/unit/get.active-elements.test.js',
+      'test/unit/get.ancestry-siblings.test.js',
       'test/unit/get.focus-target.test.js',
       'test/unit/get.parents.test.js',
       'test/unit/get.shadow-host-parents.test.js',

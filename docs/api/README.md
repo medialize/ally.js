@@ -72,6 +72,14 @@ Especially when dealing with transitional user interfaces we need to know when a
 * [`ally/when/visible-area`](when/visible-area.md) executes a callback once an element is visible in the viewport
 
 
+## `ally/get/*` DOM Traversal
+
+Sometimes you need some DOM traversal utilities
+
+* [`ally/get/ancestry-siblings`](get/ancestry-siblings.md) returns an array containing all siblings of all parent elements
+* [`ally/get/parents`](get/parents.md) returns an array containing all parent elements
+
+
 ## `ally/map/*` Values
 
 * [`ally/map/attribute`](map/attribute.md) maps WAI-ARIA states and properties
@@ -88,11 +96,12 @@ When creating libraries these modules may come in handy.
 * **NOTE:** These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `ally.min.js`.
 
 
-### `ally/get/*` DOM Traversal
+### `ally/get/*` DOM Traversal (extended)
 
 Sometimes you need some DOM traversal utilities
 
 * [`ally/get/active-elements`](get/active-elements.md) identifies the `ShadowHost` ancestry of the active element
+* [`ally/get/ancestry-siblings`](get/ancestry-siblings.md)
 * [`ally/get/focus-target`](get/focus-target.md)
 * [`ally/get/parents`](get/parents.md)
 * [`ally/get/shadow-host-parents`](get/shadow-host-parents.md)
