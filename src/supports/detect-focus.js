@@ -29,7 +29,8 @@ function detectFocus(options) {
   // validate test's result
   const allowsFocus = options.validate ? options.validate(element) : document.activeElement === focus;
   // restore focus to what it was before test and cleanup
-  previousActiveElement.focus();
+  document.activeElement && document.activeElement.blur();
+  previousActiveElement && previousActiveElement.focus();
   document.body.removeChild(wrapper);
   return allowsFocus;
 }

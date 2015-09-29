@@ -33,5 +33,6 @@ if (!SVGElement.prototype.focus) {
   }
 
   // restore focus to what it was before test and cleanup
-  previousActiveElement.focus();
+  document.activeElement && document.activeElement.blur();
+  previousActiveElement && previousActiveElement.focus();
 }
