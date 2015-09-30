@@ -22,7 +22,7 @@ The following things are done in order to make an element inert:
 
 ## Notes
 
-* **WARNING:** Internet Explorer 10 - 11 leave `<fieldset disabled><input type="text|file">` editable, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that)
+* **WARNING:** Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 
 
@@ -72,6 +72,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/is/disabled`](../is/disabled.md)
 * [`ally/focus/disable`](../focus/disable.md)
 * [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
+* [WICG: Adding a [disabled] attribute to `<a>`s](http://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
 
 
 ## Contribution Notes
