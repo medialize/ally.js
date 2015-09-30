@@ -44,15 +44,15 @@ define([
         var waitForSecond;
         var waitForDone;
 
-        expect(handle.disengage).to.be.a('function');
-        expect(events.length).to.equal(0);
+        expect(handle.disengage).to.be.a('function', 'initialized disengage');
+        expect(events.length).to.equal(0, 'initialized event buffer');
 
         // body -> #first
         waitForFirst = function() {
           handleEvent = deferred.rejectOnError(function(event) {
-            expect(event.detail.blur).to.equal(document.body);
-            expect(event.detail.focus).to.equal(first);
-            expect(events.length).to.equal(1);
+            expect(event.detail.blur).to.equal(document.body, 'document lost focus');
+            expect(event.detail.focus).to.equal(first, 'first got focus');
+            expect(events.length).to.equal(1, 'first event buffer');
 
             waitForSecond();
           });
@@ -65,9 +65,9 @@ define([
         // #first -> #second
         waitForSecond = function() {
           handleEvent = deferred.rejectOnError(function(event) {
-            expect(event.detail.blur).to.equal(first);
-            expect(event.detail.focus).to.equal(second);
-            expect(events.length).to.equal(2);
+            expect(event.detail.blur).to.equal(first, 'first lost focus');
+            expect(event.detail.focus).to.equal(second, 'second got focus');
+            expect(events.length).to.equal(2, 'second event buffer');
 
             waitForDone();
           });

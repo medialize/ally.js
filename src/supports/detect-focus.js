@@ -29,8 +29,9 @@ function detectFocus(options) {
   // validate test's result
   const allowsFocus = options.validate ? options.validate(element) : document.activeElement === focus;
   // restore focus to what it was before test and cleanup
+  // IE10 does not redirect focus to <body> when the activeElement is removed
   document.activeElement && document.activeElement.blur();
-  previousActiveElement && previousActiveElement.focus();
+  previousActiveElement && previousActiveElement.focus() || document.body.focus();
   document.body.removeChild(wrapper);
   return allowsFocus;
 }

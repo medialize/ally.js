@@ -47,7 +47,7 @@ define([
           type = handle.get();
           expect(type.pointer).to.equal(false, 'pointer-up pointer delayed');
           expect(type.key).to.equal(false, 'pointer-up key delayed');
-        }));
+        }), 20);
       },
       'detect key': function() {
         var deferred = this.async(100);
@@ -77,7 +77,7 @@ define([
           type = handle.get();
           expect(type.pointer).to.equal(false, 'key-up pointer delayed');
           expect(type.key).to.equal(false, 'key-up key delayed');
-        }));
+        }), 20);
       },
       'skip modifier key': function() {
         var spaceKey = {

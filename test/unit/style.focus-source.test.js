@@ -78,10 +78,11 @@ define([
         expect(handle.used('key')).to.equal(true, 'used(key) after focus shift');
         expect(handle.used('pointer')).to.equal(false, 'used(pointer) after focus shift');
 
+        // allow for observe/interaction-type disengaging async
         setTimeout(deferred.callback(function() {
           fixture.input.after.focus();
           expect(handle.current()).to.equal('script', 'current() after second focus shift');
-        }));
+        }), 20);
       },
       pointer: function() {
         var deferred = this.async(100);
@@ -97,10 +98,11 @@ define([
         expect(handle.used('key')).to.equal(false, 'used(key) after focus shift');
         expect(handle.used('pointer')).to.equal(true, 'used(pointer) after focus shift');
 
+        // allow for observe/interaction-type disengaging async
         setTimeout(deferred.callback(function() {
           fixture.input.after.focus();
           expect(handle.current()).to.equal('script', 'current() after second focus shift');
-        }));
+        }), 20);
       },
       'next()': function() {
         var deferred = this.async(100);
@@ -116,10 +118,11 @@ define([
         fixture.input.after.focus();
         expect(handle.current()).to.equal('key', 'current() after second focus shift');
 
+        // allow for observe/interaction-type disengaging async
         setTimeout(deferred.callback(function() {
           fixture.input.outer.focus();
           expect(handle.current()).to.equal('script', 'current() after third focus shift');
-        }));
+        }), 20);
       },
       'repeat()': function() {
         var deferred = this.async(100);
@@ -135,10 +138,11 @@ define([
         fixture.input.after.focus();
         expect(handle.current()).to.equal('pointer', 'current() after second focus shift');
 
+        // allow for observe/interaction-type disengaging async
         setTimeout(deferred.callback(function() {
           fixture.input.outer.focus();
           expect(handle.current()).to.equal('script', 'current() after third focus shift');
-        }));
+        }), 20);
       },
       'lock()': function() {
         handle = styleFocusSource();
