@@ -21,7 +21,7 @@
 import CustomEvent from '../prototype/window.customevent';
 import decorateService from '../util/decorate-service';
 
-let previousActiveElement = document.activeElement;
+let previousActiveElement;
 let raf;
 
 function observeActiveElement() {
@@ -52,6 +52,7 @@ function observeActiveElement() {
 
 function engage() {
   raf = true;
+  previousActiveElement = document.activeElement;
   observeActiveElement();
 }
 
