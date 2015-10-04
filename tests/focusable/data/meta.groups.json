@@ -269,7 +269,7 @@
       "svg rect": "<rect>",
       "svg text": "<text>",
       "svg rect[tabindex=0]": "<rect tabindex=\"0\">",
-      "svg rect[tabindex=-1]": "<rect tabindex=\"1\">",
+      "svg rect[tabindex=-1]": "<rect tabindex=\"-1\">",
       "svg rect[focusable=true]": "<rect focusable=\"true\">",
 
       "svg[focusable=false] a[xlink|href]": "<a xlink:href=\"…\"> within <svg focusable=\"false\">",
