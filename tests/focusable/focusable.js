@@ -208,6 +208,15 @@ function captureStuff() {
       document.activeElement.blur();
       document.body.focus();
 
+      // IE10 reacts bad to the <object>s, so we simply remove them
+      // related to https://connect.microsoft.com/IE/feedback/details/1109008
+      if (platform.name === 'IE' && platform.version === '10.0') {
+        alert('removing <object> because IE might get stuck');
+        [].forEach.call(document.querySelectorAll('.hide-from-ie10'), function(element) {
+          element.parentNode.removeChild(element);
+        });
+      }
+
       alert('with closed DevTools, focus the browser\'s address bar and hit TAB until you reach it again. Then click the "Results" headline');
       document.activeElement.blur();
       document.body.focus();

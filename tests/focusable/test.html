@@ -356,23 +356,33 @@
     <!--
       NOTE: Internet Explorer 11 gets stuck in the browser chrome, when it has to tab through 2 consecutive <object>s,
       that's why we added a couple of ignore-me fillers…
+
+      IE10 gets stuck either way, so we remove the <object> before testing the tabbing
     -->
 
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
+
+    <p>regular</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]" tabindex="-1">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
     <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
 
+    <p>with negative tabindex</p>
     <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=-1]" tabindex="-1">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
     <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
 
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]">
+    <p>without height</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]" class="hide-from-ie10">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>

@@ -132,6 +132,15 @@
     "general": "The behavior of the `<object>` element depends on the content it presents. The most common content types used with `<object>` are `SVG` and `SWF`."
   },
 
+  "object[src=swf]": {
+    "alias": [
+      "object[src=swf][height=0]"
+    ],
+    "browsers": {
+      "ie-10": "This element is actually **tabbable** (keyboard focusable).\n\nThe test shows `focusable` because the elements were removed from the tabbing test to avoid IE10 from getting focus stuck in the browser UI. This seems to be a problem similar to [Trident 1109008](https://connect.microsoft.com/IE/feedback/details/1109008)."
+    }
+  },
+
   "svg": {
     "alias": [
       "svg",
