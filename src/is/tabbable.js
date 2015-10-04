@@ -95,7 +95,8 @@ export default function(element) {
     // even though their tabIndex property is -1
     const style = window.getComputedStyle(element, null);
     if (hasCssOverflowScroll(style)) {
-      return true;
+      // value of tabindex takes precedence
+      return tabindex !== false;
     }
   }
 
