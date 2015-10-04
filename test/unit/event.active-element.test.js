@@ -36,65 +36,71 @@ define([
       },
 
       lifecycle: function() {
-        var deferred = this.async(1000);
-        handle = eventActiveElement();
-        var first = document.getElementById('first');
-        var second = document.getElementById('second');
-        var waitForFirst;
-        var waitForSecond;
-        var waitForDone;
+        var deferred = this.async(100);
+        // initiate with delay because of IE10's async focus event from previous test
+        setTimeout(deferred.callback(function() {
+          // clean events that may have been caught by IE10 before we even got started
+          events.length = 0;
 
-        expect(handle.disengage).to.be.a('function', 'initialized disengage');
-        expect(events.length).to.equal(0, 'initialized event buffer');
+          handle = eventActiveElement();
+          var first = document.getElementById('first');
+          var second = document.getElementById('second');
+          var waitForFirst;
+          var waitForSecond;
+          var waitForDone;
 
-        // body -> #first
-        waitForFirst = function() {
-          handleEvent = deferred.rejectOnError(function(event) {
-            expect(event.detail.blur).to.equal(document.body, 'document lost focus');
-            expect(event.detail.focus).to.equal(first, 'first got focus');
-            expect(events.length).to.equal(1, 'first event buffer');
+          expect(handle.disengage).to.be.a('function', 'initialized disengage');
+          expect(events.length).to.equal(0, 'initialized event buffer');
 
-            waitForSecond();
-          });
+          // body -> #first
+          waitForFirst = function() {
+            handleEvent = deferred.rejectOnError(function(event) {
+              expect(event.detail.blur).to.equal(document.body, 'document lost focus');
+              expect(event.detail.focus).to.equal(first, 'first got focus');
+              expect(events.length).to.equal(1, 'first event buffer');
 
-          setTimeout(function() {
-            first.focus();
-          });
-        };
+              waitForSecond();
+            });
 
-        // #first -> #second
-        waitForSecond = function() {
-          handleEvent = deferred.rejectOnError(function(event) {
-            expect(event.detail.blur).to.equal(first, 'first lost focus');
-            expect(event.detail.focus).to.equal(second, 'second got focus');
-            expect(events.length).to.equal(2, 'second event buffer');
+            setTimeout(function() {
+              first.focus();
+            });
+          };
 
-            waitForDone();
-          });
+          // #first -> #second
+          waitForSecond = function() {
+            handleEvent = deferred.rejectOnError(function(event) {
+              expect(event.detail.blur).to.equal(first, 'first lost focus');
+              expect(event.detail.focus).to.equal(second, 'second got focus');
+              expect(events.length).to.equal(2, 'second event buffer');
 
-          setTimeout(function() {
-            second.focus();
-          });
-        };
+              waitForDone();
+            });
 
-        // disengage -> body
-        waitForDone = function() {
-          // make sure no events are collected after disengaging the event emitter
-          handleEvent = deferred.rejectOnError(function() {
-            throw new Error('event handler not disengaged');
-          });
+            setTimeout(function() {
+              second.focus();
+            });
+          };
 
-          handle.disengage();
-          setTimeout(function() {
-            document.activeElement.blur();
-            setTimeout(deferred.rejectOnError(function() {
-              expect(events.length).to.equal(2);
-              deferred.resolve();
-            }), 20);
-          });
-        };
+          // disengage -> body
+          waitForDone = function() {
+            // make sure no events are collected after disengaging the event emitter
+            handleEvent = deferred.rejectOnError(function() {
+              throw new Error('event handler not disengaged');
+            });
 
-        waitForFirst();
+            handle.disengage();
+            setTimeout(function() {
+              document.activeElement.blur();
+              setTimeout(deferred.rejectOnError(function() {
+                expect(events.length).to.equal(2);
+                deferred.resolve();
+              }), 20);
+            });
+          };
+
+          waitForFirst();
+        }), 20);
       },
     };
   });
