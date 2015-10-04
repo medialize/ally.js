@@ -28,7 +28,7 @@ We try to follow Angular's [Commit Message Guidelines](https://github.com/angula
 <body>
 ```
 
-The `type` (see list below) identifies how the project was improved. The `scope` identifies what was improved (e.g. `style/focus-within`). The `subject` declares what was done to the component. The `body` is optional and can be used to explain the changes in detail. E.g: `docs(focus/disable): add note on IE10 <fieldset disabled>`.
+The `type` (see list below) identifies how the project was improved. The `scope` identifies what was improved (e.g. `style/focus-within`). The `subject` declares what was done to the component. The `body` is optional and can be used to explain the changes in detail. E.g: `docs(maintain/disabled): add note on IE10 <fieldset disabled>`.
 
 * **feature**: A new feature
 * **fix**: A bug fix

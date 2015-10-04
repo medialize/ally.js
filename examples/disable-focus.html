@@ -41,11 +41,11 @@
   </p>
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/disable
-var disableFocus = require('ally/focus/disable');
+  <pre>// load maintain/disabled
+var maintainDisabled = require('ally/maintain/disabled');
 
-// activate focus source detection
-var handle = disableFocus({
+// activate maintaining elements disabled 
+var handle = maintainDisabled({
   // [optional] inerting elements within these sub-trees (default: document)
   // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
   context: '.within-filter-selector',
@@ -87,7 +87,7 @@ handle.disengage();</pre>
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/focus/disable'], function(disableFocus) {
+    require(['ally/maintain/disabled'], function(maintainDisabled) {
       var handle;
 
       var wrapper = document.getElementById('example-wrapper');
@@ -101,7 +101,7 @@ handle.disengage();</pre>
           handle.disengage();
           handle = null;
         } else {
-          handle = disableFocus({
+          handle = maintainDisabled({
             context: wrapper,
             filter: [inner, toggle, add]
           });

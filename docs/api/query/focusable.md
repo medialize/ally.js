@@ -8,7 +8,7 @@ Finds focusable elements in the DOM.
 
 The query infrastructure provides two different implementations. The `"quick"` strategy uses [`document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) and is able to find *most* focusable elements. Elements that are made focusable by way of CSS properties cannot be queried that way, though. To allow finding *more* focusable elements, the `"strict"` strategy makes use of [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker) to "manually" iterate over the DOM. While the `"strict"` strategy provides more accurate results, it is slower than the `"quick"` strategy. The default strategy is `"quick"`.
 
-The `"all"` strategy, used internally by [`ally/focus/disable`](../focus/disable.md) will find *all* the elements that are either [focus relevant](../is/focus-relevant.md) or [only tabbable](../is/only-tabbable.md) - including elements that *would* be focusable, were they not visually hidden or disabled.
+The `"all"` strategy, used internally by [`ally/maintain/disabled`](../maintain/disabled.md) will find *all* the elements that are either [focus relevant](../is/focus-relevant.md) or [only tabbable](../is/only-tabbable.md) - including elements that *would* be focusable, were they not visually hidden or disabled.
 
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) to learn how HTML elements behave across browsers and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md).
 

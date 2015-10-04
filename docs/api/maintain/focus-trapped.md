@@ -1,10 +1,10 @@
 ---
 layout: doc-api.html
 tags: deprecated
-use-instead: api/focus/disable.md
+use-instead: api/maintain/disabled.md
 ---
 
-# ally.focus.trap (`ally/focus/trap`)
+# ally.maintain.focusTrapped (`ally/maintain/focus-trapped`)
 
 Traps focus in a sub-tree of the document.
 
@@ -16,7 +16,7 @@ Browsers that support the `focusout` event (Blink, WebKit, Trident) redirect `fo
 ## Notes
 
 * **WARNING:** It may be possible to break out of the given `context` by means of script or `MouseEvent`. It is the developer's responsibility to prevent that from happening, should they wish to.
-* **WARNING:** Trapping focus is **deprecated** and superseded by [ally/focus/disable](disable.md). Although this pattern is considered best practice by WAI ARIA, it cannot be implemented properly (in a robust way) with the tools available in current browsers. Working with inert subtrees has its own set of problems, but they seem far less likely to break for any given user than trapping focus could and would.
+* **WARNING:** Trapping focus is **deprecated** and superseded by [ally/maintain/disabled](disabled.md). Although this pattern is considered best practice by WAI ARIA, it cannot be implemented properly (in a robust way) with the tools available in current browsers. Working with inert subtrees has its own set of problems, but they seem far less likely to break for any given user than trapping focus could and would.
 
 
 ## Demo
@@ -30,7 +30,7 @@ TODO: figure out how to integrate demo
 <script src="path/to/ally.min.js"></script>
 <script>
   // trap focus in the sub-tree specified by options.context
-  var handle = ally.focus.trap({
+  var handle = ally.maintain.focusTrapped({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
     context: '#element-to-keep-focus-in',
@@ -46,10 +46,10 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/focus/trap'
-], function(focusTrap) {
+  'ally/maintain/focus-trapped'
+], function(maintainFocusTrapped) {
   // trap focus in the sub-tree specified by options.context
-  var handle = focusTrap({
+  var handle = maintainFocusTrapped({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     context: document.getElementById('element-to-keep-focus-in'),
     // focusing the first tabbable element in context
@@ -65,14 +65,14 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Related Resources
 
-* [`ally/focus/disable`](disable.md)
+* [`ally/maintain/disabled`](disabled.md)
 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/master/src/focus/trap.js)
-* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/focus/trap.md)
-* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/focus.trap.test.js)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/maintain/focus-trapped.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/maintain/focus-trapped.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/maintain.focus-trapped.test.js)
 
 The module consists of several components:
 

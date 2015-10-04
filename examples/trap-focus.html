@@ -8,7 +8,7 @@
   
   <h1>Trap Focus In A Sub-Tree Of The DOM</h1>
   <p>
-    ally.js provides the method <code>ally/focus/trap</code> to make sure only
+    ally.js provides the method <code>ally/maintain/focus-trapped</code> to make sure only
     descendants of a given element can befocused (i.e. become the activeElement).
     This behavior is <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">considered best practice by WAI ARIA by when presenting modal dialogs</a>.
   </p>
@@ -31,11 +31,11 @@
   </p>
 
   <h2 id="usage">Usage</h2>
-  <pre>// load focus/trap
-var trapFocus = require('ally/focus/trap');
+  <pre>// load maintain/focus-trapped
+var maintainFocusTrapped = require('ally/maintain/focus-trapped');
 
 // activate containing the focus in context (including descendants)
-var handle = trapFocus({
+var handle = maintainFocusTrapped({
   // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
   context: document.getElementById('element-to-keep-focus-in'),
   // focusing the first tabbable element in context
@@ -64,7 +64,7 @@ handle.disengage();</pre>
   <script src="../node_modules/requirejs/require.js"></script>
   <script src="main.js"></script>
   <script>
-    require(['ally/focus/trap'], function(trapFocus) {
+    require(['ally/maintain/focus-trapped'], function(maintainFocusTrapped) {
       var context = document.getElementById('container');
       var button = document.getElementById('activate');
 
@@ -75,7 +75,7 @@ handle.disengage();</pre>
           handle = null;
           button.textContent = 'trap focus';
         } else {
-          handle = trapFocus({
+          handle = maintainFocusTrapped({
             context: context, 
             focusFirst: true,
           });

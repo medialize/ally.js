@@ -24,12 +24,12 @@ Sometimes `:focus` is not enough for communicating your application's intentions
 * [`ally/style/focus-within`](style/focus-within.md) polyfills `:focus-within` with `.ally-focus-within`
 
 
-## `ally/focus/*` Altering Browser Focus Behavior
+## `ally/maintain/*` Altering Browser Focus Behavior
 
 While it's best to use standardized features and leave browsers to figure things out, specifications sometimes leave us hanging in limbo.
 
-* [`ally/focus/disable`](focus/disable.md) renders elements inert to prevent any user interaction
-* [`ally/focus/trap`](focus/trap.md) contains focus in a given sub-tree of the document
+* [`ally/maintain/disabled`](maintain/disabled.md) renders elements inert to prevent any user interaction
+* [`ally/maintain/focus-trapped`](maintain/focus-trapped.md) contains focus in a given sub-tree of the document
 
 
 ## `ally/query/*` Finding Elements

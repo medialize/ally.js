@@ -7,7 +7,7 @@
 
     Note: Chrome's <dialog> will focus the first tabbable element, even if it has
     [tabindex="1"]. To mimic that behavior when trapping focus, you'd have to not
-    only handle out-of-bounds situation (like focus/trap does), but also handle
+    only handle out-of-bounds situation (like maintain/focus-trapped does), but also handle
     <kbd>Tab</kbd> for intermediate elements. Since [tabindex="1"] is considered
     bad practice we'll ignore it until someone complains.
  */

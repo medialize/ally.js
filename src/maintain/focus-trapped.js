@@ -1,6 +1,6 @@
 
 /*
-    NOTE: use focus/disable instead!
+    NOTE: use maintain/disabled instead!
 
     Trap focus within a given element, wrapping focus to first/last element when boundaries are hit.
     This is useful when making sure that you cannot escape a modal dialog.
@@ -26,7 +26,7 @@ import contextToElement from '../util/context-to-element';
 
 export default function trapFocus({context, focusFirst}) {
   let element = contextToElement({
-    message: 'focus/trap requires valid options.context',
+    message: 'maintain/focus-trapped requires valid options.context',
     context,
   });
 

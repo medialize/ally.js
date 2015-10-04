@@ -47,6 +47,8 @@
   * `focus/source.js` to `style/focus-source.js`
   * `focus/when-visible.js` to `when/focusable.js`
   * `focus/within.js` to `style/focus-within.js`
+  * `focus/disable-focus` to `maintain/disabled`
+  * `focus/trap` to `maintain/focus-trapped`
 
 
 ## 0.0.7 (July 8th 2015) ##

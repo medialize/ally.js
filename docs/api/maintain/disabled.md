@@ -3,7 +3,9 @@ layout: doc-api.html
 tags: shadow-dom
 ---
 
-# ally.focus.disable (`ally/focus/disable`)
+# ally.maintain.disabled (`ally/maintain/disabled`)
+
+disable`)
 
 Disables any type of user interaction - including the ability to focus elements - essentially rendering elements *inert*.
 
@@ -30,7 +32,7 @@ TODO: figure out how to integrate demo
 <script src="path/to/ally.min.js"></script>
 <script>
   // render elements inert so they can't be interacted with
-  var handle = ally.focus.disable({
+  var handle = ally.maintain.disabled({
     // [optional] inerting elements within these sub-trees (default: document)
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     context: '.within-filter-selector',
@@ -47,10 +49,10 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/focus/disable'
+  'ally/maintain/disabled'
 ], function(focusDisable) {
   // render elements inert so they can't be interacted with
-  var handle = focusDisable({
+  var handle = maintainDisabled({
     // [optional] inerting elements within these sub-trees (default: document)
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     context: '.within-filter-selector',
@@ -68,16 +70,16 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Related Resources
 
-* [`ally/focus/trap`](trap.md)
+* [`ally/maintain/focus-trapped`](focus-trapped.md)
 * [`ally/query/focusable`](../query/focusable.md) used to identify the elements to make inert
 * [`ally/element/disabled`](../element/disabled.md) used to make elements inert
 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/master/src/focus/disable.js)
-* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/focus/disable.md)
-* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/focus.disable.test.js)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/maintain/disabled.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/maintain/disabled.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/maintain.disabled.test.js)
 
 
 ---

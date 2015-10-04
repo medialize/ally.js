@@ -3,8 +3,8 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/supports',
-  'ally/focus/disable',
-], function(registerSuite, expect, shadowInputFixture, supports, focusDisable) {
+  'ally/maintain/disabled',
+], function(registerSuite, expect, shadowInputFixture, supports, maintainDisabled) {
 
   registerSuite(function() {
     var fixture;
@@ -12,7 +12,7 @@ define([
     var handle2;
 
     return {
-      name: 'focus/disable',
+      name: 'maintain/disabled',
 
       beforeEach: function() {
         fixture = shadowInputFixture();
@@ -28,7 +28,7 @@ define([
       lifecycle: function() {
         expect(fixture.input.outer.disabled).to.equal(false, 'before engaged');
 
-        handle = focusDisable();
+        handle = maintainDisabled();
         expect(handle.disengage).to.be.a('function');
         expect(fixture.input.outer.disabled).to.equal(true, 'after engaged');
 
@@ -40,7 +40,7 @@ define([
         expect(fixture.input.outer.disabled).to.equal(false, 'input before engaged');
         expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'div before engaged');
 
-        handle = focusDisable();
+        handle = maintainDisabled();
         expect(handle.disengage).to.be.a('function');
         expect(fixture.input.outer.disabled).to.equal(true, 'after engaged');
         expect(element.hasAttribute('data-ally-disabled')).to.equal(true, 'div after engaged');
@@ -50,7 +50,7 @@ define([
         expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'div after disengaged');
       },
       context: function() {
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
@@ -58,7 +58,7 @@ define([
         expect(fixture.input.after.disabled).to.equal(true, 'in context');
       },
       filter: function() {
-        handle = focusDisable({
+        handle = maintainDisabled({
           filter: '#after-wrapper',
         });
         expect(handle.disengage).to.be.a('function');
@@ -68,7 +68,7 @@ define([
       'context and filter': function() {
         var input = fixture.add('<input id="dyamic-input">').firstElementChild;
 
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: fixture.root,
           filter: '#after-wrapper, #outer-input',
         });
@@ -84,7 +84,7 @@ define([
 
         var deferred = this.async(500);
 
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: fixture.root,
           filter: '#after-wrapper, #outer-input',
         });
@@ -108,7 +108,7 @@ define([
         var input = document.createElement('input');
         input.id = 'dynamic-input';
 
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: '#intern-dom-fixture',
           filter: '#after-wrapper, #outer-input',
         });
@@ -127,7 +127,7 @@ define([
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
 
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: fixture.root,
           filter: '#after-wrapper',
         });
@@ -139,14 +139,14 @@ define([
         var container = fixture.add('<input type="text" id="dynamic-input">', 'dynamic-wrapper');
         var input = container.firstElementChild;
 
-        handle = focusDisable({
+        handle = maintainDisabled({
           context: '#after-wrapper',
         });
         expect(fixture.input.outer.disabled).to.equal(false);
         expect(fixture.input.after.disabled).to.equal(true, 'alpha after first handle');
         expect(input.disabled).to.equal(false, 'bravo after first handle');
 
-        handle2 = focusDisable({
+        handle2 = maintainDisabled({
           context: container,
         });
         expect(fixture.input.outer.disabled).to.equal(false);

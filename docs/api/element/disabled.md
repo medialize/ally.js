@@ -70,7 +70,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 ## Related Resources
 
 * [`ally/is/disabled`](../is/disabled.md)
-* [`ally/focus/disable`](../focus/disable.md)
+* [`ally/maintain/disabled`](../maintain/disabled.md)
 * [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 * [WICG: Adding a [disabled] attribute to `<a>`s](http://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
 

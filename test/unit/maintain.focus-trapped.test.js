@@ -3,15 +3,15 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/supports',
-  'ally/focus/trap',
-], function(registerSuite, expect, focusableFixture, supports, focusTrap) {
+  'ally/maintain/focus-trapped',
+], function(registerSuite, expect, focusableFixture, supports, maintainFocusTrapped) {
 
   registerSuite(function() {
     var fixture;
     var handle;
 
     return {
-      name: 'focus/trap',
+      name: 'maintain/focus-trapped',
 
       beforeEach: function() {
         fixture = focusableFixture();
@@ -24,7 +24,7 @@ define([
       },
 
       lifecycle: function() {
-        handle = focusTrap({
+        handle = maintainFocusTrapped({
           context: '.context',
         });
 
@@ -55,7 +55,7 @@ define([
         handle.disengage();
       },
       'focus first': function() {
-        handle = focusTrap({
+        handle = maintainFocusTrapped({
           context: '.context',
           focusFirst: true,
         });
