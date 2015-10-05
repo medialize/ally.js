@@ -72,7 +72,7 @@ export default function(element) {
     }
   }
 
-  if (platform.name === 'Safari' && parseFloat(platform.version) < 9 && platform.os.family === 'iOS') {
+  if (platform.name === 'Safari' && parseFloat(platform.version) < 10 && platform.os.family === 'iOS') {
     // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
     let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
