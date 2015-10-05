@@ -9,6 +9,8 @@ Executes a callback when a given key has been pressed.
 
 ## Notes
 
+* **NOTE:** Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with [Gecko 286933](https://bugzilla.mozilla.org/show_bug.cgi?id=286933).
+
 
 ## Demo
 
@@ -22,7 +24,15 @@ TODO: figure out how to integrate demo
 <script>
   // wait until key is pressed
   var handle = ally.when.key({
-
+    // the key can either be the numeric keyCode (e.g. 13 for enter)
+    // or a name off the ally/map/keycode map
+    enter: function(event, disengage) {
+      // react to <kbd>enter</kbd>
+      // event contains the original KeyboardEvent object
+      // disengage the key listener handle right from the callback
+      // this disengages all handlers that were registered for this handle
+      disengage();
+    },
   });
   // abort waiting for key to be pressed
   handle.disengage();
@@ -37,7 +47,15 @@ require([
 ], function(whenKey) {
   // wait until key is pressed
   var handle = whenKey({
-
+    // the key can either be the numeric keyCode (e.g. 13 for enter)
+    // or a name off the ally/map/keycode map
+    enter: function(event, disengage) {
+      // react to <kbd>enter</kbd>
+      // event contains the original KeyboardEvent object
+      // disengage the key listener handle right from the callback
+      // this disengages all handlers that were registered for this handle
+      disengage();
+    },
   });
   // abort waiting for key to be pressed
   handle.disengage();
@@ -51,6 +69,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 * [`ally/when/focusable`](focusable.md)
 * [`ally/when/visible-area`](visible-area.md)
+* [`ally/map/keycode`](../map/keycode.md) used for resolving named keys
 
 
 ## Contribution Notes
