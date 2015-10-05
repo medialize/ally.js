@@ -23,6 +23,13 @@ export default function(element) {
     throw new TypeError('is/tabbable requires an argument of type Element');
   }
 
+  if (platform.name === 'Chrome Mobile' && parseFloat(platform.version) > 42 && platform.os.family === 'Android') {
+    // External keyboard support worked fine in CHrome 42, but stopped working in Chrome 45.
+    // The on-screen keyboard does not provide a way to focus the next input element (like iOS does).
+    // That leaves us with no option to advance focus by keyboard, ergo nothing is tabbable (keyboard focusable).
+    return false;
+  }
+
   const nodeName = element.nodeName.toLowerCase();
   const _tabindex = tabindexValue(element);
   const tabindex = _tabindex === null ? null : _tabindex >= 0;

@@ -23,7 +23,9 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.html'),
   title: 'Focusable Elements - Browser Compatibility Table',
   introduction: `<p>The following tables show which elements individual browsers consider focusable or tabbable (keyboard focusable).
-    The tables are based on the <a href="http://medialize.github.io/ally.js/tests/focusable/test.html">focusable test document</a>.</p>`,
+    The tables are based on the <a href="http://medialize.github.io/ally.js/tests/focusable/test.html">focusable test document</a>.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: false,
   skipIdents: function(sourceIdent) {
     // skip rows that are completely inert
@@ -41,7 +43,9 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.quick.html'),
   title: 'Focusable Elements (Quick) - ally.js Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
-    and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: quick</code></a>.</p>`,
+    and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: quick</code></a>.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
@@ -73,7 +77,9 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.strict.html'),
   title: 'Focusable Elements (Strict) - ally.js Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
-    and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: strict</code></a>.</p>`,
+    and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: strict</code></a>.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
@@ -105,7 +111,9 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.jquery.html'),
   title: 'Focusable Elements - jQuery UI Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
-    and what <a href="http://api.jqueryui.com/focusable-selector/">jQuery UI</a> identifies.</p>`,
+    and what <a href="http://api.jqueryui.com/focusable-selector/">jQuery UI</a> identifies.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
