@@ -69,6 +69,7 @@ Making up for missing or lacking DOM mutation APIs.
 Especially when dealing with transitional user interfaces we need to know when an element can be safely focused.
 
 * [`ally/when/focusable`](when/focusable.md) executes a callback once an element fulfills `ally/is/focusable` and is visible in the viewport
+* [`ally/when/key`](when/key.md) executes a callback when a given key has been pressed
 * [`ally/when/visible-area`](when/visible-area.md) executes a callback once an element is visible in the viewport
 
 

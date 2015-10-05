@@ -15,6 +15,7 @@
 * removing "dimension check" from `is/visible` - [issue #14](https://github.com/medialize/ally.js/issues/14)
 * `query/focusable` no longer considers `<html>` and `<body>` focusable - [issue #31](https://github.com/medialize/ally.js/issues/31)
 * adding `element/disabled` (refactored from `focus/disabled`) - [issue #33](https://github.com/medialize/ally.js/issues/33)
+* adding `when/key` to observe simple keyboard input - [issue #47](https://github.com/medialize/ally.js/issues/47)
 
 ### Breaking Changes
 

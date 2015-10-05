@@ -86,6 +86,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Related Resources
 
+* [`ally/when/key`](key.md)
 * [`ally/when/visible-area`](visible-area.md) is used internally to wait until element is visible in viewport, before checking if it is focusable
 
 

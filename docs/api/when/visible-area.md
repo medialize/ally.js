@@ -84,6 +84,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 ## Related Resources
 
 * [`ally/when/focusable`](focusable.md)
+* [`ally/when/key`](key.md)
 
 
 ## Contribution Notes

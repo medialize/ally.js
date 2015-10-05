@@ -112,6 +112,7 @@ define([
       'test/unit/util.tabindex-value.test',
       'test/unit/util.visible-area.test',
       'test/unit/when.focusable.test',
+      'test/unit/when.key.test',
       'test/unit/when.visible-area.test',
     ],
 
