@@ -12,7 +12,7 @@ The test infrastructure is located in the `test` directory. Note that the `tests
 
 Intern handles both unit and functional tests. Unit tests are the ones that verify a function's integrity without user interaction (like clicking on things or pressing keys). Functional tests are the ones that use [leadfoot](http://theintern.github.io/leadfoot/) to simulate a human being using the browser. Both types of tests are executed in the browser, there is no point testing things in Node.
 
-For local development the command `npm run test` can be used to spawn an instance of ChromeDriver interfacing with Google Chrome and automatically executing the tests setup defined in `test/local.js`. To run tests against a whole battery of browsers we use [SauceLabs' Open Source tier](https://saucelabs.com/opensource) (under the user `allyjs`). To run those locally, you'll need the secret access key (which you'll only get if you're a core contributor, sorry). The results of all tests executed on SauceLab's infrastructure are [made public](https://saucelabs.com/u/allyjs).
+For local development the command `npm run test` can be used to spawn an instance of ChromeDriver interfacing with Google Chrome and automatically executing the tests setup defined in `test/local.js`. To run tests against a whole battery of browsers in the cloud we use [BrowserStack](http://browserstack.com) and [SauceLabs](https://saucelabs.com). To run those locally, you'll need the secret access keys (which you'll only get if you're a core contributor, sorry). The results of all tests executed on SauceLab's infrastructure are [made public](https://saucelabs.com/u/allyjs).
 
 Coverage reports are made available in the directory `reports/coverage`.
 
@@ -43,28 +43,42 @@ node test/run-local.js
 
 # run selected suites in Google Chrome
 node test/run-local.js \
-  suites=test/unit/tutorial \
-  functionalSuites=tests/functional/tutorial
+  suites=test/unit/selected-test \
+  functionalSuites=tests/functional/selected-test
 ```
 
 
 ## Remotely Running All Tests In All Browsers
 
-You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account.
+You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account. The same is true for [BrowserStack](http://browserstack.com/).
 
 ```sh
+# make BrowserStack credentials available to Intern
+# obtainable at https://www.browserstack.com/accounts/automate
+export BROWSERSTACK_USERNAME=rodneyrehm1
+export BROWSERSTACK_ACCESS_KEY=nope
 # make SauceLabs credentials available to Intern
 # obtainable at https://saucelabs.com/account
 export SAUCE_USERNAME=allyjs
 export SAUCE_ACCESS_KEY=nope
 
 # run all tests
+npm run test-browserstack
+npm run test-sauce
+
+# run all tests (without npm)
+./node_modules/.bin/intern-runner \
+  config=test/browserstack
 ./node_modules/.bin/intern-runner \
   config=test/sauce
 
 # run selected suites
 ./node_modules/.bin/intern-runner \
+  config=test/browserstack \
+  suites=test/unit/selected-test \
+  functionalSuites=tests/functional/selected-test
+./node_modules/.bin/intern-runner \
   config=test/sauce \
-  suites=test/unit/tutorial \
-  functionalSuites=tests/functional/tutorial
+  suites=test/unit/selected-test \
+  functionalSuites=tests/functional/selected-test
 ```
