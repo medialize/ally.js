@@ -2,10 +2,6 @@
 
 ---
 
-[![Join the chat at https://gitter.im/medialize/ally.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/medialize/ally.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
----
-
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. Its goal is to be **A library to help applications with accessibility concerns**. The intention is to separate these generic components from actual applications and other libraries.
 
 For the time being ally.js is developed along side my actual work projects and features get added to ally.js once they become necessary to them. Of course you're welcome to contribute whatever and however you can. I don't bite, promise. See [GOALS.md](GOALS.md) to learn what I want this project to become.
@@ -64,6 +60,13 @@ Have a look at the [API Documentation](docs/api/README.md).
 * [CONTRIBUTING.md](CONTRIBUTING.md) explaining how to author, test, document and build ally.js
 * [CHANGELOG.md](CHANGELOG.md) detailing what changed over time
 * [Filed Issues (Browsers & Specifications)](issues.md)
+
+
+## Supported by
+
+* [BrowserStack](http://browserstack.com) and [SauceLabs](http://saucelabs.com/) provide VMs for automated testing - free for open source projects.
+* [Code Climate](https://codeclimate.com/oss) provides us with automated code analysis - free for open source projects.
+* [Travis CI](https://travis-ci.org/medialize/ally.js) provides a build server - free for open source projects.
 
 
 ## License
