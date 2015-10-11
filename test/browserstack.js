@@ -22,16 +22,18 @@ define([
 
     { browser: 'Firefox', browser_version: '40', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 40' },
     { browser: 'Chrome', browser_version: '44', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 44' },
-    { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
-    { browser: 'Safari', browser_version: '7.1', os: 'OS X', os_version: 'Mavericks', platform: 'MAC', browserName: 'Safari 7' },
-    { browser: 'Safari', browser_version: '6.2', os: 'OS X', os_version: 'Mountain Lion', platform: 'MAC', browserName: 'Safari 6' },
+
+    // disabled because of https://github.com/theintern/intern/issues/481
+    // { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
+    // { browser: 'Safari', browser_version: '7.1', os: 'OS X', os_version: 'Mavericks', platform: 'MAC', browserName: 'Safari 7' },
+    // { browser: 'Safari', browser_version: '6.2', os: 'OS X', os_version: 'Mountain Lion', platform: 'MAC', browserName: 'Safari 6' },
   ];
   /*eslint-enable camelcase */
 
   // https://theintern.github.io/intern/#option-maxConcurrency
   // OpenSauce allows 5 concurrent VMs
   //config.maxConcurrency = 5;
-  config.maxConcurrency = 1;
+  config.maxConcurrency = 2;
   // https://theintern.github.io/intern/#option-tunnel
   config.tunnel = 'BrowserStackTunnel';
 
