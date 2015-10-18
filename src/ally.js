@@ -10,6 +10,10 @@ import maintainDisabled from './maintain/disabled';
 import maintainFocusTrapped from './maintain/focus-trapped';
 import maintainHidden from './maintain/hidden';
 
+import whenFocusable from './when/focusable';
+import whenKey from './when/key';
+import whenVisibleArea from './when/visible-area';
+
 import queryFocusable from './query/focusable';
 import queryFirstTabbable from './query/first-tabbable';
 import queryTabbable from './query/tabbable';
@@ -71,6 +75,12 @@ export default {
 
   element: {
     disabled: elementDisabled,
+  },
+
+  when: {
+    focusable: whenFocusable,
+    key: whenKey,
+    visible: whenVisibleArea,
   },
 
   get: {
