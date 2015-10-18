@@ -27,6 +27,16 @@ function undoElementInert(element) {
   return elementDisabled(element, false);
 }
 
+function containedByElement(element) {
+  // callback returns true when element is contained by parent or is the parent
+  // suited for use with Array.some()
+  return function(parent) {
+    // Node.compareDocumentPosition is available since IE9
+    // see https://developer.mozilla.org/en-US/docs/Web/API/Node.compareDocumentPosition
+    return element === parent || parent.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+  };
+}
+
 const observerConfig = {
   attributes: true,
   childList: true,
@@ -80,10 +90,8 @@ class InertSubtree {
 
   filterContext(element) {
     // ignore elements that are not within the context sub-trees
-    return this._context.some(function(_context) {
-      // Node.compareDocumentPosition is available since IE9
-      return element === _context || _context.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-    });
+    const contained = containedByElement(element);
+    return this._context.some(contained);
   }
 
   filterElements(element) {
@@ -93,10 +101,8 @@ class InertSubtree {
     }
 
     // ignore elements within the exempted sub-trees
-    return !this._filter.some(function(_except) {
-      // Node.compareDocumentPosition is available since IE9
-      return element === _except || _except.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-    });
+    const containsElement = containedByElement(element);
+    return !this._filter.some(containsElement);
   }
 
   startObserver() {
