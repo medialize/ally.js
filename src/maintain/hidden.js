@@ -8,13 +8,18 @@ import toggleAttributeValue from '../util/toggle-attribute-value';
 import {getParentComparator} from '../util/compare-position';
 
 function makeElementHidden(element) {
-  toggleAttributeValue(element, 'aria-hidden', 'true');
-  return element;
+  toggleAttributeValue({
+    element,
+    attribute: 'aria-hidden',
+    temporaryValue: 'true',
+  });
 }
 
 function undoElementHidden(element) {
-  toggleAttributeValue(element, 'aria-hidden', null);
-  return element;
+  toggleAttributeValue({
+    element,
+    attribute: 'aria-hidden',
+  });
 }
 
 const observerConfig = {
@@ -42,8 +47,7 @@ class HiddenSubtree {
       return;
     }
 
-    //[].forEach.call(this._context.querySelectorAll('[data-aria-hidden]'), undoElementHidden);
-    [].forEach.call(this._context.querySelectorAll('[data-cache-aria-hidden]'), undoElementHidden);
+    [].forEach.call(this._context.querySelectorAll('[data-cached-aria-hidden]'), undoElementHidden);
 
     this._context = null;
     this._filter = null;
