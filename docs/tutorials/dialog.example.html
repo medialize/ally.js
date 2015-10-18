@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ally.js Dialog Example</title>
+  <style id="example-css">
+
+    /*
+      For styling overlays you may want to have a look at
+      http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/
+    */
+
+    /* show the dialog in the center of the screen */
+    #dialog {
+      box-sizing: border-box;
+      /* maintain on screen even during scroll (problematic on mobile) */
+      position: fixed;
+      /* when centering, try using FlexBox instead of this junk */
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 200px;
+      margin-top: -100px;
+      margin-left: -150px;
+
+      /* dialogs are usually box things that are on top of everything */
+      padding: 20px;
+      border: 1px solid #CCC;
+      background: white;
+      z-index: 1000;
+
+      -webkit-transition: transform 0.2s ease-in-out;
+              transition: transform 0.2s ease-in-out;
+    }
+
+    #dialog h1 {
+      margin: 0;
+    }
+
+    #dialog footer {
+      margin-top: 20px;
+    }
+
+    /* obscure everything but the dialog */
+    #dialog-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    /* hide the dialog in a way that allows animations */
+    #dialog[hidden] {
+      display: block;
+      visibility: hidden;
+
+      -webkit-transform: translate3d(0px, -1px, 0px) scale(0);
+              transform: translate3d(0px, -1px, 0px) scale(0);
+
+      /*
+        overwrite the dialog's showing transition so that visibility
+        is maintained until the box finished its transformation
+      */
+      -webkit-transition:
+        transform 0.2s ease-in-out,
+        visibility 0s linear 0.2s;
+      transition:
+        transform 0.2s ease-in-out,
+        visibility 0s linear 0.2s;
+    }
+
+    /* hide the dialog's backdrop */
+    #dialog[hidden] + #dialog-backdrop {
+      opacity: 0;
+      -webkit-transform: translate3d(0px, -1px, 0px) scale(0);
+              transform: translate3d(0px, -1px, 0px) scale(0);
+
+      /*
+        overwrite the backdrops's showing transition so that dimensions
+        are maintained until the box finished its opacity transformation
+      */
+      -webkit-transition:
+        opacity 0.2s ease-in-out,
+        transform 0s linear 0.2s;
+      transition:
+        opacity 0.2s ease-in-out,
+        transform 0s linear 0.2s;
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>Accessible Dialog Tutorial</h1>
+
+<p>View the source of this page to see how a visually appealing, yet fully accessible dialog can be created. The rules for accessible dialogs are laid out in <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">WAI-ARIA 1.0 Authoring Practices</a></p>
+<p>There are two input fields surrounding the "open dialog" button to mimic interactive content outside of the dialog. They have no other purpose than serve as proof of focus being trapped within the dialog once it's shown.</p>
+
+<div id="example-html">
+  <main>
+    <div>
+      <label for="before-button">Demo Text Input before Dialog Button</label> <input id="before-button">
+    </div>
+    <section>
+      <button type="button" id="open-dialog">Show Dialog</button>
+    </section>
+
+    <label for="after-button">Demo Text Input after Dialog Button</label> <input id="after-button">
+  </main>
+
+  <!--
+    If not using the <dialog> element of HTML5.1, it's best to use the <div> element for widgets
+    with semantic meaning that can only be defined via aria.
+
+    When dealing with elements that contain focus, it is a good idea to make them focusable themselves
+    by adding tabindex="-1". This way a mouse click in the background of the dialog won't pass focus
+    to the document, but retain it in the dialog.
+
+    The aria attributes role, aria-labeledby and aria-describedby are necessary for the Accessibility Tree
+    to properly expose our dialog widget. Their specific meaning is explained here:
+    
+    * http://www.w3.org/TR/wai-aria/roles#dialog
+    * http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby
+    * http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby
+  -->
+  <div id="dialog" role="dialog" aria-labeldby="dialog-title" aria-describedby="dialog-description" tabindex="-1" hidden>
+    <header>
+      <!--
+        The dialog's header explains what the user is being interrupted for.
+        While a label is considered mandatory, an extended description is optional.
+      -->
+      <h1 id="dialog-title">Name Entry</h1>
+      <p id="dialog-description">Please enter your full name.</p>
+    </header>
+    <section>
+      <!--
+        A dialog can do anything from displaying simple text, to hosting
+        complex user interaction. But since the latter is generally
+        considered bad practice, try keeping your dialogs as simple
+        as possible.
+      -->
+      <label for="within-dialog">Name</label> <input id="within-dialog">
+    </section>
+    <footer>
+      <!--
+        the footer of a dialog usually contains its control buttons
+        to close, confirm or do something else entirely.
+        
+        Note: It is not uncommon the wrap the dialog's content in a <form>,
+        provide the confirmation button <button type="submit">OK</button>,
+        and wire up the submit event to close the dialog after processing
+        the user's input (while preventing the form submission itself).
+
+        This has the added benefit of <kbd>Enter</kbd> working out of the
+        box, without JavaScript having to listen for the key to be pressed.
+        Also touchscreen devices (such as modern mobile phones) have
+        built-in heuristics that change the appearance of OnScreenKeyboards
+        depending on <form> and <input> type.
+      -->
+      <button type="button" id="close-dialog">Close</button>
+      <button type="button" id="save-dialog">Save</button>
+    </footer>
+  </div>
+
+  <!--
+    The backdrop is a separate element so it can properly swallow pointer events.
+    There are multiple ways to achieve a visual backdrop, but many of them have issues.
+    * CSS Generated Content (:before and :after) can not drop behind the dialog, only its content.
+    * CSS borders take an insane amount of rendering power (with very noticeable lag when animated)
+    * CSS box-shadow does not capture click events
+  -->
+  <div id="dialog-backdrop"></div>
+
+</div>
+
+<script src="../../node_modules/requirejs/require.js"></script>
+<script id="example-js">
+require.config({
+  paths: {
+    ally: '../../dist/amd',
+    // shims required by ally.js
+    'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+    'css.escape': '../../node_modules/css.escape/css.escape',
+    'platform': '../../node_modules/platform/platform',
+  }
+});
+
+require([
+  'ally/maintain/disabled',
+  'ally/maintain/hidden',
+  'ally/query/first-tabbable',
+  'ally/when/visible-area',
+  'ally/when/key',
+], function(maintainDisabled, maintainHidden, queryFirstTabbable, whenVisibleArea, whenKey) {
+
+  // Grab the elements we need to interact with
+  var openButton = document.getElementById('open-dialog');
+  var closeButton = document.getElementById('close-dialog');
+  var dialog = document.getElementById('dialog');
+  var dialogBackdrop = document.getElementById('dialog-backdrop');
+
+  // Data filled by openDialog() and later used by closeDialog()
+  var keyHandle;
+  var disabledHandle;
+  var focusedElementBeforeDialogOpened;
+
+  function openDialog() {
+    // Remember the focused element before we opened the dialog
+    // so we can return focus to it once we close the dialog.
+    focusedElementBeforeDialogOpened = document.activeElement;
+
+    // We're using a transition to reveal the dialog,
+    // so wait until the element is visible, before
+    // finding the first keyboard focusable element
+    // and passing focus to it, otherwise the browser
+    // might scroll the document to reveal the element
+    // receiving focus
+    whenVisibleArea({
+      context: dialog,
+      callback: function(context) {
+        // the dialog is visible on screen, so find the first
+        // keyboard focusable element (giving any element with
+        // autofocus attribute precendence). If the dialog does
+        // not contain any keyboard focusabe elements, focus will
+        // be given to the dialog itself.
+        var element = queryFirstTabbable({
+          context: context, // context === dialog
+          defaultToContext: true,
+        });
+        element.focus();
+      },
+    });
+
+    // Make sure that no element outside of the dialog
+    // can be interacted with while the dialog is visible.
+    // This means we don't have to handle Tab and Shift+Tab,
+    // but can defer that to the browser's internal handling.
+    disabledHandle = maintainDisabled({
+      filter: dialog,
+    });
+
+    // Make sure that no element outside of the dialog
+    // is exposed via the Accessibility Tree, to prevent
+    // screen readers from navigating to content it shouldn't
+    // be seeing while the dialog is open. See example:
+    // http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
+    hiddenHandle = maintainHidden({
+      filter: dialog,
+    });
+
+    // React to enter and escape keys as mandated by ARIA Practices
+    keyHandle = whenKey({
+      enter: closeDialogByKey,
+      escape: closeDialogByKey,
+    });
+
+    // Show the dialog
+    dialog.hidden = false;
+  }
+
+  function closeDialogByKey() {
+    // we need to let the keyboard event handlers finish,
+    // before actually closing the dialog. Otherwise the
+    // keydown of <kbd>enter</kbd> will close the dialog,
+    // focus is passed back to the open-dialog-button and
+    // the keyup of <kbd>enter</kbd> will open the dialog
+    // again.
+    setTimeout(closeDialog);
+  }
+
+  function closeDialog() {
+    // undo listening to keyboard
+    keyHandle.disengage();
+    // undo hiding elements outside of the dialog
+    hiddenHandle.disengage();
+    // undo disabling elements outside of the dialog
+    disabledHandle.disengage();
+    // return focus to where it was before we opened the dialog
+    focusedElementBeforeDialogOpened.focus();
+    // hide or remove the dialog
+    dialog.hidden = true;
+  }
+
+  // wire up showing/hiding the dialog
+  openButton.addEventListener('click', openDialog, false);
+  closeButton.addEventListener('click', closeDialog, false);
+  dialogBackdrop.addEventListener('click', function() {
+    // clicking on the backdrop pass hsould pass focus back to the dialog
+    dialog.focus();
+  }, false);
+});
+
+</script>
+
+</body>
+</html>

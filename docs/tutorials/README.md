@@ -1,5 +1,5 @@
 
 # ally.js Tutorials
 
-* [Keyboard Accessible Dialog](keyboard-accessible-dialog.md)
+* [Accessible Dialog](accessible-dialog.md)
 
