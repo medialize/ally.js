@@ -21,6 +21,7 @@
 
 import tabindexValue from '../util/tabindex-value';
 import isNativeDisabledSupported from '../is/native-disabled-supported';
+import toggleAttributeValue from '../util/toggle-attribute-value';
 
 function disabledFocus() {
   /*eslint-disable no-console */
@@ -28,35 +29,20 @@ function disabledFocus() {
   /*eslint-enable no-console */
 }
 
-function restoreAttributeValue(element, sourceAttribute, targetAttribute) {
-  const value = element.getAttribute(sourceAttribute);
-  element.removeAttribute(sourceAttribute);
-  if (value === '') {
-    element.removeAttribute(targetAttribute);
-  } else {
-    element.setAttribute(targetAttribute, value);
-  }
-}
-
-function toggleAttributeValue(element, attribute, value) {
-  const temporaryAttribute = 'data-inert-' + attribute;
-  if (value !== null) {
-    const _value = element.getAttribute(attribute);
-    element.setAttribute(temporaryAttribute, _value || '');
-    element.setAttribute(attribute, value);
-  } else {
-    restoreAttributeValue(element, temporaryAttribute, attribute);
-  }
-}
-
 function disableTabindex(element, disabledState) {
   if (disabledState) {
     const tabIndex = tabindexValue(element);
-    element.setAttribute('data-inert-tabindex', tabIndex !== null ? tabIndex : '');
-    // remove element from sequential focus navigation order
-    element.setAttribute('tabindex', '-1');
+    toggleAttributeValue({
+      element,
+      attribute: 'tabindex',
+      temporaryValue: '-1',
+      saveValue: tabIndex !== null ? tabIndex : '',
+    });
   } else {
-    restoreAttributeValue(element, 'data-inert-tabindex', 'tabindex');
+    toggleAttributeValue({
+      element,
+      attribute: 'tabindex',
+    });
   }
 }
 
@@ -87,11 +73,19 @@ function disableSvgFocusable(element, disabledState) {
     return;
   }
 
-  toggleAttributeValue(element, 'focusable', disabledState ? 'false' : null);
+  toggleAttributeValue({
+    element,
+    attribute: 'focusable',
+    temporaryValue: disabledState ? 'false' : undefined,
+  });
 }
 
 function setAriaDisabled(element, disabledState) {
-  toggleAttributeValue(element, 'aria-disabled', disabledState ? 'true' : null);
+  toggleAttributeValue({
+    element,
+    attribute: 'aria-disabled',
+    temporaryValue: disabledState ? 'true' : undefined,
+  });
 }
 
 function disableScriptFocus(element, disabledState) {

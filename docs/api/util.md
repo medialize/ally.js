@@ -84,6 +84,9 @@ A component's `engage()` function may return an result object. The decorated `di
 
 `util/compare-position` provides utilities for comparing the relative position of elements in the DOM for use with higher order functions (such as `Array.map`)
 
+### Toggle Attribute Value
+
+`util/toggle-attribute-value` can will change an attribute's value, while saving its former value to allow restoring the previous state
 
 ---
 
