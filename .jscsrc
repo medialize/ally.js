@@ -1,7 +1,7 @@
 {
   "esnext": true,
 	"excludeFiles": ["node_modules/**", "bower_components/**"],
-  "disallowEmptyBlocks": true,
+  "disallowEmptyBlocks": { "allExcept": ["comments"] },
   "disallowKeywordsOnNewLine": ["else"],
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,

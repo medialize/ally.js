@@ -77,7 +77,7 @@ Especially when dealing with transitional user interfaces we need to know when a
 
 Sometimes you need some DOM traversal utilities
 
-* [`ally/get/ancestry-siblings`](get/ancestry-siblings.md) returns an array containing all siblings of all parent elements
+* [`ally/get/insignificant-branches`](get/insignificant-branches.md) returns an array containing the branches of the DOM that do contain any of the target elements
 * [`ally/get/parents`](get/parents.md) returns an array containing all parent elements
 
 
@@ -102,7 +102,7 @@ When creating libraries these modules may come in handy.
 Sometimes you need some DOM traversal utilities
 
 * [`ally/get/active-elements`](get/active-elements.md) identifies the `ShadowHost` ancestry of the active element
-* [`ally/get/ancestry-siblings`](get/ancestry-siblings.md)
+* [`ally/get/insignificant-branches`](get/insignificant-branches.md)
 * [`ally/get/focus-target`](get/focus-target.md)
 * [`ally/get/parents`](get/parents.md)
 * [`ally/get/shadow-host-parents`](get/shadow-host-parents.md)

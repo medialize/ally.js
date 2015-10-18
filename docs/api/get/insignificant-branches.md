@@ -2,11 +2,11 @@
 layout: doc-api.html
 ---
 
-# ally.get.ancestrySiblings (`ally/get/ancestry-siblings`)
+# ally.get.insignificantBranches (`ally/get/insignificant-branches`)
 
-Identifies the sibling elements of all parent elements
+Identifies all the branches of the DOM that do *not* contain any of the target elements
 
-The ancestry siblings contain *all* first nodes (looking from the root `html`) that do not contain the target element. For the following tree, the ancestry siblings of `"#target"` are `["#sibling", "#uncle-1", "#uncle-2"]`:
+The insignificant branches contain *all* first nodes (looking from the root `context`) that do not contain the target elements (`filter`). For the following tree, the insignificant branches of `"#target"` are `["#sibling", "#uncle-1", "#uncle-2"]`. The insignificant branches of `["#target", "#target-2"]` are `["#sibling", "#uncle-1", "#cousin-2"]`:
 
 ```html
 <div id="uncle-1">
@@ -18,9 +18,9 @@ The ancestry siblings contain *all* first nodes (looking from the root `html`) t
 </div>
 <div id="uncle-2">
   <div id="cousin-2"></div>
+  <div id="target-2"></div>
 </div>
 ```
-
 
 ## Notes
 
@@ -35,10 +35,12 @@ TODO: figure out how to integrate demo
 ```html
 <script src="path/to/ally.min.js"></script>
 <script>
-  var elements = ally.get.ancestrySiblings({
+  var elements = ally.get.insignificantBranches({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
-    context: '#element-to-start-from',
+    context: document.documentElement,
+    // the significant elements to exclude from the search
+    filter: '#target',
   });
   // elements is an array of HTMLElement
 </script>
@@ -48,12 +50,14 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/get/ancestry-siblings'
-], function(getAncestrySiblings) {
-  var elements = getAncestrySiblings({
+  'ally/get/insignificant-branches'
+], function(getInsignificantBranches) {
+  var elements = getInsignificantBranches({
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
     // the first element element of a collection is used
-    context: '#element-to-start-from',
+    context: document.documentElement,
+    // the significant elements to exclude from the search
+    filter: '#target',
   });
   // elements is an array of HTMLElement
 });
@@ -73,9 +77,9 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 
 ## Contribution Notes
 
-* [module source](https://github.com/medialize/ally.js/blob/master/src/get/parents.js)
-* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/parents.md)
-* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.parents.test.js)
+* [module source](https://github.com/medialize/ally.js/blob/master/src/get/insignificant-branches.js)
+* [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/insignificant-branches.md)
+* [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.insignificant-branches.test.js)
 
 
 ---

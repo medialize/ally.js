@@ -2,14 +2,14 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
-  'ally/get/ancestry-siblings',
-], function(registerSuite, expect, customFixture, getAncestrySiblings) {
+  'ally/get/insignificant-branches',
+], function(registerSuite, expect, customFixture, getInsignificantBranches) {
 
   registerSuite(function() {
     var fixture;
 
     return {
-      name: 'get/ancestry-siblings',
+      name: 'get/insignificant-branches',
 
       beforeEach: function() {
         fixture = customFixture([
@@ -23,6 +23,7 @@ define([
           '</div>',
           '<div id="uncle-2">',
             '<div id="cousin-2"></div>',
+            '<div id="target-2"></div>',
           '</div>',
           /*eslint-disable indent */
         ].join(''));
@@ -34,17 +35,28 @@ define([
 
       'invalid context': function() {
         expect(function() {
-          getAncestrySiblings();
-        }).to.throw(TypeError, 'get/ancestry-siblings requires valid options.context');
+          getInsignificantBranches();
+        }).to.throw(TypeError, 'get/insignificant-branches requires valid options.filter');
       },
-      'ancestry-siblings': function() {
-        var target = getAncestrySiblings({
-          context: '#target',
+      'single target': function() {
+        var target = getInsignificantBranches({
+          context: fixture.root,
+          filter: '#target',
         });
         var path = target.map(function(element) {
           return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
         }).join(' ');
-        expect(path.indexOf('#sibling #uncle-1 #uncle-2')).to.equal(0);
+        expect(path).to.equal('#uncle-1 #sibling #uncle-2');
+      },
+      'multiple targets': function() {
+        var target = getInsignificantBranches({
+          context: fixture.root,
+          filter: '#target, #target-2',
+        });
+        var path = target.map(function(element) {
+          return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
+        }).join(' ');
+        expect(path).to.equal('#uncle-1 #sibling #cousin-2');
       },
     };
   });

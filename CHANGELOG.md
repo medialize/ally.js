@@ -16,6 +16,7 @@
 * `query/focusable` no longer considers `<html>` and `<body>` focusable - [issue #31](https://github.com/medialize/ally.js/issues/31)
 * adding `element/disabled` (refactored from `focus/disabled`) - [issue #33](https://github.com/medialize/ally.js/issues/33)
 * adding `when/key` to observe simple keyboard input - [issue #47](https://github.com/medialize/ally.js/issues/47)
+* adding `get/insignificant-branches` to find branches not relevant to a given set of elements - [issue #32](https://github.com/medialize/ally.js/issues/32)
 
 ### Breaking Changes
 

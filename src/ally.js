@@ -24,7 +24,7 @@ import validTabindex from './is/valid-tabindex';
 import visible from './is/visible';
 
 import elementDisabled from './element/disabled';
-import ancestrySiblings from './get/ancestry-siblings';
+import insignificantBranches from './get/insignificant-branches';
 import parents from './get/parents';
 
 import attribute from './map/attribute';
@@ -72,7 +72,7 @@ export default {
   },
 
   get: {
-    ancestrySiblings,
+    insignificantBranches,
     parents,
   },
 
