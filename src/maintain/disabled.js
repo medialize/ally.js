@@ -18,6 +18,7 @@
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
 import elementDisabled from '../element/disabled';
+import {getParentComparator} from '../util/compare-position';
 
 function makeElementInert(element) {
   return elementDisabled(element, true);
@@ -25,16 +26,6 @@ function makeElementInert(element) {
 
 function undoElementInert(element) {
   return elementDisabled(element, false);
-}
-
-function containedByElement(element) {
-  // callback returns true when element is contained by parent or is the parent
-  // suited for use with Array.some()
-  return function(parent) {
-    // Node.compareDocumentPosition is available since IE9
-    // see https://developer.mozilla.org/en-US/docs/Web/API/Node.compareDocumentPosition
-    return element === parent || parent.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-  };
 }
 
 const observerConfig = {
@@ -50,7 +41,6 @@ class InertSubtree {
     this._filter = nodeArray(filter);
 
     this.disengage = this.disengage.bind(this);
-    this.handleMutations = this.handleMutations.bind(this);
     this.handleMutation = this.handleMutation.bind(this);
     this.renderInert = this.renderInert.bind(this);
     this.filterContext = this.filterContext.bind(this);
@@ -74,6 +64,7 @@ class InertSubtree {
     this._filter = null;
     this._context = null;
     this._observer && this._observer.disconnect();
+    this._observer = null;
   }
 
   listQueryFocusable(list) {
@@ -90,8 +81,8 @@ class InertSubtree {
 
   filterContext(element) {
     // ignore elements that are not within the context sub-trees
-    const contained = containedByElement(element);
-    return this._context.some(contained);
+    const isParentOfElement = getParentComparator({element, includeSelf: true});
+    return this._context.some(isParentOfElement);
   }
 
   filterElements(element) {
@@ -101,8 +92,8 @@ class InertSubtree {
     }
 
     // ignore elements within the exempted sub-trees
-    const containsElement = containedByElement(element);
-    return !this._filter.some(containsElement);
+    const isParentOfElement = getParentComparator({element, includeSelf: true});
+    return !this._filter.some(isParentOfElement);
   }
 
   startObserver() {
@@ -113,16 +104,12 @@ class InertSubtree {
     }
     // http://caniuse.com/#search=mutation
     // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-    this._observer = new MutationObserver(this.handleMutations);
+    this._observer = new MutationObserver(mutations => mutations.forEach(this.handleMutation));
     this._observer.observe(
       // we don't need to observe the entire document unless there are multiple contexts in play
       this._context.length === 1 ? this._context[0] : document.documentElement,
       observerConfig
     );
-  }
-
-  handleMutations(mutations) {
-    mutations.forEach(this.handleMutation);
   }
 
   handleMutation(mutation) {

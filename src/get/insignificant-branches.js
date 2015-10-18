@@ -6,21 +6,12 @@
 // to avoid this behavior: http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
 
 import nodeArray from '../util/node-array';
-
-function makeContainedByElement(parent) {
-  // callback returns true when element is contained by parent or is the parent
-  // suited for use with Array.some()
-  return function(element) {
-    // Node.compareDocumentPosition is available since IE9
-    // see https://developer.mozilla.org/en-US/docs/Web/API/Node.compareDocumentPosition
-    return parent.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
-  };
-}
+import {getParentComparator} from '../util/compare-position';
 
 function queryInsignificantBranches({context, filter}) {
   const containsFilteredElement = function(node) {
-    const contained = makeContainedByElement(node);
-    return filter.some(contained);
+    const containsNode = getParentComparator({parent: node});
+    return filter.some(containsNode);
   };
 
   // We'd use a Set() for this, if we could

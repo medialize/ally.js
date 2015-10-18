@@ -80,6 +80,11 @@ A component's `engage()` function may return an result object. The decorated `di
 `util/visible-area` calculates the fraction of the area that is visible in the viewport (`1` fully visible, `0` not visible at all, `0.5` half the element is visible, the rest is hidden by *scroll containers*)
 
 
+### Compare Document Position
+
+`util/compare-position` provides utilities for comparing the relative position of elements in the DOM for use with higher order functions (such as `Array.map`)
+
+
 ---
 
 Back to the [API Documentation](./README.md).
