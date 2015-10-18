@@ -6,8 +6,9 @@ import pointerFocusParent from './fix/pointer-focus-parent';
 import focusSource from './style/focus-source';
 import focusWithin from './style/focus-within';
 
-import maintainDisabled from './maintain/disable';
-import maintainFocusTrapped from './maintain/trap';
+import maintainDisabled from './maintain/disabled';
+import maintainFocusTrapped from './maintain/focus-trapped';
+import maintainHidden from './maintain/hidden';
 
 import queryFocusable from './query/focusable';
 import queryFirstTabbable from './query/first-tabbable';
@@ -47,6 +48,7 @@ export default {
   maintain: {
     disabled: maintainDisabled,
     focusTrapped: maintainFocusTrapped,
+    hidden: maintainHidden,
   },
 
   query: {

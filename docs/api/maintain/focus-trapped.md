@@ -66,6 +66,7 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 ## Related Resources
 
 * [`ally/maintain/disabled`](disabled.md)
+* [`ally/maintain/hidden`](hidden.md)
 
 
 ## Contribution Notes
