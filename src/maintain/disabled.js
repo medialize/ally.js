@@ -37,16 +37,20 @@ const observerConfig = {
 
 class InertSubtree {
   constructor({context, filter} = {}) {
-    this._context = nodeArray(context || document.documentElement);
+    this._context = nodeArray(context || document.documentElement)[0];
     this._filter = nodeArray(filter);
 
     this.disengage = this.disengage.bind(this);
     this.handleMutation = this.handleMutation.bind(this);
     this.renderInert = this.renderInert.bind(this);
-    this.filterContext = this.filterContext.bind(this);
     this.filterElements = this.filterElements.bind(this);
 
-    const focusable = this.listQueryFocusable(this._context);
+    const focusable = queryFocusable({
+      context: this._context,
+      includeContext: true,
+      strategy: 'all',
+    });
+
     this.renderInert(focusable);
     this.startObserver();
   }
@@ -56,10 +60,8 @@ class InertSubtree {
       return;
     }
 
-    this._context.forEach(function(element) {
-      undoElementInert(element);
-      [].forEach.call(element.querySelectorAll('[data-ally-disabled], :disabled'), undoElementInert);
-    });
+    undoElementInert(this._context);
+    [].forEach.call(this._context.querySelectorAll('[data-ally-disabled], :disabled'), undoElementInert);
 
     this._filter = null;
     this._context = null;
@@ -82,7 +84,7 @@ class InertSubtree {
   filterContext(element) {
     // ignore elements that are not within the context sub-trees
     const isParentOfElement = getParentComparator({element, includeSelf: true});
-    return this._context.some(isParentOfElement);
+    return isParentOfElement(this._context);
   }
 
   filterElements(element) {
@@ -105,11 +107,7 @@ class InertSubtree {
     // http://caniuse.com/#search=mutation
     // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
     this._observer = new MutationObserver(mutations => mutations.forEach(this.handleMutation));
-    this._observer.observe(
-      // we don't need to observe the entire document unless there are multiple contexts in play
-      this._context.length === 1 ? this._context[0] : document.documentElement,
-      observerConfig
-    );
+    this._observer.observe(this._context, observerConfig);
   }
 
   handleMutation(mutation) {

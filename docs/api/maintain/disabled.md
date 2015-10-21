@@ -33,8 +33,9 @@ TODO: figure out how to integrate demo
 <script>
   // render elements inert so they can't be interacted with
   var handle = ally.maintain.disabled({
-    // [optional] inerting elements within these sub-trees (default: document)
+    // [optional] inerting elements within this sub-tree (default: document)
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+    // the first element element of a collection is used
     context: '.within-filter-selector',
     // [optional] prevent inerting elements within these sub-trees (default: null)
     // filter can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
@@ -53,8 +54,9 @@ require([
 ], function(maintainDisabled) {
   // render elements inert so they can't be interacted with
   var handle = maintainDisabled({
-    // [optional] inerting elements within these sub-trees (default: document)
+    // [optional] inerting elements within this sub-tree (default: document)
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+    // the first element element of a collection is used
     context: '.within-filter-selector',
     // [optional] prevent inerting elements within these sub-trees (default: null)
     // filter can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
