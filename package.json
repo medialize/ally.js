@@ -1,6 +1,6 @@
 {
   "name": "ally.js",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Library to help applications with accessibility concerns",
   "main": "dist/ally.min.js",
   "files": [
