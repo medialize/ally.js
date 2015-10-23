@@ -15,7 +15,7 @@ The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the
 # lint the markdown
 npm run lint-md
 
-# generate website (to dist/docs)
+# generate website (to `./web`)
 npm run build-docs
 ```
 

@@ -1,6 +1,6 @@
 {
   "source": "docs",
-  "destination": "dist/docs",
+  "destination": "web",
   "metadata": {},
   "plugins": {
     "metalsmith-markdown-remarkable": {
