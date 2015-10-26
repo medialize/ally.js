@@ -9,6 +9,17 @@
     "dist"
   ],
 
+  "npmName": "ally.js",
+  "npmFileMap": [
+    {
+      "basePath": "dist",
+      "files": [
+        "ally.min.js",
+        "ally.min.js.map"
+      ]
+    }
+  ],
+
   "author": "Rodney Rehm <rodney.rehm@medialize.de> (http://rodneyrehm.de/en/)",
   "homepage": "https://github.com/medialize/ally.js",
   "license": "MIT",
