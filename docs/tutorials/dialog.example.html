@@ -10,8 +10,41 @@
       http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/
     */
 
-    /* show the dialog in the center of the screen */
+    /*
+      make the dialog container spans the entire screen,
+      this is necessary to capture clicks
+    */
     #dialog {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,0);
+      z-index: 999;
+    }
+    /*
+      obscure everything but the dialog
+      unless the backdrop needs a special animation,
+      this element could be ignored and the backdrop
+      simply applied to the #dialog element via
+      background: rgba(0, 0, 0, 0.25);
+    */
+    #dialog:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 999;
+
+      -webkit-transition: opacity 0.2s ease-in-out;
+              transition: opacity 0.2s ease-in-out;
+    }
+    /* show the dialog in the center of the screen */
+    #dialog .dialog-content {
       box-sizing: border-box;
       /* maintain on screen even during scroll (problematic on mobile) */
       position: fixed;
@@ -33,33 +66,48 @@
               transition: transform 0.2s ease-in-out;
     }
 
+    /* style the dialog's contents */
     #dialog h1 {
       margin: 0;
     }
-
     #dialog footer {
       margin-top: 20px;
     }
 
-    /* obscure everything but the dialog */
-    #dialog-backdrop {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 999;
-      background: rgba(0, 0, 0, 0.25);
-    }
-
     /* hide the dialog in a way that allows animations */
-    #dialog[hidden] {
+    #dialog[hidden],
+    #dialog[hidden]:before,
+    #dialog[hidden] .dialog-content {
       display: block;
       visibility: hidden;
-
       -webkit-transform: translate3d(0px, -1px, 0px) scale(0);
               transform: translate3d(0px, -1px, 0px) scale(0);
 
+      -webkit-transition:
+        visibility 0s linear 0.2s,
+        transform 0s linear 0.2s;
+      transition:
+        visibility 0s linear 0.2s,
+        transform 0s linear 0.2s;
+    }
+    #dialog[hidden]:before {
+      opacity: 0;
+      /*
+        overwrite the backdrops's showing transition so that dimensions
+        are maintained until the box finished its opacity transformation
+      */
+      -webkit-transition:
+        opacity 0.2s ease-in-out,
+        visibility 0s linear 0.2s,
+        transform 0s linear 0.2s;
+      transition:
+        opacity 0.2s ease-in-out,
+        visibility 0s linear 0.2s,
+        transform 0s linear 0.2s;
+    }
+    #dialog[hidden] .dialog-content {
+      -webkit-transform: translate3d(0px, -1px, 0px) scale(0);
+              transform: translate3d(0px, -1px, 0px) scale(0);
       /*
         overwrite the dialog's showing transition so that visibility
         is maintained until the box finished its transformation
@@ -71,25 +119,6 @@
         transform 0.2s ease-in-out,
         visibility 0s linear 0.2s;
     }
-
-    /* hide the dialog's backdrop */
-    #dialog[hidden] + #dialog-backdrop {
-      opacity: 0;
-      -webkit-transform: translate3d(0px, -1px, 0px) scale(0);
-              transform: translate3d(0px, -1px, 0px) scale(0);
-
-      /*
-        overwrite the backdrops's showing transition so that dimensions
-        are maintained until the box finished its opacity transformation
-      */
-      -webkit-transition:
-        opacity 0.2s ease-in-out,
-        transform 0s linear 0.2s;
-      transition:
-        opacity 0.2s ease-in-out,
-        transform 0s linear 0.2s;
-    }
-
   </style>
 </head>
 <body>
@@ -115,65 +144,57 @@
     If not using the <dialog> element of HTML5.1, it's best to use the <div> element for widgets
     with semantic meaning that can only be defined via aria.
 
+    It is not uncommon to wrap the dialog's content in a <form>,
+    provide the confirmation button <button type="submit">OK</button>,
+    and wire up the submit event to close the dialog after processing
+    the user's input (while preventing the form submission itself).
+
+    This has the added benefit of <kbd>Enter</kbd> working out of the
+    box, without JavaScript having to listen for the key to be pressed.
+    Also touchscreen devices (such as modern mobile phones) have
+    built-in heuristics that change the appearance of OnScreenKeyboards
+    depending on <form> and <input> type.
+
     When dealing with elements that contain focus, it is a good idea to make them focusable themselves
     by adding tabindex="-1". This way a mouse click in the background of the dialog won't pass focus
     to the document, but retain it in the dialog.
 
     The aria attributes role, aria-labeledby and aria-describedby are necessary for the Accessibility Tree
     to properly expose our dialog widget. Their specific meaning is explained here:
-    
+
     * http://www.w3.org/TR/wai-aria/roles#dialog
     * http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby
     * http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby
   -->
   <div id="dialog" role="dialog" aria-labeldby="dialog-title" aria-describedby="dialog-description" tabindex="-1" hidden>
-    <header>
-      <!--
-        The dialog's header explains what the user is being interrupted for.
-        While a label is considered mandatory, an extended description is optional.
-      -->
-      <h1 id="dialog-title">Name Entry</h1>
-      <p id="dialog-description">Please enter your full name.</p>
-    </header>
-    <section>
-      <!--
-        A dialog can do anything from displaying simple text, to hosting
-        complex user interaction. But since the latter is generally
-        considered bad practice, try keeping your dialogs as simple
-        as possible.
-      -->
-      <label for="within-dialog">Name</label> <input id="within-dialog">
-    </section>
-    <footer>
-      <!--
-        the footer of a dialog usually contains its control buttons
-        to close, confirm or do something else entirely.
-        
-        Note: It is not uncommon the wrap the dialog's content in a <form>,
-        provide the confirmation button <button type="submit">OK</button>,
-        and wire up the submit event to close the dialog after processing
-        the user's input (while preventing the form submission itself).
-
-        This has the added benefit of <kbd>Enter</kbd> working out of the
-        box, without JavaScript having to listen for the key to be pressed.
-        Also touchscreen devices (such as modern mobile phones) have
-        built-in heuristics that change the appearance of OnScreenKeyboards
-        depending on <form> and <input> type.
-      -->
-      <button type="button" id="close-dialog">Close</button>
-      <button type="button" id="save-dialog">Save</button>
-    </footer>
+    <form class="dialog-content">
+      <header>
+        <!--
+          The dialog's header explains what the user is being interrupted for.
+          While a label is considered mandatory, an extended description is optional.
+        -->
+        <h1 id="dialog-title">Name Entry</h1>
+        <p id="dialog-description">Please enter your full name.</p>
+      </header>
+      <section>
+        <!--
+          A dialog can do anything from displaying simple text, to hosting
+          complex user interaction. But since the latter is generally
+          considered bad practice, try keeping your dialogs as simple
+          as possible.
+        -->
+        <label for="within-dialog">Name</label> <input id="within-dialog">
+      </section>
+      <footer>
+        <!--
+          the footer of a dialog usually contains its control buttons
+          to close, confirm or do something else entirely.
+        -->
+        <button type="button" id="close-dialog">Close</button>
+        <button type="submit" id="save-dialog">Save</button>
+      </footer>
+    </form>
   </div>
-
-  <!--
-    The backdrop is a separate element so it can properly swallow pointer events.
-    There are multiple ways to achieve a visual backdrop, but many of them have issues.
-    * CSS Generated Content (:before and :after) can not drop behind the dialog, only its content.
-    * CSS borders take an insane amount of rendering power (with very noticeable lag when animated)
-    * CSS box-shadow does not capture click events
-  -->
-  <div id="dialog-backdrop"></div>
-
 </div>
 
 <script src="../../node_modules/requirejs/require.js"></script>
@@ -198,13 +219,13 @@ require([
 
   // Grab the elements we need to interact with
   var openButton = document.getElementById('open-dialog');
-  var closeButton = document.getElementById('close-dialog');
   var dialog = document.getElementById('dialog');
-  var dialogBackdrop = document.getElementById('dialog-backdrop');
+  var closeButton = document.getElementById('close-dialog');
 
   // Data filled by openDialog() and later used by closeDialog()
   var keyHandle;
   var disabledHandle;
+  var hiddenHandle;
   var focusedElementBeforeDialogOpened;
 
   function openDialog() {
@@ -253,8 +274,14 @@ require([
 
     // React to enter and escape keys as mandated by ARIA Practices
     keyHandle = whenKey({
-      enter: closeDialogByKey,
       escape: closeDialogByKey,
+      // Note: in non-interactive content you would also bind the enter
+      // key to close the dialog. In our example the form's submit event
+      // will cover that instead. The enter handler would be executed
+      // for *every* press of the enter key, even if the focused element
+      // is a button (which would invoke the default action). Try using
+      // a <form> for interactive content to get around that problem.
+      // enter: closeDialogByKey,
     });
 
     // Show the dialog
@@ -269,6 +296,8 @@ require([
     // the keyup of <kbd>enter</kbd> will open the dialog
     // again.
     setTimeout(closeDialog);
+    // alternatively we could've called event.preventDefault()
+    // and then run closeDialog() synchronously
   }
 
   function closeDialog() {
@@ -284,13 +313,21 @@ require([
     dialog.hidden = true;
   }
 
+  function saveDialog(event) {
+    // do not submit the form
+    event.preventDefault();
+
+    // do something with the entered data
+    var name = dialog.querySelector('input').value;
+    console.log('entered name', name);
+
+    closeDialog();
+  }
+
   // wire up showing/hiding the dialog
   openButton.addEventListener('click', openDialog, false);
   closeButton.addEventListener('click', closeDialog, false);
-  dialogBackdrop.addEventListener('click', function() {
-    // clicking on the backdrop pass hsould pass focus back to the dialog
-    dialog.focus();
-  }, false);
+  dialog.addEventListener('submit', saveDialog, true);
 });
 
 </script>
