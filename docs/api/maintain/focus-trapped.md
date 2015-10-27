@@ -16,7 +16,7 @@ Browsers that support the `focusout` event (Blink, WebKit, Trident) redirect `fo
 ## Notes
 
 * **WARNING:** It may be possible to break out of the given `context` by means of script or `MouseEvent`. It is the developer's responsibility to prevent that from happening, should they wish to.
-* **WARNING:** Trapping focus is **deprecated** and superseded by [ally/maintain/disabled](disabled.md). Although this pattern is considered best practice by WAI ARIA, it cannot be implemented properly (in a robust way) with the tools available in current browsers. Working with inert subtrees has its own set of problems, but they seem far less likely to break for any given user than trapping focus could and would.
+* **WARNING:** Trapping focus is **deprecated** and superseded by [`ally/maintain/disabled`](disabled.md). Although this pattern is considered best practice by WAI ARIA, it cannot be implemented properly (in a robust way) with the tools available in current browsers. Working with inert subtrees has its own set of problems, but they seem far less likely to break for any given user than trapping focus could and would.
 
 
 ## Demo

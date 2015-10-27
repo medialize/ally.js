@@ -10,7 +10,7 @@ HTML5.1 specifies the [`<dialog>` element](http://www.w3.org/TR/html51/interacti
 
 Before we get into the technical things, let's first discuss what a dialog is. From a user experience perspective it is a piece of information, or a set of interactions, provided to the user in a way that disrupts the user's current interaction. The user is made to focus on the dialog's content and ignore the rest of the application or website. Visually this is usually achieved by layering a box in the visual center of the application and by positioning a translucent layer (i.e. showing the content behind it, but in a distorted manner) behind the dialog, to emphasize that the layer is the only important thing.
 
-To achieve this *visual effect* we need don't need much code:
+To achieve this *visual effect* we don't need much code:
 
 ```html
 <div id="dialog">
@@ -25,9 +25,8 @@ To achieve this *visual effect* we need don't need much code:
   top: 50%;
   left: 50%;
   width: 400px;
-  margin-left: -200px;
   height: 200px;
-  margin-left: -100px;
+  transform: translate3d(-50%,-50%,0);
   background: white;
   border: 100% solid rgba(0, 0, 0, 2.5);
 }
@@ -85,7 +84,7 @@ In this demo we ask for the user's name, so the content will be a simple input e
 <input id="dialog-user-name">
 ```
 
-The last ingredient remaining component is the element that renders the backdrop. Since we're nesting the content dialog's content in the `<form>` element, we can create the dialog's backdrop using CSS generated content (`::before`), so we don't need an additional element to cover that. If we weren't nesting the dialog's contents, we'd not be able to get by without a separate element for the backdrop, if we wanted it to appear animated.
+The last ingredient is the element that renders the backdrop. Since we're nesting the dialog's content in the `<form>` element, we can create the dialog's backdrop using CSS generated content (`::before`), so we don't need an additional element to cover that. If we weren't nesting the dialog's contents, we'd not be able to get by without a separate element for the backdrop, if we wanted it to appear animated.
 
 ---
 
@@ -156,8 +155,7 @@ Having the container span the viewport, and the backdrop obfuscating the content
   left: 50%;
   width: 300px;
   height: 200px;
-  margin-top: -100px;
-  margin-left: -150px;
+  transform: translate3d(-50%,-50%,0);
 
   /* dialogs are usually boxy things that are on top of everything */
   padding: 20px;
@@ -208,7 +206,7 @@ With that in place, we have the visible state covered. But since dialogs are not
 }
 ```
 
-For the backdrop we essentially need to do the same, but also apply `opacity`. Since both constructs are essentially doing the same thing, we extend the selector and overwrite the `opacity` specifics for the backdrop:
+For the backdrop we essentially need to do the same, but also apply `opacity`. to avoid duplicating styles, we extend the selector and overwrite the `opacity` specifics for the backdrop:
 
 ```css
 #dialog[hidden],
