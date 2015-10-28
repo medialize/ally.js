@@ -13,11 +13,11 @@ Do not confuse ally.js with [a11y.js](https://github.com/IBM-Watson/a11y.js), a 
 
 ## What Is ally.js?
 
-ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily.
+ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications can be made accessible more easily.
 
 ---
 
-In its UMD build ally.js weighs about 20KB minified and gzipped. In modern browsers only one external dependency is required, alongside 2 shims/polyfills for the *slightly* older browers. It has been tested on IE10+, Android 4.4+ and iOS8+ along Firefox, Chrome and Safari.
+In its UMD build ally.js weighs about 20KB minified and gzipped, with all external dependencies already bundled. In modern browsers only one external dependency is required, alongside 2 shims/polyfills for the *slightly* older browers. It has been tested on IE10+, Android 4.4+ and iOS8+ along Firefox, Chrome and Safari.
 
 
 ## Which Problems Does ally.js Solve?
