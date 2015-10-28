@@ -50,7 +50,7 @@
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
     "build-website": "npm run build-docs",
-    "build-docs": "metalsmith && npm run build-data-tables",
+    "build-docs": "node metalsmith/metalsmith.js && npm run build-data-tables",
     "build-data-tables": "npm run build-data-tables-focusable",
     "build-data-tables-focusable": "babel-node scripts/data-tables/focusable-tables.js",
     "lint": "npm-run-all --parallel lint-js lint-md",
