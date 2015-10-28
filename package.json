@@ -2,13 +2,11 @@
   "name": "ally.js",
   "version": "1.0.0-beta.3",
   "description": "Library to help applications with accessibility concerns",
-
   "main": "dist/ally.min.js",
   "files": [
     "src",
     "dist"
   ],
-
   "npmName": "ally.js",
   "npmFileMap": [
     {
@@ -19,7 +17,6 @@
       ]
     }
   ],
-
   "author": "Rodney Rehm <rodney.rehm@medialize.de> (http://rodneyrehm.de/en/)",
   "homepage": "https://github.com/medialize/ally.js",
   "license": "MIT",
@@ -38,31 +35,31 @@
     "tabbing",
     "tabbable"
   ],
-
   "scripts": {
     "test": "node test/run-local.js",
     "test-ci": "npm run test-sauce",
     "test-sauce": "intern-runner config=test/sauce",
     "test-browserstack": "intern-runner config=test/browserstack",
     "clean": "rm -rf dist/*",
-    "build": "npm run build-umd && npm run build-umd-min && npm run build-umd-clean && npm run build-common && npm run build-amd && npm run build-docs",
-    "build-umd": "browserify src/ally.js --debug --standalone ally --transform babelify | exorcist dist/ally.js.map > dist/ally.js",
+    "build": "npm-run-all --parallel build-umd build-common build-amd",
+    "build-umd": "npm-run-all --sequential build-umd-bundle build-umd-min build-umd-clean",
+    "build-umd-bundle": "browserify src/ally.js --debug --standalone ally --transform babelify | exorcist dist/ally.js.map > dist/ally.js",
     "build-umd-clean": "rm dist/ally.js dist/ally.js.map",
     "build-umd-min": "uglifyjs dist/ally.js --in-source-map dist/ally.js.map --source-map dist/ally.min.js.map --preamble \"/*! ${npm_package_name} - v${npm_package_version} - ${npm_package_homepage} - ${npm_package_license} License */\" --screw-ie8 --mangle --compress --output dist/ally.min.js",
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
+    "build-website": "npm run build-docs",
     "build-docs": "metalsmith && npm run build-data-tables",
     "build-data-tables": "npm run build-data-tables-focusable",
     "build-data-tables-focusable": "babel-node scripts/data-tables/focusable-tables.js",
-    "lint": "npm run lint-js && npm run lint-md",
+    "lint": "npm-run-all --parallel lint-js lint-md",
     "lint-js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,scripts/**/*.js}') && jscs $(glob-cli '{src,test,scripts}')",
     "lint-md": "node scripts/markdownlint.js",
     "precommit": "npm run lint",
     "prepush": "npm test",
     "postmerge": "npm install"
   },
-
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.2",
@@ -89,6 +86,7 @@
     "metalsmith-packagejson": "^1.0.1",
     "metalsmith-register-helpers": "^0.1.2",
     "mkdirp": "^0.5.1",
+    "npm-run-all": "^1.2.12",
     "prismjs": "git+https://github.com/PrismJS/prism.git#master",
     "remarkable": "^1.6.0",
     "requirejs": "^2.1.19",
