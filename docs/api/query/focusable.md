@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/query/focusable
+apiBuiltName: ally.query.focusable
 ---
 
 # ally.query.focusable (`ally/query/focusable`)

@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: module-only, shadow-dom
+apiModuleName: ally/event/shadow-focus
+apiBuiltName:
 ---
 
 # `ally/event/shadow-focus`

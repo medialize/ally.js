@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/focusable
+apiBuiltName: ally.is.focusable
 ---
 
 # ally.is.focusable (`ally/is/focusable`)

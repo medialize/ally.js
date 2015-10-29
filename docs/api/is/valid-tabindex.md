@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/valid-tabindex
+apiBuiltName: ally.is.validTabindex
 ---
 
 # ally.is.validTabindex (`ally/is/valid-tabindex`)

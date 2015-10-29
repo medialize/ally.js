@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/map/keycode
+apiBuiltName: ally.map.keycode
 ---
 
 # ally.map.keycode (`ally/map/keycode`)

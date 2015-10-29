@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/shadowed
+apiBuiltName: ally.is.shadowed
 ---
 
 # ally.is.shadowed (`ally/is/shadowed`)

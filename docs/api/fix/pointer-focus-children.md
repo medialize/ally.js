@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/fix/pointer-focus-children
+apiBuiltName: ally.fix.pointerFocusChildren
 ---
 
 # ally.fix.pointerFocusChildren (`ally/fix/pointer-focus-children`)

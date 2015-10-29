@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: shadow-dom, svg
+apiModuleName: ally/style/focus-within
+apiBuiltName: ally.style.focusWithin
 ---
 
 # ally.style.focusWithin (`ally/style/focus-within`)

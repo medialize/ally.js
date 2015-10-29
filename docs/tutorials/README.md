@@ -1,5 +1,8 @@
+---
+layout: doc-page.html
+---
 
-# ally.js Tutorials
+# Tutorials
 
 * [Accessible Dialog](accessible-dialog.md)
 

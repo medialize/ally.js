@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/get/insignificant-branches
+apiBuiltName: ally.get.insignificantBranches
 ---
 
 # ally.get.insignificantBranches (`ally/get/insignificant-branches`)

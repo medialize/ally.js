@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/map/attribute
+apiBuiltName: ally.map.attribute
 ---
 
 # ally.map.attribute (`ally/map/attribute`)

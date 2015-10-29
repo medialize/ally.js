@@ -1,8 +1,10 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/query/tabsequence
+apiBuiltName: ally.query.tabsequence
 ---
 
-# ally.query.tabbable (`ally/query/tabbable`)
+# ally.query.tabsequence (`ally/query/tabsequence`)
 
 Finds keyboard focusable ("tabbable") elements in the DOM and returns them in the order calculated based on `tabindex` attribute values.
 
@@ -28,7 +30,7 @@ TODO: figure out how to integrate demo
 ```html
 <script src="path/to/ally.min.js"></script>
 <script>
-  var element = ally.query.tabbable({
+  var sequence = ally.query.tabsequence({
     // [optional] limit search to given DOM Element
     // defaults to document.documentElement
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
@@ -50,9 +52,9 @@ Using the module instead of the production build:
 
 ```js
 require([
-  'ally/query/tabbable'
-], function(queryTabbable) {
-  var element = queryTabbable({
+  'ally/query/tabsequence'
+], function(queryTabsequence) {
+  var sequence = queryTabsequence({
     // [optional] limit search to given DOM Element
     // defaults to document.documentElement
     // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection

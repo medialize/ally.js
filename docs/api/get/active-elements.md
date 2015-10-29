@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: module-only, shadow-dom
+apiModuleName: ally/get/active-elements
+apiBuiltName:
 ---
 
 # `ally/get/active-elements`

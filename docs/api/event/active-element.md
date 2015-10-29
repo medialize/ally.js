@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: module-only
+apiModuleName: ally/event/active-element
+apiBuiltName:
 ---
 
 # `ally/event/active-element`

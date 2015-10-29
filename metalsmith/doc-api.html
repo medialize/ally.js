@@ -5,11 +5,21 @@
   <title>{{ title }} - {{ pkg.name }}</title>
 </head>
 <body>
-  <h1>{{ title }}</h1>
+  <header>
+    <h1>{{ title }}</h1>
+    <p>{{ pkg.description }}</p>
+    {{> site-navigation }}
+  </header>
 
   {{> table-of-contents }}
-  
-  {{{ contents }}}
+
+  <main>
+    {{{ contents }}}
+  </main>
+
+  <aside>
+    {{> collection-navigation }}
+  </aside>
 
 </body>
 </html>

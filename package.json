@@ -18,7 +18,7 @@
     }
   ],
   "author": "Rodney Rehm <rodney.rehm@medialize.de> (http://rodneyrehm.de/en/)",
-  "homepage": "https://github.com/medialize/ally.js",
+  "homepage": "https://github.com/medialize/ally.js/",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/medialize/ally.js/issues"
@@ -49,8 +49,8 @@
     "build-common": "babel --source-maps --modules common --out-dir dist/common src",
     "build-amd": "babel --source-maps --modules amd --out-dir dist/amd src",
     "watch-amd": "babel --watch --source-maps --modules amd --out-dir dist/amd src",
-    "build-website": "npm run build-docs",
-    "build-docs": "node metalsmith/metalsmith.js && npm run build-data-tables",
+    "build-website": "npm-run-all --parallel build-docs build-data-tables",
+    "build-docs": "node metalsmith/metalsmith.js",
     "build-data-tables": "npm run build-data-tables-focusable",
     "build-data-tables-focusable": "babel-node scripts/data-tables/focusable-tables.js",
     "lint": "npm-run-all --parallel lint-js lint-md",
@@ -81,9 +81,11 @@
     "markdownlint": "git://github.com/rodneyrehm/markdownlint#temporary-fixes",
     "metalsmith": "^2.0.1",
     "metalsmith-broken-link-checker": "^0.1.6",
+    "metalsmith-collections": "^0.7.0",
     "metalsmith-layouts": "^1.4.0",
     "metalsmith-markdown-remarkable": "^0.1.1",
     "metalsmith-packagejson": "^1.0.1",
+    "metalsmith-paths": "^2.1.1",
     "metalsmith-register-helpers": "^0.1.2",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^1.2.12",

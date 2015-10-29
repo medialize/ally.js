@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: module-only
+apiModuleName: ally/get/focus-target
+apiBuiltName:
 ---
 
 # `ally/get/focus-target`

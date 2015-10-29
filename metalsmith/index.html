@@ -5,12 +5,17 @@
   <title>{{ pkg.name }}</title>
 </head>
 <body>
-  <h1>{{ pkg.name }}</h1>
-  <p>{{ pkg.description }}</p>
-
-  {{> table-of-contents }}
+  <header>
+    <h1>{{ pkg.name }}</h1>
+    <p>{{ pkg.description }}</p>
+    {{> site-navigation }}
+  </header>
   
-  {{{ contents }}}
+  {{> table-of-contents }}
+
+  <main>
+    {{{ contents }}}
+  </main>
 
 </body>
 </html>

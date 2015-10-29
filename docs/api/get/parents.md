@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/get/parents
+apiBuiltName: ally.get.parents
 ---
 
 # ally.get.parents (`ally/get/parents`)

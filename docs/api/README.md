@@ -1,5 +1,5 @@
 ---
-layout: doc-listing.html
+layout: doc-page.html
 ---
 
 # API Index

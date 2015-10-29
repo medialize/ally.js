@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/focus-relevant
+apiBuiltName: ally.is.focusRelevant
 ---
 
 # ally.is.focusRelevant (`ally/is/focus-relevant`)

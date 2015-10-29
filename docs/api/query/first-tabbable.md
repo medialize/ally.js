@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/query/first-tabbable
+apiBuiltName: ally.query.firstTabbable
 ---
 
 # ally.query.firstTabbable (`ally/query/first-tabbable`)

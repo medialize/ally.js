@@ -1,0 +1,9 @@
+<nav id="site-navigation">
+{{#each collections}}
+  {{#if @first}}<ul>{{/if}}
+  <li class="{{#contains @key ../collection}}active{{/contains}}">
+    <a href="{{../websiteRoot}}{{this.0.path.dir}}{{#if this.0.path.dir}}/{{/if}}{{this.0.path.base}}">{{@key}}</a>
+  </li>
+  {{#if @last}}</ul>{{/if}}
+{{/each}}
+</nav>

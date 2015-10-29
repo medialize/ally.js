@@ -1,0 +1,13 @@
+<nav id="collection-navigation">
+{{collection-to-siblings}}
+{{#each siblings}}
+  {{#if @first}}<ul>{{/if}}
+  <li class="{{#is this.title ../title}}active{{/is}}">
+    <a
+      class="{{#contains @key ../collection}}active{{/contains}}"
+      href="{{../websiteRoot}}{{this.path.dir}}{{#if this.path.dir}}/{{/if}}{{this.path.base}}"
+    >{{#if this.apiModuleName}}{{this.apiModuleName}}{{else}}{{this.title}}{{/if}}</a>
+  </li>
+  {{#if @last}}</ul>{{/if}}
+{{/each}}
+</nav>

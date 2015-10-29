@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/visible
+apiBuiltName: ally.is.visible
 ---
 
 # ally.is.visible (`ally/is/visible`)

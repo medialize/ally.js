@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: shadow-dom
+apiModuleName: ally/maintain/hidden
+apiBuiltName: ally.maintain.hidden
 ---
 
 # ally.maintain.disabled (`ally/maintain/disabled`)

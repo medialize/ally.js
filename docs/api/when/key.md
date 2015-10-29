@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/when/key
+apiBuiltName: ally.when.key
 ---
 
 # ally.when.key (`ally/when/key`)

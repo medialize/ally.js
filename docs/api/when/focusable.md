@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/when/focusable
+apiBuiltName: ally.when.focusable
 ---
 
 # ally.when.focusable (`ally/when/focusable`)

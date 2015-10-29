@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/fix/pointer-focus-input
+apiBuiltName: ally.fix.pointerFocusInput
 ---
 
 # ally.fix.pointerFocusInput (`ally/fix/pointer-focus-input`)

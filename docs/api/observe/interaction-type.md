@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: module-only
+apiModuleName: ally/observe/interaction-type
+apiBuiltName:
 ---
 
 # `ally/observe/interaction-type`

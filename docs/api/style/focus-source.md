@@ -1,6 +1,8 @@
 ---
 layout: doc-api.html
 tags: shadow-dom
+apiModuleName: ally/style/focus-source
+apiBuiltName: ally.style.focusSource
 ---
 
 # ally.style.focusSource (`ally/style/focus-source`)

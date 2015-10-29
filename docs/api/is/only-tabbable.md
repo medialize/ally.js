@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/only-tabbable
+apiBuiltName: ally.is.onlyTabbable
 ---
 
 # ally.is.onlyTabbable (`ally/is/only-tabbable`)

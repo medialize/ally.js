@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/element/disabled
+apiBuiltName: ally.element.disabled
 ---
 
 # ally.element.disabled (`ally/element/disabled`)

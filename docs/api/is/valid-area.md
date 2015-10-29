@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/is/valid-area
+apiBuiltName: ally.is.validArea
 ---
 
 # ally.is.validArea (`ally/is/valid-area`)

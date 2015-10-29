@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/when/visible-ara
+apiBuiltName: ally.when.visibleArea
 ---
 
 # ally.when.visibleArea (`ally/when/visible-area`)

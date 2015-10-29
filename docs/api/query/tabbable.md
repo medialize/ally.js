@@ -1,5 +1,7 @@
 ---
 layout: doc-api.html
+apiModuleName: ally/query/tabbable
+apiBuiltName: ally.query.tabbable
 ---
 
 # ally.query.tabbable (`ally/query/tabbable`)

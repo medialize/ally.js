@@ -2,6 +2,8 @@
 layout: doc-api.html
 tags: deprecated
 use-instead: api/maintain/disabled.md
+apiModuleName: ally/maintain/focus-trapped
+apiBuiltName: ally.maintain.focusTrapped
 ---
 
 # ally.maintain.focusTrapped (`ally/maintain/focus-trapped`)

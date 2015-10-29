@@ -5,11 +5,23 @@
   <title>{{ title }} - {{ pkg.name }}</title>
 </head>
 <body>
-  <h1>{{ title }}</h1>
+  <header>
+    <h1>{{ title }}</h1>
+    <p>{{ pkg.description }}</p>
+    {{> site-navigation }}
+  </header>
 
   {{> table-of-contents }}
   
-  {{{ contents }}}
+  <main>
+    {{{ contents }}}
+  </main>
+
+  {{#is title "API Index"}}{{else}}
+  <aside>
+    {{> collection-navigation }}
+  </aside>
+  {{/is}}
 
 </body>
 </html>
