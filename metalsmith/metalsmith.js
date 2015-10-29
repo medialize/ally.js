@@ -10,6 +10,7 @@ var layouts = require('metalsmith-layouts');
 var linkChecker = require('metalsmith-broken-link-checker');
 var prepare = require('./plugins/prepare');
 var collections = require('metalsmith-collections');
+var staticFiles = require('metalsmith-static');
 
 Metalsmith(__dirname)
   .source('../docs')
@@ -64,6 +65,10 @@ Metalsmith(__dirname)
       'collection-navigation': 'partials/collection-navigation',
       'table-of-contents': 'partials/table-of-contents',
     },
+  }))
+  .use(staticFiles({
+    src: 'assets',
+    dest: 'assets',
   }))
   .use(linkChecker({
     warn: true,

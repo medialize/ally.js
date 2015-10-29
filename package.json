@@ -87,6 +87,7 @@
     "metalsmith-packagejson": "^1.0.1",
     "metalsmith-paths": "^2.1.1",
     "metalsmith-register-helpers": "^0.1.2",
+    "metalsmith-static": "0.0.5",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^1.2.12",
     "prismjs": "git+https://github.com/PrismJS/prism.git#master",
