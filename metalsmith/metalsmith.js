@@ -11,6 +11,28 @@ var linkChecker = require('metalsmith-broken-link-checker');
 var prepare = require('./plugins/prepare');
 var collections = require('metalsmith-collections');
 var staticFiles = require('metalsmith-static');
+var redirect = require('metalsmith-redirect');
+
+var WEBSITE_ROOT = '/medialize/ally.js/web/';
+
+function getRedirectionMap() {
+  // make sure legacy links are forwarded
+  return {
+    '/tests/focusable/table.html': WEBSITE_ROOT + 'data-tables/focusable.html',
+    '/tests/static-results/focusable.html': WEBSITE_ROOT + 'data-tables/focusable.html',
+    '/examples/active-elements.html': WEBSITE_ROOT + 'api/get/active-elements.html',
+    '/examples/disable-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
+    '/examples/fix-pointer-focus-children.html': WEBSITE_ROOT + 'api/fix/pointer-focus-children.html',
+    '/examples/fix-pointer-focus-input.html': WEBSITE_ROOT + 'api/fix/pointer-focus-input.html',
+    '/examples/fix-pointer-focus-parent.html': WEBSITE_ROOT + 'api/fix/pointer-focus-parent.html',
+    '/examples/focus-source.html': WEBSITE_ROOT + 'api/style/focus-source.html',
+    '/examples/focus-when-visible.html': WEBSITE_ROOT + 'api/when/visible-area.html',
+    '/examples/focus-within.html': WEBSITE_ROOT + 'api/style/focus-within.html',
+    '/examples/index.html': WEBSITE_ROOT + 'api/index.html',
+    '/examples/trap-focus.html': WEBSITE_ROOT + 'api/maintain/focus-trapped.html',
+    '/examples/visible-area.html': WEBSITE_ROOT + 'api/util.html',
+  };
+}
 
 Metalsmith(__dirname)
   .source('../docs')
@@ -21,7 +43,7 @@ Metalsmith(__dirname)
   .use(packageJson())
   .use(function(files, metalsmith, done) {
     var metadata = metalsmith.metadata();
-    metadata['websiteRoot'] = '/medialize/ally.js/web/';
+    metadata['websiteRoot'] = WEBSITE_ROOT;
     done();
   })
   .use(prepare())
@@ -73,6 +95,7 @@ Metalsmith(__dirname)
   .use(linkChecker({
     warn: true,
   }))
+  .use(redirect(getRedirectionMap()))
   .build(function(err) {
     if (err) throw err;
   });

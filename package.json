@@ -86,6 +86,7 @@
     "metalsmith-markdown-remarkable": "^0.1.1",
     "metalsmith-packagejson": "^1.0.1",
     "metalsmith-paths": "^2.1.1",
+    "metalsmith-redirect": "^1.1.0",
     "metalsmith-register-helpers": "^0.1.2",
     "metalsmith-static": "0.0.5",
     "mkdirp": "^0.5.1",
