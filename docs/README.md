@@ -11,9 +11,9 @@ layout: index.html
 
 ## Resources For Contributors
 
-* [Build Infrastructure](build.md)
-* [Documentation Infrastructure](docs.md)
-* [Test Infrastructure](testing.md)
+* [Build Infrastructure](contributing/build.md)
+* [Documentation Infrastructure](contributing/docs.md)
+* [Test Infrastructure](contributing/testing.md)
 
 
 ## Resources On Github
