@@ -12,6 +12,7 @@ var prepare = require('./plugins/prepare');
 var collections = require('metalsmith-collections');
 var staticFiles = require('metalsmith-static');
 var redirect = require('metalsmith-redirect');
+var escapeRegExp = require('escape-regex-string');
 
 var WEBSITE_ROOT = '/medialize/ally.js/web/';
 
@@ -94,6 +95,7 @@ Metalsmith(__dirname)
     dest: 'assets',
   }))
   .use(linkChecker({
+    allowRegex: new RegExp('^' + escapeRegExp(WEBSITE_ROOT)),
     warn: true,
   }))
   .use(redirect(getRedirectionMap()))
