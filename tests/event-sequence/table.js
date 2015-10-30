@@ -5,18 +5,16 @@ require.config({
     'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
     'css.escape': '../../node_modules/css.escape/css.escape',
     // stuff used for testing and co
-    'underscore': '../../node_modules/underscore/underscore',
     'jquery': '../../node_modules/jquery/dist/jquery',
     'sequence-comparison-table': '../../node_modules/sequence-comparison-table/src',
   }
 });
 
 require([
-  'underscore',
   'jquery',
   'sequence-comparison-table/sequence-table',
   './data/all'
-], function (_, $, sequenceTable, data) {
+], function ($, sequenceTable, data) {
 
   var eventMap = {};
   var numberOfSequences = 0;

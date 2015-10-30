@@ -7,7 +7,6 @@ require.config({
     'css.escape': '../../node_modules/css.escape/css.escape',
     // stuff used for testing and co
     'platform': '../../node_modules/platform/platform',
-    'underscore': '../../node_modules/underscore/underscore',
     'jquery': '../../node_modules/jquery/dist/jquery',
     'jquery-ui': '../../node_modules/jquery-ui/ui',
   }

@@ -20,6 +20,7 @@ function getRedirectionMap() {
   return {
     '/tests/focusable/table.html': WEBSITE_ROOT + 'data-tables/focusable.html',
     '/tests/static-results/focusable.html': WEBSITE_ROOT + 'data-tables/focusable.html',
+    '/tests/static-results/scrolling-into-view.html': WEBSITE_ROOT + 'tests/scrolling/table.html',
     '/examples/active-elements.html': WEBSITE_ROOT + 'api/get/active-elements.html',
     '/examples/disable-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
     '/examples/fix-pointer-focus-children.html': WEBSITE_ROOT + 'api/fix/pointer-focus-children.html',
