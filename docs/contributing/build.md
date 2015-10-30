@@ -24,33 +24,9 @@ ally.js is made available in one convenient file, consumable as a browser global
 
 ```sh
 # build the UMD bundle
-npm run build-umd
+npm run build:umd
 # remove everything in dist
 npm run clean
-```
-
-Stop that `npm run` bollocks, gimme real CLI:
-
-```sh
-# build the UMD bundle
-node_modules/.bin/browserify \
-  src/ally.js \
-  --debug \
-  --standalone ally \
-  --transform babelify \
-  | exorcist dist/ally.js.map > dist/ally.js
-# minify the UMD bundle
-node_modules/.bin/uglifyjs \
-  dist/ally.js \
-  --in-source-map dist/ally.js.map \
-  --source-map dist/ally.min.js.map \
-  --preamble '/*! ally.js */' \
-  --screw-ie8 \
-  --mangle \
-  --compress \
-  --output dist/ally.min.js
-# remove everything in dist
-rm -rf dist/*
 ```
 
 ### Converting to AMD and CommonJS
@@ -59,35 +35,11 @@ To allow developers to use selected features (rather than import everything), th
 
 ```sh
 # convert to CommonJS modules
-npm run build-common
+npm run build:common
 # convert to AMD modules
-npm run build-amd
+npm run build:amd
 # keep converting to dist/amd while working on src
-npm run watch-amd
-```
-
-Stop that `npm run` bollocks, gimme real CLI:
-
-```sh
-# convert to CommonJS modules
-node_modules/.bin/babel \
-  --source-maps \
-  --modules common \
-  --out-dir dist/common \
-  src
-# convert to AMD modules
-node_modules/.bin/babel \
-  --source-maps \
-  --modules amd \
-  --out-dir dist/amd \
-  src
-# keep converting to dist/amd while working on src
-node_modules/.bin/babel \
-  --watch \
-  --source-maps \
-  --modules amd \
-  --out-dir dist/amd \
-  src
+npm run watch:amd
 ```
 
 See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
@@ -109,14 +61,7 @@ npm install -g babel-eslint
 ### Usage
 
 ```sh
-npm run lint-js
-```
-
-Stop that `npm run` bollocks, gimme real CLI:
-
-```sh
-node_modules/.bin/eslint {src/**/*.js,test/**/*.js}
-node_modules/.bin/jscs {src,test}
+npm run lint:js
 ```
 
 Linting is done automatically via git hooks by way of [husky](https://www.npmjs.com/package/husky).

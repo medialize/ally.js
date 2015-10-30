@@ -9,17 +9,28 @@ The documentation is authored in markdown in the `docs` directory. We're using [
 
 ## Building The Website
 
-The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the configuration is maintained in `metalsmith.json` and templates and support files are located in the `metalsmith` directory.
+The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the scripts and configuration are maintained in the `metalsmith` directory.
+
+The website is comprised of 3 elements, the markdown sources, data tables and some legacy files from `./tests`.
 
 ```sh
 # lint the markdown
-npm run lint-md
+npm run lint:md
 
 # generate website (to `./web`)
-npm run build-docs
+npm run build:website
+
+# generate only the markdown files
+npm run build:docs
+
+# generate only the data tables
+npm run build:data-tables
+
+# generate only the legacy files
+npm run build:legacy
 ```
 
-Both commands are subsets of the groups `npm run lint` and `npm run build`
+The commands `lint:md` and `build:website` are also executed by `npm run lint` and `npm run build`
 
 If you're new to metalsmith, have a look at [simple static site demo](https://github.com/segmentio/metalsmith/tree/master/examples/static-site) and [getting to know metalsmith](http://www.robinthrift.com/posts/getting-to-know-metalsmith/).
 
@@ -30,7 +41,9 @@ We use the following plugins:
 * [metalsmith-register-helpers](https://github.com/losttype/metalsmith-register-helpers) to use custom handlebar helpers
 * [metalsmith-layouts](https://github.com/superwolff/metalsmith-layouts) to use [handlebars](http://handlebarsjs.com/) templates
 * [metalsmith-broken-link-checker](https://github.com/davidxmoody/metalsmith-broken-link-checker) to verify link integrity
-
+* [metalsmith-collections](https://github.com/segmentio/metalsmith-collections) to deal with groups of files
+* [metalsmith-static](https://github.com/TheHydroImpulse/metalsmith-static) to copy static assets
+* [metalsmith-redirect](https://github.com/aymericbeaumet/metalsmith-redirect/) to create HTML redirection files to forward old URLs to their new homes
 
 ## Authoring Documentation
 

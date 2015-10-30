@@ -63,8 +63,8 @@ export SAUCE_USERNAME=allyjs
 export SAUCE_ACCESS_KEY=nope
 
 # run all tests
-npm run test-browserstack
-npm run test-sauce
+npm run test:browserstack
+npm run test:sauce
 
 # run all tests (without npm)
 ./node_modules/.bin/intern-runner \

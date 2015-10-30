@@ -14,7 +14,7 @@ var staticFiles = require('metalsmith-static');
 var redirect = require('metalsmith-redirect');
 var escapeRegExp = require('escape-regex-string');
 
-var WEBSITE_ROOT = '/medialize/ally.js/web/';
+var WEBSITE_ROOT = '/medialize/ally.js/';
 
 function getRedirectionMap() {
   // make sure legacy links are forwarded
