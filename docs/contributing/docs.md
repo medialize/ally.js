@@ -64,9 +64,10 @@ In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a 
 
 * **NOTE:** I'm informing you of something you SHOULD know
 * **WARNING:** I'm informing you of something you MUST know (because it's not obvious)
+* **HELP:** I'm informing you of something you can contribute to this project
 ```
 
 In any other doc page (e.g. `layout: doc-page.html`) notes and warnings do not have to (but can) be contained in a `## Notes` section. The notation (list with bold identifier, identifier upper-cased and containing the colon) remains the same. The list notation is used to allow `metalsmith/plugin/prepare.js` reformatting those blocks to `<div class="note">…</div>` while still allowing github to render something readable.
 
-* **NOTE:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
+* **HELP:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
 

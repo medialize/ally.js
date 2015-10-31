@@ -27,7 +27,7 @@ When clicking on the `<span>` element, focus is given to the `<div>`, because it
 
 ## Demo
 
-TODO: figure out how to integrate demo
+* **HELP:** Feel free to create and submit a demo for this component.
 
 
 ## Usage

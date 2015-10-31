@@ -60,11 +60,11 @@ module.exports = function($, data) {
     var $li = $label.parent();
     var $ul = $li.parent();
     var label = $label.text();
-    if (label !== 'NOTE:' && label !== 'WARNING:') {
+    if (label !== 'NOTE:' && label !== 'WARNING:' && label !== 'HELP:') {
       return;
     }
 
-    var $div = $('<div>').attr('class', label === 'NOTE:' ? 'note' : 'warning');
+    var $div = $('<div>').attr('class', label.slice(0, -1).toLowerCase());
     $div.append($li.html());
     $ul.after($div);
     $li.remove();

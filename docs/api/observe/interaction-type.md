@@ -20,7 +20,7 @@ Observes keyboard-, pointer-, mouse- and touch-events so that a query for the cu
 
 ## Demo
 
-TODO: figure out how to integrate demo
+* **HELP:** Feel free to create and submit a demo for this component.
 
 
 ## Usage

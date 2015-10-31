@@ -18,7 +18,7 @@ Identifies the `ShadowHost` ancestry of the active element
 
 ## Demo
 
-TODO: figure out how to integrate demo
+* **HELP:** Feel free to create and submit a demo for this component.
 
 
 ## Usage

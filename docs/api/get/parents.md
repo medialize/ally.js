@@ -19,7 +19,7 @@ The returned list is sorted as follows `[element, element.parent, element.parent
 
 ## Demo
 
-TODO: figure out how to integrate demo
+* **HELP:** Feel free to create and submit a demo for this component.
 
 
 ## Usage
