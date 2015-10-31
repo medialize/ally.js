@@ -53,7 +53,7 @@ export default function(element) {
   }
 
   if (nodeName === 'label' && !canFocusLabelTabindex) {
-    // FIXME: <label tabindex="0"> only tabbable in Firefox, not script-focusable, needs to be dropped here!
+    // <label tabindex="0"> is only tabbable in Firefox, not script-focusable
     // there's no way to make an element focusable other than by adding a tabindex,
     // and focus behavior of the label element seems hard-wired to ignore tabindex
     // in some browsers (like Gecko, Blink and WebKit)

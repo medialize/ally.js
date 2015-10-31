@@ -6,6 +6,8 @@ layout: doc-page.html
 
 The documentation is authored in markdown in the `docs` directory. We're using [Remarkable](https://www.npmjs.com/package/remarkable) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `scripts/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 
+The idea is to create a documentation that can be read on github and on the generated website.
+
 
 ## Building The Website
 
@@ -45,9 +47,13 @@ We use the following plugins:
 * [metalsmith-static](https://github.com/TheHydroImpulse/metalsmith-static) to copy static assets
 * [metalsmith-redirect](https://github.com/aymericbeaumet/metalsmith-redirect/) to create HTML redirection files to forward old URLs to their new homes
 
+
 ## Authoring Documentation
 
-// TODO: explain the documentation structure
+The public API provided by ally.js needs to be explained in `docs/api`. As every component has its source file, it has an accompanying markdown file for documentation. ally.js contains components that are not meant to be used directly, thus do not have to be documented in detail.
+
+Anything you document should be written in a way that caters to an audience that may not know very much about accessibility. If bigger picture explanations are required, consider writing a tutorial instead of cramming it into the API docs.
+
 
 ### Notes and Warnings
 
