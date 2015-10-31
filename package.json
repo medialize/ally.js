@@ -72,7 +72,6 @@
     "cheerio": "^0.19.0",
     "codeclimate-test-reporter": "^0.1.0",
     "dalek-driver-chrome": "git://github.com/dalekjs/dalek-driver-chrome.git#0410d81",
-    "escape-regex-string": "^1.0.4",
     "eslint": "^1.4.3",
     "exorcist": "^0.4.0",
     "glob": "^5.0.14",
@@ -103,7 +102,8 @@
     "sequence-comparison-table": "^0.2.1",
     "shelljs": "^0.5.3",
     "uglifyjs": "^2.4.10",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "urijs": "^1.16.1"
   },
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",

@@ -9,10 +9,10 @@ var registerHelpers = require('metalsmith-register-helpers');
 var layouts = require('metalsmith-layouts');
 var linkChecker = require('metalsmith-broken-link-checker');
 var prepare = require('./plugins/prepare');
+var absoluteUrl = require('./plugins/absolute-url');
 var collections = require('metalsmith-collections');
 var staticFiles = require('metalsmith-static');
 var redirect = require('metalsmith-redirect');
-var escapeRegExp = require('escape-regex-string');
 
 var WEBSITE_ROOT = '/medialize/ally.js/';
 
@@ -43,11 +43,10 @@ Metalsmith(__dirname)
     linkify: true,
   }))
   .use(packageJson())
-  .use(function(files, metalsmith, done) {
-    var metadata = metalsmith.metadata();
-    metadata['websiteRoot'] = WEBSITE_ROOT;
-    done();
-  })
+  .use(absoluteUrl({
+    property: 'websiteRoot',
+    define: WEBSITE_ROOT,
+  }))
   .use(prepare())
   .use(paths())
   .use(collections({
@@ -94,11 +93,13 @@ Metalsmith(__dirname)
     src: 'assets',
     dest: 'assets',
   }))
+  .use(redirect(getRedirectionMap()))
+  .use(absoluteUrl({
+    resolve: WEBSITE_ROOT,
+  }))
   .use(linkChecker({
-    allowRegex: new RegExp('^' + escapeRegExp(WEBSITE_ROOT)),
     warn: true,
   }))
-  .use(redirect(getRedirectionMap()))
   .build(function(err) {
     if (err) throw err;
   });
