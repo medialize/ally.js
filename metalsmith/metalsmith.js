@@ -87,6 +87,7 @@ Metalsmith(__dirname)
       'site-navigation': 'partials/site-navigation',
       'collection-navigation': 'partials/collection-navigation',
       'table-of-contents': 'partials/table-of-contents',
+      'site-footer': 'partials/site-footer',
     },
   }))
   .use(staticFiles({

@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
   <title>{{ pkg.name }}</title>
   <link rel="stylesheet" href="{{websiteRoot}}assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix>
 </head>
 <body>
   <header>
@@ -12,11 +13,68 @@
     {{> site-navigation }}
   </header>
   
-  {{> table-of-contents }}
-
   <main>
-    {{{ contents }}}
+    <article class="what-ally-is">
+      <header>
+        <h1>What is ally.js?</h1>
+      </header>
+
+      <section>
+        <p>ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications can be made accessible more easily.</p>
+
+        <p>ally.js has been tested on IE10+, Android 4.4+ and iOS8+ alongside the latest desktop versions of Firefox, Chrome and Safari.</p>
+
+        <h2>ally.js 1.0.0 is primarily concerned with focus navigation:</h2>
+        <ul>
+          <li>Identify and absorb browser differences regarding which elements are considered focusable</li>
+          <li>Query the DOM for all focusable or tabbable (keyboard focusable) elements</li>
+          <li>Trap focus navigation in a DOM sub-tree</li>
+          <li>Make DOM sub-trees inert (i.e. disable all element's from being focused or interacted with)</li>
+          <li>Identify focused elements and focus changes within Shadow DOM</li>
+          <li>Provide <code>:focus-within</code> (CSS Selectors Level 4) Polyfill</li>
+          <li>Determine how focus changed (keyboard, mouse, script) to apply different focus outline styles</li>
+          <li>Determine when an element is focusable and visible in the viewport to prevent browsers from scrolling the element into view upon focus</li>
+        </ul>
+        <p>Have a look at the <a href="api/index.html">API Documentation</a>.</p>
+      </section>
+    </article>
+
+    <article class="getting-started">
+      <header>
+        <h1>Getting Started</h1>
+      </header>
+
+      <section>
+        <p>ally.js is available on <a href="https://www.npmjs.com/package/ally.js">npm</a> and can be downloaded from the <a href="https://github.com/medialize/ally.js/releases">release page</a>.</p>
+        <p>ally.js comes in a pre-built UMD bundle that is ready for use with <code>&lt;script&gt;</code>, AMD and CommonJS loaders. The UMD bundle contains all the dependencies and weighs in at 20KB gzipped. The modular architecture allows you to consume only specific components as AMD, CommonJS and ES6. Have a look at the <a href="getting-started.html">Getting Started Guide</a>.</p>
+      </section>
+      <section>
+        <p>Using ally.js is just a matter of dropping in the library:</p>
+        <pre><code class="language-markup">&lt;script src=&quot;path/to/ally.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  var elements = ally.query.focusable();
+  console.log(&quot;focusable elements&quot;, elements);
+&lt;/script&gt;</code></pre>
+      </section>
+    </article>
+
+    <article class="what-people-say">
+      <header>
+        <h1>What People Say</h1>
+      </header>
+      <section>
+        <blockquote>
+          <span>This is a fantastic piece of information and I'm utterly in love with the helper methods ally.js is offering to make this (usually painful) work nice and easy.</span>
+          <a href="https://twitter.com/ginader">Dirk Ginader</a>
+        </blockquote>
+      </section>
+    </article>
+
   </main>
 
+  {{> site-footer }}
+
+  <script src="{{websiteRoot}}assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
 </body>
 </html>

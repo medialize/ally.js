@@ -3,12 +3,12 @@
 <head>
 	<meta charset="utf-8" />
   <title>{{ title }} - {{ pkg.name }}</title>
-  <link rel="stylesheet" href="{{websiteRoot}}assets/style.css">
+  <link rel="stylesheet" href="{{websiteRoot}}assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix>
 </head>
 <body>
   <header>
-    <h1>{{ title }}</h1>
+    <h1>{{ pkg.name }}</h1>
     <p>{{ pkg.description }}</p>
     {{> site-navigation }}
   </header>
@@ -23,15 +23,9 @@
     {{> collection-navigation }}
   </aside>
 
-  <script>
-    // map languages for prism
-    [].forEach.call(document.querySelectorAll('pre > code'), function(element) {
-      element.className = element.className
-        .replace('language-html', 'language-markup')
-        .replace('language-js', 'language-javascript');
-    });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+  {{> site-footer }}
 
+  <script src="{{websiteRoot}}assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
 </body>
 </html>

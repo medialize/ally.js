@@ -1,9 +1,0 @@
-
-body > header > h1 {
-  color: navy;
-}
-
-main h1:first-of-type {
-  /* document's headline was pulled out */
-  display: none;
-}

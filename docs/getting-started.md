@@ -7,20 +7,29 @@ layout: doc-page.html
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API Documentation](api/README.md) to learn what the library actually provides.
 
 
-## Installing And Loading ally.js
+## Downloading ally.js
 
-You can [download](https://github.com/medialize/ally.js/releases) the production file `ally.min.js` from the github release page, or install it using your package manager of choice:
+You can [download](https://github.com/medialize/ally.js/releases) the production file `ally.min.js` (and `ally.min.js.map` if you want [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) support) from the github release page, or install it using npm:
 
 ```sh
-# using npm for package management
 npm install ally.js --save
-# using bower for package management
-bower install ally.js --save
 ```
 
-### Using ally.js as `<script>`
+## Loading ally.js From CDN
 
-Downloaded the production file `ally.min.js` from the [releases page](https://github.com/medialize/ally.js/releases) and include it in the document:
+**FIXME:** CDNjs support is [not yet available](https://github.com/cdnjs/cdnjs/issues/6020)
+
+ally.js is made available for production use by [cdnjs](https://cdnjs.com/libraries/ally.js):
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.0.0-beta.3/ally.min.js"></script>
+<script>
+  console.log("loaded ally.js in version", ally.version);
+</script>
+```
+
+
+## Using ally.js as `<script>`
 
 ```html
 <script src="path/to/ally.min.js"></script>
@@ -29,7 +38,8 @@ Downloaded the production file `ally.min.js` from the [releases page](https://gi
 </script>
 ```
 
-### Using ally.js as AMD
+
+## Using ally.js as AMD
 
 The production bundle contains all dependencies, allowing you to require ally.js directly:
 
@@ -45,11 +55,11 @@ Alternatively you can use only specific modules provided by ally.js, but need to
 require.config({
   paths: {
     // map to AMD files
-    'ally': 'bower_components/ally.js/dist/amd',
+    'ally': 'node_modules/ally.js/dist/amd',
     // provide paths to dependencies
-    'array.prototype.findindex': 'bower_components/array.prototype.findindex/index',
-    'css.escape': 'bower_components/css.escape/css.escape',
-    'platform': 'bower_components/platform/platform',
+    'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
+    'css.escape': 'node_modules/css.escape/css.escape',
+    'platform': 'node_modules/platform/platform',
   }
 });
 ```
@@ -62,7 +72,8 @@ require(['ally/version'], function(allyVersion) {
 });
 ```
 
-### Using ally.js as CommonJS
+
+## Using ally.js as CommonJS
 
 The production bundle contains all dependencies, allowing you to require ally.js directly:
 
@@ -78,7 +89,8 @@ var allyVersion = require('ally.js/dist/common/version');
 console.log("loaded version of ally.js", allyVersion);
 ```
 
-### Using ally.js as ES6
+
+## Using ally.js as ES6
 
 ally.js is authored in ES6 and its modules are accessible in the `src` directory:
 

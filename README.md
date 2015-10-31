@@ -2,7 +2,7 @@
 
 ---
 
-ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. Its goal is to be **A library to help applications with accessibility concerns**. The intention is to separate these generic components from actual applications and other libraries.
+ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. Its goal is to be **A JavaScript library to help web applications with accessibility concerns**. The intention is to separate these generic components from actual applications and other libraries.
 
 For the time being ally.js is developed along side my actual work projects and features get added to ally.js once they become necessary to them. Of course you're welcome to contribute whatever and however you can. I don't bite, promise. See [GOALS.md](GOALS.md) to learn what I want this project to become.
 
