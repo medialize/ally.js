@@ -79,7 +79,7 @@ export default {
   when: {
     focusable: whenFocusable,
     key: whenKey,
-    visible: whenVisibleArea,
+    visibleArea: whenVisibleArea,
   },
 
   get: {
