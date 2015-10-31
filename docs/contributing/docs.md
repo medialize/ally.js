@@ -55,6 +55,11 @@ The public API provided by ally.js needs to be explained in `docs/api`. As every
 Anything you document should be written in a way that caters to an audience that may not know very much about accessibility. If bigger picture explanations are required, consider writing a tutorial instead of cramming it into the API docs.
 
 
+### Embedding Demos
+
+You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by wrapping it in a markdown code-block with the language `embed` specified.
+
+
 ### Notes and Warnings
 
 In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a list of notes and warnings in the following form:

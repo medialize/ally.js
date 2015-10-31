@@ -73,4 +73,22 @@ module.exports = function($, data) {
     }
   });
 
+  $('pre > code.language-embed').each(function() {
+    var $code = $(this);
+    var $pre = $code.parent();
+    var $embed = $($code.text());
+    var $link = $('<a>')
+      .attr('href', $embed.first().attr('href'))
+      .attr('target', '_blank')
+      .attr('class', 'open-embed')
+      .text('Open the embedded demo in a new window')
+      .insertAfter($pre);
+    var $container = $('<section>')
+      .attr('class', 'embed')
+      .append($embed)
+      .append($link);
+    $pre.after($container);
+    $pre.remove();
+  });
+
 }
