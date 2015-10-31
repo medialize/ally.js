@@ -79,7 +79,6 @@ Especially when dealing with transitional user interfaces we need to know when a
 Sometimes you need some DOM traversal utilities
 
 * [`ally/get/insignificant-branches`](get/insignificant-branches.md) returns an array containing the branches of the DOM that do contain any of the target elements
-* [`ally/get/parents`](get/parents.md) returns an array containing all parent elements
 
 
 ## `ally/map/*` Values

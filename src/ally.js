@@ -30,7 +30,6 @@ import visible from './is/visible';
 
 import elementDisabled from './element/disabled';
 import insignificantBranches from './get/insignificant-branches';
-import parents from './get/parents';
 
 import attribute from './map/attribute';
 import keycode from './map/keycode';
@@ -85,7 +84,6 @@ export default {
 
   get: {
     insignificantBranches,
-    parents,
   },
 
   map: {
