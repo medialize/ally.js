@@ -30,7 +30,9 @@ The following things are done in order to make an element inert:
 
 ## Demo
 
-TODO: figure out how to integrate demo
+```embed
+<a class="jsbin-embed" href="https://jsbin.com/cagazu/embed?output">ally.js ally/element/disabled Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+```
 
 
 ## Usage

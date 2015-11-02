@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ally.js ally/element/disabled Example</title>
+  <link rel="jsbin" href="https://jsbin.com/cagazu/">
+  <style id="example-css">
+    .disable-target {
+      display: inline-block;
+      padding: 2px;
+      border: 1px solid #666;
+      background: #EEE;
+      color: #333;
+      cursor: pointer;
+    }
+
+    :disabled,
+    [data-ally-disabled="true"] {
+      border: 1px solid #CCC;
+      background: #DDD;
+      color: #AAA;
+      cursor: auto;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1>Accessible ally/element/disabled Tutorial</h1>
+
+  <p>HTML does not provide a way to disable elements other than form controls (input, textarea, select, button, fieldset). But since <code>&lt;div role=&quot;button&quot; &hellip;&gt;</code> can be made to behave just like a regular <code>&lt;button role=&quot;button&quot; &hellip;&gt;</code>, the ability to disable the element must be available as well. This example shows how <code>ally/element/disabled</code> can help with that.</p>
+  <p>There are three buttons, the "disable element" button allows you to toggle the disabled state of the other two. One of the two example buttons is a real button, the other is a <code>&lt;div role=&quot;button&quot;&gt;</code></p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button id="toggle-disabled" type="button" data-state="disable">disable elements</div>
+    <hr>
+    <div class="disable-target" id="target-div" role="button" tabindex="0" onclick="return false">example div</div>
+    <button class="disable-target" id="target-button" type="button">example button</div>
+  </main>
+</div>
+
+<!-- FIXME: replace brcdn with cdnjs when ready -->
+<script src="//brcdn.org/7nGza6dVndwIrMSYB1Si8B73s.js"></script>
+<script>ally = ally.js;</script>
+
+<script id="example-js">
+  var button = document.getElementById('toggle-disabled');
+  var targets = document.querySelectorAll('.disable-target');
+  button.addEventListener('click', function(event) {
+    var state = this.getAttribute('data-state');
+    if (state === 'disable') {
+      // disable elements
+      ally.element.disabled(targets[0], true);
+      ally.element.disabled(targets[1], true);      
+      // update toggle button
+      this.setAttribute('data-state', 'enable');
+      this.textContent = 'enable elements';
+    } else {
+      // enable elements
+      ally.element.disabled(targets[0], false);
+      ally.element.disabled(targets[1], false);
+      // update toggle button
+      this.setAttribute('data-state', 'disable');
+      this.textContent = 'disable elements';
+    }
+  }, false);
+</script>
+
+</body>
+</html>
