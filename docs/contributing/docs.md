@@ -59,6 +59,51 @@ Anything you document should be written in a way that caters to an audience that
 
 You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by wrapping it in a markdown code-block with the language `embed` specified.
 
+---
+
+A demo document is named `{{slug}}.example.html` (for multiple `{{slug}}.example-2.html`) and placed in the same directory as the API document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
+
+Examples must follow the following general structure.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ally.js {{example_title}} Example</title>
+  <link rel="jsbin" href="{{example_jsin}}">
+  <style id="example-css">
+    {{example_style}}
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1>Accessible {{example_title}} Tutorial</h1>
+
+  <p>{{example_description}}</p>
+</article>
+
+<div id="example-html">
+  <main>
+    {{example_markup}}
+  </main>
+</div>
+
+<!-- FIXME: replace brcdn with cdnjs when ready -->
+<script src="//brcdn.org/7nGza6dVndwIrMSYB1Si8B73s.js"></script>
+<script>ally = ally.js;</script>
+
+<script id="example-js">
+  {{example_script}}
+</script>
+
+</body>
+</html>
+```
+
+If an example is made available on [JSBin.com](https://jsbin.com), the `<link rel="jsbin" href="…">` element must reference the bin. Contents of `#example-js` and `#example-css` go into the bin's JavaScript and CSS sections, respecively. The bin's HTML section contains the HTML document, with the `<script id="example-js">` and `<style id="example-css">` elements *removed* (as they are provided in their own sections).
+
 
 ### Notes and Warnings
 

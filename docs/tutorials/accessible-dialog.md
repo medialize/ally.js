@@ -502,8 +502,3 @@ function openDialog() {
 ```embed
 <a class="jsbin-embed" href="https://jsbin.com/qawasag/embed?output">ally.js Dialog Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
 ```
-
----
-
-And that's it, we've done everything we can to make our dialog accessible. Have a look at the assembled code in the [ally.js Dialog Example](./dialog.example.html), or [play with it on jsbin.com](#todo-jsbin-demo).
-
