@@ -31,7 +31,7 @@ function getRedirectionMap() {
     '/examples/focus-when-visible.html': WEBSITE_ROOT + 'api/when/visible-area.html',
     '/examples/focus-within.html': WEBSITE_ROOT + 'api/style/focus-within.html',
     '/examples/index.html': WEBSITE_ROOT + 'api/index.html',
-    '/examples/trap-focus.html': WEBSITE_ROOT + 'api/maintain/focus-trapped.html',
+    '/examples/trap-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
     '/examples/visible-area.html': WEBSITE_ROOT + 'api/util.html',
   };
 }

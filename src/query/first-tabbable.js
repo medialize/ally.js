@@ -6,9 +6,7 @@
     otherwise return the context itself, if it is focusable.
 
     Note: Chrome's <dialog> will focus the first tabbable element, even if it has
-    [tabindex="1"]. To mimic that behavior when trapping focus, you'd have to not
-    only handle out-of-bounds situation (like maintain/focus-trapped does), but also handle
-    <kbd>Tab</kbd> for intermediate elements. Since [tabindex="1"] is considered
+    [tabindex="1"]. Since [tabindex="1"] is considered
     bad practice we'll ignore it until someone complains.
  */
 

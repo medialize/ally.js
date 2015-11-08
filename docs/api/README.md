@@ -29,7 +29,6 @@ Sometimes `:focus` is not enough for communicating your application's intentions
 While it's best to use standardized features and leave browsers to figure things out, specifications sometimes leave us hanging in limbo.
 
 * [`ally/maintain/disabled`](maintain/disabled.md) renders elements inert to prevent any user interaction
-* [`ally/maintain/focus-trapped`](maintain/focus-trapped.md) contains focus in a given sub-tree of the document
 * [`ally/maintain/hidden`](maintain/hidden.md) sets `aria-hidden="true"` on insignificant branches
 
 

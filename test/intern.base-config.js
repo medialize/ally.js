@@ -91,7 +91,6 @@ define([
       'test/unit/is.valid-tabindex.test',
       'test/unit/is.visible.test',
       'test/unit/maintain.disabled.test',
-      'test/unit/maintain.focus-trapped.test',
       'test/unit/maintain.hidden.test',
       'test/unit/observe.interaction-type.test',
       'test/unit/prototype.element.prototype.matches.test',

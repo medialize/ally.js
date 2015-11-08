@@ -23,6 +23,7 @@
 
 * `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
 * dropping `focus/first` in favor of `query/first-tabbable`
+* dropping `focus/trap` in favor of `maintain/disabled`
 * `dom/is-valid-area` now returns `false` for elements that are not `<area>`
 * `dom/is-valid-tabindex` now returns `false` for elements without `tabindex` attribute
 * see the [API docs](docs/api/README.md) for the new function signatures
@@ -51,7 +52,6 @@
   * `focus/when-visible.js` to `when/focusable.js`
   * `focus/within.js` to `style/focus-within.js`
   * `focus/disable-focus` to `maintain/disabled`
-  * `focus/trap` to `maintain/focus-trapped`
 
 
 ## 0.0.7 (July 8th 2015) ##
