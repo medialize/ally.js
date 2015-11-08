@@ -1,11 +1,11 @@
 ---
 layout: doc-api.html
-tags: module-only, shadow-dom
+tags: internal, shadow-dom
 apiModuleName: ally/event/shadow-focus
-apiBuiltName:
+apiBuiltName: ally.event.shadowFocus
 ---
 
-# `ally/event/shadow-focus`
+# `ally.event.shadowFocus` (`ally/event/shadow-focus`)
 
 Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
@@ -13,7 +13,6 @@ Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent]
 ## Notes
 
 * **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-* **NOTE:** This modules is only available to be consumed via ES6, AMD or CommonJS directly, it is *not* exposed in the production bundle `ally.min.js`.
 
 
 ## Demo
@@ -22,6 +21,24 @@ Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent]
 
 
 ## Usage
+
+```html
+<script src="path/to/ally.min.js"></script>
+<script>
+  document.addEventListener('shadow-focus', function(event) {
+    // event.detail.elements: complete focus ancestry (array of nodes)
+    // event.detail.active: the actually focused element within the Shadow DOM
+    // event.detail.hosts: the shadow host ancestry of the active element
+  }, false);
+
+  // start emitting shadow-focus
+  var handle = ally.event.shadowFocus();
+  // stop emitting shadow-focus
+  handle.disengage();
+</script>
+```
+
+Using the module instead of the production build:
 
 ```js
 document.addEventListener('shadow-focus', function(event) {
@@ -33,6 +50,7 @@ document.addEventListener('shadow-focus', function(event) {
 require([
   'ally/event/shadow-focus'
 ], function(eventShadowFocus) {
+  // start emitting shadow-focus
   var handle = eventShadowFocus();
   // stop emitting shadow-focus
   handle.disengage();

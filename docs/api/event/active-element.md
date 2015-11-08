@@ -1,11 +1,11 @@
 ---
 layout: doc-api.html
-tags: module-only
+tags: internal
 apiModuleName: ally/event/active-element
-apiBuiltName:
+apiBuiltName: ally.event.activeElement
 ---
 
-# `ally/event/active-element`
+# `ally.event.activeElement` (`ally/event/active-element`)
 
 Observes changes to `document.activeElement` regardless of focus/blur events and emits `active-element` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
@@ -26,7 +26,6 @@ document.addEventListener('focus', function(event) {
 ## Notes
 
 * **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-* **NOTE:** This modules is only available to be consumed via ES6, AMD or CommonJS directly, it is *not* exposed in the production bundle `ally.min.js`.
 
 
 ## Demo
@@ -35,6 +34,23 @@ document.addEventListener('focus', function(event) {
 
 
 ## Usage
+
+```html
+<script src="path/to/ally.min.js"></script>
+<script>
+  document.addEventListener('active-element', function(event) {
+    // event.detail.focus: element that received focus
+    // event.detail.blur: element that lost focus
+  }, false);
+
+  // start emitting active-element
+  var handle = ally.event.activeElement();
+  // stop emitting active-element
+  handle.disengage();
+</script>
+```
+
+Using the module instead of the production build:
 
 ```js
 document.addEventListener('active-element', function(event) {
@@ -45,6 +61,7 @@ document.addEventListener('active-element', function(event) {
 require([
   'ally/event/active-element'
 ], function(eventActiveElement) {
+  // start emitting active-element
   var handle = eventActiveElement();
   // stop emitting active-element
   handle.disengage();

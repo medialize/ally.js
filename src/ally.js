@@ -1,93 +1,30 @@
 
-import pointerFocusChildren from './fix/pointer-focus-children';
-import pointerFocusInput from './fix/pointer-focus-input';
-import pointerFocusParent from './fix/pointer-focus-parent';
+// this builds up the UMD bundle
 
-import focusSource from './style/focus-source';
-import focusWithin from './style/focus-within';
-
-import maintainDisabled from './maintain/disabled';
-import maintainHidden from './maintain/hidden';
-
-import whenFocusable from './when/focusable';
-import whenKey from './when/key';
-import whenVisibleArea from './when/visible-area';
-
-import queryFocusable from './query/focusable';
-import queryFirstTabbable from './query/first-tabbable';
-import queryTabbable from './query/tabbable';
-import queryTabsequence from './query/tabsequence';
-
-import disabled from './is/disabled';
-import focusRelevant from './is/focus-relevant';
-import focusable from './is/focusable';
-import shadowed from './is/shadowed';
-import tabbable from './is/tabbable';
-import validArea from './is/valid-area';
-import validTabindex from './is/valid-tabindex';
-import visible from './is/visible';
-
-import elementDisabled from './element/disabled';
-import insignificantBranches from './get/insignificant-branches';
-
-import attribute from './map/attribute';
-import keycode from './map/keycode';
-
+import element from './element/_element';
+import event from './event/_event';
+import fix from './fix/_fix';
+import get from './get/_get';
+import is from './is/_is';
+import maintain from './maintain/_maintain';
+import map from './map/_map';
+import observe from './observe/_observe';
+import query from './query/_query';
+import style from './style/_style';
+import when from './when/_when';
 import version from './version';
 
 export default {
-  fix: {
-    pointerFocusChildren,
-    pointerFocusInput,
-    pointerFocusParent,
-  },
-
-  style: {
-    focusSource,
-    focusWithin,
-  },
-
-  maintain: {
-    disabled: maintainDisabled,
-    hidden: maintainHidden,
-  },
-
-  query: {
-    firstTabbable: queryFirstTabbable,
-    focusable: queryFocusable,
-    tabbable: queryTabbable,
-    tabsequence: queryTabsequence,
-  },
-
-  is: {
-    disabled,
-    focusRelevant,
-    focusable,
-    shadowed,
-    tabbable,
-    validArea,
-    validTabindex,
-    visible,
-  },
-
-  element: {
-    disabled: elementDisabled,
-  },
-
-  when: {
-    focusable: whenFocusable,
-    key: whenKey,
-    visibleArea: whenVisibleArea,
-  },
-
-  get: {
-    insignificantBranches,
-  },
-
-  map: {
-    attribute,
-    keycode,
-  },
-
+  element,
+  event,
+  fix,
+  get,
+  is,
+  maintain,
+  map,
+  observe,
+  query,
+  style,
+  when,
   version,
 };

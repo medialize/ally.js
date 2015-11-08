@@ -1,11 +1,11 @@
 ---
 layout: doc-api.html
-tags: module-only
+tags: internal
 apiModuleName: ally/get/parents
-apiBuiltName:
+apiBuiltName: ally.get.parents
 ---
 
-# `ally/get/parents`
+# `ally.get.parents` (`ally/get/parents`)
 
 Identifies the parent elements
 
@@ -23,6 +23,21 @@ The returned list is sorted as follows `[element, element.parent, element.parent
 
 
 ## Usage
+
+```html
+<script src="path/to/ally.min.js"></script>
+<script>
+  var elements = ally.get.parents({
+    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+    // the first element element of a collection is used
+    context: '#element-to-start-from',
+  });
+  // elements is an array of HTMLElement and looks like
+  // [context, context.parent, context.parent.parent, …]
+</script>
+```
+
+Using the module instead of the production build:
 
 ```js
 require([

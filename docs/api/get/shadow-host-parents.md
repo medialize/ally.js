@@ -1,11 +1,11 @@
 ---
 layout: doc-api.html
-tags: module-only, shadow-dom
+tags: internal, shadow-dom
 apiModuleName: ally/get/shadow-host-parents
-apiBuiltName:
+apiBuiltName: ally.get.shadowHostParents
 ---
 
-# `ally/get/shadow-host-parents`
+# `ally.get.shadowHostParents` (`ally/get/shadow-host-parents`)
 
 Identifies the `ShadowHost` ancestry of an element
 
@@ -13,7 +13,6 @@ Identifies the `ShadowHost` ancestry of an element
 ## Notes
 
 * **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-* **NOTE:** This modules is only available to be consumed via ES6, AMD or CommonJS directly, it is *not* exposed in the production bundle `ally.min.js`.
 
 
 ## Demo
@@ -22,6 +21,22 @@ Identifies the `ShadowHost` ancestry of an element
 
 
 ## Usage
+
+```html
+<script src="path/to/ally.min.js"></script>
+<script>
+  var elements = ally.get.shadowHostParents({
+    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
+    // the first element element of a collection is used
+    context: '#element-to-start-from',
+  });
+  // elements is an array of HTMLElement
+  // elements[0] points to the actual active element (even within a ShadowRoot)
+  // [0+n] is the hierarchy of ShadowHosts with [length -1] being the top most shadow-host
+</script>
+```
+
+Using the module instead of the production build:
 
 ```js
 require([
