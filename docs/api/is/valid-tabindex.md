@@ -32,18 +32,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/is/valid-tabindex'
-], function(isValidTabindex) {
-  var element = document.getElementById('victim');
-  var validTabindex = isValidTabindex(element);
-  // validTabindex is a boolean
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

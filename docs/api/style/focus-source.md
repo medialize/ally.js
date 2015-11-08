@@ -102,40 +102,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/style/focus-source'
-], function(styleFocusSource) {
-  // engage focus source style for the entire document
-  var handle = styleFocusSource();
-  // disengage focus source style
-  handle.disengage();
-
-  // get current focus source
-  handle.current(); // "key", "pointer", "script"
-
-  // test if a focus source has occured before
-  handle.used("key"); // true, false
-
-  // make the next focus event set a specified source
-  // regardless of the identified interaction type
-  // false acts as a reset
-  handle.next("pointer");
-
-  // make the next focus event set the current source
-  // alias for: focusSource.next(focusSource.current());
-  // false acts as a reset
-  handle.repeat();
-
-  // make all focus events set a specified source
-  // regardless of the identified interaction type
-  // false acts as a reset
-  handle.lock("pointer");
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

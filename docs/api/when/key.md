@@ -41,29 +41,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/when/key'
-], function(whenKey) {
-  // wait until key is pressed
-  var handle = whenKey({
-    // the key can either be the numeric keyCode (e.g. 13 for enter)
-    // or a name off the ally/map/keycode map
-    enter: function(event, disengage) {
-      // react to <kbd>enter</kbd>
-      // event contains the original KeyboardEvent object
-      // disengage the key listener handle right from the callback
-      // this disengages all handlers that were registered for this handle
-      disengage();
-    },
-  });
-  // abort waiting for key to be pressed
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

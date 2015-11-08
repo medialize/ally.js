@@ -44,27 +44,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/maintain/hidden'
-], function(maintainHidden) {
-  // render elements inert so they can't be interacted with
-  var handle = maintainHidden({
-    // [optional] hiding elements within this sub-tree (default: document)
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '.within-filter-selector',
-    // pervent hiding elements within these sub-trees
-    // filter can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    filter: '.except-filter-selector'
-  });
-  // un-inert all elements
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

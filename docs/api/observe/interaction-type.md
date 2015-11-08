@@ -38,23 +38,6 @@ Observes keyboard-, pointer-, mouse- and touch-events so that a query for the cu
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/observe/interactionType'
-], function(observeInteractionType) {
-  var handle = observeInteractionType();
-  // stop observing
-  handle.disengage();
-
-  // query current interaction type
-  var type = handle.get();
-  // type is a an object with
-  // { key: true, pointer: true }
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

@@ -42,20 +42,6 @@ When clicking on the `<span>` element, focus is given to the `<div>`, because it
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/focus-target'
-], function(getFocusTarget) {
-  var element = getFocusTarget({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-start-from',
-  });
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

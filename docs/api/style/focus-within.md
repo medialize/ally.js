@@ -74,19 +74,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/style/focus-within'
-], function(styleFocusWithin) {
-  // engage focus within style for the entire document
-  var handle = styleFocusWithin();
-  // disengage focus source within
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

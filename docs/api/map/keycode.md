@@ -36,16 +36,6 @@ var map = {
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/map/keycode'
-], function(keycode) {
-  console.log(keycode.enter);
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

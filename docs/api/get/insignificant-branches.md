@@ -48,23 +48,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/insignificant-branches'
-], function(getInsignificantBranches) {
-  var elements = getInsignificantBranches({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: document.documentElement,
-    // the significant elements to exclude from the search
-    filter: '#target',
-  });
-  // elements is an array of HTMLElement
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

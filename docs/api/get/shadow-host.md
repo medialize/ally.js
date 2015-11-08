@@ -34,21 +34,6 @@ Identifies the `ShadowHost` of an element
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/shadow-host'
-], function(getShadowHost) {
-  var element = getShadowHost({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-start-from',
-  });
-  // element is an the ShadowHost HTMLElement
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

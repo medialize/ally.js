@@ -36,23 +36,6 @@ Identifies the `ShadowHost` ancestry of an element
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/shadow-host-parents'
-], function(getShadowHostParents) {
-  var elements = getShadowHostParents({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-start-from',
-  });
-  // elements is an array of HTMLElement
-  // elements[0] points to the actual active element (even within a ShadowRoot)
-  // [0+n] is the hierarchy of ShadowHosts with [length -1] being the top most shadow-host
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

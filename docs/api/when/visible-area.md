@@ -52,34 +52,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/when/visible-area'
-], function(whenVisibleArea) {
-  // wait until context element is visible in the viewport
-  var handle = whenVisibleArea({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-focus',
-    // callback and filter function
-    callback: function(element) {
-      // the context is passed back as element for convenience
-      console.log("element is visible", element)
-      // upon return of the callback handle.disengage() is executed internally,
-      // to prevent disengaging, to keep polling, return false
-    },
-    // [optional] percentage of area of the context element to be visible in the viewport
-    // default is 1, be careful with lower values because browsers
-    // may scroll the element the into view
-    area: 1,
-  });
-  // abort waiting for element to become visible
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

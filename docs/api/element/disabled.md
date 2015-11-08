@@ -51,23 +51,6 @@ The following things are done in order to make an element inert:
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/element/disabled'
-], function(elementDisabled) {
-  var element = document.getElementById('victim');
-  // disable the element
-  elementDisabled(element, true);
-  // enable the element
-  elementDisabled(element, false);
-  // check the elements disabled state
-  var disabled = elementDisabled(element);
-  // disabled is a boolean
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

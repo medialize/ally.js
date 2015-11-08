@@ -31,18 +31,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/is/disabled'
-], function(isDisabled) {
-  var element = document.getElementById('victim');
-  var disabled = isDisabled(element);
-  // disabled is a boolean
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

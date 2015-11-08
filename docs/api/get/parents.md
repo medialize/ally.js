@@ -37,22 +37,6 @@ The returned list is sorted as follows `[element, element.parent, element.parent
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/parents'
-], function(getParents) {
-  var elements = getParents({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-start-from',
-  });
-  // elements is an array of HTMLElement and looks like
-  // [context, context.parent, context.parent.parent, …]
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

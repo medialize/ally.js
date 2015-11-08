@@ -33,17 +33,6 @@ var map = {
 <script>
   console.log(ally.map.attribute['aria-busy']);
 </script>
-```
-
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/map/attribute'
-], function(attribute) {
-  console.log(attribute['aria-busy']);
-});
-```
 
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 

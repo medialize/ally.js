@@ -30,18 +30,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/is/shadowed'
-], function(isShadowed) {
-  var element = document.getElementById('victim');
-  var shadowed = isShadowed(element);
-  // shadowed is a boolean
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

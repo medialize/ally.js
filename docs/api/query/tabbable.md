@@ -45,29 +45,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/query/tabbable'
-], function(queryTabbable) {
-  var element = queryTabbable({
-    // [optional] limit search to given DOM Element
-    // defaults to document.documentElement
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '.within-filter-selector',
-    // [optional] prepend the context DOM Element if it is keyboard focusable
-    // defaults to false
-    includeContext: true,
-    // [optional] strategy used to find elements
-    // can be "quick" or "strict"
-    // defaults to "quick"
-    strategy: "quick",
-  });
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

@@ -38,25 +38,6 @@ Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent]
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-document.addEventListener('shadow-focus', function(event) {
-  // event.detail.elements: complete focus ancestry (array of nodes)
-  // event.detail.active: the actually focused element within the Shadow DOM
-  // event.detail.hosts: the shadow host ancestry of the active element
-}, false);
-
-require([
-  'ally/event/shadow-focus'
-], function(eventShadowFocus) {
-  // start emitting shadow-focus
-  var handle = eventShadowFocus();
-  // stop emitting shadow-focus
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

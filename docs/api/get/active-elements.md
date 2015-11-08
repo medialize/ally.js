@@ -32,19 +32,6 @@ Identifies the `ShadowHost` ancestry of the active element
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/get/active-elements'
-], function(getActiveElements) {
-  var elements = getActiveElements();
-  // elements is an array of HTMLElement
-  // elements[0] points to the actual active element (even within a ShadowRoot)
-  // [0+n] is the hierarchy of ShadowHosts with [length -1] being the top most shadow-host
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

@@ -50,24 +50,6 @@ document.addEventListener('focus', function(event) {
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-document.addEventListener('active-element', function(event) {
-  // event.detail.focus: element that received focus
-  // event.detail.blur: element that lost focus
-}, false);
-
-require([
-  'ally/event/active-element'
-], function(eventActiveElement) {
-  // start emitting active-element
-  var handle = eventActiveElement();
-  // stop emitting active-element
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

@@ -46,25 +46,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/fix/pointer-focus-children'
-], function(fixPointerFocusParent) {
-  // engage the workaround the entire document
-  var handle = fixPointerFocusParent();
-  // disengage the workaround
-  handle.disengage();
-
-  // engage the workaround only for a sub-tree
-  var handle = fixPointerFocusParent({
-    // context can be: String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    context: document.getElementById('element-to-fix');
-  });
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 

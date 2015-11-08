@@ -48,27 +48,6 @@ TODO: figure out how to integrate demo
 </script>
 ```
 
-Using the module instead of the production build:
-
-```js
-require([
-  'ally/maintain/disabled'
-], function(maintainDisabled) {
-  // render elements inert so they can't be interacted with
-  var handle = maintainDisabled({
-    // [optional] inerting elements within this sub-tree (default: document)
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '.within-filter-selector',
-    // [optional] prevent inerting elements within these sub-trees (default: null)
-    // filter can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    filter: '.except-filter-selector'
-  });
-  // un-inert all elements
-  handle.disengage();
-});
-```
-
 See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 
