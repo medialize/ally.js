@@ -71,7 +71,7 @@ Examples must follow the following general structure.
 <head>
   <meta charset="utf-8" />
   <title>ally.js {{example_title}} Example</title>
-  <link rel="jsbin" href="{{example_jsin}}">
+  <link rel="jsbin" href="">
   <style id="example-css">
     {{example_style}}
   </style>
@@ -102,7 +102,7 @@ Examples must follow the following general structure.
 </html>
 ```
 
-If an example is made available on [JSBin.com](https://jsbin.com), the `<link rel="jsbin" href="…">` element must reference the bin. Contents of `#example-js` and `#example-css` go into the bin's JavaScript and CSS sections, respecively. The bin's HTML section contains the HTML document, with the `<script id="example-js">` and `<style id="example-css">` elements *removed* (as they are provided in their own sections).
+The command `npm run publish:jsbin` uses [jsbin-sync](https://github.com/rodneyrehm/jsbin-sync) to find all `example*.html` files and uploads them to [JSBin.com](https://jsbin.com). *This can only be executed by [Rod](https://github.com/rodneyrehm), as we're using his personal JSBin pro account for this.* New examples will have their empty `<link rel="jsbin" href="">` element updated to the URL returned by JSBin, but this is the only change applied to source files. Contents of `#example-js` and `#example-css` go into the bin's JavaScript and CSS sections, respecively. The bin's HTML section contains the HTML document, *without* the `<script id="example-js">`, `<style id="example-css">` and `<link rel="jsbin">` elements.
 
 
 ### Notes and Warnings
