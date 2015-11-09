@@ -91,7 +91,7 @@ Examples must follow the following general structure.
 </div>
 
 <!-- FIXME: replace brcdn with cdnjs when ready -->
-<script src="//brcdn.org/7nGza6dVndwIrMSYB1Si8B73s.js"></script>
+<script src="//brcdn.org/C1Jp8gmo8YhM1FQ8uuU78uKsA.js"></script>
 <script>ally = ally.js;</script>
 
 <script id="example-js">
