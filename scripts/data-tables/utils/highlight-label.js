@@ -1,5 +1,3 @@
-// Prism is not properly checking if "self" actually exists
-global.self = {};
 var Prism = require('prismjs');
 
 module.exports = function beautifyIdentLabel(label, ident) {
