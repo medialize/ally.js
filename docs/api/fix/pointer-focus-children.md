@@ -4,7 +4,7 @@ apiModuleName: ally/fix/pointer-focus-children
 apiBuiltName: ally.fix.pointerFocusChildren
 ---
 
-# ally.fix.pointerFocusChildren (`ally/fix/pointer-focus-children`)
+# ally.fix.pointerFocusChildren
 
 This *Browser Bug Workaround* targets an issue in Internet Explorer 10 and 11 where the children of a focusable element styled with `display: flex` become focusable and react to being clicked on.
 
@@ -72,8 +72,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-children.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/fix.pointer-focus-children.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

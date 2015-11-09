@@ -88,6 +88,4 @@ A component's `engage()` function may return an result object. The decorated `di
 
 `util/toggle-attribute-value` can will change an attribute's value, while saving its former value to allow restoring the previous state
 
----
 
-Back to the [API Documentation](./README.md).

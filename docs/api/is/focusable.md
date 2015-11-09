@@ -4,7 +4,7 @@ apiModuleName: ally/is/focusable
 apiBuiltName: ally.is.focusable
 ---
 
-# ally.is.focusable (`ally/is/focusable`)
+# ally.is.focusable
 
 Determines if an element is considered focusable.
 
@@ -67,8 +67,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/focusable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.focusable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

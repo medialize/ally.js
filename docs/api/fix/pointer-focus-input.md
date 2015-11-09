@@ -4,7 +4,7 @@ apiModuleName: ally/fix/pointer-focus-input
 apiBuiltName: ally.fix.pointerFocusInput
 ---
 
-# ally.fix.pointerFocusInput (`ally/fix/pointer-focus-input`)
+# ally.fix.pointerFocusInput
 
 This *Browser Bug Workaround* targets an issue in Safari and Firefox **on Mac OS X**, where focus would not be given to certain form elements upon `mousedown`. This is *not* a browser bug, it is *desired behavior by the OSX platform*. Use this feature only if you require the elements to receive focus (e.g. for custom styling).
 
@@ -56,8 +56,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-input.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/fix.pointer-focus-input.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

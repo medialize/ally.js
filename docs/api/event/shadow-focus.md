@@ -5,7 +5,7 @@ apiModuleName: ally/event/shadow-focus
 apiBuiltName: ally.event.shadowFocus
 ---
 
-# `ally.event.shadowFocus` (`ally/event/shadow-focus`)
+# ally.event.shadowFocus
 
 Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
@@ -55,8 +55,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/event.shadow-focus.test.js)
 * does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support Shadow DOM
 
-
----
-
-Back to the [API Documentation](../README.md).
 

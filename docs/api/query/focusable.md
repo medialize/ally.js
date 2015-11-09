@@ -4,7 +4,7 @@ apiModuleName: ally/query/focusable
 apiBuiltName: ally.query.focusable
 ---
 
-# ally.query.focusable (`ally/query/focusable`)
+# ally.query.focusable
 
 Finds focusable elements in the DOM.
 
@@ -69,8 +69,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/focusable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.focusable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

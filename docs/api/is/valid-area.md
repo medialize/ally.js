@@ -4,7 +4,7 @@ apiModuleName: ally/is/valid-area
 apiBuiltName: ally.is.validArea
 ---
 
-# ally.is.validArea (`ally/is/valid-area`)
+# ally.is.validArea
 
 Determines if an `<area>` element is properly used via `<map>` by an `<img>`.
 
@@ -55,8 +55,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/valid-area.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.valid-area.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

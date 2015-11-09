@@ -4,7 +4,7 @@ apiModuleName: ally/when/visible-ara
 apiBuiltName: ally.when.visibleArea
 ---
 
-# ally.when.visibleArea (`ally/when/visible-area`)
+# ally.when.visibleArea
 
 Executes a callback once an element is visible in the viewport
 
@@ -67,8 +67,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/visible-area.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/when.visible-area.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

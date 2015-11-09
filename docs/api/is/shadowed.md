@@ -4,7 +4,7 @@ apiModuleName: ally/is/shadowed
 apiBuiltName: ally.is.shadowed
 ---
 
-# ally.is.shadowed (`ally/is/shadowed`)
+# ally.is.shadowed
 
 Determines if an element is the descendant of a `ShadowRoot`.
 
@@ -49,8 +49,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/shadowed.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.shadowed.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

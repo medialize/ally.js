@@ -5,7 +5,7 @@ apiModuleName: ally/style/focus-source
 apiBuiltName: ally.style.focusSource
 ---
 
-# ally.style.focusSource (`ally/style/focus-source`)
+# ally.style.focusSource
 
 Differentiate the causes of focus change for when different visual styles need to applied.
 
@@ -116,8 +116,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-source.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-source.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

@@ -4,7 +4,7 @@ apiModuleName: ally/query/first-tabbable
 apiBuiltName: ally.query.firstTabbable
 ---
 
-# ally.query.firstTabbable (`ally/query/first-tabbable`)
+# ally.query.firstTabbable
 
 Finds the first keyboard focusable ("tabbable") element in the DOM.
 
@@ -69,8 +69,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/first-tabbable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.first-tabbable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

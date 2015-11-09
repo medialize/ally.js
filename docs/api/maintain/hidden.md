@@ -5,7 +5,7 @@ apiModuleName: ally/maintain/hidden
 apiBuiltName: ally.maintain.hidden
 ---
 
-# ally.maintain.disabled (`ally/maintain/disabled`)
+# ally.maintain.disabled
 
 sets `aria-hidden="true"` on insignificant branches.
 
@@ -59,8 +59,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/maintain/hidden.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/maintain.hidden.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

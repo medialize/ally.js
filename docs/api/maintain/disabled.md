@@ -5,7 +5,7 @@ apiModuleName: ally/maintain/disabled
 apiBuiltName: ally.maintain.disabled
 ---
 
-# ally.maintain.disabled (`ally/maintain/disabled`)
+# ally.maintain.disabled
 
 Disables any type of user interaction - including the ability to focus elements - essentially rendering elements *inert*.
 
@@ -64,8 +64,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/maintain/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/maintain.disabled.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

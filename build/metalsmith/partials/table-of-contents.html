@@ -1,7 +1,5 @@
-<nav id="table-of-contents">
 {{#each toc}}
-  {{#if @first}}<ul>{{/if}}
+  {{#if @first}}<nav id="table-of-contents"><h1>Table Of Contents</h1><ul>{{/if}}
   <li><a href="#{{ id }}">{{ text }}</a></li>
-  {{#if @last}}</ul>{{/if}}
+  {{#if @last}}</ul></nav>{{/if}}
 {{/each}}
-</nav>

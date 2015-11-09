@@ -41,6 +41,7 @@ metalsmith(__dirname)
   .destination('../../web')
   .use(remarkable({
     linkify: true,
+    html: true,
   }))
   .use(packageJson())
   .use(absoluteUrl({
@@ -51,10 +52,10 @@ metalsmith(__dirname)
   .use(paths())
   .use(collections({
     Home: {
-      pattern: '',
+      pattern: 'index.html',
     },
     'Getting Started': {
-      pattern: 'getting-started.html',
+      pattern: '{getting-started.html,what-is-focusable.html}',
     },
     API: {
       pattern: 'api/**/*.html',
@@ -87,6 +88,7 @@ metalsmith(__dirname)
       'site-navigation': 'partials/site-navigation',
       'collection-navigation': 'partials/collection-navigation',
       'table-of-contents': 'partials/table-of-contents',
+      'site-header': 'partials/site-header',
       'site-footer': 'partials/site-footer',
     },
   }))

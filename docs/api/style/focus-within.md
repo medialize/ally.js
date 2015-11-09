@@ -5,7 +5,7 @@ apiModuleName: ally/style/focus-within
 apiBuiltName: ally.style.focusWithin
 ---
 
-# ally.style.focusWithin (`ally/style/focus-within`)
+# ally.style.focusWithin
 
 Polyfill the CSS Selectors Level 4 pseudo-class [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 
@@ -88,8 +88,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-within.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-within.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

@@ -5,7 +5,7 @@ apiModuleName: ally/event/active-element
 apiBuiltName: ally.event.activeElement
 ---
 
-# `ally.event.activeElement` (`ally/event/active-element`)
+# ally.event.activeElement
 
 Observes changes to `document.activeElement` regardless of focus/blur events and emits `active-element` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
@@ -65,8 +65,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/event.active-element.test.js)
 * uses [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility
 
-
----
-
-Back to the [API Documentation](../README.md).
 

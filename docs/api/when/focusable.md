@@ -4,7 +4,7 @@ apiModuleName: ally/when/focusable
 apiBuiltName: ally.when.focusable
 ---
 
-# ally.when.focusable (`ally/when/focusable`)
+# ally.when.focusable
 
 Executes a callback once an element fulfills `ally/is/focusable` and is visible in the viewport
 
@@ -70,8 +70,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/focusable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/when.focusable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

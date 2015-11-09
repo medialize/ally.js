@@ -62,6 +62,3 @@ Focus feature detection works by temporarily adding certain elements to the DOM.
 Tests go in `src/supports` and either use the `./detect-focus.js` helper like most of the tests, or the `./supports-cache.js` API directly, like `./css-shadow-piercing-deep-combinator.js` shows.
 
 
----
-
-Back to the [API Documentation](./README.md).

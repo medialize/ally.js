@@ -4,7 +4,7 @@ apiModuleName: ally/query/tabsequence
 apiBuiltName: ally.query.tabsequence
 ---
 
-# ally.query.tabsequence (`ally/query/tabsequence`)
+# ally.query.tabsequence
 
 Finds keyboard focusable ("tabbable") elements in the DOM and returns them in the order calculated based on `tabindex` attribute values.
 
@@ -67,8 +67,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/tabsequence.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.tabsequence.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

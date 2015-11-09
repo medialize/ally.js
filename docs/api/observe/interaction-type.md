@@ -5,7 +5,7 @@ apiModuleName: ally/observe/interaction-type
 apiBuiltName: ally.observe.interactionType
 ---
 
-# `ally.observe.interactionType` (`ally/observe/interaction-type`)
+# ally.observe.interactionType
 
 Observes user interaction method to distinguish pointer and keyboard actions
 
@@ -49,9 +49,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/observe/interaction-type.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/observe/interaction-type.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/observe.interaction-type.test.js)
-
-
----
-
-Back to the [API Documentation](../README.md).
 

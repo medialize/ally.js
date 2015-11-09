@@ -1,5 +1,266 @@
 
-body > header > h1 {
-  color: navy;
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  font-size: 16px;
+  font-family: Helvetica Neue, Helvetica, Arial;
+
+  /* background: rgba(0, 0, 0, 0.05); */
 }
 
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 12px;
+}
+
+.skip-to-content {
+  position: absolute;  
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+.skip-to-content:focus {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 12px;
+  clip: initial;
+  font-size: 32px;
+}
+#main:focus {
+  outline: none;
+}
+
+body > header,
+body > #wrapper,
+body > footer {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: white;
+}
+
+body > header {
+  position: relative;
+  border-bottom: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+#logo {
+  margin: 0;
+  float: left;
+
+  vertical-align: top;
+  font-size: 48px;
+}
+#claim {
+  margin: 12px 260px 0 146px;
+
+  vertical-align: top;
+  font-size: 22px;
+  line-height: 1;
+}
+
+#download {
+  position: absolute;
+  top: 16px;
+  right: 28px;
+
+  box-sizing: border-box;
+  border: 1px solid white;
+  padding: 6px 12px 6px 6px;
+
+  text-decoration: none;
+  background: #336699;
+  box-shadow: 1px 1px 2px black; 
+}
+#download span {
+  display: block;
+}
+#download .symbol {
+  float: left;
+  font-size: 36px;
+  line-height: 1.15;
+  color: white;
+  text-shadow: 1px 1px 2px black; 
+}
+#download .label {
+  margin-left: 42px;
+  font-size: 22px;
+  line-height: 1;
+  color: white;
+}
+#download .version {
+  margin-left: 42px;
+  line-height: 1.3;
+  color: #CCC;
+}
+
+#site-navigation {
+  clear: left;
+  margin: 18px 0 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#site-navigation > ul {
+  margin: 0;
+  padding: 0;
+}
+#site-navigation > ul > li {
+  display: inline-block;
+  padding: 6px;
+}
+#site-navigation > ul > li + li {
+  margin-left: 6px;
+}
+#site-navigation > ul > li.active {
+  background: rgba(0, 0, 0, 0.6);
+}
+#site-navigation > ul > li > a {
+  display: block;
+}
+#site-navigation > ul > li.active > a {
+  color: white;
+}
+
+body > footer {
+  border-top: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+body > footer > p {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+#navigation-column {
+  box-sizing: border-box;
+  float: left;
+  width: 262px;
+  margin: 0 0 0 -12px;
+  padding: 16px 12px 12px 12px;
+}
+
+#navigation-column h1 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  line-height: 32px
+}
+#navigation-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.1;
+}
+#navigation-column li + li {
+  margin-top: 3px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);;
+  padding-top: 3px;
+}
+#navigation-column nav + aside {
+  margin-top: 24px;
+}
+
+
+main {
+  margin-left: 250px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 12px;
+  line-height: 1.5;
+}
+main:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+main h1,
+main h2,
+main h3 {
+  margin: 24px 0 12px 0;
+}
+
+main h1 {
+  font-size: 36px;
+}
+main h2 {
+  font-size: 30px;
+}
+main h3 {
+  font-size: 24px;
+}
+
+main > h1:first-of-type,
+main > article:first-of-type > header > h1 {
+  margin-top: 0;
+}
+
+main > * + *,
+section + section,
+div + div,
+p + p {
+  margin-top: 12px;
+}
+
+
+
+
+main :not(pre) > code {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 2px 4px;
+
+  font-size: 80%;
+  line-height: 1.3;
+  
+  font-family: Courier, monospace;
+  word-wrap: break-word;
+  vertical-align: text-top;
+
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+main kbd {
+  display: inline-block;
+  border: solid 1px #ccc;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  background-color: #fcfcfc;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+a {
+  color: #336699;
+}
+a:visited {
+  color: #3399CC;
+}
+
+.warning,
+.help,
+.note {
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+}
+.warning > strong:first-child {
+  color: #DA0000;
+}
+.help > strong:first-child {
+  color: blue;
+}

@@ -4,7 +4,7 @@ apiModuleName: ally/when/key
 apiBuiltName: ally.when.key
 ---
 
-# ally.when.key (`ally/when/key`)
+# ally.when.key
 
 Executes a callback when a given key has been pressed.
 
@@ -57,8 +57,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/when/key.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/when.key.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

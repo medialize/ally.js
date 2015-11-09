@@ -4,7 +4,7 @@ apiModuleName: ally/is/valid-tabindex
 apiBuiltName: ally.is.validTabindex
 ---
 
-# ally.is.validTabindex (`ally/is/valid-tabindex`)
+# ally.is.validTabindex
 
 Determines if an element's `tabindex` attribute value is sound
 
@@ -53,8 +53,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/valid-tabindex.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/docs/test/is.valid-tabindex.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

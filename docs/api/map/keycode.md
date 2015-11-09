@@ -4,7 +4,7 @@ apiModuleName: ally/map/keycode
 apiBuiltName: ally.map.keycode
 ---
 
-# ally.map.keycode (`ally/map/keycode`)
+# ally.map.keycode
 
 Map of control [`event.keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/event.keyCode)s
 
@@ -49,8 +49,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/map/keycode.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/map/keycode.md)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

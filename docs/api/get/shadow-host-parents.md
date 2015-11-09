@@ -5,7 +5,7 @@ apiModuleName: ally/get/shadow-host-parents
 apiBuiltName: ally.get.shadowHostParents
 ---
 
-# `ally.get.shadowHostParents` (`ally/get/shadow-host-parents`)
+# ally.get.shadowHostParents
 
 Identifies the `ShadowHost` ancestry of an element
 
@@ -53,8 +53,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/shadow-host-parents.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.shadow-host-parents.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

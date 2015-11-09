@@ -4,7 +4,7 @@ apiModuleName: ally/is/disabled
 apiBuiltName: ally.is.disabled
 ---
 
-# ally.is.disabled (`ally/is/disabled`)
+# ally.is.disabled
 
 Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`element/disabled`](../element/disabled.md) - i.e. not editable.
 
@@ -52,8 +52,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.disabled.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

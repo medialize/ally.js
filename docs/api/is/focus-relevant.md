@@ -4,7 +4,7 @@ apiModuleName: ally/is/focus-relevant
 apiBuiltName: ally.is.focusRelevant
 ---
 
-# ally.is.focusRelevant (`ally/is/focus-relevant`)
+# ally.is.focusRelevant
 
 Determines if an element is considered focusable by script.
 
@@ -56,8 +56,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/focus-relevant.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.focus-relevant.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

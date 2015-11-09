@@ -23,6 +23,3 @@ ally.js is not using the [babel polyfill](http://babeljs.io/docs/usage/polyfill/
 ally.js will not pollute prototypes of built-in methods with anything but proper polyfills for (semi-) standardized methods. If we *need* to add another polyfill, we'll prefer to use an external dependency over implementing things ourselves.
 
 
----
-
-Back to the [API Documentation](./README.md).

@@ -4,7 +4,7 @@ apiModuleName: ally/is/only-tabbable
 apiBuiltName: ally.is.onlyTabbable
 ---
 
-# ally.is.onlyTabbable (`ally/is/only-tabbable`)
+# ally.is.onlyTabbable
 
 Determines if an element is considered tabbable and not focusable.
 
@@ -58,8 +58,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/only-tabbable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.only-tabbable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

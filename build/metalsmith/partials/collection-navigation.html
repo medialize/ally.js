@@ -1,13 +1,15 @@
 <nav id="collection-navigation">
 {{collection-to-siblings}}
 {{#each siblings}}
-  {{#if @first}}<ul>{{/if}}
+  {{#if @first}}<h1>Related Resources</h1><ul>{{/if}}
+  {{#if this.layout}}
   <li class="{{#is this.title ../title}}active{{/is}}">
     <a
       class="{{#contains @key ../collection}}active{{/contains}}"
       href="{{../websiteRoot}}{{this.path.dir}}{{#if this.path.dir}}/{{/if}}{{this.path.base}}"
-    >{{#if this.apiModuleName}}{{this.apiModuleName}}{{else}}{{this.title}}{{/if}}</a>
+    >{{this.title}}</a>
   </li>
+  {{/if}}
   {{#if @last}}</ul>{{/if}}
 {{/each}}
 </nav>

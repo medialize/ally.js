@@ -5,7 +5,7 @@ apiModuleName: ally/get/focus-target
 apiBuiltName: ally.get.focusTarget
 ---
 
-# `ally.get.focusTarget` (`ally/get/focus-target`)
+# ally.get.focusTarget
 
 Identifies the element that would get focus upon click
 
@@ -59,8 +59,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/focus-target.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.focus-target.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

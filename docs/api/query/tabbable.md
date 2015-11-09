@@ -4,7 +4,7 @@ apiModuleName: ally/query/tabbable
 apiBuiltName: ally.query.tabbable
 ---
 
-# ally.query.tabbable (`ally/query/tabbable`)
+# ally.query.tabbable
 
 Finds keyboard focusable ("tabbable") elements in the DOM.
 
@@ -62,8 +62,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/tabbable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.tabbable.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

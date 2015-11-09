@@ -7,23 +7,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix>
 </head>
 <body>
-  <header>
-    <h1>{{ pkg.name }}</h1>
-    <p>{{ pkg.description }}</p>
-    {{> site-navigation }}
-  </header>
-
-  {{> table-of-contents }}
+  {{> site-header }}
   
-  <main>
-    {{{ contents }}}
-  </main>
+  <div id="wrapper">
+    <div id="navigation-column">
+      {{> table-of-contents }}
+      <aside>
+        {{> collection-navigation }}
+      </aside>
+    </div>
 
-  {{#is title "API Index"}}{{else}}
-  <aside>
-    {{> collection-navigation }}
-  </aside>
-  {{/is}}
+    <main id="main" tabindex="-1">
+      {{{ contents }}}
+    </main>
+  </div>
 
   {{> site-footer }}
 

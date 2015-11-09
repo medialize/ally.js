@@ -4,7 +4,7 @@ apiModuleName: ally/get/insignificant-branches
 apiBuiltName: ally.get.insignificantBranches
 ---
 
-# ally.get.insignificantBranches (`ally/get/insignificant-branches`)
+# ally.get.insignificantBranches
 
 Identifies all the branches of the DOM that do *not* contain any of the target elements
 
@@ -66,8 +66,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/insignificant-branches.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.insignificant-branches.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

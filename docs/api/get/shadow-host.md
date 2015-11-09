@@ -5,7 +5,7 @@ apiModuleName: ally/get/shadow-host
 apiBuiltName: ally.get.shadowHost
 ---
 
-# `ally.get.shadowHost` (`ally/get/shadow-host`)
+# ally.get.shadowHost
 
 Identifies the `ShadowHost` of an element
 
@@ -51,8 +51,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/shadow-host.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.shadow-host.md.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

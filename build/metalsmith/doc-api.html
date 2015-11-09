@@ -7,21 +7,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix>
 </head>
 <body>
-  <header>
-    <h1>{{ pkg.name }}</h1>
-    <p>{{ pkg.description }}</p>
-    {{> site-navigation }}
-  </header>
+  {{> site-header }}
 
-  {{> table-of-contents }}
+  <div id="wrapper">
+    <div id="navigation-column">
+      {{> table-of-contents }}
+      <aside>
+        {{> collection-navigation }}
+      </aside>
+    </div>
 
-  <main>
-    {{{ contents }}}
-  </main>
-
-  <aside>
-    {{> collection-navigation }}
-  </aside>
+    <main id="main" tabindex="-1">
+      {{{ contents }}}
+    </main>
+  </div>
 
   {{> site-footer }}
 

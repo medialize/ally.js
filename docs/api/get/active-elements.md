@@ -5,7 +5,7 @@ apiModuleName: ally/get/active-elements
 apiBuiltName: ally.get.activeElements
 ---
 
-# `ally.get.activeElements` (`ally/get/active-elements`)
+# ally.get.activeElements
 
 Identifies the `ShadowHost` ancestry of the active element
 
@@ -49,8 +49,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/active-elements.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.active-elements.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

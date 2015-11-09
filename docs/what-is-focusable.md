@@ -20,7 +20,7 @@ The [Focusable Elements - Browser Compatibility Table](./data-tables/focusable.m
 The functions pertaining to "focus" are grouped in two categories: `ally/is/*` represents the filters and `ally/query/*` the crawlers.
 
 
-## Filters - `ally/is/*`
+## Filtering Elements
 
 A filter takes an element ([`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element)) for input and returns a boolean result. Filters can be used to verify the state of a given element.
 
@@ -30,7 +30,7 @@ A filter takes an element ([`Element`](https://developer.mozilla.org/en-US/docs/
 * [`ally/is/only-tabbable`](./api/is/only-tabbable.md) returns true for any element that can only be focused by keyboard, but not by script.
 
 
-## Crawlers - `ally/query/*`
+## Finding Elements
 
 A crawler (or "DOM walker") traverses the DOM in order to find elements matching the desired focusable state.
 

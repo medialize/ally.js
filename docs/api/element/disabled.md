@@ -4,7 +4,7 @@ apiModuleName: ally/element/disabled
 apiBuiltName: ally.element.disabled
 ---
 
-# ally.element.disabled (`ally/element/disabled`)
+# ally.element.disabled
 
 Makes an element inert, i.e. not editable.
 
@@ -67,9 +67,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/element/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/element/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/element.disabled.test.js)
-
-
----
-
-Back to the [API Documentation](../README.md).
 

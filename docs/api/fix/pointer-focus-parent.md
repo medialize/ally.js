@@ -4,7 +4,7 @@ apiModuleName: ally/fix/pointer-focus-parent
 apiBuiltName: ally.fix.pointerFocusParent
 ---
 
-# ally.fix.pointerFocusParent (`ally/fix/pointer-focus-parent`)
+# ally.fix.pointerFocusParent
 
 This *Browser Bug Workaround* targets an issue in old Blink and [WebKit](https://bugs.webkit.org/show_bug.cgi?id=139945) causing focus (by `MouseEvent` and `TouchEvent`) to be given to the next parent element accepting focus, rather than the element the event was
 dispatched to.
@@ -61,8 +61,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-parent.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/fix.pointer-focus-parent.test.js)
 
-
----
-
-Back to the [API Documentation](../README.md).
 

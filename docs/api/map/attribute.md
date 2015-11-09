@@ -4,7 +4,7 @@ apiModuleName: ally/map/attribute
 apiBuiltName: ally.map.attribute
 ---
 
-# ally.map.attribute (`ally/map/attribute`)
+# ally.map.attribute
 
 Map of all [WAI-ARIA states and properties](http://www.w3.org/TR/wai-aria/states_and_properties)
 
@@ -47,8 +47,4 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/map/attribute.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/map/keycode.md)
 
-
----
-
-Back to the [API Documentation](../README.md).
 
