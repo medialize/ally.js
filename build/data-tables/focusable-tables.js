@@ -31,7 +31,7 @@ generateTableDocument({
   skipIdents: function(sourceIdent) {
     // skip rows that are completely inert
     return !source.columns.some(function(browser) {
-      let data = sourceIdent[browser];
+      const data = sourceIdent[browser];
       return data.browser.label !== 'inert';
     });
   },
@@ -51,7 +51,7 @@ generateTableDocument({
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
     return !source.columns.some(function(browser) {
-      let data = sourceIdent[browser];
+      const data = sourceIdent[browser];
       return data.browser.label !== data.ally.labelQuick;
     });
   },
@@ -85,7 +85,7 @@ generateTableDocument({
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
     return !source.columns.some(function(browser) {
-      let data = sourceIdent[browser];
+      const data = sourceIdent[browser];
       return data.browser.label !== data.ally.labelStrict;
     });
   },
@@ -119,7 +119,7 @@ generateTableDocument({
   skipIdents: function(sourceIdent) {
     // skip rows where every browser-cell equals the ally-cell
     return !source.columns.some(function(browser) {
-      let data = sourceIdent[browser];
+      const data = sourceIdent[browser];
       return data.browser.label !== data.jquery.label;
     });
   },
@@ -146,13 +146,13 @@ generateTableDocument({
   skipIdents: function(sourceIdent) {
     // skip rows without redirections
     return !source.columns.some(function(browser) {
-      let data = sourceIdent[browser];
+      const data = sourceIdent[browser];
       return data.browser.redirecting;
     });
   },
   cellTemplate: 'table-cell.redirect.hbs',
   cellData: function(data) {
-    let label = data.browser.redirecting && source.redirects[data.browser.redirecting];
+    const label = data.browser.redirecting && source.redirects[data.browser.redirecting];
     return {
       label: label && highlightLabel(label) || data.browser.redirecting || '',
     };

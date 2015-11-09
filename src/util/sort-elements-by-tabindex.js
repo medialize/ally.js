@@ -16,9 +16,9 @@ export default function(elements) {
   // NOTE: compareDocumentPosition seemed like more overhead than just sorting this with buckets
   // https://developer.mozilla.org/en-US/docs/Web/API/Node.compareDocumentPosition
 
-  var map = {};
-  var indexes = [];
-  var normal = elements.filter(function(element) {
+  const map = {};
+  const indexes = [];
+  const normal = elements.filter(function(element) {
     // extract elements that don't need sorting
     // in Trident and Gecko SVGElement does not know about the tabIndex property
     if (element.tabIndex <= 0 || element.tabIndex === undefined) {
@@ -41,7 +41,7 @@ export default function(elements) {
   // sort the tabindex ascending,
   // then resolve them to their appropriate buckets,
   // then flatten the array of arrays to an array
-  var _elements = indexes.sort().map(function(tabIndex) {
+  const _elements = indexes.sort().map(function(tabIndex) {
     return map[tabIndex];
   }).reduceRight(function(previous, current) {
     return current.concat(previous);

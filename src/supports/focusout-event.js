@@ -10,7 +10,7 @@ export default detectFocus({
     wrapper.appendChild(element);
     element.focus();
 
-    let target = document.createElement('input');
+    const target = document.createElement('input');
     wrapper.appendChild(target);
 
     element.addEventListener('focusout', function() {

@@ -27,8 +27,8 @@ function sorter(order) {
   order = order || [];
 
   return function(one, two) {
-    var a = one.sidebar || one.title;
-    var b = two.sidebar || two.title;
+    let a = one.sidebar || one.title;
+    let b = two.sidebar || two.title;
 
     if (!a && !b) {
       return 0;
@@ -40,8 +40,8 @@ function sorter(order) {
       return -1;
     }
 
-    var i = order.indexOf(a);
-    var j = order.indexOf(b);
+    const i = order.indexOf(a);
+    const j = order.indexOf(b);
 
     if (~i && ~j) {
       if (i < j) {

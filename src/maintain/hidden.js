@@ -102,6 +102,6 @@ class HiddenSubtree {
 }
 
 export default function({context, filter} = {}) {
-  var service = new HiddenSubtree({context, filter});
+  const service = new HiddenSubtree({context, filter});
   return { disengage: service.disengage };
 }

@@ -20,8 +20,8 @@ export default function({context} = {}) {
   }
 
   // obtain the element's ancestry
-  var _path = getParents({context: element}).slice(1);
+  const _path = getParents({context: element}).slice(1);
   // find the first element that is actually focusable
-  var _firstFocusableIndex = _path.findIndex(isFocusable);
+  const _firstFocusableIndex = _path.findIndex(isFocusable);
   return _path[_firstFocusableIndex] || null;
 }

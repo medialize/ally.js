@@ -1,20 +1,20 @@
 
-var metalsmith = require('metalsmith');
-var remarkable = require('metalsmith-markdown-remarkable');
-var paths = require('metalsmith-paths');
-var packageJson = require('metalsmith-packagejson');
-var registerHelpers = require('metalsmith-register-helpers');
-var layouts = require('metalsmith-layouts');
-var linkChecker = require('metalsmith-broken-link-checker');
-var collections = require('metalsmith-collections');
-var staticFiles = require('metalsmith-static');
-var redirect = require('metalsmith-redirect');
+const metalsmith = require('metalsmith');
+const remarkable = require('metalsmith-markdown-remarkable');
+const paths = require('metalsmith-paths');
+const packageJson = require('metalsmith-packagejson');
+const registerHelpers = require('metalsmith-register-helpers');
+const layouts = require('metalsmith-layouts');
+const linkChecker = require('metalsmith-broken-link-checker');
+const collections = require('metalsmith-collections');
+const staticFiles = require('metalsmith-static');
+const redirect = require('metalsmith-redirect');
 
-var manualSort = require('./plugins/collection.manual-sort');
-var prepare = require('./plugins/prepare');
-var absoluteUrl = require('./plugins/absolute-url');
+const manualSort = require('./plugins/collection.manual-sort');
+const prepare = require('./plugins/prepare');
+const absoluteUrl = require('./plugins/absolute-url');
 
-var WEBSITE_ROOT = '/medialize/ally.js/';
+const WEBSITE_ROOT = '/medialize/ally.js/';
 
 function getRedirectionMap() {
   // make sure legacy links are forwarded

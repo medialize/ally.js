@@ -1,12 +1,12 @@
 
-var path = require('path');
+const path = require('path');
 
-var shelljs = require('shelljs');
+const shelljs = require('shelljs');
 
-var cwd = process.cwd();
-var SOURCE = path.resolve(cwd, 'tests/');
-var TARGET = path.resolve(cwd, 'web/tests/');
-var directories = [
+const cwd = process.cwd();
+const SOURCE = path.resolve(cwd, 'tests/');
+const TARGET = path.resolve(cwd, 'web/tests/');
+const directories = [
   'browser-bugs',
   // event-sequence handled by build.event-sequence.js
   // exploring skipped

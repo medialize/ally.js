@@ -1,4 +1,5 @@
-var Prism = require('prismjs');
+
+const Prism = require('prismjs');
 
 module.exports = function beautifyIdentLabel(label, ident) {
   if (label === ident) {

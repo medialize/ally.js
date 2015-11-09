@@ -126,6 +126,6 @@ class InertSubtree {
 }
 
 export default function({context, filter} = {}) {
-  var service = new InertSubtree({context, filter});
+  const service = new InertSubtree({context, filter});
   return { disengage: service.disengage };
 }

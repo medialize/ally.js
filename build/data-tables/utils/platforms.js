@@ -11,16 +11,16 @@ function addPlatform(platform, key) {
   // only to be used for grouping desktop and mobile browsers separately
   let mobile = false;
   // "Windows" needs some aliasing, possibly required for other platforms, too
-  let platformFamily = (platform.os.family === 'Windows NT' && 'Windows')
+  const platformFamily = (platform.os.family === 'Windows NT' && 'Windows')
     || (platform.os.family.slice(0, 14) === 'Windows Server' && 'Windows')
     || platform.os.family;
 
   // id-attribute safe string for table references
-  let group = (platformFamily + '-' + platform.name).replace(/[^a-z0-9]+/ig, '-').toLowerCase();
+  const group = (platformFamily + '-' + platform.name).replace(/[^a-z0-9]+/ig, '-').toLowerCase();
   // name of the platform (not browser)
   let name = platform.name;
   // reduce version to "<major>.<minor>" for better display
-  let version = platform.version.split('.').slice(0, 2).join('.');
+  const version = platform.version.split('.').slice(0, 2).join('.');
 
   // differentiate mobile platforms
   if (appendPlatformFamily.has(platform.os.family)) {
@@ -67,7 +67,7 @@ function sortPlatforms() {
       return;
     }
 
-    let tmp = map[group];
+    const tmp = map[group];
     delete map[group];
     map[group] = tmp;
   });

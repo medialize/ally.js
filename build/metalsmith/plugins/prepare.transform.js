@@ -9,14 +9,14 @@ module.exports = function($, data) {
   // inlining what metalsmith-excerpts would've done
   // https://github.com/segmentio/metalsmith-excerpts/blob/master/lib/index.js
   if (!data.excerpt) {
-    var p = $('p').first();
+    const p = $('p').first();
     data.excerpt = $.html(p).trim();
   }
 
   // rewrite relative *.md to *.html
   $('a').each(function() {
-    var $this = $(this);
-    var href = $this.attr('href');
+    const $this = $(this);
+    let href = $this.attr('href');
     if (href.indexOf('://') !== -1 || href.slice(0, 1) === '#') {
       return;
     }
@@ -29,8 +29,8 @@ module.exports = function($, data) {
 
   // add IDs to headlines
   $('h1, h2, h3, h4, h5, h6').each(function() {
-    var $this = $(this);
-    var id = $this.attr('id');
+    const $this = $(this);
+    let id = $this.attr('id');
     if (id) {
       return;
     }
@@ -47,7 +47,7 @@ module.exports = function($, data) {
   // https://github.com/anatoo/metalsmith-autotoc/blob/master/index.js
   data.toc = [];
   $('h2').each(function() {
-    var $this = $(this);
+    const $this = $(this);
     data.toc.push({
       id: String($this.attr('id')),
       text: String($this.text()),
@@ -56,15 +56,15 @@ module.exports = function($, data) {
 
   // replace NOTE: and WARNING: lists by proper blocks
   $('ul li strong').each(function() {
-    var $label = $(this);
-    var $li = $label.parent();
-    var $ul = $li.parent();
-    var label = $label.text();
+    const $label = $(this);
+    const $li = $label.parent();
+    const $ul = $li.parent();
+    const label = $label.text();
     if (label !== 'NOTE:' && label !== 'WARNING:' && label !== 'HELP:') {
       return;
     }
 
-    var $div = $('<div>').attr('class', label.slice(0, -1).toLowerCase());
+    const $div = $('<div>').attr('class', label.slice(0, -1).toLowerCase());
     $div.append($li.html());
     $ul.after($div);
     $li.remove();
@@ -74,16 +74,16 @@ module.exports = function($, data) {
   });
 
   $('pre > code.language-embed').each(function() {
-    var $code = $(this);
-    var $pre = $code.parent();
-    var $embed = $($code.text());
-    var $link = $('<a>')
+    const $code = $(this);
+    const $pre = $code.parent();
+    const $embed = $($code.text());
+    const $link = $('<a>')
       .attr('href', $embed.first().attr('href'))
       .attr('target', '_blank')
       .attr('class', 'open-embed')
       .text('Open the embedded demo in a new window')
       .insertAfter($pre);
-    var $container = $('<section>')
+    const $container = $('<section>')
       .attr('class', 'embed')
       .append($embed)
       .append($link);

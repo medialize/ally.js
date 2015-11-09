@@ -17,7 +17,7 @@ function clone(object) {
   return JSON.parse(JSON.stringify(object));
 }
 
-var identCounter = 0;
+let identCounter = 0;
 
 module.exports = function({
   group,
@@ -31,26 +31,26 @@ module.exports = function({
   rowData,
 }) {
   const _cellTemplate = cellTemplate || _cellTemplateDefault;
-  var rows = [];
+  const rows = [];
 
-  var idents = group.idents;
+  let idents = group.idents;
   if (Array.isArray(group.idents)) {
     idents = {};
     group.idents.forEach(ident => idents[ident] = ident);
   }
 
   Object.keys(idents).forEach(function(ident) {
-    var sourceIdent = source.data[ident];
+    const sourceIdent = source.data[ident];
     if (skipIdents && skipIdents(sourceIdent)) {
       return;
     }
 
     identCounter++;
-    var identId = group.id + '-ident-' + identCounter;
-    var cells = [];
+    const identId = group.id + '-ident-' + identCounter;
+    const cells = [];
 
     if (!skipExpected) {
-      let expected = clone(sourceIdent.expected);
+      const expected = clone(sourceIdent.expected);
       expected.platform = source.browsers.expected;
       expected.groupId = group.id;
       expected.identId = identId;
@@ -61,7 +61,7 @@ module.exports = function({
     }
 
     columns.forEach(function(browser) {
-      var data = clone(sourceIdent[browser]);
+      const data = clone(sourceIdent[browser]);
       data.platform = source.browsers[browser];
 
       data.groupId = group.id;

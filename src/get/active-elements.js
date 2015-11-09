@@ -6,7 +6,7 @@ import isShadowed from '../is/shadowed';
 import getShadowHostParents from './shadow-host-parents';
 
 function walkToShadowedElement() {
-  var list = [document.activeElement];
+  const list = [document.activeElement];
 
   while (list[0] && list[0].shadowRoot) {
     list.unshift(list[0].shadowRoot.activeElement);
@@ -16,7 +16,7 @@ function walkToShadowedElement() {
 }
 
 function walkFromShadowedElement() {
-  var hosts = getShadowHostParents({context: document.activeElement});
+  const hosts = getShadowHostParents({context: document.activeElement});
   return [document.activeElement].concat(hosts);
 }
 

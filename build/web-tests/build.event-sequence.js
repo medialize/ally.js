@@ -1,13 +1,13 @@
 
-var path = require('path');
+const path = require('path');
 
-var shelljs = require('shelljs');
-var replace = require('replace');
-var requirejs = require('requirejs');
+const shelljs = require('shelljs');
+const replace = require('replace');
+const requirejs = require('requirejs');
 
-var cwd = process.cwd();
-var SOURCE = path.resolve(cwd, 'tests/event-sequence/');
-var TARGET = path.resolve(cwd, 'web/tests/event-sequence/');
+const cwd = process.cwd();
+const SOURCE = path.resolve(cwd, 'tests/event-sequence/');
+const TARGET = path.resolve(cwd, 'web/tests/event-sequence/');
 
 shelljs.mkdir('-p', TARGET);
 shelljs.cp(path.resolve(SOURCE, '*.html'), TARGET);
@@ -28,7 +28,7 @@ replace({
   silent: true,
 });
 
-var config = {
+const config = {
   name: 'table',
   out: path.resolve(TARGET, 'table.js'),
   mainConfigFile: path.resolve(SOURCE, 'table.js'),

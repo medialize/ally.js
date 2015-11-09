@@ -5,7 +5,7 @@ module.exports = function(context) {
   // context.hash - arguments map
   // context.data - data map
   try {
-    var data = JSON.parse(JSON.stringify(context.data));
+    const data = JSON.parse(JSON.stringify(context.data));
     delete data.root.pkg;
     delete data.root.contents;
     delete data.root.stats;

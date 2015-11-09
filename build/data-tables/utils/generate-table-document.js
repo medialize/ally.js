@@ -1,21 +1,21 @@
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var Handlebars = require('handlebars');
-var generateTable = require('./generate-table');
+const Handlebars = require('handlebars');
+const generateTable = require('./generate-table');
 
-var cwd = process.cwd();
-var prismCss = fs.readFileSync(path.resolve(cwd, 'node_modules/prismjs/themes/prism.css'), {encoding: 'utf8'});
-var documentTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/document.hbs'), {encoding: 'utf8'});
-var _documentTemplate = Handlebars.compile(documentTemplate);
+const cwd = process.cwd();
+const prismCss = fs.readFileSync(path.resolve(cwd, 'node_modules/prismjs/themes/prism.css'), {encoding: 'utf8'});
+const documentTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/document.hbs'), {encoding: 'utf8'});
+const _documentTemplate = Handlebars.compile(documentTemplate);
 
 function resolveCellTemplate(cellTemplate) {
   if (!cellTemplate) {
     return null;
   }
 
-  let content = fs.readFileSync(path.resolve(__dirname, '../templates/', cellTemplate), {encoding: 'utf8'});
+  const content = fs.readFileSync(path.resolve(__dirname, '../templates/', cellTemplate), {encoding: 'utf8'});
   return Handlebars.compile(content);
 }
 
@@ -31,11 +31,11 @@ module.exports = function({
   cellData,
   rowData,
 }) {
-  let _cellTemplate = resolveCellTemplate(cellTemplate);
-  let skippedGroups = new Set();
+  const _cellTemplate = resolveCellTemplate(cellTemplate);
+  const skippedGroups = new Set();
   // generate one table per group to keep things organized
-  let tables = source.groups.map(function(group) {
-    let html = generateTable({
+  const tables = source.groups.map(function(group) {
+    const html = generateTable({
       // ignore rows that are completely "inert"
       skipIdents,
       // do not print the expected column
@@ -65,7 +65,7 @@ module.exports = function({
   });
 
   // generate table document
-  var html = _documentTemplate({
+  const html = _documentTemplate({
     title,
     introduction,
     prismCss: prismCss,

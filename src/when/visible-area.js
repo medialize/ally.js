@@ -20,7 +20,7 @@ export default function({context, callback, area} = {}) {
     area = 1;
   }
 
-  let element = nodeArray(context)[0];
+  const element = nodeArray(context)[0];
   if (!element) {
     throw new TypeError('when/visible-area requires valid options.context');
   }
@@ -31,11 +31,11 @@ export default function({context, callback, area} = {}) {
   }
 
   let raf;
-  let disengage = function() {
+  const disengage = function() {
     raf && cancelAnimationFrame(raf);
   };
 
-  var runWhenReady = function() {
+  const runWhenReady = function() {
     if (!isVisible(element) || visibleArea(element) < area || callback(element) === false) {
       raf = requestAnimationFrame(runWhenReady);
       return;

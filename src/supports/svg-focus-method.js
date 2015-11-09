@@ -1,6 +1,6 @@
 
 function getFunctionName(func) {
-  var s = String(func).match(/function\s+([^\(]+)\(/);
+  const s = String(func).match(/function\s+([^\(]+)\(/);
   return s && s[1] || null;
 }
 

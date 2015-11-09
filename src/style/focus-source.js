@@ -42,7 +42,7 @@ let lock = null;
 // overwrite focus source for use with the next focus event
 let next = null;
 // keep track of ever having used a particular input method to change focus
-let used = {
+const used = {
   pointer: false,
   key: false,
   script: false,

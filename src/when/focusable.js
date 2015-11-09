@@ -11,7 +11,7 @@ export default function({context, callback, area} = {}) {
     throw new TypeError('when/focusable requires options.callback to be a function');
   }
 
-  let filterCallback = function(element) {
+  const filterCallback = function(element) {
     if (!isFocusable(element)) {
       return false;
     }
@@ -19,8 +19,8 @@ export default function({context, callback, area} = {}) {
     return callback(element);
   };
 
-  let handle = whenVisibleArea({ context, callback: filterCallback, area });
-  let disengage = function() {
+  const handle = whenVisibleArea({ context, callback: filterCallback, area });
+  const disengage = function() {
     document.body.removeEventListener('focus', disengage, true);
     handle && handle.disengage();
   };

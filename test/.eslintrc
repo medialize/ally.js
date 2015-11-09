@@ -1,8 +1,14 @@
 {
   "extends": "../.eslintrc",
   "env": {
+    "amd": 1,
     "browser": 1,
-    "node": 1,
-    "amd": 1
+    "es6": 0,
+    "node": 1
+  },
+  "rules": {
+    "no-var": 0,
+    "no-const-assign": 0,
+    "prefer-const": 0
   }
 }

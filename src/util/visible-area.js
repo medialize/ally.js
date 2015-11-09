@@ -3,11 +3,11 @@ import getParents from '../get/parents';
 
 function getIntersectingRect(one, two) {
   // identify the rectangle that _element and _container overlap in
-  var top = Math.max(one.top, two.top);
-  var left = Math.max(one.left, two.left);
+  const top = Math.max(one.top, two.top);
+  const left = Math.max(one.left, two.left);
   // make sure bottom can't be above top, right can't be before left
-  var right = Math.max(Math.min(one.right, two.right), left);
-  var bottom = Math.max(Math.min(one.bottom, two.bottom), top);
+  const right = Math.max(Math.min(one.right, two.right), left);
+  const bottom = Math.max(Math.min(one.bottom, two.bottom), top);
   // return something resembling ClientRect
   return {
     top: top,
@@ -20,8 +20,8 @@ function getIntersectingRect(one, two) {
 }
 
 function getViewportRect() {
-  var width = window.innerWidth || document.documentElement.clientWidth;
-  var height = window.innerHeight || document.documentElement.clientHeight;
+  const width = window.innerWidth || document.documentElement.clientWidth;
+  const height = window.innerHeight || document.documentElement.clientHeight;
   // return something resembling ClientRect
   return {
     top: 0,
@@ -35,15 +35,15 @@ function getViewportRect() {
 
 function getInnerBoundingClientRect(element) {
   // convenience for the .reduce() in getScrollableParentRect()
-  var rect = element.getBoundingClientRect();
+  const rect = element.getBoundingClientRect();
 
   // remove the width of the scrollbar because that
   // area is not really considered visible
   // NOTE: assuming scrollbar is always to the right and bottom
-  var scrollbarWidth = element.offsetWidth - element.clientWidth;
-  var scrollbarHeight = element.offsetHeight - element.clientHeight;
+  const scrollbarWidth = element.offsetWidth - element.clientWidth;
+  const scrollbarHeight = element.offsetHeight - element.clientHeight;
   // cannot mutate rect because it has readonly properties
-  var _rect = {
+  const _rect = {
     top: rect.top,
     left: rect.left,
     right: rect.right - scrollbarWidth,
@@ -58,8 +58,8 @@ function getInnerBoundingClientRect(element) {
 }
 
 function isOverflowingElement(element) {
-  var style = window.getComputedStyle(element, null);
-  var value = 'visible';
+  const style = window.getComputedStyle(element, null);
+  const value = 'visible';
   return style.getPropertyValue('overflow-x') !== value
     && style.getPropertyValue('overflow-y') !== value;
 }
@@ -79,7 +79,7 @@ function getScrollableParentRect(element) {
   // get largest possible space constrained by scrolling containers
 
   // find scrollable parents
-  var scrollingContainers = getParents({context: element}).slice(1).filter(isScrollableElement);
+  const scrollingContainers = getParents({context: element}).slice(1).filter(isScrollableElement);
 
   if (!scrollingContainers.length) {
     // no containers, no joy
@@ -88,8 +88,8 @@ function getScrollableParentRect(element) {
 
   // identify the currently visible intersection of all scrolling container parents
   return scrollingContainers.reduce(function(previous, current) {
-    var rect = getInnerBoundingClientRect(current);
-    var intersection = getIntersectingRect(rect, previous);
+    const rect = getInnerBoundingClientRect(current);
+    const intersection = getIntersectingRect(rect, previous);
     // identify the smallest scrolling container so we know how much space
     // our element can fill at the most - note that this is NOT the area
     // of the intersection, intersection is just abused as a vehicle
@@ -100,15 +100,15 @@ function getScrollableParentRect(element) {
 
 export default function(element) {
   // dimensions of the element itself
-  var _element = element.getBoundingClientRect();
+  const _element = element.getBoundingClientRect();
   // dimensions of the viewport
-  var _viewport = getViewportRect();
+  const _viewport = getViewportRect();
   // we need the area to know how much of the element can be displayed at the most
   _viewport.area = _viewport.width * _viewport.height;
 
-  var _area = _viewport;
+  let _area = _viewport;
   // dimensions of the intersection of all scrollable parents
-  var _container = getScrollableParentRect(element);
+  const _container = getScrollableParentRect(element);
   if (_container) {
     if (!_container.width || !_container.height) {
       // scrollable containers without dimensions are invisible,
@@ -122,7 +122,7 @@ export default function(element) {
   }
 
   // dimension of the element currently rendered in identified space
-  var _visible = getIntersectingRect(_element, _area);
+  const _visible = getIntersectingRect(_element, _area);
   if (!_visible.width || !_visible.height) {
     // element is not shown within the identified area
     return 0;
@@ -132,8 +132,8 @@ export default function(element) {
   // could take up at the most, being either the element's actual
   // size, or the space theroetically made available if all
   // scrollable parents are aligned properly
-  var area = _element.width * _element.height;
-  var maxArea = Math.min(area, _area.area);
+  const area = _element.width * _element.height;
+  const maxArea = Math.min(area, _area.area);
   // Firefox may return sub-pixel bounding client rect
   return Math.round(_visible.width) * Math.round(_visible.height) / maxArea;
 }

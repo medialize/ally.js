@@ -159,7 +159,7 @@ export default function(element) {
   if (canFocusImgIsmap && nodeName === 'img' && element.hasAttribute('ismap')) {
     // IE10-11 considers the <img> in <a href><img ismap> focusable
     // https://github.com/medialize/ally.js/issues/20
-    let hasLinkParent = getParents({context: element}).some(
+    const hasLinkParent = getParents({context: element}).some(
       parent => parent.nodeName.toLowerCase() === 'a' && parent.hasAttribute('href')
     );
 

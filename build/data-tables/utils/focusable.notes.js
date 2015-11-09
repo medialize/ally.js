@@ -26,11 +26,11 @@ function addNote(message) {
 
 function importNotes(keys, data) {
   if (typeof data === 'string') {
-    let key = addNote(data);
+    const key = addNote(data);
     keys.push(key);
   } else if (Array.isArray(data)) {
     data.forEach(function(_message) {
-      let key = addNote(_message);
+      const key = addNote(_message);
       keys.push(key);
     });
   }

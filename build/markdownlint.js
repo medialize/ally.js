@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-var markdownlint = require('markdownlint');
-var glob = require('glob');
-var path = require('path');
+const markdownlint = require('markdownlint');
+const glob = require('glob');
+const path = require('path');
 
-var cwd = path.resolve(process.cwd(), 'docs');
+const cwd = path.resolve(process.cwd(), 'docs');
 
 // https://github.com/DavidAnson/markdownlint#rules
 // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
-var config = {
+const config = {
   // as of 0.0.8 markdownlint will support options.frontMatter
   ignore: 'frontmatter',
   'default': true,
@@ -52,7 +52,7 @@ markdownlint({
     process.exit(1);
   }
 
-  var resultString = result.toString();
+  const resultString = result.toString();
   if (resultString) {
     console.error(resultString);
     process.exit(1);

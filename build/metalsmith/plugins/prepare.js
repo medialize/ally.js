@@ -1,7 +1,7 @@
 
-var path = require('path');
-var cheerio = require('cheerio');
-var transform = require('./prepare.transform.js');
+const path = require('path');
+const cheerio = require('cheerio');
+const transform = require('./prepare.transform.js');
 
 module.exports = function plugin(/*options*/) {
 
@@ -9,7 +9,7 @@ module.exports = function plugin(/*options*/) {
     setImmediate(done);
 
     Object.keys(files).forEach(function(key) {
-      var p = path.parse(key);
+      const p = path.parse(key);
 
       // filter .*
       if (key.substr(0, 1) === '.') {
@@ -28,7 +28,7 @@ module.exports = function plugin(/*options*/) {
       // https://github.com/mattwidmann/metalsmith-copy/blob/master/lib/index.js
       if (p.base.toLowerCase() === 'readme.html') {
         p.base = 'index.html';
-        var newKey = path.format(p);
+        const newKey = path.format(p);
         files[newKey] = files[key];
         delete files[key];
         key = newKey;
@@ -37,7 +37,7 @@ module.exports = function plugin(/*options*/) {
       // inlining what metalsmith-jquery would've done
       // because we want to mutate a file's data object
       // https://github.com/manheim/metalsmith-jquery/blob/master/lib/index.js
-      var page = cheerio.load(files[key].contents);
+      const page = cheerio.load(files[key].contents);
       transform(page, files[key]);
       files[key].contents = new Buffer(page.html());
     });

@@ -1,7 +1,7 @@
 // collection-to-siblings
 module.exports = function(context) {
-  var _collections = context.data.root.collection;
-  var collections = _collections.map(function(collectionName) {
+  const _collections = context.data.root.collection;
+  const collections = _collections.map(function(collectionName) {
     return context.data.root[collectionName];
   });
 

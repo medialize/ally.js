@@ -93,7 +93,7 @@ function disengage() {
   document.removeEventListener(focusEventName, handleDocumentFocusEvent, true);
   document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
 
-  var selector = '.' + className;
+  let selector = '.' + className;
   if (cssShadowPiercingDeepCombinator) {
     // select elements in shadow dom as well
     selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;

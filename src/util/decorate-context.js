@@ -28,7 +28,7 @@ function initialize({context} = {}) {
 function noop() {}
 
 export default function({engage, disengage} = {}) {
-  let data = {
+  const data = {
     engage: engage || noop,
     disengage: disengage || noop,
     context: null,

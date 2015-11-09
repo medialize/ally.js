@@ -18,11 +18,11 @@
 // inspired by
 // https://github.com/davidxmoody/metalsmith-broken-link-checker/blob/master/src/index.coffee
 
-var path = require('path');
-var cheerio = require('cheerio');
-var URI = require('urijs');
+const path = require('path');
+const cheerio = require('cheerio');
+const URI = require('urijs');
 
-var urlSelector = Object.keys(URI.domAttributes).map(function(tagName) {
+const urlSelector = Object.keys(URI.domAttributes).map(function(tagName) {
   return tagName + '[' + URI.domAttributes[tagName] + ']';
 }).join(',');
 
@@ -36,25 +36,25 @@ function filter(file, files, filePath /*, options*/) {
 }
 
 function transform($, file, fileName, options) {
-  var absolute = path.join(options.resolve, fileName);
+  const absolute = path.join(options.resolve, fileName);
   // URI('/medialize/ally.js/api/style/focus-within.html').relativeTo('/medialize/ally.js/contributing/index.html').toString()
   // "../api/style/focus-within.html"
   $(urlSelector).each(function() {
-    var $element = $(this);
+    const $element = $(this);
     $element.nodeName = $element[0].name;
-    var attribute = URI.getDomAttribute($element);
+    const attribute = URI.getDomAttribute($element);
     if (!attribute) {
       // element does not have a URL attribute
       return;
     }
 
-    var url = $element.attr(attribute);
+    const url = $element.attr(attribute);
     if (url.slice(0, options.resolve.length) !== options.resolve) {
       // URL is not using the absolute prefix
       return;
     }
 
-    var resolved = URI(url).relativeTo(absolute).toString();
+    let resolved = URI(url).relativeTo(absolute).toString();
     if (!resolved) {
       // the file is linking to itself
       resolved = URI(fileName).filename();
@@ -76,7 +76,7 @@ module.exports = function plugin(options) {
 
   if (options.define) {
     return function(files, metalsmith, done) {
-      var metadata = metalsmith.metadata();
+      const metadata = metalsmith.metadata();
       metadata[options.property || 'websiteRoot'] = options.define;
       done();
     };
@@ -84,12 +84,12 @@ module.exports = function plugin(options) {
 
   return function(files, metalsmith, done) {
     Object.keys(files).forEach(function(key) {
-      var filePath = path.parse(key);
+      const filePath = path.parse(key);
       if (filter(key, files, filePath, options)) {
         return;
       }
 
-      var page = cheerio.load(files[key].contents);
+      const page = cheerio.load(files[key].contents);
       transform(page, files[key], key, options);
       files[key].contents = new Buffer(page.html());
     });

@@ -111,7 +111,7 @@ Array.from(idents).sort().forEach(function(ident) {
 
   aggregated[ident] = result;
   mapped.forEach(function(browserData, browser) {
-    var tabindex = browserData.tabIndex.get(ident);
+    const tabindex = browserData.tabIndex.get(ident);
     result[browser] = {
       browser: {
         focusable: browserData.focusable.has(ident),
@@ -138,7 +138,7 @@ Array.from(idents).sort().forEach(function(ident) {
       },
     };
 
-    let src = result[browser];
+    const src = result[browser];
     src.browser.label = readableLabel(
       src.browser.focusable,
       src.browser.tabbable
