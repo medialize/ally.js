@@ -9,6 +9,7 @@ var cwd = path.resolve(process.cwd(), 'docs');
 // https://github.com/DavidAnson/markdownlint#rules
 // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
 var config = {
+  // as of 0.0.8 markdownlint will support options.frontMatter
   ignore: 'frontmatter',
   'default': true,
   // Exclusions for deliberate/widespread violations
@@ -31,22 +32,33 @@ var config = {
   },
   // MD029: false, // Ordered list item prefix
   // MD030: false, // Spaces after list markers
-  MD033: ['kbd'],
+  MD033: ['kbd'], // patched in rodneyrehm/markdownlint
   // MD034: false, // Bare URL used
   // MD040: false,  // Fenced code blocks should have a language specified
 };
 
-var result = markdownlint.sync({
+markdownlint({
   files: glob.sync('**/*.md', {cwd: cwd, realpath: true}),
+  // as of 0.0.8 markdownlint will support front-matter
+  // MD041 does not like an empty line before the first header,
+  // so we'll simply consider that empty line frontMatter...
+  frontMatter: /(^---$[^]*?^---$)?(\r\n|\r|\n){1,}/m,
   config: config,
+}, function(err, result) {
+  /*eslint-disable no-console */
+  /*eslint-disable no-process-exit */
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+
+  var resultString = result.toString();
+  if (resultString) {
+    console.error(resultString);
+    process.exit(1);
+
+  }
+  /*eslint-enable no-console */
+  /*eslint-enable no-process-exit */
 });
 
-var resultString = result.toString();
-if (resultString) {
-  /*eslint-disable no-console */
-  console.error(resultString);
-  /*eslint-enable no-console */
-  /*eslint-disable no-process-exit */
-  process.exit(1);
-  /*eslint-enable no-process-exit */
-}
