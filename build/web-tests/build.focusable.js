@@ -1,28 +1,31 @@
 
+var path = require('path');
+
 var shelljs = require('shelljs');
 var replace = require('replace');
 var requirejs = require('requirejs');
 
-var SOURCE = 'tests/focusable/';
-var TARGET = 'web/tests/focusable/';
+var cwd = process.cwd();
+var SOURCE = path.resolve(cwd, 'tests/focusable/');
+var TARGET = path.resolve(cwd, 'web/tests/focusable/');
 
 shelljs.mkdir('-p', TARGET);
-shelljs.cp(SOURCE + '*.html', TARGET);
+shelljs.cp(path.resolve(SOURCE, '*.html'), TARGET);
 
 replace({
   regex: '<script src="../../node_modules/requirejs/require.js" data-main="focusable"></script>',
   replacement: '<script src="./focusable.js" data-main="focusable"></script>',
-  paths: [TARGET + 'test.html'],
+  paths: [path.resolve(TARGET, 'test.html')],
   recursive: false,
   silent: true,
 });
 
 var config = {
   name: 'focusable',
-  out: TARGET + 'focusable.js',
-  mainConfigFile: SOURCE + 'focusable.js',
+  out: path.resolve(TARGET, 'focusable.js'),
+  mainConfigFile: path.resolve(SOURCE, 'focusable.js'),
   paths: {
-    requireLib: '../../node_modules/requirejs/require',
+    requireLib: path.resolve(cwd, 'node_modules/requirejs/require'),
   },
   include: ['requireLib'],
 };

@@ -2,15 +2,16 @@
 const path = require('path');
 const glob = require('glob');
 
+const cwd = process.cwd();
 const notes = require('./focusable.notes');
 const groups = require('./focusable.groups');
-const redirects = require(path.resolve(__dirname, '../../../tests/focusable/data/meta.redirects.json'));
+const redirects = require(path.resolve(cwd, 'tests/focusable/data/meta.redirects.json'));
 const platforms = require('./platforms');
 
 // import data from tests/focusable
 const source = {};
 glob.sync('*.json', {
-  cwd: path.resolve(__dirname, '../../../tests/focusable/data/'),
+  cwd: path.resolve(cwd, 'tests/focusable/data/'),
   realpath: true,
 }).sort().forEach(function(file) {
   const name = path.basename(file, '.json');

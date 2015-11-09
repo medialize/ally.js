@@ -1,18 +1,18 @@
 
-var Metalsmith = require('metalsmith');
-var Handlebars = require('handlebars')
+var metalsmith = require('metalsmith');
 var remarkable = require('metalsmith-markdown-remarkable');
-var manualSort = require('./plugins/collection.manual-sort');
 var paths = require('metalsmith-paths');
 var packageJson = require('metalsmith-packagejson');
 var registerHelpers = require('metalsmith-register-helpers');
 var layouts = require('metalsmith-layouts');
 var linkChecker = require('metalsmith-broken-link-checker');
-var prepare = require('./plugins/prepare');
-var absoluteUrl = require('./plugins/absolute-url');
 var collections = require('metalsmith-collections');
 var staticFiles = require('metalsmith-static');
 var redirect = require('metalsmith-redirect');
+
+var manualSort = require('./plugins/collection.manual-sort');
+var prepare = require('./plugins/prepare');
+var absoluteUrl = require('./plugins/absolute-url');
 
 var WEBSITE_ROOT = '/medialize/ally.js/';
 
@@ -36,9 +36,9 @@ function getRedirectionMap() {
   };
 }
 
-Metalsmith(__dirname)
-  .source('../docs')
-  .destination('../web')
+metalsmith(__dirname)
+  .source('../../docs')
+  .destination('../../web')
   .use(remarkable({
     linkify: true,
   }))
@@ -102,5 +102,7 @@ Metalsmith(__dirname)
     warn: true,
   }))
   .build(function(err) {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
   });

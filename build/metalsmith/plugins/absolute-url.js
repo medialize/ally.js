@@ -60,7 +60,7 @@ function transform($, file, fileName, options) {
       resolved = URI(fileName).filename();
     }
 
-    if (resolved[resolved.length -1] === '/') {
+    if (resolved[resolved.length - 1] === '/') {
       // the file is linking to a directory, append index.html
       resolved += 'index.html';
     }
@@ -69,7 +69,7 @@ function transform($, file, fileName, options) {
   });
 }
 
-module.exports = function plugin (options) {
+module.exports = function plugin(options) {
   if (!options) {
     options = {};
   }

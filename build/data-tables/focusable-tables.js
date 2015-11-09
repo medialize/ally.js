@@ -2,7 +2,8 @@
 const path = require('path');
 const mkdirp = require('mkdirp');
 
-const targetDirectory = path.resolve(__dirname, '../../web/data-tables/');
+const cwd = process.cwd();
+const targetDirectory = path.resolve(cwd, 'web/data-tables/');
 mkdirp.sync(targetDirectory);
 
 const generateTableDocument = require('./utils/generate-table-document');

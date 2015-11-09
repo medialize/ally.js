@@ -3,7 +3,8 @@ const path = require('path');
 
 const Remarkable = require('remarkable');
 
-const file = path.resolve(__dirname, '../../../tests/focusable/data/meta.notes.json');
+const cwd = process.cwd();
+const file = path.resolve(cwd, 'tests/focusable/data/meta.notes.json');
 const source = require(file);
 
 // build lookup table and flattened list of notes

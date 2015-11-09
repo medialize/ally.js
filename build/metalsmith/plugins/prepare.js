@@ -3,9 +3,9 @@ var path = require('path');
 var cheerio = require('cheerio');
 var transform = require('./prepare.transform.js');
 
-module.exports = function plugin (options) {
+module.exports = function plugin(/*options*/) {
 
-  return function (files, metalsmith, done) {
+  return function(files, metalsmith, done) {
     setImmediate(done);
 
     Object.keys(files).forEach(function(key) {

@@ -91,4 +91,4 @@ module.exports = function($, data) {
     $pre.remove();
   });
 
-}
+};

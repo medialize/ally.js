@@ -5,7 +5,8 @@ var path = require('path');
 var Handlebars = require('handlebars');
 var generateTable = require('./generate-table');
 
-var prismCss = fs.readFileSync(path.resolve(__dirname, '../../../node_modules/prismjs/themes/prism.css'), {encoding: 'utf8'});
+var cwd = process.cwd();
+var prismCss = fs.readFileSync(path.resolve(cwd, 'node_modules/prismjs/themes/prism.css'), {encoding: 'utf8'});
 var documentTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/document.hbs'), {encoding: 'utf8'});
 var _documentTemplate = Handlebars.compile(documentTemplate);
 

@@ -4,14 +4,14 @@ layout: doc-page.html
 
 # Documentation Infrastructure
 
-The documentation is authored in markdown in the `docs` directory. We're using [Remarkable](https://www.npmjs.com/package/remarkable) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `scripts/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
+The documentation is authored in markdown in the `docs` directory. We're using [Remarkable](https://www.npmjs.com/package/remarkable) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `build/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 
 The idea is to create a documentation that can be read on github and on the generated website.
 
 
 ## Building The Website
 
-The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the scripts and configuration are maintained in the `metalsmith` directory.
+The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the scripts and configuration are maintained in the `build/metalsmith` directory.
 
 The website is comprised of 3 elements, the markdown sources, data tables and some legacy files from `./tests`.
 
@@ -117,7 +117,7 @@ In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a 
 * **HELP:** I'm informing you of something you can contribute to this project
 ```
 
-In any other doc page (e.g. `layout: doc-page.html`) notes and warnings do not have to (but can) be contained in a `## Notes` section. The notation (list with bold identifier, identifier upper-cased and containing the colon) remains the same. The list notation is used to allow `metalsmith/plugin/prepare.js` reformatting those blocks to `<div class="note">…</div>` while still allowing github to render something readable.
+In any other doc page (e.g. `layout: doc-page.html`) notes and warnings do not have to (but can) be contained in a `## Notes` section. The notation (list with bold identifier, identifier upper-cased and containing the colon) remains the same. The list notation is used to allow `build/metalsmith/plugins/prepare.js` reformatting those blocks to `<div class="note">…</div>` while still allowing github to render something readable.
 
 * **HELP:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
 

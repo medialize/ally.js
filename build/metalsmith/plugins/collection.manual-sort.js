@@ -30,28 +30,52 @@ function sorter(order) {
     var a = one.sidebar || one.title;
     var b = two.sidebar || two.title;
 
-    if (!a && !b) return 0;
-    if (!a) return 1;
-    if (!b) return -1;
+    if (!a && !b) {
+      return 0;
+    }
+    if (!a) {
+      return 1;
+    }
+    if (!b) {
+      return -1;
+    }
 
     var i = order.indexOf(a);
     var j = order.indexOf(b);
 
     if (~i && ~j) {
-      if (i < j) return -1;
-      if (j < i) return 1;
+      if (i < j) {
+        return -1;
+      }
+      if (j < i) {
+        return 1;
+      }
+
       return 0;
     }
 
-    if (~i) return -1;
-    if (~j) return 1;
+    if (~i) {
+      return -1;
+    }
+    if (~j) {
+      return 1;
+    }
 
     a = a.toLowerCase();
     b = b.toLowerCase();
-    if (a[0] === '.') return 1;
-    if (b[0] === '.') return -1;
-    if (a < b) return -1;
-    if (b < a) return 1;
+    if (a[0] === '.') {
+      return 1;
+    }
+    if (b[0] === '.') {
+      return -1;
+    }
+    if (a < b) {
+      return -1;
+    }
+    if (b < a) {
+      return 1;
+    }
+
     return 0;
   };
 }

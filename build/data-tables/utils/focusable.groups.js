@@ -1,6 +1,7 @@
 
 const path = require('path');
-const file = path.resolve(__dirname, '../../../tests/focusable/data/meta.groups.json');
+const cwd = process.cwd();
+const file = path.resolve(cwd, 'tests/focusable/data/meta.groups.json');
 const source = require(file);
 
 const idents = new Set();

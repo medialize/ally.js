@@ -55,8 +55,7 @@ Also following their [Submitting a Pull Request](https://github.com/angular/angu
 ally.js
   / dist: contains the built distributable files - never check into git!
   / docs: contains the markdown documentation
-  / metalsmith: contains files to generate the website and HTML docs
-  / scripts: contains scripts concerning the build pipeline
+  / build: contains scripts concerning the build pipeline
   / src: contains ally.js source
   / test: contains unit and functional tests for ally.js source
   / tests: contains browser behavior evaluation tests
