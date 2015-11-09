@@ -1,3 +1,6 @@
+
+'use strict';
+
 // from https://gist.github.com/lambtron/c8945d3abd11c783eb67
 // via https://segment.com/blog/building-technical-documentation-with-metalsmith/
 

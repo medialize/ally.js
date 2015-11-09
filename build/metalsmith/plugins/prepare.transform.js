@@ -1,3 +1,6 @@
+
+'use strict';
+
 module.exports = function($, data) {
 
   // extract h1 to title

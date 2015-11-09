@@ -1,4 +1,6 @@
 
+'use strict';
+
 /* eslint-disable new-cap */
 
 /*
