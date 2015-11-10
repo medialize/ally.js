@@ -18,8 +18,6 @@ You can *request* a new feature by [filing an issue](https://github.com/medializ
 
 ## Contributing Code
 
-The [stable](https://github.com/medialize/ally.js/tree/stavke) branch reflects the state of the latest released version. We work in [master](https://github.com/medialize/ally.js/tree/master) - and that's where your PRs need to go. The stable branch is only ever merged from master to create a new release.
-
 We try to follow Angular's [Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines):
 
 ```text
