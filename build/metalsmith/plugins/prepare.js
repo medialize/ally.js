@@ -4,7 +4,6 @@ const cheerio = require('cheerio');
 const transform = require('./prepare.transform.js');
 
 module.exports = function plugin(/*options*/) {
-
   return function(files, metalsmith, done) {
     setImmediate(done);
 
@@ -19,6 +18,11 @@ module.exports = function plugin(/*options*/) {
 
       // skip mutations for anything that isn't html
       if (p.ext !== '.html') {
+        return;
+      }
+
+      // skip mutations for example files
+      if (p.base.indexOf('.example') !== -1) {
         return;
       }
 

@@ -187,6 +187,7 @@ main h1,
 main h2,
 main h3 {
   margin: 24px 0 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 main h1 {
@@ -273,4 +274,9 @@ a:visited {
 }
 .help > strong:first-child {
   color: blue;
+}
+
+main .example h1 {
+  font-size: 24px;
+  border-bottom: none;
 }

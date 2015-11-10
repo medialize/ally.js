@@ -4,10 +4,11 @@ layout: doc-page.html
 
 # Accessible Dialog Tutorial
 
-This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/#dialog_modal). The assembled code is available in the [ally.js Dialog Example](./dialog.example.html).
+This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/#dialog_modal).
 
 HTML5.1 specifies the [`<dialog>` element](http://www.w3.org/TR/html51/interactive-elements.html#the-dialog-element) that natively does most of what is explained here. But since [browser support](http://caniuse.com/#feat=dialog) is rather limited, making use of `<dialog>` is not yet possible.
 
+The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#Interactive-Demo) below.
 
 ## The Visual Effect
 
@@ -499,6 +500,4 @@ function openDialog() {
 
 ## Interactive Demo
 
-```embed
-<a class="jsbin-embed" href="https://jsbin.com/qawasag/embed?output">ally.js Dialog Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
-```
+* **EXAMPLE:** [ally.js Dialog Example](./dialog.example.html)

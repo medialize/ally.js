@@ -1,6 +1,8 @@
 
 'use strict';
 
+const utils = require('./utils.js');
+
 function extractData($, data) {
   // extract h1 to title
   if (!data.title) {
@@ -34,22 +36,7 @@ function rewriteUrlsFromMdToHtml($/*, data*/) {
 
 function makeHeadlinesLinkable($/*, data*/) {
   $('h1, h2, h3, h4, h5, h6').each(function() {
-    const $this = $(this);
-
-    // add IDs to headlines
-    const id = $this.attr('id') || $this.text()
-      .replace(/[^a-z0-9]+/ig, '-')
-      .replace(/^-|-$/g, '');
-
-    // add link to self
-    const $link = $('<a id="" href="" class="link-to-headline" aria-label="link to headline"></a>')
-      .attr('id', id)
-      .attr('href', '#' + id)
-      .html('&#128279');
-
-    $this
-      .removeAttr('id')
-      .prepend($link);
+    utils.makeHeadlineLinkable($(this), $);
   });
 }
 
@@ -93,26 +80,6 @@ function convertNoteBlocks($/*, data*/) {
   });
 }
 
-function embedJsbin($/*, data*/) {
-  $('pre > code.language-embed').each(function() {
-    const $code = $(this);
-    const $pre = $code.parent();
-    const $embed = $($code.text());
-    const $link = $('<a>')
-      .attr('href', $embed.first().attr('href'))
-      .attr('target', '_blank')
-      .attr('class', 'open-embed')
-      .text('Open the embedded demo in a new window')
-      .insertAfter($pre);
-    const $container = $('<section>')
-      .attr('class', 'embed')
-      .append($embed)
-      .append($link);
-    $pre.after($container);
-    $pre.remove();
-  });
-}
-
 function convertCodeLanguageForPrism($/*, data*/) {
   $('pre > code').each(function() {
     const $this = $(this);
@@ -134,6 +101,5 @@ module.exports = function($, data) {
 
   convertNoteBlocks($, data);
 
-  embedJsbin($, data);
   convertCodeLanguageForPrism($, data);
 };

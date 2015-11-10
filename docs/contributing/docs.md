@@ -55,15 +55,17 @@ The public API provided by ally.js needs to be explained in `docs/api`. As every
 Anything you document should be written in a way that caters to an audience that may not know very much about accessibility. If bigger picture explanations are required, consider writing a tutorial instead of cramming it into the API docs.
 
 
-### Embedding Demos
+### Embedding Examples and Demos
 
-You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by wrapping it in a markdown code-block with the language `embed` specified.
+You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by using the following markdown in any document:
 
----
+```markdown
+* **EXAMPLE:** [name of demo](./name.example.html)
+```
 
-A demo document is named `{{slug}}.example.html` (for multiple `{{slug}}.example-2.html`) and placed in the same directory as the API document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
+A demo document is named `{{slug}}.example.html` (for multiple `{{slug}}.example-2.html`) and placed in the same directory as the referencing document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
 
-Examples must follow the following general structure.
+Example documents must follow the following general structure.
 
 ```html
 <!DOCTYPE html>
@@ -80,7 +82,6 @@ Examples must follow the following general structure.
 
 <article id="example-introduction">
   <h1>Accessible {{example_title}} Tutorial</h1>
-
   <p>{{example_description}}</p>
 </article>
 

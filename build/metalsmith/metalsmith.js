@@ -12,6 +12,7 @@ const redirect = require('metalsmith-redirect');
 
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
+const injectExamples = require('./plugins/inject-examples');
 const absoluteUrl = require('./plugins/absolute-url');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
@@ -69,6 +70,10 @@ metalsmith(__dirname)
       pattern: 'contributing/**/*.html',
       sortBy: manualSort(['Contributing']),
     },
+    Examples: {
+      pattern: '**/*.example*.html',
+      //sortBy: manualSort(['Contributing']),
+    },
     /*
     key: {
       metadata: {
@@ -78,6 +83,7 @@ metalsmith(__dirname)
     }
     */
   }))
+  .use(injectExamples())
   .use(registerHelpers({
     directory: 'helpers/',
   }))
