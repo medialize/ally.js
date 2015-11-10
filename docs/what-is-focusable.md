@@ -6,11 +6,11 @@ layout: doc-page.html
 
 An HTML element can be a member of exactly one of the following five categories:
 
-* **inert**: the element is not interactive and thus not focusable.
-* **focusable**: the element can be focused by script ([`element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)) and possibly the mouse (or pointer), but not the keyboard.
-* **tabbable**: the element is keyboard focusable ("tabbable"), as it is part of the document's sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).
-* **only-tabbable**: The element is *only* keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.
-* **forwards focus**: The element will forward focus to another element instead of receiving focus itself.
+* **Inert:** The element is not interactive and thus not focusable.
+* **Focusable:** The element can be focused by script ([`element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)) and possibly the mouse (or pointer), but not the keyboard.
+* **Tabbable:** The element is keyboard focusable ("tabbable"), as it is part of the document's sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).
+* **Only Tabbable:** The element is *only* keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.
+* **Forwards Focus:** The element will forward focus to another element instead of receiving focus itself.
 
 
 The [Focusable Elements - Browser Compatibility Table](./data-tables/focusable.md) details in which category the various HTML elements fall per browser. [Focus Redirecting Elements](./data-tables/focusable.redirect.md) details the elements that forward focus to another element, instead of receiving focus themselves.

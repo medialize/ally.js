@@ -18,6 +18,13 @@ p + p {
   margin-top: 12px;
 }
 
+a {
+  color: #336699;
+}
+a:visited {
+  color: #3399CC;
+}
+
 .skip-to-content {
   position: absolute;  
   width: 1px;
@@ -45,10 +52,15 @@ body > footer {
   margin: 0 auto;
   max-width: 1000px;
   padding: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #E5E5E5;
 
   background: white;
 }
+
+
+/************************************************************
+ * Header Content
+ ************************************************************/
 
 body > header {
   position: relative;
@@ -69,7 +81,6 @@ body > header {
   font-size: 22px;
   line-height: 1;
 }
-
 #download {
   position: absolute;
   top: 16px;
@@ -105,11 +116,16 @@ body > header {
   color: #CCC;
 }
 
+
+/************************************************************
+ * Main Navigation
+ ************************************************************/
+
 #site-navigation {
   clear: left;
   margin: 18px 0 0 0;
   padding-top: 12px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #E5E5E5;
 }
 #site-navigation > ul {
   margin: 0;
@@ -132,6 +148,11 @@ body > header {
   color: white;
 }
 
+
+/************************************************************
+ * Footer Content
+ ************************************************************/
+
 body > footer {
   border-top: none;
   background: rgba(0, 0, 0, 0.05);
@@ -141,6 +162,11 @@ body > footer > p {
   vertical-align: middle;
   margin: 0;
 }
+
+
+/************************************************************
+ * Sidebar Navigation
+ ************************************************************/
 
 #navigation-column {
   box-sizing: border-box;
@@ -163,7 +189,7 @@ body > footer > p {
 }
 #navigation-column li + li {
   margin-top: 3px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);;
+  border-top: 1px solid #E5E5E5;;
   padding-top: 3px;
 }
 #navigation-column nav + aside {
@@ -171,9 +197,13 @@ body > footer > p {
 }
 
 
+/************************************************************
+ * Main Content
+ ************************************************************/
+
 main {
   margin-left: 250px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #E5E5E5;
   padding-left: 12px;
   line-height: 1.5;
 }
@@ -183,11 +213,22 @@ main:after {
   clear: both;
 }
 
+main > * + *,
+section + section,
+div + div,
+p + p {
+  margin-top: 12px;
+}
+
+/************************************************************
+ * Headlines
+ ************************************************************/
+
 main h1,
 main h2,
 main h3 {
   margin: 24px 0 12px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid #E5E5E5;
 }
 
 main h1 {
@@ -205,14 +246,6 @@ main > article:first-of-type > header > h1 {
   margin-top: 0;
 }
 
-main > * + *,
-section + section,
-div + div,
-p + p {
-  margin-top: 12px;
-}
-
-
 .link-to-headline {
   display: none;
 }
@@ -224,6 +257,10 @@ main .link-to-headline {
   margin-right: 6px;
 }
 
+
+/************************************************************
+ * Inline Content
+ ************************************************************/
 
 main :not(pre) > code {
   display: inline-block;
@@ -255,24 +292,22 @@ main kbd {
   box-shadow: inset 0 -1px 0 #bbb;
 }
 
-a {
-  color: #336699;
-}
-a:visited {
-  color: #3399CC;
-}
 
-.warning,
-.help,
-.note {
+/************************************************************
+ * Block Content
+ ************************************************************/
+
+main .warning,
+main .help,
+main .note {
   padding: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #E5E5E5;
   background: rgba(0, 0, 0, 0.05);
 }
-.warning > strong:first-child {
+main .warning > strong:first-child {
   color: #DA0000;
 }
-.help > strong:first-child {
+main .help > strong:first-child {
   color: blue;
 }
 
@@ -280,3 +315,32 @@ main .example h1 {
   font-size: 24px;
   border-bottom: none;
 }
+
+main table {
+  border: 1px solid #E5E5E5;
+  border-collapse: collapse;
+}
+main th,
+main td {
+  border: 1px solid #E5E5E5;
+  padding: 6px;
+}
+main th {
+  background: rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+main ul {
+  padding-left: 24px;
+}
+
+main dt {
+  font-weight: bold;
+}
+main dd {
+  margin-left: 24px;
+}
+main dd + dt {
+  margin-top: 12px;
+}
+

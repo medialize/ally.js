@@ -122,3 +122,11 @@ In any other doc page (e.g. `layout: doc-page.html`) notes and warnings do not h
 
 * **HELP:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
 
+### Definitions
+
+Document can make use of definition lists. An unordered list containing only items starting with the term in strong emphasis ending with a colon (`:`) will be converted from `<ul>` to `<dl>` for the purpose of proper semantics:
+
+```markdown
+* **Term 1:** Explanation 1
+* **Term 2:** Explanation 2
+```
