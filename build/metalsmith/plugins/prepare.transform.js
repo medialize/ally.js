@@ -1,8 +1,7 @@
 
 'use strict';
 
-module.exports = function($, data) {
-
+function extractData($, data) {
   // extract h1 to title
   if (!data.title) {
     data.title = $('h1').text();
@@ -15,7 +14,9 @@ module.exports = function($, data) {
     const p = $('p').first();
     data.excerpt = $.html(p).trim();
   }
+}
 
+function rewriteUrlsFromMdToHtml($/*, data*/) {
   // rewrite relative *.md to *.html
   $('a').each(function() {
     const $this = $(this);
@@ -29,34 +30,49 @@ module.exports = function($, data) {
       .replace(/\.md(#.*)?$/, '.html$1');
     $this.attr('href', href);
   });
+}
 
-  // add IDs to headlines
+function makeHeadlinesLinkable($/*, data*/) {
   $('h1, h2, h3, h4, h5, h6').each(function() {
     const $this = $(this);
-    let id = $this.attr('id');
-    if (id) {
-      return;
-    }
 
-    id = $this.text()
+    // add IDs to headlines
+    const id = $this.attr('id') || $this.text()
       .replace(/[^a-z0-9]+/ig, '-')
       .replace(/^-|-$/g, '');
 
-    $this.attr('id', id);
-  });
+    // add link to self
+    const $link = $('<a id="" href="" class="link-to-headline" aria-label="link to headline"></a>')
+      .attr('id', id)
+      .attr('href', '#' + id)
+      .html('&#128279');
 
+    $this
+      .removeAttr('id')
+      .prepend($link);
+  });
+}
+
+function extractTableOfContents($, data) {
   // prepare Table Of Contents
   // inlining what metalsmith-autotoc would've done
   // https://github.com/anatoo/metalsmith-autotoc/blob/master/index.js
   data.toc = [];
   $('h2').each(function() {
-    const $this = $(this);
+    const $this = $(this).clone();
+    const $link = $this.find('.link-to-headline');
+    const id = $link.attr('id');
+    $link.remove();
+    const text = $this.text();
+
     data.toc.push({
-      id: String($this.attr('id')),
-      text: String($this.text()),
+      id: String(id),
+      text: String(text),
     });
   });
+}
 
+function convertNoteBlocks($/*, data*/) {
   // replace NOTE: and WARNING: lists by proper blocks
   $('ul li strong').each(function() {
     const $label = $(this);
@@ -75,7 +91,9 @@ module.exports = function($, data) {
       $ul.remove();
     }
   });
+}
 
+function embedJsbin($/*, data*/) {
   $('pre > code.language-embed').each(function() {
     const $code = $(this);
     const $pre = $code.parent();
@@ -93,5 +111,29 @@ module.exports = function($, data) {
     $pre.after($container);
     $pre.remove();
   });
+}
 
+function convertCodeLanguageForPrism($/*, data*/) {
+  $('pre > code').each(function() {
+    const $this = $(this);
+    const className = $this.attr('class')
+      .replace('language-sh', 'language-bash')
+      .replace('language-html', 'language-markup')
+      .replace('language-js', 'language-javascript');
+
+    $this.attr('class', className);
+  });
+}
+
+module.exports = function($, data) {
+  extractData($, data);
+  rewriteUrlsFromMdToHtml($, data);
+
+  makeHeadlinesLinkable($, data);
+  extractTableOfContents($, data);
+
+  convertNoteBlocks($, data);
+
+  embedJsbin($, data);
+  convertCodeLanguageForPrism($, data);
 };

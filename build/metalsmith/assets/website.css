@@ -212,6 +212,16 @@ p + p {
 }
 
 
+.link-to-headline {
+  display: none;
+}
+main .link-to-headline {
+  text-decoration: none;
+  font-size: 65%;
+  font-weight: normal;
+  display: inline-block;
+  margin-right: 6px;
+}
 
 
 main :not(pre) > code {
