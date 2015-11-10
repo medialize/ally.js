@@ -52,31 +52,44 @@ node test/run-local.js \
 
 You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account. The same is true for [BrowserStack](http://browserstack.com/).
 
+### Running Tests on BrowserStack
+
 ```sh
 # make BrowserStack credentials available to Intern
 # obtainable at https://www.browserstack.com/accounts/automate
 export BROWSERSTACK_USERNAME=rodneyrehm1
 export BROWSERSTACK_ACCESS_KEY=nope
-# make SauceLabs credentials available to Intern
-# obtainable at https://saucelabs.com/account
-export SAUCE_USERNAME=allyjs
-export SAUCE_ACCESS_KEY=nope
 
 # run all tests
 npm run test:browserstack
-npm run test:sauce
 
 # run all tests (without npm)
 ./node_modules/.bin/intern-runner \
   config=test/browserstack
-./node_modules/.bin/intern-runner \
-  config=test/sauce
 
 # run selected suites
 ./node_modules/.bin/intern-runner \
   config=test/browserstack \
   suites=test/unit/selected-test \
   functionalSuites=tests/functional/selected-test
+```
+
+### Running Tests on SauceLaubs
+
+```sh
+# make SauceLabs credentials available to Intern
+# obtainable at https://saucelabs.com/account
+export SAUCE_USERNAME=allyjs
+export SAUCE_ACCESS_KEY=nope
+
+# run all tests
+npm run test:sauce
+
+# run all tests (without npm)
+./node_modules/.bin/intern-runner \
+  config=test/sauce
+
+# run selected suites
 ./node_modules/.bin/intern-runner \
   config=test/sauce \
   suites=test/unit/selected-test \
