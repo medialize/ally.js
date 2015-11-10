@@ -14,6 +14,9 @@ import style from './style/_style';
 import when from './when/_when';
 import version from './version';
 
+// save current window.ally for noConflict()
+const conflicted = window.ally;
+
 export default {
   element,
   event,
@@ -27,4 +30,11 @@ export default {
   style,
   when,
   version,
+  noConflict: function() {
+    if (window.ally === this) {
+      window.ally = conflicted;
+    }
+
+    return this;
+  },
 };
