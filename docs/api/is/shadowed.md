@@ -1,7 +1,6 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/is/shadowed
-apiBuiltName: ally.is.shadowed
+tags: argument-list, shadow-dom
 ---
 
 # ally.is.shadowed
@@ -9,44 +8,45 @@ apiBuiltName: ally.is.shadowed
 Determines if an element is the descendant of a `ShadowRoot`.
 
 
-## Notes
-
-Requires [Shadow DOM](http://caniuse.com/#feat=shadowdom) support
-
-
-## Demo
-
-TODO: figure out how to integrate demo
+## Description
 
 
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  var shadowed = ally.is.shadowed(element);
-  // shadowed is a boolean
-</script>
+```js
+var element = document.getElementById('victim');
+var isShadowed = ally.is.shadowed(element);
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
+
+### Returns
+
+Boolean, `true` if the element is focus relevant.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
+
+
+## Notes
+
+* **NOTE:** Requires [Shadow DOM](http://caniuse.com/#feat=shadowdom) support
 
 
 ## Related Resources
 
-* [`ally/is/disabled`](disabled.md)
-* [`ally/is/focusable`](focusable.md)
-* [`ally/is/tabbable`](tabbable.md)
-* [`ally/is/valid-area`](valid-area.md)
-* [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/is/visible`](visible.md)
 
-
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/shadowed.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/shadowed.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.shadowed.test.js)
-
 

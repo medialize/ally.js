@@ -56,11 +56,12 @@ metalsmith(__dirname)
       pattern: 'index.html',
     },
     'Getting Started': {
-      pattern: '{getting-started.html,what-is-focusable.html}',
+      pattern: '{getting-started.html,what-is-focusable.html,concepts.html}',
+      sortBy: manualSort(['Getting Started', 'General Concepts']),
     },
     API: {
       pattern: 'api/**/*.html',
-      sortBy: manualSort(['API Index']),
+      sortBy: manualSort(['API Index', 'API Concepts']),
     },
     Tutorials: {
       pattern: 'tutorials/**/*.html',

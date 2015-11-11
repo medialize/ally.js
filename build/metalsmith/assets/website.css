@@ -226,7 +226,8 @@ p + p {
 
 main h1,
 main h2,
-main h3 {
+main h3,
+main h4 {
   margin: 24px 0 12px 0;
   border-bottom: 1px solid #E5E5E5;
 }
@@ -239,6 +240,9 @@ main h2 {
 }
 main h3 {
   font-size: 24px;
+}
+main h3 {
+  font-size: 18px;
 }
 
 main > h1:first-of-type,
@@ -309,6 +313,13 @@ main .warning > strong:first-child {
 }
 main .help > strong:first-child {
   color: blue;
+}
+
+main blockquote {
+  color: #666;
+  border-left: 4px solid #E5E5E5;
+  margin-left: 8px;
+  padding: 6px 12px;
 }
 
 main .example h1 {

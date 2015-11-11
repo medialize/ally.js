@@ -1,12 +1,39 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/is/valid-tabindex
-apiBuiltName: ally.is.validTabindex
+tags: argument-list
 ---
 
 # ally.is.validTabindex
 
 Determines if an element's `tabindex` attribute value is sound
+
+
+## Description
+
+
+## Usage
+
+```js
+var element = document.getElementById('victim');
+var isValidTabindex = ally.is.validTabindex(element);
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
+
+### Returns
+
+Boolean, `true` if the element is focus relevant.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
 
 
 ## Notes
@@ -16,41 +43,15 @@ Determines if an element's `tabindex` attribute value is sound
 * **WARNING:** Gecko, Blink and WebKit consider `[tabindex="3x"]` valid
 * **WARNING:** only Blink and WebKit respect the `tabindex` attribute on SVGElements (defined in [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG))
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  var validTabindex = ally.is.validTabindex(element);
-  // validTabindex is a boolean
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
 
 ## Related Resources
 
-* [`ally/is/disabled`](disabled.md)
-* [`ally/is/focusable`](focusable.md)
-* [`ally/is/shadowed`](shadowed.md)
-* [`ally/is/tabbable`](tabbable.md)
-* [`ally/is/valid-area`](valid-area.md)
-* [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/is/visible`](visible.md)
-* [HTML5 7.4.1 The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
+* [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/valid-tabindex.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/valid-tabindex.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/docs/test/is.valid-tabindex.test.js)
-
 

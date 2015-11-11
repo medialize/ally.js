@@ -1,12 +1,14 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/element/disabled
-apiBuiltName: ally.element.disabled
+tags: argument-list, svg
 ---
 
 # ally.element.disabled
 
 Makes an element inert, i.e. not editable.
+
+
+## Description
 
 HTML knows the [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled) state for form elements, but lacks something similar for all the other interactive elements. This utility makes a form of this convenient state available to every element.
 
@@ -22,45 +24,57 @@ The following things are done in order to make an element inert:
 * adding `aria-disabled="true"` to inform the AccessibilityTree of the element's state
 
 
+## Usage
+
+```js
+var element = document.getElementById('victim');
+// disable the element
+ally.element.disabled(element, true);
+// enable the element
+ally.element.disabled(element, false);
+// check the elements disabled state
+var isDisabled = ally.element.disabled(element);
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to modify |
+| state | boolean, `undefined` | `undefined` | `true` to disable the element, `false` |
+
+
+### Returns
+
+* [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) if the `state` argument is a boolean.
+* Boolean if the `state` argument is `undefined`, being `true` if the element is disabled, `false` if not.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
+
+* **EXAMPLE:** [ally.js Dialog Example](./disabled.example.html)
+
+
 ## Notes
 
 * **WARNING:** Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 
 
-## Demo
-
-* **EXAMPLE:** [ally.js Dialog Example](./disabled.example.html)
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  // disable the element
-  ally.element.disabled(element, true);
-  // enable the element
-  ally.element.disabled(element, false);
-  // check the elements disabled state
-  var disabled = ally.element.disabled(element);
-  // disabled is a boolean
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/is/disabled`](../is/disabled.md)
-* [`ally/maintain/disabled`](../maintain/disabled.md)
-* [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
+* [`ally/is/disabled`](../is/disabled.md) is able to identify elements disabled by `ally/element/disabled`
+* [`ally/maintain/disabled`](../maintain/disabled.md) is a [service](../concepts.md#Service) finding focusable elements and disabling them within the DOM
+
+* [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 * [WICG: Adding a [disabled] attribute to `<a>`s](http://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/element/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/element/disabled.md)

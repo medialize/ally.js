@@ -1,53 +1,51 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/is/visible
-apiBuiltName: ally.is.visible
+tags: argument-list
 ---
 
 # ally.is.visible
 
 Determines if an element is rendered.
 
+
+## Description
+
 An element must be visible ([`ally/is/visible`](visible.md)) and may not be disabled ([`ally/is/disabled`](disabled.md)) to be considered focusable.
+
+
+## Usage
+
+```js
+var element = document.getElementById('victim');
+var isVisible = ally.is.visible(element);
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
+
+### Returns
+
+Boolean, `true` if the element is focus relevant.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
 
 
 ## Notes
 
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  var visible = ally.is.visible(element);
-  // visible is a boolean
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/is/disabled`](disabled.md)
-* [`ally/is/focusable`](focusable.md)
-* [`ally/is/shadowed`](shadowed.md)
-* [`ally/is/tabbable`](tabbable.md)
-* [`ally/is/valid-area`](valid-area.md)
-* [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) can be used to determine how much of an element is actually visible in the viewport
 
-
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/visible.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/visible.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.visible.test.js)
-
-

@@ -2,7 +2,7 @@
 layout: doc-page.html
 ---
 
-# Getting Started With ally.js
+# Getting Started
 
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API Documentation](api/README.md) to learn what the library actually provides.
 

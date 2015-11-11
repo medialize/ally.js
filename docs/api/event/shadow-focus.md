@@ -1,8 +1,6 @@
 ---
 layout: doc-api.html
-tags: internal, shadow-dom
-apiModuleName: ally/event/shadow-focus
-apiBuiltName: ally.event.shadowFocus
+tags: internal, shadow-dom, global-service
 ---
 
 # ally.event.shadowFocus
@@ -10,49 +8,62 @@ apiBuiltName: ally.event.shadowFocus
 Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
 
-## Notes
-
-* **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-
-
-## Demo
-
-* **HELP:** Feel free to create and submit a demo for this component.
+## Description
 
 
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  document.addEventListener('shadow-focus', function(event) {
-    // event.detail.elements: complete focus ancestry (array of nodes)
-    // event.detail.active: the actually focused element within the Shadow DOM
-    // event.detail.hosts: the shadow host ancestry of the active element
-  }, false);
+```js
+document.addEventListener('shadow-focus', function(event) {
+  // event.detail.elements: complete focus ancestry (array of nodes)
+  // event.detail.active: the actually focused element within the Shadow DOM
+  // event.detail.hosts: the shadow host ancestry of the active element
+}, false);
 
-  // start emitting shadow-focus
-  var handle = ally.event.shadowFocus();
-  // stop emitting shadow-focus
-  handle.disengage();
-</script>
+// start emitting shadow-focus
+var handle = ally.event.shadowFocus();
+// stop emitting shadow-focus
+handle.disengage();
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+### Arguments
+
+
+### Returns
+
+A [`<global-service>`](../concepts.md#Global-Service) interface, providing the `handle.disengage()` method to stop the service.
+
+### Throws
+
+
+## Event Data
+
+The `event.detail` property provides the following data:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| event.detail.active | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The actually focused element *within* the Shadow DOM. |
+| event.detail.elements | array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The complete focus ancestry |
+| event.detail.hosts | array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The ShadowHost ancestry of the active element. |
+
+
+## Examples
+
+
+## Notes
 
 
 ## Related Resources
 
-* [`ally/event/active-element`](active-element.md)
-* [`ally/get/active-elements`](../get/active-elements.md) used to identify the parent `ShadowHost`s
-* [Focus Observer](https://github.com/cdata/focus-observer)
+* [`ally/get/active-elements`](../get/active-elements.md) is used to identify the parent `ShadowHost`s
+
+* [Focus Observer](https://github.com/cdata/focus-observer) is an alternative implementation of this module
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/event/shadow-focus.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/event/shadow-focus.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/event.shadow-focus.test.js)
-* does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support Shadow DOM
-
+* this module does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support Shadow DOM
 

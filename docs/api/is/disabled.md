@@ -1,12 +1,39 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/is/disabled
-apiBuiltName: ally.is.disabled
+tags: argument-list
 ---
 
 # ally.is.disabled
 
-Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`element/disabled`](../element/disabled.md) - i.e. not editable.
+Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`ally/element/disabled`](../element/disabled.md) - i.e. not editable.
+
+
+## Description
+
+
+## Usage
+
+```js
+var element = document.getElementById('victim');
+var isDisabled = ally.is.disabled(element);
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
+
+### Returns
+
+Boolean, `true` if the element is focus relevant.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
 
 
 ## Notes
@@ -15,41 +42,16 @@ Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/do
 * **NOTE:** WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themselves, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
 
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  var disabled = ally.is.disabled(element);
-  // disabled is a boolean
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/is/focusable`](focusable.md)
-* [`ally/is/shadowed`](shadowed.md)
-* [`ally/is/tabbable`](tabbable.md)
-* [`ally/is/valid-area`](valid-area.md)
-* [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/is/visible`](visible.md)
-* [`ally/element/disabled`](../element/disabled.md)
-* [HTML5 4.13 Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
+* [`ally/element/disabled`](../element/disabled.md) can disable *any* interactive element
+
+* [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.disabled.test.js)
-
 

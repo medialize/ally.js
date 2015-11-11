@@ -1,17 +1,16 @@
 ---
 layout: doc-api.html
-tags: internal
-apiModuleName: ally/event/active-element
-apiBuiltName: ally.event.activeElement
+tags: internal, global-service
 ---
 
 # ally.event.activeElement
 
 Observes changes to `document.activeElement` regardless of focus/blur events and emits `active-element` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
-The property `document.activeElement` is visited on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
----
+## Description
+
+The property `document.activeElement` is visited on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 This event should not be abused because `FocusEvent`s do not bubble and are therefore unaccessible to [event delegation](http://davidwalsh.name/event-delegate), as the handling of `focus` and `blur` events *can* be delegated when using the [capture phase](http://www.quirksmode.org/js/events_order.html):
 
@@ -23,42 +22,49 @@ document.addEventListener('focus', function(event) {
 ```
 
 
-## Notes
-
-* **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-
-
-## Demo
-
-* **HELP:** Feel free to create and submit a demo for this component.
-
-
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  document.addEventListener('active-element', function(event) {
-    // event.detail.focus: element that received focus
-    // event.detail.blur: element that lost focus
-  }, false);
+```js
+document.addEventListener('active-element', function(event) {
+  // event.detail.focus: element that received focus
+  // event.detail.blur: element that lost focus
+}, false);
 
-  // start emitting active-element
-  var handle = ally.event.activeElement();
-  // stop emitting active-element
-  handle.disengage();
-</script>
+// start emitting active-element
+var handle = ally.event.activeElement();
+// stop emitting active-element
+handle.disengage();
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+### Arguments
+
+
+### Returns
+
+A [`<global-service>`](../concepts.md#Global-Service) interface, providing the `handle.disengage()` method to stop the service.
+
+### Throws
+
+
+## Event Data
+
+The `event.detail` property provides the following data:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| event.detail.focus | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The element that received focus. |
+| event.detail.blur | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The element that lost focus. |
+
+## Examples
+
+
+## Notes
 
 
 ## Related Resources
 
-* [`ally/event/shadow-focus`](shadow-focus.md)
 
-
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/event/active-element.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/event/active-element.md)

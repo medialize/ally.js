@@ -1,12 +1,14 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/map/attribute
-apiBuiltName: ally.map.attribute
+tags: data
 ---
 
 # ally.map.attribute
 
-Map of all [WAI-ARIA states and properties](http://www.w3.org/TR/wai-aria/states_and_properties)
+Map of all [WAI-ARIA states and properties](http://www.w3.org/TR/wai-aria/states_and_properties).
+
+
+## Description
 
 ```js
 // example structure
@@ -28,23 +30,16 @@ var map = {
 
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  console.log(ally.map.attribute['aria-busy']);
-</script>
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+```js
+console.log(ally.map.attribute['aria-busy']);
+```
 
 
 ## Related Resources
 
-* [`ally/map/keycode`](keycode.md)
 
-
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/map/attribute.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/map/keycode.md)
-
 

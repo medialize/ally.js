@@ -1,12 +1,14 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/map/keycode
-apiBuiltName: ally.map.keycode
+tags: data
 ---
 
 # ally.map.keycode
 
-Map of control [`event.keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/event.keyCode)s
+Map of control [`event.keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/event.keyCode)s.
+
+
+## Description
 
 ```js
 // example structure
@@ -27,26 +29,19 @@ var map = {
 }
 ```
 
+
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  console.log(ally.map.keycode.enter);
-</script>
+```js
+console.log(ally.map.keycode.enter);
 ```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
 
 
 ## Related Resources
 
-* [`ally/map/keycode`](keycode.md)
 
-
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/map/keycode.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/map/keycode.md)
-
 

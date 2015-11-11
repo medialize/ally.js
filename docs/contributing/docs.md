@@ -130,3 +130,28 @@ Document can make use of definition lists. An unordered list containing only ite
 * **Term 1:** Explanation 1
 * **Term 2:** Explanation 2
 ```
+
+### API Classifications
+
+API documents must declare their traits, which is done via the `tags` property in the [front matter](http://jekyllrb.com/docs/frontmatter/) section of the document:
+
+```markdown
+---
+layout: template.html
+tags: option-argument, service, svg
+---
+
+# Headline
+```
+
+* **argument-options:** To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-Options-Argument)
+* **argument-list:** To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-Options-Argument) pattern
+* **service:** To declare the module belongs to the family of [Service](../api/concepts.md#Service) components
+* **global-service:** To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-Service) components
+* **data:** To declare the module provides data, not functionality
+* **internal:** To declare the module is intended for internal use only
+* **browser-fix:** To declare the module's only intention is to counter a specific browser quirk
+* **shadow-dom:** To declare special support for Shadow DOM
+* **svg:** To declare special support for SVG
+
+

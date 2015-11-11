@@ -13,8 +13,8 @@ function extractData($, data) {
   // inlining what metalsmith-excerpts would've done
   // https://github.com/segmentio/metalsmith-excerpts/blob/master/lib/index.js
   if (!data.excerpt) {
-    const p = $('p').first();
-    data.excerpt = $.html(p).trim();
+    const $p = $('p').first();
+    data.excerpt = $.html($p).trim();
   }
 }
 
@@ -31,6 +31,22 @@ function rewriteUrlsFromMdToHtml($/*, data*/) {
       .replace(/\/README\.md(#.*)?$/, '/index.html$1')
       .replace(/\.md(#.*)?$/, '.html$1');
     $this.attr('href', href);
+  });
+}
+
+function removeEmptyApiSections($/*, data*/) {
+  $('h2').each(function() {
+    const $headline = $(this);
+    if ($headline.next().is('h2')) {
+      $headline.remove();
+    }
+  });
+
+  $('h3').each(function() {
+    const $headline = $(this);
+    if ($headline.next().is('h2, h3')) {
+      $headline.remove();
+    }
   });
 }
 
@@ -91,7 +107,7 @@ function convertUnorderedListToDefinitionList($/*, data*/) {
     let mismatch = false;
     $titles.each(function() {
       const term = String($(this).text());
-      if (term.slice(-1) !== ':') {
+      if (term.slice(-1) !== ':' || term === 'EXAMPLE:') {
         mismatch = true;
       }
     });
@@ -131,6 +147,7 @@ module.exports = function($, data) {
   extractData($, data);
   rewriteUrlsFromMdToHtml($, data);
 
+  removeEmptyApiSections($, data);
   makeHeadlinesLinkable($, data);
   extractTableOfContents($, data);
 

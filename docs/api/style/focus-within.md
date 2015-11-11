@@ -1,13 +1,14 @@
 ---
 layout: doc-api.html
-tags: shadow-dom, svg
-apiModuleName: ally/style/focus-within
-apiBuiltName: ally.style.focusWithin
+tags: shadow-dom, svg, global-service, argument-object
 ---
 
 # ally.style.focusWithin
 
 Polyfill the CSS Selectors Level 4 pseudo-class [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
+
+
+## Description
 
 Since we cannot (easily) shim pseudo-classes, this function applies the class `.ally-focus-within` to all the elements that would match `:focus-within`. This method pierces the ShadowDOM and works with SVG.
 
@@ -50,6 +51,17 @@ body /deep/ .ally-focus-within {
 ```
 
 
+## Usage
+
+```js
+var handle = ally.style.focusWithin();
+
+handle.disengage();
+```
+
+## Examples
+
+
 ## Notes
 
 * **NOTE:** In Firefox the [setting](about:config) `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
@@ -57,35 +69,14 @@ body /deep/ .ally-focus-within {
 * **NOTE:** The focus-within class is added asynchronously in Shadow DOM, but synchronously for the document.
 
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  // engage focus within style for the entire document
-  var handle = ally.style.focusWithin();
-  // disengage focus source within
-  handle.disengage();
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/style/focus-source`](focus-source.md)
+* [Selectors Level 4: `:focus-within` Pseudo-class](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/style/focus-within.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-within.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-within.test.js)
-
 

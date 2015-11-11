@@ -1,14 +1,16 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/get/insignificant-branches
-apiBuiltName: ally.get.insignificantBranches
+tags: argument-options
 ---
 
 # ally.get.insignificantBranches
 
 Identifies all the branches of the DOM that do *not* contain any of the target elements
 
-The insignificant branches contain *all* first nodes (looking from the root `context`) that do not contain the target elements (`filter`). For the following tree, the insignificant branches of `"#target"` are `["#sibling", "#uncle-1", "#uncle-2"]`. The insignificant branches of `["#target", "#target-2"]` are `["#sibling", "#uncle-1", "#cousin-2"]`:
+
+## Description
+
+The insignificant branches contain all *highest level* nodes (looking from the root `context`) that do not contain any target elements (specified in `filter`). For the following HTML, the insignificant branches of `#target` are `[#sibling, #uncle-1, #uncle-2]`. The insignificant branches of `[#target, #target-2]` are `[#sibling, #uncle-1, #cousin-2]`:
 
 ```html
 <div id="uncle-1">
@@ -24,46 +26,45 @@ The insignificant branches contain *all* first nodes (looking from the root `con
 </div>
 ```
 
-## Notes
-
-
-## Demo
-
-TODO: figure out how to integrate demo
-
 
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var elements = ally.get.insignificantBranches({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: document.documentElement,
-    // the significant elements to exclude from the search
-    filter: '#target',
-  });
-  // elements is an array of HTMLElement
-</script>
+```js
+var elements = ally.get.insignificantBranches({
+  filter: '#target',
+});
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| filter | [`<selector>`](../concepts.md#Selector) | *required* | The *significant elements* to exclude from the search. |
+
+### Returns
+
+Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement).
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `filter` option is not specified.
+
+
+## Examples
+
+
+## Notes
 
 
 ## Related Resources
 
-* [`ally/get/active-elements`](active-elements.md)
-* [`ally/get/focus-target`](focus-target.md)
-* [`ally/get/parents`](parents.md)
-* [`ally/get/shadow-host-parents`](shadow-host-parents.md)
-* [`ally/get/shadow-host`](shadow-host.md)
+* [`ally/maintain/hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-Tree)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/get/insignificant-branches.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/insignificant-branches.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.insignificant-branches.test.js)
-
 

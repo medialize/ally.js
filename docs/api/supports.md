@@ -1,5 +1,6 @@
 ---
 layout: doc-page.html
+tags: internal
 ---
 
 # Supports - Browser compatibility
@@ -57,7 +58,7 @@ GET data:image/png;base64,broken-image-test net::ERR_INVALID_URL
 Focus feature detection works by temporarily adding certain elements to the DOM. For some reason Google Chrome logs invalid Data URIs as a network error of type invalid URL to the console. The Console tab's filter option knows "Hide network messages". The Network panel has the option "Hide data URLs" that prevents these resources from showing up there as well.
 
 
-## Contribution Notes
+## Contributing
 
 Tests go in `src/supports` and either use the `./detect-focus.js` helper like most of the tests, or the `./supports-cache.js` API directly, like `./css-shadow-piercing-deep-combinator.js` shows.
 

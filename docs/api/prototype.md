@@ -1,5 +1,6 @@
 ---
 layout: doc-page.html
+tags: internal
 ---
 
 # Prototype Polyfills
@@ -16,7 +17,7 @@ Additionally ally.js uses the following third party polyfills:
 * [array.prototype.findindex](https://github.com/paulmillr/Array.prototype.findIndex) to polyfill the [ES6 `Array.findIndex`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
 
 
-## Contribution Notes
+## Contributing
 
 ally.js is not using the [babel polyfill](http://babeljs.io/docs/usage/polyfill/) because it is too big for the rather limited subset we're using at the moment. This may change in the future, but we're not keen on making this move.
 

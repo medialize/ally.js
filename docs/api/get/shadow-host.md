@@ -1,8 +1,6 @@
 ---
 layout: doc-api.html
-tags: internal, shadow-dom
-apiModuleName: ally/get/shadow-host
-apiBuiltName: ally.get.shadowHost
+tags: internal, shadow-dom, argument-list
 ---
 
 # ally.get.shadowHost
@@ -10,45 +8,46 @@ apiBuiltName: ally.get.shadowHost
 Identifies the `ShadowHost` of an element
 
 
-## Notes
-
-* **NOTE:** When you find yourself using this module in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-
-
-## Demo
-
-* **HELP:** Feel free to create and submit a demo for this component.
+## Description
 
 
 ## Usage
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = ally.get.shadowHost({
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '#element-to-start-from',
-  });
-  // element is an the ShadowHost HTMLElement
-</script>
+```js
+var element = ally.get.shadowHost({
+  context: '#element-to-start-from',
+});
 ```
 
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to start searching from. The first element of a collection is used. |
+
+### Returns
+
+[`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement).
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `context` option is not specified.
+
+
+## Examples
+
+
+## Notes
 
 
 ## Related Resources
 
-* [`ally/get/active-elements`](active-elements.md)
-* [`ally/get/focus-target`](focus-target.md)
-* [`ally/get/parents`](parents.md)
-* [`ally/get/shadow-host-parents`](shadow-host-parents.md)
+* [`ally/get/shadow-host-parents`](shadow-host-parents.md) uses this module to identify the `ShadowHost` ancestry
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/get/shadow-host.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/get/shadow-host.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/get.shadow-host.md.js)
-
 

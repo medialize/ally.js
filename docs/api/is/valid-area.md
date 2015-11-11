@@ -1,12 +1,39 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/is/valid-area
-apiBuiltName: ally.is.validArea
+tags: argument-list
 ---
 
 # ally.is.validArea
 
 Determines if an `<area>` element is properly used via `<map>` by an `<img>`.
+
+
+## Description
+
+
+## Usage
+
+```js
+var element = document.getElementById('victim');
+var isValidArea = ally.is.validArea(element);
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
+
+### Returns
+
+Boolean, `true` if the element is focus relevant.
+
+### Throws
+
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+
+
+## Examples
 
 
 ## Notes
@@ -17,42 +44,16 @@ Determines if an `<area>` element is properly used via `<map>` by an `<img>`.
 * **NOTE:** Multiple use of same image map hides elements from tabbing sequence - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126)
 
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = document.getElementById('victim');
-  var validArea = ally.is.validArea(element);
-  // validArea is a boolean
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/is/disabled`](disabled.md)
-* [`ally/is/focusable`](focusable.md)
-* [`ally/is/shadowed`](shadowed.md)
-* [`ally/is/tabbable`](tabbable.md)
-* [`ally/is/valid-tabindex`](valid-tabindex.md)
-* [`ally/is/visible`](visible.md)
-* [HTML5 4.7.11 The Map Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element)
-* [HTML5 4.7.12 The Area Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-area-element)
-* [HTML5 4.7.13 Image Maps](http://www.w3.org/TR/html5/embedded-content-0.html#image-maps)
+* [HTML5: The Map Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element)
+* [HTML5: The Area Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-area-element)
+* [HTML5: Image Maps](http://www.w3.org/TR/html5/embedded-content-0.html#image-maps)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/valid-area.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/valid-area.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.valid-area.test.js)
-
 

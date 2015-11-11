@@ -1,13 +1,14 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/fix/pointer-focus-parent
-apiBuiltName: ally.fix.pointerFocusParent
+tags: browser-fix, service, argument-options
 ---
 
 # ally.fix.pointerFocusParent
 
-This *Browser Bug Workaround* targets an issue in old Blink and [WebKit](https://bugs.webkit.org/show_bug.cgi?id=139945) causing focus (by `MouseEvent` and `TouchEvent`) to be given to the next parent element accepting focus, rather than the element the event was
-dispatched to.
+This *Browser Bug Workaround* targets an issue in old Blink and [WebKit](https://bugs.webkit.org/show_bug.cgi?id=139945) causing focus (by `MouseEvent` and `TouchEvent`) to be given to the next parent element accepting focus, rather than the element the event was dispatched to.
+
+
+## Description
 
 Considering the following markup, clicking on the `<a>` element would focus the `<div>` instead:
 
@@ -18,35 +19,41 @@ Considering the following markup, clicking on the `<a>` element would focus the 
 ```
 
 
-## Notes
+## Usage
 
-* **NOTE:** Only engaged for WebKit (detected via user agent sniffing).
+```js
+// engage the workaround for the entire document
+var handle = ally.fix.pointerFocusParent();
+// disengage the workaround
+handle.disengage();
+
+// engage the workaround only for a sub-tree
+var handle = ally.fix.pointerFocusParent({
+  context: '#element-to-fix',
+});
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Document) | The scope of the DOM in which to apply the fix. All elements of the collections are used. |
+
+### Returns
+
+A [`<service>`](../concepts.md#Service) interface, providing the `handle.disengage()` method to stop the service.
+
+### Throws
 
 
-## Demo
+## Examples
 
 TODO: figure out how to integrate demo
 
 
-## Usage
+## Notes
 
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  // engage the workaround for the entire document
-  var handle = ally.fix.pointerFocusParent();
-  // disengage the workaround
-  handle.disengage();
-
-  // engage the workaround only for a sub-tree
-  var handle = ally.fix.pointerFocusParent({
-    // context can be: String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    context: document.getElementById('element-to-fix');
-  });
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
+* **NOTE:** Only engaged for WebKit (detected via user agent sniffing).
 
 
 ## Related Resources
@@ -55,10 +62,9 @@ See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or 
 * [`ally/fix/pointer-focus-input`](pointer-focus-input.md)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/fix/pointer-focus-parent.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-parent.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/fix.pointer-focus-parent.test.js)
-
 

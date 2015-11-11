@@ -1,16 +1,49 @@
 ---
 layout: doc-api.html
-apiModuleName: ally/query/first-tabbable
-apiBuiltName: ally.query.firstTabbable
+tags: argument-options
 ---
 
 # ally.query.firstTabbable
 
 Finds the first keyboard focusable ("tabbable") element in the DOM.
 
+
+## Description
+
 See [`ally/query/focusable`](./focusable.md) for an explanation on the different query strategies.
 
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
+
+
+## Usage
+
+```js
+var element = ally.query.firstTabbable({
+  context: '.within-filter-selector',
+  defaultToContext: true,
+  strategy: "quick",
+});
+```
+
+### Arguments
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| ignoreAutofocus | boolean | `false` | Do not give elements with `autofocs` attribute precedence. |
+| defaultToContext | boolean | `false` | Return the `context` element if it is focusable and no other keyboard focusable element could be found. |
+| strategy | `"quick"`, `"strict"`, `"all"` | `"quick"` | The approach used to find elements. |
+
+### Returns
+
+[`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) that is the first keyboard focusable element in the given `context`.
+
+### Throws
+
+
+## Examples
+
+TODO: figure out how to integrate demo
 
 
 ## Notes
@@ -21,52 +54,15 @@ See [`ally/is/focus-relevant`](../is/focus-relevant.md#Notes)
 * **WARNING:** Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored.
 
 
-## Demo
-
-TODO: figure out how to integrate demo
-
-
-## Usage
-
-```html
-<script src="path/to/ally.min.js"></script>
-<script>
-  var element = ally.query.firstTabbable({
-    // [optional] limit search to given DOM Element
-    // defaults to document.body
-    // context can be String (query selector), Node, Array of Nodes, NodeList, HTMLCollection
-    // the first element element of a collection is used
-    context: '.within-filter-selector',
-    // [optional] do not try to find the first element
-    // with autofocs regardless of its DOM position
-    // defaults to false
-    ignoreAutofocus: true,
-    // [optional] return context DOM Element if it is focusable
-    // and no other keyboard focusable element could be found
-    // defaults to false
-    defaultToContext: true,
-    // [optional] strategy used to find elements
-    // can be "quick" or "strict"
-    // defaults to "quick"
-    strategy: "quick",
-  });
-</script>
-```
-
-See [Getting Started](../../getting-started.md) for how to use CommonJS, AMD or ES6 modules.
-
-
 ## Related Resources
 
-* [`ally/query/focusable`](focusable.md)
-* [`ally/query/tabbable`](tabbable.md)
-* [`ally/query/tabsequence`](tabsequence.md)
+* [`ally/query/tabbable`](tabbable.md) is used to find keyboard focusable elements
+* [`ally/query/tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-Navigation-Focus-Order)
 
 
-## Contribution Notes
+## Contributing
 
 * [module source](https://github.com/medialize/ally.js/blob/master/src/query/first-tabbable.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/first-tabbable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.first-tabbable.test.js)
-
 
