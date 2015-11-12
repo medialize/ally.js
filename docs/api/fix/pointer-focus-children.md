@@ -59,7 +59,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Examples
 
-TODO: figure out how to integrate demo
+* **EXAMPLE:** [`ally/fix/pointer-focus-children` Example](./pointer-focus-children.example.html)
 
 
 ## Notes

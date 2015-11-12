@@ -58,7 +58,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Examples
 
-TODO: figure out how to integrate demo
+* **EXAMPLE:** [`ally/when/focusable` Example](./focusable.example.html)
 
 
 ## Notes

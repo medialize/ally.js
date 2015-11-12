@@ -43,7 +43,7 @@ var element = ally.query.firstTabbable({
 
 ## Examples
 
-TODO: figure out how to integrate demo
+TODO: create example for ally/query/first-tabbable
 
 
 ## Notes

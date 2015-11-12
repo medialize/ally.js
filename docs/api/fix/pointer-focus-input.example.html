@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally/fix/pointer-focus-input Example</title>
+  <link rel="jsbin" href="https://jsbin.com/dapayo/">
+  <style id="example-css">
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally/fix/pointer-focus-input</code> Example</h1>
+
+  <p>The document contains two sets of input elements. The first set exhibits the undesired behavior upon click, the second set is covered by <code>ally/fix/focus-pointer-input</code>.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <h2>Natural Browser Behavior</h2>
+    <div>
+      <p><label><input type="checkbox"> checkbox</label></p>
+      <p>
+        <label><input type="radio" name="natural"> radio 1</label>
+        <label><input type="radio" name="natural"> radio 2</label>
+      </p>
+      <p><label><input type="range" min="0" max="100"> slider</label></p>
+      <p><button type="button">button</button></p>
+      <p><input type="button" value="input button"></p>
+    </div>
+
+    <h2>Fixed Behavior</h2>
+    <div id="fix-pointer-focus">
+      <p><label><input type="checkbox"> checkbox</label></p>
+      <p>
+        <label><input type="radio" name="fixed"> radio 1</label>
+        <label><input type="radio" name="fixed"> radio 2</label>
+      </p>
+      <p><label><input type="range" min="0" max="100"> slider</label></p>
+      <p><button type="button">button</button></p>
+      <p><input type="button" value="input button"></p>
+    </div>
+  </main>
+</div>
+
+<!-- FIXME: replace brcdn with cdnjs when ready -->
+<script src="//brcdn.org/C1Jp8gmo8YhM1FQ8uuU78uKsA.js"></script>
+<script>ally = ally.js;</script>
+
+<script id="example-js">
+  ally.fix.pointerFocusInput({
+    context: '#fix-pointer-focus',
+  });
+</script>
+
+</body>
+</html>

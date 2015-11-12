@@ -29,11 +29,11 @@ function getRedirectionMap() {
     '/examples/fix-pointer-focus-input.html': WEBSITE_ROOT + 'api/fix/pointer-focus-input.html',
     '/examples/fix-pointer-focus-parent.html': WEBSITE_ROOT + 'api/fix/pointer-focus-parent.html',
     '/examples/focus-source.html': WEBSITE_ROOT + 'api/style/focus-source.html',
-    '/examples/focus-when-visible.html': WEBSITE_ROOT + 'api/when/visible-area.html',
+    '/examples/focus-when-visible.html': WEBSITE_ROOT + 'api/when/focusable.html',
     '/examples/focus-within.html': WEBSITE_ROOT + 'api/style/focus-within.html',
     '/examples/index.html': WEBSITE_ROOT + 'api/index.html',
     '/examples/trap-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
-    '/examples/visible-area.html': WEBSITE_ROOT + 'api/util.html',
+    '/examples/visible-area.html': WEBSITE_ROOT + 'api/when/visible-area.html',
   };
 }
 

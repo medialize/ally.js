@@ -42,7 +42,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Examples
 
-TODO: figure out how to integrate demo
+TODO: create example for ally/maintain/hidden
 
 
 ## Notes

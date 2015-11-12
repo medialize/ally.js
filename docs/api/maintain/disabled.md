@@ -46,7 +46,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Examples
 
-TODO: figure out how to integrate demo
+* **EXAMPLE:** [`ally/maintain/disabled` Example](./disabled.example.html)
 
 
 ## Notes

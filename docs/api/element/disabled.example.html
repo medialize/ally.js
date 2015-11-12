@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>ally.js ally/element/disabled Example</title>
+  <title>ally/element/disabled Example</title>
   <link rel="jsbin" href="https://jsbin.com/cagazu/">
   <style id="example-css">
     .disable-target {
@@ -26,16 +26,17 @@
 <body>
 
 <article id="example-introduction">
-  <h1>ally/element/disabled Example</h1>
+  <h1><code>ally/element/disabled</code> Example</h1>
 
-  <p>HTML does not provide a way to disable elements other than form controls (input, textarea, select, button, fieldset). But since <code>&lt;div role=&quot;button&quot; &hellip;&gt;</code> can be made to behave just like a regular <code>&lt;button role=&quot;button&quot; &hellip;&gt;</code>, the ability to disable the element must be available as well. This example shows how <code>ally/element/disabled</code> can help with that.</p>
   <p>There are three buttons, the "disable element" button allows you to toggle the disabled state of the other two. One of the two example buttons is a real button, the other is a <code>&lt;div role=&quot;button&quot;&gt;</code></p>
 </article>
 
 <div id="example-html">
   <main>
     <button id="toggle-disabled" type="button" data-state="disable">disable elements</div>
+
     <hr>
+
     <div class="disable-target" id="target-div" role="button" tabindex="0" onclick="return false">example div</div>
     <button class="disable-target" id="target-button" type="button">example button</div>
   </main>

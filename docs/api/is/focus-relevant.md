@@ -37,8 +37,6 @@ Boolean, `true` if the element is focus relevant.
 
 ## Examples
 
-TODO: figure out how to integrate demo
-
 
 ## Notes
 

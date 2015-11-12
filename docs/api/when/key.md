@@ -59,7 +59,7 @@ The callback is executed in the context of `document.documentElement` (that's wh
 
 ## Examples
 
-TODO: figure out how to integrate demo
+TODO: create example for ally/when/key
 
 
 ## Notes

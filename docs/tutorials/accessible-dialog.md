@@ -500,4 +500,4 @@ function openDialog() {
 
 ## Interactive Demo
 
-* **EXAMPLE:** [ally.js Dialog Example](./dialog.example.html)
+* **EXAMPLE:** [Dialog Tutorial](./dialog.example.html)
