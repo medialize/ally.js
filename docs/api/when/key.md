@@ -59,7 +59,7 @@ The callback is executed in the context of `document.documentElement` (that's wh
 
 ## Examples
 
-TODO: create example for ally/when/key
+* **EXAMPLE:** [`ally.when.key` Example](./key.example.html)
 
 
 ## Notes
