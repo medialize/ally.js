@@ -44,7 +44,8 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Examples
 
-TODO: create example for ally/query/first-tabbable
+* **EXAMPLE:** [`ally.query.focusable` Example](./focusable.example.html)
+* **EXAMPLE:** [`ally.query.tabbable` Example](./tabbable.example.html)
 
 
 ## Notes

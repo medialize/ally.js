@@ -42,7 +42,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Examples
 
-TODO: create example for ally/query/first-tabbable
+* **EXAMPLE:** [`ally.query.tabsequence` Example](./tabsequence.example.html)
 
 
 ## Notes
