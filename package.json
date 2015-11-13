@@ -40,7 +40,7 @@
     "test:ci": "npm run test:sauce",
     "test:sauce": "intern-runner config=test/sauce",
     "test:browserstack": "intern-runner config=test/browserstack",
-    "clean": "rm -rf dist web reports",
+    "clean": "rm -rf dist web reports && mkdirp dist web reports",
     "build": "npm-run-all --sequential build:common --parallel build:umd build:amd",
     "build:umd": "npm-run-all --sequential build:umd:bundle build:umd:min build:umd:clean",
     "build:umd:bundle": "browserify src/ally.js --debug --standalone ally --transform babelify | exorcist dist/ally.js.map > dist/ally.js",
