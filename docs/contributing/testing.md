@@ -95,3 +95,29 @@ npm run test:sauce
   suites=test/unit/selected-test \
   functionalSuites=tests/functional/selected-test
 ```
+
+## Reports
+
+After running the automated tests, the `reports` directory will contain several files:
+
+```text
+reports
+├── coverage
+│   ├── …
+│   └── index.html  - test coverage in human readable format
+├── junit.xml       - test status non-human readable format
+└── lcov.info       - test coverage non-human readable format
+```
+
+* **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
+
+## Analyzing Bundle Size
+
+Before a release the structure of the UMD bundle should be analyzed to make sure we didn't accidentally blow it up. This is done using [source-map-explorer](https://github.com/danvk/source-map-explorer).
+
+```sh
+# run surce-map-explorer
+npm run analyze:bundle
+```
+
+The report will be available in `reports/bundle-size.html`
