@@ -42,7 +42,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Examples
 
-TODO: create example for ally/maintain/hidden
+* **EXAMPLE:** [`ally.maintain.hidden` Example](./hidden.example.html)
 
 
 ## Notes
