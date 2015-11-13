@@ -91,7 +91,6 @@
 <div id="example-html">
   <main>
     <button type="button" id="focus-pass">loading…</button>
-    <button type="button" id="focus-repeat">loading…</button>
     <button type="button" id="focus-lock" aria-pressed="false">loading…</button>
 
     <hr>
@@ -120,7 +119,6 @@
 
 <script id="example-js">
   var buttonPass = document.getElementById('focus-pass');
-  var buttonRepeat = document.getElementById('focus-repeat');
   var buttonLock = document.getElementById('focus-lock');
 
   var focusSource = ally.style.focusSource();
@@ -131,13 +129,6 @@
   buttonPass.textContent = 'focus';
   buttonPass.addEventListener('click', function() {
     // passing focus to another element
-    input.focus();
-  }, false);
-
-  buttonRepeat.textContent = 'focus (repeat)';
-  buttonRepeat.addEventListener('click', function() {
-    // passing focus and preserving the method of input
-    focusSource.repeat();
     input.focus();
   }, false);
 

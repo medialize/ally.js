@@ -71,16 +71,6 @@ handle.current(); // "key", "pointer", "script"
 // test if a focus source has occured before
 handle.used("key"); // true, false
 
-// make the next focus event set a specified source
-// regardless of the identified interaction type
-// false acts as a reset
-handle.next("pointer");
-
-// make the next focus event set the current source
-// alias for: focusSource.next(focusSource.current());
-// false acts as a reset
-handle.repeat();
-
 // make all focus events set a specified source
 // regardless of the identified interaction type
 // false acts as a reset
@@ -108,14 +98,6 @@ The `handle.current()` method does not accept any arguments and returns one of t
 ### handle.used(`<string>`)
 
 The `handle.used()` method accepts one string argument and returns `true` if it matches the current interaction type.
-
-### handle.next(`<string>`)
-
-The `handle.next()` method accepts one string argument and sets that as the interaction type available to the next (and only the next) `handle.current()` invocation.
-
-### handle.repeat()
-
-The `handle.repeat()` method does not accept any arguments and sets the current interaction to be returned by the next (and only the next) `handle.current()` invocation.
 
 ### handle.lock(`<string>`)
 
