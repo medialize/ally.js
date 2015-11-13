@@ -26,6 +26,7 @@
 * dropping `focus/trap` in favor of `maintain/disabled`
 * `dom/is-valid-area` now returns `false` for elements that are not `<area>`
 * `dom/is-valid-tabindex` now returns `false` for elements without `tabindex` attribute
+* `style/focus-source` has removed `.next()` and `.repeat()` methods
 * see the [API docs](docs/api/README.md) for the new function signatures
 * renaming files in `src`:
   * `dom/active-elements.js` to `get/active-elements.js`
