@@ -5,7 +5,7 @@ tags: argument-list
 
 # ally.is.disabled
 
-Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`ally/element/disabled`](../element/disabled.md) - i.e. not editable.
+Determines if an element is [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled), or was disabled by [`ally.element.disabled`](../element/disabled.md) - i.e. not editable.
 
 
 ## Description
@@ -44,7 +44,7 @@ Boolean, `true` if the element is focus relevant.
 
 ## Related Resources
 
-* [`ally/element/disabled`](../element/disabled.md) can disable *any* interactive element
+* [`ally.element.disabled`](../element/disabled.md) can disable *any* interactive element
 
 * [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 

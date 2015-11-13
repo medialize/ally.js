@@ -35,7 +35,7 @@ handle.disengage();
 
 The method accepts an object of `<key>: <callback>` mappings. See [Callback Signature](#Callback-Signature) for details
 
-`<key>`s can be specified as a numeric code ([`keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)) e.g. `13` for the <kbd>Enter</kbd> key, or as the string name `enter` which is resolved to the numeric code internally using [`ally/map/keycode`](../map/keycode.md). Multiple `<key>: <callback>` combinations can be passed.
+`<key>`s can be specified as a numeric code ([`keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)) e.g. `13` for the <kbd>Enter</kbd> key, or as the string name `enter` which is resolved to the numeric code internally using [`ally.map.keycode`](../map/keycode.md). Multiple `<key>: <callback>` combinations can be passed.
 
 ### Returns
 
@@ -43,7 +43,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ### Throws
 
-* [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `<ke>` is neither numeric, nor found in [`ally/map/keycode`](../map/keycode.md).
+* [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `<ke>` is neither numeric, nor found in [`ally.map.keycode`](../map/keycode.md).
 * [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `<callback>` is not a `function`.
 * [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) when no `<key>: <callback>` combinations were passed.
 
@@ -69,7 +69,7 @@ TODO: create example for ally/when/key
 
 ## Related Resources
 
-* [`ally/map/keycode`](../map/keycode.md) used for resolving named keys
+* [`ally.map.keycode`](../map/keycode.md) used for resolving named keys
 
 
 ## Contributing

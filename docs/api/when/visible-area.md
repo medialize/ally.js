@@ -10,7 +10,7 @@ Executes a callback once an element is visible in the viewport
 
 ## Description
 
-The callback is executed once the predicates [`ally/is/visible`](../is/visible.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
+The callback is executed once the predicates [`ally.is.visible`](../is/visible.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 The callback function executes exactly once, meaning the callback won't execute every time the element comes into view. The callback is executed immediately if the context element is already fully visible.
 
@@ -55,7 +55,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Examples
 
-* **EXAMPLE:** [`ally/when/visible-area` Example](./visible-area.example.html)
+* **EXAMPLE:** [`ally.when.visibleArea` Example](./visible-area.example.html)
 
 
 ## Notes

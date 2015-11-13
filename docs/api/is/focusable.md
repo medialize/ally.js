@@ -42,14 +42,14 @@ Boolean, `true` if the element is focus relevant.
 
 ## Notes
 
-See [`ally/is/focus-relevant`](./focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 
 
 ## Related Resources
 
-* [`ally/is/focus-relevant`](focus-relevant.md) is used to identify elements that can receive focus
-* [`ally/is/tabbable`](tabbable.md) identifies keyboard focusable elements
-* [`ally/query/focusable`](../query/focusable.md) finds focusable elements in the DOM
+* [`ally.is.focusRelevant`](focus-relevant.md) is used to identify elements that can receive focus
+* [`ally.is.tabbable`](tabbable.md) identifies keyboard focusable elements
+* [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
 * [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)

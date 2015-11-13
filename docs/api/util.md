@@ -5,7 +5,7 @@ tags: internal
 
 # Utilities
 
-the util infrastructure does not contain any functionality relevant to a user of ally.js. It merely contains code supporting other components, e.g. to ensure consistent component function signatures for a consistent APIs. To be honest, it's also the dumping ground for everything that didn't fit into one of the other buckets. None of these functions are available through the `ally` object exposed by the production `dist/ally.min.js`, but very much accessible via modules.
+the util infrastructure does not contain any functionality relevant to a user of ally.js. It merely contains code supporting other components, e.g. to ensure consistent component function signatures for a consistent APIs. To be honest, it's also the dumping ground for everything that didn't fit into one of the other buckets. None of these functions are available through the `ally` object exposed by the production file `dist/ally.min.js`, but are very much accessible via modules.
 
 
 ## Contributing

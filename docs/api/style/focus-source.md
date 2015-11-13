@@ -106,7 +106,7 @@ The `handle.lock()` method accepts one string argument and sets that as the inte
 
 ## Examples
 
-* **EXAMPLE:** [`ally/style/focus-source` Example](./focus-source.example.html)
+* **EXAMPLE:** [`ally.style.focusSource` Example](./focus-source.example.html)
 
 
 ## Notes

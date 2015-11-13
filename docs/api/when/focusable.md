@@ -5,7 +5,7 @@ tags: service, argument-object
 
 # ally.when.focusable
 
-Executes a callback once an element fulfills `ally/is/focusable` and is visible in the viewport
+Executes a callback once an element fulfills [`ally.is.focusable`](../is/focusable.md) and is visible in the viewport
 
 
 ## Description
@@ -13,7 +13,7 @@ Executes a callback once an element fulfills `ally/is/focusable` and is visible 
 [`Element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.focus) scrolls the element into view if it isn't already. In situations where content is not revealed immediately, but through a transition
 or animation this can be a problem if the element is focused to early.
 
-The callback executes once the predicates [`ally/is/visible`](../is/visible.md), [`ally/is/focusable`](../is/focusable.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
+The callback executes once the predicates [`ally.is.visible`](../is/visible.md), [`ally.is.focusable`](../is/focusable.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 The callback function executes exactly once, meaning the callback won't execute every time the element comes into view. Waiting for the callback to execute is aborted automatically should another element have gotten focus prior to the context element coming fully into view. The callback is executed immediately if the context element is already fully visible and focusable.
 
@@ -58,7 +58,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Examples
 
-* **EXAMPLE:** [`ally/when/focusable` Example](./focusable.example.html)
+* **EXAMPLE:** [`ally.when.focusable` Example](./focusable.example.html)
 
 
 ## Notes
@@ -68,8 +68,8 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Related Resources
 
-* [`ally/is/visible`](../is/visible.md) is used to identify if the element is focusable
-* [`ally/when/visible-area`](visible-area.md) is used internally to wait until element is visible in viewport, before checking if it is focusable
+* [`ally.is.visible`](../is/visible.md) is used to identify if the element is focusable
+* [`ally.when.visibleArea`](visible-area.md) is used internally to wait until element is visible in viewport, before checking if it is focusable
 
 
 ## Contributing

@@ -10,7 +10,7 @@ Identifies the parent elements
 
 ## Description
 
-Like [`jQuery.parents()`](http://api.jquery.com/parents/), except `ally/get/parents` doesn't have a filter arguments.
+Like [`jQuery.parents()`](http://api.jquery.com/parents/), except [`ally.get.parents`](#ally.get.parents) doesn't have a filter arguments.
 
 The returned list is sorted as follows `[element, element.parent, element.parent.parent, …]`
 
@@ -46,7 +46,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Related Resources
 
-* [`ally/get/shadow-host-parents`](shadow-host-parents.md) finds the `ShadowHost` ancestry of an element
+* [`ally.get.shadowHostParents`](shadow-host-parents.md) finds the `ShadowHost` ancestry of an element
 
 
 ## Contributing

@@ -42,7 +42,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Related Resources
 
-* [`ally/get/shadow-host`](shadow-host.md) is used to find individual `ShadowHost`s
+* [`ally.get.shadowHost`](shadow-host.md) is used to find individual `ShadowHost`s
 
 
 ## Contributing

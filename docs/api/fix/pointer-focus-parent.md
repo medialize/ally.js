@@ -48,7 +48,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Examples
 
-* **EXAMPLE:** [`ally/fix/pointer-focus-parent` Example](./pointer-focus-parent.example.html)
+* **EXAMPLE:** [`ally.fix.pointerFocusParent` Example](./pointer-focus-parent.example.html)
 
 
 ## Notes
@@ -58,8 +58,8 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Related Resources
 
-* [`ally/fix/pointer-focus-children`](pointer-focus-children.md)
-* [`ally/fix/pointer-focus-input`](pointer-focus-input.md)
+* [`ally.fix.pointerFocusChildren`](pointer-focus-children.md)
+* [`ally.fix.pointerFocusInput`](pointer-focus-input.md)
 
 
 ## Contributing

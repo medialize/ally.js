@@ -12,7 +12,7 @@ Sets `aria-hidden="true"` on insignificant branches.
 
 This allows an application to make sure no elements *other than the exempted* are exposed to the Accessibility Tree. This is necessary when rendering modal dialogs to prevent screen readers from accessing supposedly inert content.
 
-`ally/maintain/hidden` observes DOM manipulations and automatically hides newly added elements when necessary.
+`ally.maintain.hidden` observes DOM manipulations and automatically hides newly added elements when necessary.
 
 
 ## Usage
@@ -52,8 +52,8 @@ TODO: create example for ally/maintain/hidden
 
 ## Related Resources
 
-* [`ally/maintain/disabled`](disabled.md) is a [service](../concepts.md#Service) disabling interactive elements in the DOM
-* [`ally/get/insignificant-branches`](../get/insignificant-branches.md) is used to identify the elements to hide
+* [`ally.maintain.disabled`](disabled.md) is a [service](../concepts.md#Service) disabling interactive elements in the DOM
+* [`ally.get.insignificantBranches`](../get/insignificant-branches.md) is used to identify the elements to hide
 
 
 ## Contributing

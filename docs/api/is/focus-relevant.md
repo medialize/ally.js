@@ -48,11 +48,11 @@ Boolean, `true` if the element is focus relevant.
 
 ## Related Resources
 
-* [`ally/is/focusable`](focusable.md) tests focus-relevant elements if they're also visible and not disabled
-* [`ally/is/tabbable`](tabbable.md) tests elements if they're keyboard focusable
-* [`ally/is/valid-area`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable.
-* [`ally/is/valid-tabindex`](valid-tabindex.md) is used to verify the element's `tabindex` value is valid
-* [`ally/query/focusable`](../query/focusable.md) finds focusable elements in the DOM
+* [`ally.is.focusable`](focusable.md) tests focus-relevant elements if they're also visible and not disabled
+* [`ally.is.tabbable`](tabbable.md) tests elements if they're keyboard focusable
+* [`ally.is.validArea`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable.
+* [`ally.is.validTabindex`](valid-tabindex.md) is used to verify the element's `tabindex` value is valid
+* [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
 * [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)

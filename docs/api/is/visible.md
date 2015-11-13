@@ -10,7 +10,7 @@ Determines if an element is rendered.
 
 ## Description
 
-An element must be visible ([`ally/is/visible`](visible.md)) and may not be disabled ([`ally/is/disabled`](disabled.md)) to be considered focusable.
+An element must be visible ([`ally.is.visible`](visible.md)) and may not be disabled ([`ally.is.disabled`](disabled.md)) to be considered focusable.
 
 
 ## Usage

@@ -42,7 +42,7 @@ var element = ally.get.shadowHost({
 
 ## Related Resources
 
-* [`ally/get/shadow-host-parents`](shadow-host-parents.md) uses this module to identify the `ShadowHost` ancestry
+* [`ally.get.shadowHostParents`](shadow-host-parents.md) uses this module to identify the `ShadowHost` ancestry
 
 
 ## Contributing

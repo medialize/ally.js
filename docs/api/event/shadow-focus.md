@@ -55,7 +55,7 @@ The `event.detail` property provides the following data:
 
 ## Related Resources
 
-* [`ally/get/active-elements`](../get/active-elements.md) is used to identify the parent `ShadowHost`s
+* [`ally.get.activeElements`](../get/active-elements.md) is used to identify the parent `ShadowHost`s
 
 * [Focus Observer](https://github.com/cdata/focus-observer) is an alternative implementation of this module
 

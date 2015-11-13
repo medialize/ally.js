@@ -42,17 +42,17 @@ Boolean, `true` if the element is focus relevant.
 
 ## Notes
 
-See [`ally/is/focus-relevant`](./focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 
 * **NOTE:** there is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent string sniffing is done internally to fix mismatches.
 
 
 ## Related Resources
 
-* [`ally/is/focus-relevant`](focus-relevant.md) identifies elements that can receive focus
-* [`ally/is/focusable`](focusable.md) identifies elements that are focusable
-* [`ally/is/only-tabbable`](focusable.md) identifies elements that are keyboard focusable but not focusable by script
-* [`ally/query/tabbable`](../query/tabbable.md) finds keyboard focusable elements in the DOM
+* [`ally.is.focusRelevant`](focus-relevant.md) identifies elements that can receive focus
+* [`ally.is.focusable`](focusable.md) identifies elements that are focusable
+* [`ally.is.onlyTabbable`](focusable.md) identifies elements that are keyboard focusable but not focusable by script
+* [`ally.query.tabbable`](../query/tabbable.md) finds keyboard focusable elements in the DOM
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
 * [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)

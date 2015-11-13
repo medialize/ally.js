@@ -12,7 +12,7 @@ Makes an element inert, i.e. not editable.
 
 HTML knows the [`:disabled`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled) state for form elements, but lacks something similar for all the other interactive elements. This utility makes a form of this convenient state available to every element.
 
-Elements that were made inert by `ally/element/disabled` can be identified in the DOM by the attribute `[data-ally-disabled="true"]` to align with styling of other `:disabled` elements.
+Elements that were made inert by [`ally.element.disabled`](#ally.element.disabled) can be identified in the DOM by the attribute `[data-ally-disabled="true"]` to align with styling of other `:disabled` elements.
 
 The following things are done in order to make an element inert:
 
@@ -56,7 +56,7 @@ var isDisabled = ally.element.disabled(element);
 
 ## Examples
 
-* **EXAMPLE:** [`ally/element/disabled` Example](./disabled.example.html)
+* **EXAMPLE:** [`ally.element.disabled` Example](./disabled.example.html)
 
 
 ## Notes
@@ -67,8 +67,8 @@ var isDisabled = ally.element.disabled(element);
 
 ## Related Resources
 
-* [`ally/is/disabled`](../is/disabled.md) is able to identify elements disabled by `ally/element/disabled`
-* [`ally/maintain/disabled`](../maintain/disabled.md) is a [service](../concepts.md#Service) finding focusable elements and disabling them within the DOM
+* [`ally.is.disabled`](../is/disabled.md) is able to identify elements disabled by [`ally.element.disabled`](#ally.element.disabled)
+* [`ally.maintain.disabled`](../maintain/disabled.md) is a [service](../concepts.md#Service) finding focusable elements and disabling them within the DOM
 
 * [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 * [WICG: Adding a [disabled] attribute to `<a>`s](http://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
