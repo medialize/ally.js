@@ -65,7 +65,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 ## Notes
 
 * **NOTE:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
-* **NOTE:** Only engaged for Internet Explorer 10 and 11 (detected via user agent sniffing).
+* **NOTE:** Only engaged for Internet Explorer 10 and 11 (detected via [platform.js](https://github.com/bestiejs/platform.js/)).
 
 
 ## Related Resources

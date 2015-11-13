@@ -49,7 +49,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 ## Notes
 
 * **NOTE:** In Firefox the `<label>` element causes form fields to get focus upon being clicked, even if the form field itself would not get focus because of the ominous platform conventions.
-* **NOTE:** Only engaged for Safari and Firefox on Mac OS X (detected via user agent sniffing).
+* **NOTE:** Only engaged for Safari and Firefox on Mac OS X (detected via [platform.js](https://github.com/bestiejs/platform.js/)).
 
 
 ## Related Resources

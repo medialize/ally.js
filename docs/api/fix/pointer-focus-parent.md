@@ -53,7 +53,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Notes
 
-* **NOTE:** Only engaged for WebKit (detected via user agent sniffing).
+* **NOTE:** Only engaged for WebKit (detected via via [platform.js](https://github.com/bestiejs/platform.js/)).
 
 
 ## Related Resources
