@@ -19,7 +19,15 @@ npm run build
 npm run clean
 ```
 
-Building the UMD bundle, AMD and CommonJS modules creates the following structure in the `dist` directory:
+`npm run build` first runs `build:pre` to setup the `dist` directory, overwriting `src/version.js` to expose the package version:
+
+```text
+dist
+└── src
+    └── <ES6 files>
+```
+
+`npm run build` then runs `build:umd`, `build:amd`, `build:common` and creates the following structure in the `dist` directory:
 
 ```text
 dist
@@ -27,10 +35,12 @@ dist
 ├── amd
 │   └── <AMD files>
 └── common
-    └── <CommonJS files>
+│   └── <CommonJS files>
+└── src
+    └── <ES6 files>
 ```
 
-`npm run build` also runs `build:dist` after the bundle and modules have been created, mutating the the `dist` directory to the following structure:
+`npm run build` then runs `build:post` after the bundle and modules have been created, mutating the the `dist` directory to the following structure:
 
 ```text
 dist

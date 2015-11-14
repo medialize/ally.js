@@ -14,11 +14,6 @@ function moveCommonFiles() {
   shelljs.rm('-rf', path.resolve(dist, 'common'));
 }
 
-function copySourceFiles() {
-  const source = path.resolve(cwd, 'src');
-  shelljs.cp('-r', source, dist);
-}
-
 function copyMetaFiles() {
   shelljs.cp(path.resolve(cwd, 'package.json'), dist);
   shelljs.cp(path.resolve(cwd, 'README.md'), dist);
@@ -49,6 +44,5 @@ function patchPackageJson() {
 }
 
 moveCommonFiles();
-copySourceFiles();
 copyMetaFiles();
 patchPackageJson();
