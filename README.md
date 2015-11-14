@@ -54,7 +54,7 @@ Have a look at the [API Documentation](docs/api/README.md).
 
 ## Resources
 
-* [Website](http://medialize.github.io/ally.js/)
+* [Website](http://allyjs.io/)
 * [Documentation](docs/README.md)
 * [CONTRIBUTING.md](CONTRIBUTING.md) explaining how to author, test, document and build ally.js
 * [CHANGELOG.md](CHANGELOG.md) detailing what changed over time
