@@ -9,7 +9,9 @@ The following sequence steps are necessary to fully release ally.js
 
 ## Publishing the library to npm
 
-* update the version (`package.json`, `src/version.js`)
+* `npm version <version>` to update the package version
+* update `CHANGELOG.md` accordingly
+* `git commit package.json CHANGELOG.md -m 'chore(build): bumping to version <version>'` to save the changes
 * `npm run clean` to empty `dist`, `web` and `reports`
 * `npm run lint` to build the library
 * `npm run build` to build the library
