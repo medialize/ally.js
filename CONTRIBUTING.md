@@ -45,6 +45,7 @@ Also following their [Submitting a Pull Request](https://github.com/angular/angu
 * [Building ally.js](docs/contributing/build.md)
 * [Documenting ally.js](docs/contributing/docs.md)
 * [Testing ally.js](docs/contributing/testing.md)
+* [Releasing ally.js](docs/contributing/releasing.md)
 
 
 ## Directories

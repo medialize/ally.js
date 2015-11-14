@@ -19,14 +19,41 @@ npm run build
 npm run clean
 ```
 
+Building the UMD bundle, AMD and CommonJS modules creates the following structure in the `dist` directory:
+
+```text
+dist
+├── <UMD bundle>
+├── amd
+│   └── <AMD files>
+└── common
+    └── <CommonJS files>
+```
+
+`npm run build` also runs `build:dist` after the bundle and modules have been created, mutating the the `dist` directory to the following structure:
+
+```text
+dist
+├── package.json
+├── README.md
+├── CHANGELOG.md
+├── LICENSE.txt
+├── <UMD bundle>
+├── <CommonJS files>
+├── amd
+│   └── <AMD files>
+└── src
+    └── <ES6 files>
+```
+
+This is the structure that is published to npm.
+
+
 ### Building the UMD bundle
 
 ally.js is made available in one convenient file, consumable as a browser global (`window.ally`), via AMD and CommonJS (exposed in UMD). The source is compiled to the distributable by [browserify](https://github.com/substack/node-browserify) using [babelify](https://github.com/babel/babelify) to resolve the ES6 modules.
 
 ```sh
-# build the CommonJS modules
-npm run build:common
-
 # build the UMD bundle
 npm run build:umd
 

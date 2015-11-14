@@ -7,7 +7,7 @@ layout: doc-page.html
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API Documentation](api/README.md) to learn what the library actually provides.
 
 
-## Downloading ally.js
+## Downloading the UMD bundle
 
 You can [download](https://github.com/medialize/ally.js/releases) the production file `ally.min.js` (and `ally.min.js.map` if you want [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) support) from the github release page, or install it using npm:
 
@@ -15,7 +15,8 @@ You can [download](https://github.com/medialize/ally.js/releases) the production
 npm install ally.js --save
 ```
 
-## Loading ally.js From CDN
+
+## Loading the UMD bunle from CDN
 
 **FIXME:** CDNjs support is [not yet available](https://github.com/cdnjs/cdnjs/issues/6020)
 
@@ -25,27 +26,70 @@ ally.js is made available for production use by [cdnjs](https://cdnjs.com/librar
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ally.js/1.0.0-beta.7/ally.min.js"></script>
 <script>
   console.log("loaded ally.js in version", ally.version);
+  console.log("focusable elements", ally.query.focusable());
 </script>
 ```
 
 
-## Using ally.js as `<script>`
+## Using the UMD bundle via `<script>`
 
 ```html
 <script src="path/to/ally.min.js"></script>
 <script>
   console.log("loaded ally.js in version", ally.version);
+  console.log("focusable elements", ally.query.focusable());
 </script>
 ```
 
 
-## Using ally.js as AMD
+## Using CommonJS Modules
 
-The production bundle contains all dependencies, allowing you to require ally.js directly:
+The production UMD bundle contains all dependencies, allowing you to require ally.js directly:
 
 ```js
+var ally = require('ally.js');
+console.log("loaded ally.js in version", ally.version);
+console.log("focusable elements", ally.query.focusable());
+```
+
+Alternatively you can use only specific modules provided by ally.js:
+
+```js
+var version = require('ally.js/version');
+console.log("loaded version of ally.js", version);
+
+var queryFocusable = require('ally.js/query/focusable');
+console.log("focusable elements", queryFocusable());
+```
+
+
+## Using ES6 Modules
+
+ally.js is authored in ES6 and its modules are accessible in the `src` directory:
+
+```js
+import version from 'ally.js/src/version';
+console.log("loaded version of ally.js", version);
+
+import queryFocusable from 'ally.js/src/query/focusable';
+console.log("focusable elements", queryFocusable());
+```
+
+
+## Using AMD Modules
+
+The production UMD bundle contains all dependencies, allowing you to require ally.js directly:
+
+```js
+require.config({
+  paths: {
+    'ally.js': 'node_modules/ally.js/ally.min',
+  }
+});
+
 require(['ally.js'], function(ally) {
   console.log("loaded ally.js in version", ally.version);
+  console.log("focusable elements", ally.query.focusable());
 });
 ```
 
@@ -55,7 +99,7 @@ Alternatively you can use only specific modules provided by ally.js, but need to
 require.config({
   paths: {
     // map to AMD files
-    'ally': 'node_modules/ally.js/dist/amd',
+    'ally.js': 'node_modules/ally.js/amd',
     // provide paths to dependencies
     'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
     'css.escape': 'node_modules/css.escape/css.escape',
@@ -67,36 +111,13 @@ require.config({
 Now you can import specific modules using
 
 ```js
-require(['ally/version'], function(allyVersion) {
-  console.log("loaded version of ally.js", allyVersion);
+require(['ally.js/version'], function(version) {
+  console.log("loaded version of ally.js", version);
 });
-```
 
-
-## Using ally.js as CommonJS
-
-The production bundle contains all dependencies, allowing you to require ally.js directly:
-
-```js
-var ally = require('ally.js');
-console.log("loaded ally.js in version", ally.version);
-```
-
-Alternatively you can use only specific modules provided by ally.js:
-
-```js
-var allyVersion = require('ally.js/dist/common/version');
-console.log("loaded version of ally.js", allyVersion);
-```
-
-
-## Using ally.js as ES6
-
-ally.js is authored in ES6 and its modules are accessible in the `src` directory:
-
-```js
-import allyVersion from 'ally.js/src/version';
-console.log("loaded version of ally.js", allyVersion);
+require(['ally.js/query/focusable'], function(queryFocusable) {
+  console.log("focusable elements", queryFocusable());
+});
 ```
 
 ---
