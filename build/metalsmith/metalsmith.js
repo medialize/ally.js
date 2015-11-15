@@ -9,6 +9,7 @@ const linkChecker = require('metalsmith-broken-link-checker');
 const collections = require('metalsmith-collections');
 const staticFiles = require('metalsmith-static');
 const redirect = require('metalsmith-redirect');
+const inPlace = require('metalsmith-in-place');
 
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
@@ -37,21 +38,19 @@ function getRedirectionMap() {
   };
 }
 
-metalsmith(__dirname)
-  .source('../../docs')
-  .destination('../../web')
-  .use(remarkable({
-    linkify: true,
-    html: true,
-  }))
-  .use(packageJson())
-  .use(absoluteUrl({
-    property: 'websiteRoot',
-    define: WEBSITE_ROOT,
-  }))
-  .use(prepare())
-  .use(paths())
-  .use(collections({
+function getPartialsMap() {
+  return {
+    'site-navigation': 'partials/site-navigation',
+    'collection-navigation': 'partials/collection-navigation',
+    'table-of-contents': 'partials/table-of-contents',
+    'site-header': 'partials/site-header',
+    'site-footer': 'partials/site-footer',
+    tracking: 'partials/tracking',
+  };
+}
+
+function getCollectionsMap() {
+  return {
     Home: {
       pattern: 'index.html',
     },
@@ -75,15 +74,29 @@ metalsmith(__dirname)
       pattern: '**/*.example*.html',
       //sortBy: manualSort(['Contributing']),
     },
-    /*
-    key: {
-      metadata: {
-        name: 'Articles',
-        description: 'The Articles listed here...'
-      }
-    }
-    */
+  };
+}
+
+metalsmith(__dirname)
+  .source('../../docs')
+  .destination('../../web')
+  .use(remarkable({
+    linkify: true,
+    html: true,
   }))
+  .use(packageJson())
+  .use(absoluteUrl({
+    property: 'websiteRoot',
+    define: WEBSITE_ROOT,
+  }))
+  .use(inPlace({
+    directory: './',
+    engine: 'handlebars',
+    partials: getPartialsMap(),
+  }))
+  .use(prepare())
+  .use(paths())
+  .use(collections(getCollectionsMap()))
   .use(injectExamples())
   .use(registerHelpers({
     directory: 'helpers/',
@@ -91,14 +104,7 @@ metalsmith(__dirname)
   .use(layouts({
     directory: './',
     engine: 'handlebars',
-    partials: {
-      'site-navigation': 'partials/site-navigation',
-      'collection-navigation': 'partials/collection-navigation',
-      'table-of-contents': 'partials/table-of-contents',
-      'site-header': 'partials/site-header',
-      'site-footer': 'partials/site-footer',
-      tracking: 'partials/tracking',
-    },
+    partials: getPartialsMap(),
   }))
   .use(staticFiles({
     src: 'assets',

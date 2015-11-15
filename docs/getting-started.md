@@ -16,7 +16,7 @@ npm install ally.js --save
 ```
 
 
-## Loading the UMD bunle from CDN
+## Loading the UMD bundle from CDN
 
 **FIXME:** CDNjs support is [not yet available](https://github.com/cdnjs/cdnjs/issues/6020)
 
