@@ -308,9 +308,9 @@ A naive implementation might listen to `keydown` events, filtering for <kbd>Tab<
 
 We could do away with the need to react to <kbd>Tab</kbd>, by simply hiding everything outside the dialog. But while setting everything to `visibility: hidden;` would certainly do the job, it would also visually hide *everything but the dialog*, rendering the backdrop useless. Most visual designers I know digress.
 
-So what we really want to do is make everything that is focusable outside of the dialog, not focusable while the dialog is shown. This is no small feat, as browsers offer *absolutely no API* to achieve that and disagree on what exactly is focusable - see [what browsers consider focusable](../data-tables/focusable.md). On top of that only form elements know the [`disabled` property](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled). ally.js has got you covered with [`ally/query/focusable`](../api/query/focusable.md) to *find* focusable elements, and [`ally/element/disabled`](../api/element/disabled.md) to *disable any element*.
+So what we really want to do is make everything that is focusable outside of the dialog, not focusable while the dialog is shown. This is no small feat, as browsers offer *absolutely no API* to achieve that and disagree on what exactly is focusable - see [what browsers consider focusable](../data-tables/focusable.md). On top of that only form elements know the [`disabled` property](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled). ally.js has got you covered with [`ally.query.focusable`](../api/query/focusable.md) to *find* focusable elements, and [`ally.element.disabled`](../api/element/disabled.md) to *disable any element*.
 
-To make things even more comfortable for you, ally.js provides [`ally/maintain/disabled`](../api/maintain/disabled.md) to disable any focusable element and observe changes to the DOM, so any element added to the DOM while the dialog is being shown are disabled as well. The `disengage()` method stops observing the DOM and re-enables all elements that were disabled by the service.
+To make things even more comfortable for you, ally.js provides [`ally.maintain.disabled`](../api/maintain/disabled.md) to disable any focusable element and observe changes to the DOM, so any element added to the DOM while the dialog is being shown are disabled as well. The `disengage()` method stops observing the DOM and re-enables all elements that were disabled by the service.
 
 ```js
 var dialog = document.getElementById('dialog');
@@ -342,7 +342,7 @@ The <kbd>Escape</kbd> key usually closes (dismisses) a dialog and the <kbd>Enter
 
 If we hadn't done that, we'd have to make sure that the currently focused element does not have an enter-specific activation whenever the <kbd>Enter</kbd> key was pressed. The activation of a link (`<a href="…">`) is to open the referenced address. If we were to naively listen for `keydown` events and close the dialog upon <kbd>Enter</kbd>, we destroy the ability to interact with elements such as the link by keyboard. Since the is no way to reliably tell if an element is reacting to <kbd>Enter</kbd>, it seems easier to avoid that scenario entirely.
 
-The <kbd>Escape</kbd> key on the other hand doesn't have any activation and can be used naively. For simple (naive) keyboard bindings, ally.js provides [`ally/when/key`](../api/when/key.md) to execute a callback whenever the registered key was pressed. Because event handlers are executed before the native activation is performed, we need to either prevent the default action (using [`event.preventDefault()`](https://developer.mozilla.org/en/docs/Web/API/Event/preventDefault)), or delay closing of the dialog. Otherwise we would see focus being shifted back to the "open dialog" button, where the default activation would be performed, thus immediately reopening the dialog.
+The <kbd>Escape</kbd> key on the other hand doesn't have any activation and can be used naively. For simple (naive) keyboard bindings, ally.js provides [`ally.when.key`](../api/when/key.md) to execute a callback whenever the registered key was pressed. Because event handlers are executed before the native activation is performed, we need to either prevent the default action (using [`event.preventDefault()`](https://developer.mozilla.org/en/docs/Web/API/Event/preventDefault)), or delay closing of the dialog. Otherwise we would see focus being shifted back to the "open dialog" button, where the default activation would be performed, thus immediately reopening the dialog.
 
 Putting the keyboard handling together we get:
 
@@ -389,7 +389,7 @@ dialog.addEventListener('submit', saveDialog, true);
 
 ### Focus First Focusable Element Upon Opening The Dialog
 
-Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus. In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally/query/tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally/query/first-tabbable`](../api/query/first-tabbable.md) to do all that for you:
+Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus. In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
 
 ```js
 var dialog = document.getElementById('dialog');
@@ -437,7 +437,7 @@ function closeDialog() {
 
 Screen Readers and other tools consuming the document through the Accessibility Tree instead of relying on visual presentation, need to be told what exactly is going on. The translucent backdrop, which obfuscates the document's content while the dialog is shown, does the job when you actually *see* the page. To achieve the same for non-visual output methods, we need to add [`aria-hidden="true"`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden) to all the sibling DOM elements of our dialog.
 
-There is no native DOM method to obtain all parental siblings of an element. ally.js has got you covered with [`ally/get/insignificant-branches`](../api/get/insignificant-branches.md), considering this is a pretty generic operation. To make things even more comfortable for you, ally.js provides [`ally/maintain/hidden`](../api/maintain/hidden.md) to also apply `aria-hidden="true"`. This service also observes changes to the DOM and applies `aria-hidden="true"` to any element added to the DOM while the dialog is being shown. The `disengage()` method stops observing the DOM and removes all `aria-hidden="true"` attributes that were set by the service.
+There is no native DOM method to obtain all parental siblings of an element. ally.js has got you covered with [`ally.get.insignificantBranches`](../api/get/insignificant-branches.md), considering this is a pretty generic operation. To make things even more comfortable for you, ally.js provides [`ally.maintain.hidden`](../api/maintain/hidden.md) to also apply `aria-hidden="true"`. This service also observes changes to the DOM and applies `aria-hidden="true"` to any element added to the DOM while the dialog is being shown. The `disengage()` method stops observing the DOM and removes all `aria-hidden="true"` attributes that were set by the service.
 
 ```js
 var dialog = document.getElementById('dialog');
@@ -466,7 +466,7 @@ function closeDialog() {
 
 ### Wait Until Dialog Is Visible Before Shifting Focus
 
-An unspecified step performed by the browser when focusing an element is that the focusing element is scrolled into view. There is no way to prevent this from happening. But we can get around it by waiting for animated elements to come into view before shifting focus to them. For that reason ally.js provides the method [`ally/when/visible-area`](../api/when/visible-area.md) to execute a callback once an element fully entered the viewport. This allows us to rewrite focusing the first keyboard focusable element:
+An unspecified step performed by the browser when focusing an element is that the focusing element is scrolled into view. There is no way to prevent this from happening. But we can get around it by waiting for animated elements to come into view before shifting focus to them. For that reason ally.js provides the method [`ally.when.visibleArea`](../api/when/visible-area.md) to execute a callback once an element fully entered the viewport. This allows us to rewrite focusing the first keyboard focusable element:
 
 ```js
 var dialog = document.getElementById('dialog');
