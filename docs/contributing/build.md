@@ -40,7 +40,7 @@ dist
     └── <ES6 files>
 ```
 
-`npm run build` then runs `build:post` after the bundle and modules have been created, mutating the the `dist` directory to the following structure:
+`npm run build` then runs `build:post` after the bundle and modules have been created, mutating the the `dist` directory to the following structure (that is published to npm):
 
 ```text
 dist
@@ -56,7 +56,7 @@ dist
     └── <ES6 files>
 ```
 
-This is the structure that is published to npm.
+At the end `npm run build` also runs `build:archive`, which creates a ZIP archive of `dist` and saves it to `dist/ally.js.zip`.
 
 
 ### Building the UMD bundle
