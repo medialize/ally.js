@@ -9,16 +9,9 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Downloading the UMD bundle
 
-You can [download](https://github.com/medialize/ally.js/releases) the production file `ally.min.js` (and `ally.min.js.map` if you want [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) support) from the github release page, or install it using npm:
-
-```sh
-npm install ally.js --save
-```
-
+You can download the production file (UMD bundle) [`ally.min.js`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js) (and [`ally.min.js.map`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js.map) if you want [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) support) from the [github release page](https://github.com/medialize/ally.js/releases).
 
 ## Loading the UMD bundle from CDN
-
-**FIXME:** CDNjs support is [not yet available](https://github.com/cdnjs/cdnjs/issues/6020)
 
 ally.js is made available for production use by [cdnjs](https://cdnjs.com/libraries/ally.js):
 
@@ -28,6 +21,27 @@ ally.js is made available for production use by [cdnjs](https://cdnjs.com/librar
   console.log("loaded ally.js in version", ally.version);
   console.log("focusable elements", ally.query.focusable());
 </script>
+```
+
+
+## Installing via Package Manager
+
+```sh
+npm install --save ally.js
+```
+
+Although [bower](http://bower.io/) can download archives, it won't be able to inform you of updates:
+
+```sh
+bower install --save https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip
+```
+
+You can use [system-npm](https://github.com/stealjs/system-npm) to consume ally.js from [npm](https://www.npmjs.com/package/ally.js) in SystemJS:
+
+```js
+System.import("ally.js!npm").then(function(ally) {
+  console.log("loaded ally.js in version", ally.version);
+});
 ```
 
 
@@ -62,6 +76,8 @@ var queryFocusable = require('ally.js/query/focusable');
 console.log("focusable elements", queryFocusable());
 ```
 
+* **NOTE:** The CommonJS modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+
 
 ## Using ES6 Modules
 
@@ -74,6 +90,8 @@ console.log("loaded version of ally.js", version);
 import queryFocusable from 'ally.js/src/query/focusable';
 console.log("focusable elements", queryFocusable());
 ```
+
+* **NOTE:** The ES6 source modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 
 
 ## Using AMD Modules
@@ -119,6 +137,9 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
   console.log("focusable elements", queryFocusable());
 });
 ```
+
+* **NOTE:** The AMD modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+
 
 ---
 

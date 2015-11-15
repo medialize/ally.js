@@ -19,8 +19,9 @@
 * adding `get/insignificant-branches` to find branches not relevant to a given set of elements - [issue #32](https://github.com/medialize/ally.js/issues/32)
 * adding `maintain/hidden` to hide everything in the DOM that is not relevant to a given set of elements - [issue #46](https://github.com/medialize/ally.js/issues/46)
 
-### Breaking Changes
+### Breaking Changes (compared to 0.0.7)
 
+* ally.js is no longer available through bower, other than by [downloading the built archive](http://allyjs.io/getting-started.html#Installing-via-Package-Manager)
 * `src/` was ES5 and AMD, it is now ES6 - AMD components are now available at `dist/amd/`
 * dropping `focus/first` in favor of `query/first-tabbable`
 * dropping `focus/trap` in favor of `maintain/disabled`

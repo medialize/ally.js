@@ -174,7 +174,7 @@ main {
   padding-left: 12px;
   line-height: 1.5;
 
-  word-break: break-all;
+  word-break: break-word;
   word-wrap: break-word;
 }
 main:after {
@@ -283,6 +283,10 @@ main .warning > strong:first-child {
 }
 main .help > strong:first-child {
   color: blue;
+}
+
+main pre {
+  word-wrap: initial;
 }
 
 main blockquote {

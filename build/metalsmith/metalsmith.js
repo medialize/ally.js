@@ -80,19 +80,18 @@ function getCollectionsMap() {
 metalsmith(__dirname)
   .source('../../docs')
   .destination('../../web')
+  .use(packageJson())
+  .use(inPlace({
+    directory: './',
+    engine: 'handlebars',
+  }))
   .use(remarkable({
     linkify: true,
     html: true,
   }))
-  .use(packageJson())
   .use(absoluteUrl({
     property: 'websiteRoot',
     define: WEBSITE_ROOT,
-  }))
-  .use(inPlace({
-    directory: './',
-    engine: 'handlebars',
-    partials: getPartialsMap(),
   }))
   .use(prepare())
   .use(paths())
