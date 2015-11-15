@@ -10,7 +10,7 @@ Determines if an element is considered focusable.
 
 ## Description
 
-An element is considered focusable if it is script focusable ([is/focus-relevant](./focus-relevant.md)), visible and not disabled.
+An element is considered focusable if it is [`ally.is.focusRelevant`](./focus-relevant.md), [`ally.is.visible`](./visible.md) and not [`ally.is.disabled`](./disabled.md).
 
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
 
