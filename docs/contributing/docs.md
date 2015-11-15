@@ -63,7 +63,7 @@ You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.c
 * **EXAMPLE:** [name of demo](./name.example.html)
 ```
 
-A demo document is named `{{slug}}.example.html` (for multiple `{{slug}}.example-2.html`) and placed in the same directory as the referencing document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
+A demo document is named `${slug}.example.html` (for multiple `${slug}.example-2.html`) and placed in the same directory as the referencing document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
 
 Example documents must follow the following general structure.
 
@@ -72,22 +72,22 @@ Example documents must follow the following general structure.
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>ally.js {{example_title}} Example</title>
+  <title>ally.js ${example_title} Example</title>
   <link rel="jsbin" href="">
   <style id="example-css">
-    {{example_style}}
+    ${example_style}
   </style>
 </head>
 <body>
 
 <article id="example-introduction">
-  <h1>Accessible {{example_title}} Tutorial</h1>
-  <p>{{example_description}}</p>
+  <h1>Accessible ${example_title} Tutorial</h1>
+  <p>${example_description}</p>
 </article>
 
 <div id="example-html">
   <main>
-    {{example_markup}}
+    ${example_markup}
   </main>
 </div>
 
@@ -96,7 +96,7 @@ Example documents must follow the following general structure.
 <script>ally = ally.js;</script>
 
 <script id="example-js">
-  {{example_script}}
+  ${example_script}
 </script>
 
 </body>

@@ -21,10 +21,10 @@ Coverage reports are made available in the directory `reports/coverage`.
 
 ## Locally Running Unit Tests In The Browser
 
-You can run the unit tests in any browser by navigating to the following URL:
+You can run the unit tests in any browser by navigating to the following URL (replacing `${host}` and `${path}` accordingly):
 
 ```text
-http://{{your-host}}/{{path-to}}/ally.js/node_modules/intern/client.html?config=test/browser
+http://${hostname}>/${path}/ally.js/node_modules/intern/client.html?config=test/browser
 ```
 
 (we're not using `test/sauce` or `test/local` in the browser because of the `reporters` those configurations load)
