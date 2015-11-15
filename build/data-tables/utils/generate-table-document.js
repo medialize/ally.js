@@ -6,7 +6,13 @@ const Handlebars = require('handlebars');
 const generateTable = require('./generate-table');
 
 const cwd = process.cwd();
+
+const trackingPartial = fs.readFileSync(path.resolve(cwd, 'build/metalsmith/partials/tracking.html'), {encoding: 'utf8'});
+Handlebars.registerPartial('tracking', trackingPartial);
+
 const prismCss = fs.readFileSync(path.resolve(cwd, 'node_modules/prismjs/themes/prism.css'), {encoding: 'utf8'});
+Handlebars.registerPartial('prismCss', prismCss);
+
 const documentTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/document.hbs'), {encoding: 'utf8'});
 const _documentTemplate = Handlebars.compile(documentTemplate);
 
@@ -68,7 +74,6 @@ module.exports = function({
   const html = _documentTemplate({
     title,
     introduction,
-    prismCss: prismCss,
     groups: source.groups.filter(group => !skippedGroups.has(group.id)),
     notes: source.notes.list,
     table: tables.join('\n'),

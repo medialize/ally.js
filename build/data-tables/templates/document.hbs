@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>{{ title }}</title>
 
-  <style id="prism-styles">{{ prismCss }}</style>
+  <style id="prism-styles">{{> prismCss }}</style>
   <style>
     [title] {
       cursor: help;
@@ -490,6 +490,8 @@
     })();
 
   </script>
+
+  {{> tracking }}
 
 </body>
 </html>

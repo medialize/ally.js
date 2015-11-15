@@ -97,6 +97,7 @@ metalsmith(__dirname)
       'table-of-contents': 'partials/table-of-contents',
       'site-header': 'partials/site-header',
       'site-footer': 'partials/site-footer',
+      tracking: 'partials/tracking',
     },
   }))
   .use(staticFiles({
