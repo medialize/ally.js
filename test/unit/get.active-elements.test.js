@@ -22,7 +22,12 @@ define([
       'inactive document': function() {
         var active = getActiveElements();
         expect(active.length).to.equal(1);
-        expect(active[0]).to.equal(document.body);
+        // Internet Explorer 10 may think it's <html> rather than <body>
+        if (active[0] === document.documentElement) {
+          expect(active[0]).to.equal(document.documentElement);
+        } else {
+          expect(active[0]).to.equal(document.body);
+        }
       },
       'active in document': function() {
         fixture.input.outer.focus();
