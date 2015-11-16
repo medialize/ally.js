@@ -13,15 +13,15 @@ define([
   // see https://www.browserstack.com/automate/capabilities
   /*eslint-disable camelcase */
   config.environments = [
-    // { browser: 'Edge', browser_version: '12.0', os: 'Windows', os_version: '10', platform: 'WIN', browserName: 'IE12' },
+    // { browser: 'Edge', browser_version: '12.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge12' },
     { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
     { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10' },
 
-    { browser: 'Firefox', browser_version: '40', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 40' },
-    { browser: 'Chrome', browser_version: '44', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 44' },
+    { browser: 'Firefox', browser_version: '41', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 41' },
+    { browser: 'Chrome', browser_version: '46', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 46' },
 
-    { browser: 'Firefox', browser_version: '40', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 40' },
-    { browser: 'Chrome', browser_version: '44', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 44' },
+    { browser: 'Firefox', browser_version: '41', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 41' },
+    { browser: 'Chrome', browser_version: '46', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 46' },
 
     // disabled because of https://github.com/theintern/intern/issues/481
     // { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
