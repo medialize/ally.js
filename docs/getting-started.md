@@ -151,4 +151,3 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
 ---
 
 Continue with checking out one of the [Tutorials](tutorials/README.md) or head on to the [API Documentation](api/README.md)
-

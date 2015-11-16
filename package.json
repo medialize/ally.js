@@ -65,6 +65,7 @@
     "publish:website": "node build/publish.website.js",
     "publish:npm": "npm publish dist",
     "publish:npm:beta": "npm publish dist --tag beta",
+    "publish:lcov": "codeclimate-test-reporter < reports/lcov.info",
     "lint": "npm-run-all --parallel lint:js lint:md",
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js}') && jscs $(glob-cli '{src,test,build}')",
     "lint:md": "node build/markdownlint.js",

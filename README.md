@@ -2,6 +2,17 @@
 
 ---
 
+[![NPM version][npm-image]][npm-url]
+[![Dependencies][dependencies-image]][dependencies-url]
+[![Dev-Dependencies][dev-dependencies-image]][dev-dependencies-url]
+[![Code Climate][climate-image]][climate-url]
+[![Test coverage][coverage-image]][coverage-url]
+[![MIT License][license-image]][license-url]
+[![Github Downloads][github-image]][github-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+
+---
+
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. Its goal is to be **A JavaScript library to help web applications with accessibility concerns**. The intention is to separate these generic components from actual applications and other libraries.
 
 For the time being ally.js is developed along side my actual work projects and features get added to ally.js once they become necessary to them. Of course you're welcome to contribute whatever and however you can. I don't bite, promise. See [GOALS.md](GOALS.md) to learn what I want this project to become.
@@ -71,3 +82,21 @@ Have a look at the [API Documentation](docs/api/README.md).
 ## License
 
 ally.js is published under the [MIT License](http://opensource.org/licenses/mit-license).
+
+
+[npm-image]: https://img.shields.io/npm/v/ally.js.svg
+[npm-url]: https://www.npmjs.com/package/ally.js
+[downloads-image]: http://img.shields.io/npm/dm/ally.js.svg
+[downloads-url]: https://www.npmjs.com/package/ally.js
+[license-image]: https://img.shields.io/npm/l/ally.js.svg
+[license-url]: https://github.com/medialize/ally.js/blob/master/LICENSE.txt
+[github-image]: https://img.shields.io/github/downloads/medialize/ally.js/latest/total.svg
+[github-url]: https://github.com/medialize/ally.js/releases
+[climate-image]: https://img.shields.io/codeclimate/github/medialize/ally.js.svg
+[climate-url]: https://codeclimate.com/github/medialize/ally.js
+[coverage-image]: https://img.shields.io/codeclimate/coverage/github/medialize/ally.js.svg
+[coverage-url]: https://codeclimate.com/github/medialize/ally.js/coverage
+[dependencies-image]: https://img.shields.io/david/medialize/ally.js.svg
+[dependencies-url]: https://www.npmjs.com/package/ally.js
+[dev-dependencies-image]: https://img.shields.io/david/dev/medialize/ally.js.svg
+[dev-dependencies-url]: https://www.npmjs.com/package/ally.js
