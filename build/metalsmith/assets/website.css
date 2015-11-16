@@ -114,7 +114,10 @@ body > header {
 #site-navigation > ul > li.active > a {
   color: white;
 }
-
+#site-navigation > ul > li.github,
+#site-navigation > ul > li.download {
+  float: right;
+}
 
 /************************************************************
  * Footer Content
@@ -266,6 +269,28 @@ main kbd {
   box-shadow: inset 0 -1px 0 #bbb;
 }
 
+main a.download-file {
+  display: inline-block;
+  margin: 3px 0;
+  padding: 0 12px 0 6px;
+  border-radius: 3px;
+  background: #DDD;
+  color: #444;
+  text-decoration: none;
+}
+
+main a.download-file:focus,
+main a.download-file:hover {
+  background: #CCC;
+  text-decoration: underline;
+}
+
+main a.download-file:before {
+  content: "⬇";
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 
 /************************************************************
  * Block Content
@@ -377,6 +402,15 @@ main dd + dt {
     margin-left: 0;
     font-size: 18px;
     max-width: initial;
+  }
+
+  #site-navigation > ul > li.github,
+  #site-navigation > ul > li.download {
+    float: none;
+  }
+
+  #site-navigation > ul > li + li {
+    margin-left: 0;
   }
 }
 

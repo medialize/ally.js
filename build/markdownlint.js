@@ -32,7 +32,7 @@ const config = {
   },
   // MD029: false, // Ordered list item prefix
   // MD030: false, // Spaces after list markers
-  MD033: ['kbd'], // patched in rodneyrehm/markdownlint
+  MD033: ['kbd', 'a'], // patched in rodneyrehm/markdownlint
   // MD034: false, // Bare URL used
   // MD040: false,  // Fenced code blocks should have a language specified
 };

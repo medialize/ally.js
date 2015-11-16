@@ -9,7 +9,14 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Downloading the UMD bundle
 
-You can download the production file (UMD bundle) [`ally.min.js`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js) (and [`ally.min.js.map`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js.map) if you want [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) support) from the [github release page](https://github.com/medialize/ally.js/releases).
+If you're not comfortable with package mangers, simply download the production ready UMD bundle and drop it in your project.
+
+* <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js" class="download-file">ally.min.js</a> UMD bundle, ready for production use
+* <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js.map" class="download-file">ally.min.js.map</a> for SourceMap support
+* <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip" class="download-file">ally.js.zip</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)
+
+All downloads are hosted on the [github release page](https://github.com/medialize/ally.js/releases).
+
 
 ## Loading the UMD bundle from CDN
 
