@@ -42,7 +42,7 @@ Boolean, `true` if the element is focus relevant.
 * **NOTE:** WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themselves, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
 
 
-## Related Resources
+## Related resources
 
 * [`ally.element.disabled`](../element/disabled.md) can disable *any* interactive element
 

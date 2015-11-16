@@ -56,9 +56,9 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **WARNING:** Any element not identified as focus relevant by [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes) and not identified as only tabbable by [`ally.is.onlyTabbable`](../is/only-tabbable.md#Notes) is *not* made inert either. See the [identified elements using `strategy: "strict"` compatibility table](../../data-tables/focusable.strict.md).
 
 
-## Related Resources
+## Related resources
 
-* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-Tree)
+* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-tree)
 * [`ally.query.focusable`](../query/focusable.md) is used to identify the elements to disable
 * [`ally.element.disabled`](../element/disabled.md) is used to disable the elements
 

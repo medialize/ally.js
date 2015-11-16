@@ -47,7 +47,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `<callback>` is not a `function`.
 * [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) when no `<key>: <callback>` combinations were passed.
 
-## Callback Signature
+## Callback signature
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
@@ -67,7 +67,7 @@ The callback is executed in the context of `document.documentElement` (that's wh
 * **NOTE:** Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with [Gecko 286933](https://bugzilla.mozilla.org/show_bug.cgi?id=286933).
 
 
-## Related Resources
+## Related resources
 
 * [`ally.map.keycode`](../map/keycode.md) used for resolving named keys
 

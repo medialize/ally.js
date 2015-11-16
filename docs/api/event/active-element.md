@@ -41,12 +41,12 @@ handle.disengage();
 
 ### Returns
 
-A [`<global-service>`](../concepts.md#Global-Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<global-service>`](../concepts.md#Global-service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 
 
-## Event Data
+## Event data
 
 The `event.detail` property provides the following data:
 
@@ -61,7 +61,7 @@ The `event.detail` property provides the following data:
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

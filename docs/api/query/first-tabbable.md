@@ -55,10 +55,10 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * **WARNING:** Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored.
 
 
-## Related Resources
+## Related resources
 
 * [`ally.query.tabbable`](tabbable.md) is used to find keyboard focusable elements
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-Navigation-Focus-Order)
+* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
 
 ## Contributing

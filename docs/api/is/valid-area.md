@@ -44,7 +44,7 @@ Boolean, `true` if the element is focus relevant.
 * **NOTE:** Multiple use of same image map hides elements from tabbing sequence - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126)
 
 
-## Related Resources
+## Related resources
 
 * [HTML5: The Map Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element)
 * [HTML5: The Area Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-area-element)

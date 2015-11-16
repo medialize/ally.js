@@ -37,7 +37,7 @@ console.log(ally.map.keycode.enter);
 ```
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

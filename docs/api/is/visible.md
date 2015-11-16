@@ -41,7 +41,7 @@ Boolean, `true` if the element is focus relevant.
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

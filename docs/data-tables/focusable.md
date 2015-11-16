@@ -1,5 +1,5 @@
 
-# Focusable Elements - Browser Compatibility Table
+# Focusable elements - browser compatibility table
 
 This placeholder-document is replaced by `npm run build:data-tables` in the `dist` directory.
 

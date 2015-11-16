@@ -57,9 +57,9 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 ## Notes
 
 
-## Related Resources
+## Related resources
 
-* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-Tree)
+* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-tree)
 
 
 ## Contributing

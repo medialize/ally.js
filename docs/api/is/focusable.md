@@ -45,7 +45,7 @@ Boolean, `true` if the element is focus relevant.
 See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 
 
-## Related Resources
+## Related resources
 
 * [`ally.is.focusRelevant`](focus-relevant.md) is used to identify elements that can receive focus
 * [`ally.is.tabbable`](tabbable.md) identifies keyboard focusable elements

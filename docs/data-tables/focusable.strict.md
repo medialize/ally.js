@@ -1,5 +1,5 @@
 
-# Focusable Elements - strategy:strict - ally.js Compatibility Table
+# Focusable elements - strategy:strict - ally.js compatibility table
 
 This placeholder-document is replaced by `npm run build:data-tables` in the `dist` directory.
 

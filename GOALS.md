@@ -1,5 +1,5 @@
 
-# ally.js Goals
+# ally.js goals
 
 The ultimate goal is to make the development of apps adhering to [WAI-ARIA](http://www.w3.org/TR/wai-aria/) a breeze. The ultimatest™ goal is to make this library obsolete by lobbying the W3C and browser vendors into supporting the basic tools provided by ally.js. (One may dream…)
 

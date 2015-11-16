@@ -71,7 +71,7 @@ handle.disengage();
 * **NOTE:** The focus-within class is added asynchronously in Shadow DOM, but synchronously for the document.
 
 
-## Related Resources
+## Related resources
 
 * [Selectors Level 4: `:focus-within` Pseudo-class](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 

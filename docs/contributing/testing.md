@@ -2,7 +2,7 @@
 layout: doc-page.html
 ---
 
-# Test Infrastructure
+# Test infrastructure
 
 The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](http://theintern.github.io/leadfoot/) for interacting with browsers.
 
@@ -19,7 +19,7 @@ Coverage reports are made available in the directory `reports/coverage`.
 > TODO: The tests should be run automatically via [TravisCI](https://theintern.github.io/intern/#ci-travis)
 
 
-## Locally Running Unit Tests In The Browser
+## Locally running unit tests in the browser
 
 You can run the unit tests in any browser by navigating to the following URL (replacing `${host}` and `${path}` accordingly):
 
@@ -30,7 +30,7 @@ http://${hostname}>/${path}/ally.js/node_modules/intern/client.html?config=test/
 (we're not using `test/sauce` or `test/local` in the browser because of the `reporters` those configurations load)
 
 
-## Locally Running All Tests In The Browser
+## Locally running all tests in the browser
 
 Both unit and functional tests can be executed in Google Chrome locally via `npm run test` or `node test/run-local.js`. You could also [install and start ChromeDriver yourself](https://theintern.github.io/intern/#local-selenium) and then run `./node_modules/.bin/intern-runner config=test/local`. The `test/run-local.js` uses [dalek-driver-chrome](https://github.com/dalekjs/dalek-driver-chrome) to download, install and start ChromeDriver automatically.
 
@@ -48,11 +48,11 @@ node test/run-local.js \
 ```
 
 
-## Remotely Running All Tests In All Browsers
+## Remotely running all tests in all browsers
 
 You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account. The same is true for [BrowserStack](http://browserstack.com/).
 
-### Running Tests on BrowserStack
+### Running tests on BrowserStack
 
 ```sh
 # make BrowserStack credentials available to Intern
@@ -74,7 +74,7 @@ npm run test:browserstack
   functionalSuites=tests/functional/selected-test
 ```
 
-### Running Tests on SauceLaubs
+### Running tests on SauceLaubs
 
 ```sh
 # make SauceLabs credentials available to Intern
@@ -113,7 +113,8 @@ When the tests executed, code coverage results can be uploaded to [Code Climate]
 
 * **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
 
-## Analyzing Bundle Size
+
+## Analyzing bundle size
 
 Before a release the structure of the UMD bundle should be analyzed to make sure we didn't accidentally blow it up. This is done using [source-map-explorer](https://github.com/danvk/source-map-explorer).
 

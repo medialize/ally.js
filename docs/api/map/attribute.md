@@ -35,7 +35,7 @@ console.log(ally.map.attribute['aria-busy']);
 ```
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

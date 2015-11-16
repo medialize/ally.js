@@ -50,7 +50,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **NOTE:** Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden.
 
 
-## Related Resources
+## Related resources
 
 * [`ally.maintain.disabled`](disabled.md) is a [service](../concepts.md#Service) disabling interactive elements in the DOM
 * [`ally.get.insignificantBranches`](../get/insignificant-branches.md) is used to identify the elements to hide

@@ -82,14 +82,14 @@ handle.lock("pointer");
 
 ### Returns
 
-A [`<global-service>`](../concepts.md#Global-Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<global-service>`](../concepts.md#Global-service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 
 
-## Service Handle
+## Service handle
 
-The `handle` is returned when engaging the service. As the [`<global-service>`](../concepts.md#Global-Service) interface describes, the `handle.disengage()` method is provided to stop the service. Additionally the following methods are made available:
+The `handle` is returned when engaging the service. As the [`<global-service>`](../concepts.md#Global-service) interface describes, the `handle.disengage()` method is provided to stop the service. Additionally the following methods are made available:
 
 ### handle.current()
 
@@ -112,7 +112,7 @@ The `handle.lock()` method accepts one string argument and sets that as the inte
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 * [WICG: Exposing a user’s input modality](https://discourse.wicg.io/t/exposing-a-users-input-modality/1067) and accompanying [prollyfill](https://github.com/alice/modality)
 

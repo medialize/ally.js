@@ -65,7 +65,7 @@ var isDisabled = ally.element.disabled(element);
 * **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 
 
-## Related Resources
+## Related resources
 
 * [`ally.is.disabled`](../is/disabled.md) is able to identify elements disabled by [`ally.element.disabled`](#ally.element.disabled)
 * [`ally.maintain.disabled`](../maintain/disabled.md) is a [service](../concepts.md#Service) finding focusable elements and disabling them within the DOM

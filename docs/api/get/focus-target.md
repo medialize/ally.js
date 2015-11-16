@@ -48,7 +48,7 @@ var element = ally.get.focusTarget({
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

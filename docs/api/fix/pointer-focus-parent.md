@@ -56,7 +56,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **NOTE:** Only engaged for WebKit (detected via via [platform.js](https://github.com/bestiejs/platform.js/)).
 
 
-## Related Resources
+## Related resources
 
 * [`ally.fix.pointerFocusChildren`](pointer-focus-children.md)
 * [`ally.fix.pointerFocusInput`](pointer-focus-input.md)

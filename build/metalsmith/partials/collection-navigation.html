@@ -1,7 +1,7 @@
 <nav id="collection-navigation">
 {{collection-to-siblings}}
 {{#each siblings}}
-  {{#if @first}}<h1>Related Resources</h1><ul>{{/if}}
+  {{#if @first}}<h1>More in <em>{{../title}}</em></h1><ul>{{/if}}
   {{#if this.layout}}
   <li class="{{#is this.title ../title}}active{{/is}}">
     <a

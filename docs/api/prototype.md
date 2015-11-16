@@ -3,7 +3,7 @@ layout: doc-page.html
 tags: internal
 ---
 
-# Prototype Polyfills
+# Prototype polyfills
 
 The prototype infrastructure makes functions available in modern browsers available to older browsers lacking the native support.
 

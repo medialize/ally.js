@@ -48,7 +48,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `callback` option is not specified or not a `function`.
 
 
-## Callback Signature
+## Callback signature
 
 The callback is invoked with one argument, the `HTMLElement` identified by `context`. The callback can return `false` to signal that the service needs to keep observing `context`, to allow additional state verification to be performed within the callback. If nothing is returned, the service disengages after the callback finished processing.
 
@@ -63,7 +63,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 * **NOTE:** This method *may* cause [layout thrashing](http://wilsonpage.co.uk/preventing-layout-thrashing/)
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

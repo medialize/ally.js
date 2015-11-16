@@ -2,15 +2,15 @@
 layout: doc-page.html
 ---
 
-# Accessible Dialog Tutorial
+# Accessible dialog tutorial
 
 This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/#dialog_modal).
 
 HTML5.1 specifies the [`<dialog>` element](http://www.w3.org/TR/html51/interactive-elements.html#the-dialog-element) that natively does most of what is explained here. But since [browser support](http://caniuse.com/#feat=dialog) is rather limited, making use of `<dialog>` is not yet possible.
 
-The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#Interactive-Demo) below.
+The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#Interactive-demo) below.
 
-## The Visual Effect
+## The visual effect
 
 Before we get into the technical things, let's first discuss what a dialog is. From a user experience perspective it is a piece of information, or a set of interactions, provided to the user in a way that disrupts the user's current interaction. The user is made to focus on the dialog's content and ignore the rest of the application or website. Visually this is usually achieved by layering a box in the visual center of the application and by positioning a translucent layer (i.e. showing the content behind it, but in a distorted manner) behind the dialog, to emphasize that the layer is the only important thing.
 
@@ -39,7 +39,7 @@ To achieve this *visual effect* we don't need much code:
 But visual appearance is not the *only* thing we care about, especially not when claiming something is *accessible*. In the following sections we'll discuss how to take that visual experience to a technical level that we might call accessible.
 
 
-## HTML - The Dialog's Structure
+## HTML - the dialog's structure
 
 First of all we need a container for the dialog to live in, we use a `<div>` element, because it doesn't have any semantic meaning itself. We explain that the `<div>` actually *is* a dialog by adding [`role="dialog"`](http://www.w3.org/TR/wai-aria/roles#dialog). Roles are defined by ARIA, which allow us to express the *meaning* of an element. We also add `tabindex="-1"` to allow the dialog container to be focused, something we'll revisit soon. Because dialogs are not always visible, we also add the [`hidden` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden).
 
@@ -296,7 +296,7 @@ openButton.addEventListener('click', openDialog, false);
 closeButton.addEventListener('click', closeDialog, false);
 ```
 
-### Trapping Focus Inside The Dialog
+### Trapping docus inside the dialog
 
 While a dialog is shown, we need to make sure that elements outside of the dialog cannot be interacted with. The backdrop achieves this for the mouse, as you're unable to click on anything anymore. But for other means of input, like the keyboard, elements are still accessible simply by hitting the <kbd>Tab</kbd> key often enough to reach them.
 
@@ -336,7 +336,7 @@ function closeDialog() {
 }
 ```
 
-### Reacting To <kbd>Enter</kbd> and <kbd>Escape</kbd>
+### Reacting to <kbd>Enter</kbd> and <kbd>Escape</kbd>
 
 The <kbd>Escape</kbd> key usually closes (dismisses) a dialog and the <kbd>Enter</kbd> key usually activates the dialog's primary action. Because our example uses a `<form>` and a submit button for the save action, we don't have to listen for <kbd>Enter</kbd>, but can instead rely on the `submit` event of the `<form>`.
 
@@ -387,7 +387,7 @@ function saveDialog(event) {
 dialog.addEventListener('submit', saveDialog, true);
 ```
 
-### Focus First Focusable Element Upon Opening The Dialog
+### Focus first focusable element upon opening the dialog
 
 Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus. In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
 
@@ -410,7 +410,7 @@ function openDialog() {
 }
 ```
 
-### Restoring Focus Upon Closing The Dialog
+### Restoring focus upon closing the dialog
 
 In order to restore focus on the element that was focused before we opened the dialog, we simply need to remember which element that was:
 
@@ -433,7 +433,7 @@ function closeDialog() {
 }
 ```
 
-### Hide Document From Screen Readers
+### Hide document from screen readers
 
 Screen Readers and other tools consuming the document through the Accessibility Tree instead of relying on visual presentation, need to be told what exactly is going on. The translucent backdrop, which obfuscates the document's content while the dialog is shown, does the job when you actually *see* the page. To achieve the same for non-visual output methods, we need to add [`aria-hidden="true"`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden) to all the sibling DOM elements of our dialog.
 
@@ -464,7 +464,7 @@ function closeDialog() {
 }
 ```
 
-### Wait Until Dialog Is Visible Before Shifting Focus
+### Wait until dialog is visible before shifting focus
 
 An unspecified step performed by the browser when focusing an element is that the focusing element is scrolled into view. There is no way to prevent this from happening. But we can get around it by waiting for animated elements to come into view before shifting focus to them. For that reason ally.js provides the method [`ally.when.visibleArea`](../api/when/visible-area.md) to execute a callback once an element fully entered the viewport. This allows us to rewrite focusing the first keyboard focusable element:
 
@@ -498,6 +498,6 @@ function openDialog() {
 }
 ```
 
-## Interactive Demo
+## Interactive demo
 
 * **EXAMPLE:** [Dialog Tutorial](./dialog.example.html)

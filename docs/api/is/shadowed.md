@@ -41,7 +41,7 @@ Boolean, `true` if the element is focus relevant.
 * **NOTE:** Requires [Shadow DOM](http://caniuse.com/#feat=shadowdom) support
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

@@ -46,7 +46,7 @@ Boolean, `true` if the element is focus relevant.
 * **WARNING:** WebKit and Blink make any `SVGElement` focusable that has a `focus` event listener attached, see [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024)
 
 
-## Related Resources
+## Related resources
 
 * [`ally.is.focusable`](focusable.md) tests focus-relevant elements if they're also visible and not disabled
 * [`ally.is.tabbable`](tabbable.md) tests elements if they're keyboard focusable

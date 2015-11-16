@@ -37,7 +37,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 * [`ally.get.shadowHostParents`](shadow-host-parents.md) is used to identify an elements `ShadowHost` ancestry
 

@@ -2,7 +2,7 @@
 layout: doc-page.html
 ---
 
-# Build Infrastructure
+# Build infrastructure
 
 The build infrastructure consists of a few tools made available through `npm run` commands.
 
@@ -71,7 +71,7 @@ npm run build:umd
 npm run clean
 ```
 
-### Building AMD and CommonJS Modules
+### Building AMD and CommonJS modules
 
 To allow developers to use selected features (rather than import everything), the ES6 source (`src`) is made available in ES5 via AMD and CommonJS in `dist/amd` and `dist/common`.
 
@@ -119,7 +119,7 @@ Linting is done automatically via git hooks by way of [husky](https://www.npmjs.
 
 ---
 
-## ES6 In Older Browsers
+## ES6 in older browsers
 
 Currently only a single ES6 function `Array.prototype.findIndex` is used in ally.js. Should we choose to use more ES6 functions, possibly things like `Set` and `Map`, we would have to include the [babel polyfill](http://babeljs.io/docs/usage/polyfill/) in our distribution. This step should not be taken lightly, as the polyfill is a heavyweight.
 

@@ -44,7 +44,7 @@ Boolean, `true` if the element is focus relevant.
 * **WARNING:** only Blink and WebKit respect the `tabindex` attribute on SVGElements (defined in [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG))
 
 
-## Related Resources
+## Related resources
 
 * [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 

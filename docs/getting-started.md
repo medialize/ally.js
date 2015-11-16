@@ -2,9 +2,9 @@
 layout: doc-page.html
 ---
 
-# Getting Started
+# Getting started
 
-ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API Documentation](api/README.md) to learn what the library actually provides.
+ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API documentation](api/README.md) to learn what the library actually provides.
 
 
 ## Downloading the UMD bundle
@@ -31,7 +31,7 @@ ally.js is made available for production use by [cdnjs](https://cdnjs.com/librar
 ```
 
 
-## Installing via Package Manager
+## Installing via package manager
 
 ```sh
 npm install --save ally.js
@@ -63,7 +63,7 @@ System.import("ally.js!npm").then(function(ally) {
 ```
 
 
-## Using CommonJS Modules
+## Using CommonJS modules
 
 The production UMD bundle contains all dependencies, allowing you to require ally.js directly:
 
@@ -86,7 +86,7 @@ console.log("focusable elements", queryFocusable());
 * **NOTE:** The CommonJS modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 
 
-## Using ES6 Modules
+## Using ES6 modules
 
 ally.js is authored in ES6 and its modules are accessible in the `src` directory:
 
@@ -101,7 +101,7 @@ console.log("focusable elements", queryFocusable());
 * **NOTE:** The ES6 source modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 
 
-## Using AMD Modules
+## Using AMD modules
 
 The production UMD bundle contains all dependencies, allowing you to require ally.js directly:
 
@@ -150,4 +150,4 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
 
 ---
 
-Continue with checking out one of the [Tutorials](tutorials/README.md) or head on to the [API Documentation](api/README.md)
+Continue with checking out one of the [Tutorials](tutorials/README.md) or head on to the [API documentation](api/README.md)

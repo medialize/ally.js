@@ -1,8 +1,8 @@
-# Issues Filed
+# Issues filed
 
 This document is used for collecting all the bugs reported and issues raised because of my investigating how focus works and creating ally.js.
 
-# Filed Browser Issues
+# Filed browser issues
 
 * Mouse/Touch Events Can Focus Parent Element - [WebKit 139945](https://bugs.webkit.org/show_bug.cgi?id=139945)
 * Multiple use of same image map hides elements from tabbing sequence - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126)
@@ -32,7 +32,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * embed element with tabindex="0" breaks sequential focus navigation [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
 
 
-## Filed Specification Issues
+## Filed specification issues
 
 * [object element usemap should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756)
 * [[Shadow]: how is the autofocus attribute supposed to be handled?](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27757)

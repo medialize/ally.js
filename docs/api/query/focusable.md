@@ -55,11 +55,11 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * **WARNING:** Any element marked `only-tabbable` in the [focusable browser compatibility tables](../../data-tables/focusable.md) is *not* identified by [`ally.is.focusable`](../is/focusable.md) or [`ally.is.tabbable`](../is/tabbable.md), only by [`ally.is.onlyTabbable`](../is/only-tabbable.md). That is because these elements cannot be interacted with via script, i.e. calling `element.focus()` does not have any effect.
 
 
-## Related Resources
+## Related resources
 
 * [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element
 * [`ally.query.tabbable`](tabbable.md) finds keyboard focusable elements
-* [`ally.query.tabsequence`](tabsequence.md) finds keyboard focusable elements in the [sequential navigation focus order](../../concepts.md#Sequential-Navigation-Focus-Order)
+* [`ally.query.tabsequence`](tabsequence.md) finds keyboard focusable elements in the [sequential navigation focus order](../../concepts.md#Sequential-navigation-focus-order)
 * [`ally.is.focusable`](../is/focusable.md) used to filter focusable elements
 
 * [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)

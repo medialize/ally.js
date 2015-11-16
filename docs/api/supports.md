@@ -10,7 +10,7 @@ The supports infrastructure is a set of tests determining browser behavior and c
 For the tests to run properly, the document needs to have focus during execution. If it does not, e.g. because the browser's DevTools have focus, the warning »document requires focus for a11y support tests« will be logged to the console and the cache is voided.
 
 
-## Available Compatibility Tests
+## Available compatibility tests
 
 | Test Name | Return Type | Description |
 | --------- | ----------- | ----------- |
@@ -39,7 +39,7 @@ For the tests to run properly, the document needs to have focus during execution
 | svg-focus-method | boolean | true if `SVGElement.prototype.focus` exists natively |
 
 
-## Console Warnings
+## Console warnings
 
 This module logs things to the console:
 

@@ -52,12 +52,12 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * **WARNING:** `<area>` elements are provided in DOM order they occur, not in DOM order of the `<img>` elements that use them, see [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
 
 
-## Related Resources
+## Related resources
 
 * [`ally.is.tabbable`](../is/tabbable.md) is used to filter focusable elements
 * [`ally.query.focusable`](focusable.md) is used to find focusable elements
 * [`ally.query.firstTabbable`](tabbable.md) finds the first keyboard focusable element in a context
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-Navigation-Focus-Order)
+* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
 * [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 

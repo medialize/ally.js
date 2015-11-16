@@ -2,14 +2,14 @@
 layout: doc-page.html
 ---
 
-# Documentation Infrastructure
+# Documentation infrastructure
 
 The documentation is authored in markdown in the `docs` directory. We're using [Remarkable](https://www.npmjs.com/package/remarkable) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `build/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 
 The idea is to create a documentation that can be read on github and on the generated website.
 
 
-## Building The Website
+## Building the website
 
 The doc source are converted to HTML by [metalsmith](http://metalsmith.io/), the scripts and configuration are maintained in the `build/metalsmith` directory.
 
@@ -48,14 +48,14 @@ We use the following plugins:
 * [metalsmith-redirect](https://github.com/aymericbeaumet/metalsmith-redirect/) to create HTML redirection files to forward old URLs to their new homes
 
 
-## Authoring Documentation
+## Authoring documentation
 
 The public API provided by ally.js needs to be explained in `docs/api`. As every component has its source file, it has an accompanying markdown file for documentation. ally.js contains components that are not meant to be used directly, thus do not have to be documented in detail.
 
 Anything you document should be written in a way that caters to an audience that may not know very much about accessibility. If bigger picture explanations are required, consider writing a tutorial instead of cramming it into the API docs.
 
 
-### Embedding Examples and Demos
+### Embedding examples and Demos
 
 You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by using the following markdown in any document:
 
@@ -106,7 +106,7 @@ Example documents must follow the following general structure.
 The command `npm run publish:jsbin` uses [jsbin-sync](https://github.com/rodneyrehm/jsbin-sync) to find all `example*.html` files and upload them to [JSBin.com](https://jsbin.com). *This can only be executed by [Rod](https://github.com/rodneyrehm), as we're using his personal JSBin pro account for this.* New examples will have their empty `<link rel="jsbin" href="">` element updated to the URL returned by JSBin, but this is the only change applied to source files. Contents of `#example-js` and `#example-css` go into the bin's JavaScript and CSS sections, respecively. The bin's HTML section contains the HTML document, *without* the `<script id="example-js">`, `<style id="example-css">` and `<link rel="jsbin">` elements.
 
 
-### Notes and Warnings
+### Notes and warnings
 
 In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a list of notes and warnings in the following form:
 
@@ -131,7 +131,7 @@ Document can make use of definition lists. An unordered list containing only ite
 * **Term 2:** Explanation 2
 ```
 
-### API Classifications
+### API classifications
 
 API documents must declare their traits, which is done via the `tags` property in the [front matter](http://jekyllrb.com/docs/frontmatter/) section of the document:
 
@@ -144,10 +144,10 @@ tags: option-argument, service, svg
 # Headline
 ```
 
-* **argument-options:** To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-Options-Argument)
-* **argument-list:** To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-Options-Argument) pattern
+* **argument-options:** To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-options-argument)
+* **argument-list:** To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-options-argument) pattern
 * **service:** To declare the module belongs to the family of [Service](../api/concepts.md#Service) components
-* **global-service:** To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-Service) components
+* **global-service:** To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-service) components
 * **data:** To declare the module provides data, not functionality
 * **internal:** To declare the module is intended for internal use only
 * **browser-fix:** To declare the module's only intention is to counter a specific browser quirk

@@ -68,7 +68,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **NOTE:** Only engaged for Internet Explorer 10 and 11 (detected via [platform.js](https://github.com/bestiejs/platform.js/)).
 
 
-## Related Resources
+## Related resources
 
 * [`ally.fix.pointerFocusInput`](pointer-focus-input.md)
 * [`ally.fix.pointerFocusParent`](pointer-focus-parent.md)

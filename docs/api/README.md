@@ -2,12 +2,12 @@
 layout: doc-page.html
 ---
 
-# API Index
+# API index
 
 When creating web applications or UI widgets these modules may come in handy.
 
 
-## Countering Browser Bugs
+## Countering browser bugs
 
 Every software has its problems - so do browsers. These utilities combat things browsers get wrong.
 
@@ -24,7 +24,7 @@ Sometimes `:focus` is not enough for communicating your application's intentions
 * [`ally.style.focusWithin`](style/focus-within.md) polyfills `:focus-within` with `.ally-focus-within`
 
 
-## Altering Browser Focus Behavior
+## Altering browser focus behavior
 
 While it's best to use standardized features and leave browsers to figure things out, specifications sometimes leave us hanging in limbo.
 
@@ -32,7 +32,7 @@ While it's best to use standardized features and leave browsers to figure things
 * [`ally.maintain.hidden`](maintain/hidden.md) sets `aria-hidden="true"` on insignificant branches
 
 
-## Finding Elements
+## Finding elements
 
 In order to work with focusable elements, we must first know which elements we're supposed to work with. See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
@@ -42,9 +42,9 @@ In order to work with focusable elements, we must first know which elements we'r
 * [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements respecting the `[tabindex]` order
 
 
-## Element State
+## Element state
 
-Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#Single-Options-Argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
+Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#Single-options-argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
 * [`ally.is.disabled`](is/disabled.md) returns true if the element is `:disabled`
 * [`ally.is.focusRelevant`](is/focus-relevant.md) returns true if the element is considered theoretically focusable
@@ -57,14 +57,14 @@ Unlike any other ally modules, these components do not take take [`options.conte
 * [`ally.is.visible`](is/visible.md) returns true if the element is rendered (but not necessarily visible in the viewport)
 
 
-## Manipulating Element State
+## Manipulating element state
 
 Making up for missing or lacking DOM mutation APIs.
 
 * [`ally.element.disabled`](element/disabled.md) disables all elements, not only form controls
 
 
-## Reacting To Element State
+## Reacting to element state
 
 Especially when dealing with transitional user interfaces we need to know when an element can be safely focused.
 
@@ -73,7 +73,7 @@ Especially when dealing with transitional user interfaces we need to know when a
 * [`ally.when.visibleArea`](when/visible-area.md) executes a callback once an element is visible in the viewport
 
 
-## DOM Traversal
+## DOM traversal
 
 Sometimes you need some DOM traversal utilities
 
@@ -88,14 +88,14 @@ Sometimes you need some DOM traversal utilities
 
 ---
 
-## Developer Modules
+## Developer modules
 
 When creating libraries these modules may come in handy.
 
 * **NOTE:** When you find yourself using one of these in your application code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
 
 
-### DOM Traversal (extended)
+### DOM traversal (extended)
 
 Sometimes you need some DOM traversal utilities
 
@@ -107,7 +107,7 @@ Sometimes you need some DOM traversal utilities
 * [`ally.get.shadowHost`](get/shadow-host.md)
 
 
-### Event Dispatchers
+### Event dispatchers
 
 Emitting events when there's no standardized equivalent
 
@@ -115,7 +115,7 @@ Emitting events when there's no standardized equivalent
 * [`ally.event.shadowFocus`](event/shadow-focus.md)
 
 
-### Event Listeners
+### Event listeners
 
 Translate volatile events to stateful interfaces
 
@@ -124,7 +124,7 @@ Translate volatile events to stateful interfaces
 
 ---
 
-## Contributor Modules
+## Contributor modules
 
 When working on ally.js these modules may come in handy.
 

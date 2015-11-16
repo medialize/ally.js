@@ -29,14 +29,14 @@ var type = handle.get();
 
 ### Returns
 
-A [`<global-service>`](../concepts.md#Global-Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<global-service>`](../concepts.md#Global-service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 
 
-## Service Handle
+## Service handle
 
-The `handle` is returned when engaging the service. As the [`<global-service>`](../concepts.md#Global-Service) interface describes, the `handle.disengage()` method is provided to stop the service. Additionally the following methods are made available:
+The `handle` is returned when engaging the service. As the [`<global-service>`](../concepts.md#Global-service) interface describes, the `handle.disengage()` method is provided to stop the service. Additionally the following methods are made available:
 
 ### handle.get()
 
@@ -54,7 +54,7 @@ The `handle.get()` method does not accept any arguments and returns an object wi
 ## Notes
 
 
-## Related Resources
+## Related resources
 
 
 ## Contributing

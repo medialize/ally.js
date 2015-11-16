@@ -2,21 +2,21 @@
 layout: index.html
 ---
 
-# ally.js Documentation
+# ally.js documentation
 
 * [Getting Started](getting-started.md)
 * [API Index](api/README.md)
 * [Tutorials](tutorials/README.md)
 
 
-## Resources For Contributors
+## Resources for contributors
 
 * [Build Infrastructure](contributing/build.md)
 * [Documentation Infrastructure](contributing/docs.md)
 * [Test Infrastructure](contributing/testing.md)
 
 
-## Resources On Github
+## Resources on github
 
 * [CHANGELOG](https://github.com/medialize/ally.js/tree/master/CHANGELOG.md)
 * [GOALS](https://github.com/medialize/ally.js/tree/master/GOALS.md)
