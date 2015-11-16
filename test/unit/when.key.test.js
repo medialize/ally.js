@@ -38,6 +38,15 @@ define([
       },
 
       lifecycle: function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        if (supportsSynthEvent.keyCode !== 13) {
+          this.skip('Synthetic enter events not supported');
+        }
+
         var events = [];
         handle = whenKey({
           enter: function() {
@@ -68,6 +77,15 @@ define([
       },
 
       disengaging: function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        if (supportsSynthEvent.keyCode !== 13) {
+          this.skip('Synthetic enter events not supported');
+        }
+
         var events = [];
         handle = whenKey({
           enter: function(event, disengage) {

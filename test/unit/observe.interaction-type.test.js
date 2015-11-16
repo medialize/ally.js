@@ -50,6 +50,15 @@ define([
         }), 20);
       },
       'detect key': function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Tab',
+          keyCode: 9,
+        });
+
+        if (supportsSynthEvent.keyCode !== 9) {
+          this.skip('Synthetic Tab events not supported');
+        }
+
         var deferred = this.async(100);
         handle = observeInteractionType();
 

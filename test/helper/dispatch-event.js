@@ -22,8 +22,11 @@ define([], function() {
       // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
       Object.defineProperty(event, 'keyCode', {value: options.keyCode});
       Object.defineProperty(event, 'which', {value: options.keyCode});
+      // Internet Explorer does not like this
+      event.keyCode = options.keyCode;
     } catch(e) {
       // IGNORE
+      return false;
     }
 
     return event;
@@ -56,16 +59,26 @@ define([], function() {
   }
 
   return {
+    createMoutse: createMouseEvent,
     mouse: function(target, type, options) {
       var event = createMouseEvent(type, options || {});
+      if (!event) {
+        return event;
+      }
+
       if (target) {
         target.dispatchEvent(event);
       }
 
       return event;
     },
+    createKey: createKeyEvent,
     key: function(target, type, options) {
       var event = createKeyEvent(type, options || {});
+      if (!event) {
+        return event;
+      }
+
       if (target) {
         target.dispatchEvent(event);
       }
