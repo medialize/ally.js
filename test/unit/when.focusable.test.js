@@ -59,7 +59,7 @@ define([
         }).to.throw(TypeError, 'when/visible-area requires valid options.context');
       },
       'visible initially': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         // scroll to 100% visibility
         fixture.outer.scrollLeft = 200;
         handle = whenFocusable({
@@ -70,7 +70,7 @@ define([
         });
       },
       'scroll parent, area: 1': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         handle = whenFocusable({
           context: '#target',
           callback: deferred.callback(function() {
@@ -87,7 +87,7 @@ define([
         }, 50);
       },
       'scroll parent, area: 0.5': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         handle = whenFocusable({
           context: '#target',
           area: 0.5,
@@ -105,7 +105,7 @@ define([
         }, 50);
       },
       'repeat callback': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         var counter = 3;
         handle = whenFocusable({
           context: '#target',
@@ -128,7 +128,7 @@ define([
         }, 50);
       },
       'disengage observer': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         handle = whenFocusable({
           context: '#target',
           callback: deferred.rejectOnError(function() {
@@ -145,7 +145,7 @@ define([
         }, 50);
       },
       'waiting for focus': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         // scroll to 100% visibility
         fixture.outer.scrollLeft = 200;
         fixture.target.disabled = true;
