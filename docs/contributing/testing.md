@@ -109,6 +109,8 @@ reports
 └── lcov.info       - test coverage non-human readable format
 ```
 
+When the tests executed, code coverage results can be uploaded to [Code Climate](http://codeclimate.com/) by running `npm run publish:lcov`.
+
 * **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
 
 ## Analyzing Bundle Size
@@ -121,3 +123,8 @@ npm run analyze:bundle
 ```
 
 The report will be available in `reports/bundle-size.html`
+
+
+## Functional test limitations
+
+By way of LeadFoot and WebDriver, Intern allows us to script user actions. Such a user action could be *click on that element* or *press the <kbd>Tab</kbd> key*. While clicking on things generally works fine, sending keyboard commands does *not entirely* do what we expect (and need). While simulating the keypress of the <kbd>Tab</kbd> key will trigger the `keydown`, `keyup`, … event cascade, it will *not* make the browser advance focus to the next element. In other words, we can't test against browser behavior. For that reason we haven't created any functional tests up to now.
