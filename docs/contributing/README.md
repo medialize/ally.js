@@ -10,16 +10,26 @@ ally.js strives to be a general purpose helper library for accessibility concern
 
 ally.js is *not only* about the library code. All the concepts covered by ally.js need to explained in a way that people new to accessibility understand what is going on. To make that happen, you can help improve our documentation or write a tutorial.
 
-These documents should help dive into how the project does things:
 
-* [Contribution Guide on Github](https://github.com/medialize/ally.js/blob/master/CONTRIBUTING.md)
+## Who can contribute?
+
+*Anyone* can join. *Everything* is done on github, in the open. *Everything* is up for discussion.
+
+* You specialize in accessibility, but aren't an expert with the JavaScripts? No worries, be the brains, we'll be your code monkeys.
+* You specialize in JavaScript, but aren't experienced with that accessibility thing? No worries, I'm sure there's plenty to optimize and refactor and test and …
+* You specialize in writing things but your accessibility is about as rusty as your JavaScript? Have a look at the docs, I'm sure they can be translated to actual, proper *English*.
+
+
+## Documentation for contributors
+
+* [Contribution guide on Github](https://github.com/medialize/ally.js/blob/master/CONTRIBUTING.md)
 * [Building ally.js](build.md)
 * [Documenting ally.js](docs.md)
 * [Testing ally.js](testing.md)
 * [Releasing ally.js](release.md)
 
 
-## Contributors
+## Acknowledgements
 
 While the project and most of its resources was created by [Rodney Rehm](http://rodneyrehm.de/en/), the following people had *substantial* impact on ally.js:
 
@@ -29,4 +39,4 @@ While the project and most of its resources was created by [Rodney Rehm](http://
 * [Marcy Sutton](http://marcysutton.com/)
 * [Patrick H Lauke](https://www.splintered.co.uk/)
 * [Steve Faulkner](https://twitter.com/stevefaulkner)
-* … and probably more
+* … and probably a few more
