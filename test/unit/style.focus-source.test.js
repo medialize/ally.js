@@ -50,7 +50,7 @@ define([
           handle.disengage();
           handle = null;
           expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'after disengage');
-        }), 20);
+        }), 100);
       },
       key: function() {
         var deferred = this.async(1000);
@@ -79,8 +79,8 @@ define([
           setTimeout(deferred.callback(function() {
             fixture.input.after.focus();
             expect(handle.current()).to.equal('script', 'current() after second focus shift');
-          }), 20);
-        }), 20);
+          }), 100);
+        }), 100);
       },
       pointer: function() {
         var deferred = this.async(1000);
@@ -102,8 +102,8 @@ define([
           setTimeout(deferred.callback(function() {
             fixture.input.after.focus();
             expect(handle.current()).to.equal('script', 'current() after second focus shift');
-          }), 20);
-        }), 20);
+          }), 100);
+        }), 100);
       },
       'lock()': function() {
         handle = styleFocusSource();
