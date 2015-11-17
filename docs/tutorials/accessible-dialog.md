@@ -53,10 +53,10 @@ To structure the content rendered by the dialog, we'll use `<header>` for the in
 </div>
 ```
 
-Now that we have the bare bones, we should talk about a dialog's generic content, like titles and descriptions. All dialogs have a title, most will also have a description. To explain that the title and description actually belong to the dialog, we use the attributes [`aria-labeldby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby) and [`aria-describedby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby) respectively.
+Now that we have the bare bones, we should talk about a dialog's generic content, like titles and descriptions. All dialogs have a title, most will also have a description. To explain that the title and description actually belong to the dialog, we use the attributes [`aria-labelledby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby) and [`aria-describedby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby) respectively.
 
 ```html
-<div role="dialog" aria-labeldby="dialog-title" aria-describedby="dialog-description">
+<div role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
   <header>
     <h1 id="dialog-title">Name Entry</h1>
     <p id="dialog-description">Please enter your full name.</p>
@@ -95,7 +95,7 @@ The last ingredient is the element that renders the backdrop. Since we're nestin
 These snippets assemble to the following HTML construct:
 
 ```html
-<div id="dialog" role="dialog" aria-labeldby="dialog-title" aria-describedby="dialog-description" tabindex="-1" hidden>
+<div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description" tabindex="-1" hidden>
   <form class="dialog-content">
     <header>
       <h1 id="dialog-title">Name Entry</h1>
