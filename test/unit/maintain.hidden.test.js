@@ -77,7 +77,7 @@ define([
           this.skip('MutationObserver not supported');
         }
 
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
 
         handle = maintainHidden({
           filter: '#target',

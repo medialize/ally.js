@@ -26,7 +26,7 @@ define([
         expect(type.key).to.equal(false, 'initial key');
       },
       'detect mouse': function() {
-        var deferred = this.async(100);
+        var deferred = this.async(1000);
         handle = observeInteractionType();
 
         var type = handle.get();
@@ -59,7 +59,7 @@ define([
           this.skip('Synthetic Tab events not supported');
         }
 
-        var deferred = this.async(100);
+        var deferred = this.async(1000);
         handle = observeInteractionType();
 
         var type = handle.get();

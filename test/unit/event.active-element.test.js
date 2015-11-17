@@ -36,7 +36,7 @@ define([
       },
 
       lifecycle: function() {
-        var deferred = this.async(100);
+        var deferred = this.async(1000);
         // initiate with delay because of IE10's async focus event from previous test
         setTimeout(deferred.callback(function() {
           // clean events that may have been caught by IE10 before we even got started

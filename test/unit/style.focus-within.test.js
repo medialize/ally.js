@@ -74,7 +74,7 @@ define([
           this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
         }
 
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
         expect(focusWithinElements()).to.equal('', 'before engage');
 
         handle = styleFocusWithin();

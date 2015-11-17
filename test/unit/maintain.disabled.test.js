@@ -82,7 +82,7 @@ define([
           this.skip('MutationObserver not supported');
         }
 
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
 
         handle = maintainDisabled({
           context: fixture.root,
@@ -103,7 +103,7 @@ define([
           this.skip('MutationObserver not supported');
         }
 
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
 
         var input = document.createElement('input');
         input.id = 'dynamic-input';

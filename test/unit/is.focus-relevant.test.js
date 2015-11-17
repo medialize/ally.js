@@ -105,7 +105,7 @@ define([
         expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
       },
       'area element': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
 
         var element = document.getElementById('image-map-area');
 
@@ -115,7 +115,7 @@ define([
         }), 200);
       },
       'area element with tabindex="-1"': function() {
-        var deferred = this.async(500);
+        var deferred = this.async(1000);
 
         var element = document.getElementById('image-map-area');
         element.setAttribute('tabindex', '-1');
