@@ -37,7 +37,6 @@
   ],
   "scripts": {
     "test": "node test/run-local.js",
-    "test:ci": "npm run test:sauce",
     "test:sauce": "intern-runner config=test/sauce",
     "test:browserstack": "intern-runner config=test/browserstack",
     "clean": "rm -rf dist web reports && mkdirp dist web reports",
@@ -69,6 +68,10 @@
     "lint": "npm-run-all --parallel lint:js lint:md",
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js}') && jscs $(glob-cli '{src,test,build}')",
     "lint:md": "node build/markdownlint.js",
+    "ci:test": "npm-run-all --sequence lint:js ci:build:amd test:browserstack publish:lcov",
+    "ci:build:amd": "npm-run-all --sequence clean build:pre build:amd",
+    "ci:build": "npm-run-all --sequence clean build",
+    "ci:build:website": "npm-run-all --sequence lint:md ci:build:amd build:website",
     "precommit": "npm run lint",
     "prepush": "npm test",
     "postmerge": "npm install"
