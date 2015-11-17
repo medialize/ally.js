@@ -16,7 +16,7 @@ For local development the command `npm run test` can be used to spawn an instanc
 
 Coverage reports are made available in the directory `reports/coverage`.
 
-> TODO: The tests should be run automatically via [TravisCI](https://theintern.github.io/intern/#ci-travis)
+Tests are run by [TravisCI](https://travis-ci.org/medialize/ally.js) on every push to `master`.
 
 
 ## Locally running unit tests in the browser
