@@ -15,6 +15,7 @@ function moveCommonFiles() {
 }
 
 function copyMetaFiles() {
+  shelljs.cp(path.resolve(cwd, '.npmignore'), dist);
   shelljs.cp(path.resolve(cwd, 'package.json'), dist);
   shelljs.cp(path.resolve(cwd, 'README.md'), dist);
   shelljs.cp(path.resolve(cwd, 'CHANGELOG.md'), dist);
