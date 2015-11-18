@@ -56,11 +56,11 @@ function getCollectionsMap() {
     },
     'Getting Started': {
       pattern: '{getting-started.html,what-is-focusable.html,concepts.html,questions.html}',
-      sortBy: manualSort(['Getting Started', 'General Concepts', 'Frequently Asked Questions']),
+      sortBy: manualSort(['Getting started', 'General concepts', 'Frequently asked questions']),
     },
     API: {
       pattern: 'api/**/*.html',
-      sortBy: manualSort(['API Index', 'API Concepts']),
+      sortBy: manualSort(['API index', 'API concepts']),
     },
     Tutorials: {
       pattern: 'tutorials/**/*.html',

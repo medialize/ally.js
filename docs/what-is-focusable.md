@@ -12,8 +12,12 @@ An HTML element can be a member of exactly one of the following five categories:
 * **Only Tabbable:** The element is *only* keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.
 * **Forwards Focus:** The element will forward focus to another element instead of receiving focus itself.
 
+In which of these buckets elements are sorted, depends on the browser. Have a look at the following comparison tables:
 
-The [Focusable Elements - Browser Compatibility Table](./data-tables/focusable.md) details in which category the various HTML elements fall per browser. [Focus Redirecting Elements](./data-tables/focusable.redirect.md) details the elements that forward focus to another element, instead of receiving focus themselves.
+* [What browsers consider focusable](./data-tables/focusable.md) details in which category the various HTML elements fall per browser
+* [Focus redirecting elements](./data-tables/focusable.redirect.md) details the elements that forward focus to another element, instead of receiving focus themselves
+* [Differences between browsers and ally.js](http://rodneyrehm.de/t/ally-website-preview/data-tables/focusable.strict.html) shows the *few* situations that ally.js cannot identify properly
+
 
 ---
 

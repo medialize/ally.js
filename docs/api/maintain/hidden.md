@@ -3,7 +3,7 @@ layout: doc-api.html
 tags: service, argument-object
 ---
 
-# ally.maintain.disabled
+# ally.maintain.hidden
 
 Sets `aria-hidden="true"` on insignificant branches.
 
