@@ -1,6 +1,28 @@
 # ally.js change log
 
-## 1.0.0 - November 18th 2015 ##
+## 1.0.0 - A New Hope
+
+*November 18th 2015.* We're embarking on a journey to *make accessibility simpler*. Version 1.0.0 - the official release - of ally.js has been 14 months in the making, but it's only the beginning of a long story - or so I hope.
+
+
+### The mission
+
+**Making accessibility simpler** (for developers) by providing
+
+* providing core functionality (not complete solutions)
+* documentation to learn about accessibility requirements
+* the basis figure out how specifications need to evolve
+* a common ground for the community to collaborate
+
+
+### The plan
+
+I've laid the foundation for collaboration. My [goals](https://github.com/medialize/ally.js/tree/master/GOALS.md) are laid out. *Everything* is done on github, in the open. *Everything* is up for discussion. *Anyone* can join. See [contributing to ally.js](http://allyjs.io/contributing/index.html) for more.
+
+
+### The past
+
+Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there are no breaking changes, it *is* a giant breaking change. More than 400 commits have been made since `0.0.7`, resulting in a few changes:
 
 * moving dependencies from bower to npm (in fact, abandoning bower altogether)
 * moving source from AMD to ES6 Module Syntax
@@ -19,7 +41,7 @@
 * fixing [`ally.is.visible`][ally/is/visible] by removing dimension constraint - [issue #14](https://github.com/medialize/ally.js/issues/14)
 * fixing [`ally.is.focusable`][ally/is/focusable] to also identify "edge-cases" - [issue #17](https://github.com/medialize/ally.js/issues/17), [issue #20](https://github.com/medialize/ally.js/issues/20), [issue #21](https://github.com/medialize/ally.js/issues/21)
 
-### Breaking changes (compared to 0.0.7)
+#### Breaking changes (compared to 0.0.7)
 
 * ally.js is no longer available through bower, other than by [downloading the built archive](http://allyjs.io/getting-started.html#Installing-via-Package-Manager)
 * `src/` was ES5 and AMD, it is now ES6. AMD modules are available in `dist/amd/`
@@ -29,7 +51,7 @@
 * [`ally.is.validTabindex`][ally/is/valid-tabindex] (`dom/is-valid-tabindex`) now returns `false` for elements without `tabindex` attribute
 * [`ally.style.focusSource`][ally/style/focus-source] has methods `.next()` and `.repeat()` removed
 
-### Renamed Files
+#### Renamed Files
 
 * renamed `dom/active-elements.js` to `get/active-elements.js`
 * renamed `dom/focus-target.js` to `get/focus-target.js`
