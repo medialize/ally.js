@@ -4,5 +4,6 @@ layout: doc-page.html
 
 # Tutorials
 
-* [Accessible Dialog](accessible-dialog.md)
+* [Accessible dialog](accessible-dialog.md)
+* [Hiding DOM elements](hiding-elements.md)
 
