@@ -13,13 +13,18 @@ WAI-ARIA stands for [Web Accessibility Initiative](http://www.w3.org/WAI/) - Acc
 * [Accessible Rich Internet Applications (WAI-ARIA) 1.0](http://www.w3.org/TR/wai-aria/)
 * [Accessible Rich Internet Applications (WAI-ARIA) 1.1](http://w3c.github.io/aria/aria/aria.html)
 * [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/TR/wai-aria-practices/)
+* [WAI-ARIA 1.1 Authoring Practices](http://w3c.github.io/aria/practices/aria-practices.html)
 * [Notes on Using ARIA in HTML](http://w3c.github.io/aria-in-html/)
+* [Core Accessibility API Mappings 1.1](http://w3c.github.io/aria/core-aam/core-aam.html)
+* [Accessible Name and Description: Computation and API Mappings 1.1](http://w3c.github.io/aria/accname-aam/accname-aam.html)
+* [SVG Accessibility API Mappings](https://w3c.github.io/aria/svg-aam/svg-aam.html)
 
 
 ## Accessibility tree
 
 The Accessibility Tree (often abbreviated "AT", which may be ambiguous as it is also used to abbreviate "Assistive Technology") is an object structure much like the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction), but with a different focus and purpose. The AT is invisible to web applications and is generated from the DOM. In a way the AT is a view of the DOM that only shows the semantically significant structure.
 
+* [Definition](http://w3c.github.io/aria/core-aam/core-aam.html#dfn-accessibility-tree)
 * [The Browser Accessibility Tree](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)
 * [Mozilla accessibility architecture](https://developer.mozilla.org/en-US/docs/Mozilla/Accessibility/Accessibility_architecture)
 
