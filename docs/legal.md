@@ -1,3 +1,30 @@
+---
+layout: doc-page.html
+---
+
+# Legal
+
+This document explains which third party works are part of ally.js.
+
+
+## ally.js Logo
+
+![ally.js logo](assets/ally-js-logo.png)
+
+The logo is a composition of the [United Nations Accessibility Logo](http://www.un.org/webaccessibility/logo.shtml) and the [JavaScript Logo by The Community](https://github.com/voodootikigod/logo.js#js-logo-by-the-community).
+
+
+## Bundled works
+
+In its UMD bundle ally.js contains resources of the following projects:
+
+* [array.prototype.findindex](https://github.com/paulmillr/Array.prototype.findIndex), also MIT license
+* [css.escape](https://github.com/mathiasbynens/CSS.escape), also MIT license
+* [platform.js](https://github.com/bestiejs/platform.js), also MIT License
+
+
+## MIT License
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Rodney Rehm
