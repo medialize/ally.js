@@ -296,7 +296,7 @@ openButton.addEventListener('click', openDialog, false);
 closeButton.addEventListener('click', closeDialog, false);
 ```
 
-### Trapping docus inside the dialog
+### Trapping focus inside the dialog
 
 While a dialog is shown, we need to make sure that elements outside of the dialog cannot be interacted with. The backdrop achieves this for the mouse, as you're unable to click on anything anymore. But for other means of input, like the keyboard, elements are still accessible simply by hitting the <kbd>Tab</kbd> key often enough to reach them.
 
