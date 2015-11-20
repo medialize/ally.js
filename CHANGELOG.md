@@ -1,6 +1,6 @@
 # ally.js change log
 
-## master
+## 1.0.1 (November 20th 2015)
 
 * aligning `package.json` in repository and npm artifact for compatibility with cdnjs
 
