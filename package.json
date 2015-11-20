@@ -2,15 +2,11 @@
   "name": "ally.js",
   "version": "1.0.0",
   "description": "JavaScript library to help web applications with accessibility concerns",
-  "main": "dist/ally.min.js",
-  "files": [
-    "src",
-    "dist"
-  ],
+  "main": "ally.min.js",
   "npmName": "ally.js",
   "npmFileMap": [
     {
-      "basePath": "dist",
+      "basePath": "./",
       "files": [
         "ally.min.js",
         "ally.min.js.map"

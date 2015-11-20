@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const fs = require('fs');
 
 const shelljs = require('shelljs');
 
@@ -22,28 +21,5 @@ function copyMetaFiles() {
   shelljs.cp(path.resolve(cwd, 'LICENSE.txt'), dist);
 }
 
-function patchPackageJson() {
-  const file = path.resolve(dist, 'package.json');
-  const pkg = require(file);
-
-  // removing files limitation, because we're publishing
-  // a directory instead of the entire project
-  delete pkg.files;
-  // remove scripts, because they're not included in the
-  // published bundle anyways
-  delete pkg.scripts;
-  // maintaining devDependencies so npm can track that
-
-  // redirect main path
-  pkg.main = 'ally.min.js';
-
-  // redirect cdnjs base path
-  pkg.npmFileMap[0].basePath = './';
-
-  const serialized = JSON.stringify(pkg, null, 2);
-  fs.writeFileSync(file, serialized, {encoding: 'utf8'});
-}
-
 moveCommonFiles();
 copyMetaFiles();
-patchPackageJson();

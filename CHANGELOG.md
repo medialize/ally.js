@@ -1,5 +1,10 @@
 # ally.js change log
 
+## master
+
+* aligning `package.json` in repository and npm artifact for compatibility with cdnjs
+
+
 ## 1.0.0 - A New Hope
 
 *November 18th 2015.* We're embarking on a journey to *make accessibility simpler*. Version 1.0.0 - the official release - of ally.js has been 14 months in the making, but it's only the beginning of a long story - or so I hope.
