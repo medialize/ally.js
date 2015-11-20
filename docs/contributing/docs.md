@@ -91,9 +91,7 @@ Example documents must follow the following general structure.
   </main>
 </div>
 
-<!-- FIXME: replace brcdn with cdnjs when ready -->
-<script src="//brcdn.org/4G6xFi58mYeigLYHlg8HMKNCX8.js"></script>
-<script>ally = ally.js;</script>
+<script src="https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js"></script>
 
 <script id="example-js">
   ${example_script}
