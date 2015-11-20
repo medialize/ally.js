@@ -6,4 +6,5 @@ module.exports = function(context) {
   });
 
   context.data.root.siblings = collections[0] || [];
+  context.data.root.currentCollectionName = _collections[0] || '';
 };
