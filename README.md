@@ -57,7 +57,7 @@ ally.js is published under the [MIT License](http://opensource.org/licenses/mit-
 
 [npm-image]: https://img.shields.io/npm/v/ally.js.svg
 [npm-url]: https://www.npmjs.com/package/ally.js
-[downloads-image]: http://img.shields.io/npm/dm/ally.js.svg
+[downloads-image]: https://img.shields.io/npm/dm/ally.js.svg
 [downloads-url]: https://www.npmjs.com/package/ally.js
 [license-image]: https://img.shields.io/npm/l/ally.js.svg
 [license-url]: https://github.com/medialize/ally.js/blob/master/LICENSE.txt
