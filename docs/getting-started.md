@@ -30,6 +30,16 @@ ally.js is made available for production use by [jsDelivr](http://www.jsdelivr.c
 </script>
 ```
 
+ally.js is also available for production use by [cdnjs](https://cdnjs.com/libraries/ally.js):
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ally.js/{{pkg.version}}/ally.min.js"></script>
+<script>
+  console.log("loaded ally.js in version", ally.version);
+  console.log("focusable elements", ally.query.focusable());
+</script>
+```
+
 
 ## Installing via package manager
 
