@@ -69,7 +69,6 @@
     "ci:build": "npm-run-all --sequential clean build",
     "ci:build:website": "npm-run-all --sequential lint:md ci:build:amd build:website",
     "precommit": "npm run lint",
-    "prepush": "npm test",
     "postmerge": "npm install"
   },
   "devDependencies": {
