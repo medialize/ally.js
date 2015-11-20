@@ -1,0 +1,5822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Focusable Elements (Strict) - ally.js Compatibility Table</title>
+
+  <style id="prism-styles">/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+  <style>
+    [title] {
+      cursor: help;
+    }
+    body {
+      margin: 0;
+      padding: 5px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table caption,
+    table th,
+    table td {
+      padding: 5px;
+      border: 1px solid #aaaaaa;
+      background: white;
+    }
+    table caption {
+      text-align: left;
+      background: #aaaaaa;
+      color: white;
+    }
+    tbody th {
+      text-align: left;
+      font-size: 14px;
+    }
+    tbody td {
+      text-align: center;
+    }
+    td > span.compare {
+      display: block;
+    }
+    td > span.compare.mismatch {
+      margin: 0 -5px -5px;
+      border: 5px solid red;
+    }
+
+    thead th[data-column="ident"] {
+      text-align: left;
+    }
+
+    table:not(#sticky-table-header) + table thead {
+      /*
+        visually hide consecutive headers
+        see http://w3c.github.io/wai-tutorials/forms/labels/#note-on-hiding-elements
+      */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    table td[data-focusable="true"],
+    table td > span.compare[data-focusable="true"] {
+      /* focusable */
+      background: #FFDC00;
+    }
+    table td[data-tabbable="true"],
+    table td > span.compare[data-tabbable="true"] {
+      /* tabbable */
+      background: #01FF70;
+    }
+    table td[data-focusable="false"][data-tabbable="true"],
+    table td > span.compare[data-focusable="false"][data-tabbable="true"] {
+      /* only tabbable */
+      background: #AAAAFF;
+    }
+    table td[data-redirecting="false"],
+    table td[data-focusable="false"][data-tabbable="false"],
+    table td > span.compare[data-focusable="false"][data-tabbable="false"] {
+      /* inert */
+      background: #DDDDDD;
+    }
+    table td[data-redirecting="true"] {
+      background: #6E92A1;
+    }
+
+    table td.irrelevant-to-context {
+      opacity: 0.5;
+    }
+
+    /* inline foot-note boxes */
+    tbody td {
+      position: relative;
+      padding: 12px 5px 5px;
+      margin: 1px;
+    }
+    tbody th {
+      position: relative;
+      padding: 5px 5px 12px 5px;
+      margin: 1px;
+      background: none;
+    }
+    tbody th .notes {
+      bottom: 1px;
+      right: 1px;
+    }
+    tbody td .notes {
+      top: 1px;
+      left: 1px;
+    }
+    tbody .notes {
+      position: absolute;
+      line-height: 0;
+      font-size: 0;
+    }
+    tbody .notes .note {
+      display: inline-block;
+      padding: 2px;
+      font-size: 10px;
+      line-height: 8px;
+      color: #666;
+      background: #EEE;
+      text-decoration: none;
+    }
+    tbody .notes > .note + .note {
+      margin-left: 1px;
+    }
+    tbody .notes > .note.tabindex-value {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    tbody .notes > .note.warning {
+      color: white;
+      background: red;
+    }
+    tbody .notes > .note.compare-target {
+      color: white;
+      background: black;
+    }
+    #footnotes-list li:target {
+      background: #EEE;
+    }
+    #floating-footnote {
+      position: absolute;
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid black;
+      background: white;
+    }
+    #floating-footnote h3 {
+      margin-top: 0;
+    }
+
+    #sticky-table-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0 5px;
+      z-index: 1000;
+    }
+    #sticky-table-header caption {
+      position: relative;
+    }
+    #sticky-table-header caption ul {
+      position: absolute;
+      display: none;
+      top: 14px;
+      left: 0px;
+      font-size: 14px;
+      background: white;
+      border: 2px solid #AAA;
+    }
+    #sticky-table-header caption ul li {
+      display: block;
+      margin: 0;
+    }
+    #sticky-table-header caption:hover ul {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Focusable Elements (Strict) - ally.js Compatibility Table</h1>
+
+  <p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
+    and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: strict</code></a>.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>
+
+    <nav id="table-of-contents">
+      <h1>Table Of Contents</h1>
+      <ul>
+        <li><a href="#document-elements">Document Elements</a></li>
+        <li><a href="#iframe-element">Iframe Element</a></li>
+        <li><a href="#embed-element">Embed Element</a></li>
+        <li><a href="#object-element">Object Element</a></li>
+        <li><a href="#svg-element">SVG Element</a></li>
+        <li><a href="#questionable-elements">Questionable Elements</a></li>
+
+        <li><a href="#footnotes">Footnotes</a></li>
+      </ul>
+    </nav>
+
+  
+<table id="document-elements" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>Document Elements</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="document-elements-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="document-elements-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="document-elements-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="document-elements-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="document-elements-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="document-elements-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="document-elements-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="document-elements-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="document-elements-browser-chrome-stable"
+            headers="document-elements-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="document-elements-browser-chrome-nightly"
+            headers="document-elements-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="document-elements-browser-firefox-stable"
+            headers="document-elements-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="document-elements-browser-firefox-nightly"
+            headers="document-elements-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="document-elements-browser-ie-10"
+            headers="document-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="document-elements-browser-ie-11"
+            headers="document-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="document-elements-browser-ie-12"
+            headers="document-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="document-elements-browser-safari-9"
+            headers="document-elements-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="document-elements-browser-webkit-nightly"
+            headers="document-elements-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="document-elements-browser-android44-chrome"
+            headers="document-elements-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="document-elements-browser-ios-8"
+            headers="document-elements-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="document-elements-browser-ios-9"
+            headers="document-elements-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="html"
+  
+>
+  <th
+    scope="row"
+    id="document-elements-ident-237"
+    headers="document-elements-ident"
+    data-column="ident"
+    data-notes=" 2 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>html</span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-2" class="note">2</a>
+        <a href="#footnote-1" class="note compare-target">1</a>
+    </div>
+  </th>
+
+  <td
+  headers="document-elements-ident-237 document-elements-platform-os-x-chrome document-elements-browser-chrome-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-os-x-chrome document-elements-browser-chrome-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-os-x-firefox document-elements-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="firefox-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-os-x-firefox document-elements-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="firefox-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-windows-ie document-elements-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="html"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-windows-ie document-elements-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="html"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-windows-ie document-elements-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="html"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-os-x-safari document-elements-browser-safari-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-os-x-webkit-nightly document-elements-browser-webkit-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-android-chrome-mobile document-elements-browser-android44-chrome"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-ios-safari document-elements-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-237 document-elements-platform-ios-safari document-elements-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="html"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="body"
+  
+>
+  <th
+    scope="row"
+    id="document-elements-ident-238"
+    headers="document-elements-ident"
+    data-column="ident"
+    data-notes=" 3 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>body</span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-3" class="note">3</a>
+        <a href="#footnote-1" class="note compare-target">1</a>
+    </div>
+  </th>
+
+  <td
+  headers="document-elements-ident-238 document-elements-platform-os-x-chrome document-elements-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="chrome-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-os-x-chrome document-elements-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="chrome-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-os-x-firefox document-elements-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="firefox-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-os-x-firefox document-elements-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="firefox-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-windows-ie document-elements-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="body"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-windows-ie document-elements-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="body"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-windows-ie document-elements-browser-ie-12"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="body"
+  data-colum="ie-12"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-os-x-safari document-elements-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="safari-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-os-x-webkit-nightly document-elements-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="webkit-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-android-chrome-mobile document-elements-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="android44-chrome"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-ios-safari document-elements-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="ios-8"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="document-elements-ident-238 document-elements-platform-ios-safari document-elements-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="body"
+  data-colum="ios-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<table id="iframe-element" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>Iframe Element</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="iframe-element-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="iframe-element-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="iframe-element-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="iframe-element-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="iframe-element-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="iframe-element-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="iframe-element-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="iframe-element-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="iframe-element-browser-chrome-stable"
+            headers="iframe-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="iframe-element-browser-chrome-nightly"
+            headers="iframe-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="iframe-element-browser-firefox-stable"
+            headers="iframe-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="iframe-element-browser-firefox-nightly"
+            headers="iframe-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="iframe-element-browser-ie-10"
+            headers="iframe-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="iframe-element-browser-ie-11"
+            headers="iframe-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="iframe-element-browser-ie-12"
+            headers="iframe-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="iframe-element-browser-safari-9"
+            headers="iframe-element-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="iframe-element-browser-webkit-nightly"
+            headers="iframe-element-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="iframe-element-browser-android44-chrome"
+            headers="iframe-element-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="iframe-element-browser-ios-8"
+            headers="iframe-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="iframe-element-browser-ios-9"
+            headers="iframe-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="iframe"
+  
+>
+  <th
+    scope="row"
+    id="iframe-element-ident-239"
+    headers="iframe-element-ident"
+    data-column="ident"
+    data-notes=""
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>iframe</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span> without focusable content</code></span>
+    <div class="notes">
+        <a href="#footnote-20" class="note compare-target">20</a>
+    </div>
+  </th>
+
+  <td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="firefox-stable"
+  data-notes=" 18 "
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+        <a href="#footnote-E" class="note warning">E</a>
+      <a href="#footnote-18" class="note">18</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="firefox-nightly"
+  data-notes=" 18 "
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+        <a href="#footnote-E" class="note warning">E</a>
+      <a href="#footnote-18" class="note">18</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-windows-ie iframe-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="ie-10"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-windows-ie iframe-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-windows-ie iframe-element-browser-ie-12"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="ie-12"
+  data-notes=" 19 "
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="true"
+    > tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-19" class="note">19</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-safari iframe-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-os-x-webkit-nightly iframe-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-android-chrome-mobile iframe-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-ios-safari iframe-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-239 iframe-element-platform-ios-safari iframe-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="iframe"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="iframe{focusable} -&gt; input"
+  
+>
+  <th
+    scope="row"
+    id="iframe-element-ident-240"
+    headers="iframe-element-ident"
+    data-column="ident"
+    data-notes=" 21 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>input</span><span class="token punctuation" >></span></span> within <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>iframe</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-21" class="note">21</a>
+        <a href="#footnote-22" class="note compare-target">22</a>
+    </div>
+  </th>
+
+  <td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-stable"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="chrome-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-nightly"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="chrome-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-stable"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="firefox-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-nightly"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="firefox-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-windows-ie iframe-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-windows-ie iframe-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-windows-ie iframe-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="ie-12"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-safari iframe-element-browser-safari-9"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="safari-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-os-x-webkit-nightly iframe-element-browser-webkit-nightly"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="webkit-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-android-chrome-mobile iframe-element-browser-android44-chrome"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-ios-safari iframe-element-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-240 iframe-element-platform-ios-safari iframe-element-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; input"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="iframe -&gt; body"
+  
+>
+  <th
+    scope="row"
+    id="iframe-element-ident-241"
+    headers="iframe-element-ident"
+    data-column="ident"
+    data-notes=" 21 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>body</span><span class="token punctuation" >></span></span> within <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>iframe</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-21" class="note">21</a>
+        <a href="#footnote-22" class="note compare-target">22</a>
+    </div>
+  </th>
+
+  <td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-windows-ie iframe-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-windows-ie iframe-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-windows-ie iframe-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-safari iframe-element-browser-safari-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-os-x-webkit-nightly iframe-element-browser-webkit-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-android-chrome-mobile iframe-element-browser-android44-chrome"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-ios-safari iframe-element-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-241 iframe-element-platform-ios-safari iframe-element-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe -&gt; body"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="iframe{focusable} -&gt; body"
+  data-duplicates="iframe -&gt; body"
+>
+  <th
+    scope="row"
+    id="iframe-element-ident-242"
+    headers="iframe-element-ident"
+    data-column="ident"
+    data-notes=" 21 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>body</span><span class="token punctuation" >></span></span> within <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>iframe</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span> with focusable content</code></span>
+    <div class="notes">
+        <a href="#footnote-21" class="note">21</a>
+        <a href="#footnote-22" class="note compare-target">22</a>
+    </div>
+  </th>
+
+  <td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-chrome iframe-element-browser-chrome-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-firefox iframe-element-browser-firefox-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-windows-ie iframe-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-windows-ie iframe-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="true"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">only tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+        <a href="#footnote-E" class="note warning">E</a>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-windows-ie iframe-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-safari iframe-element-browser-safari-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-os-x-webkit-nightly iframe-element-browser-webkit-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-android-chrome-mobile iframe-element-browser-android44-chrome"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-ios-safari iframe-element-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+<td
+  headers="iframe-element-ident-242 iframe-element-platform-ios-safari iframe-element-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="null"
+  data-row="iframe{focusable} -&gt; body"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+<table id="embed-element" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>Embed Element</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="embed-element-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="embed-element-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="embed-element-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="embed-element-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="embed-element-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="embed-element-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="embed-element-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="embed-element-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="embed-element-browser-chrome-stable"
+            headers="embed-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="embed-element-browser-chrome-nightly"
+            headers="embed-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="embed-element-browser-firefox-stable"
+            headers="embed-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="embed-element-browser-firefox-nightly"
+            headers="embed-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="embed-element-browser-ie-10"
+            headers="embed-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="embed-element-browser-ie-11"
+            headers="embed-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="embed-element-browser-ie-12"
+            headers="embed-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="embed-element-browser-safari-9"
+            headers="embed-element-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="embed-element-browser-webkit-nightly"
+            headers="embed-element-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="embed-element-browser-android44-chrome"
+            headers="embed-element-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="embed-element-browser-ios-8"
+            headers="embed-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="embed-element-browser-ios-9"
+            headers="embed-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="embed"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-243"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/quicktime<span class="token punctuation" >"</span></span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.mov<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-243 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed"
+  data-colum="ios-8"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-243 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed"
+  data-colum="ios-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="embed[tabindex&#x3D;-1]"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-244"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/quicktime<span class="token punctuation" >"</span></span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.mov<span class="token punctuation" >"</span></span> <span class="token attr-name" >tabindex</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>-1<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-244 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-244 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[tabindex&#x3D;-1]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="embed[type&#x3D;mp4]"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-245"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/mp4<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.mp4<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-245 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="ios-8"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-245 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4]"
+  data-colum="ios-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-246"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/mp4<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.mp4<span class="token punctuation" >"</span></span> <span class="token attr-name" >tabindex</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>-1<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-246 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="ie-10"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="ie-11"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-246 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;mp4][tabindex&#x3D;-1]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="embed[type&#x3D;ogv]"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-247"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/ogv<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.ogv<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-247 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="firefox-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="ie-10"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="safari-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">inert</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-247 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="embed[type&#x3D;ogv]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  
+>
+  <th
+    scope="row"
+    id="embed-element-ident-248"
+    headers="embed-element-ident"
+    data-column="ident"
+    data-notes=" 23  24 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>embed</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>video/ogv<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.ogv<span class="token punctuation" >"</span></span> <span class="token attr-name" >tabindex</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>-1<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-23" class="note">23</a>
+        <a href="#footnote-24" class="note">24</a>
+    </div>
+  </th>
+
+  <td
+  headers="embed-element-ident-248 embed-element-platform-os-x-chrome embed-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-os-x-chrome embed-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-os-x-firefox embed-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="firefox-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-os-x-firefox embed-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="false"
+    > focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-windows-ie embed-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="ie-10"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-windows-ie embed-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-windows-ie embed-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-os-x-safari embed-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-os-x-webkit-nightly embed-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-android-chrome-mobile embed-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-ios-safari embed-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="embed-element-ident-248 embed-element-platform-ios-safari embed-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="embed[type&#x3D;ogv][tabindex&#x3D;-1]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+<table id="object-element" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>Object Element</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="object-element-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="object-element-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="object-element-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="object-element-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="object-element-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="object-element-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="object-element-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="object-element-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="object-element-browser-chrome-stable"
+            headers="object-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="object-element-browser-chrome-nightly"
+            headers="object-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="object-element-browser-firefox-stable"
+            headers="object-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="object-element-browser-firefox-nightly"
+            headers="object-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="object-element-browser-ie-10"
+            headers="object-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="object-element-browser-ie-11"
+            headers="object-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="object-element-browser-ie-12"
+            headers="object-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="object-element-browser-safari-9"
+            headers="object-element-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="object-element-browser-webkit-nightly"
+            headers="object-element-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="object-element-browser-android44-chrome"
+            headers="object-element-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="object-element-browser-ios-8"
+            headers="object-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="object-element-browser-ios-9"
+            headers="object-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="object[src&#x3D;swf]"
+  
+>
+  <th
+    scope="row"
+    id="object-element-ident-249"
+    headers="object-element-ident"
+    data-column="ident"
+    data-notes=" 25 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>object</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>application/x-shockwave-flash<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.swf<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-25" class="note">25</a>
+    </div>
+  </th>
+
+  <td
+  headers="object-element-ident-249 object-element-platform-os-x-chrome object-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-os-x-chrome object-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-os-x-firefox object-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-os-x-firefox object-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-windows-ie object-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf]"
+  data-colum="ie-10"
+  data-notes=" 26 "
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="true"
+    > tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-26" class="note">26</a>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-windows-ie object-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf]"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-windows-ie object-element-browser-ie-12"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-os-x-safari object-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-os-x-webkit-nightly object-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-android-chrome-mobile object-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-ios-safari object-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-249 object-element-platform-ios-safari object-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+
+</tr>
+<tr
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-duplicates="object[src&#x3D;swf]"
+>
+  <th
+    scope="row"
+    id="object-element-ident-250"
+    headers="object-element-ident"
+    data-column="ident"
+    data-notes=""
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>object</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>application/x-shockwave-flash<span class="token punctuation" >"</span></span> <span class="token attr-name" >data</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>some.swf<span class="token punctuation" >"</span></span> <span class="token attr-name" >height</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>0<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+    </div>
+  </th>
+
+  <td
+  headers="object-element-ident-250 object-element-platform-os-x-chrome object-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="chrome-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-os-x-chrome object-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="chrome-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-os-x-firefox object-element-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-os-x-firefox object-element-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="-1"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">-1</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-windows-ie object-element-browser-ie-10"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="ie-10"
+  data-notes=" 26 "
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="true"
+      data-tabbable="true"
+    > tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-26" class="note">26</a>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-windows-ie object-element-browser-ie-11"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-windows-ie object-element-browser-ie-12"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-os-x-safari object-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="safari-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-os-x-webkit-nightly object-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="webkit-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-android-chrome-mobile object-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="android44-chrome"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-ios-safari object-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="ios-8"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="object-element-ident-250 object-element-platform-ios-safari object-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="object[src&#x3D;swf][height&#x3D;0]"
+  data-colum="ios-9"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>focusable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+<table id="svg-element" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>SVG Element</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="svg-element-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="svg-element-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="svg-element-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="svg-element-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="svg-element-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="svg-element-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="svg-element-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="svg-element-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="svg-element-browser-chrome-stable"
+            headers="svg-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="svg-element-browser-chrome-nightly"
+            headers="svg-element-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="svg-element-browser-firefox-stable"
+            headers="svg-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="svg-element-browser-firefox-nightly"
+            headers="svg-element-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="svg-element-browser-ie-10"
+            headers="svg-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="svg-element-browser-ie-11"
+            headers="svg-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="svg-element-browser-ie-12"
+            headers="svg-element-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="svg-element-browser-safari-9"
+            headers="svg-element-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="svg-element-browser-webkit-nightly"
+            headers="svg-element-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="svg-element-browser-android44-chrome"
+            headers="svg-element-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="svg-element-browser-ios-8"
+            headers="svg-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="svg-element-browser-ios-9"
+            headers="svg-element-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="svg rect[onfocus]"
+  
+>
+  <th
+    scope="row"
+    id="svg-element-ident-251"
+    headers="svg-element-ident"
+    data-column="ident"
+    data-notes=" 27 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>rect</span> <span class="token attr-name" >onfocus</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span><span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-27" class="note">27</a>
+        <a href="#footnote-29" class="note compare-target">29</a>
+    </div>
+  </th>
+
+  <td
+  headers="svg-element-ident-251 svg-element-platform-os-x-chrome svg-element-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="chrome-stable"
+  data-notes=" 28 "
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-28" class="note">28</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-os-x-chrome svg-element-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="chrome-nightly"
+  data-notes=" 28 "
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-28" class="note">28</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-os-x-firefox svg-element-browser-firefox-stable"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="false"
+  data-tabindex="null"
+  data-row="svg rect[onfocus]"
+  data-colum="firefox-stable"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+      <a href="#footnote-M" class="note warning">M</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-os-x-firefox svg-element-browser-firefox-nightly"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="false"
+  data-tabindex="null"
+  data-row="svg rect[onfocus]"
+  data-colum="firefox-nightly"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+      <a href="#footnote-M" class="note warning">M</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-windows-ie svg-element-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="false"
+  data-tabindex="null"
+  data-row="svg rect[onfocus]"
+  data-colum="ie-10"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+      <a href="#footnote-M" class="note warning">M</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-windows-ie svg-element-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="false"
+  data-tabindex="null"
+  data-row="svg rect[onfocus]"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+      <a href="#footnote-M" class="note warning">M</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-windows-ie svg-element-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="false"
+  data-tabindex="null"
+  data-row="svg rect[onfocus]"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">null</span>
+      <a href="#footnote-M" class="note warning">M</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-os-x-safari svg-element-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="safari-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-os-x-webkit-nightly svg-element-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="webkit-nightly"
+  data-notes=" 28 "
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-28" class="note">28</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-android-chrome-mobile svg-element-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="android44-chrome"
+  data-notes=" 28 "
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-28" class="note">28</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-ios-safari svg-element-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="ios-8"
+  data-notes=" 28 "
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-28" class="note">28</a>
+  </div>
+</td>
+<td
+  headers="svg-element-ident-251 svg-element-platform-ios-safari svg-element-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="svg rect[onfocus]"
+  data-colum="ios-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<table id="questionable-elements" summary="columns represent browsers, rows represent HTML elements, cells show whether the browser thinks the HTML element is focusable, tabbable (keyboard focusable) or inert">
+  <caption>Questionable Elements</caption>
+
+  <colgroup>
+    <col data-column="ident">
+  </colgroup>
+  <colgroup>
+        <col data-column="chrome-stable" style="width: 100px">
+        <col data-column="chrome-nightly" style="width: 100px">
+        <col data-column="firefox-stable" style="width: 100px">
+        <col data-column="firefox-nightly" style="width: 100px">
+        <col data-column="ie-10" style="width: 100px">
+        <col data-column="ie-11" style="width: 100px">
+        <col data-column="ie-12" style="width: 100px">
+        <col data-column="safari-9" style="width: 100px">
+        <col data-column="webkit-nightly" style="width: 100px">
+        <col data-column="android44-chrome" style="width: 100px">
+        <col data-column="ios-8" style="width: 100px">
+        <col data-column="ios-9" style="width: 100px">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th
+        id="questionable-elements-ident"
+        data-column="ident"
+        rowspan="2"
+      >Element</th>
+
+
+        <th
+          id="questionable-elements-platform-os-x-chrome"
+          scope="colgroup"
+          colspan="2"
+        >Chrome</th>
+        <th
+          id="questionable-elements-platform-os-x-firefox"
+          scope="colgroup"
+          colspan="2"
+        >Firefox</th>
+        <th
+          id="questionable-elements-platform-windows-ie"
+          scope="colgroup"
+          colspan="3"
+        >IE</th>
+        <th
+          id="questionable-elements-platform-os-x-safari"
+          scope="colgroup"
+          colspan="1"
+        >Safari</th>
+        <th
+          id="questionable-elements-platform-os-x-webkit-nightly"
+          scope="colgroup"
+          colspan="1"
+        >WebKit Nightly</th>
+        <th
+          id="questionable-elements-platform-android-chrome-mobile"
+          scope="colgroup"
+          colspan="1"
+        >Chrome Mobile (Android)</th>
+        <th
+          id="questionable-elements-platform-ios-safari"
+          scope="colgroup"
+          colspan="2"
+        >Safari (iOS)</th>
+
+    </tr>
+    <tr>
+
+          <th
+            id="questionable-elements-browser-chrome-stable"
+            headers="questionable-elements-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-stable"
+            title="Chrome 45.0.2454.101 on OS X 10.10.5"
+          >45.0</th>
+          <th
+            id="questionable-elements-browser-chrome-nightly"
+            headers="questionable-elements-platform-os-x-chrome"
+            scope="col"
+            data-column="chrome-nightly"
+            title="Chrome 47.0.2526.0 on OS X 10.10.5"
+          >47.0</th>
+          <th
+            id="questionable-elements-browser-firefox-stable"
+            headers="questionable-elements-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-stable"
+            title="Firefox 41.0 on OS X 10.10"
+          >41.0</th>
+          <th
+            id="questionable-elements-browser-firefox-nightly"
+            headers="questionable-elements-platform-os-x-firefox"
+            scope="col"
+            data-column="firefox-nightly"
+            title="Firefox 43.0 on OS X 10.10"
+          >43.0</th>
+          <th
+            id="questionable-elements-browser-ie-10"
+            headers="questionable-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-10"
+            title="IE 10.0 32-bit on Windows Server 2008 R2 / 7 64-bit"
+          >10.0</th>
+          <th
+            id="questionable-elements-browser-ie-11"
+            headers="questionable-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-11"
+            title="IE 11.0 32-bit on Windows 8.1 64-bit"
+          >11.0</th>
+          <th
+            id="questionable-elements-browser-ie-12"
+            headers="questionable-elements-platform-windows-ie"
+            scope="col"
+            data-column="ie-12"
+            title="IE 12.10240 (platform preview) on Windows NT 10.0 64-bit"
+          >12.10240</th>
+          <th
+            id="questionable-elements-browser-safari-9"
+            headers="questionable-elements-platform-os-x-safari"
+            scope="col"
+            data-column="safari-9"
+            title="Safari 9.0 on OS X 10.10.5"
+          >9.0</th>
+          <th
+            id="questionable-elements-browser-webkit-nightly"
+            headers="questionable-elements-platform-os-x-webkit-nightly"
+            scope="col"
+            data-column="webkit-nightly"
+            title="WebKit Nightly 602.1.6 (like Safari 8+) on OS X 10.10.5"
+          >602.1</th>
+          <th
+            id="questionable-elements-browser-android44-chrome"
+            headers="questionable-elements-platform-android-chrome-mobile"
+            scope="col"
+            data-column="android44-chrome"
+            title="Chrome Mobile 45.0.2454.94 on Android 4.4.4"
+          >45.0</th>
+          <th
+            id="questionable-elements-browser-ios-8"
+            headers="questionable-elements-platform-ios-safari"
+            scope="col"
+            data-column="ios-8"
+            title="Safari 8.0 on Apple iPad (iOS 8.3)"
+          >8.0</th>
+          <th
+            id="questionable-elements-browser-ios-9"
+            headers="questionable-elements-platform-ios-safari"
+            scope="col"
+            data-column="ios-9"
+            title="Safari 9.0 on Apple iPhone (iOS 9.0.2)"
+          >9.0</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr
+  data-row="keygen"
+  
+>
+  <th
+    scope="row"
+    id="questionable-elements-ident-252"
+    headers="questionable-elements-ident"
+    data-column="ident"
+    data-notes=" 37 "
+  >
+    <span><code class="language-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>keygen</span> <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span> <span class="token attr-name" >challenge</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>…<span class="token punctuation" >"</span></span> <span class="token attr-name" >keytype</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>RSA<span class="token punctuation" >"</span></span> <span class="token attr-name" >keyparams</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>pqg-params<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></code></span>
+    <div class="notes">
+        <a href="#footnote-37" class="note">37</a>
+        <a href="#footnote-38" class="note compare-target">38</a>
+    </div>
+  </th>
+
+  <td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-chrome questionable-elements-browser-chrome-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="chrome-stable"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-chrome questionable-elements-browser-chrome-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="chrome-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-firefox questionable-elements-browser-firefox-stable"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="firefox-stable"
+  data-notes=" 36 "
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-36" class="note">36</a>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-firefox questionable-elements-browser-firefox-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="firefox-nightly"
+  data-notes=" 36 "
+  class="irrelevant-to-context"
+>
+    <span>tabbable</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+      <a href="#footnote-36" class="note">36</a>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-windows-ie questionable-elements-browser-ie-10"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="ie-10"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-windows-ie questionable-elements-browser-ie-11"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="ie-11"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-windows-ie questionable-elements-browser-ie-12"
+  data-focusable="false"
+  data-tabbable="false"
+  data-focus-event="false"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="ie-12"
+  data-notes=""
+  class="irrelevant-to-context"
+>
+    <span>inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-safari questionable-elements-browser-safari-9"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="safari-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-os-x-webkit-nightly questionable-elements-browser-webkit-nightly"
+  data-focusable="true"
+  data-tabbable="true"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="webkit-nightly"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">tabbable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-android-chrome-mobile questionable-elements-browser-android44-chrome"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="android44-chrome"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-ios-safari questionable-elements-browser-ios-8"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="ios-8"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+<td
+  headers="questionable-elements-ident-252 questionable-elements-platform-ios-safari questionable-elements-browser-ios-9"
+  data-focusable="true"
+  data-tabbable="false"
+  data-focus-event="true"
+  data-focus-method="true"
+  data-tabindex="0"
+  data-row="keygen"
+  data-colum="ios-9"
+  data-notes=""
+  
+>
+    <span class="compare target" title="state of browser">focusable</span>
+    <span
+      class="compare mismatch"
+      title="state of ally.js"
+      data-focusable="false"
+      data-tabbable="false"
+    > inert</span>
+  <div class="notes">
+    <span class="note tabindex-value" aria-label="value of tabIndex property" title="value of tabIndex property">0</span>
+  </div>
+</td>
+
+</tr>
+
+  </tbody>
+</table>
+
+  <h2 id="footnotes">Footnotes</h2>
+  <ul id="footnotes-list">
+    <li id="footnote-M">The DOM Element Interface is missing the focus method.</li>
+    <li id="footnote-E">The <code>focus</code> event is not emitted upon the element becoming the active element (<code>document.activeElement</code>).</li>
+
+      <li id="footnote-1">
+        <h3>Note 1</h3>
+        <p>Considering the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element focusable should have no benefit to a website (unless explicitly made focusable by adding the <code>tabindex</code> attribute), which is why ally.js considers the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element inert.</p>
+
+      </li>
+      <li id="footnote-2">
+        <h3>Note 2</h3>
+        <p>The <code>&lt;html&gt;</code> element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document.</p>
+
+      </li>
+      <li id="footnote-3">
+        <h3>Note 3</h3>
+        <p>The <code>&lt;body&gt;</code> element itself is not considered focusable, but it is has focus (i.e. is <code>document.activeElement</code>) if no other element has focus.</p>
+
+      </li>
+      <li id="footnote-4">
+        <h3>Note 4</h3>
+        <p>should not be focusable as per <a href="http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled">disabled elements</a>. <a href="https://code.google.com/p/chromium/issues/detail?id=453847">Blink 453847</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=141086">Webkit 141086</a></p>
+
+      </li>
+      <li id="footnote-5">
+        <h3>Note 5</h3>
+        <p>The activation behavior of the <a href="http://www.w3.org/TR/html5/forms.html#the-label-element"><code>&lt;label&gt;</code></a> element is not defined beyond »… should match the platform's label behavior.«</p>
+
+      </li>
+      <li id="footnote-6">
+        <h3>Note 6</h3>
+        <p>The CSS property <a href="http://www.w3.org/TR/2000/WD-css3-userint-20000216#user-modify"><code>user-modify</code></a> was proposed and dropped from <a href="http://www.w3.org/TR/css3-ui/">CSS UI Level 3</a> and has thus not become a standard yet.</p>
+
+      </li>
+      <li id="footnote-7">
+        <h3>Note 7</h3>
+        <p>The value is invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a></p>
+
+      </li>
+      <li id="footnote-8">
+        <h3>Note 8</h3>
+        <p><code>tabindex=&quot;&quot;</code> is parsed to the value <code>-32768</code>. <a href="https://connect.microsoft.com/IE/feedback/details/1072965">Trident 1072965</a></p>
+
+      </li>
+      <li id="footnote-9">
+        <h3>Note 9</h3>
+        <p>The value's trailing spaces are considered invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a></p>
+
+      </li>
+      <li id="footnote-10">
+        <h3>Note 10</h3>
+        <p>The value's trailing non-numeric characters are considered invalid according to <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a> required by <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a></p>
+
+      </li>
+      <li id="footnote-11">
+        <h3>Note 11</h3>
+        <p>The <code>&lt;map&gt;</code>'s <code>&lt;area&gt;</code>s are inert (not focusable) as long as the image is still loading.</p>
+
+      </li>
+      <li id="footnote-12">
+        <h3>Note 12</h3>
+        <p>In some browsers adding a <code>tabindex</code> attribute to an <code>&lt;area&gt;</code> element will make it inert (not focusable).</p>
+
+      </li>
+      <li id="footnote-13">
+        <h3>Note 13</h3>
+        <p>In some browsers <code>&lt;img&gt;</code> elements with an associated image map cannot be made focusable.</p>
+
+      </li>
+      <li id="footnote-14">
+        <h3>Note 14</h3>
+        <p>In some browsers the image map associated with an <code>&lt;img&gt;</code> element can be removed from the document's sequential navigation order by adding <code>tabindex=&quot;-1&quot;</code> to the <code>&lt;img&gt;</code> element.</p>
+
+      </li>
+      <li id="footnote-15">
+        <h3>Note 15</h3>
+        <p>Some browsers will not make an image map focusable, if it is associated with an <code>&lt;img&gt;</code> that does have a proper image loaded.</p>
+
+      </li>
+      <li id="footnote-16">
+        <h3>Note 16</h3>
+        <p><code>&lt;audio&gt;</code> is considered <a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with the &lt;code&gt;controls&lt;/code&gt; attribute present</p>
+
+      </li>
+      <li id="footnote-17">
+        <h3>Note 17</h3>
+        <p><code>&lt;video&gt;</code> is considered <a href="http://www.w3.org/TR/html5/dom.html#interactive-content">interactive content</a> only with the &lt;code&gt;controls&lt;/code&gt; attribute present</p>
+
+      </li>
+      <li id="footnote-18">
+        <h3>Note 18</h3>
+        <p>Firefox does not dispatch <code>focus</code> event but <code>document.activeElement</code> is updated properly. <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=131784">Gecko 131784</a></p>
+
+      </li>
+      <li id="footnote-19">
+        <h3>Note 19</h3>
+        <p>Microsoft Edge requires the <code>&lt;iframe&gt;</code>d document to contain a focusable element in order to make it keyboard accessible.</p>
+<p>This is <strong>undetectable</strong> because we can't look inside all iframes, because of the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same Origin Policy</a>.</p>
+
+      </li>
+      <li id="footnote-20">
+        <h3>Note 20</h3>
+        <p>Because of the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same Origin Policy</a> we can't reliably look inside <code>&lt;iframe&gt;</code>s to determine their content, which is why ally.js considers all <code>&lt;iframe&gt;</code>s keyboard focusable (tabbable).</p>
+
+      </li>
+      <li id="footnote-21">
+        <h3>Note 21</h3>
+        <p>Technically the content of an iframe <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting">can be accessible to script</a>.</p>
+<p>However, this test is only verifying keyboard focusability.</p>
+
+      </li>
+      <li id="footnote-22">
+        <h3>Note 22</h3>
+        <p>Because of the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same Origin Policy</a> we can't reliably look inside <code>&lt;iframe&gt;</code>s to determine their content, which is why ally.js considers all <code>&lt;iframe&gt;</code> content inert</p>
+
+      </li>
+      <li id="footnote-23">
+        <h3>Note 23</h3>
+        <p>The behavior of the <code>&lt;embed&gt;</code> element depends on the content type and browser plugin.</p>
+
+      </li>
+      <li id="footnote-24">
+        <h3>Note 24</h3>
+        <p>The <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code> element</a> should be used for embedding video content instead of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code> element</a>. The HTML5 <code>&lt;video&gt;</code> element is supported <a href="http://caniuse.com/#feat=video">virtually everywhere</a>.</p>
+
+      </li>
+      <li id="footnote-25">
+        <h3>Note 25</h3>
+        <p>The behavior of the <code>&lt;object&gt;</code> element depends on the content it presents. The most common content types used with <code>&lt;object&gt;</code> are <code>SVG</code> and <code>SWF</code>.</p>
+
+      </li>
+      <li id="footnote-26">
+        <h3>Note 26</h3>
+        <p>This element is actually <strong>tabbable</strong> (keyboard focusable).</p>
+<p>The test shows <code>focusable</code> because the elements were removed from the tabbing test to avoid IE10 from getting focus stuck in the browser UI. This seems to be a problem similar to <a href="https://connect.microsoft.com/IE/feedback/details/1109008">Trident 1109008</a>.</p>
+
+      </li>
+      <li id="footnote-27">
+        <h3>Note 27</h3>
+        <p><a href="http://www.w3.org/TR/SVG/access.html">SVG 1.1</a> does not specify much in respect to accessibility. <a href="https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG">SVG 2</a> will bring the <code>tabindex</code> attribute. <a href="http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr">SVG Tiny 1.2</a> knows the <code>focusable</code> attribute.</p>
+
+      </li>
+      <li id="footnote-28">
+        <h3>Note 28</h3>
+        <p>By registering a <code>focus</code> event listener the element becomes focusable. <a href="https://code.google.com/p/chromium/issues/detail?id=445798">Blink 445798</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=140024">WebKit 140024</a>.</p>
+<p>This is <strong>undetectable</strong> because elements don't provide a list of their registered event handlers.</p>
+
+      </li>
+      <li id="footnote-29">
+        <h3>Note 29</h3>
+        <p>Elements made focusable by way of adding a <code>focus</code> event listener cannot be identified by ally.js</p>
+
+      </li>
+      <li id="footnote-30">
+        <h3>Note 30</h3>
+        <p>IE10 does not support the <code>hidden</code> attribute</p>
+
+      </li>
+      <li id="footnote-31">
+        <h3>Note 31</h3>
+        <p>The <a href="http://www.w3.org/TR/html51/semantics.html#the-details-element"><code>&lt;details&gt;</code></a> element is specified in HTML 5.1 and <a href="http://caniuse.com/#feat=details">not implemented everywhere</a>.</p>
+
+      </li>
+      <li id="footnote-32">
+        <h3>Note 32</h3>
+        <p>Internet Explorer turns <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements focusable when they're scrollable, but does <em>not</em> do the same for other sectioning or block-level elements</p>
+
+      </li>
+      <li id="footnote-33">
+        <h3>Note 33</h3>
+        <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap"><code>ismap</code> attribute</a> makes the <code>&lt;img&gt;</code> focusable (in addition to the parent <code>&lt;a&gt;</code>)</p>
+
+      </li>
+      <li id="footnote-34">
+        <h3>Note 34</h3>
+        <p>There is no indication that the focusability of an element can be inherited by its children, let alone triggered by flexbox layout.</p>
+
+      </li>
+      <li id="footnote-35">
+        <h3>Note 35</h3>
+        <p>naturally focusable according to <a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5 tabindex</a></p>
+
+      </li>
+      <li id="footnote-36">
+        <h3>Note 36</h3>
+        <p>Firefox transforms <code>&lt;keygen&gt;</code> to <code>&lt;select _moz-type=&quot;-mozilla-keygen&quot;&gt;</code> while parsing HTML.</p>
+
+      </li>
+      <li id="footnote-37">
+        <h3>Note 37</h3>
+        <p>The <code>&lt;keygen&gt;</code> element is poorly supported, practically never used and has seen <a href="https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ">intent to deprecate</a></p>
+
+      </li>
+      <li id="footnote-38">
+        <h3>Note 38</h3>
+        <p>The <code>&lt;keygen&gt;</code> element is ignored by ally.js</p>
+
+      </li>
+  </ul>
+
+  <script>
+
+    var headerTable;
+    var headerTableCaption;
+    var headerHeight = 0;
+
+    // make sure all tables have the same width
+    function justifyTableWidth() {
+      var tables = [].slice.call(document.querySelectorAll('table'), 0);
+      var dataCells = [].reduce.call(tables[0].querySelectorAll('col'), function(previous, current) {
+        return previous + (parseInt(current.style.width, 10) || 0);
+      }, 0);
+      var largestIdentWidth = 0;
+
+      tables.map(function(table) {
+        table.style.position = 'absolute';
+        table.style.width = 'auto';
+      });
+      tables.map(function(table) {
+        largestIdentWidth = Math.max(largestIdentWidth, table.querySelector('tbody th').offsetWidth);
+      });
+      tables.map(function(table) {
+        table.style.position = '';
+        table.style.width = (dataCells + largestIdentWidth) + 'px';
+      });
+    }
+
+    // create sticky header table from first actual table
+    function createHeaderTable() {
+      var firstTable = document.querySelector('table');
+      headerTable = firstTable.cloneNode(true);
+      [].forEach.call(headerTable.querySelectorAll('tbody, tfoot'), function(element) {
+        element.parentNode.removeChild(element);
+      });
+      [].forEach.call(headerTable.querySelectorAll('th, td'), function(element) {
+        element.setAttribute('id', '');
+      });
+
+      var caption = headerTable.querySelector('caption');
+      headerTableCaption = document.createElement('span');
+      caption.innerHTML = '';
+      caption.appendChild(headerTableCaption);
+
+      headerTable.id = 'sticky-table-header';
+      headerTable.setAttribute('aria-hidden', 'true');
+      headerTable.style.width = firstTable.offsetWidth + 'px';
+      window.addEventListener('resize', function() {
+        headerTable.style.width = firstTable.offsetWidth + 'px';
+      }, true);
+
+      firstTable.parentNode.insertBefore(headerTable, firstTable);
+      headerHeight = headerTable.offsetHeight
+    }
+
+    function addTableOfContentsToStickyHeader() {
+      var toc = document.querySelector('#table-of-contents ul');
+      var list = toc.cloneNode(true);
+      headerTableCaption.parentNode.appendChild(list);
+    }
+
+    // listen to scroll position to show/hide sticky header and update its caption
+    function bindHeaderTableScrolling() {
+      var headerCaption = headerTableCaption.textContent;
+      headerTable.style.display = 'none';
+
+      var timer;
+      var handleHeaderTable = function() {
+        if (headerTable.style.display !== 'none') {
+          headerTable.style.display = 'none';
+        }
+
+        var elementAtPoint = document.elementFromPoint(50, 0);
+        if (!elementAtPoint || !elementAtPoint.closest('table')) {
+          return;
+        }
+
+        // make sticky header follow horizontal scroll
+        var horizontalScrollOffset = (document.scrollingElement || document.body).scrollLeft
+          || document.documentElement.scrollLeft
+          || window.scrollX;
+
+        headerTable.style.left = (0 - horizontalScrollOffset) + 'px';
+
+        // identify the visible part of the table to update the sticky caption
+        var tableAtPoint = document.elementFromPoint(50, headerHeight + 20);
+        var table = tableAtPoint && tableAtPoint.closest('table');
+        var caption = table && table.querySelector('caption');
+
+        if (caption) {
+          if (caption.textContent !== headerCaption) {
+            headerCaption = caption.textContent;
+            headerTableCaption.textContent = headerCaption;
+          }
+
+          headerTable.style.display = '';
+        }
+      };
+
+      var handleScrollEvent = function() {
+        timer && clearTimeout(timer);
+        timer = setTimeout(handleHeaderTable, 50);
+      };
+
+      window.addEventListener('scroll', handleScrollEvent, true);
+      handleScrollEvent();
+    }
+
+    // add hight of header to fragment URI targets
+    function handleHashchangeEvent() {
+      var id = location.hash.slice(1);
+      var target = id && document.getElementById(id);
+      if (!target) {
+        return;
+      }
+
+      target.scrollIntoView({
+        block: 'start',
+        behavior: 'instant',
+      });
+
+      window.scrollBy(0, 0 - headerHeight);
+    }
+    function compensateHeaderTable() {
+      if (!window.scrollBy) {
+        return;
+      }
+
+      // https://developer.mozilla.org/en-US/docs/Web/Events/hashchange
+      window.addEventListener('hashchange', handleHashchangeEvent, true)
+    }
+
+    function hideDuplicateRows() {
+      var hashes = {};
+      function hashDataCells(row) {
+        return [].map.call(row.children, function(cell) {
+          return cell.nodeName === 'TD' ? cell.textContent : '';
+        }).join(' -- ');
+      }
+
+      function findIdentRow(tbody, ident) {
+        var target = null;
+        [].some.call(tbody.children, function(row) {
+          if (row.getAttribute('data-row') === ident) {
+            target = row;
+            return true;
+          }
+        });
+
+        return target;
+      }
+
+      [].forEach.call(document.querySelectorAll('tr[data-duplicates]'), function(row) {
+        var ident = row.getAttribute('data-row');
+        var targetIdent = row.getAttribute('data-duplicates');
+        if (!hashes[ident]) {
+          hashes[ident] = hashDataCells(row);
+        }
+        if (!hashes[targetIdent]) {
+          var targetRow = findIdentRow(row.parentNode, targetIdent);
+          hashes[targetIdent] = hashDataCells(targetRow);
+        }
+        if (hashes[ident] === hashes[targetIdent]) {
+          row.hidden = true;
+        }
+      });
+    }
+
+    function hideUnusedFootnotes() {
+      var links = {};
+      [].forEach.call(document.querySelectorAll('.notes > a'), function(element) {
+        var id = element.getAttribute('href').slice(1);
+        links[id] = true;
+      });
+
+      [].forEach.call(document.querySelectorAll('#footnotes-list > li'), function(element) {
+        if (links[element.id]) {
+          return;
+        }
+
+        element.hidden = true;
+      });
+    }
+    function bindFootnoteTooltip() {
+      var container = document.createElement('div');
+      container.id = 'floating-footnote';
+      container.hidden = true;
+      container.setAttribute('tabindex', '-1');
+      document.body.appendChild(container);
+
+      // position the tooltip below the anchor
+      document.body.addEventListener('focus', function(event) {
+        if (!event.target.classList.contains('note')) {
+          return;
+        }
+
+        var anchor = event.target;
+        var id = anchor.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        var position = anchor.getBoundingClientRect();
+        var scrollTop = (document.scrollingElement || document.body).scrollTop
+          || document.documentElement.scrollTop
+          || window.scrollY;
+
+        container.style.top = (scrollTop + position.top + position.height) + 'px';
+        if (position.left + 500 > window.innerWidth) {
+          container.style.left = '';
+          container.style.right = '5px';
+        } else {
+          container.style.left = position.left + 'px';
+          container.style.right = '';
+        }
+
+        container.hidden = false;
+        container.innerHTML = target.innerHTML;
+      }, true);
+
+      // allow selecting text / clicking things in the tooltip,
+      // but hide it when anything else is focused
+      var clickedOnContainer = false;
+      container.addEventListener('mousedown', function() {
+        clickedOnContainer = true;
+        setTimeout(function() {
+          clickedOnContainer = false;
+        }, 100);
+      }, true);
+      document.body.addEventListener('blur', function(event) {
+        if (clickedOnContainer) {
+          return;
+        }
+
+        container.hidden = true;
+      }, true);
+      container.addEventListener('blur', function(event) {
+        container.hidden = true;
+      }, true);
+
+      // abort jumping to the footnote, as we moved the relevant footnote into view on focus
+      document.body.addEventListener('click', function(event) {
+        if (!event.target.classList.contains('note') || container.hidden) {
+          return;
+        }
+
+        event.preventDefault();
+      }, true);
+    }
+
+    (function() {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+      if (!document.elementFromPoint || !document.body.closest) {
+        return;
+      }
+
+      hideDuplicateRows();
+      justifyTableWidth();
+
+      createHeaderTable();
+      addTableOfContentsToStickyHeader();
+      bindHeaderTableScrolling();
+
+      compensateHeaderTable();
+      document.body.addEventListener('load', function() {
+        handleHashchangeEvent();
+      });
+
+      if (document.body.hidden !== undefined) {
+        hideUnusedFootnotes();
+        bindFootnoteTooltip();
+      }
+
+    })();
+
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.fix.pointerFocusParent Example</title>
+  <link rel="jsbin" href="https://jsbin.com/modabo/">
+  <style id="example-css">
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.fix.pointerFocusParent</code> Example</h1>
+
+  <p>There are two focusable div elements in this document, each containing a link. The first div element and link exhibit the undesired behavior upon click, the second div element and link are covered by <code>ally.fix.pointerFocusParent</code>.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <h2>Natural Browser Behavior</h2>
+    <div tabindex="-1">
+      <a href="#foo">some link</a>
+    </div>
+
+    <h2>Fixed Behavior</h2>
+    <div tabindex="-1" id="fix-pointer-focus">
+      <a href="#foo">some link</a>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js"></script>
+
+<script id="example-js">
+  ally.fix.pointerFocusParent({
+    context: '#fix-pointer-focus',
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <title>Getting started - ally.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="index.html">Home</a>
+            </li>
+          
+            <li class="active">
+              <a href="getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Downloading-the-UMD-bundle">Downloading the UMD bundle</a></li>
+        
+        
+        <li><a href="#Loading-the-UMD-bundle-from-CDN">Loading the UMD bundle from CDN</a></li>
+        
+        
+        <li><a href="#Installing-via-package-manager">Installing via package manager</a></li>
+        
+        
+        <li><a href="#Using-the-UMD-bundle-via-script">Using the UMD bundle via &lt;script&gt;</a></li>
+        
+        
+        <li><a href="#Using-CommonJS-modules">Using CommonJS modules</a></li>
+        
+        
+        <li><a href="#Using-ES6-modules">Using ES6 modules</a></li>
+        
+        
+        <li><a href="#Using-AMD-modules">Using AMD modules</a></li>
+        </ul></nav>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Getting Started</em></h1><ul>
+          <li class="active">
+            <a class="" href="getting-started.html">Getting started</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="concepts.html">General concepts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="questions.html">Frequently asked questions</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="what-is-focusable.html">What does &quot;focusable&quot; mean?</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Getting-started" href="#Getting-started" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Getting started</h1>
+<p>ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the &quot;web platform&quot; should&apos;ve provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the <a href="api/index.html">API documentation</a> to learn what the library actually provides.</p>
+<h2><a id="Downloading-the-UMD-bundle" href="#Downloading-the-UMD-bundle" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Downloading the UMD bundle</h2>
+<p>If you&apos;re not comfortable with package mangers, simply download the production ready UMD bundle and drop it in your project.</p>
+<ul>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.min.js" class="download-file">ally.min.js</a> UMD bundle, ready for production use</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.min.js.map" class="download-file">ally.min.js.map</a> for SourceMap support</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.js.zip" class="download-file">ally.js.zip</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)</li>
+</ul>
+<p>All downloads are hosted on the <a href="https://github.com/medialize/ally.js/releases">github release page</a>.</p>
+<h2><a id="Loading-the-UMD-bundle-from-CDN" href="#Loading-the-UMD-bundle-from-CDN" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Loading the UMD bundle from CDN</h2>
+<p>ally.js is made available for production use by <a href="http://www.jsdelivr.com/projects/ally.js">jsDelivr</a>:</p>
+<pre><code class="language-markup">&lt;script src=&quot;https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  console.log(&quot;loaded ally.js in version&quot;, ally.version);
+  console.log(&quot;focusable elements&quot;, ally.query.focusable());
+&lt;/script&gt;
+</code></pre>
+<h2><a id="Installing-via-package-manager" href="#Installing-via-package-manager" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Installing via package manager</h2>
+<pre><code class="language-bash">npm install --save ally.js
+</code></pre>
+<p>Although <a href="http://bower.io/">bower</a> can download archives, it won&apos;t be able to inform you of updates:</p>
+<pre><code class="language-bash">bower install --save https://github.com/medialize/ally.js/releases/download/1.0.1/ally.js.zip
+</code></pre>
+<p>You can use <a href="https://github.com/stealjs/system-npm">system-npm</a> to consume ally.js from <a href="https://www.npmjs.com/package/ally.js">npm</a> in SystemJS:</p>
+<pre><code class="language-javascript">System.import(&quot;ally.js!npm&quot;).then(function(ally) {
+  console.log(&quot;loaded ally.js in version&quot;, ally.version);
+});
+</code></pre>
+<h2><a id="Using-the-UMD-bundle-via-script" href="#Using-the-UMD-bundle-via-script" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Using the UMD bundle via <code>&lt;script&gt;</code></h2>
+<pre><code class="language-markup">&lt;script src=&quot;path/to/ally.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  console.log(&quot;loaded ally.js in version&quot;, ally.version);
+  console.log(&quot;focusable elements&quot;, ally.query.focusable());
+&lt;/script&gt;
+</code></pre>
+<h2><a id="Using-CommonJS-modules" href="#Using-CommonJS-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Using CommonJS modules</h2>
+<p>The production UMD bundle contains all dependencies, allowing you to require ally.js directly:</p>
+<pre><code class="language-javascript">var ally = require(&apos;ally.js&apos;);
+console.log(&quot;loaded ally.js in version&quot;, ally.version);
+console.log(&quot;focusable elements&quot;, ally.query.focusable());
+</code></pre>
+<p>Alternatively you can use only specific modules provided by ally.js:</p>
+<pre><code class="language-javascript">var version = require(&apos;ally.js/version&apos;);
+console.log(&quot;loaded version of ally.js&quot;, version);
+
+var queryFocusable = require(&apos;ally.js/query/focusable&apos;);
+console.log(&quot;focusable elements&quot;, queryFocusable());
+</code></pre>
+<div class="note"><strong>NOTE:</strong> The CommonJS modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.js.zip"><code>ally.js.zip</code></a>.</div>
+<h2><a id="Using-ES6-modules" href="#Using-ES6-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Using ES6 modules</h2>
+<p>ally.js is authored in ES6 and its modules are accessible in the <code>src</code> directory:</p>
+<pre><code class="language-javascript">import version from &apos;ally.js/src/version&apos;;
+console.log(&quot;loaded version of ally.js&quot;, version);
+
+import queryFocusable from &apos;ally.js/src/query/focusable&apos;;
+console.log(&quot;focusable elements&quot;, queryFocusable());
+</code></pre>
+<div class="note"><strong>NOTE:</strong> The ES6 source modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.js.zip"><code>ally.js.zip</code></a>.</div>
+<h2><a id="Using-AMD-modules" href="#Using-AMD-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Using AMD modules</h2>
+<p>The production UMD bundle contains all dependencies, allowing you to require ally.js directly:</p>
+<pre><code class="language-javascript">require.config({
+  paths: {
+    &apos;ally.js&apos;: &apos;node_modules/ally.js/ally.min&apos;,
+  }
+});
+
+require([&apos;ally.js&apos;], function(ally) {
+  console.log(&quot;loaded ally.js in version&quot;, ally.version);
+  console.log(&quot;focusable elements&quot;, ally.query.focusable());
+});
+</code></pre>
+<p>Alternatively you can use only specific modules provided by ally.js, but need to take care of mapping dependencies first:</p>
+<pre><code class="language-javascript">require.config({
+  paths: {
+    // map to AMD files
+    &apos;ally.js&apos;: &apos;node_modules/ally.js/amd&apos;,
+    // provide paths to dependencies
+    &apos;array.prototype.findindex&apos;: &apos;node_modules/array.prototype.findindex/index&apos;,
+    &apos;css.escape&apos;: &apos;node_modules/css.escape/css.escape&apos;,
+    &apos;platform&apos;: &apos;node_modules/platform/platform&apos;,
+  }
+});
+</code></pre>
+<p>Now you can import specific modules using</p>
+<pre><code class="language-javascript">require([&apos;ally.js/version&apos;], function(version) {
+  console.log(&quot;loaded version of ally.js&quot;, version);
+});
+
+require([&apos;ally.js/query/focusable&apos;], function(queryFocusable) {
+  console.log(&quot;focusable elements&quot;, queryFocusable());
+});
+</code></pre>
+<div class="note"><strong>NOTE:</strong> The AMD modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.0.1/ally.js.zip"><code>ally.js.zip</code></a>.</div>
+<hr>
+<p>Continue with checking out one of the <a href="tutorials/index.html">Tutorials</a> or head on to the <a href="api/index.html">API documentation</a></p>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

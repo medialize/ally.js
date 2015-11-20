@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.query.firstTabbable Example</title>
+  <link rel="jsbin" href="https://jsbin.com/bokifa/">
+  <style id="example-css">
+    div {
+      margin-top: 5px;
+      padding: 5px;
+      border: 1px solid grey;
+    }
+
+    .is-first-tabbable {
+      background: #00DD00;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.query.firstTabbable</code> Example</h1>
+
+  <p>The first tabbable element on this page is <output id="output"></output></p>
+</article>
+
+<div id="example-html">
+  <main>
+    <p><label for="text-input">Text Input 1</label><input type="text" id="text-input" value="input without tabindex"></p>
+    <p><label for="text-input--1">Text Input 2</label><input type="text" id="text-input--1" value="input tabindex=&quot;-1&quot;" tabindex="-1"></p>
+    <p><label for="text-input-2">Text Input 3</label><input type="text" id="text-input-2" value="input tabindex=&quot;2&quot;" tabindex="2"></p>
+
+    <div>div without <code>tabindex</code></div>
+    <div tabindex="-1">div with <code>tabindex=&quot;-1&quot;</code></div>
+    <div tabindex="0">div with <code>tabindex=&quot;0&quot;</code></div>
+    <div tabindex="1">div with <code>tabindex=&quot;1&quot;</code></div>
+
+    <p><label for="text-input-auto">Text Input with autofocus</label><input type="text" id="text-input-auto" value="input with autofocus" autofocus></p>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js"></script>
+
+<script id="example-js">
+  var element = ally.query.firstTabbable({
+    context: '#example-html',
+  });
+
+  var output = document.getElementById('output');
+  element.textContent = element.value || element.textContent;
+  element.classList.add('is-first-tabbable');
+</script>
+
+</body>
+</html>

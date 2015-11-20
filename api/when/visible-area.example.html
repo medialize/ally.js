@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.when.visibleArea Example</title>
+  <link rel="jsbin" href="https://jsbin.com/kopime/">
+  <style id="example-css">
+    #example-container {
+      margin: 0;
+    }
+
+    .thing {
+      box-sizing: border-box;
+      width: 300px;
+      height: 30px;
+      border: 1px solid red;
+      background: #CCFFFF;
+      opacity: 0.5;
+      -webkit-transform: translate3d(-300px, -30px, 0px);
+              transform: translate3d(-300px, -30px, 0px);
+      transition: -webkit-transform 0.1s 0s ease-in-out;
+      transition:         transform 0.1s 0s ease-in-out;
+    }
+
+    #container {
+      width: 400px;
+      height: 100px;
+      overflow: hidden;
+      border: 2px solid silver;
+    }
+
+    div:focus {
+      background: #AAA;
+    }
+
+    .move {
+      -webkit-transform: translate3d(60px, 50px, 0px);
+              transform: translate3d(60px, 50px, 0px);
+      transition: transform 2s 0s ease-out;
+    }
+
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.when.visibleArea</code> Example</h1>
+
+  <p>Press the &quot;start&quot; button below. An element will be animated into view and change color once it is fully visible (yet before the transition ended). Press <kbd>ESC</kbd> to programmatically abort observing the target element.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button type="button" id="activate">loading&#x2026;</button>
+
+    <hr>
+
+    <div id="example-container">
+      <div id="container">
+        <div class="thing" tabindex="1"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js"></script>
+
+<script id="example-js">
+  var button = document.getElementById('activate');
+  var element = document.querySelector('.thing');
+  var handle;
+
+  ally.when.key({
+    escape: function(event) {
+      console.log('aborted');
+      handle && handle.disengage();
+      handle = null;
+    },
+  });
+
+  document.addEventListener('transitionend', function() {
+    console.log('the transition ended');
+  }, true);
+
+  button.addEventListener('click', function() {
+    if (element.classList.contains('move')) {
+      element.classList.remove('move');
+      element.style.background = '';
+      button.textContent = 'start';
+      return;
+    }
+
+    handle = ally.when.visibleArea({
+      context: element,
+      callback: function(element) {
+        element.style.background = 'green';
+        console.log('element is visible')
+      },
+    });
+
+    button.textContent = 'reset';
+    element.classList.add('move');
+  }, true);
+
+  button.textContent = 'start';
+</script>
+
+</body>
+</html>

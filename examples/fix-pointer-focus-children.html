@@ -1,89 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Fix Pointer Focus Children Browser Bug</title>
-  <style>
-    body :focus {
-      outline: 3px solid red;
-    }
-
-    .flex {
-      display: -ms-flexbox;
-      display: flex;
-      width: 300px;
-    }
-
-    .flex > span {
-      -ms-flex: 1 1 100px;
-          flex: 1 1 10px;
-      display: block;
-      transition:
-        visibility 1s 0.5s linear,
-        background-color 1s 0s ease-in-out;
-    }
-
-    .flex > span:hover {
-      background-color: green;
-    }
-    .flex > span:active {
-      background-color: blue;
-    }
-  </style>
-</head>
-<body>
-  
-  <h1>Fix Pointer Focus Children Browser Bug</h1>
-  <p>
-    ally.js provides the method <code>ally/fix-browser/pointer-focus-children</code> to workaround an issue in Internet Explorer 10 and 11
-    where focusable elements with <code>display: flex;</code> would inherit being focusable onto their children (not descendants).
-  </p>
-
-  <p class="note">
-    CSS Transitions are disabled for any styles changed on <code>mousedown</code> (and <code>:active</code>) on the erroneously focusable child elements.
-  </p>
-
-  <p class="note">
-    This Workaround will only engage for Internet Explorer 10 and 11. No other browser is burdened with this (aside from having loaded the code).
-  </p>
-
-
-  <h2 id="usage">Usage</h2>
-  <pre>// load fixPointerFocusChildren()
-var fixPointerFocusChildren = require('ally/fix-browser/pointer-focus-children');
-// acquire context
-var context = document.getElementById('element-to-fix');
-
-// activate the fix on a specific sub-tree (for every browser)
-var disengage = fixPointerFocusChildren(context);
-
-// activate the fix for the entire document (for every browser)
-var disengage = fixPointerFocusChildren();
-
-// disable the fix
-disengage();</pre>
-
-
-  <h2 id="example">Example</h2>
-  <p>Click on both words "one" and observe which element is getting focus.</p>
-  <h3>Natural Browser Behavior</h3>
-  <div tabindex="-1" class="flex">
-    <span style="flex: 1 1 10px;">one</span>
-    <span style="flex: 1 1 10px;">two</span>
-  </div>
-  <h3>Fixed Behavior</h3>
-  <div tabindex="-1" id="fix-pointer-focus" class="flex">
-    <span>one</span>
-    <span>two</span>
-  </div>
-
-  <script src="../bower_components/requirejs/require.js"></script>
-  <script src="main.js"></script>
-  <script>
-    require(['ally/fix-browser/pointer-focus-children'], function(fixPointerFocusChildren) {
-      var context = document.getElementById('fix-pointer-focus');
-      fixPointerFocusChildren(context);
-    });
-  </script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1;url=/medialize/ally.js/api/fix/pointer-focus-children.html">
+    <link rel="canonical" href="../api/fix/pointer-focus-children.html">
+    <script>window.location.replace('/medialize/ally.js/api/fix/pointer-focus-children.html');</script>
+  </head>
+  <body>This page has been moved <a href="../api/fix/pointer-focus-children.html">here</a>.
+  </body>
 </html>

@@ -1,63 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Fix Pointer Focus Parent Browser Bug</title>
-  <style>
-    body :focus {
-      outline: 3px solid red;
-    }
-  </style>
-</head>
-<body>
-  
-  <h1>Fix Pointer Focus Parent Browser Bug</h1>
-  <p>
-    ally.js provides the method <code>ally/fix-browser/pointer-focus-parent</code> to workaround an issue in old Blink and
-    <a href="https://bugs.webkit.org/show_bug.cgi?id=139945">WebKit</a> causing focus given by <code>MouseEvent</code> and
-    <code>TouchEvent</code> to be given to the next parent element accepting focus, rather than the element the event was
-    dispatched to.
-  </p>
-
-  <p class="note">
-    This Workaround will only engage for WebKit. No other browser is burdened with this (aside from having loaded the code).
-  </p>
-
-
-  <h2 id="usage">Usage</h2>
-  <pre>// load fixPointerFocusParent()
-var fixPointerFocusParent = require('ally/fix-browser/pointer-focus-parent');
-// acquire context
-var context = document.getElementById('element-to-fix');
-
-// activate the fix on a specific sub-tree (for every browser)
-var disengage = fixPointerFocusParent(context);
-
-// activate the fix for the entire document (for every browser)
-var disengage = fixPointerFocusParent();
-
-// disable the fix
-disengage();</pre>
-
-
-  <h2 id="example">Example</h2>
-  <p>Click on both links and observe which element is getting focus.</p>
-  <h3>Natural Browser Behavior</h3>
-  <div tabindex="-1">
-    <a href="#foo">some link</a>
-  </div>
-  <h3>Fixed Behavior</h3>
-  <div tabindex="-1" id="fix-pointer-focus">
-    <a href="#foo">some link</a>
-  </div>
-
-  <script src="../bower_components/requirejs/require.js"></script>
-  <script src="main.js"></script>
-  <script>
-    require(['ally/fix-browser/pointer-focus-parent'], function(fixPointerFocusParent) {
-      var context = document.getElementById('fix-pointer-focus');
-      fixPointerFocusParent(context);
-    });
-  </script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1;url=/medialize/ally.js/api/fix/pointer-focus-parent.html">
+    <link rel="canonical" href="../api/fix/pointer-focus-parent.html">
+    <script>window.location.replace('/medialize/ally.js/api/fix/pointer-focus-parent.html');</script>
+  </head>
+  <body>This page has been moved <a href="../api/fix/pointer-focus-parent.html">here</a>.
+  </body>
 </html>

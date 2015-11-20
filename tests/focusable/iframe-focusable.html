@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>iframe dummy with focusable element</title>
+</head>
+<body data-label="body">
+
+<p>I am just a dummy &lt;iframe&gt; with a focusable element</p>
+<p><input data-label="input"></p>
+
+<script>
+  // import "label namespace" from parent document
+  var labelNamespace = location.hash.slice(1);
+  labelNamespace && [].forEach.call(document.querySelectorAll('[data-label]'), function(element) {
+    element.setAttribute('data-label', labelNamespace + ' -> ' + element.getAttribute('data-label'));
+  });
+
+  document.addEventListener('focus', function(event) {
+    window.parent.iframeFocusEvent(event);
+  }, true);
+</script>
+
+</body>
+</html>

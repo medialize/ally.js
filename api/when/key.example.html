@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.when.key Example</title>
+  <link rel="jsbin" href="https://jsbin.com/kekuwo/">
+  <style id="example-css">
+
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.when.key</code> Example</h1>
+
+  <p>Observe the browser&apos;s / JSBin&apos;s console when pressing <kbd>Enter</kbd> repeatedly, then <kbd>Escape</kbd> once. Note how the <kbd>Space</kbd> key is unaffected by the <kbd>Escape</kbd> key&apos;s disengagement.</p>
+</article>
+
+<div id="example-html">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.0.1/ally.min.js"></script>
+
+<script id="example-js">
+  ally.when.key({
+    enter: function(event) {
+      event.preventDefault();
+      console.log('pressed enter key');
+    },
+    escape: function(event, disengage) {
+      event.preventDefault();
+      console.log('pressed escape key');
+      // stop enter and escape handling
+      disengage();
+    }
+  });
+  ally.when.key({
+    space: function(event) {
+      event.preventDefault();
+      console.log('pressed space key');
+    },
+  });
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-label="html">
 <head>
 	<meta charset="utf-8" />
 	<title>What Is Focusable?</title>
@@ -25,7 +25,7 @@
     }
 	</style>
 </head>
-<body onload="window.isLoaded=true;">
+<body onload="window.isLoaded=true;" data-label="body">
 
   <article>
     <h1>What Elements Are Focusable?</h1>
@@ -63,6 +63,7 @@
     <button type="button" data-label="button[type=button][tabindex=-1]" tabindex="-1">button</button>
     <label data-label="label">label</label>
     <label data-label="label[tabindex=-1]" tabindex="-1">label</label>
+    <label data-label="label[tabindex=0]" tabindex="0">label</label>
     <label for="label-target" data-label="label[for=&quot;label-target&quot;]">label</label>
     <label for="label-target-focusable" data-label="label[for=&quot;label-target-focusable&quot;]">label</label>
     <label for="label-target" data-label="label[for=&quot;label-target&quot;][tabindex=-1]" tabindex="-1">label</label>
@@ -158,11 +159,20 @@
   <article>
     <h2 id="browsing-contexts">Browsing Contexts</h2>
     
-    <iframe src="iframe.html" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
+    <iframe src="iframe.html#iframe" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <iframe src="iframe.html" name="iframe-2" width="200" height="100" data-label="iframe[tabindex=-1]" tabindex="-1"></iframe>
+    <iframe src="iframe.html#iframe[tabindex=-1]" name="iframe-2" width="200" height="100" data-label="iframe[tabindex=-1]" tabindex="-1"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="iframe-focusable.html#iframe{focusable}" name="iframe-3" width="200" height="100" data-label="iframe{focusable}"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="iframe-focusable.html#iframe{focusable}[tabindex=-1]" name="iframe-4" width="200" height="100" data-label="iframe{focusable}[tabindex=-1]" tabindex="-1"></iframe>
+
   </article>
 
   <!--
@@ -217,6 +227,37 @@
 
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed[tabindex=-1]" tabindex="-1">
 
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="video/mp4" src="../media/test.mp4" width="640" height="480" data-label="embed[type=mp4]">
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="video/mp4" src="../media/test.mp4" width="640" height="480" data-label="embed[type=mp4][tabindex=-1]" tabindex="-1">
+
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="video/ogv" src="../media/test.ogv" width="640" height="480" data-label="embed[type=ogv]">
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="video/ogv" src="../media/test.ogv" width="640" height="480" data-label="embed[type=ogv][tabindex=-1]" tabindex="-1">
+
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg]">
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg][tabindex=-1]" tabindex="-1">
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg][tabindex=0]" tabindex="0">
+
     <div tabindex="0" data-label="ignore"></div>
 
     <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen">
@@ -229,12 +270,60 @@
   <article>
     <h2 id="scrollable-content">Scrollable Content</h2>
 
-    <div data-label="div{scroll-container-horizontal}" style="width: 100px; height: 50px;">
+    <div data-label="div{scroll-container-horizontal}" style="width: 100px; height: 50px; overflow: auto;">
       <div data-label="div{scroll-body-horizontal}" style="width: 500px; height: 40px;">scrollable content</div>
     </div>
-    <div data-label="div{scroll-container-vertical}" style="width: 300px; height: 100px;">
+    <div data-label="div{scroll-container-horizontal-scroll-x}" style="width: 100px; height: 50px; overflow-x: scroll;">
+      <div data-label="div{scroll-body-horizontal-scroll-x}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-horizontal-scroll-y}" style="width: 100px; height: 50px; overflow-y: scroll;">
+      <div data-label="div{scroll-body-horizontal-scroll-y}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-vertical}" style="width: 300px; height: 100px; overflow: auto;">
       <div data-label="div{scroll-body-vertical}" style="width: 200px; height: 400px;">scrollable content</div>
     </div>
+    <div data-label="div{scroll-container-vertical-scroll-x}" style="width: 300px; height: 100px; overflow-x: scroll;">
+      <div data-label="div{scroll-body-vertical-scroll-x}" style="width: 200px; height: 400px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-vertical-scroll-y}" style="width: 300px; height: 100px; overflow-y: scroll;">
+      <div data-label="div{scroll-body-vertical-scroll-y}" style="width: 200px; height: 400px;">scrollable content</div>
+    </div>
+
+    <div data-label="div{scroll-container-overflow-scroll}" style="width: 100px; height: 50px; overflow: scroll;">
+      <div data-label="div{scroll-body-overflow-scroll}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-overflow-hidden}" style="width: 100px; height: 50px; overflow: hidden;">
+      <div data-label="div{scroll-body-overflow-hidden}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+    <div data-label="div{scroll-container-overflow-visible}" style="width: 100px; height: 50px; overflow: visible;">
+      <div data-label="div{scroll-body-overflow-visible}" style="width: 500px; height: 40px;">scrollable content</div>
+    </div>
+
+    <div data-label="div{container-overflow-scroll}" style="width: 100px; height: 50px; overflow: scroll;">
+      <div data-label="div{body-overflow-scroll}" style="width: 10px; height: 40px;">non overflowing content</div>
+    </div>
+    <div data-label="div{container-overflow-auto}" style="width: 100px; height: 50px; overflow: auto;">
+      <div data-label="div{body-overflow-auto}" style="width: 10px; height: 40px;">non overflowing content</div>
+    </div>
+
+    <span data-label="span{scroll-container-overflow-scroll}" style="display: block; width: 100px; height: 50px; overflow: scroll;">
+      <div data-label="span{scroll-body-overflow-scroll}" style="width: 1000px; height: 40px;">overflowing content</div>
+    </span>
+    <section data-label="section{scroll-container-overflow-scroll}" style="width: 100px; height: 50px; overflow: scroll;">
+      <div data-label="section{scroll-body-overflow-scroll}" style="width: 1000px; height: 40px;">overflowing content</div>
+    </section>
+    <div data-label="div-span{scroll-container-overflow-scroll}" style="width: 100px; height: 50px; overflow: scroll;">
+      <span data-label="div-span{scroll-body-overflow-scroll}" style="display: block; width: 1000px; height: 40px;">overflowing content</span>
+    </div>
+    <div data-label="div-section{scroll-container-overflow-scroll}" style="width: 100px; height: 50px; overflow: scroll;">
+      <section data-label="div-section{scroll-body-overflow-scroll}" style="width: 1000px; height: 40px;">overflowing content</div>
+    </div>
+
+    <div data-label="div{container-overflow-scroll}[tabindex=-1]" style="width: 100px; height: 50px; overflow: scroll;" tabindex="-1">
+      <div data-label="div{body-overflow-scroll}[tabindex=-1]" style="width: 10px; height: 40px;">non overflowing content</div>
+    </div>
+
+
   </article>
 
   <article>
@@ -267,23 +356,33 @@
     <!--
       NOTE: Internet Explorer 11 gets stuck in the browser chrome, when it has to tab through 2 consecutive <object>s,
       that's why we added a couple of ignore-me fillers…
+
+      IE10 gets stuck either way, so we remove the <object> before testing the tabbing
     -->
 
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]">
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
+
+    <p>regular</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]" tabindex="-1">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
     <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
 
+    <p>with negative tabindex</p>
     <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=-1]" tabindex="-1">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
     <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
 
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]">
+    <p>without height</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="0" data-label="object[src=swf][height=0]" class="hide-from-ie10">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
@@ -319,6 +418,8 @@
       </a>
       <text x="10" y="20" data-label="svg text">just text, no link</text>
       <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <rect x="20" y="20" width="5" height="5" onfocus="" data-label="svg rect[onfocus]" />
+      <rect x="15" y="15" width="10" height="10" fill="green" focusable="true" data-label="svg rect[focusable=true]" />
     </svg>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -333,12 +434,35 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[focusable=false]" focusable="false">
+      <a xlink:href="#void" data-label="svg[focusable=false] a[xlink|href]">
+        <text x="10" y="20" data-label="svg[focusable=false] a[xlink|href] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=0])">
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=0]" tabindex="0">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=0] text">a link</text>
       </a>
       <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" tabindex="0" data-label="svg rect[tabindex=0]" />
+      <rect x="20" y="20" width="5" height="5" tabindex="-1" data-label="svg rect[tabindex=-1]" />
       <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <a xlink:href="#void" focusable="false" data-label="svg a[focusable=false]">
+        <rect x="10" y="20" width="10" height="10" fill="brown" />
+      </a>
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{viewbox}" viewBox="0 0 30 30">
+      <rect x="20" y="20" width="5" height="5" tabindex="0" data-label="svg rect[tabindex=0]{viewbox}" />
+      <rect x="20" y="20" width="5" height="5" tabindex="-1" data-label="svg rect[tabindex=-1]{viewbox}" />
+      <rect x="20" y="20" width="10" height="10" fill="brown" focusable="true" data-label="svg rect[focusable=true]{viewbox}" />
     </svg>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -350,6 +474,31 @@
       <text x="10" y="20" data-label="svg text">just text, no link</text>
       <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
     </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}">
+      <rect x="5" y="5" width="10" height="10" fill="red" data-label="svg{tiny} rect" />
+      <rect x="10" y="10" width="10" height="10" fill="blue" tabindex="0" data-label="svg{tiny} rect[tabindex=0]" />
+      <rect x="15" y="15" width="10" height="10" fill="green" focusable="true" data-label="svg{tiny} rect[focusable=true]" />
+      <a xlink:href="#void" focusable="false" data-label="svg{tiny} a[focusable=false]">
+        <rect x="10" y="20" width="10" height="10" fill="brown" />
+      </a>
+      <a xlink:href="#void" tabindex="-1" data-label="svg{tiny} a[tabindex=-1]">
+        <rect x="20" y="10" width="10" height="10" fill="magenta" />
+      </a>
+      <rect x="20" y="20" width="10" height="10" fill="yellow" focusable="true" tabindex="-1" data-label="svg{tiny} rect[focusable=true][tabindex=-1]" />
+      <rect x="20" y="20" width="10" height="10" fill="yellow" focusable="false" tabindex="0" data-label="svg{tiny} rect[focusable=false][tabindex=0]" />
+    </svg>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}[focusable=false]" focusable="false">
+      <a xlink:href="#void" data-label="svg{tiny}[focusable=false] a">
+        <rect x="10" y="20" width="10" height="10" fill="brown" />
+      </a>
+    </svg>
+
   </article>
 
   <!-- http://www.w3.org/TR/html5/editing.html#editing-host -->
@@ -373,11 +522,17 @@
 
 
     <h3 id="invalid-tabindex">Invalid Tabindex</h3>
+    <input tabindex="hello" data-label="input[tabindex=hello]">
     <div tabindex="" data-label="[tabindex=&quot;&quot;]">empty tabindex</div>
     <div tabindex="hello" data-label="[tabindex=hello]">tabindex <code>hello</code></div>
     <div tabindex="3 " data-label="[tabindex=3 ]">tabindex <code>3 </code></div>
     <div tabindex="3x" data-label="[tabindex=3x]">tabindex <code>3x</code></div>
 
+    <div tabindex="0" data-label="div[tabindex=0]:empty"></div>
+    <div tabindex="-1" data-label="div[tabindex=-1]:empty"></div>
+
+    <span tabindex="0" data-label="span[tabindex=0]:empty"></span>
+    <span tabindex="-1" data-label="span[tabindex=-1]:empty"></span>
 
     <h3 id="disabled-and-tabindex">Disabled And Tabindex</h3>
     <fieldset disabled tabindex="0" data-label="fieldset[tabindex=0][disabled]"></fieldset>
@@ -415,11 +570,11 @@
       <input type="text" data-label="[hidden] input">
     </div>
 
-    <div hidden data-label="[hidden]" tabindex="-1">
+    <div hidden data-label="[hidden][tabindex=-1]" tabindex="-1">
       <input type="text" data-label="[hidden][tabindex=-1] input">
     </div>
 
-    <div hidden data-label="[hidden]" tabindex="0">
+    <div hidden data-label="[hidden][tabindex=0]" tabindex="0">
       <input type="text" data-label="[hidden][tabindex=0] input">
     </div>
   </article>
@@ -443,6 +598,12 @@
           <td data-label="table thead tr td">cell</td>
         </tr>
       </thead>
+      <tfoot data-label="table tfoot">
+        <tr data-label="table tfoot tr">
+          <th data-label="table tfoot tr th">cell</th>
+          <td data-label="table tfoot tr td">cell</td>
+        </tr>
+      </tfoot>
       <tbody data-label="table tbody">
         <tr data-label="table tbody tr">
           <th data-label="table tbody tr th">cell</th>
@@ -479,6 +640,8 @@
       <a href="#void" style="display:inline" data-label="{none} > a{inline}">link</a>
     </div>
     <a href="#void" style="display:none" data-label="a{none}">link</a>
+
+    <div style="width:0; height:0" tabindex="0" data-label="div{no-dimension}"></div>
   </article>
 
   <article>
@@ -522,6 +685,12 @@
   <hr>
   <h2 id="output-results">Results</h2>
   <pre id="results">click tab order to update the output of results</pre>
-  <script src="../../bower_components/requirejs/require.js" data-main="focusable"></script>
+
+  <script>
+    window.iframeFocusEvent = function(event) {
+      console.log("focus within iframe", event);
+    };
+  </script>
+  <script src="./focusable.js" data-main="focusable"></script>
 </body>
 </html>
