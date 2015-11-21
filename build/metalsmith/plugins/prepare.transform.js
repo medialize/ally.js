@@ -7,6 +7,7 @@ function extractData($, data) {
   // extract h1 to title
   if (!data.title) {
     data.title = $('h1').text();
+    data.titleUrlEncoded = encodeURIComponent(data.title);
   }
 
   // extract first <p> to excerpt

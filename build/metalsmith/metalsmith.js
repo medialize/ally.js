@@ -43,6 +43,7 @@ function getPartialsMap() {
     'site-navigation': 'partials/site-navigation',
     'collection-navigation': 'partials/collection-navigation',
     'table-of-contents': 'partials/table-of-contents',
+    'contribute-to-document': 'partials/contribute-to-document',
     'site-header': 'partials/site-header',
     'site-footer': 'partials/site-footer',
     tracking: 'partials/tracking',
@@ -81,6 +82,11 @@ metalsmith(__dirname)
   .source('../../docs')
   .destination('../../web')
   .use(packageJson())
+  .use(function(files) {
+    Object.keys(files).forEach(function(path) {
+      files[path].originalPath = path;
+    });
+  })
   .use(inPlace({
     directory: './',
     engine: 'handlebars',

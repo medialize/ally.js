@@ -165,7 +165,9 @@ body > footer > p {
 #navigation-column nav + aside {
   margin-top: 24px;
 }
-
+#navigation-column aside + aside {
+  margin-top: 24px;
+}
 
 /************************************************************
  * Main Content
