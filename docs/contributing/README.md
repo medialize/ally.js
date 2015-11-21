@@ -13,11 +13,14 @@ ally.js is *not only* about the library code. All the concepts covered by ally.j
 
 ## Who can contribute?
 
-*Anyone* can join. *Everything* is done on github, in the open. *Everything* is up for discussion.
+*Anyone* can join. *Everything* is done on github in the open. *Everything* is up for discussion.
 
-* You specialize in accessibility, but aren't an expert with the JavaScripts? No worries, be the brains, we'll be your code monkeys.
-* You specialize in JavaScript, but aren't experienced with that accessibility thing? No worries, I'm sure there's plenty to optimize and refactor and test and …
-* You specialize in writing things but your accessibility is about as rusty as your JavaScript? Have a look at the docs, I'm sure they can be translated to actual, proper *English*.
+* **HELP:** Issues tagged with [good first contribution](https://github.com/medialize/ally.js/labels/good%20first%20contribution) have been analyzed and explained. They should provide all details required for your first contribution to ally.js. Feel free to pick one, work on it and send a pull request. If you have questions, please post them to the issue and we'll get back to you.
+* You **specialize in accessibility**, but aren't an expert with the JavaScripts? No worries, be the brains, we'll be your code monkeys. See issues tagged with [question](https://github.com/medialize/ally.js/labels/question) or [discussion](https://github.com/medialize/ally.js/labels/discussion).
+* You **specialize in JavaScript**, but aren't experienced with that accessibility thing? No worries, I'm sure there's plenty to optimize and refactor and test and so on. You'll probably find something to improve in [`./src`](https://github.com/medialize/ally.js/tree/master/src) or [`./test`](https://github.com/medialize/ally.js/tree/master/test) or issues tagged with [improve](https://github.com/medialize/ally.js/labels/improve).
+* You **specialize in writing** things but your accessibility is about as rusty as your JavaScript? Have a look at the docs, I'm sure they can be translated to actual, proper *English*. You'll likely find something in [`./docs`](https://github.com/medialize/ally.js/tree/master/docs) or issues tagged with [website](https://github.com/medialize/ally.js/labels/website) or [documentation](https://github.com/medialize/ally.js/labels/documentation).
+* You **specialize in the build pipeline**? Issues tagged with [build](https://github.com/medialize/ally.js/labels/build) might be your thing.
+* You **specialize in a framework** or library and would **like to integrate** ally.js? See the issues tagged with [integration](https://github.com/medialize/ally.js/labels/integration) or open a [new issue](https://github.com/medialize/ally.js/issues/new?title=[integrate]%20_your_library_name_%20) to discuss your approach.
 
 
 ## Documentation for contributors
