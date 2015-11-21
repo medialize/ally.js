@@ -17,6 +17,7 @@ const injectExamples = require('./plugins/inject-examples');
 const absoluteUrl = require('./plugins/absolute-url');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
+const WEBSITE_CANONICAL = 'http://allyjs.io/';
 
 function getRedirectionMap() {
   // make sure legacy links are forwarded
@@ -118,6 +119,7 @@ metalsmith(__dirname)
   .use(redirect(getRedirectionMap()))
   .use(absoluteUrl({
     resolve: WEBSITE_ROOT,
+    canonical: WEBSITE_CANONICAL,
   }))
   .use(linkChecker({
     warn: true,

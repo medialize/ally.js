@@ -14,7 +14,7 @@
     absoluteUrl({ property: "websiteRoot", define: "/hello/world" })
 
     convert all URLs beginning with websiteRoot to relative URLs
-    absoluteUrl({ resolve: "/hello/world" })
+    absoluteUrl({ resolve: "/hello/world", canonical: "http://example.org/" })
 */
 
 // inspired by
@@ -39,8 +39,12 @@ function filter(file, files, filePath /*, options*/) {
 
 function transform($, file, fileName, options) {
   const absolute = path.join(options.resolve, fileName);
-  // URI('/medialize/ally.js/api/style/focus-within.html').relativeTo('/medialize/ally.js/contributing/index.html').toString()
-  // "../api/style/focus-within.html"
+  if (options.canonical) {
+    const canonical = path.join(options.canonical, fileName);
+    const $canonical = $('<link rel="canonical" href="">').attr('href', canonical);
+    $('title').after($canonical);
+  }
+
   $(urlSelector).each(function() {
     const $element = $(this);
     $element.nodeName = $element[0].name;
