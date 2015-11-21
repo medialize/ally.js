@@ -40,7 +40,7 @@ function filter(file, files, filePath /*, options*/) {
 function transform($, file, fileName, options) {
   const absolute = path.join(options.resolve, fileName);
   if (options.canonical) {
-    const canonical = path.join(options.canonical, fileName);
+    const canonical = options.canonical + fileName;
     const $canonical = $('<link rel="canonical" href="">').attr('href', canonical);
     $('title').after($canonical);
   }
