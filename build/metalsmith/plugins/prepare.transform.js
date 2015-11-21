@@ -88,7 +88,7 @@ function convertNoteBlocks($/*, data*/) {
 
     const $div = $('<div>').attr('class', label.slice(0, -1).toLowerCase());
     $div.append($li.html());
-    $ul.after($div);
+    $ul.before($div);
     $li.remove();
     if (!$ul.children().length) {
       $ul.remove();
