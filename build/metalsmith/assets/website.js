@@ -6,6 +6,10 @@
     var editLink = document.getElementById('document-github-edit');
     var issueLink = document.getElementById('document-github-issue');
 
+    if (!issueLink || !editLink) {
+      return;
+    }
+
     var body = [
       '*Concerning*: [' + issueLink.getAttribute('data-title') + '](' + editLink.href + ')',
       '*User Agent:* ' + navigator.userAgent,
