@@ -6,15 +6,7 @@ this is a link dump…
 
 Stuff I still need to read…
 
-### Focus
-
-* [Focus Handling - WICD](http://www.w3.org/TR/WICD/#focus-handling) explaining some algorithms
-
 ### ARIA
-
-* http://www.w3.org/TR/wai-aria/
-* http://w3c.github.io/aria-in-html/
-* http://www.w3.org/WAI/PF/aria-practices/
 
 * http://www.marcozehe.de/2008/02/29/easy-aria-tip-1-using-aria-required/
 * http://www.marcozehe.de/2008/08/06/aria-in-gmail-2-enhancing-the-chat-experience/
@@ -36,7 +28,6 @@ Stuff I still need to read…
 
 ## Interesting concepts
 
-* [FreeFocus: arrow-key focus navigation](https://github.com/Flamefork/freefocus) and [for GamePad](https://gist.github.com/cvan/343ab139223f3b5dd2cc)
 * [animated :focus transitions](http://n12v.com/focus-transition/)
   * https://github.com/NV/flying-focus/
   * https://jonathanstark.com/labs/flying-focus/
