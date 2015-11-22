@@ -389,7 +389,7 @@ dialog.addEventListener('submit', saveDialog, true);
 
 ### Focus first focusable element upon opening the dialog
 
-Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus. In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
+Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus (in order to shift [virtual focus](../concepts.md#Virtual-focus)). In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
 
 ```js
 var dialog = document.getElementById('dialog');
