@@ -352,7 +352,7 @@ var keyHandle;
 
 function openDialog() {
   // React to enter and escape keys as mandated by ARIA Practices
-  keyHandle = whenKey({
+  keyHandle = ally.when.key({
     escape: closeDialogByKey,
   });
 
