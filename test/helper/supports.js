@@ -22,6 +22,7 @@ define(function(require) {
     canFocusSvgMethod: require('ally/supports/svg-focus-method'),
     canFocusoutEvent: require('ally/supports/focusout-event'),
     cssShadowPiercingDeepCombinator: require('ally/supports/css-shadow-piercing-deep-combinator'),
+    tabsequenceSortsAreaAtImagePosition: require('ally/supports/tabsequence-area-at-img-position'),
   };
 
 });

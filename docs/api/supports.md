@@ -36,6 +36,7 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-table | boolean | true if `<table>`, `<tr>` and `<td>` are focusable |
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
 | focusout-event | boolean | true if `focusout` is dispatched synchronously |
+| tabsequence-area-at-img-position | boolean | true if `<area>` are tabbed at the DOM position of `<img usemap="…">` |
 | svg-focus-method | boolean | true if `SVGElement.prototype.focus` exists natively |
 
 

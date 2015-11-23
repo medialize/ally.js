@@ -101,6 +101,7 @@ define([
       'test/unit/query.focusable.strict.test',
       'test/unit/query.focusable.test',
       'test/unit/query.tabbable.test',
+      'test/unit/query.tabsequence.move-area.test',
       'test/unit/query.tabsequence.test',
       'test/unit/style.focus-within.test',
       'test/unit/style.focus-source.test',
