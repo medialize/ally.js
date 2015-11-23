@@ -66,7 +66,7 @@ define([
       },
       'area in connected map': function() {
         // Firefox may not immediately show img.complete for DataURIs
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
         setTimeout(deferred.callback(function() {
           var element = document.getElementById('image-map-area');
           expect(isValidArea(element)).to.equal(true, 'valid area');

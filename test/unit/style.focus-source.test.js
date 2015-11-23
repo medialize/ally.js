@@ -24,7 +24,7 @@ define([
       },
 
       lifecycle: function() {
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
         expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'before engage');
 
         // initiate with delay because of IE10's async focus event from previous test
@@ -53,7 +53,7 @@ define([
         }), 100);
       },
       key: function() {
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
         // initiate with delay because of IE10's async focus event from previous test
         setTimeout(deferred.rejectOnError(function() {
           handle = styleFocusSource();
@@ -83,7 +83,7 @@ define([
         }), 100);
       },
       pointer: function() {
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
         // initiate with delay because of IE10's async focus event from previous test
         setTimeout(deferred.rejectOnError(function() {
           handle = styleFocusSource();

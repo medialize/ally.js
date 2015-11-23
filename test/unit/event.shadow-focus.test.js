@@ -42,7 +42,7 @@ define([
           this.skip('Shadow DOM not supported');
         }
 
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
         handle = eventShadowFocus();
         var waitForOuter;
         var waitForFirst;

@@ -27,7 +27,7 @@ define([
       },
 
       document: function() {
-        var deferred = this.async(1000);
+        var deferred = this.async(10000);
 
         var expected = '#tabindex-0, #tabindex-1, #link'
           + ', #image-map-area'
