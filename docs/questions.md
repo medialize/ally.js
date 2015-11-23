@@ -7,6 +7,11 @@ layout: doc-page.html
 There are a couple of questions we have been asked over and over again…
 
 
+## My website does not contain interactive JavaScript, do I still need ally.js?
+
+Probably not. If you don't have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help [get around some non-JavaScript accessibility issues across browsers](api/README.md#Countering-browser-bugs).
+
+
 ## "ally" not "a11y"?
 
 When the project started in October 2014, it was called "a11y.js". We didn't register any domains or grabbed the npm package name - which turned out to be a problem a couple of weeks later. We're not sad this happened.
