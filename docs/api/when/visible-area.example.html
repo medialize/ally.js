@@ -17,8 +17,10 @@
       background: #CCFFFF;
       opacity: 0.5;
       -webkit-transform: translate3d(-300px, -30px, 0px);
+          -ms-transform: translate(-300px, -30px);
               transform: translate3d(-300px, -30px, 0px);
       transition: -webkit-transform 0.1s 0s ease-in-out;
+      transition:     -ms-transform 0.1s 0s ease-in-out;
       transition:         transform 0.1s 0s ease-in-out;
     }
 
@@ -35,8 +37,11 @@
 
     .move {
       -webkit-transform: translate3d(60px, 50px, 0px);
+          -ms-transform: translate(60px, 50px);
               transform: translate3d(60px, 50px, 0px);
-      transition: transform 2s 0s ease-out;
+      transition: -webkit-transform 2s 0s ease-in-out;
+      transition:     -ms-transform 2s 0s ease-in-out;
+      transition:         transform 2s 0s ease-in-out;
     }
 
   </style>
