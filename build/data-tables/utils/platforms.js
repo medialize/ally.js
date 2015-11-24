@@ -57,7 +57,7 @@ function addPlatform(platform, key) {
 
 function sortBrowserVersions(a, b) {
   // show versions per platform in ascending order
-  return browsers[a].version > browsers[b].version ? 1 : -1;
+  return parseFloat(browsers[a].version) > parseFloat(browsers[b].version) ? 1 : -1;
 }
 
 function sortPlatforms() {
