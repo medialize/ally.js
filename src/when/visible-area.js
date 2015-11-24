@@ -3,6 +3,7 @@
   execute a callback once an element became fully visible in the viewport
 */
 
+import '../prototype/window.requestanimationframe';
 import isVisible from '../is/visible';
 import visibleArea from '../util/visible-area';
 import nodeArray from '../util/node-array';

@@ -18,6 +18,7 @@
     }, true);
 */
 
+import '../prototype/window.requestanimationframe';
 import CustomEvent from '../prototype/window.customevent';
 import decorateService from '../util/decorate-service';
 
