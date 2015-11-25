@@ -47,6 +47,8 @@ node test/run-local.js \
   functionalSuites=tests/functional/selected-test
 ```
 
+* **NOTE:** The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
+
 
 ## Remotely running all tests in all browsers
 
