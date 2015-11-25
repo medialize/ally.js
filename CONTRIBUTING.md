@@ -18,6 +18,8 @@ You can *request* a new feature by [filing an issue](https://github.com/medializ
 
 ## Contributing code
 
+> Please make sure that your pull request points at the **master branch**. PRs against *gh-pages* and *release* cannot be accepted.
+
 We try to follow Angular's [Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines):
 
 ```text
