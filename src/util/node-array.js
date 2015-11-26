@@ -10,7 +10,8 @@ export default function(input) {
     return input;
   }
 
-  if (input instanceof Node) {
+  // instanceof Node - does not work with iframes
+  if (input.nodeType !== undefined) {
     return [input];
   }
 
