@@ -45,10 +45,14 @@ const PossiblyFocusableFilter = function(node) {
 PossiblyFocusableFilter.acceptNode = PossiblyFocusableFilter;
 
 export default function queryFocusableStrict({context, includeContext, strategy} = {}) {
+  if (!context) {
+    context = document.documentElement;
+  }
+
   // see https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker
-  const walker = document.createTreeWalker(
+  const walker = context.ownerDocument.createTreeWalker(
     // root element to start search in
-    context || document.documentElement,
+    context,
     // element type filter
     NodeFilter.SHOW_ELEMENT,
     // custom NodeFilter filter
