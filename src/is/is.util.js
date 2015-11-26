@@ -47,5 +47,5 @@ export function getImageOfArea(element) {
   //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
   //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
   // the image must be valid and loaded for the map to take effect
-  return document.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]') || null;
+  return element.ownerDocument.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]') || null;
 }

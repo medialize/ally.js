@@ -38,7 +38,7 @@ function queryInsignificantBranches({context, filter}) {
   CollectInsignificantBranchesFilter.acceptNode = CollectInsignificantBranchesFilter;
 
   // see https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker
-  const walker = document.createTreeWalker(
+  const walker = context.ownerDocument.createTreeWalker(
     // root element to start search in
     context,
     // element type filter
