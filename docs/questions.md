@@ -7,7 +7,7 @@ layout: doc-page.html
 There are a couple of questions we have been asked over and over again…
 
 
-## My website does not contain interactive JavaScript, do I still need ally.js?
+## Do I need ally.js for static websites?
 
 Probably not. If you don't have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help [get around some non-JavaScript accessibility issues across browsers](api/README.md#Countering-browser-bugs).
 
@@ -31,14 +31,9 @@ We weren't able to use any of the existing solutions. We also weren't going to j
 In theory the ultimate goal for ally.js is to make itself obsolete because web standards and browser implementations have caught up. This isn't very likely to happen any time soon, if at all. In the meanwhile the goal is to provide all the low-level utilities required for other libraries and websites and applications to make accessible experiences an easier target. Have a look at [GOALS.md](https://github.com/medialize/ally.js/tree/master/GOALS.md) to find out what we're planning.
 
 
-## Where was this created?
-
-Initial efforts were spurred by the [Smart Home platform](https://www.qivicon.com/en/) of Deutsche Telekom. Deutsche Telekom is not an official sponsor of this project. However, they have let me work on this project as part of my job at the office.
-
-
 ## Corporate backing?
 
-As of today ally.js does not receive official funding or guidance from anyone. We'd be happy to hand over stewardship to a web-standards-involved organization that understands OSS and the community.
+As of today ally.js does not receive official funding or guidance from anyone. The project is maintained by people volunteering their spare time.
 
 
 ## Multiple personality disorder?
