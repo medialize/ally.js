@@ -29,7 +29,7 @@ export default function(element) {
     return element.getAttribute('focusable') !== 'false';
   }
 
-  if (element instanceof SVGElement) {
+  if (element instanceof element.ownerDocument.defaultView.SVGElement) {
     if (nodeName === 'a' && element.hasAttribute('xlink:href')) {
       // any focusable child of <svg> cannot be focused, but tabbed to
       if (platform.name === 'Firefox') {
