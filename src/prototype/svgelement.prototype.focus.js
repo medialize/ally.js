@@ -8,31 +8,37 @@
 // TypeError: 'focus' called on an object that does not implement interface HTMLElement.
 // this works fine in IE11, though.
 
-if (!SVGElement.prototype.focus) {
+export default function polyfill(root) {
+  if (root.SVGElement.prototype.focus) {
+    return;
+  }
+
   // remember what had focus to restore after test
-  const previousActiveElement = document.activeElement;
+  const previousActiveElement = root.document.activeElement;
 
   try {
     // create a dummy <svg> so we can check if HTMLElement's focus() can deal with it
-    const d = document.createElement('div');
+    const d = root.document.createElement('div');
     d.innerHTML = '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"></svg>';
     const s = d.firstElementChild;
-    document.body.focus.call(s);
+    root.document.body.focus.call(s);
     // HTMLElement's focus() can also deal with SVGElement, so go crazy!
-    SVGElement.prototype.focus = HTMLElement.prototype.focus;
-    SVGElement.prototype.blur = HTMLElement.prototype.blur;
+    root.SVGElement.prototype.focus = root.HTMLElement.prototype.focus;
+    root.SVGElement.prototype.blur = root.HTMLElement.prototype.blur;
   } catch(e) {
-    SVGElement.prototype.focus = function focusPolyfill() {
+    root.SVGElement.prototype.focus = function focusPolyfill() {
       // at least make apparent what is going wrong
-      window.console && window.console.warn && window.console.warn('SVGElement.focus() not possible');
+      root.window.console && window.console.warn && window.console.warn('SVGElement.focus() not possible');
     };
-    SVGElement.prototype.blur = function blurPolyfill() {
+    root.SVGElement.prototype.blur = function blurPolyfill() {
       // at least make apparent what is going wrong
       window.console && window.console.warn && window.console.warn('SVGElement.blur() not possible');
     };
   }
 
   // restore focus to what it was before test and cleanup
-  document.activeElement && document.activeElement.blur();
+  root.document.activeElement && root.document.activeElement.blur();
   previousActiveElement && previousActiveElement.focus();
 }
+
+polyfill(window);
