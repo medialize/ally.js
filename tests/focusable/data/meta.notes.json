@@ -56,6 +56,18 @@
     }
   },
 
+  "@image-map-area-no-href": "If an `<area>` element doesn't have an `href` attribute, it's not a link (and should therefore not be interactive).",
+  "area": {
+    "alias": [
+      "area[tabindex=-1]",
+      "img[tabindex=-1] area"
+    ],
+    "browsers": {
+      "firefox-stable": "@image-map-area-no-href",
+      "firefox-nightly": "@image-map-area-no-href"
+    }
+  },
+
   "area[href][tabindex=-1].lower": "In some browsers adding a `tabindex` attribute to an `<area>` element will make it inert (not focusable).",
   "img[usemap][tabindex=-1]": "In some browsers `<img>` elements with an associated image map cannot be made focusable.",
   "img[tabindex=-1] area[href].lower": "In some browsers the image map associated with an `<img>` element can be removed from the document's sequential navigation order by adding `tabindex=\"-1\"` to the `<img>` element.",

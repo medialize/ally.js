@@ -142,9 +142,13 @@
       "area[href][tabindex=-1].lower": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
       "area[href][tabindex=-1].upper": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
 
+      "area": "<area> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "area[tabindex=-1]": "<area tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+
       "img[usemap][tabindex=-1]": "<img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
       "img[tabindex=-1] area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
       "img[tabindex=-1] area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area": "<area> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
 
       "map.invalid-image area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image",
       "map.invalid-image area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image"
