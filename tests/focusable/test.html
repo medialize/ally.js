@@ -93,6 +93,8 @@
     <a href="#void" data-label="a[href]">link</a>
     <a href="" data-label="a[href=&quot;&quot;]">link</a>
     <a href="#void" data-label="a[href][tabindex=-1]" tabindex="-1">link</a>
+
+    <span href="#void" data-label="span[href]">span with href attribute (invalid html)</span>
   </article>
 
   <!-- https://html.spec.whatwg.org/multipage/microdata.html#microdata -->
@@ -660,10 +662,10 @@
   <article>
     <h2 id="css-user-modify">CSS <code>user-modify</code></h2>
 
-    <span href="#void" data-label="span{user-modify}" class="user-modify">
+    <span data-label="span{user-modify}" class="user-modify">
       hello world
     </span>
-    <span href="#void" data-label="span{user-modify}[tabindex=-1]" class="user-modify" tabindex="-1">
+    <span data-label="span{user-modify}[tabindex=-1]" class="user-modify" tabindex="-1">
       hello world
     </span>
   </article>
