@@ -38,6 +38,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
@@ -118,6 +119,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')

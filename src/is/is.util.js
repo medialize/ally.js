@@ -34,8 +34,7 @@ export function isScrollableContainer(element, nodeName) {
 export function getImageOfArea(element) {
   const map = element.parentElement;
 
-  // an <area> matches the area[href] selector even if it is not applicable
-  if (!map.name || !element.href || map.nodeName.toLowerCase() !== 'map') {
+  if (!map.name || map.nodeName.toLowerCase() !== 'map') {
     return null;
   }
 

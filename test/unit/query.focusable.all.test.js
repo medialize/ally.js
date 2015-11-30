@@ -41,6 +41,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + ', #object-svg'
           + (platform.name === 'IE' ? ', #svg' : '')
           + (supports.canFocusObjectSvg ? ', #object-tabindex-svg' : '')
@@ -127,6 +128,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #svg-link'
           + ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg'
