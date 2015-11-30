@@ -17,10 +17,10 @@
     "browsers": {
       "chrome-stable": "@fieldset-disabled-input",
       "chrome-nightly": "@fieldset-disabled-input",
-      "safari-8": "@fieldset-disabled-input",
+      "safari-9": "@fieldset-disabled-input",
       "webkit-nightly": "@fieldset-disabled-input",
-      "android44-chrome": "@fieldset-disabled-input",
-      "ios-8": "@fieldset-disabled-input"
+      "chrome-mobile": "@fieldset-disabled-input",
+      "ios-9": "@fieldset-disabled-input"
     }
   },
 
@@ -207,10 +207,10 @@
     "browsers": {
       "chrome-stable": "@svg-onfocus",
       "chrome-nightly": "@svg-onfocus",
-      "safari-8": "@svg-onfocus",
+      "safari-9": "@svg-onfocus",
       "webkit-nightly": "@svg-onfocus",
-      "android44-chrome": "@svg-onfocus",
-      "ios-8": "@svg-onfocus"
+      "chrome-mobile": "@svg-onfocus",
+      "ios-9": "@svg-onfocus"
     }
   },
 
