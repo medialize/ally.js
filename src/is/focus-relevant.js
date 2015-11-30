@@ -21,6 +21,7 @@ import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusObjectSvg from '../supports/focus-object-svg';
+import canFocusObjectSwf from '../supports/focus-object-swf';
 import canFocusScrollBody from '../supports/focus-scroll-body';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
@@ -70,9 +71,15 @@ export default function(element) {
     return false;
   }
 
-  if (!canFocusObjectSvg && nodeName === 'object' && element.getAttribute('type') === 'image/svg+xml') {
-    // object[type="image/svg+xml"] is not focusable in Internet Explorer
-    return false;
+  if (nodeName === 'object') {
+    const svgType = element.getAttribute('type');
+    if (!canFocusObjectSvg && svgType === 'image/svg+xml') {
+      // object[type="image/svg+xml"] is not focusable in Internet Explorer
+      return false;
+    } else if (!canFocusObjectSwf && svgType === 'application/x-shockwave-flash') {
+      // object[type="application/x-shockwave-flash"] is not focusable in Internet Explorer 9
+      return false;
+    }
   }
 
   if (nodeName === 'iframe' || nodeName === 'object') {

@@ -16,6 +16,7 @@ define(function(require) {
     canFocusInvalidTabindex: require('ally/supports/focus-invalid-tabindex'),
     canFocusLabelTabindex: require('ally/supports/focus-label-tabindex'),
     canFocusObjectSvg: require('ally/supports/focus-object-svg'),
+    canFocusObjectSwf: require('ally/supports/focus-object-swf'),
     canFocusScrollBody: require('ally/supports/focus-scroll-body'),
     canFocusScrollContainer: require('ally/supports/focus-scroll-container'),
     canFocusScrollContainerWithoutOverflow: require('ally/supports/focus-scroll-container-without-overflow'),
