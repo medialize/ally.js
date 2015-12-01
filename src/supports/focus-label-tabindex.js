@@ -9,4 +9,12 @@ export default detectFocus({
   mutate: function(element) {
     element.setAttribute('tabindex', '-1');
   },
+  validate: function(element) {
+    // force layout in Chrome 49, otherwise the element won't be focusable
+    /* eslint-disable no-unused-vars */
+    const variableToPreventDeadCodeElimination = element.offsetHeight;
+    /* eslint-enable no-unused-vars */
+    element.focus();
+    return document.activeElement === element;
+  },
 });
