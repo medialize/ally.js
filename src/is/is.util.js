@@ -3,7 +3,7 @@
 // separate testing of this file's functions is not necessary,
 // as they're implicitly tested by way of the consumers
 
-import 'css.escape';
+import cssEscape from 'css.escape';
 
 export function isUserModifyWritable(style) {
   // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
@@ -46,5 +46,5 @@ export function getImageOfArea(element) {
   //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
   //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
   // the image must be valid and loaded for the map to take effect
-  return element.ownerDocument.querySelector('img[usemap="#' + CSS.escape(map.name) + '"]') || null;
+  return element.ownerDocument.querySelector('img[usemap="#' + cssEscape(map.name) + '"]') || null;
 }

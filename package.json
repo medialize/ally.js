@@ -119,7 +119,7 @@
   },
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",
-    "css.escape": "^1.1.0",
+    "css.escape": "^1.3.0",
     "platform": "^1.3.0"
   }
 }
