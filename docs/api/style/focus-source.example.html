@@ -147,7 +147,7 @@
   }, false);
 
   // create shadow dom structure:
-  if (document.body.shadowRoot !== undefined) {
+  if (document.body.createShadowRoot !== undefined) {
     var shadowed = createShadowedContent(
       document.getElementById('first-shadow-host'),
       '<div id="second-shadow-host"></div><div id="third-shadow-host"></div>'

@@ -112,7 +112,7 @@ define([
       },
 
       'extended: Shadow DOM': function() {
-        if (document.body.shadowRoot === undefined) {
+        if (document.body.createShadowRoot === undefined) {
           this.skip('Shadow DOM not supported');
         }
 
