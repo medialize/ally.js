@@ -239,6 +239,18 @@
     "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1 and [not implemented everywhere](http://caniuse.com/#feat=details)."
   },
 
+  "-details-webkit-151767": {
+    "alias": [
+      "details summary",
+      "details[tabindex=-1] summary",
+      "details[open] summary",
+      "details[open] a[href]"
+    ],
+    "browsers": {
+      "webkit-nightly": "This element should be keyboard focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
+    }
+  },
+
   "@ie-scroll-div": "Internet Explorer turns `<div>` and `<span>` elements focusable when they're scrollable, but does *not* do the same for other sectioning or block-level elements",
   "section{scroll-container-overflow-scroll}": {
     "browsers": {

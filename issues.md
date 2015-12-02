@@ -30,6 +30,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * audio and video elements with controls cannot be removed from the focus navigation sequence - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
 * embed element cannot be removed from the focus navigation sequence [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
 * embed element with tabindex="0" breaks sequential focus navigation [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
+* `<summary>` and `<a>` within `<details open>` not keyboard focusable [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)
 
 
 ## Filed specification issues
