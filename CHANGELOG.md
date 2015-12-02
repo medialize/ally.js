@@ -1,5 +1,10 @@
 # ally.js change log
 
+## master
+
+* changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [Issue #82](https://github.com/medialize/ally.js/issues/82)
+
+
 ## 1.0.1 (November 20th 2015)
 
 * aligning `package.json` in repository and npm artifact for compatibility with cdnjs

@@ -38,6 +38,11 @@ Boolean, `true` if the element is focus relevant.
 ## Examples
 
 
+## Changes
+
+* Since `v#master` the `<embed>` and `<keygen>` elements are considered focus-relevant, but *not* focusable.
+
+
 ## Notes
 
 * **NOTE:** The `<body>` element may mistakenly considered focusable, because it is the default activeElement if no other element has focus - but it is not focusable, unless made so by adding the `tabindex` attribute.
