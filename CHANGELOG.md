@@ -3,7 +3,10 @@
 ## master
 
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [Issue #82](https://github.com/medialize/ally.js/issues/82)
-
+* changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [Issue #72](https://github.com/medialize/ally.js/issues/72)
+* fixing `supports/supports-cache` to respect ally.js version change
+* fixing `supports/focus-label-tabindex` in Chrome 49
+* fixing ShadowDOM related unit tests in WebKit
 
 ## 1.0.1 (November 20th 2015)
 
