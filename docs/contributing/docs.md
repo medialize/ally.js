@@ -152,4 +152,18 @@ tags: option-argument, service, svg
 * **shadow-dom:** To declare special support for Shadow DOM
 * **svg:** To declare special support for SVG
 
+### API changes
 
+In addition to the less specific [CHANGELOG.md](https://github.com/medialize/ally.js/tree/master/CHANGELOG.md), API documents must declare specific changes in detail:
+
+```markdown
+## Changes
+
+* `v1.2.3` introduced the option `gustav`
+* `v1.3.0` removed the option `otto`
+* Since `v1.6.0` the function returns coffee instead of tea
+```
+
+Since the exact release version a change will be included in is not necessarily known during development, the placeholder `v#master` should be used.
+
+* **NOTE:** The version notation may be extended to also contain addition `+v1.0.0` / removal `-v1.0.0` / change `~v1.0.0` should this become necessary. The website builder may replace the code elements by links to the change log.
