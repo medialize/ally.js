@@ -72,7 +72,7 @@ export default function(element) {
     }
   }
 
-  if (nodeName === 'embed' || nodeName === 'object') {
+  if (nodeName === 'object') {
     if (platform.layout === 'Blink' || platform.layout === 'WebKit') {
       // In all Blink and WebKit based browsers <embed> and <object> are never keyboard focusable, even with tabindex="0" set
       return false;

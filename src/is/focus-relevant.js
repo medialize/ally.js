@@ -17,8 +17,6 @@ import {
 import canFocusAreaTabindex from '../supports/focus-area-tabindex';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
-import canFocusEmbed from '../supports/focus-embed';
-import canFocusEmbedTabindex from '../supports/focus-embed-tabindex';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
@@ -91,11 +89,9 @@ export default function(element) {
   const validTabindex = isValidTabindex(element);
 
   if (nodeName === 'embed') {
-    if (canFocusEmbed || (canFocusEmbedTabindex && validTabindex)) {
-      return true;
-    }
-
-    return false;
+    // embed is considered focus-relevant but not focusable
+    // see https://github.com/medialize/ally.js/issues/82
+    return true;
   }
 
   if (element.hasAttribute('contenteditable')) {

@@ -45,10 +45,7 @@ define([
           + (platform.name === 'IE' ? ', #svg' : '')
           + (supports.canFocusObjectSvg ? ', #object-tabindex-svg' : '')
           + ', #svg-link'
-          + (supports.canFocusEmbed ? ', #embed' : '')
-          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
-          + ', #embed-svg'
-          + (supports.canFocusEmbedTabindex && supports.canFocusObjectSvg ? ', #embed-tabindex-svg' : '')
+          + ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg'
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1, #input-disabled'
@@ -132,10 +129,7 @@ define([
           + ', #image-map-area'
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #svg-link'
-          + (supports.canFocusEmbed ? ', #embed' : '')
-          + (supports.canFocusEmbedTabindex ? ', #embed-tabindex-0' : '')
-          + (supports.canFocusEmbed && supports.canFocusObjectSvg ? ', #embed-svg' : '')
-          + (supports.canFocusEmbedTabindex && supports.canFocusObjectSvg ? ', #embed-tabindex-svg' : '')
+          + ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg'
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1'

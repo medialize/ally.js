@@ -107,6 +107,7 @@
       "embed[type=svg][tabindex=-1]",
       "embed[type=svg][tabindex=0]"
     ],
+    "ally": "Because the behavior of the `<embed>` element depends on the content type and browser plugin, ally considers all `<embed>` elements focus-relevant but *not* focusable.",
     "general": "The behavior of the `<embed>` element depends on the content type and browser plugin."
   },
 

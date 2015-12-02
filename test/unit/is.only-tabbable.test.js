@@ -52,10 +52,6 @@ define([
         var element = document.getElementById('object-svg');
         expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE');
       },
-      'embed element holding svg': function() {
-        var element = document.getElementById('embed-svg');
-        expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE');
-      },
       'svg element': function() {
         var element = document.getElementById('svg');
         expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE');

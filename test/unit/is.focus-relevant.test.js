@@ -157,11 +157,11 @@ define([
       },
       'embed element': function() {
         var element = document.getElementById('embed');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusEmbed);
+        expect(isFocusRelevant(element)).to.equal(true);
       },
       'embed element with tabindex="0"': function() {
         var element = document.getElementById('embed-tabindex-0');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusEmbedTabindex);
+        expect(isFocusRelevant(element)).to.equal(true);
       },
       'extended: CSS user-modify': function() {
         var _supports = document.body.style.webkitUserModify !== undefined;

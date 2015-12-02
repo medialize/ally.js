@@ -19,8 +19,6 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-audio-without-controls | boolean | true if `<audio>` is focusable (while only `<audio controls>` should be) |
 | focus-broken-image-map | boolean | true if `<area>` is focusable although the `<img>` using the `<map>` is not properly loaded |
 | focus-children-of-focusable-flexbox | boolean | true if `<span>` in `<a href="…" style="display:flex;"><span>` is focusable |
-| focus-embed-tabindex | boolean | true if `<embed tabindex="-1">` is focusable |
-| focus-embed | boolean | true if `<embed>` is focusable |
 | focus-fieldset-disabled | boolean | true if `<fieldset disabled>` is focusable |
 | focus-fieldset | boolean | true if `<fieldset>` is focusable |
 | focus-img-ismap | boolean | true if `<img>` in `<a href="–"><img ismap src="…">` is focusable |

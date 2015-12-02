@@ -16,10 +16,6 @@ define([
 
       beforeEach: function() {
         fixture = focusableFixture();
-        // remove elements from tabbing test, because their behavior is undefined
-        [].forEach.call(document.querySelectorAll('#embed, #embed-tabindex-0, #embed-svg'), function(element) {
-          element.parentNode.removeChild(element);
-        });
       },
       afterEach: function() {
         fixture.remove();

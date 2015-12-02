@@ -12,6 +12,17 @@ import isVisible from './visible';
 import isDisabled from './disabled';
 import isOnlyTabbable from './only-tabbable';
 
+function isOnlyFocusRelevant(element) {
+  const nodeName = element.nodeName.toLowerCase();
+  if (nodeName === 'embed') {
+    // embed is considered focus-relevant but not focusable
+    // see https://github.com/medialize/ally.js/issues/82
+    return true;
+  }
+
+  return false;
+}
+
 export default function(element) {
   if (element === document) {
     element = document.documentElement;
@@ -21,7 +32,7 @@ export default function(element) {
     throw new TypeError('is/focusable requires an argument of type Element');
   }
 
-  if (!isFocusRelevant(element)) {
+  if (!isFocusRelevant(element) || isOnlyFocusRelevant(element)) {
     return false;
   }
 
