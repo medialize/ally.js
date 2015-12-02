@@ -41,7 +41,7 @@ Boolean, `true` if the element is focus relevant.
 ## Notes
 
 * **NOTE:** The `<body>` element may mistakenly considered focusable, because it is the default activeElement if no other element has focus - but it is not focusable, unless made so by adding the `tabindex` attribute.
-* **NOTE:** Because the `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ), it is *not* considered focusable by ally.js.
+* **NOTE:** Because the `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ), ally considers all `<keygen>` elements focus-relevant but *not* focusable.
 * **NOTE:** Because the behavior of the `<embed>` element depends on the content type and browser plugin, ally considers all `<embed>` elements focus-relevant but *not* focusable.
 * **WARNING:** Firefox and Internet Explorer cannot focus `SVGElement`s by script, thus no SVG element is considered focusable, see [Gecko 1116966](https://bugzilla.mozilla.org/show_bug.cgi?id=1116966)
 * **WARNING:** WebKit and Blink make any `SVGElement` focusable that has a `focus` event listener attached, see [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024)

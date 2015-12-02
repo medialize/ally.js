@@ -270,7 +270,7 @@
       "firefox-stable": "@firefox-keygen-select",
       "firefox-nightly": "@firefox-keygen-select"
     },
-    "ally": "The `<keygen>` element is ignored by ally.js",
+    "ally": "Because the `<keygen>` element is poorly supported, ally considers all `<keygen>` elements focus-relevant but *not* focusable.",
     "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
   }
 }

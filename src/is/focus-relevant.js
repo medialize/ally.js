@@ -88,7 +88,7 @@ export default function(element) {
 
   const validTabindex = isValidTabindex(element);
 
-  if (nodeName === 'embed') {
+  if (nodeName === 'embed' || nodeName === 'keygen') {
     // embed is considered focus-relevant but not focusable
     // see https://github.com/medialize/ally.js/issues/82
     return true;
