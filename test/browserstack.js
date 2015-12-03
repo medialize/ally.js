@@ -7,6 +7,11 @@ define([
     // 'browserstack.debug': true,
     // 'browserstack.video': true,
     // 'browserstack.ie.noFlash': true,
+
+    // prevent download popup in chrome
+    chromeOptions: {
+      args: ['--multiple-automatic-downloads=1'],
+    },
   };
 
   // https://theintern.github.io/intern/#option-environments
