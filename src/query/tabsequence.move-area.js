@@ -90,7 +90,7 @@ export default function(elements, context) {
   insertions.sort((a, b) => a.offset - b.offset);
   insertions.forEach(function(insertion) {
     const areas = maps[insertion.name];
-    if (!areas.length) {
+    if (!areas || !areas.length) {
       // we can't inject an empty map and since <area> elements
       // are already removed there's nothing left to do
       return;

@@ -124,6 +124,25 @@ define([
           expect(elementsString(result)).to.equal(expected);
         }), 200);
       },
+      'map does not exist': function() {
+        var deferred = this.async(10000);
+
+        // move the img to the last spot and kill map reference
+        var img = document.getElementById('img-usemap');
+        img.parentNode.id = 'img-container';
+        img.setAttribute('usemap', '#does-not-exist');
+
+        var expected = '#end-of-line';
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var context = document.getElementById('img-container');
+          var tabbable = queryTabbable({context: context});
+          var result = moveArea(tabbable, context);
+
+          expect(elementsString(result)).to.equal(expected);
+        }), 200);
+      },
       'image is only content in context': function() {
         var deferred = this.async(10000);
 
