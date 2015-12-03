@@ -38,6 +38,7 @@ Boolean, `true` if the element is focus relevant.
 
 ## Changes
 
+* Since `v#master` the `<img usemap="#…" …>` is resolved in the same document `<map>` is from (e.g. within an iframe)
 * Since `v#master` the existence of the `href` attribute is considered.
 
 

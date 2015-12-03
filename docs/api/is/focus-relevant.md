@@ -41,6 +41,7 @@ Boolean, `true` if the element is focus relevant.
 ## Changes
 
 * Since `v#master` the `<embed>` and `<keygen>` elements are considered focus-relevant, but *not* focusable.
+* Since `v#master` the `element.prototype.matches` polyfill is re-applied to allow elements from other documents (e.g. from an iframe).
 
 
 ## Notes

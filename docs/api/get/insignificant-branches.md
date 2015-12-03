@@ -54,7 +54,13 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 ## Examples
 
 
+## Changes
+
+* Since `v#master` the `context` option can point to another document (e.g. `<body>` in an iframe)
+
+
 ## Notes
+
 
 
 ## Related resources

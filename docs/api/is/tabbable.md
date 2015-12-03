@@ -40,6 +40,11 @@ Boolean, `true` if the element is focus relevant.
 ## Examples
 
 
+## Changes
+
+* Since `v#master` matching of `SVGElement`s is done document-independent, to allow elements from other documents (e.g. from an iframe).
+
+
 ## Notes
 
 See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)

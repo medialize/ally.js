@@ -48,6 +48,11 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 * **EXAMPLE:** [`ally.query.tabbable` Example](./tabbable.example.html)
 
 
+## Changes
+
+* Since `v#master` the `context` option can point to another document (e.g. `<body>` in an iframe)
+
+
 ## Notes
 
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
