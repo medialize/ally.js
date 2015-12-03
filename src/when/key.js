@@ -1,29 +1,39 @@
 
-import keycode from '../map/keycode';
+import keyBinding from './key.binding';
 
 // Bug 286933 - Key events in the autocomplete popup should be hidden from page scripts
 // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=286933
 
 export default function(map = {}) {
   let disengage;
+  const bindings = {};
 
-  const keys = {};
   const mapKeys = Object.keys(map);
   if (!mapKeys.length) {
     throw new TypeError('when/key requires at least one option key');
   }
 
-  mapKeys.forEach(function(key) {
-    const code = keycode[key] || parseInt(key, 10);
-    if (!code || typeof code !== 'number' || isNaN(code)) {
-      throw new TypeError('when/key requires option keys to be numeric or references to map/keycode, but "' + key + '" is neither');
+  const registerBinding = function(event) {
+    if (!bindings[event.keyCode]) {
+      bindings[event.keyCode] = [];
     }
 
-    if (typeof map[key] !== 'function') {
-      throw new TypeError('when/key requires option.' + key + ' to be a function');
+    bindings[event.keyCode].push(event);
+  };
+
+  mapKeys.forEach(function(text) {
+    if (typeof map[text] !== 'function') {
+      throw new TypeError('when/key requires option["' + text + '"] to be a function');
     }
 
-    keys[code] = map[key];
+    const addCallback = function(event) {
+      event.callback = map[text];
+      return event;
+    };
+
+    keyBinding(text)
+      .map(addCallback)
+      .forEach(registerBinding);
   });
 
   const handleKeyDown = function(event) {
@@ -31,12 +41,19 @@ export default function(map = {}) {
       return;
     }
 
-    const callback = keys[event.keyCode];
-    if (!callback) {
+    const key = event.keyCode || event.which;
+    if (!bindings[key]) {
       return;
     }
 
-    callback.call(this, event, disengage);
+    const context = this;
+    bindings[key].forEach(function(_event) {
+      if (!_event.matchModifiers(event)) {
+        return;
+      }
+
+      _event.callback.call(context, event, disengage);
+    });
   };
 
   document.documentElement.addEventListener('keydown', handleKeyDown, false);

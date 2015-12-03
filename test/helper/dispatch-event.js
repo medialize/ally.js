@@ -11,10 +11,15 @@ define([], function() {
     var event = document.createEvent('KeyboardEvent');
     if (event.initKeyEvent) {
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyEvent
-      event.initKeyEvent(type, true, false, null, false, false, false, false, options.keyCode, 0);
+      event.initKeyEvent(type, true, false, null, !!options.ctrlKey, !!options.altKey, !!options.shiftKey, !!options.metaKey, options.keyCode, 0);
     } else {
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent
-      event.initKeyboardEvent(type, true, false, null, '', options.keyCode, null, '', false);
+      var modifiers = [];
+      options.altKey && modifiers.push('Alt');
+      options.ctrlKey && modifiers.push('Ctrl');
+      options.metaKey && modifiers.push('Meta');
+      options.shiftKey && modifiers.push('Shift');
+      event.initKeyboardEvent(type, true, false, null, '', options.keyCode, null, modifiers.join(' '), false);
     }
 
     try {
@@ -22,6 +27,10 @@ define([], function() {
       // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
       Object.defineProperty(event, 'keyCode', {value: options.keyCode});
       Object.defineProperty(event, 'which', {value: options.keyCode});
+      Object.defineProperty(event, 'altKey', {value: !!options.altKey});
+      Object.defineProperty(event, 'ctrlKey', {value: !!options.ctrlKey});
+      Object.defineProperty(event, 'metaKey', {value: !!options.metaKey});
+      Object.defineProperty(event, 'shiftKey', {value: !!options.shiftKey});
       // Internet Explorer does not like this
       event.keyCode = options.keyCode;
     } catch(e) {
@@ -84,6 +93,23 @@ define([], function() {
       }
 
       return event;
+    },
+    preventDefault: function(event) {
+      event.preventDefault();
+      if (event.defaultPrevented) {
+        return;
+      }
+
+      try {
+        // Safari 7 does not like this: ATTEMPTING TO CHANGE VALUE OF A READONLY PROPERTY
+        // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
+        Object.defineProperty(event, 'defaultPrevented', {value: true});
+        // Internet Explorer does not like this
+        event.defaultPrevented = true;
+      } catch(e) {
+        // IGNORE
+        return;
+      }
     },
   };
 

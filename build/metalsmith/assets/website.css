@@ -340,6 +340,7 @@ main .example h1 {
 main table {
   border: 1px solid #E5E5E5;
   border-collapse: collapse;
+  width: 100%;
 }
 main th,
 main td {
