@@ -31,6 +31,7 @@ engines:
 
 ratings:
   paths:
+  - build/**
   - src/**
   - test/**
 
@@ -42,8 +43,7 @@ exclude_paths:
 - dist/**/*
 - docs/**/*
 - examples/**/*
-- metalsmith/**/*
 - node_modules/**/*
 - reports/**/*
-- scripts/**/*
 - tests/**/*
+- web/**/*
