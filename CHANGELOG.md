@@ -6,9 +6,13 @@
 * upgrading to [css.escape](https://github.com/mathiasbynens/CSS.escape) v1.3.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [Issue #82](https://github.com/medialize/ally.js/issues/82)
 * changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [Issue #72](https://github.com/medialize/ally.js/issues/72)
+* fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
+
+
+>>>>>>> 02c4246... fix(query/tabsequence): adding reordering of <area> / <img usemap> - closes #5
 
 ## 1.0.1 (November 20th 2015)
 

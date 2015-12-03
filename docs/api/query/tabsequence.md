@@ -45,11 +45,16 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 * **EXAMPLE:** [`ally.query.tabsequence` Example](./tabsequence.example.html)
 
 
+## Changes
+
+* Since `v#master` the module sorts `<area>` elements to the place of the `<img>` elements they're referenced from.
+
+
 ## Notes
 
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
-* **WARNING:** `<area>` elements are provided in DOM order they occur, not in DOM order of the `<img>` elements that use them, see [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
+* **NOTE:** In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
 
 
 ## Related resources
