@@ -60,7 +60,7 @@
     "publish:website": "node build/publish.website.js",
     "publish:npm": "npm publish dist",
     "publish:npm:beta": "npm publish dist --tag beta",
-    "publish:lcov": "npm run-all --parallel publish:codeclimate publish:coveralls",
+    "publish:lcov": "npm-run-all --parallel publish:codeclimate publish:coveralls",
     "publish:codeclimate": "codeclimate-test-reporter < reports/lcov.info",
     "publish:coveralls": "cat reports/lcov.info | coveralls",
     "lint": "npm-run-all --parallel lint:js lint:md",
