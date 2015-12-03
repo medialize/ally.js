@@ -12,8 +12,6 @@
 * fixing ShadowDOM related unit tests in WebKit
 
 
->>>>>>> 02c4246... fix(query/tabsequence): adding reordering of <area> / <img usemap> - closes #5
-
 ## 1.0.1 (November 20th 2015)
 
 * aligning `package.json` in repository and npm artifact for compatibility with cdnjs
