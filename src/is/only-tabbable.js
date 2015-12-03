@@ -1,5 +1,6 @@
 
 import platform from 'platform';
+import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 
 export default function(element) {
@@ -29,7 +30,8 @@ export default function(element) {
     return element.getAttribute('focusable') !== 'false';
   }
 
-  if (element instanceof element.ownerDocument.defaultView.SVGElement) {
+  const _window = getWindow(element);
+  if (element instanceof _window.SVGElement) {
     if (nodeName === 'a' && element.hasAttribute('xlink:href')) {
       // any focusable child of <svg> cannot be focused, but tabbed to
       if (platform.name === 'Firefox') {

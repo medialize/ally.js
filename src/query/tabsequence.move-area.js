@@ -4,6 +4,7 @@
 import 'css.escape';
 import 'array.prototype.findindex';
 import queryTabbable from './tabbable';
+import getDocument from '../util/get-document';
 import nodeArray from '../util/node-array';
 
 function getFirstSuccessorOffset(list, target) {
@@ -18,13 +19,14 @@ export default function(elements, context) {
   // part of the elements list, so we'll have to find them and
   // sort them into the elements list manually
   const usemaps = context.querySelectorAll('img[usemap]');
+  const _document = getDocument(context);
 
   // container for the <area> elements we're going to pull out of the elements list
   const maps = {};
   const addMapByName = function(name) {
     // apparently getElementsByName() also considers id attribute in IE & opera
     // https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName
-    const map = context.ownerDocument.querySelector('map[name="' + CSS.escape(name) + '"]') || null;
+    const map = _document.querySelector('map[name="' + CSS.escape(name) + '"]') || null;
     if (!map) {
       // if there is no map, the img[usemap] wasn't doing anything anyway
       return;

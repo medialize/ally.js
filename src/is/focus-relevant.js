@@ -6,6 +6,7 @@
 import '../prototype/svgelement.prototype.focus';
 import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
 import getParents from '../get/parents';
+import getWindow from '../util/get-window';
 import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 import {
@@ -137,7 +138,8 @@ export default function(element) {
     return validTabindex;
   }
 
-  polyfillElementPrototypeMatches(element.ownerDocument.defaultView);
+  const _window = getWindow(element);
+  polyfillElementPrototypeMatches(_window);
   if (element.matches('svg a[*|href]')) {
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox cannot focus <svg> child elements from script
