@@ -8,6 +8,7 @@ export default function polyfill(root) {
 
   // first try to unprefix an existing implementation
   'webkitMatchesSelector mozMatchesSelector msMatchesSelector'.split(' ').some(function(key) {
+    // NOTE: IE9 requires the Node to be part of a document, detached Nodes always return false
     if (!root.Element.prototype[key]) {
       return false;
     }

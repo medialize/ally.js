@@ -8,6 +8,7 @@
     style/focus-within()
 */
 
+import 'domtokenlist-shim';
 import shadowFocus from '../event/shadow-focus';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 import getActiveElements from '../get/active-elements';

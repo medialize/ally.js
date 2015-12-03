@@ -28,6 +28,7 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-invalid-tabindex | boolean | true if `<div tabindex="invalid-value">` is focusable |
 | focus-label-tabindex | boolean | true if `<label tabindex="-1">` is focusable |
 | focus-object-svg | boolean | true if `<object type="image/svg+xml" data="…">` is focusable |
+| focus-object-swf | boolean | true if `<object type="application/x-shockwave-flash" data="…">` is focusable |
 | focus-scroll-body | boolean | true if the child element of a scrollable area is focusable |
 | focus-scroll-container-without-overflow | boolean | true if a scrollable element is focusable (without being made scrollable using the CSS property `overflow` ) |
 | focus-scroll-container | boolean | true if a scrollable element is focusable |

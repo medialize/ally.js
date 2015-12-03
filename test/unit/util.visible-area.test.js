@@ -14,7 +14,7 @@ define([
     }
 
     function transform(element, value) {
-      element.style.transform = element.style.WebkitTransform = value;
+      element.style.transform = element.style.WebkitTransform = element.style.msTransform = value;
     }
 
     return {
@@ -72,27 +72,27 @@ define([
       },
       'translated 25%': function() {
         fixture.outer.scrollLeft = 0;
-        transform(fixture.inner, 'translate3d(-50px, 0px, 0px)');
+        transform(fixture.inner, 'translate(-50px, 0px)');
         expect(fixFloat(visibleArea(fixture.target))).to.equal(0.25);
       },
       'translated 50%': function() {
         fixture.outer.scrollLeft = 0;
-        transform(fixture.inner, 'translate3d(-100px, 0px, 0px)');
+        transform(fixture.inner, 'translate(-100px, 0px)');
         expect(fixFloat(visibleArea(fixture.target))).to.equal(0.5);
       },
       'translated 75%': function() {
         fixture.outer.scrollLeft = 0;
-        transform(fixture.inner, 'translate3d(-150px, 0px, 0px)');
+        transform(fixture.inner, 'translate(-150px, 0px)');
         expect(fixFloat(visibleArea(fixture.target))).to.equal(0.75);
       },
       'translated 100%': function() {
         fixture.outer.scrollLeft = 0;
-        transform(fixture.inner, 'translate3d(-200px, 0px, 0px)');
+        transform(fixture.inner, 'translate(-200px, 0px)');
         expect(fixFloat(visibleArea(fixture.target))).to.equal(1);
       },
       'translated 125%': function() {
         fixture.outer.scrollLeft = 0;
-        transform(fixture.inner, 'translate3d(-250px, 0px, 0px)');
+        transform(fixture.inner, 'translate(-250px, 0px)');
         expect(fixFloat(visibleArea(fixture.target))).to.equal(.75);
       },
     };

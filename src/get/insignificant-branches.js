@@ -7,6 +7,7 @@
 
 import nodeArray from '../util/node-array';
 import {getParentComparator} from '../util/compare-position';
+import getDocument from '../util/get-document';
 
 function queryInsignificantBranches({context, filter}) {
   const containsFilteredElement = function(node) {
@@ -37,8 +38,9 @@ function queryInsignificantBranches({context, filter}) {
   // see http://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
   CollectInsignificantBranchesFilter.acceptNode = CollectInsignificantBranchesFilter;
 
+  const _document = getDocument(context);
   // see https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker
-  const walker = context.ownerDocument.createTreeWalker(
+  const walker = _document.createTreeWalker(
     // root element to start search in
     context,
     // element type filter

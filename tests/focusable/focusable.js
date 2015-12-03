@@ -144,7 +144,8 @@ function captureStuff() {
       'ally/is/only-tabbable',
       'platform',
       'jquery',
-      'jquery-ui/core'
+      'jquery-ui/core',
+      'ally/prototype/window.requestanimationframe',
     ], function (queryFocusable, queryTabsequence, queryTabbable, isOnlyTabbable, platform, $) {
       // save results
       results.focusEvents = focusEventHistory.filter(ignore);
