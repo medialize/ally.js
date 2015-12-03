@@ -14,7 +14,6 @@ import {
   isUserModifyWritable,
 } from './is.util';
 
-import canFocusAreaTabindex from '../supports/focus-area-tabindex';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
 import canFocusFieldset from '../supports/focus-fieldset';
@@ -59,11 +58,6 @@ export default function(element) {
   }
 
   if (nodeName === 'area') {
-    if (!canFocusAreaTabindex && element.hasAttribute('tabindex')) {
-      // Blink and WebKit do not consider <area tabindex="-1" href="#void"> focusable
-      return false;
-    }
-
     return isValidArea(element);
   }
 

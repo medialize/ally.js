@@ -38,6 +38,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
@@ -102,7 +103,7 @@ define([
       },
 
       'extended: Shadow DOM': function() {
-        if (document.body.shadowRoot === undefined) {
+        if (document.body.createShadowRoot === undefined) {
           this.skip('Shadow DOM not supported');
         }
 
@@ -118,6 +119,7 @@ define([
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
           + ', #image-map-area'
+          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + (supports.canFocusSvgMethod ? ', #svg-link' : '')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')

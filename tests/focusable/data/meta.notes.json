@@ -17,10 +17,10 @@
     "browsers": {
       "chrome-stable": "@fieldset-disabled-input",
       "chrome-nightly": "@fieldset-disabled-input",
-      "safari-8": "@fieldset-disabled-input",
+      "safari-9": "@fieldset-disabled-input",
       "webkit-nightly": "@fieldset-disabled-input",
-      "android44-chrome": "@fieldset-disabled-input",
-      "ios-8": "@fieldset-disabled-input"
+      "chrome-mobile": "@fieldset-disabled-input",
+      "ios-9": "@fieldset-disabled-input"
     }
   },
 
@@ -53,6 +53,18 @@
     "browsers": {
       "firefox-stable": "@image-map-firefox-loading",
       "firefox-nightly": "@image-map-firefox-loading"
+    }
+  },
+
+  "@image-map-area-no-href": "If an `<area>` element doesn't have an `href` attribute, it's not a link (and should therefore not be interactive).",
+  "area": {
+    "alias": [
+      "area[tabindex=-1]",
+      "img[tabindex=-1] area"
+    ],
+    "browsers": {
+      "firefox-stable": "@image-map-area-no-href",
+      "firefox-nightly": "@image-map-area-no-href"
     }
   },
 
@@ -195,10 +207,10 @@
     "browsers": {
       "chrome-stable": "@svg-onfocus",
       "chrome-nightly": "@svg-onfocus",
-      "safari-8": "@svg-onfocus",
+      "safari-9": "@svg-onfocus",
       "webkit-nightly": "@svg-onfocus",
-      "android44-chrome": "@svg-onfocus",
-      "ios-8": "@svg-onfocus"
+      "chrome-mobile": "@svg-onfocus",
+      "ios-9": "@svg-onfocus"
     }
   },
 
@@ -225,6 +237,18 @@
       "details[open] a[href]"
     ],
     "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1 and [not implemented everywhere](http://caniuse.com/#feat=details)."
+  },
+
+  "-details-webkit-151767": {
+    "alias": [
+      "details summary",
+      "details[tabindex=-1] summary",
+      "details[open] summary",
+      "details[open] a[href]"
+    ],
+    "browsers": {
+      "webkit-nightly": "This element should be keyboard focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
+    }
   },
 
   "@ie-scroll-div": "Internet Explorer turns `<div>` and `<span>` elements focusable when they're scrollable, but does *not* do the same for other sectioning or block-level elements",

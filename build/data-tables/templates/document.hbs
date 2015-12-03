@@ -351,6 +351,10 @@
     function hideDuplicateRows() {
       var hashes = {};
       function hashDataCells(row) {
+        if (!row) {
+          return '';
+        }
+
         return [].map.call(row.children, function(cell) {
           return cell.nodeName === 'TD' ? cell.textContent : '';
         }).join(' -- ');

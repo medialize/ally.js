@@ -36,6 +36,11 @@ Boolean, `true` if the element is focus relevant.
 ## Examples
 
 
+## Changes
+
+* Since `v#master` the existence of the `href` attribute is considered.
+
+
 ## Notes
 
 * [object element usemap should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756)

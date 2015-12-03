@@ -71,7 +71,7 @@ define([
           var element = document.getElementById('image-map-area');
           expect(isValidArea(element)).to.equal(true, 'valid area');
           element = document.getElementById('image-map-area-nolink');
-          expect(isValidArea(element)).to.equal(false, 'no href');
+          expect(isValidArea(element)).to.equal(supports.canFocusAreaWithoutHref, 'no href');
         }), 200);
       },
       'area in map for img in link': function() {

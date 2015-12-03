@@ -93,6 +93,8 @@
     <a href="#void" data-label="a[href]">link</a>
     <a href="" data-label="a[href=&quot;&quot;]">link</a>
     <a href="#void" data-label="a[href][tabindex=-1]" tabindex="-1">link</a>
+
+    <span href="#void" data-label="span[href]">span with href attribute (invalid html)</span>
   </article>
 
   <!-- https://html.spec.whatwg.org/multipage/microdata.html#microdata -->
@@ -109,11 +111,13 @@
 
     <map name="image-maps-1">
       <area href="#void" shape="rect" coords="63,19,144,45" data-label="area[href].upper">
+      <area shape="rect" coords="63,50,144,60" data-label="area">
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
     </map>
 
     <map name="image-maps-2">
       <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.invalid-image area[href].upper">
+      <area shape="rect" coords="63,50,144,60" data-label="map.invalid-image area">
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.invalid-image area[href].lower">
     </map>
 
@@ -127,6 +131,7 @@
 
     <map name="image-maps-focusable-1">
       <area tabindex="-1" href="#void" shape="rect" coords="63,19,144,45" data-label="area[href][tabindex=-1].upper">
+      <area tabindex="-1" shape="rect" coords="63,50,144,60" data-label="area[tabindex=-1]">
       <area tabindex="-1" href="#void" shape="rect" coords="63,59,144,85" data-label="area[href][tabindex=-1].lower">
     </map>
 
@@ -134,6 +139,7 @@
 
     <map name="image-maps-focusable-2">
       <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[tabindex=-1] area[href].upper">
+      <area shape="rect" coords="63,50,144,60" data-label="img[tabindex=-1] area">
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="img[tabindex=-1] area[href].lower">
     </map>
 
@@ -403,6 +409,7 @@
 
     <map name="image-maps-3">
       <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.object area[href].upper">
+      <area shape="rect" coords="63,50,144,60" data-label="map.object area">
       <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.object area[href].lower">
     </map>
 
@@ -660,10 +667,10 @@
   <article>
     <h2 id="css-user-modify">CSS <code>user-modify</code></h2>
 
-    <span href="#void" data-label="span{user-modify}" class="user-modify">
+    <span data-label="span{user-modify}" class="user-modify">
       hello world
     </span>
-    <span href="#void" data-label="span{user-modify}[tabindex=-1]" class="user-modify" tabindex="-1">
+    <span data-label="span{user-modify}[tabindex=-1]" class="user-modify" tabindex="-1">
       hello world
     </span>
   </article>

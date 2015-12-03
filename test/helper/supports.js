@@ -3,7 +3,9 @@ define(function(require) {
   return {
     allowsInvalidTabindexValue: require('ally/supports/focus-invalid-tabindex'),
     allowsTrailingCharacters: require('ally/supports/focus-tabindex-trailing-characters'),
+    canFocusAreaImgTabindex: require('ally/supports/focus-area-img-tabindex'),
     canFocusAreaTabindex: require('ally/supports/focus-area-tabindex'),
+    canFocusAreaWithoutHref: require('ally/supports/focus-area-without-href'),
     canFocusAudioWithoutControls: require('ally/supports/focus-audio-without-controls'),
     canFocusBrokenImageMap: require('ally/supports/focus-broken-image-map'),
     canFocusChildrenOfFocusableFlexbox: require('ally/supports/focus-children-of-focusable-flexbox'),

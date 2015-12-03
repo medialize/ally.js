@@ -6,6 +6,8 @@
       cache.set('key', 'value');
  */
 
+import version from '../version';
+
 function readLocalStorage(key) {
   // allow reading from storage to retrieve previous support results
   // even while the document does not have focus
@@ -46,12 +48,13 @@ const userAgent = window.navigator.userAgent;
 const cacheKey = 'ally-supports-cache';
 let cache = readLocalStorage(cacheKey);
 
-// update the cache if the user agent changes (newer version, etc)
-if (cache.userAgent !== userAgent) {
+// update the cache if ally or the user agent changed (newer version, etc)
+if (cache.userAgent !== userAgent || cache.version !== version) {
   cache = {};
 }
 
 cache.userAgent = userAgent;
+cache.version = version;
 
 export default {
   get: function getCacheValue(key) {

@@ -10,6 +10,10 @@ define(['./custom.fixture'], function(customFixture) {
     }
 
     var firstShadowHost = document.getElementById('first-shadow-host');
+    if (!firstShadowHost.createShadowRoot) {
+      return;
+    }
+
     var firstShadowRoot = firstShadowHost.createShadowRoot();
     firstShadowRoot.innerHTML = [
       '<input id="first-input" type="text" value="first-input">',
@@ -49,7 +53,7 @@ define(['./custom.fixture'], function(customFixture) {
       after: document.getElementById('after-input'),
     };
 
-    if (document.body.shadowRoot === undefined) {
+    if (document.body.createShadowRoot === undefined) {
       // NOTE: Shadow DOM is not supported
       return fixture;
     }
