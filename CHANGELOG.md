@@ -2,11 +2,34 @@
 
 ## master
 
-* changing `ally.is.*` to work with other documents (e.g. iframes) - [Issue #78](https://github.com/medialize/ally.js/issues/78)
+**will eventually released as 1.1.0** - see [milestone](https://github.com/medialize/ally.js/milestones/1.1.0%20-%20second%20wave)
+
+### Changes
+
+The following lists show the changes to the library grouped by domain.
+
+#### Browsers
+
+* Adding full support for Internet Explorer 9 - [Issue #71](https://github.com/medialize/ally.js/issues/71)
+* Dropping tests for Safari on iOS 8, keeping Safari on iOS 9
+* Dropping tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
+
+#### Dependencies
+
 * upgrading to [css.escape](https://github.com/mathiasbynens/CSS.escape) v1.3.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
+* adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9
+
+#### Focusable detection
+
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [Issue #82](https://github.com/medialize/ally.js/issues/82)
 * changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [Issue #72](https://github.com/medialize/ally.js/issues/72)
+* changing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly handle `<object type="application/x-shockwave-flash">` in IE9 - [Issue #71](https://github.com/medialize/ally.js/issues/71)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position [issue #5](https://github.com/medialize/ally.js/issues/5)
+
+
+#### Internals
+
+* changing `ally.is.*` to work with other documents (e.g. iframes) - [Issue #78](https://github.com/medialize/ally.js/issues/78)
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
