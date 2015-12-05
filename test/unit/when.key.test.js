@@ -2,11 +2,13 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/dispatch-event',
+  '../helper/fixtures/custom.fixture',
   'ally/when/key',
   'ally/when/key.binding',
-], function(registerSuite, expect, dispatchEvent, whenKey, keyBinding) {
+], function(registerSuite, expect, dispatchEvent, customFixture, whenKey, keyBinding) {
 
   registerSuite(function() {
+    var fixture;
     var handle;
 
     var preventDefaultKeydown = function(event) {
@@ -17,12 +19,22 @@ define([
       name: 'when/key',
 
       beforeEach: function() {
-
+        fixture = customFixture([
+          /*eslint-disable indent */
+          '<div id="outer">',
+            '<div id="inner">',
+              '<input type="text" id="target">',
+            '</div>',
+          '</div>',
+          /*eslint-enable indent */
+        ].join(''));
       },
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
         handle && handle.disengage({ force: true });
         document.documentElement.removeEventListener('keydown', preventDefaultKeydown, true);
+        fixture.remove();
+        fixture = null;
       },
 
       'invalid invocation': function() {
@@ -54,7 +66,6 @@ define([
           });
         }).to.throw(TypeError, 'Unknown modifier "shaft"');
       },
-
       lifecycle: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
           key: 'Enter',
@@ -93,7 +104,6 @@ define([
 
         expect(events.join(', ')).to.equal('enter', 'after second enter event');
       },
-
       disengaging: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
           key: 'Enter',
@@ -138,7 +148,6 @@ define([
 
         expect(events.join(', ')).to.equal('enter', 'after escape event');
       },
-
       defaultPrevented: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
           key: 'Enter',
@@ -176,7 +185,6 @@ define([
 
         expect(events.join(', ')).to.equal('enter', 'after unprevented enter event');
       },
-
       modifiers: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
           key: 'Enter',
@@ -234,6 +242,75 @@ define([
 
         expect(events.join(', ')).to.equal('enter, shift enter, shift ctrl enter', 'after shift+ctrl+enter event');
       },
+      context: function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        if (supportsSynthEvent.keyCode !== 13) {
+          this.skip('Synthetic enter events not supported');
+        }
+
+        var events = [];
+        handle = whenKey({
+          context: '#outer',
+          enter: function() {
+            events.push('enter');
+          },
+        });
+
+        expect(events.join(', ')).to.equal('', 'before events');
+
+        dispatchEvent.key(fixture.root, 'keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        expect(events.join(', ')).to.equal('', 'after outer enter event');
+
+        dispatchEvent.key(document.getElementById('target'), 'keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        expect(events.join(', ')).to.equal('enter', 'after inner enter event');
+      },
+      filter: function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        if (supportsSynthEvent.keyCode !== 13) {
+          this.skip('Synthetic enter events not supported');
+        }
+
+        var events = [];
+        handle = whenKey({
+          filter: '#inner',
+          enter: function() {
+            events.push('enter');
+          },
+        });
+
+        expect(events.join(', ')).to.equal('', 'before events');
+
+        dispatchEvent.key(document.getElementById('target'), 'keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        expect(events.join(', ')).to.equal('', 'after inner enter event');
+
+        dispatchEvent.key(fixture.root, 'keydown', {
+          key: 'Enter',
+          keyCode: 13,
+        });
+
+        expect(events.join(', ')).to.equal('enter', 'after outer enter event');
+      },
+
       'parse token "enter"': function() {
         var events = keyBinding('enter');
         expect(events).to.be.a('array');

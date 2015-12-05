@@ -1,5 +1,7 @@
 
 import keyBinding from './key.binding';
+import nodeArray from '../util/node-array';
+import {getParentComparator} from '../util/compare-position';
 
 // Bug 286933 - Key events in the autocomplete popup should be hidden from page scripts
 // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=286933
@@ -7,6 +9,11 @@ import keyBinding from './key.binding';
 export default function(map = {}) {
   let disengage;
   const bindings = {};
+
+  const context = nodeArray(map.context)[0] || document.documentElement;
+  delete map.context;
+  const filter = nodeArray(map.filter);
+  delete map.filter;
 
   const mapKeys = Object.keys(map);
   if (!mapKeys.length) {
@@ -43,12 +50,19 @@ export default function(map = {}) {
       return;
     }
 
+    if (filter.length) {
+      // ignore elements within the exempted sub-trees
+      const isParentOfElement = getParentComparator({element: event.target, includeSelf: true});
+      if (filter.some(isParentOfElement)) {
+        return;
+      }
+    }
+
     const key = event.keyCode || event.which;
     if (!bindings[key]) {
       return;
     }
 
-    const context = this;
     bindings[key].forEach(function(_event) {
       if (!_event.matchModifiers(event)) {
         return;
@@ -58,10 +72,10 @@ export default function(map = {}) {
     });
   };
 
-  document.documentElement.addEventListener('keydown', handleKeyDown, false);
+  context.addEventListener('keydown', handleKeyDown, false);
 
   disengage = function() {
-    document.documentElement.removeEventListener('keydown', handleKeyDown, false);
+    context.removeEventListener('keydown', handleKeyDown, false);
   };
 
   return { disengage };

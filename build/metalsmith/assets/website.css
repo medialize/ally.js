@@ -341,6 +341,7 @@ main table {
   border: 1px solid #E5E5E5;
   border-collapse: collapse;
   width: 100%;
+  word-break: normal;
 }
 main th,
 main td {

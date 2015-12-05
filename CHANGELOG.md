@@ -30,7 +30,7 @@ The following lists show the changes to the library grouped by domain.
 
 #### Keyboard support
 
-* changing [`ally.when.key`][ally/when/key] to handle modifier keys - [issue #59](https://github.com/medialize/ally.js/issues/59)
+* changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
 
 #### Internals
