@@ -14,11 +14,13 @@ export default function(map = {}) {
   }
 
   const registerBinding = function(event) {
-    if (!bindings[event.keyCode]) {
-      bindings[event.keyCode] = [];
-    }
+    event.keyCodes.forEach(function(code) {
+      if (!bindings[code]) {
+        bindings[code] = [];
+      }
 
-    bindings[event.keyCode].push(event);
+      bindings[code].push(event);
+    });
   };
 
   mapKeys.forEach(function(text) {

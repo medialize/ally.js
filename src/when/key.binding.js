@@ -4,8 +4,8 @@
 
   returns an array of objects:
     {
-      // translated key name
-      keyCode: <number>,
+      // key name translated to keyCode (possibly more than one)
+      keyCodes: [<number>],
       // translated modifiers
       modifiers: {
         altKey: null,   // ignore
@@ -83,7 +83,7 @@ function resolveKey(key) {
     throw new TypeError('Unknown key "' + key + '"');
   }
 
-  return code;
+  return [code].concat(keycode._alias[code] || []);
 }
 
 function matchModifiers(expected, event) {
@@ -98,9 +98,9 @@ export default function(text) {
   return text.split(/\s+/).map(function(_text) {
     const tokens = _text.split('+');
     const _modifiers = resolveModifiers(tokens.slice(0, -1));
-    const _key = resolveKey(tokens.slice(-1));
+    const _keyCodes = resolveKey(tokens.slice(-1));
     return {
-      keyCode: _key,
+      keyCodes: _keyCodes,
       modifiers: _modifiers,
       matchModifiers: matchModifiers.bind(null, _modifiers),
     };

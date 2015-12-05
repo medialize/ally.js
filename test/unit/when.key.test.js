@@ -239,7 +239,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13, 'keyCode');
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(false, 'meta modifier');
@@ -250,7 +250,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(false, 'meta modifier');
@@ -261,7 +261,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(null, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -272,7 +272,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(null, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -283,7 +283,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -294,7 +294,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -305,17 +305,25 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(2);
 
-        expect(events[0].keyCode).to.equal(13);
+        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier for enter');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier for enter');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier for enter');
         expect(events[0].modifiers.shiftKey).to.equal(false, 'shift modifier for enter');
 
-        expect(events[1].keyCode).to.equal(32);
+        expect(events[1].keyCodes.join(',')).to.equal('32', 'keyCode');
         expect(events[1].modifiers.altKey).to.equal(false, 'alt modifier for space');
         expect(events[1].modifiers.ctrlKey).to.equal(false, 'ctrl modifier for space');
         expect(events[1].modifiers.metaKey).to.equal(false, 'meta modifier for space');
         expect(events[1].modifiers.shiftKey).to.equal(true, 'shift modifier for space');
+      },
+      'parse token with aliased codes': function() {
+        var events = keyBinding('0 meta');
+        expect(events).to.be.a('array');
+        expect(events.length).to.equal(2);
+
+        expect(events[0].keyCodes.join(',')).to.equal('48,96', 'keyCode');
+        expect(events[1].keyCodes.join(',')).to.equal('91,92,93,224', 'keyCode');
       },
     };
   });
