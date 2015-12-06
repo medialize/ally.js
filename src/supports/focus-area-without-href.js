@@ -1,10 +1,11 @@
 
 import platform from 'platform';
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 import gif from './media/gif';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-area-without-href',
   element: 'div',
   mutate: function(element) {
@@ -24,4 +25,4 @@ export default detectFocus({
     const focus = element.querySelector('area');
     return document.activeElement === focus;
   },
-});
+}));

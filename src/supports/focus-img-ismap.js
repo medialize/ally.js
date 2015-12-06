@@ -1,11 +1,12 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 import gif from './media/gif';
 
 // NOTE: https://github.com/medialize/ally.js/issues/35
 // fixes https://github.com/medialize/ally.js/issues/20
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-ismap
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-img-ismap',
   element: 'a',
   mutate: function(element) {
@@ -13,4 +14,4 @@ export default detectFocus({
     element.innerHTML = '<img ismap src="' + gif + '" alt="">';
     return element.querySelector('img');
   },
-});
+}));

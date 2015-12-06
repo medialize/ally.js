@@ -1,13 +1,15 @@
-// see http://dev.w3.org/csswg/css-scoping-1/#deep-combinator
-// https://bugzilla.mozilla.org/show_bug.cgi?id=1117572
-// https://code.google.com/p/chromium/issues/detail?id=446051
 
 import cache from './supports-cache';
+import memorizeResult from './memorize-result';
 
 const testName = 'supports-css-shadow-piercing-deep-combinator';
-let combinator = cache.get(testName);
 
-if (typeof combinator !== 'string') {
+export default memorizeResult(function() {
+  let combinator = cache.get(testName);
+
+  // see http://dev.w3.org/csswg/css-scoping-1/#deep-combinator
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=1117572
+  // https://code.google.com/p/chromium/issues/detail?id=446051
   try {
     document.querySelector('html >>> :first-child');
     combinator = '>>>';
@@ -23,6 +25,5 @@ if (typeof combinator !== 'string') {
   }
 
   cache.set(testName, combinator);
-}
-
-export default combinator;
+  return combinator;
+});

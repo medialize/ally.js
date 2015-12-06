@@ -10,10 +10,12 @@
 
 import 'domtokenlist-shim';
 import shadowFocus from '../event/shadow-focus';
-import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
 import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
 import decorateService from '../util/decorate-service';
+
+import _supports from './focus-within.supports';
+let supports;
 
 // preferring focusin/out because they are synchronous in IE10+11
 const focusEventName = 'onfocusin' in document ? 'focusin' : 'focus';
@@ -31,9 +33,9 @@ let shadowHandle;
 function applyFocusWithinClass(active) {
   let _active = active || getActiveElements();
   let selector = '.' + className;
-  if (cssShadowPiercingDeepCombinator) {
+  if (supports.cssShadowPiercingDeepCombinator) {
     // select elements in shadow dom as well
-    selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;
+    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' ' + selector;
   } else {
     // no shadow-piercing descendant selector, no joy
     _active = _active.slice(-1);
@@ -95,9 +97,9 @@ function disengage() {
   document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
 
   let selector = '.' + className;
-  if (cssShadowPiercingDeepCombinator) {
+  if (supports.cssShadowPiercingDeepCombinator) {
     // select elements in shadow dom as well
-    selector += ', html ' + cssShadowPiercingDeepCombinator + ' ' + selector;
+    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' ' + selector;
   }
 
   // remove any remaining ally-within-focus occurrences
@@ -107,6 +109,10 @@ function disengage() {
 }
 
 function engage() {
+  if (!supports) {
+    supports = _supports();
+  }
+
   shadowHandle = shadowFocus();
   document.addEventListener(blurEventName, handleDocumentBlurEvent, true);
   document.addEventListener(focusEventName, handleDocumentFocusEvent, true);

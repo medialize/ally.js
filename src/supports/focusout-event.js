@@ -1,9 +1,11 @@
 // Blink dispatches FocusEvent("focusout"), but it is not detectable through ("onfocusout" in document.body)
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 
 let received = false;
-export default detectFocus({
+
+export default memorizeResult(() => detectFocus({
   name: 'can-dispatch-focusout',
   element: 'input',
   mutate: function(element, wrapper) {
@@ -22,4 +24,4 @@ export default detectFocus({
   validate: function(element) {
     return 'onfocusout' in element || received;
   },
-});
+}));

@@ -1,9 +1,10 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 import gif from './media/gif';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-area-img-tabindex',
   element: 'div',
   mutate: function(element) {
@@ -13,4 +14,4 @@ export default detectFocus({
 
     return element.querySelector('area');
   },
-});
+}));
