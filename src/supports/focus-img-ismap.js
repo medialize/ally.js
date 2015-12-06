@@ -1,5 +1,6 @@
 
 import detectFocus from './detect-focus';
+import gif from './media/gif';
 
 // NOTE: https://github.com/medialize/ally.js/issues/35
 // fixes https://github.com/medialize/ally.js/issues/20
@@ -9,7 +10,7 @@ export default detectFocus({
   element: 'a',
   mutate: function(element) {
     element.href = '#void';
-    element.innerHTML = '<img ismap src="data:image/png;base64,broken-image-test" alt="">';
+    element.innerHTML = '<img ismap src="' + gif + '" alt="">';
     return element.querySelector('img');
   },
 });

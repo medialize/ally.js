@@ -4,7 +4,8 @@ define([
   '../helper/fixtures/custom.fixture',
   '../helper/supports',
   'ally/element/disabled',
-], function(registerSuite, expect, customFixture, supports, elementDisabled) {
+  'ally/supports/media/mp4',
+], function(registerSuite, expect, customFixture, supports, elementDisabled, mp4) {
 
   registerSuite(function() {
     var fixture;
@@ -139,7 +140,7 @@ define([
         expect(element.style.pointerEvents).to.equal('', 'after disable undo');
       },
       'disable removes video controls': function() {
-        var element = fixture.add('<video controls src="data:video/mp4;base64,video-focus-test"></audio>').firstElementChild;
+        var element = fixture.add('<video controls src="' + mp4 + '"></video>').firstElementChild;
         expect(element.hasAttribute('controls')).to.equal(true, 'before disable');
 
         elementDisabled(element, true);
