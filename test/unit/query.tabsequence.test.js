@@ -24,6 +24,59 @@ define([
       area.parentNode.appendChild(newArea);
     };
 
+    var createShadowDomStructure = function(element) {
+      var input = {};
+      var root = {};
+
+      var firstShadowRoot = element.createShadowRoot();
+      firstShadowRoot.innerHTML = [
+        '<input type="text" id="input-1" value="input-1" tabindex="2">',
+        '<input type="text" id="input-6" value="input-6" tabindex="0">',
+        '<input type="text" id="input-2" value="input-2" tabindex="2">',
+        '<div id="second-shadow-host"></div>',
+        '<div id="third-shadow-host"></div>',
+        '<input type="text" id="input-9" value="input-9" tabindex="0">',
+        '<input type="text" id="input-0" value="input-0" tabindex="1">',
+      ].join('');
+
+      root.first = firstShadowRoot;
+      input['input-0'] = firstShadowRoot.getElementById('input-0');
+      input['input-1'] = firstShadowRoot.getElementById('input-1');
+      input['input-2'] = firstShadowRoot.getElementById('input-2');
+      input['input-6'] = firstShadowRoot.getElementById('input-6');
+      input['input-9'] = firstShadowRoot.getElementById('input-9');
+
+      var secondShadowHost = firstShadowRoot.getElementById('second-shadow-host');
+      var secondShadowRoot = secondShadowHost.createShadowRoot();
+      secondShadowRoot.innerHTML = [
+        '<input type="text" id="input-8" value="input-8" tabindex="0">',
+        '<input type="text" id="input-7" value="input-7" tabindex="1">',
+      ].join('');
+
+      root.second = secondShadowRoot;
+      input['input-7'] = secondShadowRoot.getElementById('input-7');
+      input['input-8'] = secondShadowRoot.getElementById('input-8');
+
+      var thirdShadowHost = firstShadowRoot.getElementById('third-shadow-host');
+      thirdShadowHost.setAttribute('tabindex', '2');
+      var thirdShadowRoot = thirdShadowHost.createShadowRoot();
+      thirdShadowRoot.innerHTML = [
+        '<input type="text" id="input-4" value="input-4" tabindex="2">',
+        '<input type="text" id="input-5" value="input-5" tabindex="0">',
+        '<input type="text" id="input-3" value="input-3" tabindex="1">',
+      ].join('');
+
+      root.third = thirdShadowRoot;
+      input['input-3'] = thirdShadowRoot.getElementById('input-3');
+      input['input-4'] = thirdShadowRoot.getElementById('input-4');
+      input['input-5'] = thirdShadowRoot.getElementById('input-5');
+
+      return {
+        root: root,
+        input: input,
+      };
+    };
+
     return {
       name: 'query/tabsequence',
 
@@ -80,6 +133,55 @@ define([
           context: '.context',
           includeContext: true,
         });
+
+        expect(elementsString(result)).to.equal(expected);
+      },
+
+      'shadowed tabindex': function() {
+        if (document.body.createShadowRoot === undefined) {
+          this.skip('Shadow DOM not supported');
+        }
+
+        var context = fixture.add('<input id="shadow-start"><div id="shadow-host"></div><input id="shadow-end">');
+        createShadowDomStructure(document.getElementById('shadow-host'));
+
+        var expectLocal = '#' + [
+          'shadow-start',
+          'input-0',
+          'input-1',
+          'input-2',
+          'third-shadow-host',
+          'input-3',
+          'input-4',
+          'input-5',
+          'input-6',
+          'input-7',
+          'input-8',
+          'input-9',
+          'shadow-end',
+        ].join(', #');
+        var expectGlobal = '#' + [
+          'input-7',
+          'input-3',
+          'input-0',
+          'input-1',
+          'input-2',
+          'third-shadow-host',
+          'input-4',
+          'shadow-start',
+          'input-6',
+          'input-8',
+          'input-5',
+          'input-9',
+          'shadow-end',
+        ].join(', #');
+
+        var result = queryTabsequence({
+          context: context,
+          strategy: 'strict',
+        });
+
+        var expected = platform.name === 'Firefox' ? expectGlobal : expectLocal;
 
         expect(elementsString(result)).to.equal(expected);
       },
