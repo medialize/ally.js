@@ -65,12 +65,6 @@ Unlike the singleton decorator, the context decorator allows multiple concurrent
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object and returned to the caller. Unlike the singleton decorator, the context decorator returns a unique result object for every `engage()` invocation.
 
 
-
-### Sort elements by tabindex
-
-`util/sort-elements-by-tabindex` is a function to sort a list of elements in such a way that elements with a positive tabindex (e.g. `[tabindex="4"]`) come first in ascending order and the other nodes remain in DOM order.
-
-
 ### Retrieve tabindex value
 
 `util/tabindex-value` returns the value of the tabindex attribute (not property!) as an integer, or null for missing or invalid values

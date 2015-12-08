@@ -6,8 +6,8 @@ define([
   'platform',
   '../helper/supports',
   'ally/query/tabbable',
-  'ally/query/tabsequence.move-area',
-], function(registerSuite, expect, focusableFixture, elementsString, platform, supports, queryTabbable, moveArea) {
+  'ally/query/tabsequence.sort-area',
+], function(registerSuite, expect, focusableFixture, elementsString, platform, supports, queryTabbable, sortArea) {
 
   registerSuite(function() {
     var fixture;
@@ -26,7 +26,7 @@ define([
     };
 
     return {
-      name: 'query/tabsequence.move-area',
+      name: 'query/tabsequence.sort-area',
 
       beforeEach: function() {
         fixture = focusableFixture();
@@ -57,7 +57,7 @@ define([
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var tabbable = queryTabbable({context: fixture.root});
-          var result = moveArea(tabbable, fixture.root);
+          var result = sortArea(tabbable, fixture.root);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);
@@ -79,7 +79,7 @@ define([
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var tabbable = queryTabbable({context: fixture.root});
-          var result = moveArea(tabbable, fixture.root);
+          var result = sortArea(tabbable, fixture.root);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);
@@ -100,7 +100,7 @@ define([
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var tabbable = queryTabbable({context: fixture.root});
-          var result = moveArea(tabbable, fixture.root);
+          var result = sortArea(tabbable, fixture.root);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);
@@ -119,7 +119,7 @@ define([
         setTimeout(deferred.callback(function() {
           var context = document.getElementById('img-container');
           var tabbable = queryTabbable({context: context});
-          var result = moveArea(tabbable, context);
+          var result = sortArea(tabbable, context);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);
@@ -138,7 +138,7 @@ define([
         setTimeout(deferred.callback(function() {
           var context = document.getElementById('img-container');
           var tabbable = queryTabbable({context: context});
-          var result = moveArea(tabbable, context);
+          var result = sortArea(tabbable, context);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);
@@ -158,7 +158,7 @@ define([
         setTimeout(deferred.callback(function() {
           var context = document.getElementById('img-container');
           var tabbable = queryTabbable({context: context});
-          var result = moveArea(tabbable, context);
+          var result = sortArea(tabbable, context);
 
           expect(tabbable.length).to.equal(0);
           expect(result.length).to.equal(2);
@@ -186,7 +186,7 @@ define([
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var tabbable = queryTabbable({context: fixture.root});
-          var result = moveArea(tabbable, fixture.root);
+          var result = sortArea(tabbable, fixture.root);
 
           expect(elementsString(result)).to.equal(expected);
         }), 200);

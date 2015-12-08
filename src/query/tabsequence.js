@@ -3,10 +3,9 @@
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import queryTabbable from './tabbable';
-import moveAreaToImagePosition from './tabsequence.move-area';
 import nodeArray from '../util/node-array';
-import sortTabindex from '../util/sort-elements-by-tabindex';
-
+import sortArea from './tabsequence.sort-area';
+import sortTabindex from './tabsequence.sort-tabindex';
 import _supports from './tabsequence.supports';
 let supports;
 
@@ -38,7 +37,7 @@ export default function({context, includeContext, strategy} = {}) {
   if (supports.tabsequenceSortsAreaAtImagePosition) {
     // Some browsers sort <area> in DOM order, some place the <area>s
     // where the <img> referecing them would've been in DOM order.
-    elements = moveAreaToImagePosition(elements, _context);
+    elements = sortArea(elements, _context);
   }
 
   return elements;
