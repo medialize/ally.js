@@ -64,6 +64,13 @@ Unlike the singleton decorator, the context decorator allows multiple concurrent
 
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object and returned to the caller. Unlike the singleton decorator, the context decorator returns a unique result object for every `engage()` invocation.
 
+### Sort elements according to DOM order
+
+`util/sort-dom-order` sorts an `Array` of elements according to their relative position in the DOM.
+
+### Merge elements according to DOM order
+
+`util/merge-dom-order` merges an `Array` of elements with another `Array` of elements so that the resulting array's sorting order corresponds to DOM each element's relative position in the DOM.
 
 ### Retrieve tabindex value
 

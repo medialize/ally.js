@@ -110,6 +110,7 @@ define([
       'test/unit/util.context-to-element.test',
       'test/unit/util.decorate-context.test',
       'test/unit/util.decorate-service.test',
+      'test/unit/util.merge-dom-order.test',
       'test/unit/util.node-array.test',
       'test/unit/util.tabindex-value.test',
       'test/unit/util.visible-area.test',
