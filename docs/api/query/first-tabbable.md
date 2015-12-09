@@ -57,8 +57,8 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
 ## Related resources
 
-* [`ally.query.tabbable`](tabbable.md) is used to find keyboard focusable elements
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.tabbable`](tabbable.md) finds all keyboard focusable elements in DOM order
+* [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
 
 ## Contributing

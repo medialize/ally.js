@@ -27,6 +27,7 @@ function sortElements(elements, _context) {
   if (supports.tabsequenceSortsAreaAtImagePosition) {
     // Some browsers sort <area> in DOM order, some place the <area>s
     // where the <img> referecing them would've been in DOM order.
+    // https://github.com/medialize/ally.js/issues/5
     elements = sortArea(elements, _context);
   }
 
@@ -41,7 +42,9 @@ export default function({context, includeContext, strategy} = {}) {
   const _context = nodeArray(context)[0] || document.documentElement;
   let elements = queryTabbable({context: _context, includeContext, strategy});
 
-  if (platform.name === 'Chrome' || platform.name === 'Chrome Mobile') {
+  if (document.body.createShadowRoot && (platform.name === 'Chrome' || platform.name === 'Chrome Mobile')) {
+    // sort tabindex localized to shadow dom
+    // see https://github.com/medialize/ally.js/issues/6
     elements = sortShadowed(elements, _context, sortElements);
   } else {
     elements = sortElements(elements, _context);
