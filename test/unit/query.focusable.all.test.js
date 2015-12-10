@@ -3,7 +3,6 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
-  '../helper/elements-string',
   '../helper/supports',
   'platform',
   'ally/query/focusable',
@@ -12,7 +11,6 @@ define([
   expect,
   focusableFixture,
   shadowInputFixture,
-  elementsString,
   supports,
   platform,
   queryFocusable
@@ -35,56 +33,74 @@ define([
       document: function() {
         var result = queryFocusable({
           strategy: 'all',
-        });
+        }).map(fixture.nodeToString);
 
         var canTestVideoEmbed = Boolean(document.getElementById('embed'));
-        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
-          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
-          + ', #link, #link-tabindex--1'
-          + ', #image-map-area'
-          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
-          + ', #object-svg'
-          + (platform.name === 'IE' ? ', #svg' : '')
-          + (supports.canFocusObjectSvg ? ', #object-tabindex-svg' : '')
-          + ', #svg-link'
-          + (canTestVideoEmbed ? ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg' : ', #embed-svg, #embed-tabindex-svg')
-          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
-          + ', #audio-controls'
-          + ', #input, #input-tabindex--1, #input-disabled'
-          + (supports.canFocusFieldset ? ', fieldset' : '')
-          + ', #fieldset-disabled-input'
-          + ', #span-contenteditable'
-          + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
-          + ', #img-ismap-link'
-          + (supports.canFocusImgIsmap ? ', #img-ismap' : '')
-          + (supports.canFocusScrollContainer ? ', #scroll-container' : '')
-          + (supports.canFocusScrollBody ? ', #scroll-body' : '')
-          + (supports.canFocusScrollContainerWithoutOverflow ? ', #scroll-container-without-overflow, #scroll-body-without-overflow' : '');
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
+          '#object-svg',
+          platform.name === 'IE' && '#svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          '#svg-link',
+          canTestVideoEmbed && '#embed',
+          canTestVideoEmbed && '#embed-tabindex-0',
+          '#embed-svg',
+          '#embed-tabindex-svg',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#input-disabled',
+          supports.canFocusFieldset && 'fieldset',
+          '#fieldset-disabled-input',
+          '#span-contenteditable',
+          document.body.style.webkitUserModify !== undefined && '#span-user-modify',
+          '#img-ismap-link',
+          supports.canFocusImgIsmap && '#img-ismap',
+          supports.canFocusScrollContainer && '#scroll-container',
+          supports.canFocusScrollBody && '#scroll-body',
+          supports.canFocusScrollContainerWithoutOverflow && '#scroll-container-without-overflow',
+          supports.canFocusScrollContainerWithoutOverflow && '#scroll-body-without-overflow',
+        ].filter(Boolean);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       context: function() {
-        var expected = '#link, #link-tabindex--1';
+        var expected = [
+          '#link',
+          '#link-tabindex--1',
+        ];
         var result = queryFocusable({
           strategy: 'all',
           context: '.context',
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'context and self': function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '-1');
 
-        var expected = 'div, #link, #link-tabindex--1';
+        var expected = [
+          'div',
+          '#link',
+          '#link-tabindex--1',
+        ];
         var result = queryFocusable({
           strategy: 'all',
           context: '.context',
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'children of <canvas>': function() {
@@ -99,17 +115,23 @@ define([
             '<span tabindex="-1" id="canvas-span-tabindex--1">hello</span>',
           '</canvas>',
           /*eslint-enable indent */
-        ].join(''), 'canvas-container');
+        ], 'canvas-container');
 
-        var expected = '#canvas-input, #canvas-input-tabindex--1, #canvas-a, #canvas-a-tabindex--1'
-          + ', #canvas-span-tabindex-0, #canvas-span-tabindex--1';
+        var expected = [
+          '#canvas-input',
+          '#canvas-input-tabindex--1',
+          '#canvas-a',
+          '#canvas-a-tabindex--1',
+          '#canvas-span-tabindex-0',
+          '#canvas-span-tabindex--1',
+        ];
         var result = queryFocusable({
           strategy: 'all',
           context: container,
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'extended: Shadow DOM': function() {
@@ -124,27 +146,41 @@ define([
 
         var result = queryFocusable({
           strategy: 'all',
-        });
-        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
-        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
-          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
-          + ', #link, #link-tabindex--1'
-          + ', #image-map-area'
-          + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
-          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
-          + ', #svg-link'
-          + (canTestVideoEmbed ? ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg' : ', #embed-svg, #embed-tabindex-svg')
-          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
-          + ', #audio-controls'
-          + ', #input, #input-tabindex--1'
-          + ', #input-disabled, #fieldset-disabled-input'
-          + ', #span-contenteditable'
-          + (document.body.style.webkitUserModify !== undefined ? ', #span-user-modify' : '')
-          + ', #img-ismap-link'
-          + (supports.canFocusScrollContainer ? ', #scroll-container' : '')
-          + ', #first-input, #second-input, #third-input';
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
+          supports.canFocusObjectSvg && '#object-svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          '#svg-link',
+          canTestVideoEmbed && '#embed',
+          canTestVideoEmbed && '#embed-tabindex-0',
+          '#embed-svg',
+          '#embed-tabindex-svg',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#input-disabled',
+          '#fieldset-disabled-input',
+          '#span-contenteditable',
+          document.body.style.webkitUserModify !== undefined && '#span-user-modify',
+          '#img-ismap-link',
+          supports.canFocusScrollContainer && '#scroll-container',
+          '#first-input',
+          '#second-input',
+          '#third-input',
+        ].filter(Boolean);
+
+        expect(result).to.deep.equal(expected);
       },
     };
   });

@@ -24,7 +24,7 @@ define([
           '<div id="tabindex-1" tabindex="1">text</div>',
           '<div id="tabindex-2" tabindex="2">text</div>',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

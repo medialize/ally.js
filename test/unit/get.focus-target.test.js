@@ -27,7 +27,7 @@ define([
             '<span id="none" data-label="none-inner">nested</span>',
           '</div>',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

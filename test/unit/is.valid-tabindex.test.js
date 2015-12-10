@@ -22,7 +22,7 @@ define([
           '<div id="tabindex-0-char" tabindex="0char"></div>',
           '<div id="tabindex-bad" tabindex="bad"></div>',
           '<div id="tabindex-empty" tabindex=""></div>',
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

@@ -46,7 +46,7 @@ define([
           '</map>',
           '<img usemap="#broken-map" src="' + invalidGif + '" alt="">',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

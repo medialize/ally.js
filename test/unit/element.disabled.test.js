@@ -25,7 +25,7 @@ define([
             '<text x="10" y="20" id="svg-text" focusable="true">text</text>',
           '</svg>',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

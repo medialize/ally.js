@@ -3,7 +3,6 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
-  '../helper/elements-string',
   '../helper/supports',
   'ally/query/focusable',
 ], function(
@@ -11,7 +10,6 @@ define([
   expect,
   focusableFixture,
   shadowInputFixture,
-  elementsString,
   supports,
   queryFocusable
 ) {
@@ -31,40 +29,55 @@ define([
       },
 
       document: function() {
-        var result = queryFocusable();
-        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
-          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
-          + ', #link, #link-tabindex--1'
-          + ', #image-map-area'
-          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
-          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
-          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
-          + ', #audio-controls'
-          + ', #input, #input-tabindex--1, #span-contenteditable'
-          + ', #img-ismap-link';
+        var result = queryFocusable().map(fixture.nodeToString);
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusObjectSvg && '#object-svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          supports.canFocusSvgMethod && '#svg-link',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#span-contenteditable',
+          '#img-ismap-link',
+        ].filter(Boolean);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       context: function() {
-        var expected = '#link, #link-tabindex--1';
+        var expected = [
+          '#link',
+          '#link-tabindex--1',
+        ];
         var result = queryFocusable({
           context: '.context',
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'context and self': function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '-1');
 
-        var expected = 'div, #link, #link-tabindex--1';
+        var expected = [
+          'div',
+          '#link',
+          '#link-tabindex--1',
+        ];
         var result = queryFocusable({
           context: '.context',
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'children of <canvas>': function() {
@@ -79,16 +92,22 @@ define([
             '<span tabindex="-1" id="canvas-span-tabindex--1">hello</span>',
           '</canvas>',
           /*eslint-enable indent */
-        ].join(''), 'canvas-container');
+        ], 'canvas-container');
 
-        var expected = '#canvas-input, #canvas-input-tabindex--1, #canvas-a, #canvas-a-tabindex--1'
-          + ', #canvas-span-tabindex-0, #canvas-span-tabindex--1';
+        var expected = [
+          '#canvas-input',
+          '#canvas-input-tabindex--1',
+          '#canvas-a',
+          '#canvas-a-tabindex--1',
+          '#canvas-span-tabindex-0',
+          '#canvas-span-tabindex--1',
+        ];
         var result = queryFocusable({
           context: container,
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'Shadow DOM': function() {
@@ -105,20 +124,30 @@ define([
         fixture.root.appendChild(host);
         shadowInputFixture.createShadowRoot(fixture);
 
-        var result = queryFocusable();
-        var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
-          + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
-          + ', #link, #link-tabindex--1'
-          + ', #image-map-area'
-          + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
-          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
-          + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
-          + ', #audio-controls'
-          + ', #input, #input-tabindex--1, #span-contenteditable'
-          + ', #img-ismap-link'
-          + ', #first-input, #second-input, #third-input';
+        var result = queryFocusable().map(fixture.nodeToString);
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusObjectSvg && '#object-svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          supports.canFocusSvgMethod && '#svg-link',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#span-contenteditable',
+          '#img-ismap-link',
+          '#first-input',
+          '#second-input',
+          '#third-input',
+        ].filter(Boolean);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
     };
   });

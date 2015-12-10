@@ -27,7 +27,7 @@ define([
             '</div>',
           '</div>',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
@@ -86,14 +86,14 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before enter event');
+        expect(events).to.deep.equal([], 'before enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after enter event');
+        expect(events).to.deep.equal(['enter'], 'after enter event');
 
         handle.disengage();
 
@@ -102,7 +102,7 @@ define([
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after second enter event');
+        expect(events).to.deep.equal(['enter'], 'after second enter event');
       },
       disengaging: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
@@ -125,28 +125,28 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before enter event');
+        expect(events).to.deep.equal([], 'before enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after enter event');
+        expect(events).to.deep.equal(['enter'], 'after enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after second enter event');
+        expect(events).to.deep.equal(['enter'], 'after second enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Escape',
           keyCode: 27,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after escape event');
+        expect(events).to.deep.equal(['enter'], 'after escape event');
       },
       defaultPrevented: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
@@ -167,14 +167,14 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before events');
+        expect(events).to.deep.equal([], 'before events');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('', 'after prevented enter event');
+        expect(events).to.deep.equal([], 'after prevented enter event');
 
         document.documentElement.removeEventListener('keydown', preventDefaultKeydown, true);
 
@@ -183,7 +183,7 @@ define([
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after unprevented enter event');
+        expect(events).to.deep.equal(['enter'], 'after unprevented enter event');
       },
       modifiers: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
@@ -209,21 +209,21 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before events');
+        expect(events).to.deep.equal([], 'before events');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Space',
           keyCode: 32,
         });
 
-        expect(events.join(', ')).to.equal('', 'after space event');
+        expect(events).to.deep.equal([], 'after space event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after enter event');
+        expect(events).to.deep.equal(['enter'], 'after enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
@@ -231,7 +231,7 @@ define([
           shiftKey: true,
         });
 
-        expect(events.join(', ')).to.equal('enter, shift enter', 'after shift+enter event');
+        expect(events).to.deep.equal(['enter', 'shift enter'], 'after shift+enter event');
 
         dispatchEvent.key(document.documentElement, 'keydown', {
           key: 'Enter',
@@ -240,7 +240,7 @@ define([
           shiftKey: true,
         });
 
-        expect(events.join(', ')).to.equal('enter, shift enter, shift ctrl enter', 'after shift+ctrl+enter event');
+        expect(events).to.deep.equal(['enter', 'shift enter', 'shift ctrl enter'], 'after shift+ctrl+enter event');
       },
       context: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
@@ -260,21 +260,21 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before events');
+        expect(events).to.deep.equal([], 'before events');
 
         dispatchEvent.key(fixture.root, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('', 'after outer enter event');
+        expect(events).to.deep.equal([], 'after outer enter event');
 
         dispatchEvent.key(document.getElementById('target'), 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after inner enter event');
+        expect(events).to.deep.equal(['enter'], 'after inner enter event');
       },
       filter: function() {
         var supportsSynthEvent = dispatchEvent.createKey('keydown', {
@@ -294,21 +294,21 @@ define([
           },
         });
 
-        expect(events.join(', ')).to.equal('', 'before events');
+        expect(events).to.deep.equal([], 'before events');
 
         dispatchEvent.key(document.getElementById('target'), 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('', 'after inner enter event');
+        expect(events).to.deep.equal([], 'after inner enter event');
 
         dispatchEvent.key(fixture.root, 'keydown', {
           key: 'Enter',
           keyCode: 13,
         });
 
-        expect(events.join(', ')).to.equal('enter', 'after outer enter event');
+        expect(events).to.deep.equal(['enter'], 'after outer enter event');
       },
 
       'parse token "enter"': function() {
@@ -316,7 +316,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(false, 'meta modifier');
@@ -327,7 +327,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(false, 'meta modifier');
@@ -338,7 +338,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(null, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -349,7 +349,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(null, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -360,7 +360,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(null, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -371,7 +371,7 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(1);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier');
@@ -382,13 +382,13 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(2);
 
-        expect(events[0].keyCodes.join(',')).to.equal('13', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([13], 'keyCode');
         expect(events[0].modifiers.altKey).to.equal(false, 'alt modifier for enter');
         expect(events[0].modifiers.ctrlKey).to.equal(false, 'ctrl modifier for enter');
         expect(events[0].modifiers.metaKey).to.equal(null, 'meta modifier for enter');
         expect(events[0].modifiers.shiftKey).to.equal(false, 'shift modifier for enter');
 
-        expect(events[1].keyCodes.join(',')).to.equal('32', 'keyCode');
+        expect(events[1].keyCodes).to.deep.equal([32], 'keyCode');
         expect(events[1].modifiers.altKey).to.equal(false, 'alt modifier for space');
         expect(events[1].modifiers.ctrlKey).to.equal(false, 'ctrl modifier for space');
         expect(events[1].modifiers.metaKey).to.equal(false, 'meta modifier for space');
@@ -399,8 +399,8 @@ define([
         expect(events).to.be.a('array');
         expect(events.length).to.equal(2);
 
-        expect(events[0].keyCodes.join(',')).to.equal('48,96', 'keyCode');
-        expect(events[1].keyCodes.join(',')).to.equal('91,92,93,224', 'keyCode');
+        expect(events[0].keyCodes).to.deep.equal([48, 96], 'keyCode');
+        expect(events[1].keyCodes).to.deep.equal([91, 92, 93, 224], 'keyCode');
       },
     };
   });

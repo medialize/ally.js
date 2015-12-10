@@ -40,13 +40,13 @@ define([
         var handle = decorated({
           context: ['hello', 'world'],
         });
-        expect(engaged.join(' ')).to.equal('hello world', 'engaged elements after start');
-        expect(disengaged.join(' ')).to.equal('', 'disengaged elements after start');
+        expect(engaged).to.deep.equal('hello world'.split(' '), 'engaged elements after start');
+        expect(disengaged).to.deep.equal([], 'disengaged elements after start');
         expect(handle).to.be.a('object', 'type of handle');
         expect(handle.disengage).to.be.a('function');
 
         handle.disengage();
-        expect(disengaged.join(' ')).to.equal('hello world', 'disengaged elements after stop');
+        expect(disengaged).to.deep.equal('hello world'.split(' '), 'disengaged elements after stop');
       },
       'engage only': function() {
         var engaged = [];
@@ -61,7 +61,7 @@ define([
         var handle = decorated({
           context: ['hello', 'world'],
         });
-        expect(engaged.join(' ')).to.equal('hello world', 'engaged elements after start');
+        expect(engaged).to.deep.equal('hello world'.split(' '), 'engaged elements after start');
         expect(handle).to.be.a('object', 'type of handle');
         expect(handle.disengage).to.be.a('function');
 
@@ -80,12 +80,12 @@ define([
         var handle = decorated({
           context: ['hello', 'world'],
         });
-        expect(disengaged.join(' ')).to.equal('', 'disengaged elements after start');
+        expect(disengaged).to.deep.equal([], 'disengaged elements after start');
         expect(handle).to.be.a('object', 'type of handle');
         expect(handle.disengage).to.be.a('function');
 
         handle.disengage();
-        expect(disengaged.join(' ')).to.equal('hello world', 'disengaged elements after stop');
+        expect(disengaged).to.deep.equal('hello world'.split(' '), 'disengaged elements after stop');
       },
     };
   });

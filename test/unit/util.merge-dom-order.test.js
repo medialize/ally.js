@@ -27,12 +27,6 @@ define([
       };
     };
 
-    var listToString = function(list) {
-      return list.map(function(element) {
-        return element.getAttribute('data-label');
-      }).join(',');
-    };
-
     return {
       name: 'util/merge-dom-order',
 
@@ -45,7 +39,7 @@ define([
           '<div data-label="5"></div>',
           '<div data-label="6"></div>',
           '<div data-label="7"></div>',
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();
@@ -58,13 +52,13 @@ define([
         expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
         expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        var res = mergeDomOrder({
+        var expected = '1 2 3 4 5 6 7'.split(' ');
+        var result = mergeDomOrder({
           list: data.nodes,
           elements: data.extracted,
-        });
+        }).map(fixture.nodeToString);
 
-        var sequence = listToString(res);
-        expect(sequence).to.equal('1,2,3,4,5,6,7');
+        expect(result).to.deep.equal(expected);
       },
       inverse: function() {
         var source = [].slice.call(fixture.root.children, 0);
@@ -72,13 +66,13 @@ define([
         expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
         expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        var res = mergeDomOrder({
+        var expected = '1 2 3 4 5 6 7'.split(' ');
+        var result = mergeDomOrder({
           list: sortDomOrder(data.extracted),
           elements: sortDomOrder(data.nodes).reverse(),
-        });
+        }).map(fixture.nodeToString);
 
-        var sequence = listToString(res);
-        expect(sequence).to.equal('1,2,3,4,5,6,7');
+        expect(result).to.deep.equal(expected);
       },
       resolve: function() {
         var source = [].slice.call(fixture.root.children, 0);
@@ -86,7 +80,8 @@ define([
         expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
         expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        var res = mergeDomOrder({
+        var expected = '1 #2 3 #4 5 #6 7'.split(' ');
+        var result = mergeDomOrder({
           list: data.nodes,
           elements: data.extracted,
           resolveElement: function(element) {
@@ -94,10 +89,9 @@ define([
             element.setAttribute('data-label', '#' + label);
             return element;
           },
-        });
+        }).map(fixture.nodeToString);
 
-        var sequence = listToString(res);
-        expect(sequence).to.equal('1,#2,3,#4,5,#6,7');
+        expect(result).to.deep.equal(expected);
       },
       multiple: function() {
         var source = [].slice.call(fixture.root.children, 0);
@@ -105,7 +99,8 @@ define([
         expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
         expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        var res = mergeDomOrder({
+        var expected = '1 #2 @2 3 #4 @4 5 #6 @6 7'.split(' ');
+        var result = mergeDomOrder({
           list: data.nodes,
           elements: data.extracted,
           resolveElement: function(element) {
@@ -115,10 +110,9 @@ define([
             sibling.setAttribute('data-label', '@' + label);
             return [element, sibling];
           },
-        });
+        }).map(fixture.nodeToString);
 
-        var sequence = listToString(res);
-        expect(sequence).to.equal('1,#2,@2,3,#4,@4,5,#6,@6,7');
+        expect(result).to.deep.equal(expected);
       },
       replace: function() {
         var source = [].slice.call(fixture.root.children, 0);
@@ -126,7 +120,8 @@ define([
         expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
         expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        var res = mergeDomOrder({
+        var expected = '1 #2 @2 3 #4 @4 5 #6 @6 7'.split(' ');
+        var result = mergeDomOrder({
           list: source,
           elements: data.extracted,
           resolveElement: function(element) {
@@ -136,10 +131,9 @@ define([
             sibling.setAttribute('data-label', '@' + label);
             return [element, sibling];
           },
-        });
+        }).map(fixture.nodeToString);
 
-        var sequence = listToString(res);
-        expect(sequence).to.equal('1,#2,@2,3,#4,@4,5,#6,@6,7');
+        expect(result).to.deep.equal(expected);
       },
     };
   });

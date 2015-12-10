@@ -24,7 +24,7 @@ define([
           '<fieldset id="non-disabled-fieldset" tabindex="-1"></fieldset>',
           '<fieldset id="disabled-fieldset" tabindex="-1" disabled></fieldset>',
           /*eslint-enable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

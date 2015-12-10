@@ -2,11 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  '../helper/elements-string',
   'platform',
   '../helper/supports',
   'ally/query/tabbable',
-], function(registerSuite, expect, focusableFixture, elementsString, platform, supports, queryTabbable) {
+], function(registerSuite, expect, focusableFixture, platform, supports, queryTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -25,40 +24,45 @@ define([
       document: function() {
         var deferred = this.async(10000);
 
-        var expected = '#tabindex-0, #tabindex-1, #link'
-          + ', #image-map-area'
-          + (platform.name === 'Firefox' ? ', #object-svg' : '')
-          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
-          + ', #audio-controls'
-          + ', #input, #span-contenteditable'
-          + ', #img-ismap-link';
+        var expected = [
+          '#tabindex-0',
+          '#tabindex-1',
+          '#link',
+          '#image-map-area',
+          platform.name === 'Firefox' && '#object-svg',
+          supports.canFocusSvgMethod && '#svg-link',
+          '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          '#img-ismap-link',
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
-          var result = queryTabbable();
-          expect(elementsString(result)).to.equal(expected);
+          var result = queryTabbable().map(fixture.nodeToString);
+          expect(result).to.deep.equal(expected);
         }), 200);
       },
 
       context: function() {
-        var expected = '#link';
+        var expected = ['#link'];
         var result = queryTabbable({
           context: '.context',
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'context and self': function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '-1');
 
-        var expected = '#link';
+        var expected = ['#link'];
         var result = queryTabbable({
           context: '.context',
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
     };
   });

@@ -30,7 +30,7 @@ define([
             '</div>',
           '</div>',
           /*eslint-disable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind

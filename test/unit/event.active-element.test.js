@@ -22,7 +22,7 @@ define([
         fixture = customFixture([
           '<input type="text" id="first">',
           '<input type="text" id="second">',
-        ].join(''));
+        ]);
         events = [];
         document.addEventListener('active-element', collectActiveEvents, true);
       },

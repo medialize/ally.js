@@ -23,7 +23,7 @@ define([], function() {
       },
       add: function(_html, id) {
         var div = document.createElement('div');
-        div.innerHTML = _html;
+        div.innerHTML = typeof _html !== 'string' ? _html.join('') : _html;
         if (id) {
           div.id = id;
         }
@@ -31,10 +31,15 @@ define([], function() {
         fixture.root.appendChild(div);
         return div;
       },
+      nodeToString: function(element) {
+        return element.id && ('#' + element.id)
+          || element.getAttribute('data-label')
+          || element.nodeName.toLowerCase();
+      },
     };
 
     fixture.root.id = 'intern-dom-fixture';
-    fixture.root.innerHTML = html;
+    fixture.root.innerHTML = typeof html !== 'string' ? html.join('') : html;
     (context || document.body).appendChild(fixture.root);
     return fixture;
   };

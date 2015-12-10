@@ -18,7 +18,7 @@ define([
             '<span id="target">target</span>',
           '</div>',
           /*eslint-disable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();
@@ -31,13 +31,14 @@ define([
         }).to.throw(TypeError, 'get/parents requires valid options.context');
       },
       parents: function() {
+        var expected = '#target div #intern-dom-fixture body html'.split(' ');
         var target = getParents({
           context: '#target',
         });
         var path = target.map(function(element) {
           return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
-        }).join(' > ');
-        expect(path).to.equal('#target > div > #intern-dom-fixture > body > html');
+        });
+        expect(path).to.deep.equal(expected);
       },
     };
   });

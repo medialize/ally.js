@@ -27,7 +27,7 @@ define([
           '<label tabindex="0" id="label-tabindex-0">text</label>',
           '<label tabindex="-1" id="label-tabindex--1">text</label>',
           /*eslint-enable indent */
-        ].join(''), 'svg-container');
+        ], 'svg-container');
       },
       afterEach: function() {
         fixture.remove();

@@ -2,17 +2,21 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
-  '../helper/elements-string',
   '../helper/supports',
   'ally/style/focus-within',
-], function(registerSuite, expect, shadowInputFixture, elementsString, supports, styleFocusWithin) {
+], function(registerSuite, expect, shadowInputFixture, supports, styleFocusWithin) {
 
   registerSuite(function() {
     var fixture;
     var handle;
 
     function focusWithinElements(context) {
-      return elementsString((context || document).querySelectorAll('.ally-focus-within'));
+      return [].slice.call((context || document).querySelectorAll('.ally-focus-within'), 0);
+    }
+
+    function _expect(message, expected, context) {
+      var result = focusWithinElements(context).map(fixture.nodeToString);
+      expect(result).to.deep.equal(expected, message);
     }
 
     return {
@@ -29,7 +33,7 @@ define([
       },
 
       lifecycle: function() {
-        expect(focusWithinElements()).to.equal('', 'before engage');
+        _expect('before engage', []);
 
         handle = styleFocusWithin();
         expect(handle.disengage).to.be.a('function');
@@ -42,14 +46,14 @@ define([
         }
 
         expect(document.activeElement).to.equal(document.body, 'initial focus');
-        expect(focusWithinElements()).to.equal('html, body', 'after engage');
+        _expect('after engage', 'html body'.split(' '));
 
         handle.disengage();
         handle = null;
-        expect(focusWithinElements()).to.equal('', 'after disengage');
+        _expect('after disengage', []);
       },
       'follow focus': function() {
-        expect(focusWithinElements()).to.equal('', 'before engage');
+        _expect('before engage', []);
 
         if (document.activeElement === document.documentElement) {
           // Internet Explorer 10 initially focuses <html>
@@ -59,15 +63,15 @@ define([
         }
 
         handle = styleFocusWithin();
-        expect(focusWithinElements()).to.equal('html, body', 'after engage');
+        _expect('after engage', 'html body'.split(' '));
 
         fixture.input.outer.focus();
         expect(document.activeElement).to.equal(fixture.input.outer);
-        expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, #outer-input', 'outer sequence');
+        _expect('outer sequence', 'html body #intern-dom-fixture #outer-input'.split(' '));
 
         fixture.input.after.focus();
         expect(document.activeElement).to.equal(fixture.input.after);
-        expect(focusWithinElements()).to.equal('html, body, #intern-dom-fixture, #after-wrapper, #after-input', 'after sequence');
+        _expect('after sequence', 'html body #intern-dom-fixture #after-wrapper #after-input'.split(' '));
       },
       'follow focus into Shadow DOM': function() {
         if (!supports.cssShadowPiercingDeepCombinator) {
@@ -75,46 +79,37 @@ define([
         }
 
         var deferred = this.async(10000);
-        expect(focusWithinElements()).to.equal('', 'before engage');
+        _expect('before engage', []);
 
         handle = styleFocusWithin();
-        expect(focusWithinElements()).to.equal('html, body', 'after engage');
+        _expect('after engage', 'html body'.split(' '));
 
         fixture.input.first.focus();
         // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535
         if (document.activeElement === fixture.input.first) {
           expect(document.activeElement).to.equal(fixture.input.first);
-          expect(focusWithinElements())
-            .to.equal('html, body, #intern-dom-fixture, #first-shadow-host', 'first sequence');
+          _expect('first sequence', 'html body #intern-dom-fixture #first-shadow-host'.split(' '));
           deferred.resolve();
           return;
         }
 
         expect(document.activeElement).to.equal(fixture.shadow.first);
-        expect(focusWithinElements())
-          .to.equal('html, body, #intern-dom-fixture, #first-shadow-host', 'first sequence');
-        expect(focusWithinElements(fixture.shadow.first.shadowRoot))
-          .to.equal('#first-input', 'first sequence in host');
+        _expect('first sequence', 'html body #intern-dom-fixture #first-shadow-host'.split(' '));
+        _expect('first sequence in host', ['#first-input'], fixture.shadow.first.shadowRoot);
 
         fixture.input.second.focus();
         // shadow dom updates are performed asynchronous
         // (async introduced by event/shadow-focus)
         setTimeout(deferred.callback(function() {
-          expect(focusWithinElements())
-            .to.equal('html, body, #intern-dom-fixture, #first-shadow-host', 'second sequence');
-          expect(focusWithinElements(fixture.shadow.first.shadowRoot))
-            .to.equal('#second-shadow-host', 'second sequence in first host');
-          expect(focusWithinElements(fixture.shadow.second.shadowRoot))
-            .to.equal('#second-input', 'second sequence in second host');
+          _expect('second sequence', 'html body #intern-dom-fixture #first-shadow-host'.split(' '));
+          _expect('second sequence in first host', ['#second-shadow-host'], fixture.shadow.first.shadowRoot);
+          _expect('second sequence in second host', ['#second-input'], fixture.shadow.second.shadowRoot);
 
           // make sure classes are removed upon leaving the ShadowRoot
           fixture.input.after.focus();
-          expect(focusWithinElements())
-            .to.equal('html, body, #intern-dom-fixture, #after-wrapper, #after-input', 'after sequence');
-          expect(focusWithinElements(fixture.shadow.first.shadowRoot))
-            .to.equal('', 'after sequence in first host');
-          expect(focusWithinElements(fixture.shadow.second.shadowRoot))
-            .to.equal('', 'after sequence in second host');
+          _expect('after sequence', 'html body #intern-dom-fixture #after-wrapper #after-input'.split(' '));
+          _expect('after sequence in first host', [], fixture.shadow.first.shadowRoot);
+          _expect('after sequence in second host', [], fixture.shadow.second.shadowRoot);
         }), 100);
       },
     };

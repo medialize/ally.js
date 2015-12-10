@@ -45,7 +45,7 @@ define(['./custom.fixture'], function(customFixture) {
         '<input id="after-input" type="text" value="after-input">',
       '</div>',
       /*eslint-enable indent */
-    ].join(''), context);
+    ], context);
 
     fixture.shadow = {};
     fixture.input = {

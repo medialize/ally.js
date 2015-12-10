@@ -2,11 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  '../helper/elements-string',
   'platform',
   '../helper/supports',
   'ally/query/tabsequence',
-], function(registerSuite, expect, focusableFixture, elementsString, platform, supports, queryTabsequence) {
+], function(registerSuite, expect, focusableFixture, platform, supports, queryTabsequence) {
 
   registerSuite(function() {
     var fixture;
@@ -92,21 +91,27 @@ define([
       document: function() {
         var deferred = this.async(10000);
 
-        var _imageMapSequence = ', #image-map-area, #image-map-area-2';
-        var expected = '#tabindex-1, #tabindex-0, #link'
-          + (supports.tabsequenceSortsAreaAtImagePosition ? '' : _imageMapSequence)
-          + (platform.name === 'Firefox' ? ', #object-svg' : '')
-          + (supports.canFocusSvgMethod ? ', #svg-link' : '')
-          + ', #audio-controls'
-          + ', #input, #span-contenteditable'
-          + ', #img-ismap-link'
-          + (supports.tabsequenceSortsAreaAtImagePosition ? _imageMapSequence : '')
-          + ', #end-of-line';
+        var expected = [
+          '#tabindex-1',
+          '#tabindex-0',
+          '#link',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          platform.name === 'Firefox' && '#object-svg',
+          supports.canFocusSvgMethod && '#svg-link',
+          '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          '#img-ismap-link',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          '#end-of-line',
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
-          var result = queryTabsequence();
-          expect(elementsString(result)).to.equal(expected);
+          var result = queryTabsequence().map(fixture.nodeToString);
+          expect(result).to.deep.equal(expected);
         }), 200);
       },
 
@@ -117,24 +122,30 @@ define([
         input.setAttribute('id', 'tabindex-3');
         context.appendChild(input);
 
-        var expected = '#tabindex-3, #link';
+        var expected = [
+          '#tabindex-3',
+          '#link',
+        ];
         var result = queryTabsequence({
           context: '.context',
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'context and self': function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '0');
 
-        var expected = 'div, #link';
+        var expected = [
+          'div',
+          '#link',
+        ];
         var result = queryTabsequence({
           context: '.context',
           includeContext: true,
-        });
+        }).map(fixture.nodeToString);
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
 
       'shadowed tabindex': function() {
@@ -145,45 +156,45 @@ define([
         var context = fixture.add('<input id="shadow-start"><div id="shadow-host"></div><input id="shadow-end">');
         createShadowDomStructure(document.getElementById('shadow-host'));
 
-        var expectLocal = '#' + [
-          'shadow-start',
-          'input-0',
-          'input-1',
-          'input-2',
-          'third-shadow-host',
-          'input-3',
-          'input-4',
-          'input-5',
-          'input-6',
-          'input-7',
-          'input-8',
-          'input-9',
-          'shadow-end',
-        ].join(', #');
-        var expectGlobal = '#' + [
-          'input-7',
-          'input-3',
-          'input-0',
-          'input-1',
-          'input-2',
-          'third-shadow-host',
-          'input-4',
-          'shadow-start',
-          'input-6',
-          'input-8',
-          'input-5',
-          'input-9',
-          'shadow-end',
-        ].join(', #');
+        var expectLocal = [
+          '#shadow-start',
+          '#input-0',
+          '#input-1',
+          '#input-2',
+          '#third-shadow-host',
+          '#input-3',
+          '#input-4',
+          '#input-5',
+          '#input-6',
+          '#input-7',
+          '#input-8',
+          '#input-9',
+          '#shadow-end',
+        ];
+        var expectGlobal = [
+          '#input-7',
+          '#input-3',
+          '#input-0',
+          '#input-1',
+          '#input-2',
+          '#third-shadow-host',
+          '#input-4',
+          '#shadow-start',
+          '#input-6',
+          '#input-8',
+          '#input-5',
+          '#input-9',
+          '#shadow-end',
+        ];
 
         var result = queryTabsequence({
           context: context,
           strategy: 'strict',
-        });
+        }).map(fixture.nodeToString);
 
         var expected = platform.name === 'Firefox' ? expectGlobal : expectLocal;
 
-        expect(elementsString(result)).to.equal(expected);
+        expect(result).to.deep.equal(expected);
       },
     };
   });

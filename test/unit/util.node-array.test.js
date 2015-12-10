@@ -16,7 +16,7 @@ define([
           '<div class="test-foo"></div>',
           '<div class="test-foo"></div>',
           '<div id="test-bar"></div>',
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

@@ -26,7 +26,7 @@ define([
             '<div id="target-2"></div>',
           '</div>',
           /*eslint-disable indent */
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();
@@ -39,24 +39,26 @@ define([
         }).to.throw(TypeError, 'get/insignificant-branches requires valid options.filter');
       },
       'single target': function() {
+        var expected = '#uncle-1 #sibling #uncle-2'.split(' ');
         var target = getInsignificantBranches({
           context: fixture.root,
           filter: '#target',
         });
         var path = target.map(function(element) {
           return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
-        }).join(' ');
-        expect(path).to.equal('#uncle-1 #sibling #uncle-2');
+        });
+        expect(path).to.deep.equal(expected);
       },
       'multiple targets': function() {
+        var expected = '#uncle-1 #sibling #cousin-2'.split(' ');
         var target = getInsignificantBranches({
           context: fixture.root,
           filter: '#target, #target-2',
         });
         var path = target.map(function(element) {
           return element.id && ('#' + element.id) || element.nodeName.toLowerCase();
-        }).join(' ');
-        expect(path).to.equal('#uncle-1 #sibling #cousin-2');
+        });
+        expect(path).to.deep.equal(expected);
       },
     };
   });

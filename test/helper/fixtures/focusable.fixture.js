@@ -67,6 +67,6 @@ define([
         '<div id="scroll-body-without-overflow" style="width: 500px; height: 40px;">scrollable content</div>',
       '</div>',
       /*eslint-enable indent */
-    ].join(''), context);
+    ], context);
   };
 });

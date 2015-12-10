@@ -15,7 +15,7 @@ define([
       beforeEach: function() {
         fixture = customFixture([
           '<div id="target"></div>',
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         fixture.remove();

@@ -15,7 +15,7 @@ define([
       beforeEach: function() {
         fixture = customFixture([
           '<div></div>',
-        ].join(''));
+        ]);
       },
       afterEach: function() {
         // make sure a failed test cannot leave listeners behind
