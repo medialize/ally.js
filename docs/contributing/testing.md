@@ -111,7 +111,7 @@ reports
 └── lcov.info       - test coverage non-human readable format
 ```
 
-When the tests executed, code coverage results can be uploaded to [Code Climate](http://codeclimate.com/) by running `npm run publish:lcov`.
+When the tests executed, code coverage results can be uploaded to [Code Climate](http://codeclimate.com/) and [Coveralls](http://coveralls.io/) by running `npm run publish:lcov`.
 
 * **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
 
