@@ -3,7 +3,8 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
   'ally/is/visible',
-], function(registerSuite, expect, customFixture, isVisible) {
+  'ally/supports/media/mp3',
+], function(registerSuite, expect, customFixture, isVisible, mp3) {
 
   registerSuite(function() {
     var fixture;
@@ -52,7 +53,7 @@ define([
             '<area id="disconnected-area" href="#void" shape="rect" coords="63,19,144,45">',
           '</map>',
           // unknown dimension elements
-          '<audio id="unknown-dimension-audio" controls src="data:audio/mp3;base64,audio"></audio>',
+          '<audio id="unknown-dimension-audio" controls src="' + mp3 + '"></audio>',
           // details/summary
           '<details id="details-closed"><summary id="summary"></summary> <a href="#void" id="details-closed-link">link</a></details>',
           '<details id="details-open" open><summary id="summary"></summary> <a href="#void" id="details-open-link">link</a></details>',

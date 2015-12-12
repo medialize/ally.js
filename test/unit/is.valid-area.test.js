@@ -4,7 +4,9 @@ define([
   '../helper/fixtures/custom.fixture',
   '../helper/supports',
   'ally/is/valid-area',
-], function(registerSuite, expect, customFixture, supports, isValidArea) {
+  'ally/supports/media/gif',
+  'ally/supports/media/gif.invalid',
+], function(registerSuite, expect, customFixture, supports, isValidArea, gif, invalidGif) {
 
   registerSuite(function() {
     var fixture;
@@ -24,25 +26,25 @@ define([
             '<area id="image-map-area" href="#void" shape="rect" coords="63,19,144,45">',
             '<area id="image-map-area-nolink" shape="rect" coords="63,19,144,45">',
           '</map>',
-          '<img usemap="#image-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">',
+          '<img usemap="#image-map" src="' + gif + '" alt="">',
 
           '<map id="noname-map">',
             '<area id="image-map-area" href="#void" shape="rect" coords="63,19,144,45">',
             '<area id="image-map-area-nolink" shape="rect" coords="63,19,144,45">',
           '</map>',
-          '<img usemap="#noname-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">',
+          '<img usemap="#noname-map" src="' + gif + '" alt="">',
 
           '<map name="interactive-map">',
             '<area id="interactive-map-area" href="#void" shape="rect" coords="63,19,144,45">',
           '</map>',
           '<a href="#">',
-            '<img usemap="#interactive-map" src="data:image/gif;base64,broken-image" alt="">',
+            '<img usemap="#interactive-map" src="' + invalidGif + '" alt="">',
           '</a>',
 
           '<map name="broken-map">',
             '<area id="broken-map-area" href="#void" shape="rect" coords="63,19,144,45">',
           '</map>',
-          '<img usemap="#broken-map" src="data:image/gif;base64,broken-image" alt="">',
+          '<img usemap="#broken-map" src="' + invalidGif + '" alt="">',
           /*eslint-enable indent */
         ].join(''));
       },

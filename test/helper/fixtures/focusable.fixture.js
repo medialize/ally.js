@@ -1,9 +1,10 @@
-define(['./custom.fixture'], function(customFixture) {
-  var gifDataUri = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-  var svgDataUri = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtb'
-    + 'G5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0ic3ZnIj48dGV4dCB4PSIxMCIgeT0iMjAiIGlkPSJ'
-    + 'zdmctbGluay10ZXh0Ij50ZXh0PC90ZXh0Pjwvc3ZnPg==';
-
+define([
+  './custom.fixture',
+  'ally/supports/media/gif',
+  'ally/supports/media/svg',
+  'ally/supports/media/mp3',
+  'ally/supports/media/mp4',
+], function(customFixture, gif, svg, mp3, mp4) {
   return function(context) {
     return customFixture([
       /*eslint-disable indent */
@@ -24,22 +25,22 @@ define(['./custom.fixture'], function(customFixture) {
         '<area id="image-map-area" href="#void" shape="rect" coords="63,19,144,45">',
         '<area id="image-map-area-nolink" shape="rect" coords="63,19,144,45">',
       '</map>',
-      '<img id="img-usemap" usemap="#image-map" src="' + gifDataUri + '" alt="">',
+      '<img id="img-usemap" usemap="#image-map" src="' + gif + '" alt="">',
       // embedded content
-      '<object type="image/svg+xml" id="object-svg" data="' + svgDataUri + '" width="200" height="50"></object>',
-      '<object type="image/svg+xml" id="object-tabindex-svg" tabindex="-1" data="' + svgDataUri + '" width="200" height="50"></object>',
+      '<object type="image/svg+xml" id="object-svg" data="' + svg + '" width="200" height="50"></object>',
+      '<object type="image/svg+xml" id="object-tabindex-svg" tabindex="-1" data="' + svg + '" width="200" height="50"></object>',
       '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
         '<a xlink:href="#void" id="svg-link">',
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
       '</svg>',
-      '<embed id="embed" type="video/mp4" src="data:video/mp4;base64,embed-focus-test" width="640" height="480">',
-      '<embed id="embed-tabindex-0" type="video/mp4" src="data:video/mp4;base64,embed-tabindex-focus-test" width="640" height="480" tabindex="0">',
-      '<embed type="image/svg+xml" id="embed-svg" data="' + svgDataUri + '" width="200" height="50">',
-      '<embed type="image/svg+xml" id="embed-tabindex-svg" tabindex="-1" data="' + svgDataUri + '" width="200" height="50">',
+      '<embed id="embed" type="video/mp4" src="' + mp4 + '" width="640" height="480">',
+      '<embed id="embed-tabindex-0" type="video/mp4" src="' + mp4 + '" width="640" height="480" tabindex="0">',
+      '<embed type="image/svg+xml" id="embed-svg" data="' + svg + '" width="200" height="50">',
+      '<embed type="image/svg+xml" id="embed-tabindex-svg" tabindex="-1" data="' + svg + '" width="200" height="50">',
       // interactive content
-      '<audio id="audio" src="data:audio/mp3;base64,audio-focus-test"></audio>',
-      '<audio id="audio-controls" controls src="data:audio/mp3;base64,audio-focus-test"></audio>',
+      '<audio id="audio" src="' + mp3 + '"></audio>',
+      '<audio id="audio-controls" controls src="' + mp3 + '"></audio>',
       // input elements
       '<label id="label">text</label>',
       '<input type="text" id="input">',
@@ -53,7 +54,7 @@ define(['./custom.fixture'], function(customFixture) {
       '<span contenteditable id="span-contenteditable"></span>',
       '<span style="-webkit-user-modify: read-write" id="span-user-modify"></span>',
       // browser quirks
-      '<a href="#void" id="img-ismap-link"><img id="img-ismap" src="data:image/png;base64,broken-image-test" ismap alt=""></a>',
+      '<a href="#void" id="img-ismap-link"><img id="img-ismap" src="' + gif + '" ismap alt=""></a>',
       // scrolling containers,
       '<div id="scroll-container" style="width: 100px; height: 50px; overflow: auto;">',
         '<div id="scroll-body" style="width: 500px; height: 40px;">scrollable content</div>',
