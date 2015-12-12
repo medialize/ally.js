@@ -23,10 +23,15 @@ The following lists show the changes to the library grouped by domain.
 
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [issue #82](https://github.com/medialize/ally.js/issues/82)
 * changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [issue #72](https://github.com/medialize/ally.js/issues/72)
-* changing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly handle `<object type="application/x-shockwave-flash">` in IE9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
+* changing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly handle `<object type="application/x-shockwave-flash">` in IE9 - [Issue #71](https://github.com/medialize/ally.js/issues/71)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
+
+#### Keyboard support
+
+* changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
+* changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
 
 #### Internals
 

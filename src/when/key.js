@@ -1,29 +1,48 @@
 
-import keycode from '../map/keycode';
+import keyBinding from './key.binding';
+import nodeArray from '../util/node-array';
+import {getParentComparator} from '../util/compare-position';
 
 // Bug 286933 - Key events in the autocomplete popup should be hidden from page scripts
 // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=286933
 
 export default function(map = {}) {
   let disengage;
+  const bindings = {};
 
-  const keys = {};
+  const context = nodeArray(map.context)[0] || document.documentElement;
+  delete map.context;
+  const filter = nodeArray(map.filter);
+  delete map.filter;
+
   const mapKeys = Object.keys(map);
   if (!mapKeys.length) {
     throw new TypeError('when/key requires at least one option key');
   }
 
-  mapKeys.forEach(function(key) {
-    const code = keycode[key] || parseInt(key, 10);
-    if (!code || typeof code !== 'number' || isNaN(code)) {
-      throw new TypeError('when/key requires option keys to be numeric or references to map/keycode, but "' + key + '" is neither');
+  const registerBinding = function(event) {
+    event.keyCodes.forEach(function(code) {
+      if (!bindings[code]) {
+        bindings[code] = [];
+      }
+
+      bindings[code].push(event);
+    });
+  };
+
+  mapKeys.forEach(function(text) {
+    if (typeof map[text] !== 'function') {
+      throw new TypeError('when/key requires option["' + text + '"] to be a function');
     }
 
-    if (typeof map[key] !== 'function') {
-      throw new TypeError('when/key requires option.' + key + ' to be a function');
-    }
+    const addCallback = function(event) {
+      event.callback = map[text];
+      return event;
+    };
 
-    keys[code] = map[key];
+    keyBinding(text)
+      .map(addCallback)
+      .forEach(registerBinding);
   });
 
   const handleKeyDown = function(event) {
@@ -31,18 +50,32 @@ export default function(map = {}) {
       return;
     }
 
-    const callback = keys[event.keyCode];
-    if (!callback) {
+    if (filter.length) {
+      // ignore elements within the exempted sub-trees
+      const isParentOfElement = getParentComparator({element: event.target, includeSelf: true});
+      if (filter.some(isParentOfElement)) {
+        return;
+      }
+    }
+
+    const key = event.keyCode || event.which;
+    if (!bindings[key]) {
       return;
     }
 
-    callback.call(this, event, disengage);
+    bindings[key].forEach(function(_event) {
+      if (!_event.matchModifiers(event)) {
+        return;
+      }
+
+      _event.callback.call(context, event, disengage);
+    });
   };
 
-  document.documentElement.addEventListener('keydown', handleKeyDown, false);
+  context.addEventListener('keydown', handleKeyDown, false);
 
   disengage = function() {
-    document.documentElement.removeEventListener('keydown', handleKeyDown, false);
+    context.removeEventListener('keydown', handleKeyDown, false);
   };
 
   return { disengage };
