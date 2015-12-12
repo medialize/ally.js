@@ -6,7 +6,9 @@ import queryTabbable from './tabbable';
 import moveAreaToImagePosition from './tabsequence.move-area';
 import nodeArray from '../util/node-array';
 import sortTabindex from '../util/sort-elements-by-tabindex';
-import tabsequenceSortsAreaAtImagePosition from '../supports/tabsequence-area-at-img-position';
+
+import _supports from './tabsequence.supports';
+let supports;
 
 function moveContextToBeginning(elements, context) {
   const pos = elements.indexOf(context);
@@ -19,6 +21,10 @@ function moveContextToBeginning(elements, context) {
 }
 
 export default function({context, includeContext, strategy} = {}) {
+  if (!supports) {
+    supports = _supports();
+  }
+
   const _context = nodeArray(context)[0] || document.documentElement;
   let elements = queryTabbable({context: _context, includeContext, strategy});
   elements = sortTabindex(elements);
@@ -29,7 +35,7 @@ export default function({context, includeContext, strategy} = {}) {
     elements = moveContextToBeginning(elements, _context);
   }
 
-  if (tabsequenceSortsAreaAtImagePosition) {
+  if (supports.tabsequenceSortsAreaAtImagePosition) {
     // Some browsers sort <area> in DOM order, some place the <area>s
     // where the <img> referecing them would've been in DOM order.
     elements = moveAreaToImagePosition(elements, _context);

@@ -1,9 +1,10 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 
 // only Trident and Edge are able to focus a <label tabindex="-1">,
 // as all other browsers seem hardwired to forward focus to the target input, if possible
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-label-tabindex',
   element: 'label',
   mutate: function(element) {
@@ -17,4 +18,4 @@ export default detectFocus({
     element.focus();
     return document.activeElement === element;
   },
-});
+}));

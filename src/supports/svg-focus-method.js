@@ -12,4 +12,8 @@ const hasNativeSvgFocus = SVGElement.prototype.focus !== HTMLElement.prototype.f
   // src/prototype/svgelement.prototype.focus.js adds a safety-filler for Firefox
   && getFunctionName(SVGElement.prototype.focus) === 'focus';
 
-export default hasElementFocus || hasNativeSvgFocus;
+const result = hasElementFocus || hasNativeSvgFocus;
+
+export default function() {
+  return result;
+}

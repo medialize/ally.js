@@ -5,46 +5,53 @@
 
 import '../prototype/svgelement.prototype.focus';
 
-import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
-import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import canFocusSvgMethod from '../supports/svg-focus-method';
-import canFocusTable from '../supports/focus-table';
-import canFocusFieldset from '../supports/focus-fieldset';
-import canFocusSummary from '../supports/focus-summary';
-import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
+import _supports from './focusable.supports';
+let supports;
 
-// http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
-let selector = ''
-  // IE11 can focus <table> and <td>
-  + (canFocusTable ? 'table, td,' : '')
-  // IE11 can focus <fieldset>
-  + (canFocusFieldset ? 'fieldset,' : '')
-  // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-  // Firefox cannot focus <svg> child elements from script
-  + (canFocusSvgMethod ? 'svg a[*|href],' : '')
-  // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
-  // navigational elements
-  + 'a[href],'
-  // validity determined by is/valid-area.js
-  + 'area[href],'
-  // validity determined by is/disabled.js
-  + 'input, select, textarea, button,'
-  // browsing context containers
-  + 'iframe, object, embed,'
-  // interactive content
-  + 'keygen,'
-  + (canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
-  + (canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
-  + (canFocusSummary ? 'summary,' : '')
-  // validity determined by is/valid-tabindex.js
-  + '[tabindex],'
-  // editing hosts
-  + '[contenteditable]';
+let selector;
 
-// where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
-if (cssShadowPiercingDeepCombinator) {
-  selector += ', html ' + cssShadowPiercingDeepCombinator + ' '
-    + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + cssShadowPiercingDeepCombinator + ' ');
+export default function() {
+  if (!supports) {
+    supports = _supports();
+  }
+
+  if (typeof selector === 'string') {
+    return selector;
+  }
+
+  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  selector = ''
+    // IE11 supports.can focus <table> and <td>
+    + (supports.canFocusTable ? 'table, td,' : '')
+    // IE11 supports.can focus <fieldset>
+    + (supports.canFocusFieldset ? 'fieldset,' : '')
+    // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
+    // Firefox supports.cannot focus <svg> child elements from script
+    + (supports.canFocusSvgMethod ? 'svg a[*|href],' : '')
+    // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
+    // navigational elements
+    + 'a[href],'
+    // validity determined by is/valid-area.js
+    + 'area[href],'
+    // validity determined by is/disabled.js
+    + 'input, select, textarea, button,'
+    // browsing context containers
+    + 'iframe, object, embed,'
+    // interactive content
+    + 'keygen,'
+    + (supports.canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
+    + (supports.canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
+    + (supports.canFocusSummary ? 'summary,' : '')
+    // validity determined by is/valid-tabindex.js
+    + '[tabindex],'
+    // editing hosts
+    + '[contenteditable]';
+
+  // where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
+  if (supports.cssShadowPiercingDeepCombinator) {
+    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' '
+      + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + supports.cssShadowPiercingDeepCombinator + ' ');
+  }
+
+  return selector;
 }
-
-export default selector;

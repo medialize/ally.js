@@ -6,7 +6,8 @@ import selector from '../selector/focusable';
 import isFocusable from '../is/focusable';
 
 export default function queryFocusableQuick({context, includeContext} = {}) {
-  const elements = context.querySelectorAll(selector);
+  const _selector = selector();
+  const elements = context.querySelectorAll(_selector);
   // the selector potentially matches more than really is focusable
   const result = [].filter.call(elements, isFocusable);
   // add context if requested and focusable

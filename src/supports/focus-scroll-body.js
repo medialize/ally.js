@@ -1,8 +1,9 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 
 // https://github.com/medialize/ally.js/issues/21
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-scroll-body',
   element: 'div',
   mutate: function(element) {
@@ -10,4 +11,4 @@ export default detectFocus({
     element.innerHTML = '<div style="width: 500px; height: 40px;">scrollable content</div>';
     return element.querySelector('div');
   },
-});
+}));

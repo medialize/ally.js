@@ -1,10 +1,11 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 import invalidGif from './media/gif.invalid';
 
 // NOTE: https://github.com/medialize/ally.js/issues/35
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-broken-image-map',
   element: 'div',
   mutate: function(element) {
@@ -13,4 +14,4 @@ export default detectFocus({
 
     return element.querySelector('area');
   },
-});
+}));

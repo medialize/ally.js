@@ -1,7 +1,8 @@
 
 import detectFocus from './detect-focus';
+import memorizeResult from './memorize-result';
 
-export default detectFocus({
+export default memorizeResult(() => detectFocus({
   name: 'can-focus-table',
   element: 'table',
   mutate: function(element) {
@@ -12,4 +13,4 @@ export default detectFocus({
     fragment.innerHTML = '<tr><td>cell</td></tr>';
     element.appendChild(fragment);
   },
-});
+}));
