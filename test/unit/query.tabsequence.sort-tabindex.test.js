@@ -2,14 +2,14 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
-  'ally/util/sort-elements-by-tabindex',
-], function(registerSuite, expect, customFixture, sortElementsByTabindex) {
+  'ally/query/tabsequence.sort-tabindex',
+], function(registerSuite, expect, customFixture, sortTabindex) {
 
   registerSuite(function() {
     var fixture;
 
     return {
-      name: 'util/sort-elements-by-tabindex',
+      name: 'query/tabsequence.sort-tabindex',
 
       beforeEach: function() {
         fixture = customFixture([
@@ -29,7 +29,7 @@ define([
 
       sort: function() {
         var nodes = [].slice.call(fixture.root.children, 0);
-        var res = sortElementsByTabindex(nodes);
+        var res = sortTabindex(nodes);
         var sequence = res.map(function(element) {
           return element.getAttribute('data-label');
         }).join(',');

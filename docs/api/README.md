@@ -38,8 +38,8 @@ In order to work with focusable elements, we must first know which elements we'r
 
 * [`ally.query.firstTabbable`](query/first-tabbable.md) finds the first keyboard focusable element
 * [`ally.query.focusable`](query/focusable.md) finds all focusable elements
-* [`ally.query.tabbable`](query/tabbable.md) finds all keyboard focusable elements
-* [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements respecting the `[tabindex]` order
+* [`ally.query.tabbable`](query/tabbable.md) finds all keyboard focusable elements in DOM order
+* [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
 
 ## Element state

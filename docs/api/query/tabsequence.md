@@ -10,9 +10,13 @@ Finds keyboard focusable ("tabbable") elements in the DOM and returns them in th
 
 ## Description
 
-See [`ally.query.focusable`](./focusable.md) for an explanation on the different query strategies.
+The [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order) depends on a variety of factors:
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and what ally.js considers focusable in [`strategy: "strict"`](../../data-tables/focusable.strict.md) or [`strategy: "quick"`](../../data-tables/focusable.quick.md) to learn how HTML elements behave.
+* Value of the `tabindex` attribute. The sequence generally starts with all positive tabindex elements with `tabindex="1"` in DOM order, then all elements with `tabindex="2"` in DOM order, then all elements with `tabindex="3"`, … until the highest tabindex is reached, at which point the sequence continues with the `tabindex="0"` (which is set implicitly for a number of HTML elements, e.g. `<input>`).
+* `<area>` elements may either be sorted in DOM order of the `<area>` itsel, *or* the `<img>` referencing the map.
+* Within a [Shadow DOM](http://caniuse.com/#feat=shadowdom) positive tabindex elements may either be sorted localized to the `ShadowRoot`, *or* globally in the document.
+
+`ally.query.tabsequence` uses [`ally.query.tabbable`](tabbable.md) to find keyboard focusable elements and then sorts the element positions respecting `Shadow DOM`, `<area>` vs `<img>` replacement and `tabindex` attribute value.
 
 
 ## Usage
@@ -47,22 +51,24 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Changes
 
-* Since `v#master` the module sorts `<area>` elements to the place of the `<img>` elements they're referenced from.
+* Since `v#master` the module can move `<area>` elements to the place of the `<img>` elements they're referenced from.
+* Since `v#master` the module can sort elements in [Shadow DOM](http://caniuse.com/#feat=shadowdom) localized to the `ShadowRoot`.
 
 
 ## Notes
 
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
-* **NOTE:** In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
+* **NOTE:** In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. `ally.query.tabindex` handles this appropriately. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
+* **NOTE:** In some browsers positive tabindexes are sorted localized to [Shadow DOM](http://caniuse.com/#feat=shadowdom), in some they are sorted globally. `ally.query.tabindex` handles this appropriately.
 
 
 ## Related resources
 
 * [`ally.is.tabbable`](../is/tabbable.md) is used to filter focusable elements
 * [`ally.query.focusable`](focusable.md) is used to find focusable elements
-* [`ally.query.firstTabbable`](tabbable.md) finds the first keyboard focusable element in a context
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element in a context
+* [`ally.query.tabbable`](tabbable.md) finds keyboard focusable elements in DOM order
 
 * [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 

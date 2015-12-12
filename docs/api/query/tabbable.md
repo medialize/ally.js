@@ -55,8 +55,8 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
 * [`ally.is.tabbable`](../is/tabbable.md) is used to filter focusable elements
 * [`ally.query.focusable`](focusable.md) is used to find focusable elements
-* [`ally.query.firstTabbable`](tabbable.md) finds the first keyboard focusable element in a context
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in the [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element in a context
+* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
 
 ## Contributing
