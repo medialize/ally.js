@@ -18,21 +18,22 @@ define([
   // see https://www.browserstack.com/automate/capabilities
   /*eslint-disable camelcase */
   config.environments = [
+    // disabled because of https://github.com/theintern/intern/issues/555
     // { browser: 'Edge', browser_version: '12.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge12' },
     { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
     { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10' },
     { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
 
-    { browser: 'Firefox', browser_version: '41', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 41' },
-    { browser: 'Chrome', browser_version: '46', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 46' },
+    { browser: 'Firefox', browser_version: '42', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
+    { browser: 'Chrome', browser_version: '47', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
 
-    { browser: 'Firefox', browser_version: '41', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 41' },
-    { browser: 'Chrome', browser_version: '46', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 46' },
+    { browser: 'Firefox', browser_version: '42', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 42' },
+    { browser: 'Chrome', browser_version: '47', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 47' },
 
-    // disabled because of https://github.com/theintern/intern/issues/481
-    // { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
-    // { browser: 'Safari', browser_version: '7.1', os: 'OS X', os_version: 'Mavericks', platform: 'MAC', browserName: 'Safari 7' },
-    // { browser: 'Safari', browser_version: '6.2', os: 'OS X', os_version: 'Mountain Lion', platform: 'MAC', browserName: 'Safari 6' },
+    { browser: 'Safari', browser_version: '9.0', os: 'OS X', os_version: 'El Capitan', platform: 'MAC', browserName: 'Safari 9' },
+    { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
+    { browser: 'Safari', browser_version: '7.1', os: 'OS X', os_version: 'Mavericks', platform: 'MAC', browserName: 'Safari 7' },
+    { browser: 'Safari', browser_version: '6.2', os: 'OS X', os_version: 'Mountain Lion', platform: 'MAC', browserName: 'Safari 6' },
   ];
   /*eslint-enable camelcase */
 
