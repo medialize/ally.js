@@ -157,10 +157,18 @@ define([
       },
       'embed element': function() {
         var element = document.getElementById('embed');
+        if (!element) {
+          this.skip('skipping to avoid test colliding with QuickTime');
+        }
+
         expect(isFocusRelevant(element)).to.equal(true);
       },
       'embed element with tabindex="0"': function() {
         var element = document.getElementById('embed-tabindex-0');
+        if (!element) {
+          this.skip('skipping to avoid test colliding with QuickTime');
+        }
+
         expect(isFocusRelevant(element)).to.equal(true);
       },
       'extended: CSS user-modify': function() {

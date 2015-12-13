@@ -37,6 +37,7 @@ define([
           strategy: 'all',
         });
 
+        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
         var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
@@ -46,7 +47,7 @@ define([
           + (platform.name === 'IE' ? ', #svg' : '')
           + (supports.canFocusObjectSvg ? ', #object-tabindex-svg' : '')
           + ', #svg-link'
-          + ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg'
+          + (canTestVideoEmbed ? ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg' : ', #embed-svg, #embed-tabindex-svg')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1, #input-disabled'
@@ -124,6 +125,7 @@ define([
         var result = queryFocusable({
           strategy: 'all',
         });
+        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
         var expected = '#tabindex--1, #tabindex-0, #tabindex-1'
           + (supports.canFocusInvalidTabindex ? ', #tabindex-bad' : '')
           + ', #link, #link-tabindex--1'
@@ -131,7 +133,7 @@ define([
           + (supports.canFocusAreaWithoutHref ? ', #image-map-area-nolink' : '')
           + (supports.canFocusObjectSvg ? ', #object-svg, #object-tabindex-svg' : '')
           + ', #svg-link'
-          + ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg'
+          + (canTestVideoEmbed ? ', #embed, #embed-tabindex-0, #embed-svg, #embed-tabindex-svg' : ', #embed-svg, #embed-tabindex-svg')
           + (supports.canFocusAudioWithoutControls ? ', #audio' : '')
           + ', #audio-controls'
           + ', #input, #input-tabindex--1'

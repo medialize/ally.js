@@ -1,11 +1,15 @@
 define([
   './custom.fixture',
+  'platform',
   'ally/supports/media/gif',
   'ally/supports/media/svg',
   'ally/supports/media/mp3',
   'ally/supports/media/mp4',
-], function(customFixture, gif, svg, mp3, mp4) {
+], function(customFixture, platform, gif, svg, mp3, mp4) {
   return function(context) {
+
+    var avoidQuicktime = platform.name === 'Safari';
+
     return customFixture([
       /*eslint-disable indent */
       // tabindex attribute
@@ -34,8 +38,8 @@ define([
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
       '</svg>',
-      '<embed id="embed" type="video/mp4" src="' + mp4 + '" width="640" height="480">',
-      '<embed id="embed-tabindex-0" type="video/mp4" src="' + mp4 + '" width="640" height="480" tabindex="0">',
+      (!avoidQuicktime && '<embed id="embed" type="video/mp4" src="' + mp4 + '" width="640" height="480">') || '',
+      (!avoidQuicktime && '<embed id="embed-tabindex-0" type="video/mp4" src="' + mp4 + '" width="640" height="480" tabindex="0">') || '',
       '<embed type="image/svg+xml" id="embed-svg" data="' + svg + '" width="200" height="50">',
       '<embed type="image/svg+xml" id="embed-tabindex-svg" tabindex="-1" data="' + svg + '" width="200" height="50">',
       // interactive content
