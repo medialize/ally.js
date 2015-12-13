@@ -11,8 +11,8 @@ The following lists show the changes to the library grouped by domain.
 #### Browsers
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
-* Dropping tests for Safari on iOS 8, keeping Safari on iOS 9
-* Dropping tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
+* Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
+* Dropping manual focusable tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
 
 #### Dependencies
 
@@ -41,6 +41,15 @@ The following lists show the changes to the library grouped by domain.
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
+
+#### Testing
+
+Intern unit tests are now run for the following browsers:
+
+* Internet Explorer 9, 10, 11
+* Safari 6.2, 7.1, 8, 9
+* Chrome 47
+* Firefox 42
 
 #### Sources
 
