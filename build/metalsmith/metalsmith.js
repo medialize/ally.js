@@ -22,20 +22,20 @@ const WEBSITE_CANONICAL = 'http://allyjs.io/';
 function getRedirectionMap() {
   // make sure legacy links are forwarded
   return {
-    '/tests/focusable/table.html': WEBSITE_ROOT + 'data-tables/focusable.html',
-    '/tests/static-results/focusable.html': WEBSITE_ROOT + 'data-tables/focusable.html',
-    '/tests/static-results/scrolling-into-view.html': WEBSITE_ROOT + 'tests/scrolling/table.html',
-    '/examples/active-elements.html': WEBSITE_ROOT + 'api/get/active-elements.html',
-    '/examples/disable-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
-    '/examples/fix-pointer-focus-children.html': WEBSITE_ROOT + 'api/fix/pointer-focus-children.html',
-    '/examples/fix-pointer-focus-input.html': WEBSITE_ROOT + 'api/fix/pointer-focus-input.html',
-    '/examples/fix-pointer-focus-parent.html': WEBSITE_ROOT + 'api/fix/pointer-focus-parent.html',
-    '/examples/focus-source.html': WEBSITE_ROOT + 'api/style/focus-source.html',
-    '/examples/focus-when-visible.html': WEBSITE_ROOT + 'api/when/focusable.html',
-    '/examples/focus-within.html': WEBSITE_ROOT + 'api/style/focus-within.html',
-    '/examples/index.html': WEBSITE_ROOT + 'api/index.html',
-    '/examples/trap-focus.html': WEBSITE_ROOT + 'api/maintain/disabled.html',
-    '/examples/visible-area.html': WEBSITE_ROOT + 'api/when/visible-area.html',
+    '/tests/focusable/table.html': WEBSITE_CANONICAL + 'data-tables/focusable.html',
+    '/tests/static-results/focusable.html': WEBSITE_CANONICAL + 'data-tables/focusable.html',
+    '/tests/static-results/scrolling-into-view.html': WEBSITE_CANONICAL + 'tests/scrolling/table.html',
+    '/examples/active-elements.html': WEBSITE_CANONICAL + 'api/get/active-elements.html',
+    '/examples/disable-focus.html': WEBSITE_CANONICAL + 'api/maintain/disabled.html',
+    '/examples/fix-pointer-focus-children.html': WEBSITE_CANONICAL + 'api/fix/pointer-focus-children.html',
+    '/examples/fix-pointer-focus-input.html': WEBSITE_CANONICAL + 'api/fix/pointer-focus-input.html',
+    '/examples/fix-pointer-focus-parent.html': WEBSITE_CANONICAL + 'api/fix/pointer-focus-parent.html',
+    '/examples/focus-source.html': WEBSITE_CANONICAL + 'api/style/focus-source.html',
+    '/examples/focus-when-visible.html': WEBSITE_CANONICAL + 'api/when/focusable.html',
+    '/examples/focus-within.html': WEBSITE_CANONICAL + 'api/style/focus-within.html',
+    '/examples/index.html': WEBSITE_CANONICAL + 'api/index.html',
+    '/examples/trap-focus.html': WEBSITE_CANONICAL + 'api/maintain/disabled.html',
+    '/examples/visible-area.html': WEBSITE_CANONICAL + 'api/when/visible-area.html',
   };
 }
 
