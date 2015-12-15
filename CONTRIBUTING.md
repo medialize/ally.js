@@ -1,9 +1,19 @@
 # ally.js contribution guide
 
-* ally.js is a tool for modern browsers (IE10 and newer), if you need to support anything older than that, feel free to submit PRs.
+* ally.js is a tool for modern browsers (IE9 and newer), if you need to support anything older than that, feel free to submit PRs.
 * ally.js is authored in ES6 ("ES.next", "ES2015", …) while still providing maximum convenience when it comes to consuming the library (compiled UMD bundle, AMD modules, CommonJS modules, ES6 modules).
 * To stay lean, we don't want to add external dependencies unless we absolutely have to.
 * To stay out of the "too many tools" debate, build infrastructure has to work via npm (configured via `package.json`).
+
+---
+
+## Legal Things
+
+In order to get ahead of any IP (Intellectual Property) snafu we ask you to follow the following three rules:
+
+* You will only submit contributions where you have authored 100% of the content.
+* You will only submit contributions to which you have the necessary rights. This means that if you are employed you have received the necessary permissions from your employer to make the contributions.
+* Whatever content you contribute will be provided under the project license (MIT License).
 
 
 ## Found an issue?
