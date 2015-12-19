@@ -215,30 +215,30 @@
   {
     "label": "Embed Element",
     "idents": {
-      "embed": "<embed type=\"video/quicktime\" src=\"some.mov\">",
-      "embed[tabindex=-1]": "<embed type=\"video/quicktime\" src=\"some.mov\" tabindex=\"-1\">",
-      "embed[type=mp4]": "<embed type=\"video/mp4\" data=\"some.mp4\">",
-      "embed[type=mp4][tabindex=-1]": "<embed type=\"video/mp4\" data=\"some.mp4\" tabindex=\"-1\">",
-      "embed[type=ogv]": "<embed type=\"video/ogv\" data=\"some.ogv\">",
-      "embed[type=ogv][tabindex=-1]": "<embed type=\"video/ogv\" data=\"some.ogv\" tabindex=\"-1\">",
-      "embed[type=svg]": "<embed type=\"image/svg+xml\" data=\"some.svg\">",
-      "embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"-1\">",
-      "embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"0\">"
+      "embed": "<embed type=\"video/quicktime\" src=\"…\">",
+      "embed[tabindex=-1]": "<embed type=\"video/quicktime\" src=\"…\" tabindex=\"-1\">",
+      "embed[type=mp4]": "<embed type=\"video/mp4\" src=\"…\">",
+      "embed[type=mp4][tabindex=-1]": "<embed type=\"video/mp4\" src=\"…\" tabindex=\"-1\">",
+      "embed[type=ogv]": "<embed type=\"video/ogv\" src=\"…\">",
+      "embed[type=ogv][tabindex=-1]": "<embed type=\"video/ogv\" src=\"…\" tabindex=\"-1\">",
+      "embed[type=svg]": "<embed type=\"image/svg+xml\" src=\"…\">",
+      "embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\" src=\"…\" tabindex=\"-1\">",
+      "embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\" src=\"…\" tabindex=\"0\">"
     }
   },
 
   {
     "label": "Object Element",
     "idents": {
-      "object[src=swf]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\">",
-      "object[src=swf][height=0]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\" height=\"0\">",
-      "object[src=swf][tabindex=-1]": "<object type=\"application/x-shockwave-flash\" data=\"some.swf\" tabindex=\"-1\">",
+      "object[src=swf]": "<object type=\"application/x-shockwave-flash\" data=\"…\">",
+      "object[src=swf][height=0]": "<object type=\"application/x-shockwave-flash\" data=\"…\" height=\"0\">",
+      "object[src=swf][tabindex=-1]": "<object type=\"application/x-shockwave-flash\" data=\"…\" tabindex=\"-1\">",
 
-      "object[src=svg]": "<object type=\"image/svg+xml\" data=\"some.svg\">",
-      "object[src=svg][height=0]": "<object type=\"image/svg+xml\" data=\"some.svg\" height=\"0\">",
-      "object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\" data=\"some.svg\" tabindex=\"-1\">",
+      "object[src=svg]": "<object type=\"image/svg+xml\" data=\"…\">",
+      "object[src=svg][height=0]": "<object type=\"image/svg+xml\" data=\"…\" height=\"0\">",
+      "object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"-1\">",
 
-      "object[usemap]": "<object type=\"image/png\" data=\"some.png\" usemap=\"#map\">"
+      "object[usemap]": "<object type=\"image/png\" data=\"…\" usemap=\"#map\">"
     },
     "redundant": {
       "object[src=swf]": [
@@ -482,8 +482,8 @@
   {
     "label": "Questionable Elements",
     "idents": {
-      "keygen": "<keygen name=\"…\" challenge=\"…\" keytype=\"RSA\" keyparams=\"pqg-params\">",
-      "keygen[tabindex=-1]": "<keygen name=\"…\" challenge=\"…\" keytype=\"RSA\" keyparams=\"pqg-params\" tabindex=\"-1\">"
+      "keygen": "<keygen …>",
+      "keygen[tabindex=-1]": "<keygen … tabindex=\"-1\">"
     }
   }
 

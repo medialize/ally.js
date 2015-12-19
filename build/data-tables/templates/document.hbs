@@ -181,6 +181,14 @@
       display: block;
     }
 
+    code[class*="language-"] {
+      white-space: pre-line;
+    }
+
+    code .token.tag {
+      white-space: pre;
+    }
+
   </style>
 </head>
 <body>
@@ -226,21 +234,35 @@
     // make sure all tables have the same width
     function justifyTableWidth() {
       var tables = [].slice.call(document.querySelectorAll('table'), 0);
-      var dataCells = [].reduce.call(tables[0].querySelectorAll('col'), function(previous, current) {
-        return previous + (parseInt(current.style.width, 10) || 0);
-      }, 0);
       var largestIdentWidth = 0;
+      var largestDataCellWidth = 0;
 
+      // make the table consume the space it requires
       tables.map(function(table) {
         table.style.position = 'absolute';
         table.style.width = 'auto';
       });
+      // find the widest <th> and <td> to align everything to
       tables.map(function(table) {
         largestIdentWidth = Math.max(largestIdentWidth, table.querySelector('tbody th').offsetWidth);
+        largestDataCellWidth = Math.max.apply(Math, [].map.call(table.querySelectorAll('tbody tr:first-child td'), function(cell) {
+          return cell.offsetWidth;
+        }).concat([largestDataCellWidth]));
       });
+
+      var dataCells = (tables[0].querySelectorAll('col').length - 1) * largestDataCellWidth;
+
+      // align width of <table>, <th> and <td>
       tables.map(function(table) {
         table.style.position = '';
         table.style.width = (dataCells + largestIdentWidth) + 'px';
+        [].forEach.call(table.querySelectorAll('col'), function(col) {
+          if (col.getAttribute('data-column') === 'ident') {
+            return;
+          }
+
+          col.style.width = largestDataCellWidth + 'px';
+        });
       });
     }
 
@@ -268,7 +290,7 @@
       }, true);
 
       firstTable.parentNode.insertBefore(headerTable, firstTable);
-      headerHeight = headerTable.offsetHeight
+      headerHeight = headerTable.offsetHeight;
     }
 
     function addTableOfContentsToStickyHeader() {
@@ -345,7 +367,7 @@
       }
 
       // https://developer.mozilla.org/en-US/docs/Web/Events/hashchange
-      window.addEventListener('hashchange', handleHashchangeEvent, true)
+      window.addEventListener('hashchange', handleHashchangeEvent, true);
     }
 
     function hideDuplicateRows() {
