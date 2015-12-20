@@ -18,8 +18,8 @@ import _supports from './focus-within.supports';
 let supports;
 
 // preferring focusin/out because they are synchronous in IE10+11
-const focusEventName = 'onfocusin' in document ? 'focusin' : 'focus';
-const blurEventName = 'onfocusin' in document ? 'focusout' : 'blur';
+const focusEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusin' : 'focus');
+const blurEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusout' : 'blur');
 
 // NOTE: require classList polyfill may be necessary (not available on SVGElement)
 // http://caniuse.com/#feat=classlist available since IE10

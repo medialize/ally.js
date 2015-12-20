@@ -19,7 +19,7 @@ import decorateService from '../util/decorate-service';
 let engage;
 let disengage;
 
-if (!document.body.createShadowRoot) {
+if (typeof document === 'undefined' || !document.body.createShadowRoot) {
   // no need to initialize any of this if we don't have Shadow DOM available
   engage = disengage = function() {};
 } else {

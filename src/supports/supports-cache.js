@@ -44,7 +44,7 @@ function writeLocalStorage(key, value) {
   }
 }
 
-const userAgent = window.navigator.userAgent;
+const userAgent = typeof window !== 'undefined' && window.navigator.userAgent || '';
 const cacheKey = 'ally-supports-cache';
 let cache = readLocalStorage(cacheKey);
 
