@@ -18,4 +18,4 @@ export default function polyfill(root) {
   });
 }
 
-polyfill(window);
+typeof window !== 'undefined' && polyfill(window);

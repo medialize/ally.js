@@ -3,7 +3,7 @@
 // and rewritten to *not* pollute global space because of CustomEvent being an object Internet Explorer 11
 // https://msdn.microsoft.com/en-us/library/ff974338(v=vs.85).aspx
 
-let _CustomEvent = window.CustomEvent;
+let _CustomEvent = typeof window !== 'undefined' && window.CustomEvent || function() {};
 
 if (typeof _CustomEvent !== 'function') {
   _CustomEvent = function CustomEventPolyfill(event, params) {

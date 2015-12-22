@@ -41,4 +41,4 @@ export default function polyfill(root) {
   previousActiveElement && previousActiveElement.focus();
 }
 
-polyfill(window);
+typeof window !== 'undefined' && polyfill(window);

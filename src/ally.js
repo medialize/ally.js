@@ -15,7 +15,7 @@ import when from './when/_when';
 import version from './version';
 
 // save current window.ally for noConflict()
-const conflicted = window.ally;
+const conflicted = typeof window !== 'undefined' && window.ally;
 
 export default {
   element,
@@ -31,7 +31,7 @@ export default {
   when,
   version,
   noConflict: function() {
-    if (window.ally === this) {
+    if (typeof window !== 'undefined' && window.ally === this) {
       window.ally = conflicted;
     }
 

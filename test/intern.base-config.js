@@ -103,7 +103,7 @@ define([
       'test/unit/query.focusable.test',
       'test/unit/query.tabbable.test',
       'test/unit/query.tabsequence.sort-area.test',
-      'test/unit/query.tabsequence.sort-tabindex.test.js',
+      'test/unit/query.tabsequence.sort-tabindex.test',
       'test/unit/query.tabsequence.test',
       'test/unit/style.focus-within.test',
       'test/unit/style.focus-source.test',
@@ -117,6 +117,7 @@ define([
       'test/unit/when.focusable.test',
       'test/unit/when.key.test',
       'test/unit/when.visible-area.test',
+      'test/unit/core.worker.test',
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed

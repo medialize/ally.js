@@ -22,7 +22,7 @@ let disengage;
 // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
 const relevantToCurrentBrowser = platform.name === 'IE' && (platform.version.match(/^(10|11)\./));
 // IE10 requires prefix, IE11 does not
-const eventName = 'onpointerdown' in document ? 'pointerdown' : 'MSPointerDown';
+const eventName = typeof document !== 'undefined' && ('onpointerdown' in document ? 'pointerdown' : 'MSPointerDown');
 
 if (!relevantToCurrentBrowser) {
   engage = function() {};
