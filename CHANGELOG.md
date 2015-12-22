@@ -35,12 +35,13 @@ The following lists show the changes to the library grouped by domain.
 
 #### Internals
 
-* changing `ally.is.*` to work with other documents (e.g. iframes) - [issue #78](https://github.com/medialize/ally.js/issues/78)
+* fixing `ally.is.*` to work with other documents (e.g. iframes) - [issue #78](https://github.com/medialize/ally.js/issues/78)
 * fixing `supports/*` to not raise network errors - [issue #68](https://github.com/medialize/ally.js/issues/68)
 * fixing `supports/*` to run when required instead of on script load, restore scroll position - [issue #60](https://github.com/medialize/ally.js/issues/60)
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
+* changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
 
 #### Testing
 
