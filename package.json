@@ -32,6 +32,7 @@
     "tabbable"
   ],
   "scripts": {
+    "init": "npm install && npm run build && npm run build:website",
     "test": "node test/run-local.js",
     "test:sauce": "intern-runner config=test/sauce",
     "test:browserstack": "intern-runner config=test/browserstack",
