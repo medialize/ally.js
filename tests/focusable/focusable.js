@@ -302,12 +302,20 @@ function captureStuff() {
 
       document.getElementById('output-results').addEventListener('click', function() {
         results.tabOrder = activeElementHistory.filter(ignore);
+        var _text = JSON.stringify(results, null, 2);
+        var _form = document.createElement('form');
+        _form.method = 'POST';
+        _form.action = location.href.replace(/\/test.html.*$/, '/save.php');
+        _form.innerHTML = '<p><input type="submit" value="submit"></p><p><input type="text" name="name" value="saved"></p>';
+        document.body.replaceChild(_form, document.getElementById('results'));
+
         var _results = document.createElement('textarea');
         _results.style.width = '100%';
         _results.style.height = '400px';
         _results.id = 'results';
-        document.body.replaceChild(_results, document.getElementById('results'));
-        _results.value = JSON.stringify(results, null, 2);
+        _results.name = 'results';
+        _results.value = _text;
+        _form.appendChild(_results);
       }, false);
     });
   }, 500);
