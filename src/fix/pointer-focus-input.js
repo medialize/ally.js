@@ -9,14 +9,13 @@
   option `accessibility.mouse_focuses_formcontrol` in about:config
 */
 
-import platform from 'platform';
 import decorateContext from '../util/decorate-context';
+import platform from '../util/platform';
 
 let engage;
 let disengage;
 // This fix is only relevant to Safari and Firefox on OSX
-const relevantToCurrentBrowser = platform.os.family === 'OS X'
-  && (platform.layout === 'Gecko' || platform.layout === 'WebKit');
+const relevantToCurrentBrowser = platform.is.OSX && (platform.is.GECKO || platform.is.WEBKIT);
 
 if (!relevantToCurrentBrowser) {
   engage = function() {};

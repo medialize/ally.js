@@ -2,10 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'platform',
   '../helper/supports',
+  'ally/util/platform',
   'ally/query/tabsequence',
-], function(registerSuite, expect, focusableFixture, platform, supports, queryTabsequence) {
+], function(registerSuite, expect, focusableFixture, supports, platform, queryTabsequence) {
 
   registerSuite(function() {
     var fixture;
@@ -97,7 +97,7 @@ define([
           '#link',
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
-          platform.name === 'Firefox' && '#object-svg',
+          platform.is.GECKO && '#object-svg',
           supports.canFocusSvgMethod && '#svg-link',
           '#audio-controls',
           '#input',
@@ -192,7 +192,7 @@ define([
           strategy: 'strict',
         }).map(fixture.nodeToString);
 
-        var expected = platform.name === 'Firefox' ? expectGlobal : expectLocal;
+        var expected = platform.is.GECKO ? expectGlobal : expectLocal;
 
         expect(result).to.deep.equal(expected);
       },

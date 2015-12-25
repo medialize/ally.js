@@ -1,8 +1,8 @@
 
-import platform from 'platform';
 import detectFocus from './detect-focus';
 import memorizeResult from './memorize-result';
 import svg from './media/svg';
+import platform from '../util/platform';
 
 export default memorizeResult(() => detectFocus({
   name: 'can-focus-object-svg',
@@ -14,7 +14,7 @@ export default memorizeResult(() => detectFocus({
     element.setAttribute('height', '50');
   },
   validate: function(element) {
-    if (platform.name === 'Firefox') {
+    if (platform.is.GECKO) {
       // Firefox seems to be handling the object creation asynchronously and thereby produces a false negative test result.
       // Because we know Firefox is able to focus object elements referencing SVGs, we simply cheat by sniffing the user agent string
       return true;

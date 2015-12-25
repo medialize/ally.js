@@ -1,7 +1,7 @@
 
-import platform from 'platform';
 import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
+import platform from '../util/platform';
 
 export default function(element) {
   if (element === document) {
@@ -15,18 +15,18 @@ export default function(element) {
   const nodeName = element.nodeName.toLowerCase();
   const tabindex = tabindexValue(element);
 
-  if (nodeName === 'label' && platform.name === 'Firefox') {
+  if (nodeName === 'label' && platform.is.GECKO) {
     // Firefox cannot focus, but tab to: label[tabindex=0]
     return tabindex !== null && tabindex >= 0;
   }
 
-  if (nodeName === 'object' && element.getAttribute('type') === 'image/svg+xml' && platform.name === 'IE') {
+  if (nodeName === 'object' && element.getAttribute('type') === 'image/svg+xml' && platform.is.TRIDENT) {
     // Internet Explorer cannot focus, but tab to: object[type="image/svg+xml"]
     // [tabindex=-1] negates the tabbing
     return tabindex === null || tabindex >= 0;
   }
 
-  if (nodeName === 'svg' && platform.name === 'IE') {
+  if (nodeName === 'svg' && platform.is.TRIDENT) {
     return element.getAttribute('focusable') !== 'false';
   }
 
@@ -34,14 +34,14 @@ export default function(element) {
   if (element instanceof _window.SVGElement) {
     if (nodeName === 'a' && element.hasAttribute('xlink:href')) {
       // any focusable child of <svg> cannot be focused, but tabbed to
-      if (platform.name === 'Firefox') {
+      if (platform.is.GECKO) {
         return true;
       }
-      if (platform.name === 'IE') {
+      if (platform.is.TRIDENT) {
         return element.getAttribute('focusable') !== 'false';
       }
     }
-    if (platform.name === 'IE') {
+    if (platform.is.TRIDENT) {
       return element.getAttribute('focusable') === 'true';
     }
   }

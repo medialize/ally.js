@@ -4,7 +4,7 @@ define([
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/supports',
-  'platform',
+  'ally/util/platform',
   'ally/query/focusable',
 ], function(
   registerSuite,
@@ -46,7 +46,7 @@ define([
           '#image-map-area',
           supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
           '#object-svg',
-          platform.name === 'IE' && '#svg',
+          platform.is.TRIDENT && '#svg',
           supports.canFocusObjectSvg && '#object-tabindex-svg',
           '#svg-link',
           canTestVideoEmbed && '#embed',

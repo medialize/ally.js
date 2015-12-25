@@ -2,7 +2,7 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'platform',
+  'ally/util/platform',
   'ally/is/focusable',
   'ally/is/tabbable',
 ], function(registerSuite, expect, focusableFixture, platform, isFocusable, isTabbable) {
@@ -76,7 +76,7 @@ define([
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusable(element) && isTabbable(element)).to.equal(platform.name === 'Firefox');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(platform.is.GECKO);
       },
       'extended: scroll body': function() {
         var element = document.getElementById('scroll-body');

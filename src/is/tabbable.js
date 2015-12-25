@@ -1,8 +1,8 @@
 
 // determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
 
-import platform from 'platform';
 import tabindexValue from '../util/tabindex-value';
+import platform from '../util/platform';
 import {
   getImageOfArea,
   hasCssOverflowScroll,
@@ -23,7 +23,7 @@ export default function(element) {
     throw new TypeError('is/tabbable requires an argument of type Element');
   }
 
-  if (platform.name === 'Chrome Mobile' && parseFloat(platform.version) > 42 && platform.os.family === 'Android') {
+  if (platform.is.BLINK && platform.is.ANDROID && platform.majorVersion > 42) {
     // External keyboard support worked fine in CHrome 42, but stopped working in Chrome 45.
     // The on-screen keyboard does not provide a way to focus the next input element (like iOS does).
     // That leaves us with no option to advance focus by keyboard, ergo nothing is tabbable (keyboard focusable).
@@ -54,7 +54,7 @@ export default function(element) {
     if (!element.hasAttribute('controls')) {
       // In Internet Explorer the <audio> element is focusable, but not tabbable, and tabIndex property is wrong
       return false;
-    } else if (platform.name === 'Chrome' || platform.name === 'Chrome Mobile') {
+    } else if (platform.is.BLINK) {
       // In Chrome <audio controls tabindex="-1"> remains keyboard focusable
       return true;
     }
@@ -62,24 +62,24 @@ export default function(element) {
 
   if (nodeName === 'video') {
     if (!element.hasAttribute('controls')) {
-      if (platform.name === 'IE') {
+      if (platform.is.TRIDENT) {
         // In Internet Explorer the <video> element is focusable, but not tabbable, and tabIndex property is wrong
         return false;
       }
-    } else if (platform.name === 'Chrome' || platform.name === 'Firefox') {
+    } else if (platform.is.BLINK || platform.is.GECKO) {
       // In Chrome and Firefox <video controls tabindex="-1"> remains keyboard focusable
       return true;
     }
   }
 
   if (nodeName === 'object') {
-    if (platform.layout === 'Blink' || platform.layout === 'WebKit') {
+    if (platform.is.BLINK || platform.is.WEBKIT) {
       // In all Blink and WebKit based browsers <embed> and <object> are never keyboard focusable, even with tabindex="0" set
       return false;
     }
   }
 
-  if (platform.name === 'Safari' && parseFloat(platform.version) < 10 && platform.os.family === 'iOS') {
+  if (platform.is.WEBKIT && platform.is.IOS && platform.majorVersion < 10) {
     // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
     let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
@@ -97,7 +97,7 @@ export default function(element) {
     }
   }
 
-  if (platform.name === 'Firefox') {
+  if (platform.is.GECKO) {
     // Firefox considers scrollable containers keyboard focusable,
     // even though their tabIndex property is -1
     const style = window.getComputedStyle(element, null);
@@ -107,7 +107,7 @@ export default function(element) {
     }
   }
 
-  if (platform.name === 'IE') {
+  if (platform.is.TRIDENT) {
     // IE degrades <area> to script focusable, if the image
     // using the <map> has been given tabindex="-1"
     if (nodeName === 'area') {

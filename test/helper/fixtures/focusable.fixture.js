@@ -1,6 +1,6 @@
 define([
   './custom.fixture',
-  'platform',
+  'ally/util/platform',
   'ally/supports/media/gif',
   'ally/supports/media/svg',
   'ally/supports/media/mp3',
@@ -8,7 +8,7 @@ define([
 ], function(customFixture, platform, gif, svg, mp3, mp4) {
   return function(context) {
 
-    var avoidQuicktime = platform.name === 'Safari';
+    var avoidQuicktime = platform.is.WEBKIT;
 
     return customFixture([
       /*eslint-disable indent */
