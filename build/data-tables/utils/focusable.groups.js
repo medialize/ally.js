@@ -5,6 +5,7 @@ const file = path.resolve(cwd, 'tests/focusable/data/meta.groups.json');
 const source = require(file);
 
 const idents = new Set();
+const inertIdents = new Set();
 source.forEach(function(group) {
   // add a key to be used for referencing the group in a data-table
   group.id = group.label.replace(/[^a-z0-9]+/ig, '-').toLowerCase();
@@ -16,6 +17,12 @@ source.forEach(function(group) {
   // (but keep them in the idents set so we don't add them to "elements without group" later)
   group.irrelevant && group.irrelevant.forEach(function(ident) {
     delete group.idents[ident];
+  });
+
+  // remember entries that have no detail relevance
+  // to the ally comparison tables
+  group['inert-in-ally'] && group['inert-in-ally'].forEach(function(ident) {
+    inertIdents.add(ident);
   });
 
   // create lookup table for redundant entries
@@ -54,4 +61,5 @@ module.exports = {
   idents,
   list: source,
   handleIdentsWithoutGroup: identsToUnknownGroup,
+  inertIdents,
 };

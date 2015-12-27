@@ -25,6 +25,22 @@ function rowDataAllyNotes(ident, sourceIdent, referencedNotes) {
   };
 }
 
+function skipIdentsIfMatches(labelGroup, labelName) {
+  return function(ident, sourceIdent) {
+    if (ident.slice(0, 14) === 'inert-in-ally{') {
+      return false;
+    } else if (source.inertIdents.has(ident)) {
+      return true;
+    }
+
+    // skip rows where every browser-cell equals the ally-cell
+    return !source.columns.some(function(browser) {
+      const data = sourceIdent[browser];
+      return data.browser.label !== data[labelGroup][labelName];
+    });
+  };
+}
+
 generateTableDocument({
   source,
   browsers,
@@ -35,7 +51,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: false,
-  skipIdents: function(sourceIdent) {
+  skipIdents: function(ident, sourceIdent) {
     // skip rows that are completely inert
     return !source.columns.some(function(browser) {
       const data = sourceIdent[browser];
@@ -55,13 +71,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: function(sourceIdent) {
-    // skip rows where every browser-cell equals the ally-cell
-    return !source.columns.some(function(browser) {
-      const data = sourceIdent[browser];
-      return data.browser.label !== data.ally.labelQuick;
-    });
-  },
+  skipIdents: skipIdentsIfMatches('ally', 'labelQuick'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -85,13 +95,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: function(sourceIdent) {
-    // skip rows where every browser-cell equals the ally-cell
-    return !source.columns.some(function(browser) {
-      const data = sourceIdent[browser];
-      return data.browser.label !== data.ally.labelStrict;
-    });
-  },
+  skipIdents: skipIdentsIfMatches('ally', 'labelStrict'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -115,13 +119,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: function(sourceIdent) {
-    // skip rows where every browser-cell equals the ally-cell
-    return !source.columns.some(function(browser) {
-      const data = sourceIdent[browser];
-      return data.browser.label !== data.jquery.label;
-    });
-  },
+  skipIdents: skipIdentsIfMatches('jquery', 'label'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {

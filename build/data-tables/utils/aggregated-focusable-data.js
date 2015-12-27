@@ -224,4 +224,5 @@ module.exports = {
   data: aggregated,
   notes,
   groups: groups.list,
+  inertIdents: groups.inertIdents,
 };

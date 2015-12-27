@@ -305,7 +305,8 @@
       "iframe{focusable} -> input": "<input> within <iframe src=\"…\">",
       "iframe{focusable}[tabindex=-1] -> input": "<input> within <iframe src=\"…\" tabindex=\"-1\">",
       "iframe{focusable} -> input[tabindex=1]": "<input tabindex=\"1\"> within <iframe src=\"…\">",
-      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]": "<input tabindex=\"1\"> within <iframe src=\"…\" tabindex=\"-1\">"
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]": "<input tabindex=\"1\"> within <iframe src=\"…\" tabindex=\"-1\">",
+      "inert-in-ally{iframe content}": "content in <iframe>"
     },
     "redundant": {
       "iframe": [
@@ -322,7 +323,17 @@
       "iframe[tabindex=-1] -> body": [
         "iframe{focusable}[tabindex=-1] -> body"
       ]
-    }
+    },
+    "inert-in-ally": [
+      "iframe -> body",
+      "iframe{focusable} -> body",
+      "iframe[tabindex=-1] -> body",
+      "iframe{focusable}[tabindex=-1] -> body",
+      "iframe{focusable} -> input",
+      "iframe{focusable}[tabindex=-1] -> input",
+      "iframe{focusable} -> input[tabindex=1]",
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]"
+    ]
   },
 
   {
@@ -337,7 +348,18 @@
       "embed[type=svg]": "<embed type=\"image/svg+xml\" src=\"…\">",
       "embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\" src=\"…\" tabindex=\"-1\">",
       "embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\" src=\"…\" tabindex=\"0\">"
-    }
+    },
+    "inert-in-ally": [
+      "embed",
+      "embed[tabindex=-1]",
+      "embed[type=mp4]",
+      "embed[type=mp4][tabindex=-1]",
+      "embed[type=ogv]",
+      "embed[type=ogv][tabindex=-1]",
+      "embed[type=svg]",
+      "embed[type=svg][tabindex=-1]",
+      "embed[type=svg][tabindex=0]"
+    ]
   },
 
   {
@@ -450,8 +472,20 @@
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <iframe tabindex=\"-1\">",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <iframe tabindex=\"-1\">",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <iframe tabindex=\"-1\">",
-      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <iframe tabindex=\"-1\">"
-    }
+      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <iframe tabindex=\"-1\">",
+      "inert-in-ally{iframe svg:file}": "content in <iframe>"
+    },
+    "inert-in-ally": [
+      "iframe[src=svg] -> file:svg",
+      "iframe[src=svg] -> file:svg a[xlink|href]",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "iframe[src=svg] -> file:svg a[focusable=false]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]"
+    ]
   },
 
   {
@@ -470,8 +504,25 @@
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <embed tabindex=\"-1\">",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <embed tabindex=\"-1\">",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <embed tabindex=\"-1\">",
-      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <embed tabindex=\"-1\">"
-    }
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <embed tabindex=\"-1\">",
+      "inert-in-ally{embed svg:file}": "content in <embed>"
+    },
+    "inert-in-ally": [
+      "embed[type=svg] -> file:svg",
+      "embed[type=svg] -> file:svg a[xlink|href]",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=0] -> file:svg",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]"
+    ]
   },
 
   {
@@ -495,8 +546,30 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object height=\"0\">",
-      "object[src=svg][height=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object height=\"0\">"
-    }
+      "object[src=svg][height=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object height=\"0\">",
+      "inert-in-ally{object svg:file}": "content in <object>"
+    },
+    "inert-in-ally": [
+      "object[src=svg] -> file:svg",
+      "object[src=svg] -> file:svg a[xlink|href]",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=0] -> file:svg",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href]",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "object[src=svg][height=0] -> file:svg",
+      "object[src=svg][height=0] -> file:svg a[xlink|href]",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][height=0] -> file:svg a[focusable=false]"
+    ]
   },
 
   {
@@ -696,8 +769,13 @@
     "label": "Questionable Elements",
     "idents": {
       "keygen": "<keygen …>",
-      "keygen[tabindex=-1]": "<keygen … tabindex=\"-1\">"
-    }
+      "keygen[tabindex=-1]": "<keygen … tabindex=\"-1\">",
+      "inert-in-ally{keygen}": "<keygen …>"
+    },
+    "inert-in-ally": [
+      "keygen",
+      "keygen[tabindex=-1]"
+    ]
   }
 
 ]

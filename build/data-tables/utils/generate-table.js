@@ -42,7 +42,7 @@ module.exports = function({
 
   Object.keys(idents).forEach(function(ident) {
     const sourceIdent = source.data[ident];
-    if (skipIdents && skipIdents(sourceIdent)) {
+    if (skipIdents && skipIdents(ident, sourceIdent)) {
       return;
     }
 

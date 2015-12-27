@@ -186,7 +186,6 @@
     }
   },
 
-  "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
   "iframe": {
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>`s keyboard focusable (tabbable).",
     "browsers": {
@@ -203,7 +202,9 @@
       "iframe[tabindex=-1] -> body",
       "iframe{focusable} -> input[tabindex=1]",
       "iframe{focusable}[tabindex=-1] -> body",
-      "iframe -> body"
+      "iframe -> body",
+      "inert-in-ally{iframe content}",
+      "inert-in-ally{iframe svg:file}"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>` content inert",
     "general": "@sop-iframe"
@@ -237,8 +238,10 @@
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
-      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]"
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "inert-in-ally{embed svg:file}"
     ],
+    "ally": "Because there is no API to dive into the content document of an `<embed>` element, ally.js considers all `<embed>` content inert.",
     "general": "There is no API to interact with the content document of an `<embed>` element"
   },
 
@@ -261,8 +264,10 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
-      "object[src=svg][height=0] -> file:svg a[focusable=false]"
+      "object[src=svg][height=0] -> file:svg a[focusable=false]",
+      "inert-in-ally{object svg:file}"
     ],
+    "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<object>`s to determine their content, which is why ally.js considers all `<object>` content inert.",
     "general": "Technically the content of an `<object>` element [can be accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement)."
   },
 
@@ -480,7 +485,8 @@
   "@firefox-keygen-select": "Firefox transforms `<keygen>` to `<select _moz-type=\"-mozilla-keygen\">` while parsing HTML.",
   "keygen": {
     "alias": [
-      "keygen[tabindex=-1]"
+      "keygen[tabindex=-1]",
+      "inert-in-ally{keygen}"
     ],
     "browsers": {
       "firefox-stable": "@firefox-keygen-select",
