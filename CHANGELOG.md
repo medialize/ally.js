@@ -28,6 +28,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
+* fixing [`ally.is.disabled`](ally/is/disabled) to properly handle `<form disabled>` in IE9 - IE11
 
 #### Keyboard support
 

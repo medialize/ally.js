@@ -19,8 +19,9 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | focus-audio-without-controls | boolean | true if `<audio>` is focusable (while only `<audio controls>` should be) |
 | focus-broken-image-map | boolean | true if `<area>` is focusable although the `<img>` using the `<map>` is not properly loaded |
 | focus-children-of-focusable-flexbox | boolean | true if `<span>` in `<a href="…" style="display:flex;"><span>` is focusable |
-| focus-fieldset-disabled | boolean | true if `<fieldset disabled>` is focusable |
+| focus-fieldset-disabled | boolean | true if `<fieldset tabindex="0" disabled>` is focusable |
 | focus-fieldset | boolean | true if `<fieldset>` is focusable |
+| focus-form-disabled | boolean | true if `<fieldset tabindex="0" disabled>` is focusable |
 | focus-img-ismap | boolean | true if `<img>` in `<a href="–"><img ismap src="…">` is focusable |
 | focus-img-usemap-tabindex | boolean | true if `<img usemap="#…">` is focusable |
 | focus-invalid-tabindex | boolean | true if `<div tabindex="invalid-value">` is focusable |
