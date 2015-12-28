@@ -76,6 +76,7 @@ define([
       'test/unit/fix.pointer-focus-input.test',
       'test/unit/fix.pointer-focus-parent.test',
       'test/unit/get.active-elements.test',
+      'test/unit/get.focus-redirect-target.test',
       'test/unit/get.focus-target.test',
       'test/unit/get.insignificant-branches.test',
       'test/unit/get.parents.test',

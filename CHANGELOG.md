@@ -29,6 +29,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
 * fixing [`ally.is.disabled`](ally/is/disabled) to properly handle `<form disabled>` in IE9 - IE11
+* adding [`ally.get.focusRedirectTarget`](ally/get/focus-redirect-target) to identify elements focus is forwarded to
 
 #### Keyboard support
 
@@ -211,6 +212,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/fix/pointer-focus-parent]: http://allyjs.io/api/fix/pointer-focus-parent.html
 [ally/get/active-elements]: http://allyjs.io/api/get/active-elements.html
 [ally/get/focus-target]: http://allyjs.io/api/get/focus-target.html
+[ally/get/focus-redirect-target]: http://allyjs.io/api/get/focus-redirect-target.html
 [ally/get/insignificant-branches]: http://allyjs.io/api/get/insignificant-branches.html
 [ally/get/parents]: http://allyjs.io/api/get/parents.html
 [ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html

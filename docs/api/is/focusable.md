@@ -48,7 +48,7 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 ## Related resources
 
 * [`ally.is.focusRelevant`](focus-relevant.md) is used to identify elements that can receive focus
-* [`ally.is.tabbable`](tabbable.md) identifies keyboard focusable elements
+* [`ally.is.focusable`](focusable.md) identifies elements that are focusable
 * [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)

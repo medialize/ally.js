@@ -101,6 +101,7 @@ Sometimes you need some DOM traversal utilities
 
 * [`ally.get.activeElements`](get/active-elements.md) identifies the `ShadowHost` ancestry of the active element
 * [`ally.get.insignificantBranches`](get/insignificant-branches.md)
+* [`ally.get.focusRedirectTarget`](get/focus-redirect-target.md)
 * [`ally.get.focusTarget`](get/focus-target.md)
 * [`ally.get.parents`](get/parents.md)
 * [`ally.get.shadowHostParents`](get/shadow-host-parents.md)
