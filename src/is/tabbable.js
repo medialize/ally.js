@@ -3,8 +3,8 @@
 
 import tabindexValue from '../util/tabindex-value';
 import platform from '../util/platform';
+import {getImageOfArea} from '../util/image-map';
 import {
-  getImageOfArea,
   hasCssOverflowScroll,
   isScrollableContainer,
   isUserModifyWritable,

@@ -44,6 +44,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing ShadowDOM related unit tests in WebKit
 * changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
 * changing user agent sniffing from detecting browser to rendering engine - [issue #97](https://github.com/medialize/ally.js/issues/97)
+* refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 
 #### Testing
 
