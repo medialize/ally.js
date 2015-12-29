@@ -80,6 +80,7 @@ function captureStuff() {
       tabbableStrict: null,
       onlyTabbable: null,
       tabOrder: null,
+      focusRedirection: {},
     },
     jquery: {
       focusable: null,
@@ -218,11 +219,12 @@ function captureStuff() {
       'ally/query/tabsequence',
       'ally/query/tabbable',
       'ally/is/only-tabbable',
+      'ally/get/focus-redirect-target',
       'platform',
       'jquery',
       'jquery-ui/core',
       'ally/prototype/window.requestanimationframe',
-    ], function (queryFocusable, queryTabsequence, queryTabbable, isOnlyTabbable, platform, $) {
+    ], function (queryFocusable, queryTabsequence, queryTabbable, isOnlyTabbable, getFocusRedirectTarget, platform, $) {
       // save results
       results.focusEvents = focusEventHistory.filter(ignore);
       // reset buffers
@@ -261,6 +263,16 @@ function captureStuff() {
       results.ally.tabOrder = queryTabsequence({
         context: document
       }).map(elementName).filter(ignore);
+
+      elements.filter(ignore).forEach(function(element) {
+        var target = getFocusRedirectTarget({ context: element });
+        if (target) {
+          var _element = elementName(element);
+          var _target = elementName(target);
+          results.ally.focusRedirection[_element] = _target;
+        }
+      });
+
 
       // jQueryUI
       results.jquery.focusable = $(':focusable').toArray().map(elementName).filter(ignore);
