@@ -30,6 +30,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
 * fixing [`ally.is.disabled`](ally/is/disabled) to properly handle `<form disabled>` in IE9 - IE11
 * adding [`ally.get.focusRedirectTarget`](ally/get/focus-redirect-target) to identify elements focus is forwarded to
+* fixing [`ally.get.focusTarget`] to resolve elements redirecting focus to other elements
 
 #### Keyboard support
 
