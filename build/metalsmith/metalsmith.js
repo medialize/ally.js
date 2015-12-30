@@ -36,6 +36,7 @@ function getRedirectionMap() {
     '/examples/index.html': WEBSITE_CANONICAL + 'api/index.html',
     '/examples/trap-focus.html': WEBSITE_CANONICAL + 'api/maintain/disabled.html',
     '/examples/visible-area.html': WEBSITE_CANONICAL + 'api/when/visible-area.html',
+    '/data-tables/focusable.redirect.html': WEBSITE_CANONICAL + 'data-tables/focusable.html',
   };
 }
 

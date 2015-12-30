@@ -7,7 +7,6 @@ const targetDirectory = path.resolve(cwd, 'web/data-tables/');
 mkdirp.sync(targetDirectory);
 
 const generateTableDocument = require('./utils/generate-table-document');
-const highlightLabel = require('./utils/highlight-label');
 
 // actual browser compatibility data
 const source = require('./utils/aggregated-focusable-data');
@@ -131,30 +130,6 @@ generateTableDocument({
       label: data.jquery.label,
       focusable: data.jquery.focusable,
       tabbable: data.jquery.focusable,
-    };
-  },
-});
-
-generateTableDocument({
-  source: source,
-  browsers,
-  targetFile: path.resolve(targetDirectory, 'focusable.redirect.html'),
-  title: 'Focus Redirecting Elements - Browser Compatibility Table',
-  introduction: `<p>The following tables show which elements forward focus to another element in individual browsers
-    The tables are based on the <a href="http://allyjs.io/tests/focusable/test.html">focusable test document</a>.</p>`,
-  skipExpected: true,
-  skipIdents: function(sourceIdent) {
-    // skip rows without redirections
-    return !source.columns.some(function(browser) {
-      const data = sourceIdent[browser];
-      return data.browser.redirecting;
-    });
-  },
-  cellTemplate: 'table-cell.redirect.hbs',
-  cellData: function(data) {
-    const label = data.browser.redirecting && source.redirects[data.browser.redirecting];
-    return {
-      label: label && highlightLabel(label) || data.browser.redirecting || '',
     };
   },
 });

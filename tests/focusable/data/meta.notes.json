@@ -488,5 +488,182 @@
     },
     "ally": "Because the `<keygen>` element is poorly supported, ally considers all `<keygen>` elements focus-relevant but *not* focusable.",
     "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
+  },
+
+  "@negative-tabindex-browsing-context": "Keyboard focusable (tabbable) content in nested [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`) is demoted to script and mouse focusable if the browsing context container has `tabindex=\"-1\"`.",
+  "-negative-tabindex-browsing-context": {
+    "alias": [
+      "iframe[tabindex=-1] -> body",
+      "iframe{focusable}[tabindex=-1] -> body",
+      "iframe{focusable}[tabindex=-1] -> input",
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]"
+    ],
+    "general": "@negative-tabindex-browsing-context"
+  },
+
+  "@negative-tabindex-svg": "The focusable state of descendant elements of an `<svg>` element are not affected by `tabindex=\"-1\"` on the `<svg>` element, contrary to the behavior of [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
+  "-negative-tabindex-svg": {
+    "alias": [
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[tabindex=-1] a[xlink|href] text"
+    ],
+    "general": "@negative-tabindex-svg"
+  },
+
+  "@negative-tabindex-shadow-dom": "The focusable state of content elements in Shadow DOM are not affected by `tabindex=\"-1\"` on the shadow host, contrary to the behavior of [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
+  "-negative-tabindex-shadow-dom": {
+    "alias": [
+      "shadow-host[tabindex=-1] input[tabindex=0]",
+      "shadow-host[tabindex=-1] input[tabindex=-1]",
+      "shadow-host[tabindex=-1] input[tabindex=2]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=-1]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=1]"
+    ],
+    "general": "@negative-tabindex-shadow-dom"
+  },
+
+  "@redirect-referenced-input": "Focus is redirected to the [labeled control](http://www.w3.org/TR/html5/forms.html#labeled-control).",
+  "@redirect-nested-input": "Focus is redirected to the nested [labeled control](http://www.w3.org/TR/html5/forms.html#labeled-control).",
+
+  "@redirect-legend-next-tabbable": "Focus is redirected to the the next keyboard focusable (tabbable) element after the `<legend>` in DOM order (not in order of the document's tab sequence). Note that this does not necessarily have to be a descendant of the same `<fieldset>` element.",
+  "@redirect-legend-input": "Focus is redirected to the the first focusable form control element (`<input>`, `<select>`, `<textarea>`, `<button>`) of the `<fieldset>` the `<legend>` is the child of.",
+
+  "@redirect-image-area": "Focus is redirected to the the first `<area>` element of the referenced image map.",
+  "-redirections": {
+    "redirect": {
+      "label[for=label-target] --- input[type=text]": "@redirect-referenced-input",
+      "label[for=label-target-focusable] --- input[type=text][tabindex=-1]": "@redirect-referenced-input",
+      "label[for=label-target][tabindex=-1] --- input[type=text]": "@redirect-referenced-input",
+      "label:has(input) --- label:has(input) input": "@redirect-nested-input",
+
+      "fieldset legend --- fieldset input[tabindex=-1]": "@redirect-legend-input",
+      "fieldset:has(input[tabindex=-1]) legend --- fieldset:has(input[tabindex=-1]) input[tabindex=-1]": "@redirect-legend-input",
+      "fieldset:has(textarea) legend --- fieldset:has(textarea) textarea": "@redirect-legend-input",
+      "fieldset:has(select) legend --- fieldset:has(select) select": "@redirect-legend-input",
+      "fieldset:has(button) legend --- fieldset:has(button) button": "@redirect-legend-input",
+
+      "fieldset legend --- fieldset input": "@redirect-legend-next-tabbable",
+      "fieldset:has(a) legend --- fieldset:has(a) a": "@redirect-legend-next-tabbable",
+      "fieldset:has(input[tabindex=-1]) legend --- fieldset{no-tabbable} a[tabindex=1]": "@redirect-legend-next-tabbable",
+
+      "img[usemap].first --- area[href].upper": "@redirect-image-area",
+      "img[usemap].second --- area[href].upper": "@redirect-image-area",
+      "img[usemap].focusable --- area[href][tabindex=-1].upper": "@redirect-image-area",
+      "img[usemap][tabindex=-1] --- img[tabindex=-1] area[href].upper": "@redirect-image-area",
+      "img[usemap].invalid --- map.invalid-image area[href].upper": "@redirect-image-area"
+    }
+  },
+
+  "@encapsulated-iframe": "The `<iframe>`'s document manages its own focus. Any time the `<iframe>` or its content has focus, the master document's `activeElement` points to the `<iframe>`.\n\nNote that `<iframe>`s are only [accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting) when they share [the same origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).",
+  "-encapsulated-iframe": {
+    "redirect": {
+      "iframe -> body --- iframe": "@encapsulated-iframe",
+      "iframe[tabindex=-1] -> body --- iframe[tabindex=-1]": "@encapsulated-iframe",
+      "iframe{focusable} -> body --- iframe{focusable}": "@encapsulated-iframe",
+      "iframe{focusable} -> input --- iframe{focusable}": "@encapsulated-iframe",
+      "iframe{focusable} -> input[tabindex=1] --- iframe{focusable}": "@encapsulated-iframe",
+      "iframe{focusable}[tabindex=-1] -> body --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
+      "iframe{focusable}[tabindex=-1] -> input --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1] --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[xlink|href] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[focusable=false] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
+      "svg a[xlink|href] --- iframe[src=svg]": "@encapsulated-iframe",
+      "svg a[xlink|href] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe"
+    }
+  },
+
+  "@encapsulated-embed": "Browser plugins running the `<embed>` can manage their own focus. Any time the `<embed>` or its content has focus, the master document's `activeElement` points to the `<embed>`.\n\nNote that the content of `<embed>` elements is not accessible to scripting from the outside, but from within the `<embed>`'s document JavaScript can interact with [`window.parent`](https://developer.mozilla.org/en-US/docs/Web/API/Window/parent).",
+  "-encapsulated-embed": {
+    "redirect": {
+      "embed[type=svg] -> file:svg --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg] -> file:svg a[xlink|href] --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=1] --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1] --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg] -> file:svg a[focusable=false] --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=0] -> file:svg --- embed[type=svg][tabindex=0]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href] --- embed[type=svg][tabindex=0]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1] --- embed[type=svg][tabindex=0]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1] --- embed[type=svg][tabindex=0]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=0] -> file:svg a[focusable=false] --- embed[type=svg][tabindex=0]": "@encapsulated-embed",
+      "svg a[xlink|href] --- embed[type=svg]": "@encapsulated-embed",
+      "svg a[xlink|href] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
+      "svg a[xlink|href] --- embed[type=svg][tabindex=0]": "@encapsulated-embed"
+    }
+  },
+
+  "@encapsulated-object": "The `<object>`'s document manages its own focus. Any time the `<object>` or its content has focus, the master document's `activeElement` points to the `<object>`.\n\nNote that `<object>`s are only [accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement) via `element.contentWindow` when they share [the same origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).",
+  "-encapsulated-object": {
+    "redirect": {
+      "object[src=svg] -> file:svg --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg] -> file:svg a[xlink|href] --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg] -> file:svg a[focusable=false] --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
+      "object[src=svg][tabindex=-1] -> file:svg a[focusable=false] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
+      "object[src=svg][tabindex=0] -> file:svg --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href] --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "object[src=svg][tabindex=0] -> file:svg a[focusable=false] --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "object[src=svg][height=0] -> file:svg --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg][height=0] -> file:svg a[xlink|href] --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg][height=0] -> file:svg a[focusable=false] --- object[src=svg][height=0]": "@encapsulated-object",
+      "svg a[xlink|href] --- object[src=svg]": "@encapsulated-object",
+      "svg a[xlink|href] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
+      "svg a[xlink|href] --- object[src=svg][tabindex=0]": "@encapsulated-object",
+      "svg a[xlink|href] --- object[src=svg][height=0]": "@encapsulated-object"
+    }
+  },
+
+  "@encapsulated-shadow-dom": "Whenever an element within a ShadowRoot has focus, the element hosting the [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) is considered the `activeElement` of the document, as per the [active element adjustment algorithm](http://w3c.github.io/webcomponents/spec/shadow/#active-element).\n\nFirefox' Shadow DOM implementation still has a few problems: [Gecko 1117535](https://bugzilla.mozilla.org/show_bug.cgi?id=1117535), [Gecko 1117544](https://bugzilla.mozilla.org/show_bug.cgi?id=1117544), [Gecko 1117552](https://bugzilla.mozilla.org/show_bug.cgi?id=1117552).",
+  "-encapsulated-shadow-dom": {
+    "redirect": {
+      "shadow-host input[tabindex=0] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host input[tabindex=-1] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host input[tabindex=2] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host inner-host input[tabindex=-1] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host inner-host input[tabindex=0] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host inner-host input[tabindex=1] --- shadow-host": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] input[tabindex=0] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] input[tabindex=-1] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] input[tabindex=2] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=-1] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=0] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=1] --- shadow-host[tabindex=-1]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] input[tabindex=0] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] input[tabindex=-1] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] input[tabindex=2] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] inner-host input[tabindex=-1] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] inner-host input[tabindex=0] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
+      "shadow-host[tabindex=0] inner-host input[tabindex=1] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom"
+    }
   }
 }

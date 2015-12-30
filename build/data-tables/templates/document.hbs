@@ -76,16 +76,17 @@
     table td[data-focusable="false"][data-tabbable="true"],
     table td > span.compare[data-focusable="false"][data-tabbable="true"] {
       /* only tabbable */
-      background: #AAAAFF;
+      background: #19F1FF;
     }
-    table td[data-redirecting="false"],
     table td[data-focusable="false"][data-tabbable="false"],
     table td > span.compare[data-focusable="false"][data-tabbable="false"] {
       /* inert */
       background: #DDDDDD;
     }
-    table td[data-redirecting="true"] {
-      background: #6E92A1;
+    table td[data-redirecting-to],
+    table td > span.compare[data-redirecting-to] {
+      /* redirecting */
+      background: #FFA9F9 !important;
     }
 
     table td.irrelevant-to-context {
@@ -135,6 +136,10 @@
     tbody .notes > .note.warning {
       color: white;
       background: red;
+    }
+    tbody .notes > .note.target {
+      color: white;
+      background: black;
     }
     tbody .notes > .note.compare-target {
       color: white;

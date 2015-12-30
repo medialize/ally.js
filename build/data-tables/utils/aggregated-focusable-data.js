@@ -5,7 +5,6 @@ const glob = require('glob');
 const cwd = process.cwd();
 const notes = require('./focusable.notes');
 const groups = require('./focusable.groups');
-const redirects = require(path.resolve(cwd, 'tests/focusable/data/meta.redirects.json'));
 const platforms = require('./platforms');
 
 function convertExpectedStructure(content) {
@@ -73,6 +72,7 @@ Object.keys(source).forEach(function(browser) {
         "focusable": [],
         "focusEvents": [],
         "focusRedirection": [],
+        "focusEncapsulation": [],
         "noFocusMethod": [],
         "tabOrder": [],
         "tabIndex": {},
@@ -104,11 +104,22 @@ Object.keys(source).forEach(function(browser) {
   });
 
   // focusRedirection is a list of maps
-  // 'from --- to'
+  // 'from --- to' refering to a redirection within the same document
   mappedData.redirections = new Map();
   (sourceData.focusRedirection || []).forEach(function(key) {
     const _key = key.split(' --- ');
     mappedData.redirections.set(_key[0], _key[1]);
+    notes.registerRedirection(browser, _key[0], _key[1]);
+    idents.add(_key[0]);
+    idents.add(_key[1]);
+  });
+  // focusEncapsulation is a list of maps
+  // 'from --- to' referring to an encapsulation of a nested document
+  mappedData.encapsulations = new Map();
+  (sourceData.focusEncapsulation || []).forEach(function(key) {
+    const _key = key.split(' --- ');
+    mappedData.encapsulations.set(_key[0], _key[1]);
+    notes.registerRedirection(browser, _key[0], _key[1]);
     idents.add(_key[0]);
     idents.add(_key[1]);
   });
@@ -129,8 +140,9 @@ Object.keys(source).forEach(function(browser) {
   });
 });
 
-function readableLabel(focusable, tabbable, onlyTabbable) {
-  return (focusable && tabbable && 'tabbable')
+function readableLabel(focusable, tabbable, onlyTabbable, redirecting) {
+  return (redirecting && 'redirecting')
+    || (focusable && tabbable && 'tabbable')
     || (focusable && !tabbable && 'focusable')
     || (!focusable && tabbable && 'only tabbable')
     || (onlyTabbable && 'only tabbable')
@@ -152,6 +164,7 @@ Array.from(idents).sort().forEach(function(ident) {
         focusEvent: browserData.focusEvents.has(ident),
         focusMethod: !browserData.noFocusMethod.has(ident),
         redirecting: browserData.redirections.get(ident) || null,
+        encapsulated: browserData.encapsulations.get(ident) || null,
         tabIndex: tabindex !== undefined ? tabindex : 'null',
         label: null,
       },
@@ -174,21 +187,27 @@ Array.from(idents).sort().forEach(function(ident) {
     const src = result[browser];
     src.browser.label = readableLabel(
       src.browser.focusable,
-      src.browser.tabbable
+      src.browser.tabbable,
+      null, // onlyTabbable
+      src.browser.redirecting
     );
     src.jquery.label = readableLabel(
       src.jquery.focusable,
-      src.jquery.tabbable
+      src.jquery.tabbable,
+      null, // onlyTabbable
+      null // redirecting
     );
     src.ally.labelQuick = readableLabel(
       src.ally.focusableQuick,
       src.ally.tabbableQuick,
-      src.ally.onlyTabbable
+      src.ally.onlyTabbable,
+      null // redirecting
     );
     src.ally.labelStrict = readableLabel(
       src.ally.focusableStrict,
       src.ally.tabbableStrict,
-      src.ally.onlyTabbable
+      src.ally.onlyTabbable,
+      null // redirecting
     );
   });
 });
@@ -203,7 +222,6 @@ module.exports = {
   columns: platforms.columns,
   browsers: platforms.browsers,
   data: aggregated,
-  redirects,
   notes,
   groups: groups.list,
 };

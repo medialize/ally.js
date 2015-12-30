@@ -58,9 +58,11 @@ module.exports = function({
       expected.ident = ident;
 
       expected.notes = source.notes.getBrowser(ident, 'expected');
+      expected.redirectTarget = source.notes.getTarget(ident, 'expected');
       expected.isInert = !expected.browser.focusable && !expected.browser.tabbable;
       cells.push(_cellTemplate(expected));
 
+      expected.redirectTarget && referencedNotes.add(String(expected.redirectTarget));
       expected.notes.forEach(key => referencedNotes.add(String(key)));
     }
 
@@ -77,9 +79,11 @@ module.exports = function({
       }
 
       data.notes = source.notes.getBrowser(ident, browser);
+      data.redirectTarget = source.notes.getTarget(ident, browser);
       data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
 
+      data.redirectTarget && referencedNotes.add(String(data.redirectTarget));
       data.notes.forEach(key => referencedNotes.add(String(key)));
     });
 
