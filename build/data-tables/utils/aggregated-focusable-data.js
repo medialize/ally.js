@@ -8,14 +8,47 @@ const groups = require('./focusable.groups');
 const redirects = require(path.resolve(cwd, 'tests/focusable/data/meta.redirects.json'));
 const platforms = require('./platforms');
 
+function convertExpectedStructure(content) {
+  const data = content['@structure'];
+  delete content['@structure'];
+  Object.keys(content).forEach(function(ident) {
+    const is = content[ident];
+    if (is.focusable) {
+      data.focusable.push(ident);
+      data.focusEvents.push(ident);
+    }
+
+    if (is.tabbable) {
+      data.tabOrder.push(ident);
+    }
+
+    if (is.redirect) {
+      data.focusRedirection.push(ident + ' --- ' + is.redirect);
+    }
+
+    if (is.encapsulated) {
+      data.focusEncapsulation.push(ident + ' --- ' + is.encapsulated);
+    }
+
+    data.tabIndex[ident] = is.index;
+  });
+
+  return data;
+}
+
 // import data from tests/focusable
 const source = {};
 glob.sync('*.json', {
   cwd: path.resolve(cwd, 'tests/focusable/data/'),
   realpath: true,
 }).sort().forEach(function(file) {
-  const name = path.basename(file, '.json');
-  const content = require(file);
+  let name = path.basename(file, '.json');
+  let content = require(file);
+
+  if (name === 'meta.expected') {
+    name = 'expected';
+    content = convertExpectedStructure(content);
+  }
 
   if (name.slice(0, 5) === 'meta.') {
     return;

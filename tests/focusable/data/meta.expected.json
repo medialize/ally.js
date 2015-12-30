@@ -1,0 +1,2031 @@
+{
+  "@structure": {
+    "platform": {
+      "description": "Expected State",
+      "layout": "none",
+      "manufacturer": "ally.js team",
+      "name": "expected",
+      "prerelease": null,
+      "product": "expected",
+      "ua": "expected",
+      "version": "0.0",
+      "os": {
+        "architecture": 32,
+        "family": "expected",
+        "version": "0.0"
+      }
+    },
+    "focusable": [],
+    "focusEvents": [],
+    "focusRedirection": [],
+    "focusEncapsulation": [],
+    "noFocusMethod": [],
+    "tabOrder": [],
+    "tabIndex": {},
+    "ally": {
+      "focusable": [],
+      "focusableStrict": [],
+      "tabbable": [],
+      "tabbableStrict": [],
+      "onlyTabbable": [],
+      "tabOrder": []
+    },
+    "jquery": {
+      "focusable": [],
+      "tabOrder": []
+    }
+  },
+
+  "[contenteditable]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "[contenteditable]:empty": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "[contenteditable][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "[hidden]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "[hidden] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "[hidden][tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "[hidden][tabindex=-1] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "[hidden][tabindex=0]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "[hidden][tabindex=0] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "[tabindex= +2]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 2
+  },
+  "[tabindex=+2]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 2
+  },
+  "[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "[tabindex=-1]{flexbox}": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "[tabindex=-1]{flexbox} > span": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "[tabindex=-1]{flexbox} > span[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "[tabindex=-1]{flexbox} > span[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "[tabindex=-2]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -2
+  },
+  "[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "[tabindex=3 ]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 3
+  },
+  "[tabindex=3x]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 3
+  },
+  "[tabindex=]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "[tabindex=hello]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "a > img[ismap]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "a > img[ismap][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "a:has([ismap])": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "a:has([ismap][tabindex=-1])": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "a[href=]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "a[href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "a[href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "a[name]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "a[tabindex=-1] > img[ismap]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "a[tabindex=-1]:has([ismap])": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "area": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "area[href].lower": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "area[href].upper": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "area[href][tabindex=-1].lower": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "area[href][tabindex=-1].upper": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "area[tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "audio": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "audio[controls]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "audio[controls][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "a{flexbox}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "a{flexbox} > span": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "a{hidden}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "a{none}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "body": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "button[type=button]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "button[type=button][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "button[type=button][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "canvas": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "canvas > [tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "canvas > [tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "canvas > a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "canvas > a[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "canvas > input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "canvas > input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "details": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "details a[href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "details summary": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "details summary[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "details:has(summary[tabindex=-1])": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "details:has(summary[tabindex=-1]) a[href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "details[open]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "details[open] a[href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "details[open] summary": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "details[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "details[tabindex=-1] a[href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "details[tabindex=-1] summary": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "div-section{scroll-body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div-section{scroll-container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div-span{scroll-body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div-span{scroll-container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div[tabindex=-1]:empty": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "div[tabindex=0]:empty": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "div{body-overflow-auto}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{body-overflow-scroll}[tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{container-overflow-auto}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{container-overflow-scroll}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{flexbox}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{flexbox} > span{order:1}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{flexbox} > span{order:1} > input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "div{flexbox} > span{order:2}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{flexbox} > span{order:2} > input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "div{no-dimension}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "div{scroll-body-horizontal-scroll-x}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-horizontal-scroll-y}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-horizontal}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-overflow-hidden}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-overflow-visible}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-vertical-scroll-x}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-vertical-scroll-y}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-body-vertical}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-horizontal-scroll-x}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-horizontal-scroll-y}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-horizontal}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-overflow-hidden}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-overflow-visible}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-vertical-scroll-x}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-vertical-scroll-y}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "div{scroll-container-vertical}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "embed[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=mp4]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "embed[type=mp4][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=ogv]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "embed[type=ogv][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=svg]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "embed[type=svg] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=svg] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "embed[type=svg]"
+  },
+  "embed[type=svg] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "embed[type=svg]"
+  },
+  "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "embed[type=svg]"
+  },
+  "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "embed[type=svg]"
+  },
+  "embed[type=svg][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "embed[type=svg][tabindex=-1]"
+  },
+  "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "embed[type=svg][tabindex=-1]"
+  },
+  "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "embed[type=svg][tabindex=-1]"
+  },
+  "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 1,
+    "encapsulated": "embed[type=svg][tabindex=-1]"
+  },
+  "embed[type=svg][tabindex=0]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "embed[type=svg][tabindex=0] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "embed[type=svg][tabindex=0]"
+  },
+  "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "embed[type=svg][tabindex=0]"
+  },
+  "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "embed[type=svg][tabindex=0]"
+  },
+  "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "embed[type=svg][tabindex=0]"
+  },
+  "fieldset": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "fieldset input[tabindex=-1]"
+  },
+  "fieldset:empty": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset:has(a) a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset:has(a) legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset:has(button) button": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset:has(button) legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "fieldset:has(button) button"
+  },
+  "fieldset:has(input[tabindex=-1]) input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset:has(input[tabindex=-1]) legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "fieldset:has(input[tabindex=-1]) input[tabindex=-1]"
+  },
+  "fieldset:has(select) legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "fieldset:has(select) select"
+  },
+  "fieldset:has(select) select": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset:has(textarea) legend": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "fieldset:has(textarea) textarea"
+  },
+  "fieldset:has(textarea) textarea": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset[disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset[disabled] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "fieldset[disabled][tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "fieldset[disabled][tabindex=-1] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "fieldset[disabled][tabindex=0]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "fieldset[disabled][tabindex=0] input": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "fieldset{no-tabbable} a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "fieldset{no-tabbable} a[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "firefox-bug-1116126": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "form input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "form[disabled] input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[disabled][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "form[disabled][tabindex=-1] input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[disabled][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[disabled][tabindex=0] input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "form[tabindex=-1] input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "form[tabindex=0] input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "html": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "iframe -> body": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe[src=svg]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "iframe[src=svg] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe[src=svg] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "iframe[src=svg]"
+  },
+  "iframe[src=svg] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "iframe[src=svg]"
+  },
+  "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "iframe[src=svg]"
+  },
+  "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "iframe[src=svg]"
+  },
+  "iframe[src=svg][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "iframe[src=svg][tabindex=-1]"
+  },
+  "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "iframe[src=svg][tabindex=-1]"
+  },
+  "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "iframe[src=svg][tabindex=-1]"
+  },
+  "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 1,
+    "encapsulated": "iframe[src=svg][tabindex=-1]"
+  },
+  "iframe[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe[tabindex=-1] -> body": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe{focusable}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "iframe{focusable} -> body": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe{focusable} -> input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "iframe{focusable}"
+  },
+  "iframe{focusable} -> input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "iframe{focusable}"
+  },
+  "iframe{focusable}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "iframe{focusable}[tabindex=-1] -> body": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "iframe{focusable}[tabindex=-1]"
+  },
+  "iframe{focusable}[tabindex=-1] -> input": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "iframe{focusable}[tabindex=-1]"
+  },
+  "iframe{focusable}[tabindex=-1] -> input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 1,
+    "encapsulated": "iframe{focusable}[tabindex=-1]"
+  },
+  "img": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[tabindex=-1] area": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "img[tabindex=-1] area[href].lower": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "img[tabindex=-1] area[href].upper": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "img[usemap=void]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[usemap].first": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[usemap].focusable": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[usemap].invalid": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[usemap].second": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "img[usemap][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "input[tabindex=hello]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=checkbox]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=checkbox][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=checkbox][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=hidden]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=hidden][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=hidden][tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=password]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=password][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=password][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=radio]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=radio][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=radio][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=reset]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=reset][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=reset][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=submit]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=submit][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=submit][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "input[type=text]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "input[type=text][disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "input[type=text][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "keygen": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "keygen[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "label": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "label:has(input)": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "label:has(input) input"
+  },
+  "label:has(input) input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "label[disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "label[for=label-target-focusable]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "input[type=text][tabindex=-1]"
+  },
+  "label[for=label-target]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "input[type=text]"
+  },
+  "label[for=label-target][tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1,
+    "redirect": "input[type=text]"
+  },
+  "label[tabindex=-1]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "label[tabindex=0]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "link[itemprop][href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": -1
+  },
+  "map.invalid-image area": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "map.invalid-image area[href].lower": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "map.invalid-image area[href].upper": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "map.object area": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "map.object area[href].lower": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "map.object area[href].upper": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "object[src=svg]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "object[src=svg]"
+  },
+  "object[src=svg] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "object[src=svg]"
+  },
+  "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "object[src=svg]"
+  },
+  "object[src=svg] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "object[src=svg]"
+  },
+  "object[src=svg][height=0]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg][height=0] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg][height=0] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "object[src=svg][height=0]"
+  },
+  "object[src=svg][height=0] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "object[src=svg][height=0]"
+  },
+  "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "object[src=svg][height=0]"
+  },
+  "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "object[src=svg][height=0]"
+  },
+  "object[src=svg][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "object[src=svg][tabindex=-1]"
+  },
+  "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0,
+    "encapsulated": "object[src=svg][tabindex=-1]"
+  },
+  "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "object[src=svg][tabindex=-1]"
+  },
+  "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 1,
+    "encapsulated": "object[src=svg][tabindex=-1]"
+  },
+  "object[src=svg][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "object[src=svg][tabindex=0] -> file:svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=svg][tabindex=0] -> file:svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "object[src=svg][tabindex=0] -> file:svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "object[src=svg][tabindex=0]"
+  },
+  "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "object[src=svg][tabindex=0]"
+  },
+  "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "object[src=svg][tabindex=0]"
+  },
+  "object[src=swf]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=swf][height=0]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=swf][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "object[src=swf][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "object[usemap]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 0
+  },
+  "section{scroll-body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "section{scroll-container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "select": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "select[disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "select[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host inner-host": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host inner-host input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host inner-host input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host inner-host input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host input[tabindex=2]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 2,
+    "encapsulated": "shadow-host"
+  },
+  "shadow-host[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host[tabindex=-1] inner-host": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host[tabindex=-1] inner-host input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=-1] inner-host input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=-1] inner-host input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=-1] input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=-1] input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=-1] input[tabindex=2]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": 2,
+    "encapsulated": "shadow-host[tabindex=-1]"
+  },
+  "shadow-host[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "shadow-host[tabindex=0] inner-host": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "shadow-host[tabindex=0] inner-host input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "shadow-host[tabindex=0] inner-host input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "shadow-host[tabindex=0] inner-host input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "shadow-host[tabindex=0] input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "shadow-host[tabindex=0] input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "shadow-host[tabindex=0] input[tabindex=2]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 2,
+    "encapsulated": "shadow-host[tabindex=0]"
+  },
+  "span[href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span[tabindex=-1]:empty": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "span[tabindex=0]:empty": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "span{flexbox}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{flexbox} > span": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{flexbox} > span[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{flexbox} > span[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "span{flexbox}:empty": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{scroll-body-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{scroll-container-overflow-scroll}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "span{user-modify}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "span{user-modify}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg a[xlink|href] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg a[xlink|href][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg a[xlink|href][tabindex=-1] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg a[xlink|href][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg a[xlink|href][tabindex=0] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg a[xlink|href][tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "svg a[xlink|href][tabindex=1] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[focusable=true]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[focusable=true]{viewbox}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[tabindex=-1]{viewbox}": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg rect[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg rect[tabindex=0]{viewbox}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=-1])": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=-1]) rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=-1]) text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=0])": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=0]) rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg:has(a[tabindex=0]) text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=false]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=false] a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg[focusable=false] a[xlink|href] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=false] rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=false] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[tabindex=-1] a[xlink|href]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg[tabindex=-1] a[xlink|href] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[tabindex=-1] rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[tabindex=-1] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny} a[focusable=false]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{tiny} a[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny} rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny} rect[focusable=false][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{tiny} rect[focusable=true]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny} rect[focusable=true][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny} rect[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{tiny}[focusable=false]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{tiny}[focusable=false] a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{viewbox}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr td": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr td a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "table tbody tr th": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr{collapse}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr{collapse} td": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr{collapse} td a": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "table tbody tr{collapse} td a{visible}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "table tbody tr{collapse} td{visible}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tbody tr{collapse} td{visible} a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "table tfoot": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tfoot tr": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tfoot tr td": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table tfoot tr th": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table thead": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table thead tr": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table thead tr td": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "table thead tr th": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "textarea": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "textarea[disabled]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "textarea[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "video": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "video[controls]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "video[controls][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "{hidden} > a": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "{hidden} > a{visible}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "{hidden} > {visible} > a": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "{none} > a": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "{none} > a{inline}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  }
+}
