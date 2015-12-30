@@ -77,7 +77,7 @@ module.exports = function({
       cells.push(_cellTemplate(data));
     });
 
-    const notes = source.notes.get(ident);
+    const notes = source.notes.getIdent(ident);
     rows.push(_rowTemplate({
       groupId: group.id,
       identId,

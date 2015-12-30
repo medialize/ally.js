@@ -75,7 +75,7 @@ module.exports = function({
     title,
     introduction,
     groups: source.groups.filter(group => !skippedGroups.has(group.id)),
-    notes: source.notes.list,
+    notes: source.notes.getNotes(),
     table: tables.join('\n'),
   });
 
