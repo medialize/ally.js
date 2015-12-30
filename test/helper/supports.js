@@ -19,7 +19,6 @@ define(function(require) {
     canFocusLabelTabindex: require('ally/supports/focus-label-tabindex')(),
     canFocusObjectSvg: require('ally/supports/focus-object-svg')(),
     canFocusObjectSwf: require('ally/supports/focus-object-swf')(),
-    canFocusRedirectLabel: require('ally/supports/focus-redirect-label')(),
     canFocusRedirectLegend: require('ally/supports/focus-redirect-legend')(),
     canFocusRedirectImgUsemap: require('ally/supports/focus-redirect-img-usemap')(),
     canFocusScrollBody: require('ally/supports/focus-scroll-body')(),

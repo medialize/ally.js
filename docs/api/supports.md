@@ -29,7 +29,6 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | focus-label-tabindex | boolean | true if `<label tabindex="-1">` is focusable |
 | focus-object-svg | boolean | true if `<object type="image/svg+xml" data="…">` is focusable |
 | focus-object-swf | boolean | true if `<object type="application/x-shockwave-flash" data="…">` is focusable |
-| focus-redirect-label | boolean | true if `img.focus()` passes focus to the associated form control element |
 | focus-redirect-legend | string (`"focusable"`, `"tabbable"`, `""`) | the browser's query method for identifying the target for passing focus from `<legend>`  |
 | focus-redirect-img-usemap | boolean | true if `img.focus()` passes focus to the first `<area>` of the associated element |
 | focus-scroll-body | boolean | true if the child element of a scrollable area is focusable |

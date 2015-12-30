@@ -74,11 +74,7 @@ define([
           context: '#label-nested',
         });
 
-        if (supports.canFocusRedirectLabel) {
-          expect(target.id).to.equal('label-nested-target');
-        } else {
-          expect(target).to.equal(null);
-        }
+        expect(target.id).to.equal('label-nested-target');
       },
     };
   });

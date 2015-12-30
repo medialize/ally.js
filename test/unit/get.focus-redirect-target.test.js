@@ -18,6 +18,7 @@ define([
           /*eslint-disable indent */
           '<label id="label" for="label-target">label</label><input id="label-target">',
           '<label id="label-nested">label <input id="label-nested-target"></label>',
+          '<label id="label-tabindex" for="label-tabindex-target" tabindex="-1">label</label><input id="label-tabindex-target">',
 
           '<fieldset>',
             '<legend id="legend">legend</legend>',
@@ -76,21 +77,24 @@ define([
           context: document.getElementById('label'),
         });
 
-        if (supports.canFocusRedirectLabel) {
-          expect(target.id).to.equal('label-target');
-        } else {
-          expect(target).to.equal(null);
-        }
+        expect(target.id).to.equal('label-target');
       },
       'label element with nested input': function() {
         var target = getFocusRedirectTarget({
           context: document.getElementById('label-nested'),
         });
 
-        if (supports.canFocusRedirectLabel) {
-          expect(target.id).to.equal('label-nested-target');
-        } else {
+        expect(target.id).to.equal('label-nested-target');
+      },
+      'label element with tabindex': function() {
+        var target = getFocusRedirectTarget({
+          context: document.getElementById('label-tabindex'),
+        });
+
+        if (supports.canFocusLabelTabindex) {
           expect(target).to.equal(null);
+        } else {
+          expect(target.id).to.equal('label-tabindex-target');
         }
       },
 

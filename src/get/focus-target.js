@@ -17,7 +17,7 @@ export default function({context} = {}) {
   let result = null;
   const getTarget = function(_element) {
     result = isFocusable(_element) && _element
-      || getFocusRedirectTarget({ context: _element });
+      || getFocusRedirectTarget({ context: _element, skipFocusable: true });
 
     return Boolean(result);
   };

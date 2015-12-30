@@ -1,4 +1,5 @@
 
+import isFocusable from '../is/focusable';
 import queryFocusable from '../query/focusable';
 import queryTabbable from '../query/tabbable';
 import contextToElement from '../util/context-to-element';
@@ -18,10 +19,6 @@ function formControlElement(element) {
 }
 
 function resolveLabelElement(element, _document) {
-  if (!supports.canFocusRedirectLabel) {
-    return null;
-  }
-
   const forId = element.getAttribute('for');
   if (forId) {
     // <label for="…"> - referenced form control
@@ -96,7 +93,7 @@ function resolveImgElement(element) {
   return map && map.querySelector('area') || null;
 }
 
-export default function({context} = {}) {
+export default function({context, skipFocusable} = {}) {
   if (!supports) {
     supports = _supports();
   }
@@ -105,6 +102,10 @@ export default function({context} = {}) {
     message: 'get/focus-redirect-target requires valid options.context',
     context,
   });
+
+  if (!skipFocusable && isFocusable(element)) {
+    return null;
+  }
 
   const nodeName = element.nodeName.toLowerCase();
   const _document = getDocument(element);
