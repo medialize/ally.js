@@ -76,10 +76,11 @@ generateTableDocument({
   cellData: function(data) {
     return {
       libraryName: 'ally.js',
-      match: data.browser.label === data.ally.labelQuick,
+      match: data.browser.label === data.ally.labelQuick && data.browser.redirecting === data.ally.redirecting,
       label: data.ally.labelQuick,
       focusable: data.ally.focusableQuick,
       tabbable: !data.ally.focusableQuick && data.ally.onlyTabbable || data.ally.tabbableQuick,
+      redirecting: data.ally.redirecting,
     };
   },
   rowData: rowDataAllyNotes,
@@ -100,10 +101,11 @@ generateTableDocument({
   cellData: function(data) {
     return {
       libraryName: 'ally.js',
-      match: data.browser.label === data.ally.labelStrict,
+      match: data.browser.label === data.ally.labelStrict && data.browser.redirecting === data.ally.redirecting,
       label: data.ally.labelStrict,
       focusable: data.ally.focusableStrict,
       tabbable: !data.ally.focusableStrict && data.ally.onlyTabbable || data.ally.tabbableStrict,
+      redirecting: data.ally.redirecting,
     };
   },
   rowData: rowDataAllyNotes,

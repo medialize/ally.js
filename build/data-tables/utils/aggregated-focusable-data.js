@@ -83,6 +83,7 @@ Object.keys(source).forEach(function(browser) {
           "tabbableStrict": [],
           "onlyTabbable": [],
           "tabOrder": [],
+          "focusRedirection": {},
         },
         "jquery": {
           "focusable": [],
@@ -133,6 +134,15 @@ Object.keys(source).forEach(function(browser) {
     mappedData.ally[key].forEach(ident => idents.add(ident));
   });
 
+  mappedData.ally.redirections = new Map();
+  (Object.keys(sourceData.ally.focusRedirection || {})).forEach(function(key) {
+    const target = sourceData.ally.focusRedirection[key];
+    mappedData.ally.redirections.set(key, target);
+    notes.registerRedirection('ally:' + browser, key, target);
+    idents.add(key);
+    idents.add(target);
+  });
+
   mappedData.jquery = {};
   ['focusable', 'tabOrder'].forEach(function(key) {
     mappedData.jquery[key] = new Set(sourceData.jquery[key]);
@@ -176,6 +186,7 @@ Array.from(idents).sort().forEach(function(ident) {
         tabbableStrict: browserData.ally.tabbableStrict.has(ident),
         labelStrict: null,
         onlyTabbable: browserData.ally.onlyTabbable.has(ident),
+        redirecting: browserData.ally.redirections.get(ident) || null,
       },
       jquery: {
         focusable: browserData.jquery.focusable.has(ident),
@@ -201,13 +212,13 @@ Array.from(idents).sort().forEach(function(ident) {
       src.ally.focusableQuick,
       src.ally.tabbableQuick,
       src.ally.onlyTabbable,
-      null // redirecting
+      src.ally.redirecting
     );
     src.ally.labelStrict = readableLabel(
       src.ally.focusableStrict,
       src.ally.tabbableStrict,
       src.ally.onlyTabbable,
-      null // redirecting
+      src.ally.redirecting
     );
   });
 });
