@@ -188,7 +188,9 @@ export default function(element) {
 
   const parent = element.parentElement;
   if (parent) {
-    if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName)) {
+    const parentNodeName = parent.nodeName.toLowerCase();
+    const parentStyle = window.getComputedStyle(parent, null);
+    if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName, parentNodeName, parentStyle)) {
       // scrollable bodies are focusable Internet Explorer
       // https://github.com/medialize/ally.js/issues/21
       return true;
@@ -196,7 +198,6 @@ export default function(element) {
 
     // Children of focusable elements with display:flex are focusable in IE10-11
     if (supports.canFocusChildrenOfFocusableFlexbox) {
-      const parentStyle = window.getComputedStyle(parent, null);
       if (hasCssDisplayFlex(parentStyle)) {
         return true;
       }

@@ -22,11 +22,15 @@ export function hasCssDisplayFlex(style) {
   return style.display.indexOf('flex') > -1;
 }
 
-export function isScrollableContainer(element, nodeName) {
+export function isScrollableContainer(element, nodeName, parentNodeName, parentStyle) {
   if (nodeName !== 'div' && nodeName !== 'span') {
     // Internet Explorer advances scrollable containers and bodies to focusable
     // only if the scrollable container is <div> or <span> - this does *not*
     // happen for <section>, <article>, …
+    return false;
+  }
+
+  if (parentNodeName && parentNodeName !== 'div' && parentNodeName !== 'span' && !hasCssOverflowScroll(parentStyle)) {
     return false;
   }
 

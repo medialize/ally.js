@@ -45,6 +45,7 @@ Boolean, `true` if the element is focus relevant.
 * Since `v#master` the `<object>` element properly distinguishes between SVG and SWF content.
 * Since `v#master` elements using Flexbox layout are properly identified in IE10 and IE11.
 * Since `v#master` the Shadow DOM hosts are considered focus-relevant, but *not* focusable.
+* Since `v#master` scrollable containers are properly identified in Internet Explorer.
 
 ## Notes
 

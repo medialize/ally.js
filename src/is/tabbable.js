@@ -136,18 +136,21 @@ export default function(element) {
       return false;
     }
 
-    const parent = element.parentNode;
-    // IE considers scrollable bodies script focusable only,
-    if (isScrollableContainer(parent, nodeName)) {
-      return false;
-    }
+    const parent = element.parentElement;
+    if (parent) {
+      const parentNodeName = parent.nodeName.toLowerCase();
+      const parentStyle = window.getComputedStyle(parent, null);
+      // IE considers scrollable bodies script focusable only,
+      if (isScrollableContainer(parent, nodeName, parentNodeName, parentStyle)) {
+        return false;
+      }
 
-    // Children of focusable elements with display:flex are focusable in IE10-11,
-    // even though their tabIndex property suggests otherwise
-    const parentStyle = window.getComputedStyle(parent, null);
-    if (hasCssDisplayFlex(parentStyle)) {
-      // value of tabindex takes precedence
-      return hasTabbableTabindex;
+      // Children of focusable elements with display:flex are focusable in IE10-11,
+      // even though their tabIndex property suggests otherwise
+      if (hasCssDisplayFlex(parentStyle)) {
+        // value of tabindex takes precedence
+        return hasTabbableTabindex;
+      }
     }
   }
 
