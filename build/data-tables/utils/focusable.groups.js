@@ -35,6 +35,13 @@ function identsToUnknownGroup(_idents) {
     return;
   }
 
+  // warning: logs a lot of inert elements
+  // identsWithoutGroup.forEach(function(key) {
+  //   /*eslint-disable no-console */
+  //   console.warn('no group for "' + key + '"');
+  //   /*eslint-enable no-console */
+  // });
+
   source.unshift({
     label: 'Elements Without Group',
     idents: identsWithoutGroup,

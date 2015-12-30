@@ -24,12 +24,52 @@ function ignoreByAttribute(element) {
   return element.getAttribute('data-label') !== 'ignore';
 }
 
+function filterLabeledElements(element) {
+  return element.hasAttribute('data-label');
+}
+
+function getContentDocument(element) {
+  try {
+    // works on <object> and <iframe>
+    return element.contentDocument
+      // works on <object> and <iframe>
+      || element.contentWindow && element.contentWindow.document
+      // works on <object> and <iframe> that contain SVG
+      || element.getSVGDocument && element.getSVGDocument();
+  } catch(e) {
+    // IE may throw member not found exception
+    // e.g. on <object type="image/png">
+    return null;
+  }
+}
+
+function addShadowedContent(host, elements) {
+  if (!host || !host.shadowRoot || !document.body.createShadowRoot) {
+    return;
+  }
+
+  var nestedHosts = [];
+  var content = [].map.call(host.shadowRoot.querySelectorAll('*'), function(element) {
+    if (element.shadowRoot) {
+      nestedHosts.push(element);
+    }
+
+    return element;
+  });
+
+  elements.push.apply(elements, content);
+  nestedHosts.forEach(function(_host) {
+    addShadowedContent(_host, elements);
+  });
+}
+
 function captureStuff() {
   var results = {
     platform: null,
     focusable: null,
     focusEvents: null,
     focusRedirection: null,
+    focusEncapsulation: null,
     noFocusMethod: null,
     tabOrder: null,
     tabIndex: null,
@@ -47,12 +87,31 @@ function captureStuff() {
     },
   };
 
+  // all elements of the document
   var elements = [].slice.call(document.documentElement.querySelectorAll('*'), 0);
+  // including the <html>
   elements.unshift(document.documentElement);
+  // retain a copy of only the elements in the document
+  var documentElements = elements.slice(0);
+  // add all <iframe>, <object> and <embed> document contents
+  [].forEach.call(document.querySelectorAll('iframe, object, embed'), function(element) {
+    var _document = getContentDocument(element);
+    if (!_document || !_document.documentElement) {
+      return;
+    }
+
+    var _elements = [].slice.call(_document.documentElement.querySelectorAll('*'), 0);
+    elements.push.apply(elements, _elements);
+  });
+  // add all ShadowDOM content
+  addShadowedContent(document.getElementById('shadow-host-1'), elements);
+  addShadowedContent(document.getElementById('shadow-host-2'), elements);
+  addShadowedContent(document.getElementById('shadow-host-3'), elements);
 
   var activeElementHistory = [];
   var focusEventHistory = [];
   var focusRedirection = [];
+  var focusEncapsulation = [];
   var noFocusMethod = [];
 
   // collect changes of document.activeElement
@@ -106,7 +165,22 @@ function captureStuff() {
     if (document.activeElement === element) {
       activeElementHistory.push(_element);
     } else if (document.activeElement !== previous) {
-      focusRedirection.push(_element + ' --- ' + elementName(document.activeElement));
+      var sameDocument = element.ownerDocument === document;
+      var token = _element + ' --- ' + elementName(document.activeElement);
+      if (sameDocument && documentElements.indexOf(element) !== -1) {
+        focusRedirection.push(token);
+      } else {
+        focusEncapsulation.push(token);
+
+        var parent = element;
+        while (parent.parentNode) {
+          parent = parent.parentNode;
+        }
+
+        if (parent !== document && parent.activeElement === element) {
+          activeElementHistory.push(_element);
+        }
+      }
     }
   });
 
@@ -114,10 +188,12 @@ function captureStuff() {
   results.focusable = activeElementHistory.filter(ignore);
   results.noFocusMethod = noFocusMethod.filter(ignore);
   results.focusRedirection = focusRedirection.filter(ignore);
+  results.focusEncapsulation = focusEncapsulation.filter(ignore);
   // reset buffers
   activeElementHistory.length = 0;
   noFocusMethod.length = 0;
   focusRedirection.length = 0;
+  focusEncapsulation.length = 0;
   document.activeElement.blur();
   document.body.focus();
   // we already know that body is focusable by default
@@ -153,6 +229,7 @@ function captureStuff() {
       activeElementHistory.length = 0;
       noFocusMethod.length = 0;
       focusRedirection.length = 0;
+      focusEncapsulation.length = 0;
       document.activeElement.blur();
       document.body.focus();
 
@@ -192,7 +269,7 @@ function captureStuff() {
       // query-independent data
       results.tabIndex = {};
       results.ally.onlyTabbable = [];
-      [].filter.call(document.querySelectorAll('[data-label]'), ignoreByAttribute).forEach(function(element) {
+      elements.filter(filterLabeledElements).filter(ignoreByAttribute).forEach(function(element) {
         // browser: tabIndex
         var name = elementName(element);
         results.tabIndex[name] = element.tabIndex;
@@ -205,6 +282,7 @@ function captureStuff() {
       activeElementHistory.length = 0;
       noFocusMethod.length = 0;
       focusRedirection.length = 0;
+      focusEncapsulation.length = 0;
       document.activeElement.blur();
       document.body.focus();
 

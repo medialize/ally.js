@@ -9,10 +9,21 @@
     "general": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus."
   },
 
-  "@fieldset-disabled-input": "should not be focusable as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
-  "fieldset[tabindex=0][disabled]": {
+  "form[disabled]": {
     "alias": [
-      "fieldset[tabindex=-1][disabled]"
+      "form[disabled][tabindex=-1]",
+      "form[disabled][tabindex=0]",
+      "form[disabled] input",
+      "form[disabled][tabindex=-1] input",
+      "form[disabled][tabindex=0] input"
+    ],
+    "general": "HTML5 does *not* specify that the [`<form>` element](http://www.w3.org/TR/html5/forms.html#the-form-element) knows the [`disabled` attribute](http://www.w3.org/TR/html5/forms.html#attr-fe-disabled)."
+  },
+
+  "@fieldset-disabled-input": "should not be focusable as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
+  "fieldset[disabled][tabindex=0]": {
+    "alias": [
+      "fieldset[disabled][tabindex=-1]"
     ],
     "browsers": {
       "chrome-stable": "@fieldset-disabled-input",
@@ -24,12 +35,28 @@
     }
   },
 
-  "label[for=\"label-target\"][tabindex=-1]": {
+  "label[for=label-target][tabindex=-1]": {
     "alias": [
+      "label[for=label-target]",
       "label[tabindex=-1]",
-      "label[tabindex=0]"
+      "label[tabindex=0]",
+      "label:has(input)"
     ],
     "general": "The activation behavior of the [`<label>`](http://www.w3.org/TR/html5/forms.html#the-label-element) element is not defined beyond »… should match the platform's label behavior.«"
+  },
+
+  "@ie-label-click-script": "Internet Explorer redirects focus from `<label>` to the referenced form control element upon mouse click, but *not* on script focus via `element.focus()`.",
+  "label[for=label-target]": {
+    "alias": [
+      "label[for=label-target-focusable]",
+      "label:has(input)"
+    ],
+    "browsers": {
+      "ie-9": "@ie-label-click-script",
+      "ie-10": "@ie-label-click-script",
+      "ie-11": "@ie-label-click-script",
+      "ie-12": "@ie-label-click-script"
+    }
   },
 
   "span{user-modify}": "The CSS property [`user-modify`](http://www.w3.org/TR/2000/WD-css3-userint-20000216#user-modify) was proposed and dropped from [CSS UI Level 3](http://www.w3.org/TR/css3-ui/) and has thus not become a standard yet.",
@@ -40,7 +67,7 @@
   "[tabindex=3x]": "The value's trailing non-numeric characters are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "[tabindex=hello]": "@invalid-tabindex-value",
   "input[tabindex=hello]": "@invalid-tabindex-value",
-  "[tabindex=\"\"]": {
+  "[tabindex=]": {
     "general": "@invalid-tabindex-value",
     "browsers": {
       "ie-10": "@empty-tabindex-ie11",
@@ -76,6 +103,75 @@
   "audio": "`<audio>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
   "video": "`<video>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
 
+  "@shadow-dom-support": "[Shadow DOM](http://w3c.github.io/webcomponents/spec/shadow/) is currently only \"properly\" supported in Blink based browsers (Chrome, Opera). Firefox exposes the (considerably buggy) development state behind flags.\n\nSee [Can I Use](http://caniuse.com/#feat=shadowdom).",
+  "-shadow-dom-support": {
+    "alias": [
+      "shadow-host",
+      "shadow-host inner-host",
+      "shadow-host[tabindex=-1]",
+      "shadow-host[tabindex=-1] inner-host",
+      "shadow-host[tabindex=0]",
+      "shadow-host[tabindex=0] inner-host",
+      "shadow-host input[tabindex=-1]",
+      "shadow-host input[tabindex=0]",
+      "shadow-host input[tabindex=2]",
+      "shadow-host inner-host input[tabindex=-1]",
+      "shadow-host inner-host input[tabindex=0]",
+      "shadow-host inner-host input[tabindex=1]",
+      "shadow-host[tabindex=-1] input[tabindex=-1]",
+      "shadow-host[tabindex=-1] input[tabindex=0]",
+      "shadow-host[tabindex=-1] input[tabindex=2]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=-1]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
+      "shadow-host[tabindex=0] input[tabindex=-1]",
+      "shadow-host[tabindex=0] input[tabindex=0]",
+      "shadow-host[tabindex=0] input[tabindex=2]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=-1]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=1]"
+    ],
+    "general": "@shadow-dom-support"
+  },
+
+  "@shadow-host-target": "Regardless of its own focusable state, an element hosting a Shadow DOM can become the `activeElement` if an element inside the `ShadowRoot` has focus. See [Shadow DOM - Active Element](http://w3c.github.io/webcomponents/spec/shadow/#active-element)",
+  "-shadow-host-target": {
+    "alias": [
+      "shadow-host",
+      "shadow-host inner-host",
+      "shadow-host[tabindex=-1]",
+      "shadow-host[tabindex=-1] inner-host",
+      "shadow-host[tabindex=0]",
+      "shadow-host[tabindex=0] inner-host"
+    ],
+    "general": "@shadow-host-target"
+  },
+
+  "@shadow-host-content": "The `activeElement` is scoped within the Shadow DOM, meaning the master documet does not know which shadowed content currently has focus. To indicate that a shadowed element has focus, the element hosting the shadowed content is made the `activeElement` regardless of its ability to receive focus otherwise.",
+  "-shadow-host-content": {
+    "alias": [
+      "shadow-host input[tabindex=-1]",
+      "shadow-host input[tabindex=0]",
+      "shadow-host input[tabindex=2]",
+      "shadow-host inner-host input[tabindex=-1]",
+      "shadow-host inner-host input[tabindex=0]",
+      "shadow-host inner-host input[tabindex=1]",
+      "shadow-host[tabindex=-1] input[tabindex=-1]",
+      "shadow-host[tabindex=-1] input[tabindex=0]",
+      "shadow-host[tabindex=-1] input[tabindex=2]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=-1]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
+      "shadow-host[tabindex=0] input[tabindex=-1]",
+      "shadow-host[tabindex=0] input[tabindex=0]",
+      "shadow-host[tabindex=0] input[tabindex=2]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=-1]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=1]"
+    ],
+    "general": "@shadow-host-content"
+  },
+
   "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
   "-firefox-iframe": {
     "alias": [
@@ -98,14 +194,76 @@
     }
   },
 
+  "@sop-iframe": "Technically the content of an iframe [can be accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting).",
   "iframe{focusable} -> input": {
     "alias": [
       "iframe{focusable}[tabindex=-1] -> input",
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
       "iframe{focusable} -> body",
+      "iframe[tabindex=-1] -> body",
+      "iframe{focusable} -> input[tabindex=1]",
+      "iframe{focusable}[tabindex=-1] -> body",
       "iframe -> body"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>` content inert",
-    "general": "Technically the content of an iframe [can be accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting).\n\nHowever, this test is only verifying keyboard focusability."
+    "general": "@sop-iframe"
+  },
+
+  "iframe[src=svg] -> file:svg": {
+    "alias": [
+      "iframe[src=svg] -> file:svg a[xlink|href]",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "iframe[src=svg] -> file:svg a[focusable=false]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]"
+    ],
+    "general": "@sop-iframe"
+  },
+
+  "embed[type=svg] -> file:svg": {
+    "alias": [
+      "embed[type=svg] -> file:svg a[xlink|href]",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=0] -> file:svg",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]"
+    ],
+    "general": "There is no API to interact with the content document of an `<embed>` element"
+  },
+
+  "object[src=svg] -> file:svg": {
+    "alias": [
+      "object[src=svg] -> file:svg a[xlink|href]",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=0] -> file:svg",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href]",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "object[src=svg][height=0] -> file:svg",
+      "object[src=svg][height=0] -> file:svg a[xlink|href]",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg][height=0] -> file:svg a[focusable=false]"
+    ],
+    "general": "Technically the content of an `<object>` element [can be accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement)."
   },
 
   "embed": {
@@ -135,28 +293,41 @@
     "general": "The [`<video>` element](https://developer.mozilla.org/en/docs/Web/HTML/Element/video) should be used for embedding video content instead of [`<embed>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed). The HTML5 `<video>` element is supported [virtually everywhere](http://caniuse.com/#feat=video)."
   },
 
+  "-embed-svg": {
+    "alias": [
+      "embed[type=svg]",
+      "embed[type=svg][tabindex=-1]",
+      "embed[type=svg][tabindex=0]"
+    ],
+    "general": "It is *highly* recommended to [embed `<svg>`](https://developer.mozilla.org/en/docs/SVG_In_HTML_Introduction) directly into the document or use the [`<object>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object) instead."
+  },
+
   "object": {
     "alias": [
       "object[src=swf]",
       "object[src=swf][tabindex=-1]",
+      "object[src=swf][tabindex=0]",
+      "object[src=swf][height=0]",
       "object[src=svg]",
-      "object[src=svg][tabindex=-1]"
+      "object[src=svg][tabindex=-1]",
+      "object[src=svg][tabindex=0]",
+      "object[src=svg][height=0]"
     ],
     "general": "The behavior of the `<object>` element depends on the content it presents. The most common content types used with `<object>` are `SVG` and `SWF`."
   },
 
   "object[src=swf]": {
     "alias": [
-      "object[src=swf][height=0]"
+      "object[src=swf][height=0]",
+      "object[src=swf][tabindex=0]"
     ],
     "browsers": {
-      "ie-10": "This element is actually **tabbable** (keyboard focusable).\n\nThe test shows `focusable` because the elements were removed from the tabbing test to avoid IE10 from getting focus stuck in the browser UI. This seems to be a problem similar to [Trident 1109008](https://connect.microsoft.com/IE/feedback/details/1109008)."
+      "ie-10": "This element is actually **tabbable** (keyboard focusable).\n\nBut when tabbing to it, the <kbd>Tab</kbd> behavior for the entire document **breaks**, as focus remains stuck on the browser UI.\n\nThis might be related to [Trident 1109008](https://connect.microsoft.com/IE/feedback/details/1109008)."
     }
   },
 
   "svg": {
     "alias": [
-      "svg",
       "svg[tabindex=-1]",
       "svg[focusable=false]",
       "svg:has(a[tabindex=-1])",
@@ -172,6 +343,8 @@
       "svg a[xlink|href][tabindex=-1] text",
       "svg a[xlink|href][tabindex=0]",
       "svg a[xlink|href][tabindex=0] text",
+      "svg a[xlink|href][tabindex=1]",
+      "svg a[xlink|href][tabindex=1] text",
 
       "svg rect",
       "svg text",
@@ -214,6 +387,7 @@
     }
   },
 
+  "@old-ie-hidden": "IE9 and IE10 do not support the [`hidden` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden).",
   "[hidden] input": {
     "alias": [
       "[hidden][tabindex=-1]",
@@ -222,21 +396,24 @@
       "[hidden][tabindex=0] input"
     ],
     "browsers": {
-      "ie-10": "IE10 does not support the `hidden` attribute"
+      "ie-9": "@old-ie-hidden",
+      "ie-10": "@old-ie-hidden"
     }
   },
 
   "details": {
     "alias": [
       "details[tabindex=-1]",
-      "details summary",
-      "details[tabindex=-1] summary",
-      "details summary[tabindex=-1]",
-      "details[open] summary",
       "details a[href]",
-      "details[open] a[href]"
+      "details summary",
+      "details summary[tabindex=-1]",
+      "details:has(summary[tabindex=-1]) a[href]",
+      "details[tabindex=-1] a[href]",
+      "details[tabindex=-1] summary",
+      "details[open] a[href]",
+      "details[open] summary"
     ],
-    "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1 and [not implemented everywhere](http://caniuse.com/#feat=details)."
+    "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1, but [not implemented everywhere](http://caniuse.com/#feat=details)."
   },
 
   "-details-webkit-151767": {
@@ -265,6 +442,7 @@
       "a[tabindex=-1] > img[ismap]"
     ],
     "browsers": {
+      "ie-9": "@ismap-ie-bug",
       "ie-10": "@ismap-ie-bug",
       "ie-11": "@ismap-ie-bug",
       "ie-12": "@ismap-ie-bug"
@@ -274,8 +452,13 @@
   "@flexbox-ie-bug": "There is no indication that the focusability of an element can be inherited by its children, let alone triggered by flexbox layout.",
   "a{flexbox} > span": {
     "alias": [
-      "[tabindex=\"-1\"]{flexbox} > span1",
-      "[tabindex=\"-1\"]{flexbox} > span2"
+      "[tabindex=-1]{flexbox} > span",
+      "span{flexbox}",
+      "span{flexbox}:empty",
+      "span{flexbox} > span",
+      "div{flexbox}",
+      "div{flexbox} > span{order:1}",
+      "div{flexbox} > span{order:2}"
     ],
     "browsers": {
       "ie-10": "@flexbox-ie-bug",
@@ -284,6 +467,15 @@
   },
 
   "link[itemprop][href]": "naturally focusable according to [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+
+  "@firefox-bug-1116126-message": "Firefox may hide elements from the document's tabbing sequence if they're enclosed by two images referencing the same image map - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126).",
+  "firefox-bug-1116126": {
+    "general": "This test is not about an element's focusable state, but about potentially content that's potentially hidden from the tabbing sequence.",
+    "browsers": {
+      "firefox-stable": "@firefox-bug-1116126-message",
+      "firefox-nightly": "@firefox-bug-1116126-message"
+    }
+  },
 
   "@firefox-keygen-select": "Firefox transforms `<keygen>` to `<select _moz-type=\"-mozilla-keygen\">` while parsing HTML.",
   "keygen": {
