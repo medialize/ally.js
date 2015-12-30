@@ -18,6 +18,14 @@ Object.keys(browsers).forEach(function(browser) {
   browsers[browser].versions = browsers[browser].browsers.map(key => source.browsers[key]);
 });
 
+function rowDataAllyNotes(ident, sourceIdent, referencedNotes) {
+  const notes = source.notes.getAlly(ident);
+  notes.forEach(key => referencedNotes.add(String(key)));
+  return {
+    notes,
+  };
+}
+
 generateTableDocument({
   source,
   browsers,
@@ -65,11 +73,7 @@ generateTableDocument({
       tabbable: !data.ally.focusableQuick && data.ally.onlyTabbable || data.ally.tabbableQuick,
     };
   },
-  rowData: function(ident) {
-    return {
-      notes: source.notes.getAlly(ident),
-    };
-  },
+  rowData: rowDataAllyNotes,
 });
 
 generateTableDocument({
@@ -99,11 +103,7 @@ generateTableDocument({
       tabbable: !data.ally.focusableStrict && data.ally.onlyTabbable || data.ally.tabbableStrict,
     };
   },
-  rowData: function(ident) {
-    return {
-      notes: source.notes.getAlly(ident),
-    };
-  },
+  rowData: rowDataAllyNotes,
 });
 
 generateTableDocument({

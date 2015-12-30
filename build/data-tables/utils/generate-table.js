@@ -26,6 +26,7 @@ module.exports = function({
   browsers,
   skipIdents,
   skipExpected,
+  referencedNotes,
   cellTemplate,
   cellData,
   rowData,
@@ -56,8 +57,11 @@ module.exports = function({
       expected.identId = identId;
       expected.ident = ident;
 
+      expected.notes = source.notes.getBrowser(ident, 'expected');
       expected.isInert = !expected.browser.focusable && !expected.browser.tabbable;
       cells.push(_cellTemplate(expected));
+
+      expected.notes.forEach(key => referencedNotes.add(String(key)));
     }
 
     columns.forEach(function(browser) {
@@ -75,9 +79,12 @@ module.exports = function({
       data.notes = source.notes.getBrowser(ident, browser);
       data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
+
+      data.notes.forEach(key => referencedNotes.add(String(key)));
     });
 
     const notes = source.notes.getIdent(ident);
+    notes.forEach(key => referencedNotes.add(String(key)));
     rows.push(_rowTemplate({
       groupId: group.id,
       identId,
@@ -86,7 +93,7 @@ module.exports = function({
       labelHtml: highlightLabel(idents[ident], ident),
       duplicates: group.duplicate[ident] || '',
       notes: notes,
-      rowData: rowData && rowData(ident, sourceIdent) || {},
+      rowData: rowData && rowData(ident, sourceIdent, referencedNotes) || {},
       cells: cells.join('\n'),
     }));
   });

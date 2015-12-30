@@ -39,6 +39,7 @@ module.exports = function({
 }) {
   const _cellTemplate = resolveCellTemplate(cellTemplate);
   const skippedGroups = new Set();
+  const referencedNotes = new Set();
   // generate one table per group to keep things organized
   const tables = source.groups.map(function(group) {
     const html = generateTable({
@@ -50,7 +51,8 @@ module.exports = function({
       cellTemplate: _cellTemplate,
       cellData,
       rowData,
-
+      // cache to identify what's actually been printed
+      referencedNotes,
       // original data to transform
       source,
       // ident-group to create table for
@@ -70,12 +72,22 @@ module.exports = function({
     return html;
   });
 
+  const filteredNotes = {};
+  const allNotes = source.notes.getNotes();
+  Object.keys(allNotes).forEach(function(key) {
+    if (!referencedNotes.has(String(key))) {
+      return;
+    }
+
+    filteredNotes[key] = allNotes[key];
+  });
+
   // generate table document
   const html = _documentTemplate({
     title,
     introduction,
     groups: source.groups.filter(group => !skippedGroups.has(group.id)),
-    notes: source.notes.getNotes(),
+    notes: filteredNotes,
     table: tables.join('\n'),
   });
 

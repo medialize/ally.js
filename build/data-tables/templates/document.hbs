@@ -410,21 +410,6 @@
       });
     }
 
-    function hideUnusedFootnotes() {
-      var links = {};
-      [].forEach.call(document.querySelectorAll('.notes > a'), function(element) {
-        var id = element.getAttribute('href').slice(1);
-        links[id] = true;
-      });
-
-      [].forEach.call(document.querySelectorAll('#footnotes-list > li'), function(element) {
-        if (links[element.id]) {
-          return;
-        }
-
-        element.hidden = true;
-      });
-    }
     function bindFootnoteTooltip() {
       var container = document.createElement('div');
       container.id = 'floating-footnote';
@@ -509,7 +494,6 @@
       });
 
       if (document.body.hidden !== undefined) {
-        hideUnusedFootnotes();
         bindFootnoteTooltip();
       }
 
