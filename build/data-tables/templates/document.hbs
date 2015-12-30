@@ -375,46 +375,6 @@
       window.addEventListener('hashchange', handleHashchangeEvent, true);
     }
 
-    function hideDuplicateRows() {
-      var hashes = {};
-      function hashDataCells(row) {
-        if (!row) {
-          return '';
-        }
-
-        return [].map.call(row.children, function(cell) {
-          return cell.nodeName === 'TD' ? cell.textContent : '';
-        }).join(' -- ');
-      }
-
-      function findIdentRow(tbody, ident) {
-        var target = null;
-        [].some.call(tbody.children, function(row) {
-          if (row.getAttribute('data-row') === ident) {
-            target = row;
-            return true;
-          }
-        });
-
-        return target;
-      }
-
-      [].forEach.call(document.querySelectorAll('tr[data-duplicates]'), function(row) {
-        var ident = row.getAttribute('data-row');
-        var targetIdent = row.getAttribute('data-duplicates');
-        if (!hashes[ident]) {
-          hashes[ident] = hashDataCells(row);
-        }
-        if (!hashes[targetIdent]) {
-          var targetRow = findIdentRow(row.parentNode, targetIdent);
-          hashes[targetIdent] = hashDataCells(targetRow);
-        }
-        if (hashes[ident] === hashes[targetIdent]) {
-          row.hidden = true;
-        }
-      });
-    }
-
     function bindFootnoteTooltip() {
       var container = document.createElement('div');
       container.id = 'floating-footnote';
@@ -486,7 +446,6 @@
         return;
       }
 
-      hideDuplicateRows();
       justifyTableWidth();
 
       createHeaderTable();

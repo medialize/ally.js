@@ -159,6 +159,71 @@ function readableLabel(focusable, tabbable, onlyTabbable, redirecting) {
     || 'inert';
 }
 
+function generateBrowserStructure(ident, browserData) {
+  const tabindex = browserData.tabIndex.get(ident);
+  return {
+    browser: {
+      focusable: browserData.focusable.has(ident),
+      tabbable: browserData.tabOrder.has(ident),
+      focusEvent: browserData.focusEvents.has(ident),
+      focusMethod: !browserData.noFocusMethod.has(ident),
+      redirecting: browserData.redirections.get(ident) || null,
+      encapsulated: browserData.encapsulations.get(ident) || null,
+      tabIndex: tabindex !== undefined ? tabindex : 'null',
+      label: null,
+    },
+    ally: {
+      focusableQuick: browserData.ally.focusable.has(ident),
+      tabbableQuick: browserData.ally.tabbable.has(ident),
+      labelQuick: null,
+      focusableStrict: browserData.ally.focusableStrict.has(ident),
+      tabbableStrict: browserData.ally.tabbableStrict.has(ident),
+      labelStrict: null,
+      onlyTabbable: browserData.ally.onlyTabbable.has(ident),
+      redirecting: browserData.ally.redirections.get(ident) || null,
+    },
+    jquery: {
+      focusable: browserData.jquery.focusable.has(ident),
+      tabbable: browserData.jquery.tabOrder.has(ident),
+      label: null,
+    },
+  };
+}
+
+function addReadableLabels(src) {
+  src.browser.label = readableLabel(
+    src.browser.focusable,
+    src.browser.tabbable,
+    null, // onlyTabbable
+    src.browser.redirecting
+  );
+  src.jquery.label = readableLabel(
+    src.jquery.focusable,
+    src.jquery.tabbable,
+    null, // onlyTabbable
+    null // redirecting
+  );
+  src.ally.labelQuick = readableLabel(
+    src.ally.focusableQuick,
+    src.ally.tabbableQuick,
+    src.ally.onlyTabbable,
+    src.ally.redirecting
+  );
+  src.ally.labelStrict = readableLabel(
+    src.ally.focusableStrict,
+    src.ally.tabbableStrict,
+    src.ally.onlyTabbable,
+    src.ally.redirecting
+  );
+}
+
+function calculateBrowserChecksum(data, callback) {
+  return Object.keys(data).sort().map(function(browser) {
+    const _data = data[browser];
+    return browser + ':' + callback(_data).join('|');
+  }).join('#');
+}
+
 // aggregate source data
 const aggregated = {};
 Array.from(idents).sort().forEach(function(ident) {
@@ -166,61 +231,24 @@ Array.from(idents).sort().forEach(function(ident) {
 
   aggregated[ident] = result;
   mapped.forEach(function(browserData, browser) {
-    const tabindex = browserData.tabIndex.get(ident);
-    result[browser] = {
-      browser: {
-        focusable: browserData.focusable.has(ident),
-        tabbable: browserData.tabOrder.has(ident),
-        focusEvent: browserData.focusEvents.has(ident),
-        focusMethod: !browserData.noFocusMethod.has(ident),
-        redirecting: browserData.redirections.get(ident) || null,
-        encapsulated: browserData.encapsulations.get(ident) || null,
-        tabIndex: tabindex !== undefined ? tabindex : 'null',
-        label: null,
-      },
-      ally: {
-        focusableQuick: browserData.ally.focusable.has(ident),
-        tabbableQuick: browserData.ally.tabbable.has(ident),
-        labelQuick: null,
-        focusableStrict: browserData.ally.focusableStrict.has(ident),
-        tabbableStrict: browserData.ally.tabbableStrict.has(ident),
-        labelStrict: null,
-        onlyTabbable: browserData.ally.onlyTabbable.has(ident),
-        redirecting: browserData.ally.redirections.get(ident) || null,
-      },
-      jquery: {
-        focusable: browserData.jquery.focusable.has(ident),
-        tabbable: browserData.jquery.tabOrder.has(ident),
-        label: null,
-      },
-    };
-
-    const src = result[browser];
-    src.browser.label = readableLabel(
-      src.browser.focusable,
-      src.browser.tabbable,
-      null, // onlyTabbable
-      src.browser.redirecting
-    );
-    src.jquery.label = readableLabel(
-      src.jquery.focusable,
-      src.jquery.tabbable,
-      null, // onlyTabbable
-      null // redirecting
-    );
-    src.ally.labelQuick = readableLabel(
-      src.ally.focusableQuick,
-      src.ally.tabbableQuick,
-      src.ally.onlyTabbable,
-      src.ally.redirecting
-    );
-    src.ally.labelStrict = readableLabel(
-      src.ally.focusableStrict,
-      src.ally.tabbableStrict,
-      src.ally.onlyTabbable,
-      src.ally.redirecting
-    );
+    result[browser] = generateBrowserStructure(ident, browserData, browser);
+    addReadableLabels(result[browser]);
   });
+
+  result.checksum = {
+    browser: calculateBrowserChecksum(result, function(data) {
+      return [data.browser.label];
+    }),
+    jquery: calculateBrowserChecksum(result, function(data) {
+      return [data.browser.label, data.jquery.label];
+    }),
+    allyStrict: calculateBrowserChecksum(result, function(data) {
+      return [data.browser.label, data.ally.labelStrict];
+    }),
+    allyQuick: calculateBrowserChecksum(result, function(data) {
+      return [data.browser.label, data.ally.labelQuick];
+    }),
+  };
 });
 
 // make sense of that randomly imported mess

@@ -25,11 +25,15 @@ function rowDataAllyNotes(ident, sourceIdent, referencedNotes) {
   };
 }
 
-function skipIdentsIfMatches(labelGroup, labelName) {
-  return function(ident, sourceIdent) {
+function skipIdentsIfMatches(labelGroup, labelName, checksum) {
+  return function(ident, sourceIdent, duplicateIdent) {
     if (ident.slice(0, 14) === 'inert-in-ally{') {
       return false;
     } else if (source.inertIdents.has(ident)) {
+      return true;
+    }
+
+    if (duplicateIdent && duplicateIdent.checksum[checksum] === sourceIdent.checksum[checksum]) {
       return true;
     }
 
@@ -39,6 +43,18 @@ function skipIdentsIfMatches(labelGroup, labelName) {
       return data.browser.label !== data[labelGroup][labelName];
     });
   };
+}
+
+function skipIdentsIfInert(ident, sourceIdent, duplicateIdent) {
+  if (duplicateIdent && duplicateIdent.checksum.browser === sourceIdent.checksum.browser) {
+    return true;
+  }
+
+  // skip rows that are completely inert
+  return !source.columns.some(function(browser) {
+    const data = sourceIdent[browser];
+    return data.browser.label !== 'inert';
+  });
 }
 
 generateTableDocument({
@@ -51,13 +67,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: false,
-  skipIdents: function(ident, sourceIdent) {
-    // skip rows that are completely inert
-    return !source.columns.some(function(browser) {
-      const data = sourceIdent[browser];
-      return data.browser.label !== 'inert';
-    });
-  },
+  skipIdents: skipIdentsIfInert,
   cellData: null,
 });
 
@@ -71,7 +81,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelQuick'),
+  skipIdents: skipIdentsIfMatches('ally', 'labelQuick', 'allyQuick'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -96,7 +106,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelStrict'),
+  skipIdents: skipIdentsIfMatches('ally', 'labelStrict', 'allyStrict'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -121,7 +131,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('jquery', 'label'),
+  skipIdents: skipIdentsIfMatches('jquery', 'label', 'jquery'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {

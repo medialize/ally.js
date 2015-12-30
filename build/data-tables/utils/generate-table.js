@@ -42,7 +42,8 @@ module.exports = function({
 
   Object.keys(idents).forEach(function(ident) {
     const sourceIdent = source.data[ident];
-    if (skipIdents && skipIdents(ident, sourceIdent)) {
+    const duplicateIdent = group.duplicate[ident] && source.data[group.duplicate[ident]];
+    if (skipIdents && skipIdents(ident, sourceIdent, duplicateIdent)) {
       return;
     }
 
@@ -89,17 +90,18 @@ module.exports = function({
 
     const notes = source.notes.getIdent(ident);
     notes.forEach(key => referencedNotes.add(String(key)));
-    rows.push(_rowTemplate({
+
+    const row = _rowTemplate({
       groupId: group.id,
       identId,
       ident,
       label: idents[ident],
       labelHtml: highlightLabel(idents[ident], ident),
-      duplicates: group.duplicate[ident] || '',
       notes: notes,
       rowData: rowData && rowData(ident, sourceIdent, referencedNotes) || {},
       cells: cells.join('\n'),
-    }));
+    });
+    rows.push(row);
   });
 
   if (!rows.length) {
