@@ -25,12 +25,15 @@ The following lists show the changes to the library grouped by domain.
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [issue #82](https://github.com/medialize/ally.js/issues/82)
 * changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [issue #72](https://github.com/medialize/ally.js/issues/72)
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly handle `<object type="application/x-shockwave-flash">` in IE9 - [Issue #71](https://github.com/medialize/ally.js/issues/71)
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify Flexbox Layout in IE10 and IE11
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
-* fixing [`ally.is.disabled`](ally/is/disabled) to properly handle `<form disabled>` in IE9 - IE11
-* adding [`ally.get.focusRedirectTarget`](ally/get/focus-redirect-target) to identify elements focus is forwarded to
-* fixing [`ally.get.focusTarget`] to resolve elements redirecting focus to other elements
+* fixing [`ally.is.disabled`][ally/is/disabled] to properly handle `<form disabled>` in IE9 - IE11
+* adding [`ally.get.focusRedirectTarget`][ally/get/focus-redirect-target] to identify elements focus is forwarded to
+* fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
+
 
 #### Keyboard support
 
