@@ -11,6 +11,7 @@ define(function(require) {
     canFocusChildrenOfFocusableFlexbox: require('ally/supports/focus-children-of-focusable-flexbox')(),
     canFocusDisabledFieldset: require('ally/supports/focus-fieldset-disabled')(),
     canFocusFieldset: require('ally/supports/focus-fieldset')(),
+    canFocusFlexboxContainer: require('ally/supports/focus-flexbox-container')(),
     canFocusDisabledForm: require('ally/supports/focus-form-disabled')(),
     canFocusImgIsmap: require('ally/supports/focus-img-ismap')(),
     canFocusImgUsemapTabindex: require('ally/supports/focus-img-usemap-tabindex')(),

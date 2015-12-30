@@ -21,6 +21,7 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | focus-children-of-focusable-flexbox | boolean | true if `<span>` in `<a href="…" style="display:flex;"><span>` is focusable |
 | focus-fieldset-disabled | boolean | true if `<fieldset tabindex="0" disabled>` is focusable |
 | focus-fieldset | boolean | true if `<fieldset>` is focusable |
+| focus-flexbox-container | boolean | true if `<span style="display: flex">` is focusable |
 | focus-form-disabled | boolean | true if `<fieldset tabindex="0" disabled>` is focusable |
 | focus-img-ismap | boolean | true if `<img>` in `<a href="–"><img ismap src="…">` is focusable |
 | focus-img-usemap-tabindex | boolean | true if `<img usemap="#…">` is focusable |

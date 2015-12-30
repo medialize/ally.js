@@ -3,6 +3,7 @@ import memorizeResult from '../supports/memorize-result';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusChildrenOfFocusableFlexbox from '../supports/focus-children-of-focusable-flexbox';
 import canFocusFieldset from '../supports/focus-fieldset';
+import canFocusFlexboxContainer from '../supports/focus-flexbox-container';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
@@ -21,6 +22,7 @@ export default memorizeResult(function() {
     canFocusAudioWithoutControls: canFocusAudioWithoutControls(),
     canFocusChildrenOfFocusableFlexbox: canFocusChildrenOfFocusableFlexbox(),
     canFocusFieldset: canFocusFieldset(),
+    canFocusFlexboxContainer: canFocusFlexboxContainer(),
     canFocusImgIsmap: canFocusImgIsmap(),
     canFocusImgUsemapTabindex: canFocusImgUsemapTabindex(),
     canFocusLabelTabindex: canFocusLabelTabindex(),

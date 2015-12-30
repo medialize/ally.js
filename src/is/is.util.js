@@ -18,6 +18,10 @@ export function hasCssOverflowScroll(style) {
   ].some(overflow => overflow === 'auto' || overflow === 'scroll');
 }
 
+export function hasCssDisplayFlex(style) {
+  return style.display.indexOf('flex') > -1;
+}
+
 export function isScrollableContainer(element, nodeName) {
   if (nodeName !== 'div' && nodeName !== 'span') {
     // Internet Explorer advances scrollable containers and bodies to focusable

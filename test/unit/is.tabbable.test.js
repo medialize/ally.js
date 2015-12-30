@@ -82,7 +82,26 @@ define([
         var element = document.getElementById('scroll-body');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
-
+      'extended: child of focusable flexbox': function() {
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div tabindex="-1" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild.firstElementChild;
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      'extended: flexbox container': function() {
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild;
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
     };
   });
 });

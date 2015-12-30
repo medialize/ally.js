@@ -189,14 +189,24 @@ define([
         expect(isFocusRelevant(element)).to.equal(supports.canFocusScrollContainer);
       },
       'extended: child of focusable flexbox': function() {
-        var span = fixture.add([
+        var element = fixture.add([
           /*eslint-disable indent */
-          '<div tabindex="-1" style="display: -ms-flexbox; display: flex;">',
+          '<div tabindex="-1" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
             '<span style="display: block;">hello</span>',
           '</div>',
           /*eslint-enable indent */
         ]).firstElementChild.firstElementChild;
-        expect(isFocusRelevant(span)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
+      },
+      'extended: flexbox container': function() {
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild;
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusFlexboxContainer);
       },
     };
   });

@@ -68,6 +68,10 @@ define([
           supports.canFocusScrollBody && '#scroll-body',
           supports.canFocusScrollContainerWithoutOverflow && '#scroll-container-without-overflow',
           supports.canFocusScrollContainerWithoutOverflow && '#scroll-body-without-overflow',
+          supports.canFocusFlexboxContainer && '#flexbox-container',
+          supports.canFocusFlexboxContainer && '#flexbox-container-child',
+          '#focusable-flexbox',
+          supports.canFocusChildrenOfFocusableFlexbox && '#focusable-flexbox-child',
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
@@ -175,6 +179,10 @@ define([
           document.body.style.webkitUserModify !== undefined && '#span-user-modify',
           '#img-ismap-link',
           supports.canFocusScrollContainer && '#scroll-container',
+          supports.canFocusFlexboxContainer && '#flexbox-container',
+          supports.canFocusFlexboxContainer && '#flexbox-container-child',
+          '#focusable-flexbox',
+          supports.canFocusChildrenOfFocusableFlexbox && '#focusable-flexbox-child',
           '#first-input',
           '#second-input',
           '#third-input',

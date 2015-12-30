@@ -66,6 +66,13 @@ define([
       '<div id="scroll-container-without-overflow" style="width: 100px; height: 50px;">',
         '<div id="scroll-body-without-overflow" style="width: 500px; height: 40px;">scrollable content</div>',
       '</div>',
+      // flexbox fun
+      '<span id="flexbox-container" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+        '<span id="flexbox-container-child" style="display: block">content</span>',
+      '</span>',
+      '<span id="focusable-flexbox" tabindex="-1" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+        '<span id="focusable-flexbox-child" style="display: block">content</span>',
+      '</span>',
       /*eslint-enable indent */
     ], context);
   };

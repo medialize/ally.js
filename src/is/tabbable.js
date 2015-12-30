@@ -6,6 +6,7 @@ import platform from '../util/platform';
 import {getImageOfArea} from '../util/image-map';
 import {
   hasCssOverflowScroll,
+  hasCssDisplayFlex,
   isScrollableContainer,
   isUserModifyWritable,
 } from './is.util';
@@ -33,12 +34,14 @@ export default function(element) {
   const nodeName = element.nodeName.toLowerCase();
   const _tabindex = tabindexValue(element);
   const tabindex = _tabindex === null ? null : _tabindex >= 0;
+  const hasTabbableTabindexOrNone = tabindex !== false;
+  const hasTabbableTabindex = _tabindex !== null && _tabindex >= 0;
 
   // NOTE: Firefox 31 considers [contenteditable] to have [tabindex=-1], but allows tabbing to it
   // fixed in Firefox 40 the latest - https://bugzilla.mozilla.org/show_bug.cgi?id=1185657
   if (element.hasAttribute('contenteditable')) {
     // tabbing can still be disabled by explicitly providing [tabindex="-1"]
-    return tabindex !== false;
+    return hasTabbableTabindexOrNone;
   }
 
   if (focusableElementsPattern.test(nodeName) && tabindex !== true) {
@@ -102,8 +105,7 @@ export default function(element) {
     // even though their tabIndex property is -1
     const style = window.getComputedStyle(element, null);
     if (hasCssOverflowScroll(style)) {
-      // value of tabindex takes precedence
-      return tabindex !== false;
+      return hasTabbableTabindexOrNone;
     }
   }
 
@@ -123,6 +125,11 @@ export default function(element) {
       return element.tabIndex >= 0;
     }
 
+    if (hasCssDisplayFlex(style)) {
+      // value of tabindex takes precedence
+      return hasTabbableTabindex;
+    }
+
     // IE considers scrollable containers script focusable only,
     // even though their tabIndex property is 0
     if (isScrollableContainer(element, nodeName)) {
@@ -138,8 +145,9 @@ export default function(element) {
     // Children of focusable elements with display:flex are focusable in IE10-11,
     // even though their tabIndex property suggests otherwise
     const parentStyle = window.getComputedStyle(parent, null);
-    if (parentStyle.display.indexOf('flex') > -1) {
-      return false;
+    if (hasCssDisplayFlex(parentStyle)) {
+      // value of tabindex takes precedence
+      return hasTabbableTabindex;
     }
   }
 

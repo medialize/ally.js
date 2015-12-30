@@ -11,6 +11,7 @@ import isValidTabindex from './valid-tabindex';
 import isValidArea from './valid-area';
 import {
   hasCssOverflowScroll,
+  hasCssDisplayFlex,
   isScrollableContainer,
   isUserModifyWritable,
 } from './is.util';
@@ -79,8 +80,6 @@ export default function(element) {
     return true;
   }
 
-  const validTabindex = isValidTabindex(element);
-
   if (nodeName === 'embed' || nodeName === 'keygen') {
     // embed is considered focus-relevant but not focusable
     // see https://github.com/medialize/ally.js/issues/82
@@ -103,6 +102,8 @@ export default function(element) {
   if (supports.canFocusSummary && nodeName === 'summary') {
     return true;
   }
+
+  const validTabindex = isValidTabindex(element);
 
   if (nodeName === 'img' && element.hasAttribute('usemap') && validTabindex) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
@@ -175,6 +176,11 @@ export default function(element) {
     }
   }
 
+  if (supports.canFocusFlexboxContainer && hasCssDisplayFlex(style)) {
+    // elements with display:flex are focusable in IE10-11
+    return true;
+  }
+
   const parent = element.parentElement;
   if (parent) {
     if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName)) {
@@ -186,7 +192,7 @@ export default function(element) {
     // Children of focusable elements with display:flex are focusable in IE10-11
     if (supports.canFocusChildrenOfFocusableFlexbox) {
       const parentStyle = window.getComputedStyle(parent, null);
-      if (parentStyle.display.indexOf('flex') > -1) {
+      if (hasCssDisplayFlex(parentStyle)) {
         return true;
       }
     }
