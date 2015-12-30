@@ -32,6 +32,11 @@ export default function(element) {
     throw new TypeError('is/focus-relevant requires an argument of type Element');
   }
 
+  if (element.shadowRoot) {
+    // a Shadow DOM host receives focus when the focus moves to its content
+    return true;
+  }
+
   const nodeName = element.nodeName.toLowerCase();
 
   if (nodeName === 'input' && element.type === 'hidden') {

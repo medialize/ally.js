@@ -144,6 +144,36 @@ define([
         ]).firstElementChild.firstElementChild;
         expect(isFocusable(element)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
       },
+      'extended: Shadow DOM host': function() {
+        if (document.body.createShadowRoot === undefined) {
+          this.skip('Shadow DOM not supported');
+        }
+
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div></div>',
+          /*eslint-enable indent */
+        ]).firstElementChild;
+        var root = element.createShadowRoot();
+        root.innerHTML = '<input>';
+
+        expect(isFocusable(element)).to.equal(false);
+      },
+      'extended: Shadow DOM host with tabindex': function() {
+        if (document.body.createShadowRoot === undefined) {
+          this.skip('Shadow DOM not supported');
+        }
+
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div tabindex="-1"></div>',
+          /*eslint-enable indent */
+        ]).firstElementChild;
+        var root = element.createShadowRoot();
+        root.innerHTML = '<input>';
+
+        expect(isFocusable(element)).to.equal(true);
+      },
     };
   });
 });
