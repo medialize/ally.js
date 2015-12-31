@@ -156,6 +156,7 @@ tags: option-argument, service, svg
 * **data:** To declare the module provides data, not functionality
 * **internal:** To declare the module is intended for internal use only
 * **browser-fix:** To declare the module's only intention is to counter a specific browser quirk
+* **content-document:** To declare the module resolves `<object>` and `<iframe>` elements to their content documents
 * **shadow-dom:** To declare special support for Shadow DOM
 * **svg:** To declare special support for SVG
 

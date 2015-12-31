@@ -74,13 +74,16 @@ Unlike the singleton decorator, the context decorator allows multiple concurrent
 
 A component's `engage()` function may return an result object. The decorated `disengage()` function is added to that result object and returned to the caller. Unlike the singleton decorator, the context decorator returns a unique result object for every `engage()` invocation.
 
+
 ### Sort elements according to DOM order
 
 `util/sort-dom-order` sorts an `Array` of elements according to their relative position in the DOM.
 
+
 ### Merge elements according to DOM order
 
 `util/merge-dom-order` merges an `Array` of elements with another `Array` of elements so that the resulting array's sorting order corresponds to DOM each element's relative position in the DOM.
+
 
 ### Retrieve tabindex value
 
@@ -96,6 +99,7 @@ A component's `engage()` function may return an result object. The decorated `di
 
 `util/compare-position` provides utilities for comparing the relative position of elements in the DOM for use with higher order functions (such as `Array.map`)
 
+
 ### Toggle attribute value
 
 `util/toggle-attribute-value` can will change an attribute's value, while saving its former value to allow restoring the previous state
@@ -104,3 +108,10 @@ A component's `engage()` function may return an result object. The decorated `di
 ### Select in ShadowDOM
 
 `util/select-in-shadows` mutates a given CSS selector in order to make it match elements in ShadowDOM as well.
+
+
+### Get a Node's document, window and content document
+
+* `util/get-content-document` returns the `document` representing the content of an `<iframe>` or `<object>` element.
+* `util/get-document` returns the `document` an element is attached to.* `util/get-document` returns the `document` an element is attached to.
+* `util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.`util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.
