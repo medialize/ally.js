@@ -15,14 +15,8 @@
   </a>
   <text x="10" y="20" data-label="file:svg svg text[focusable=true]">a link</text>
   <script>//<![CDATA[
-    // import "label namespace" from parent document
-    var labelNamespace = location.hash.slice(1);
-    labelNamespace && [].forEach.call(document.querySelectorAll('[data-label]'), function(element) {
-      element.setAttribute('data-label', labelNamespace + ' -> ' + element.getAttribute('data-label'));
-    });
-
-    document.addEventListener('focus', function(event) {
-      window.parent.iframeFocusEvent(event);
-    }, true);
+    if (window.parent && window.parent.registerNestedDocument) {
+      window.parent.registerNestedDocument(location.hash.slice(1), document);
+    }
   //]]></script>
 </svg>

@@ -84,6 +84,7 @@
     "codeclimate-test-reporter": "^0.1.0",
     "coveralls": "^2.11.4",
     "dalek-driver-chrome": "git://github.com/dalekjs/dalek-driver-chrome.git#0410d81",
+    "es6-promise": "^3.0.2",
     "eslint": "^1.4.3",
     "exorcist": "^0.4.0",
     "gh-pages": "^0.5.0",

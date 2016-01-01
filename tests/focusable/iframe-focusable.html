@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-label="html">
 <head>
 	<meta charset="utf-8" />
 	<title>iframe dummy with focusable element</title>
@@ -11,15 +11,7 @@
 <p><input data-label="input[tabindex=1]" tabindex="1"></p>
 
 <script>
-  // import "label namespace" from parent document
-  var labelNamespace = location.hash.slice(1);
-  labelNamespace && [].forEach.call(document.querySelectorAll('[data-label]'), function(element) {
-    element.setAttribute('data-label', labelNamespace + ' -> ' + element.getAttribute('data-label'));
-  });
-
-  document.addEventListener('focus', function(event) {
-    window.parent.iframeFocusEvent(event);
-  }, true);
+  window.parent.registerNestedDocument(location.hash.slice(1), document);
 </script>
 
 </body>
