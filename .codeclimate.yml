@@ -34,6 +34,7 @@ ratings:
   - build/**
   - src/**
   - test/**
+  - tests/focusable/**
 
 # You can globally exclude files from being analyzed by any engine using the
 # exclude_paths key.

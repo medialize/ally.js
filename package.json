@@ -65,7 +65,7 @@
     "publish:codeclimate": "codeclimate-test-reporter < reports/lcov.info",
     "publish:coveralls": "cat reports/lcov.info | coveralls",
     "lint": "npm-run-all --parallel lint:js lint:md",
-    "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js}') && jscs $(glob-cli '{src,test,build}')",
+    "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}') && jscs $(glob-cli '{src,test,build,tests/focusable}')",
     "lint:md": "node build/markdownlint.js",
     "ci:test": "npm-run-all --sequential lint:js ci:build:amd test:browserstack publish:lcov",
     "ci:build:amd": "npm-run-all --sequential clean build:pre build:amd",
