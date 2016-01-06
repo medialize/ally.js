@@ -12,24 +12,20 @@ function convertExpectedStructure(content) {
   delete content['@structure'];
   Object.keys(content).forEach(function(ident) {
     const is = content[ident];
-    if (is.focusable) {
-      data.focusable.push(ident);
-      data.focusEvents.push(ident);
-    }
-
-    if (is.tabbable) {
-      data.tabOrder.push(ident);
-    }
-
-    if (is.redirect) {
-      data.focusRedirection.push(ident + ' --- ' + is.redirect);
-    }
-
-    if (is.encapsulated) {
-      data.focusEncapsulation.push(ident + ' --- ' + is.encapsulated);
-    }
-
-    data.tabIndex[ident] = is.index;
+    data.elements[ident] = {
+      tabindexProperty: is.index,
+      hasFocusMethod: true,
+      focusable: is.focusable,
+      tabbable: is.tabbable,
+      scriptFocus: {
+        documentActiveElement: is.focusable,
+        contextActiveElement: is.focusable,
+        cssFocus: is.focusable,
+        event: is.focusable,
+        redirected: is.redirect || null,
+        encapsulated: is.encapsulated || null,
+      },
+    };
   });
 
   return data;
@@ -57,97 +53,49 @@ glob.sync('*.json', {
   source[name] = content;
 });
 
-// source data converted to Maps/Sets for improved lookups
-const mapped = new Map();
 // hold all the keys we know
 const idents = new Set(groups.idents);
+const registerIdent = ident => idents.add(ident);
+const registerIdents = list => list.forEach(registerIdent);
 
 // prepare the data for lookups
 Object.keys(source).forEach(function(browser) {
-  /*
-    source[browser] = {
-      "chrome-stable": {
-        "platform": {},
-
-        "focusable": [],
-        "focusEvents": [],
-        "focusRedirection": [],
-        "focusEncapsulation": [],
-        "noFocusMethod": [],
-        "tabOrder": [],
-        "tabIndex": {},
-        "ally": {
-          "focusable": [],
-          "focusableStrict": [],
-          "tabbable": [],
-          "tabbableStrict": [],
-          "onlyTabbable": [],
-          "tabOrder": [],
-          "focusRedirection": {},
-        },
-        "jquery": {
-          "focusable": [],
-          "tabOrder": [],
-        },
-      }
-    }
-  */
   const sourceData = source[browser];
-  const mappedData = {};
-  mapped.set(browser, mappedData);
+  const sourceIdents = Object.keys(sourceData.elements);
 
-  // focusable, focusableEvents, noFocusMethod, tabOrder are simple arrays
-  ['focusable', 'focusEvents', 'noFocusMethod', 'tabOrder'].forEach(function(key) {
-    // we're going to do a few lookups, so casting to set first to avoid indexOf() calls
-    mappedData[key] = new Set(sourceData[key]);
-    // build a list of all the test idents we have
-    mappedData[key].forEach(ident => idents.add(ident));
+  // register redirections and encapsulations
+  sourceIdents.forEach(function(ident) {
+    registerIdent(ident);
+    const element = sourceData.elements[ident];
+    const scriptFocus = element.scriptFocus || {};
+    const target = scriptFocus.redirected || scriptFocus.encapsulated;
+    if (target) {
+      registerIdent(target);
+      notes.registerRedirection(browser, ident, target);
+    }
+
+    const ally = element.ally || {};
+    if (ally.focusTarget) {
+      registerIdent(ally.focusTarget);
+      notes.registerRedirection('ally:' + browser, ident, ally.focusTarget);
+    }
   });
 
-  // focusRedirection is a list of maps
-  // 'from --- to' refering to a redirection within the same document
-  mappedData.redirections = new Map();
-  (sourceData.focusRedirection || []).forEach(function(key) {
-    const _key = key.split(' --- ');
-    mappedData.redirections.set(_key[0], _key[1]);
-    notes.registerRedirection(browser, _key[0], _key[1]);
-    idents.add(_key[0]);
-    idents.add(_key[1]);
-  });
-  // focusEncapsulation is a list of maps
-  // 'from --- to' referring to an encapsulation of a nested document
-  mappedData.encapsulations = new Map();
-  (sourceData.focusEncapsulation || []).forEach(function(key) {
-    const _key = key.split(' --- ');
-    mappedData.encapsulations.set(_key[0], _key[1]);
-    notes.registerRedirection(browser, _key[0], _key[1]);
-    idents.add(_key[0]);
-    idents.add(_key[1]);
-  });
+  // simplify lookups
+  sourceData.ally.focusableQuick = new Set(sourceData.ally.focusableQuick);
+  sourceData.ally.focusableStrict = new Set(sourceData.ally.focusableStrict);
+  sourceData.ally.tabbableQuick = new Set(sourceData.ally.tabbableQuick);
+  sourceData.ally.tabbableStrict = new Set(sourceData.ally.tabbableStrict);
 
-  mappedData.tabIndex = new Map();
-  Object.keys(sourceData.tabIndex || {}).forEach(key => mappedData.tabIndex.set(key, sourceData.tabIndex[key]));
-
-  mappedData.ally = {};
-  ['focusable', 'tabbable', 'focusableStrict', 'tabbableStrict', 'onlyTabbable', 'tabOrder'].forEach(function(key) {
-    mappedData.ally[key] = new Set(sourceData.ally[key]);
-    mappedData.ally[key].forEach(ident => idents.add(ident));
-  });
-
-  mappedData.ally.redirections = new Map();
-  (Object.keys(sourceData.ally.focusRedirection || {})).forEach(function(key) {
-    const target = sourceData.ally.focusRedirection[key];
-    mappedData.ally.redirections.set(key, target);
-    notes.registerRedirection('ally:' + browser, key, target);
-    idents.add(key);
-    idents.add(target);
-  });
-
-  mappedData.jquery = {};
-  ['focusable', 'tabOrder'].forEach(function(key) {
-    mappedData.jquery[key] = new Set(sourceData.jquery[key]);
-    mappedData.jquery[key].forEach(ident => idents.add(ident));
-  });
+  // register all other idents
+  registerIdents(sourceData.tabsequence || []);
+  registerIdents(sourceData.ally.focusableQuick || []);
+  registerIdents(sourceData.ally.focusableStrict || []);
+  registerIdents(sourceData.ally.tabbableQuick || []);
+  registerIdents(sourceData.ally.tabbableStrict || []);
+  registerIdents(sourceData.ally.tabsequence || []);
+  registerIdents(sourceData.jquery.focusable || []);
+  registerIdents(sourceData.jquery.tabbable || []);
 });
 
 function readableLabel(focusable, tabbable, onlyTabbable, redirecting) {
@@ -159,32 +107,46 @@ function readableLabel(focusable, tabbable, onlyTabbable, redirecting) {
     || 'inert';
 }
 
-function generateBrowserStructure(ident, browserData) {
-  const tabindex = browserData.tabIndex.get(ident);
+function generateBrowserStructure(ident, browserData, browser) {
+  const element = browserData.elements[ident] || {};
+  const scriptFocus = element.scriptFocus || {};
+  const ally = element.ally || {};
+  const jquery = element.jquery || {};
+
+  if (!browserData.elements[ident]) {
+    element.tabindexProperty = 'null';
+    element.hasFocusMethod = true;
+    if (ident.slice(0, 13) !== 'inert-in-ally') {
+      notes.registerMissing(browser, ident);
+    }
+  }
+
   return {
     browser: {
-      focusable: browserData.focusable.has(ident),
-      tabbable: browserData.tabOrder.has(ident),
-      focusEvent: browserData.focusEvents.has(ident),
-      focusMethod: !browserData.noFocusMethod.has(ident),
-      redirecting: browserData.redirections.get(ident) || null,
-      encapsulated: browserData.encapsulations.get(ident) || null,
-      tabIndex: tabindex !== undefined ? tabindex : 'null',
+      focusable: Boolean(element.focusable),
+      tabbable: Boolean(element.tabbable),
+      focusEvent: Boolean(scriptFocus.event),
+      focusMethod: Boolean(element.hasFocusMethod),
+      redirecting: scriptFocus.redirected || null,
+      encapsulated: scriptFocus.encapsulated || null,
+      tabIndex: element.tabindexProperty !== undefined ? element.tabindexProperty : 'null',
       label: null,
     },
     ally: {
-      focusableQuick: browserData.ally.focusable.has(ident),
-      tabbableQuick: browserData.ally.tabbable.has(ident),
-      labelQuick: null,
+      focusable: Boolean(ally.focusable),
       focusableStrict: browserData.ally.focusableStrict.has(ident),
+      focusableQuick: browserData.ally.focusableQuick.has(ident),
+      labelQuick: null,
+      tabbable: Boolean(ally.tabbable),
       tabbableStrict: browserData.ally.tabbableStrict.has(ident),
+      tabbableQuick: browserData.ally.tabbableQuick.has(ident),
       labelStrict: null,
-      onlyTabbable: browserData.ally.onlyTabbable.has(ident),
-      redirecting: browserData.ally.redirections.get(ident) || null,
+      onlyTabbable: Boolean(ally.onlyTabbable),
+      redirecting: ally.focusTarget || null,
     },
     jquery: {
-      focusable: browserData.jquery.focusable.has(ident),
-      tabbable: browserData.jquery.tabOrder.has(ident),
+      focusable: Boolean(jquery.focusable),
+      tabbable: Boolean(jquery.focusable),
       label: null,
     },
   };
@@ -230,7 +192,8 @@ Array.from(idents).sort().forEach(function(ident) {
   const result = {};
 
   aggregated[ident] = result;
-  mapped.forEach(function(browserData, browser) {
+  Object.keys(source).forEach(function(browser) {
+    const browserData = source[browser];
     result[browser] = generateBrowserStructure(ident, browserData, browser);
     addReadableLabels(result[browser]);
   });

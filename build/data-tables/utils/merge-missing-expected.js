@@ -7,15 +7,16 @@ function findMissingIdents(_expected, _data, target) {
     target = {};
   }
 
-  Object.keys(_data.tabIndex).forEach(function(ident) {
-    if (_expected[ident] || ident.indexOf(' -> ') !== -1) {
+  Object.keys(_data.elements).forEach(function(ident) {
+    const element = _data.elements[ident];
+    if (_expected[ident]) {
       return;
     }
 
     target[ident] = {
-      focusable: _data.focusable.indexOf(ident) !== -1,
-      tabbable: _data.tabOrder.indexOf(ident) !== -1,
-      index: _data.tabIndex[ident],
+      focusable: Boolean(element.focusable),
+      tabbable: Boolean(element.tabbable),
+      index: element.tabindexProperty,
     };
   });
 

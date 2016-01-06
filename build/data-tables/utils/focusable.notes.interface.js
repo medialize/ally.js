@@ -169,6 +169,18 @@ class Notes {
 
     this.index[source].target[browser] = message;
   }
+  registerMissing(browser, ident) {
+    if (!this.index[ident]) {
+      this.index[ident] = this._getEmptyIndexStructure();
+    }
+
+    if (!this.index[ident].browsers[browser]) {
+      this.index[ident].browsers[browser] = [];
+    }
+
+    const message = this._registerMessage('@element-not-tested');
+    this.index[ident].browsers[browser].push(message);
+  }
 
   getNotes() {
     const md = new Remarkable({});
