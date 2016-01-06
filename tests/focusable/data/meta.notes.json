@@ -1,10 +1,23 @@
 {
   "@ally-doc-inert": "Considering the `<html>` and `<body>` element focusable should have no benefit to a website (unless explicitly made focusable by adding the `tabindex` attribute), which is why ally.js considers the `<html>` and `<body>` element inert.",
   "html": {
+    "alias": [
+      "iframe -> html",
+      "iframe{focusable} -> html",
+      "iframe[tabindex=-1] -> html",
+      "iframe{focusable}[tabindex=-1] -> html"
+    ],
     "ally": "@ally-doc-inert",
     "general": "The `<html>` element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document."
   },
+
   "body": {
+    "alias": [
+      "iframe -> body",
+      "iframe{focusable} -> body",
+      "iframe[tabindex=-1] -> body",
+      "iframe{focusable}[tabindex=-1] -> body"
+    ],
     "ally": "@ally-doc-inert",
     "general": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus."
   },
@@ -70,13 +83,16 @@
   "[tabindex=]": {
     "general": "@invalid-tabindex-value",
     "browsers": {
+      "ie-9": "@empty-tabindex-ie11",
       "ie-10": "@empty-tabindex-ie11",
-      "ie-11": "@empty-tabindex-ie11"
+      "ie-11": "@empty-tabindex-ie11",
+      "ie-12": "@empty-tabindex-ie11",
+      "ie-13": "@empty-tabindex-ie11"
     }
   },
 
   "@image-map-firefox-loading": "The `<map>`'s `<area>`s are inert (not focusable) as long as the image is still loading.",
-  "area[href].upper": {
+  "img[usemap] area[href].upper": {
     "browsers": {
       "firefox-stable": "@image-map-firefox-loading",
       "firefox-nightly": "@image-map-firefox-loading"
@@ -84,9 +100,9 @@
   },
 
   "@image-map-area-no-href": "If an `<area>` element doesn't have an `href` attribute, it's not a link (and should therefore not be interactive).",
-  "area": {
+  "img[useman] area": {
     "alias": [
-      "area[tabindex=-1]",
+      "img[usemap] area[tabindex=-1]",
       "img[tabindex=-1] area"
     ],
     "browsers": {
@@ -95,9 +111,6 @@
     }
   },
 
-  "area[href][tabindex=-1].lower": "In some browsers adding a `tabindex` attribute to an `<area>` element will make it inert (not focusable).",
-  "img[usemap][tabindex=-1]": "In some browsers `<img>` elements with an associated image map cannot be made focusable.",
-  "img[tabindex=-1] area[href].lower": "In some browsers the image map associated with an `<img>` element can be removed from the document's sequential navigation order by adding `tabindex=\"-1\"` to the `<img>` element.",
   "map.invalid-image area[href].lower": "Some browsers will not make an image map focusable, if it is associated with an `<img>` that does have a proper image loaded.",
 
   "audio": "`<audio>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
@@ -172,37 +185,32 @@
     "general": "@shadow-host-content"
   },
 
-  "@iframe-firefox": "Firefox does not dispatch `focus` event but `document.activeElement` is updated properly. [Gecko 131784](https://bugzilla.mozilla.org/show_bug.cgi?id=131784)",
-  "-firefox-iframe": {
-    "alias": [
-      "iframe",
-      "iframe[tabindex=-1]",
-      "iframe{focusable}",
-      "iframe{focusable}[tabindex=-1]"
-    ],
-    "browsers": {
-      "firefox-stable": "@iframe-firefox",
-      "firefox-nightly": "@iframe-firefox"
-    }
-  },
-
-  "iframe": {
-    "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>`s keyboard focusable (tabbable).",
-    "browsers": {
-      "ie-12": "Microsoft Edge requires the `<iframe>`d document to contain a focusable element in order to make it keyboard accessible.\n\nThis is **undetectable** because we can't look inside all iframes, because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)."
-    }
-  },
-
   "@sop-iframe": "Technically the content of an iframe [can be accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting).",
   "iframe{focusable} -> input": {
     "alias": [
+      "iframe",
+      "iframe -> html",
+      "iframe -> body",
+
+      "iframe[tabindex=-1]",
+      "iframe[tabindex=-1] -> html",
+      "iframe[tabindex=-1] -> body",
+
+      "iframe{focusable}",
+      "iframe{focusable} -> html",
+      "iframe{focusable} -> body",
+      "iframe{focusable} -> input",
+      "iframe{focusable} -> input[tabindex=1]",
+
+      "iframe{focusable}[tabindex=-1]",
+      "iframe{focusable}[tabindex=-1] -> html",
+      "iframe{focusable}[tabindex=-1] -> body",
       "iframe{focusable}[tabindex=-1] -> input",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
-      "iframe{focusable} -> body",
-      "iframe[tabindex=-1] -> body",
-      "iframe{focusable} -> input[tabindex=1]",
-      "iframe{focusable}[tabindex=-1] -> body",
-      "iframe -> body",
+
+      "iframe[src=svg]",
+      "iframe[src=svg][tabindex=-1]",
+
       "inert-in-ally{iframe content}",
       "inert-in-ally{iframe svg:file}"
     ],
@@ -385,9 +393,10 @@
     "browsers": {
       "chrome-stable": "@svg-onfocus",
       "chrome-nightly": "@svg-onfocus",
+      "chrome-mobile": "@svg-onfocus",
+      "opera-stable":  "@svg-onfocus",
       "safari-9": "@svg-onfocus",
       "webkit-nightly": "@svg-onfocus",
-      "chrome-mobile": "@svg-onfocus",
       "ios-9": "@svg-onfocus"
     }
   },
@@ -404,6 +413,10 @@
       "ie-9": "@old-ie-hidden",
       "ie-10": "@old-ie-hidden"
     }
+  },
+
+  "[hidden]{displayed} input": {
+    "general": "The `hidden` attribute itself has no effect on whether an element is focusable or not. It's the CSS style `disaply: none` that is set by the `hidden` attribute that counts."
   },
 
   "details": {
@@ -450,7 +463,8 @@
       "ie-9": "@ismap-ie-bug",
       "ie-10": "@ismap-ie-bug",
       "ie-11": "@ismap-ie-bug",
-      "ie-12": "@ismap-ie-bug"
+      "ie-12": "@ismap-ie-bug",
+      "ie-13": "@ismap-ie-bug"
     }
   },
 
@@ -565,8 +579,9 @@
       "fieldset:has(a) legend --- fieldset:has(a) a": "@redirect-legend-next-tabbable",
       "fieldset:has(input[tabindex=-1]) legend --- fieldset{no-tabbable} a[tabindex=1]": "@redirect-legend-next-tabbable",
 
-      "img[usemap].first --- area[href].upper": "@redirect-image-area",
-      "img[usemap].second --- area[href].upper": "@redirect-image-area",
+      "img[usemap] --- img[usemap] area[href].upper": "@redirect-image-area",
+      "img[usemap].duplicate.first --- img[usemap].duplicate area[href]": "@redirect-image-area",
+      "img[usemap].duplicate.second --- img[usemap].duplicate area[href]": "@redirect-image-area",
       "img[usemap].focusable --- area[href][tabindex=-1].upper": "@redirect-image-area",
       "img[usemap][tabindex=-1] --- img[tabindex=-1] area[href].upper": "@redirect-image-area",
       "img[usemap].invalid --- map.invalid-image area[href].upper": "@redirect-image-area"
@@ -576,11 +591,15 @@
   "@encapsulated-iframe": "The `<iframe>`'s document manages its own focus. Any time the `<iframe>` or its content has focus, the master document's `activeElement` points to the `<iframe>`.\n\nNote that `<iframe>`s are only [accessible to script](https://developer.mozilla.org/en/docs/Web/HTML/Element/iframe#Scripting) when they share [the same origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).",
   "-encapsulated-iframe": {
     "redirect": {
+      "iframe -> html --- iframe": "@encapsulated-iframe",
       "iframe -> body --- iframe": "@encapsulated-iframe",
+      "iframe[tabindex=-1] -> html --- iframe[tabindex=-1]": "@encapsulated-iframe",
       "iframe[tabindex=-1] -> body --- iframe[tabindex=-1]": "@encapsulated-iframe",
+      "iframe{focusable} -> html --- iframe{focusable}": "@encapsulated-iframe",
       "iframe{focusable} -> body --- iframe{focusable}": "@encapsulated-iframe",
       "iframe{focusable} -> input --- iframe{focusable}": "@encapsulated-iframe",
       "iframe{focusable} -> input[tabindex=1] --- iframe{focusable}": "@encapsulated-iframe",
+      "iframe{focusable}[tabindex=-1] -> html --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
       "iframe{focusable}[tabindex=-1] -> body --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
       "iframe{focusable}[tabindex=-1] -> input --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1] --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
@@ -588,6 +607,7 @@
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[focusable=false] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg][tabindex=-1] -> file:svg --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
@@ -671,5 +691,37 @@
       "shadow-host[tabindex=0] inner-host input[tabindex=0] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom",
       "shadow-host[tabindex=0] inner-host input[tabindex=1] --- shadow-host[tabindex=0]": "@encapsulated-shadow-dom"
     }
-  }
+  },
+
+  "related:iframe": "<iframe>",
+  "related:iframe[src=svg]": "<iframe>",
+  "related:iframe[src=svg][tabindex=-1]": "<iframe>",
+  "related:iframe[tabindex=-1]": "<iframe>",
+  "related:iframe{focusable}": "<iframe>",
+  "related:iframe{focusable}[tabindex=-1]": "<iframe>",
+
+  "related:img[usemap]": "<img usemap=\"…\">",
+  "related:img[usemap][tabindex=-1]": "<img usemap=\"…\">",
+  "related:img[usemap].focusable": "<img usemap=\"…\">",
+  "related:img[usemap].duplicate.second": "<img usemap=\"…\">",
+  "related:img[usemap].invalid": "<img usemap=\"…\">",
+
+  "related:embed[type=svg]": "<embed type=\"image/svg+xml\">",
+  "related:embed[type=svg][tabindex=-1]": "<embed type=\"image/svg+xml\">",
+  "related:embed[type=svg][tabindex=0]": "<embed type=\"image/svg+xml\">",
+
+  "related:object[usemap]": "<object usemap=\"…\">",
+  "related:object[src=svg]": "<object type=\"image/svg+xml\">",
+  "related:object[src=svg][height=0]": "<object type=\"image/svg+xml\">",
+  "related:object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\">",
+  "related:object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\">",
+
+  "related:shadow-host": "ShadowHost",
+  "related:shadow-host inner-host": "ShadowHost",
+  "related:shadow-host[tabindex=-1]": "ShadowHost",
+  "related:shadow-host[tabindex=-1] inner-host": "ShadowHost",
+  "related:shadow-host[tabindex=0]": "ShadowHost",
+  "related:shadow-host[tabindex=0] inner-host": "ShadowHost",
+
+  "@element-not-tested": "This element could not be tested in this browser."
 }

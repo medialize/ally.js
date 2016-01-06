@@ -30,7 +30,8 @@
       "select[tabindex=-1]": "<select tabindex=\"-1\">",
       "textarea[tabindex=-1]": "<textarea tabindex=\"-1\">",
 
-      "input[tabindex=1]": "<input type=\"text\" tabindex=\"1\">"
+      "input[tabindex=1]": "<input type=\"text\" tabindex=\"1\">",
+      "input[tabindex=2]": "<input type=\"text\" tabindex=\"2\">"
     }
   },
 
@@ -174,7 +175,7 @@
       "link[itemprop][href]": "<link itemprop=\"url\" href=\"…\">",
 
       "a[href=]": "<a href=\"\">",
-      "a[href]": "<a href=\"…\">",
+      "a[href]": "<a href>",
       "a[href][tabindex=-1]": "<a href=\"…\" tabindex=\"-1\">"
     }
   },
@@ -182,34 +183,42 @@
   {
     "label": "Image Maps",
     "idents": {
-      "img[usemap].first": "<img usemap=\"#…\" src=\"…\">",
-      "img[usemap].focusable": "<img usemap=\"#…\" src=\"…\">",
-      "img[usemap].invalid": "<img usemap=\"#…\" src=\"…\"> with invalid image",
-      "img[usemap].second": "<img usemap=\"#…\" src=\"…\">",
+      "img[usemap]": "<img usemap=\"#…\">",
+      "img[usemap] area[href].upper": "<area href=\"…\"> with <img usemap=\"#…\">",
+      "img[usemap] area[href].lower": "<area href=\"…\"> with <img usemap=\"#…\">",
+      "img[usemap] area": "<area> with <img usemap=\"#…\">",
 
-      "area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
-      "area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
-      "area[href][tabindex=-1].lower": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
-      "area[href][tabindex=-1].upper": "<area href=\"…\" tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "img[usemap].focusable": "<img usemap=\"#…\">",
+      "area[href][tabindex=-1].lower": "<area href=\"…\" tabindex=\"-1\"> with <img usemap=\"#…\">",
+      "area[href][tabindex=-1].upper": "<area href=\"…\" tabindex=\"-1\"> with <img usemap=\"#…\">",
+      "area[tabindex=-1]": "<area tabindex=\"-1\"> with <img usemap=\"#…\">",
 
-      "area": "<area> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
-      "area[tabindex=-1]": "<area tabindex=\"-1\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\">",
+      "img[usemap].invalid": "<img usemap=\"#…\"> with invalid image",
+      "map.invalid-image area[href].lower": "<area href=\"…\"> with <img usemap=\"#…\"> with invalid image",
+      "map.invalid-image area[href].upper": "<area href=\"…\"> with <img usemap=\"#…\"> with invalid image",
 
-      "img[usemap][tabindex=-1]": "<img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
-      "img[tabindex=-1] area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
-      "img[tabindex=-1] area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
-      "img[tabindex=-1] area": "<area> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\" tabindex=\"-1\">",
+      "img[usemap].duplicate.first": "<img usemap=\"#…\">",
+      "img[usemap].duplicate.second": "<img usemap=\"#…\">",
+      "img[usemap].duplicate area[href]": "<area href=\"…\"> with two <img usemap=\"#…\">",
 
-      "map.invalid-image area[href].lower": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image",
-      "map.invalid-image area[href].upper": "<area href=\"…\"> child of <map name=\"#…\"> with <img usemap=\"#…\" src=\"…\"> with invalid image",
+      "img[usemap][tabindex=-1]": "<img usemap=\"#…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area[href].lower": "<area href=\"…\"> with <img usemap=\"#…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area[href].upper": "<area href=\"…\"> with <img usemap=\"#…\" tabindex=\"-1\">",
+      "img[tabindex=-1] area": "<area> with <img usemap=\"#…\" tabindex=\"-1\">",
 
-      "firefox-bug-1116126": "<input> between <img usemap=\"#map\"> and <img usemap=\"#map\">"
+      "firefox-bug-1116126": "<input> between <img usemap=\"#map\"> and <img usemap=\"#map\">",
+
+      "object[usemap]": "<object type=\"image/png\" usemap=\"#map\">",
+      "map.object area": "<area> child of <map name=\"#…\"> with <object type=\"image/png\" usemap=\"#…\">",
+      "map.object area[href].upper": "<area href=\"…\"> <object type=\"image/png\" usemap=\"#…\" >",
+      "map.object area[href].lower": "<area href=\"…\"> <object type=\"image/png\" usemap=\"#…\" >"
     },
     "redundant": {
-      "img[usemap].first": [
+      "img[usemap]": [
         "img[usemap].focusable",
         "img[usemap].invalid",
-        "img[usemap].second"
+        "img[usemap].duplicate.first",
+        "img[usemap].duplicate.second"
       ],
       "map.invalid-image area[href].lower": [
         "map.invalid-image area[href].upper"
@@ -217,11 +226,14 @@
       "img[tabindex=-1] area[href].lower": [
         "img[tabindex=-1] area[href].upper"
       ],
-      "area[href].upper": [
-        "area[href].lower"
+      "img[usemap] area[href].upper": [
+        "img[usemap] area[href].lower"
       ],
       "area[href][tabindex=-1].lower": [
         "area[href][tabindex=-1].upper"
+      ],
+      "map.object area[href].upper": [
+        "map.object area[href].lower"
       ]
     }
   },
@@ -298,9 +310,13 @@
       "iframe[src=svg][tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\"> with SVG document",
       "iframe{focusable}": "<iframe src=\"…\"> with focusable content",
       "iframe{focusable}[tabindex=-1]": "<iframe src=\"…\" tabindex=\"-1\"> with focusable content",
+      "iframe -> html": "<html> within <iframe src=\"…\">",
       "iframe -> body": "<body> within <iframe src=\"…\">",
+      "iframe{focusable} -> html": "<html> within <iframe src=\"…\"> with focusable content",
       "iframe{focusable} -> body": "<body> within <iframe src=\"…\"> with focusable content",
+      "iframe[tabindex=-1] -> html": "<html> within <iframe src=\"…\" tabindex=\"-1\">",
       "iframe[tabindex=-1] -> body": "<body> within <iframe src=\"…\" tabindex=\"-1\">",
+      "iframe{focusable}[tabindex=-1] -> html": "<html> within <iframe src=\"…\" tabindex=\"-1\">",
       "iframe{focusable}[tabindex=-1] -> body": "<body> within <iframe src=\"…\" tabindex=\"-1\">",
       "iframe{focusable} -> input": "<input> within <iframe src=\"…\">",
       "iframe{focusable}[tabindex=-1] -> input": "<input> within <iframe src=\"…\" tabindex=\"-1\">",
@@ -325,13 +341,17 @@
       ]
     },
     "inert-in-ally": [
+      "iframe -> html",
       "iframe -> body",
-      "iframe{focusable} -> body",
+      "iframe[tabindex=-1] -> html",
       "iframe[tabindex=-1] -> body",
-      "iframe{focusable}[tabindex=-1] -> body",
+      "iframe{focusable} -> html",
+      "iframe{focusable} -> body",
       "iframe{focusable} -> input",
-      "iframe{focusable}[tabindex=-1] -> input",
       "iframe{focusable} -> input[tabindex=1]",
+      "iframe{focusable}[tabindex=-1] -> html",
+      "iframe{focusable}[tabindex=-1] -> body",
+      "iframe{focusable}[tabindex=-1] -> input",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1]"
     ]
   },
@@ -373,9 +393,7 @@
       "object[src=svg]": "<object type=\"image/svg+xml\" data=\"…\">",
       "object[src=svg][height=0]": "<object type=\"image/svg+xml\" data=\"…\" height=\"0\">",
       "object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"-1\">",
-      "object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"0\">",
-
-      "object[usemap]": "<object type=\"image/png\" data=\"…\" usemap=\"#map\">"
+      "object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"0\">"
     },
     "redundant": {
       "object[src=swf]": [
@@ -469,6 +487,7 @@
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <iframe>",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <iframe>",
       "iframe[src=svg] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <iframe>",
+      "iframe[src=svg][tabindex=-1] -> file:svg": "<svg> within <iframe tabindex=\"-1\">",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <iframe tabindex=\"-1\">",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <iframe tabindex=\"-1\">",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <iframe tabindex=\"-1\">",
@@ -481,6 +500,7 @@
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
       "iframe[src=svg] -> file:svg a[focusable=false]",
+      "iframe[src=svg][tabindex=-1] -> file:svg",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -501,6 +521,7 @@
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <embed tabindex=\"0\">",
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <embed tabindex=\"0\">",
       "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <embed tabindex=\"0\">",
+      "embed[type=svg][tabindex=-1] -> file:svg": "<svg> within <embed tabindex=\"-1\">",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <embed tabindex=\"-1\">",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <embed tabindex=\"-1\">",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <embed tabindex=\"-1\">",
@@ -518,6 +539,7 @@
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
       "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -538,6 +560,7 @@
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object tabindex=\"0\">",
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object tabindex=\"0\">",
       "object[src=svg][tabindex=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object tabindex=\"0\">",
+      "object[src=svg][tabindex=-1] -> file:svg": "<svg> within <object tabindex=\"-1\">",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <object tabindex=\"-1\">",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object tabindex=\"-1\">",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object tabindex=\"-1\">",
@@ -560,6 +583,7 @@
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
       "object[src=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -579,7 +603,8 @@
       "[hidden][tabindex=-1]": "<div hidden tabindex=\"-1\">",
       "[hidden][tabindex=-1] input": "<input> within <div hidden tabindex=\"-1\">",
       "[hidden][tabindex=0]": "<div hidden tabindex=\"0\">",
-      "[hidden][tabindex=0] input": "<input> within <div hidden tabindex=\"0\">"
+      "[hidden][tabindex=0] input": "<input> within <div hidden tabindex=\"0\">",
+      "[hidden]{displayed} input": "<input> within <div hidden style=\"display: block\">"
     }
   },
 
