@@ -1,17 +1,17 @@
 {
   "platform": {
-    "description": "Opera 34.0.2036.25 (like Chrome 47.0.2526.73) on OS X 10.10.5",
-    "layout": "Blink",
+    "description": "IE 13.11082 (platform preview) on Windows NT 10.0 64-bit",
+    "layout": "Trident",
     "manufacturer": null,
-    "name": "Opera",
+    "name": "IE",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.25",
-    "version": "34.0.2036.25",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.11082",
+    "version": "13.11082",
     "os": {
-      "architecture": 32,
-      "family": "OS X",
-      "version": "10.10.5"
+      "architecture": 64,
+      "family": "Windows NT",
+      "version": "10.0"
     }
   },
   "elements": {
@@ -71,7 +71,7 @@
       "focusable": true
     },
     "[hidden]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -121,7 +121,7 @@
       "scriptFocus": {}
     },
     "[hidden]{displayed}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -151,7 +151,7 @@
     },
     "[tabindex= +2]": {
       "tabindexProperty": 2,
-      "tabindexAttribute": " +2",
+      "tabindexAttribute": "2",
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
@@ -173,7 +173,7 @@
     },
     "[tabindex=+2]": {
       "tabindexProperty": 2,
-      "tabindexAttribute": "+2",
+      "tabindexAttribute": "2",
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
@@ -232,7 +232,7 @@
       "focusable": true
     },
     "[tabindex=-1]{flexbox} > span": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -345,7 +345,7 @@
     },
     "[tabindex=3 ]": {
       "tabindexProperty": 3,
-      "tabindexAttribute": "3 ",
+      "tabindexAttribute": "3",
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
@@ -366,8 +366,36 @@
       "focusable": true
     },
     "[tabindex=3x]": {
-      "tabindexProperty": 3,
+      "tabindexProperty": 0,
       "tabindexAttribute": "3x",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "[tabindex=]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "-32768",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {}
+    },
+    "[tabindex=hello]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "hello",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "a > img[ismap]": {
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
@@ -383,35 +411,6 @@
       },
       "tabbable": true,
       "focusable": true
-    },
-    "[tabindex=]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {}
-    },
-    "[tabindex=hello]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "hello",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {}
-    },
-    "a > img[ismap]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {}
     },
     "a > img[ismap][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -544,12 +543,22 @@
       "scriptFocus": {}
     },
     "a[tabindex=-1] > img[ismap]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
     },
     "a[tabindex=-1]:has([ismap])": {
       "tabindexProperty": -1,
@@ -575,55 +584,76 @@
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "event": true
+      },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": false
-      }
+        "event": true
+      },
+      "focusable": true
     },
     "area[href][tabindex=-1].upper": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "event": true
+      },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": false
-      }
+        "event": true
+      },
+      "focusable": true
     },
     "area[tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {},
-      "scriptFocus": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "event": true
+      },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": false
-      }
+        "event": true
+      },
+      "focusable": true
     },
     "article{browsing}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -631,7 +661,7 @@
       "scriptFocus": {}
     },
     "article{canvas}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -639,7 +669,7 @@
       "scriptFocus": {}
     },
     "article{contenteditable}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -647,7 +677,7 @@
       "scriptFocus": {}
     },
     "article{details}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -655,7 +685,7 @@
       "scriptFocus": {}
     },
     "article{disabled-input}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -663,7 +693,7 @@
       "scriptFocus": {}
     },
     "article{display}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -671,7 +701,7 @@
       "scriptFocus": {}
     },
     "article{fieldset}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -679,7 +709,7 @@
       "scriptFocus": {}
     },
     "article{flexbox}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -687,7 +717,7 @@
       "scriptFocus": {}
     },
     "article{form}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -695,7 +725,7 @@
       "scriptFocus": {}
     },
     "article{hidden}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -703,7 +733,7 @@
       "scriptFocus": {}
     },
     "article{image-maps}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -711,7 +741,7 @@
       "scriptFocus": {}
     },
     "article{input}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -719,7 +749,7 @@
       "scriptFocus": {}
     },
     "article{interactive}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -727,7 +757,7 @@
       "scriptFocus": {}
     },
     "article{ios}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -735,7 +765,7 @@
       "scriptFocus": {}
     },
     "article{ismap}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -743,7 +773,7 @@
       "scriptFocus": {}
     },
     "article{itemprop}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -751,7 +781,7 @@
       "scriptFocus": {}
     },
     "article{label}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -759,7 +789,7 @@
       "scriptFocus": {}
     },
     "article{links}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -767,7 +797,7 @@
       "scriptFocus": {}
     },
     "article{menu}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -775,7 +805,7 @@
       "scriptFocus": {}
     },
     "article{object}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -783,7 +813,7 @@
       "scriptFocus": {}
     },
     "article{scrollable}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -791,7 +821,7 @@
       "scriptFocus": {}
     },
     "article{shadow}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -799,7 +829,7 @@
       "scriptFocus": {}
     },
     "article{svg}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -807,7 +837,7 @@
       "scriptFocus": {}
     },
     "article{tabindex}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -815,7 +845,7 @@
       "scriptFocus": {}
     },
     "article{user-modify}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -823,7 +853,7 @@
       "scriptFocus": {}
     },
     "article{visibility}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -831,12 +861,20 @@
       "scriptFocus": {}
     },
     "audio": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "audio[controls]": {
       "tabindexProperty": 0,
@@ -862,8 +900,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true
@@ -874,7 +911,6 @@
         "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "a{flexbox}": {
@@ -882,8 +918,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -899,7 +934,7 @@
       "focusable": true
     },
     "a{flexbox} > span": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -923,7 +958,7 @@
       "scriptFocus": {}
     },
     "body": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -983,7 +1018,7 @@
       "focusable": true
     },
     "canvas": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1097,7 +1132,7 @@
       "focusable": true
     },
     "code": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1105,7 +1140,7 @@
       "scriptFocus": {}
     },
     "details": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1116,19 +1151,14 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {}
-    },
-    "details summary": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "html",
       "ally": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -1137,6 +1167,14 @@
       },
       "tabbable": true,
       "focusable": true
+    },
+    "details summary": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
     },
     "details summary[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1158,7 +1196,7 @@
       "focusable": true
     },
     "details:has(summary[tabindex=-1])": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1169,12 +1207,25 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {}
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
     },
     "details[open]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1206,19 +1257,9 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "details[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1243,19 +1284,14 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {}
-    },
-    "details[tabindex=-1] summary": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "html",
       "ally": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -1265,8 +1301,16 @@
       "tabbable": true,
       "focusable": true
     },
+    "details[tabindex=-1] summary": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
     "div-section{scroll-body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1274,7 +1318,7 @@
       "scriptFocus": {}
     },
     "div-section{scroll-container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1282,7 +1326,7 @@
       "scriptFocus": {}
     },
     "div-span{scroll-body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1290,7 +1334,7 @@
       "scriptFocus": {}
     },
     "div-span{scroll-container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1339,7 +1383,7 @@
       "focusable": true
     },
     "div{body-overflow-auto}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1347,7 +1391,7 @@
       "scriptFocus": {}
     },
     "div{body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1355,7 +1399,7 @@
       "scriptFocus": {}
     },
     "div{body-overflow-scroll}[tabindex=-1]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1363,7 +1407,7 @@
       "scriptFocus": {}
     },
     "div{container-overflow-auto}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1371,7 +1415,7 @@
       "scriptFocus": {}
     },
     "div{container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1398,7 +1442,7 @@
       "focusable": true
     },
     "div{flexbox}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1406,7 +1450,7 @@
       "scriptFocus": {}
     },
     "div{flexbox} > span{order:1}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1435,7 +1479,7 @@
       "focusable": true
     },
     "div{flexbox} > span{order:2}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1483,7 +1527,7 @@
       "focusable": true
     },
     "div{scroll-body-horizontal-scroll-x}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1491,7 +1535,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-horizontal-scroll-y}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1499,7 +1543,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-horizontal}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1507,7 +1551,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-overflow-hidden}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1515,7 +1559,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1523,7 +1567,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-overflow-visible}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1531,7 +1575,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-vertical-scroll-x}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1539,7 +1583,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-vertical-scroll-y}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1547,7 +1591,7 @@
       "scriptFocus": {}
     },
     "div{scroll-body-vertical}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1555,7 +1599,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-horizontal-scroll-x}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1563,7 +1607,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-horizontal-scroll-y}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1571,7 +1615,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-horizontal}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1579,7 +1623,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-overflow-hidden}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1587,7 +1631,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1595,7 +1639,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-overflow-visible}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1603,7 +1647,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-vertical-scroll-x}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1611,7 +1655,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-vertical-scroll-y}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1619,7 +1663,7 @@
       "scriptFocus": {}
     },
     "div{scroll-container-vertical}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -1632,13 +1676,7 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1649,13 +1687,7 @@
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=mp4]": {
       "tabindexProperty": 0,
@@ -1663,13 +1695,7 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=mp4][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1680,13 +1706,7 @@
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=ogv]": {
       "tabindexProperty": 0,
@@ -1694,13 +1714,7 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=ogv][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1711,13 +1725,7 @@
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg]": {
       "tabindexProperty": 0,
@@ -1725,190 +1733,112 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
+      "ally": {
+        "onlyTabbable": true
       },
+      "jquery": {},
       "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "embed[type=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg]",
-        "event": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg]",
-        "event": true
+        "ident": "embed[type=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg]",
-        "event": true
+        "ident": "embed[type=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg]",
-        "event": true
+        "ident": "embed[type=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -1919,190 +1849,88 @@
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
+      "ally": {
+        "onlyTabbable": true
       },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "jquery": {},
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=-1] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0]": {
       "tabindexProperty": 0,
@@ -2114,190 +1942,112 @@
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
+      "ally": {
+        "onlyTabbable": true
       },
+      "jquery": {},
       "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "embed[type=svg][tabindex=0]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=0]",
-        "event": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
+        "ident": "embed[type=svg][tabindex=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=0]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
+        "ident": "embed[type=svg][tabindex=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "embed[type=svg][tabindex=0]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
+        "ident": "embed[type=svg][tabindex=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "embed[type=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "embed[type=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "fieldset": {
       "tabindexProperty": 0,
@@ -2348,16 +2098,12 @@
       "focusable": true
     },
     "fieldset legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusTarget": "fieldset input[tabindex=-1]"
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "fieldset input[tabindex=-1]"
-      }
+      "scriptFocus": {}
     },
     "fieldset:empty": {
       "tabindexProperty": 0,
@@ -2389,7 +2135,7 @@
       "focusable": true
     },
     "fieldset:has(a) legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2418,16 +2164,12 @@
       "focusable": true
     },
     "fieldset:has(button) legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusTarget": "fieldset:has(button) button"
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "fieldset:has(button) button"
-      }
+      "scriptFocus": {}
     },
     "fieldset:has(input[tabindex=-1]) input[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -2449,28 +2191,20 @@
       "focusable": true
     },
     "fieldset:has(input[tabindex=-1]) legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusTarget": "fieldset:has(input[tabindex=-1]) input[tabindex=-1]"
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "fieldset:has(input[tabindex=-1]) input[tabindex=-1]"
-      }
+      "scriptFocus": {}
     },
     "fieldset:has(select) legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusTarget": "fieldset:has(select) select"
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "fieldset:has(select) select"
-      }
+      "scriptFocus": {}
     },
     "fieldset:has(select) select": {
       "tabindexProperty": 0,
@@ -2494,16 +2228,12 @@
       "focusable": true
     },
     "fieldset:has(textarea) legend": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusTarget": "fieldset:has(textarea) textarea"
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "fieldset:has(textarea) textarea"
-      }
+      "scriptFocus": {}
     },
     "fieldset:has(textarea) textarea": {
       "tabindexProperty": 0,
@@ -2550,19 +2280,11 @@
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "fieldset[disabled][tabindex=-1] input": {
       "tabindexProperty": 0,
@@ -2580,22 +2302,12 @@
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "fieldset[disabled][tabindex=0] input": {
       "tabindexProperty": 0,
@@ -2673,7 +2385,7 @@
       "focusable": true
     },
     "form": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2702,7 +2414,7 @@
       "focusable": true
     },
     "form[disabled]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2897,7 +2609,7 @@
       "focusable": true
     },
     "h1": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2905,7 +2617,7 @@
       "scriptFocus": {}
     },
     "h2": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2913,7 +2625,7 @@
       "scriptFocus": {}
     },
     "h3": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2921,7 +2633,7 @@
       "scriptFocus": {}
     },
     "head": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2929,7 +2641,7 @@
       "scriptFocus": {}
     },
     "html": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2947,13 +2659,13 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "iframe -> body": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe",
       "ally": {},
@@ -2968,7 +2680,7 @@
       "focusable": true
     },
     "iframe -> head": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe",
       "ally": {},
@@ -2980,7 +2692,7 @@
       }
     },
     "iframe -> html": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe",
       "ally": {},
@@ -3002,189 +2714,113 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
       "focusable": true
     },
     "iframe[src=svg] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
+      "ally": {
+        "onlyTabbable": true
       },
+      "jquery": {},
       "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+        "ident": "iframe[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "iframe[src=svg]",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg]",
-        "event": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "iframe[src=svg]",
-        "event": true
+        "ident": "iframe[src=svg]"
       },
       "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "iframe[src=svg]",
-        "event": true
+        "ident": "iframe[src=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "iframe[src=svg]",
-        "event": true
+        "ident": "iframe[src=svg]"
       },
       "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -3200,186 +2836,95 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
       "focusable": true
     },
     "iframe[src=svg][tabindex=-1] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
+      "ally": {
+        "onlyTabbable": true
       },
+      "jquery": {},
       "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+        "ident": "iframe[src=svg][tabindex=-1]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "iframe[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "iframe[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -3395,12 +2940,13 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
       "focusable": true
     },
     "iframe[tabindex=-1] -> body": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe[tabindex=-1]",
       "ally": {},
@@ -3415,7 +2961,7 @@
       "focusable": true
     },
     "iframe[tabindex=-1] -> head": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe[tabindex=-1]",
       "ally": {},
@@ -3427,7 +2973,7 @@
       }
     },
     "iframe[tabindex=-1] -> html": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe[tabindex=-1]",
       "ally": {},
@@ -3449,12 +2995,13 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
       "focusable": true
     },
     "iframe{focusable} -> body": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe{focusable}",
       "ally": {},
@@ -3469,7 +3016,7 @@
       "focusable": true
     },
     "iframe{focusable} -> html": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe{focusable}",
       "ally": {},
@@ -3523,7 +3070,6 @@
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
-        "encapsulated": "iframe{focusable}",
         "event": true
       },
       "hostElementFocus": {
@@ -3549,12 +3095,13 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
+        "cssFocus": true,
         "event": true
       },
       "focusable": true
     },
     "iframe{focusable}[tabindex=-1] -> body": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {},
@@ -3569,7 +3116,7 @@
       "focusable": true
     },
     "iframe{focusable}[tabindex=-1] -> html": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {},
@@ -3622,7 +3169,6 @@
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
-        "encapsulated": "iframe{focusable}[tabindex=-1]",
         "event": true
       },
       "hostElementFocus": {
@@ -3634,7 +3180,7 @@
       "focusable": true
     },
     "img": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -3645,24 +3191,30 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {},
-      "scriptFocus": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "event": true
+      },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap][tabindex=-1]",
-        "event": false
-      }
+        "event": true
+      },
+      "focusable": true
     },
     "img[tabindex=-1] area[href].lower": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3671,17 +3223,15 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap][tabindex=-1]",
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "img[tabindex=-1] area[href].upper": {
@@ -3689,8 +3239,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3699,21 +3248,19 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap][tabindex=-1]",
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "img[usemap=void]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -3721,12 +3268,18 @@
       "scriptFocus": {}
     },
     "img[usemap]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusTarget": "img[usemap] area[href].upper"
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "cssFocus": true,
+        "redirected": "img[usemap] area[href].upper"
+      },
+      "focusable": true
     },
     "img[usemap] area": {
       "tabindexProperty": 0,
@@ -3758,13 +3311,12 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap]",
         "event": true
       },
@@ -3786,13 +3338,12 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap]",
         "event": true
       },
@@ -3814,7 +3365,6 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
@@ -3828,7 +3378,7 @@
       "focusable": true
     },
     "img[usemap].duplicate map": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -3836,36 +3386,60 @@
       "scriptFocus": {}
     },
     "img[usemap].duplicate.first": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusTarget": "img[usemap].duplicate area[href]"
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "cssFocus": true,
+        "redirected": "img[usemap].duplicate area[href]"
+      },
+      "focusable": true
     },
     "img[usemap].duplicate.second": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusTarget": "img[usemap].duplicate area[href]"
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "cssFocus": true,
+        "redirected": "img[usemap].duplicate area[href]"
+      },
+      "focusable": true
     },
     "img[usemap].focusable": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusTarget": "area[href][tabindex=-1].upper"
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "cssFocus": true,
+        "redirected": "area[href][tabindex=-1].upper"
+      },
+      "focusable": true
     },
     "img[usemap].invalid": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusTarget": "map.invalid-image area[href].upper"
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "cssFocus": true,
+        "redirected": "map.invalid-image area[href].upper"
+      },
+      "focusable": true
     },
     "img[usemap][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -3873,16 +3447,14 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
+        "focusTarget": "img[tabindex=-1] area[href].upper"
       },
       "jquery": {
         "focusable": true
       },
       "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
         "cssFocus": true,
-        "event": true
+        "redirected": "img[tabindex=-1] area[href].upper"
       },
       "focusable": true
     },
@@ -4266,7 +3838,7 @@
       "focusable": true
     },
     "kbd": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4279,14 +3851,7 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "keygen[tabindex=-1]": {
       "tabindexProperty": -1,
@@ -4294,9 +3859,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
-      "jquery": {
-        "focusable": true
-      },
+      "jquery": {},
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -4306,7 +3869,7 @@
       "focusable": true
     },
     "label": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4314,16 +3877,14 @@
       "scriptFocus": {}
     },
     "label:has(input)": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
         "focusTarget": "label:has(input) input"
       },
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "label:has(input) input"
-      }
+      "scriptFocus": {}
     },
     "label:has(input) input": {
       "tabindexProperty": 0,
@@ -4347,7 +3908,7 @@
       "focusable": true
     },
     "label[disabled]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4355,28 +3916,24 @@
       "scriptFocus": {}
     },
     "label[for=label-target-focusable]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
         "focusTarget": "input[type=text][tabindex=-1]"
       },
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "input[type=text][tabindex=-1]"
-      }
+      "scriptFocus": {}
     },
     "label[for=label-target]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
         "focusTarget": "input[type=text]"
       },
       "jquery": {},
-      "scriptFocus": {
-        "redirected": "input[type=text]"
-      }
+      "scriptFocus": {}
     },
     "label[for=label-target][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -4384,40 +3941,62 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusTarget": "input[type=text]"
+        "focusable": true
       },
       "jquery": {
         "focusable": true
       },
       "scriptFocus": {
-        "redirected": "input[type=text]"
-      }
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "label[tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "label[tabindex=0]": {
       "tabindexProperty": 0,
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
     },
     "link[itemprop][href]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4425,7 +4004,7 @@
       "scriptFocus": {}
     },
     "map": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4462,13 +4041,12 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap].invalid",
         "event": true
       },
@@ -4490,13 +4068,12 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
         "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
-        "cssFocus": false,
+        "cssFocus": true,
         "ident": "img[usemap].invalid",
         "event": true
       },
@@ -4549,7 +4126,7 @@
       }
     },
     "meta": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -4560,793 +4137,450 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg] -> file:svg": {
+      "document": "object[src=svg]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "object[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "object[src=svg] -> file:svg a[focusable=false]": {
+      "document": "object[src=svg]",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg] -> file:svg a[xlink|href]": {
+      "document": "object[src=svg]",
+      "ally": {
+        "onlyTabbable": true
       },
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "object[src=svg]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
-    },
-    "object[src=svg] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg]",
-        "event": true
+        "ident": "object[src=svg]"
       },
-      "focusable": true
-    },
-    "object[src=svg] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg]",
-        "event": true
-      },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg]",
-        "event": true
+        "ident": "object[src=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg]",
-        "event": true
+        "ident": "object[src=svg]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][height=0]": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][height=0] -> file:svg": {
+      "document": "object[src=svg][height=0]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "object[src=svg][height=0]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "object[src=svg][height=0] -> file:svg a[focusable=false]": {
+      "document": "object[src=svg][height=0]",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][height=0] -> file:svg a[xlink|href]": {
+      "document": "object[src=svg][height=0]",
+      "ally": {
+        "onlyTabbable": true
       },
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg][height=0] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][height=0]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
-    },
-    "object[src=svg][height=0] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][height=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][height=0]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][height=0]",
-        "event": true
+        "ident": "object[src=svg][height=0]"
       },
-      "focusable": true
-    },
-    "object[src=svg][height=0] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][height=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][height=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][height=0]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][height=0]",
-        "event": true
+        "ident": "object[src=svg][height=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][height=0]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][height=0]",
-        "event": true
+        "ident": "object[src=svg][height=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][height=0] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][height=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][height=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=-1] -> file:svg": {
+      "document": "object[src=svg][tabindex=-1]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
+      "document": "object[src=svg][tabindex=-1]",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
+      "document": "object[src=svg][tabindex=-1]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href] text": {
+      "document": "object[src=svg][tabindex=-1]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "object[src=svg][tabindex=-1]",
+      "ally": {
+        "onlyTabbable": true
       },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg][tabindex=-1] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=-1]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
-    },
-    "object[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=-1]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
-    },
-    "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=-1]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=-1] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=-1]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=-1]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0]": {
       "tabindexProperty": 0,
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=0] -> file:svg": {
+      "document": "object[src=svg][tabindex=0]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "object[src=svg][tabindex=0]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=0] -> file:svg a[focusable=false]": {
+      "document": "object[src=svg][tabindex=0]",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg][tabindex=0] -> file:svg a[xlink|href]": {
+      "document": "object[src=svg][tabindex=0]",
+      "ally": {
+        "onlyTabbable": true
       },
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "object[src=svg][tabindex=0] -> file:svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=0]",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
-    },
-    "object[src=svg][tabindex=0] -> file:svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=0]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
+        "ident": "object[src=svg][tabindex=0]"
       },
-      "focusable": true
-    },
-    "object[src=svg][tabindex=0] -> file:svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "object[src=svg][tabindex=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=0]",
-        "event": true
+      "jquery": {
+        "focusable": true
       },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
+        "ident": "object[src=svg][tabindex=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
       "tabindexAttribute": "1",
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "object[src=svg][tabindex=0]",
-        "event": true
-      },
       "hostElementFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
+        "ident": "object[src=svg][tabindex=0]"
       },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg svg a[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=svg][tabindex=0] -> file:svg svg text[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "object[src=svg][tabindex=0]",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      },
-      "hostElementFocus": {
-        "ident": "object[src=svg][tabindex=0]",
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "object[src=swf]": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
+        "focusable": true,
+        "tabbable": true
       },
       "jquery": {
         "focusable": true,
@@ -5358,6 +4592,7 @@
         "cssFocus": true,
         "event": true
       },
+      "tabbable": true,
       "focusable": true
     },
     "object[src=swf][height=0]": {
@@ -5365,7 +4600,8 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
+        "focusable": true,
+        "tabbable": true
       },
       "jquery": {
         "focusable": true,
@@ -5377,6 +4613,7 @@
         "cssFocus": true,
         "event": true
       },
+      "tabbable": true,
       "focusable": true
     },
     "object[src=swf][tabindex=-1]": {
@@ -5404,7 +4641,8 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
+        "focusable": true,
+        "tabbable": true
       },
       "jquery": {
         "focusable": true,
@@ -5416,6 +4654,7 @@
         "cssFocus": true,
         "event": true
       },
+      "tabbable": true,
       "focusable": true
     },
     "object[usemap]": {
@@ -5430,7 +4669,7 @@
       "scriptFocus": {}
     },
     "option": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5438,7 +4677,7 @@
       "scriptFocus": {}
     },
     "p": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5446,7 +4685,7 @@
       "scriptFocus": {}
     },
     "param": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5454,7 +4693,7 @@
       "scriptFocus": {}
     },
     "script": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5462,7 +4701,7 @@
       "scriptFocus": {}
     },
     "section{scroll-body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5470,7 +4709,7 @@
       "scriptFocus": {}
     },
     "section{scroll-container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -5526,192 +4765,18 @@
       "focusable": true
     },
     "shadow-host": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "isShadowHost": true,
       "ally": {},
       "jquery": {},
       "scriptFocus": {}
-    },
-    "shadow-host inner-host": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host",
-      "isShadowHost": true,
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {},
-      "hostElementFocus": {
-        "ident": "shadow-host",
-        "event": false
-      }
-    },
-    "shadow-host inner-host input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host inner-host",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host inner-host",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host inner-host input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host inner-host input[tabindex=1]": {
-      "tabindexProperty": 1,
-      "tabindexAttribute": "1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host input[tabindex=2]": {
-      "tabindexProperty": 2,
-      "tabindexAttribute": "2",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
     },
     "shadow-host[tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "isShadowHost": true,
       "ally": {
         "focusable": true
       },
@@ -5724,178 +4789,6 @@
         "cssFocus": true,
         "event": true
       },
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] inner-host": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1]",
-      "isShadowHost": true,
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {},
-      "hostElementFocus": {
-        "ident": "shadow-host[tabindex=-1]",
-        "event": false
-      }
-    },
-    "shadow-host[tabindex=-1] inner-host input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1] inner-host",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1] inner-host",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] inner-host input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1] inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1] inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] inner-host input[tabindex=1]": {
-      "tabindexProperty": 1,
-      "tabindexAttribute": "1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1] inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1] inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1]",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=-1] input[tabindex=2]": {
-      "tabindexProperty": 2,
-      "tabindexAttribute": "2",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=-1]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=-1]",
-        "event": true
-      },
-      "tabbable": true,
       "focusable": true
     },
     "shadow-host[tabindex=0]": {
@@ -5903,7 +4796,6 @@
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
-      "isShadowHost": true,
       "ally": {
         "focusable": true,
         "tabbable": true
@@ -5916,185 +4808,13 @@
         "documentActiveElement": true,
         "contextActiveElement": true,
         "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] inner-host": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0]",
-      "isShadowHost": true,
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {},
-      "hostElementFocus": {
-        "ident": "shadow-host[tabindex=0]",
-        "event": false
-      }
-    },
-    "shadow-host[tabindex=0] inner-host input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0] inner-host",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0] inner-host",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] inner-host input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0] inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0] inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] inner-host input[tabindex=1]": {
-      "tabindexProperty": 1,
-      "tabindexAttribute": "1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0] inner-host",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0] inner-host",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] input[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0]",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {
-        "focusable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] input[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "shadow-host[tabindex=0] input[tabindex=2]": {
-      "tabindexProperty": 2,
-      "tabindexAttribute": "2",
-      "hasFocusMethod": true,
-      "shadowHost": "shadow-host[tabindex=0]",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "scriptFocus": {
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "encapsulated": "shadow-host[tabindex=0]",
-        "event": true
-      },
-      "hostElementFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "ident": "shadow-host[tabindex=0]",
         "event": true
       },
       "tabbable": true,
       "focusable": true
     },
     "source[mp3]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6102,7 +4822,7 @@
       "scriptFocus": {}
     },
     "source[ogg]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6110,7 +4830,7 @@
       "scriptFocus": {}
     },
     "span[href]": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6154,7 +4874,7 @@
       "focusable": true
     },
     "span{flexbox}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6162,7 +4882,7 @@
       "scriptFocus": {}
     },
     "span{flexbox} > span": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6211,7 +4931,7 @@
       "focusable": true
     },
     "span{flexbox}:empty": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6219,7 +4939,7 @@
       "scriptFocus": {}
     },
     "span{scroll-body-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6227,7 +4947,7 @@
       "scriptFocus": {}
     },
     "span{scroll-container-overflow-scroll}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6272,7 +4992,7 @@
       "focusable": true
     },
     "style": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6280,618 +5000,397 @@
       "scriptFocus": {}
     },
     "svg": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "onlyTabbable": true
+      },
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
       "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg a[xlink|href][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "svg a[xlink|href][tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg a[xlink|href][tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg a[xlink|href][tabindex=0] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg a[xlink|href][tabindex=1]": {
-      "tabindexProperty": 1,
-      "tabindexAttribute": "1",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg a[xlink|href][tabindex=1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg rect[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg rect[focusable=true]{viewbox}": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg rect[onfocus]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg rect[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "svg rect[tabindex=-1]{viewbox}": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
-    },
-    "svg rect[tabindex=0]": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg rect[tabindex=0]{viewbox}": {
-      "tabindexProperty": 0,
-      "tabindexAttribute": "0",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=-1])": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=-1]) rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=-1]) text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=0])": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=0]) rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg:has(a[tabindex=0]) text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg[focusable=false] a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
-    },
-    "svg[focusable=false] a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg[focusable=false] rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg[focusable=false] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {},
-      "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
-    },
-    "svg[tabindex=-1]": {
-      "tabindexProperty": -1,
-      "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
-      "document": "html",
-      "ally": {
-        "focusable": true
+        "onlyTabbable": true
       },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg a[xlink|href][tabindex=-1] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg a[xlink|href][tabindex=0]": {
+      "tabindexAttribute": "0",
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
       },
-      "focusable": true
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg a[xlink|href][tabindex=0] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg a[xlink|href][tabindex=1]": {
+      "tabindexAttribute": "1",
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg a[xlink|href][tabindex=1] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg rect[focusable=true]": {
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg rect[focusable=true]{viewbox}": {
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg rect[onfocus]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg rect[tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {}
+    },
+    "svg rect[tabindex=-1]{viewbox}": {
+      "tabindexAttribute": "-1",
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {}
+    },
+    "svg rect[tabindex=0]": {
+      "tabindexAttribute": "0",
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "svg rect[tabindex=0]{viewbox}": {
+      "tabindexAttribute": "0",
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "svg text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=-1])": {
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=-1]) rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=-1]) text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=0])": {
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=0]) rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg:has(a[tabindex=0]) text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg[focusable=false]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg[focusable=false] a[xlink|href]": {
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "svg[focusable=false] a[xlink|href] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg[focusable=false] rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg[focusable=false] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg[tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "html",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg[tabindex=-1] a[xlink|href]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
       "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg[tabindex=-1] a[xlink|href] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg[tabindex=-1] rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg[tabindex=-1] text": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg{tiny}": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "onlyTabbable": true
+      },
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg{tiny} a[focusable=false]": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg{tiny} a[tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg{tiny} rect": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg{tiny} rect[focusable=false][tabindex=0]": {
-      "tabindexProperty": 0,
       "tabindexAttribute": "0",
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg{tiny} rect[focusable=true]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "onlyTabbable": true
+      },
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg{tiny} rect[focusable=true][tabindex=-1]": {
-      "tabindexProperty": -1,
       "tabindexAttribute": "-1",
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "svg{tiny} rect[tabindex=0]": {
-      "tabindexProperty": 0,
       "tabindexAttribute": "0",
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {
+      "ally": {},
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg{tiny}[focusable=false]": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "scriptFocus": {}
     },
     "svg{tiny}[focusable=false] a": {
-      "tabindexProperty": 0,
-      "hasFocusMethod": true,
       "document": "html",
       "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
       "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "svg{viewbox}": {
-      "tabindexProperty": -1,
-      "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "onlyTabbable": true
+      },
       "jquery": {},
-      "scriptFocus": {
-        "event": true
-      }
+      "tabbable": true,
+      "scriptFocus": {}
     },
     "table": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6899,7 +5398,7 @@
       "scriptFocus": {}
     },
     "table tbody": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6907,7 +5406,7 @@
       "scriptFocus": {}
     },
     "table tbody tr": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6915,7 +5414,7 @@
       "scriptFocus": {}
     },
     "table tbody tr td": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6944,7 +5443,7 @@
       "focusable": true
     },
     "table tbody tr th": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6952,7 +5451,7 @@
       "scriptFocus": {}
     },
     "table tbody tr{collapse}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -6960,7 +5459,7 @@
       "scriptFocus": {}
     },
     "table tbody tr{collapse} td": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7000,7 +5499,7 @@
       "focusable": true
     },
     "table tbody tr{collapse} td{visible}": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7029,7 +5528,7 @@
       "focusable": true
     },
     "table tfoot": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7037,7 +5536,7 @@
       "scriptFocus": {}
     },
     "table tfoot tr": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7045,7 +5544,7 @@
       "scriptFocus": {}
     },
     "table tfoot tr td": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7053,7 +5552,7 @@
       "scriptFocus": {}
     },
     "table tfoot tr th": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7061,7 +5560,7 @@
       "scriptFocus": {}
     },
     "table thead": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7069,7 +5568,7 @@
       "scriptFocus": {}
     },
     "table thead tr": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7077,7 +5576,7 @@
       "scriptFocus": {}
     },
     "table thead tr td": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7085,7 +5584,7 @@
       "scriptFocus": {}
     },
     "table thead tr th": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7141,7 +5640,7 @@
       "focusable": true
     },
     "title": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -7149,12 +5648,20 @@
       "scriptFocus": {}
     },
     "video": {
-      "tabindexProperty": -1,
+      "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {},
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "video[controls]": {
       "tabindexProperty": 0,
@@ -7180,8 +5687,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true
@@ -7192,7 +5698,6 @@
         "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "{hidden} > a": {
@@ -7257,15 +5762,14 @@
     }
   },
   "tabsequence": [
+    "iframe[src=svg][tabindex=-1] -> file:svg",
     "input[tabindex=1]",
     "fieldset{no-tabbable} a[tabindex=1]",
-    "svg a[xlink|href][tabindex=1]",
     "[tabindex=1]",
     "input[tabindex=2]",
     "[tabindex=+2]",
     "[tabindex= +2]",
     "[tabindex=3 ]",
-    "[tabindex=3x]",
     "input[type=text]",
     "input[type=password]",
     "input[type=checkbox]",
@@ -7275,6 +5779,7 @@
     "select",
     "textarea",
     "button[type=button]",
+    "label[tabindex=0]",
     "label:has(input) input",
     "form input",
     "form[tabindex=-1] input",
@@ -7290,58 +5795,73 @@
     "fieldset:has(select) select",
     "fieldset:has(button) button",
     "fieldset:has(a) a",
-    "fieldset[disabled][tabindex=0]",
     "a[href]",
     "a[href=]",
     "img[usemap] area[href].upper",
     "img[usemap] area[href].lower",
     "img[usemap].duplicate area[href]",
     "firefox-bug-1116126",
-    "img[tabindex=-1] area[href].upper",
-    "img[tabindex=-1] area[href].lower",
+    "img[usemap].duplicate area[href]",
     "map.invalid-image area[href].upper",
     "map.invalid-image area[href].lower",
     "a:has([ismap])",
+    "a > img[ismap]",
+    "a[tabindex=-1] > img[ismap]",
     "a:has([ismap][tabindex=-1])",
-    "iframe",
     "iframe{focusable} -> input[tabindex=1]",
     "iframe{focusable} -> input",
-    "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+    "iframe[src=svg] -> file:svg",
     "iframe[src=svg] -> file:svg a[xlink|href]",
-    "iframe[src=svg] -> file:svg a[focusable=false]",
-    "shadow-host input[tabindex=2]",
-    "shadow-host input[tabindex=0]",
-    "shadow-host inner-host input[tabindex=1]",
-    "shadow-host inner-host input[tabindex=0]",
-    "shadow-host[tabindex=-1] input[tabindex=2]",
-    "shadow-host[tabindex=-1] input[tabindex=0]",
-    "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-    "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+    "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+    "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+    "iframe[src=svg] -> file:svg",
     "shadow-host[tabindex=0]",
-    "shadow-host[tabindex=0] input[tabindex=2]",
-    "shadow-host[tabindex=0] input[tabindex=0]",
-    "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-    "shadow-host[tabindex=0] inner-host input[tabindex=0]",
     "audio[controls]",
-    "audio[controls][tabindex=-1]",
     "video[controls]",
-    "video[controls][tabindex=-1]",
-    "keygen",
-    "details summary",
-    "details[tabindex=-1] summary",
-    "details[open] summary",
+    "embed[type=svg] -> file:svg",
+    "embed[type=svg] -> file:svg a[xlink|href]",
+    "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
+    "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
+    "embed[type=svg][tabindex=0] -> file:svg",
+    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]",
+    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+    "details a[href]",
+    "details[tabindex=-1] a[href]",
+    "details:has(summary[tabindex=-1]) a[href]",
     "details[open] a[href]",
+    "object[src=swf]",
+    "object[src=swf][tabindex=0]",
+    "object[src=swf][height=0]",
+    "object[src=svg] -> file:svg",
+    "object[src=svg] -> file:svg a[xlink|href]",
+    "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+    "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+    "object[src=svg][tabindex=0] -> file:svg",
+    "object[src=svg][tabindex=0] -> file:svg a[xlink|href]",
+    "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
+    "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
+    "object[src=svg][height=0] -> file:svg",
+    "object[src=svg][height=0] -> file:svg a[xlink|href]",
+    "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
+    "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
+    "svg",
     "svg a[xlink|href]",
-    "svg rect[onfocus]",
+    "svg rect[focusable=true]",
+    "svg[tabindex=-1]",
     "svg[tabindex=-1] a[xlink|href]",
     "svg[focusable=false] a[xlink|href]",
+    "svg:has(a[tabindex=0])",
     "svg a[xlink|href][tabindex=0]",
-    "svg rect[tabindex=0]",
-    "svg a[focusable=false]",
-    "svg rect[tabindex=0]{viewbox}",
-    "svg{tiny} rect[tabindex=0]",
-    "svg{tiny} a[focusable=false]",
-    "svg{tiny} rect[focusable=false][tabindex=0]",
+    "svg a[xlink|href][tabindex=1]",
+    "svg{viewbox}",
+    "svg rect[focusable=true]{viewbox}",
+    "svg:has(a[tabindex=-1])",
+    "svg a[xlink|href][tabindex=-1]",
+    "svg{tiny}",
+    "svg{tiny} rect[focusable=true]",
+    "svg{tiny} a[tabindex=-1]",
+    "svg{tiny} rect[focusable=true][tabindex=-1]",
     "svg{tiny}[focusable=false] a",
     "[contenteditable]:empty",
     "[contenteditable]",
@@ -7388,6 +5908,9 @@
       "textarea[tabindex=-1]",
       "button[type=button]",
       "button[type=button][tabindex=-1]",
+      "label[tabindex=-1]",
+      "label[tabindex=0]",
+      "label[for=label-target][tabindex=-1]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1]",
@@ -7408,8 +5931,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
-      "fieldset[disabled][tabindex=-1]",
       "a[href]",
       "a[href=]",
       "a[href][tabindex=-1]",
@@ -7417,9 +5938,11 @@
       "img[usemap] area[href].lower",
       "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
+      "area[href][tabindex=-1].upper",
+      "area[tabindex=-1]",
+      "area[href][tabindex=-1].lower",
       "img[tabindex=-1] area[href].upper",
       "img[tabindex=-1] area[href].lower",
-      "img[usemap][tabindex=-1]",
       "map.invalid-image area[href].upper",
       "map.invalid-image area[href].lower",
       "a:has([ismap])",
@@ -7432,63 +5955,25 @@
       "iframe{focusable}[tabindex=-1]",
       "iframe[src=svg]",
       "iframe[src=svg][tabindex=-1]",
-      "shadow-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=-1]",
-      "shadow-host inner-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host input[tabindex=-1]",
-      "shadow-host input[tabindex=2]",
       "shadow-host[tabindex=-1]",
-      "shadow-host[tabindex=-1] input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=-1]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] input[tabindex=-1]",
-      "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=0]",
-      "shadow-host[tabindex=0] input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=-1]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] input[tabindex=-1]",
-      "shadow-host[tabindex=0] input[tabindex=2]",
+      "audio",
       "audio[controls]",
       "audio[controls][tabindex=-1]",
+      "video",
       "video[controls]",
       "video[controls][tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
-      "details summary",
+      "details a[href]",
       "details[tabindex=-1]",
-      "details[tabindex=-1] summary",
+      "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
-      "details[open] summary",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
       "object[src=swf]",
       "object[src=swf][tabindex=0]",
       "object[src=swf][tabindex=-1]",
       "object[src=swf][height=0]",
-      "object[src=svg]",
-      "object[src=svg][tabindex=-1]",
-      "object[src=svg][tabindex=0]",
-      "object[src=svg][height=0]",
-      "svg a[xlink|href]",
-      "svg[tabindex=-1]",
-      "svg[tabindex=-1] a[xlink|href]",
-      "svg[focusable=false] a[xlink|href]",
-      "svg a[xlink|href][tabindex=0]",
-      "svg a[xlink|href][tabindex=1]",
-      "svg rect[tabindex=0]",
-      "svg rect[tabindex=-1]",
-      "svg a[focusable=false]",
-      "svg rect[tabindex=0]{viewbox}",
-      "svg rect[tabindex=-1]{viewbox}",
-      "svg a[xlink|href][tabindex=-1]",
-      "svg{tiny} rect[tabindex=0]",
-      "svg{tiny} a[focusable=false]",
-      "svg{tiny} a[tabindex=-1]",
-      "svg{tiny} rect[focusable=true][tabindex=-1]",
-      "svg{tiny} rect[focusable=false][tabindex=0]",
-      "svg{tiny}[focusable=false] a",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[contenteditable][tabindex=-1]",
@@ -7500,7 +5985,6 @@
       "[tabindex= +2]",
       "input[tabindex=hello]",
       "[tabindex=3 ]",
-      "[tabindex=3x]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
       "span[tabindex=0]:empty",
@@ -7549,6 +6033,9 @@
       "textarea[tabindex=-1]",
       "button[type=button]",
       "button[type=button][tabindex=-1]",
+      "label[tabindex=-1]",
+      "label[tabindex=0]",
+      "label[for=label-target][tabindex=-1]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1]",
@@ -7569,8 +6056,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
-      "fieldset[disabled][tabindex=-1]",
       "a[href]",
       "a[href=]",
       "a[href][tabindex=-1]",
@@ -7578,13 +6063,18 @@
       "img[usemap] area[href].lower",
       "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
+      "area[href][tabindex=-1].upper",
+      "area[tabindex=-1]",
+      "area[href][tabindex=-1].lower",
       "img[tabindex=-1] area[href].upper",
+      "img[tabindex=-1] area",
       "img[tabindex=-1] area[href].lower",
-      "img[usemap][tabindex=-1]",
       "map.invalid-image area[href].upper",
       "map.invalid-image area[href].lower",
       "a:has([ismap])",
+      "a > img[ismap]",
       "a[tabindex=-1]:has([ismap])",
+      "a[tabindex=-1] > img[ismap]",
       "a:has([ismap][tabindex=-1])",
       "a > img[ismap][tabindex=-1]",
       "iframe",
@@ -7593,63 +6083,25 @@
       "iframe{focusable}[tabindex=-1]",
       "iframe[src=svg]",
       "iframe[src=svg][tabindex=-1]",
-      "shadow-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=-1]",
-      "shadow-host inner-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host input[tabindex=-1]",
-      "shadow-host input[tabindex=2]",
       "shadow-host[tabindex=-1]",
-      "shadow-host[tabindex=-1] input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=-1]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] input[tabindex=-1]",
-      "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=0]",
-      "shadow-host[tabindex=0] input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=-1]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] input[tabindex=-1]",
-      "shadow-host[tabindex=0] input[tabindex=2]",
+      "audio",
       "audio[controls]",
       "audio[controls][tabindex=-1]",
+      "video",
       "video[controls]",
       "video[controls][tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
-      "details summary",
+      "details a[href]",
       "details[tabindex=-1]",
-      "details[tabindex=-1] summary",
+      "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
-      "details[open] summary",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
       "object[src=swf]",
       "object[src=swf][tabindex=0]",
       "object[src=swf][tabindex=-1]",
       "object[src=swf][height=0]",
-      "object[src=svg]",
-      "object[src=svg][tabindex=-1]",
-      "object[src=svg][tabindex=0]",
-      "object[src=svg][height=0]",
-      "svg a[xlink|href]",
-      "svg[tabindex=-1]",
-      "svg[tabindex=-1] a[xlink|href]",
-      "svg[focusable=false] a[xlink|href]",
-      "svg a[xlink|href][tabindex=0]",
-      "svg a[xlink|href][tabindex=1]",
-      "svg rect[tabindex=0]",
-      "svg rect[tabindex=-1]",
-      "svg a[focusable=false]",
-      "svg rect[tabindex=0]{viewbox}",
-      "svg rect[tabindex=-1]{viewbox}",
-      "svg a[xlink|href][tabindex=-1]",
-      "svg{tiny} rect[tabindex=0]",
-      "svg{tiny} a[focusable=false]",
-      "svg{tiny} a[tabindex=-1]",
-      "svg{tiny} rect[focusable=true][tabindex=-1]",
-      "svg{tiny} rect[focusable=false][tabindex=0]",
-      "svg{tiny}[focusable=false] a",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[contenteditable][tabindex=-1]",
@@ -7661,7 +6113,6 @@
       "[tabindex= +2]",
       "input[tabindex=hello]",
       "[tabindex=3 ]",
-      "[tabindex=3x]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
       "span[tabindex=0]:empty",
@@ -7702,6 +6153,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7718,52 +6170,26 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
       "img[usemap] area[href].upper",
       "img[usemap] area[href].lower",
       "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
-      "img[tabindex=-1] area[href].upper",
-      "img[tabindex=-1] area[href].lower",
       "map.invalid-image area[href].upper",
       "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a:has([ismap][tabindex=-1])",
-      "shadow-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host input[tabindex=2]",
-      "shadow-host[tabindex=-1] input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=0]",
-      "shadow-host[tabindex=0] input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] input[tabindex=2]",
       "audio[controls]",
-      "audio[controls][tabindex=-1]",
       "video[controls]",
-      "video[controls][tabindex=-1]",
-      "details summary",
-      "details[tabindex=-1] summary",
-      "details[open] summary",
+      "details a[href]",
+      "details[tabindex=-1] a[href]",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
-      "svg a[xlink|href]",
-      "svg[tabindex=-1] a[xlink|href]",
-      "svg[focusable=false] a[xlink|href]",
-      "svg a[xlink|href][tabindex=0]",
-      "svg a[xlink|href][tabindex=1]",
-      "svg rect[tabindex=0]",
-      "svg a[focusable=false]",
-      "svg rect[tabindex=0]{viewbox}",
-      "svg{tiny} rect[tabindex=0]",
-      "svg{tiny} a[focusable=false]",
-      "svg{tiny} rect[focusable=false][tabindex=0]",
-      "svg{tiny}[focusable=false] a",
+      "object[src=swf]",
+      "object[src=swf][tabindex=0]",
+      "object[src=swf][height=0]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=0]",
@@ -7772,7 +6198,6 @@
       "[tabindex= +2]",
       "input[tabindex=hello]",
       "[tabindex=3 ]",
-      "[tabindex=3x]",
       "div[tabindex=0]:empty",
       "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
@@ -7782,7 +6207,6 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
-      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -7803,6 +6227,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7819,52 +6244,28 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
       "img[usemap] area[href].upper",
       "img[usemap] area[href].lower",
       "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
-      "img[tabindex=-1] area[href].upper",
-      "img[tabindex=-1] area[href].lower",
       "map.invalid-image area[href].upper",
       "map.invalid-image area[href].lower",
       "a:has([ismap])",
+      "a > img[ismap]",
+      "a[tabindex=-1] > img[ismap]",
       "a:has([ismap][tabindex=-1])",
-      "shadow-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host input[tabindex=2]",
-      "shadow-host[tabindex=-1] input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=0]",
-      "shadow-host[tabindex=0] input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] input[tabindex=2]",
       "audio[controls]",
-      "audio[controls][tabindex=-1]",
       "video[controls]",
-      "video[controls][tabindex=-1]",
-      "details summary",
-      "details[tabindex=-1] summary",
-      "details[open] summary",
+      "details a[href]",
+      "details[tabindex=-1] a[href]",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
-      "svg a[xlink|href]",
-      "svg[tabindex=-1] a[xlink|href]",
-      "svg[focusable=false] a[xlink|href]",
-      "svg a[xlink|href][tabindex=0]",
-      "svg a[xlink|href][tabindex=1]",
-      "svg rect[tabindex=0]",
-      "svg a[focusable=false]",
-      "svg rect[tabindex=0]{viewbox}",
-      "svg{tiny} rect[tabindex=0]",
-      "svg{tiny} a[focusable=false]",
-      "svg{tiny} rect[focusable=false][tabindex=0]",
-      "svg{tiny}[focusable=false] a",
+      "object[src=swf]",
+      "object[src=swf][tabindex=0]",
+      "object[src=swf][height=0]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=0]",
@@ -7873,7 +6274,6 @@
       "[tabindex= +2]",
       "input[tabindex=hello]",
       "[tabindex=3 ]",
-      "[tabindex=3x]",
       "div[tabindex=0]:empty",
       "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
@@ -7883,7 +6283,6 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
-      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -7896,13 +6295,17 @@
     "tabsequence": [
       "input[tabindex=1]",
       "fieldset{no-tabbable} a[tabindex=1]",
-      "svg a[xlink|href][tabindex=1]",
+      "img[usemap] area[href].upper",
+      "img[usemap] area[href].lower",
+      "img[usemap].duplicate area[href]",
+      "img[usemap].duplicate area[href]",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "[tabindex=1]",
       "input[tabindex=2]",
       "[tabindex=+2]",
       "[tabindex= +2]",
       "[tabindex=3 ]",
-      "[tabindex=3x]",
       "input[type=text]",
       "input[type=password]",
       "input[type=checkbox]",
@@ -7912,6 +6315,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7927,51 +6331,23 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
-      "img[usemap] area[href].upper",
-      "img[usemap] area[href].lower",
-      "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
-      "img[tabindex=-1] area[href].upper",
-      "img[tabindex=-1] area[href].lower",
-      "map.invalid-image area[href].upper",
-      "map.invalid-image area[href].lower",
       "a:has([ismap])",
+      "a > img[ismap]",
+      "a[tabindex=-1] > img[ismap]",
       "a:has([ismap][tabindex=-1])",
-      "shadow-host input[tabindex=2]",
-      "shadow-host input[tabindex=0]",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1]",
-      "shadow-host[tabindex=-1] input[tabindex=2]",
-      "shadow-host[tabindex=-1] input[tabindex=0]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
-      "shadow-host[tabindex=0] input[tabindex=2]",
-      "shadow-host[tabindex=0] input[tabindex=0]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=0]",
       "audio[controls]",
-      "audio[controls][tabindex=-1]",
       "video[controls]",
-      "video[controls][tabindex=-1]",
-      "details summary",
-      "details[tabindex=-1] summary",
-      "details[open] summary",
+      "details a[href]",
+      "details[tabindex=-1] a[href]",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
-      "svg a[xlink|href]",
-      "svg[tabindex=-1] a[xlink|href]",
-      "svg[focusable=false] a[xlink|href]",
-      "svg a[xlink|href][tabindex=0]",
-      "svg rect[tabindex=0]",
-      "svg a[focusable=false]",
-      "svg rect[tabindex=0]{viewbox}",
-      "svg{tiny} rect[tabindex=0]",
-      "svg{tiny} a[focusable=false]",
-      "svg{tiny} rect[focusable=false][tabindex=0]",
-      "svg{tiny}[focusable=false] a",
+      "object[src=swf]",
+      "object[src=swf][tabindex=0]",
+      "object[src=swf][height=0]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[tabindex=0]",
@@ -7985,7 +6361,6 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
-      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -8076,10 +6451,12 @@
       "embed[type=ogv][tabindex=-1]",
       "embed[type=svg][tabindex=-1]",
       "embed[type=svg][tabindex=0]",
-      "keygen[tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
+      "details a[href]",
       "details[tabindex=-1]",
+      "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
       "object[src=swf]",
       "object[src=swf][tabindex=0]",
@@ -8090,7 +6467,24 @@
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
       "object[usemap]",
+      "svg a[xlink|href]",
       "svg[tabindex=-1]",
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[focusable=false] a[xlink|href]",
+      "svg a[xlink|href][tabindex=0]",
+      "svg a[xlink|href][tabindex=1]",
+      "svg rect[tabindex=0]",
+      "svg rect[tabindex=-1]",
+      "svg a[focusable=false]",
+      "svg rect[tabindex=0]{viewbox}",
+      "svg rect[tabindex=-1]{viewbox}",
+      "svg a[xlink|href][tabindex=-1]",
+      "svg{tiny} rect[tabindex=0]",
+      "svg{tiny} a[focusable=false]",
+      "svg{tiny} a[tabindex=-1]",
+      "svg{tiny} rect[focusable=true][tabindex=-1]",
+      "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny}[focusable=false] a",
       "[contenteditable][tabindex=-1]",
       "[tabindex=-2]",
       "[tabindex=-1]",
@@ -8165,6 +6559,9 @@
       "a:has([ismap][tabindex=-1])",
       "shadow-host[tabindex=0]",
       "embed[type=svg][tabindex=0]",
+      "details a[href]",
+      "details[tabindex=-1] a[href]",
+      "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
       "object[src=swf]",
       "object[src=swf][tabindex=0]",
@@ -8173,12 +6570,23 @@
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
       "object[usemap]",
+      "svg a[xlink|href]",
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[focusable=false] a[xlink|href]",
+      "svg a[xlink|href][tabindex=0]",
+      "svg a[xlink|href][tabindex=1]",
+      "svg rect[tabindex=0]",
+      "svg a[focusable=false]",
+      "svg rect[tabindex=0]{viewbox}",
+      "svg{tiny} rect[tabindex=0]",
+      "svg{tiny} a[focusable=false]",
+      "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny}[focusable=false] a",
       "[tabindex=0]",
       "[tabindex=1]",
       "[tabindex=+2]",
       "[tabindex= +2]",
       "input[tabindex=hello]",
-      "[tabindex=]",
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
       "[hidden]{displayed} input",
