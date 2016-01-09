@@ -4,8 +4,6 @@
   data-tabbable="{{ browser.tabbable }}"
   {{#if browser.redirecting }}data-redirecting-to="{{ browser.redirecting }}"{{/if}}
   {{#if browser.encapsulated }}data-encapsulated-in="{{ browser.encapsulated }}"{{/if}}
-  data-focus-event="{{ browser.focusEvent }}"
-  data-focus-method="{{ browser.focusMethod }}"
   data-tabindex="{{ browser.tabIndex }}"
   data-row="{{ ident }}"
   data-colum="{{ platform.ally.key }}"
@@ -20,6 +18,9 @@
     {{#unless isInert }}
       {{#unless browser.focusEvent }}
         <a href="#footnote-E" class="note warning">E</a>
+      {{/unless}}
+      {{#unless browser.focusStyle }}
+        <a href="#footnote-S" class="note warning">S</a>
       {{/unless}}
     {{/unless}}
     {{#if redirectTarget }}

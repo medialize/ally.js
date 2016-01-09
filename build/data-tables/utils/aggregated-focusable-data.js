@@ -126,6 +126,7 @@ function generateBrowserStructure(ident, browserData, browser) {
       focusable: Boolean(element.focusable),
       tabbable: Boolean(element.tabbable),
       focusEvent: Boolean(scriptFocus.event),
+      focusStyle: Boolean(scriptFocus.cssFocus),
       focusMethod: Boolean(element.hasFocusMethod),
       redirecting: scriptFocus.redirected || null,
       encapsulated: scriptFocus.encapsulated || null,
