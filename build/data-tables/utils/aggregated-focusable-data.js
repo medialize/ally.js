@@ -63,6 +63,27 @@ Object.keys(source).forEach(function(browser) {
   const sourceData = source[browser];
   const sourceIdents = Object.keys(sourceData.elements);
 
+  // convert hostElementFocus to childElementFocus
+  sourceIdents.forEach(function(ident) {
+    const element = sourceData.elements[ident];
+    if (!element.hostElementFocus) {
+      return;
+    }
+
+    const hostIdent = element.scriptFocus.encapsulated;
+    const hostElement = sourceData.elements[hostIdent];
+    if (!hostElement) {
+      return;
+    }
+
+    if (hostElement.childElementFocus && hostElement.childElementFocus.contextActiveElement) {
+      // we already have the positive case
+      return;
+    }
+
+    hostElement.childElementFocus = element.hostElementFocus;
+  });
+
   // register redirections and encapsulations
   sourceIdents.forEach(function(ident) {
     registerIdent(ident);
@@ -98,12 +119,13 @@ Object.keys(source).forEach(function(browser) {
   registerIdents(sourceData.jquery.tabbable || []);
 });
 
-function readableLabel(focusable, tabbable, onlyTabbable, redirecting) {
+function readableLabel(focusable, tabbable, onlyTabbable, redirecting, focusHost) {
   return (redirecting && 'redirecting')
     || (focusable && tabbable && 'tabbable')
     || (focusable && !tabbable && 'focusable')
     || (!focusable && tabbable && 'only tabbable')
     || (onlyTabbable && 'only tabbable')
+    || (focusHost && 'inert host')
     || 'inert';
 }
 
@@ -121,6 +143,10 @@ function generateBrowserStructure(ident, browserData, browser) {
     }
   }
 
+  const focusHost = element.childElementFocus;
+  const isHostElement = focusHost
+    && (focusHost.documentActiveElement || focusHost.contextActiveElement);
+
   return {
     browser: {
       focusable: Boolean(element.focusable),
@@ -130,6 +156,7 @@ function generateBrowserStructure(ident, browserData, browser) {
       focusMethod: Boolean(element.hasFocusMethod),
       redirecting: scriptFocus.redirected || null,
       encapsulated: scriptFocus.encapsulated || null,
+      focusHost: isHostElement,
       tabIndex: element.tabindexProperty !== undefined ? element.tabindexProperty : 'null',
       label: null,
     },
@@ -158,25 +185,29 @@ function addReadableLabels(src) {
     src.browser.focusable,
     src.browser.tabbable,
     null, // onlyTabbable
-    src.browser.redirecting
+    src.browser.redirecting,
+    src.browser.focusHost
   );
   src.jquery.label = readableLabel(
     src.jquery.focusable,
     src.jquery.tabbable,
     null, // onlyTabbable
-    null // redirecting
+    null, // redirecting
+    null // focusHost
   );
   src.ally.labelQuick = readableLabel(
     src.ally.focusableQuick,
     src.ally.tabbableQuick,
     src.ally.onlyTabbable,
-    src.ally.redirecting
+    src.ally.redirecting,
+    null // focusHost
   );
   src.ally.labelStrict = readableLabel(
     src.ally.focusableStrict,
     src.ally.tabbableStrict,
     src.ally.onlyTabbable,
-    src.ally.redirecting
+    src.ally.redirecting,
+    null // focusHost
   );
 }
 

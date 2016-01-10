@@ -88,6 +88,10 @@
       /* redirecting */
       background: #FFA9F9 !important;
     }
+    table td[data-focusable="false"][data-tabbable="false"][data-focus-host] {
+      /* hosting focused element */
+      background: #73CCC2;
+    }
 
     table td.irrelevant-to-context {
       opacity: 0.5;
@@ -222,6 +226,7 @@
     <li id="footnote-M">The DOM Element Interface is missing the focus method.</li>
     <li id="footnote-E">The <code>focus</code> event is not emitted upon the element becoming the active element (<code>document.activeElement</code>).</li>
     <li id="footnote-S">The <code>:focus</code> CSS pseudo class is not set on the element when it is the active element (<code>document.activeElement</code>).</li>
+    <li id="footnote-C">The element becomes the active element (<code>document.activeElement</code>) when an element of <code>contentDocument</code> or the <code>shadowRoot</code> has focus.</li>
 
     {{#each notes}}
       <li id="footnote-{{ @key }}">
