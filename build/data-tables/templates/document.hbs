@@ -435,6 +435,16 @@
         container.hidden = true;
       }, true);
 
+      // hide the container on ESC
+      document.body.addEventListener('keydown', function(event) {
+        if (event.keyCode !== 27 || container.hidden) {
+          return;
+        }
+
+        container.blur();
+        container.hidden = true;
+      }, true);
+
       // abort jumping to the footnote, as we moved the relevant footnote into view on focus
       document.body.addEventListener('click', function(event) {
         if (!event.target.classList.contains('note') || container.hidden) {
