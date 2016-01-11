@@ -8,7 +8,6 @@ import polyfillElementPrototypeMatches from '../prototype/element.prototype.matc
 import getParents from '../get/parents';
 import getWindow from '../util/get-window';
 import isValidTabindex from './valid-tabindex';
-import isValidArea from './valid-area';
 import {
   hasCssOverflowScroll,
   hasCssDisplayFlex,
@@ -57,7 +56,7 @@ export default function(element) {
   }
 
   if (nodeName === 'area') {
-    return isValidArea(element);
+    return true;
   }
 
   if (nodeName === 'a' && element.hasAttribute('href')) {

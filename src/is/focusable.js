@@ -8,6 +8,7 @@
 //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
 
 import isFocusRelevant from './focus-relevant';
+import isValidArea from './valid-area';
 import isVisible from './visible';
 import isDisabled from './disabled';
 import isOnlyTabbable from './only-tabbable';
@@ -26,6 +27,12 @@ function isOnlyFocusRelevant(element) {
     // Shadow DOM host elements *may* receive focus
     // even though they are not considered focuable
     return true;
+  }
+
+  if (nodeName === 'area') {
+    // all <area>s are considered relevant,
+    // but only the valid <area>s are focusable
+    return !isValidArea(element);
   }
 
   return false;

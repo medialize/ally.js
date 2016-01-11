@@ -40,6 +40,11 @@ Boolean, `true` if the element is focus relevant.
 ## Examples
 
 
+## Changes
+
+* Since `v#master` all `<area>` elements are considered focus-relevant, but only valid `<area>` elements are considered focusable.
+
+
 ## Notes
 
 See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
@@ -50,6 +55,7 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 * [`ally.is.focusRelevant`](focus-relevant.md) is used to identify elements that can receive focus
 * [`ally.is.focusable`](focusable.md) identifies elements that are focusable
 * [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
+* [`ally.is.validArea`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
 * [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)

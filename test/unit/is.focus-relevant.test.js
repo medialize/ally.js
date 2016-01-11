@@ -122,7 +122,7 @@ define([
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
-          expect(isFocusRelevant(element)).to.equal(supports.canFocusAreaTabindex);
+          expect(isFocusRelevant(element)).to.equal(true);
         }), 200);
       },
       'label element': function() {

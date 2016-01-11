@@ -28,6 +28,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify Flexbox Layout in IE10 and IE11
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify scrollable containers in Internet Explorer
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider all `<area>` elements focus relevant, moving the focusable to verification to [`ally.is.focusable`][ally/is/focusable]
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
