@@ -119,33 +119,14 @@ Object.keys(source).forEach(function(browser) {
   registerIdents(sourceData.jquery.tabbable || []);
 });
 
-function readableLabel(focusable, tabbable, onlyTabbable, redirecting, focusHost) {
-  return (redirecting && 'redirecting')
-    || (focusable && tabbable && 'tabbable')
-    || (focusable && !tabbable && 'focusable')
-    || (!focusable && tabbable && 'only tabbable')
-    || (onlyTabbable && 'only tabbable')
-    || (focusHost && 'inert host')
-    || 'inert';
-}
-
-function generateBrowserStructure(ident, browserData, browser) {
+function generateBrowserStructure(ident, browser, browserData) {
   const element = browserData.elements[ident] || {};
   const scriptFocus = element.scriptFocus || {};
   const ally = element.ally || {};
   const jquery = element.jquery || {};
 
-  if (!browserData.elements[ident]) {
-    element.tabindexProperty = 'null';
-    element.hasFocusMethod = true;
-    if (ident.slice(0, 13) !== 'inert-in-ally') {
-      notes.registerMissing(browser, ident);
-    }
-  }
-
   const focusHost = element.childElementFocus;
-  const isHostElement = focusHost
-    && (focusHost.documentActiveElement || focusHost.contextActiveElement);
+  const isHostElement = focusHost && (focusHost.documentActiveElement || focusHost.contextActiveElement);
 
   return {
     browser: {
@@ -180,6 +161,16 @@ function generateBrowserStructure(ident, browserData, browser) {
   };
 }
 
+function readableLabel(focusable, tabbable, onlyTabbable, redirecting, focusHost) {
+  return (redirecting && 'redirecting')
+    || (focusable && tabbable && 'tabbable')
+    || (focusable && !tabbable && 'focusable')
+    || (!focusable && tabbable && 'only tabbable')
+    || (onlyTabbable && 'only tabbable')
+    || (focusHost && 'inert host')
+    || 'inert';
+}
+
 function addReadableLabels(src) {
   src.browser.label = readableLabel(
     src.browser.focusable,
@@ -211,6 +202,30 @@ function addReadableLabels(src) {
   );
 }
 
+function addGeneratedNotes(ident, browser, browserData, data) {
+  let element = browserData.elements[ident];
+  if (!element) {
+    element = {
+      tabindexProperty: 'null',
+      hasFocusMethod: true,
+    };
+
+    if (ident.slice(0, 13) !== 'inert-in-ally') {
+      notes.registerMissing(browser, ident);
+    }
+
+    return;
+  }
+
+  if (data.label === 'inert') {
+    return;
+  } else if (element.referenceElementFocus) {
+    notes.registerRelatedElement(browser, ident, element.referenceElementFocus);
+  } else if (element.hostElementFocus) {
+    notes.registerRelatedElement(browser, ident, element.hostElementFocus);
+  }
+}
+
 function calculateBrowserChecksum(data, callback) {
   return Object.keys(data).sort().map(function(browser) {
     const _data = data[browser];
@@ -226,8 +241,9 @@ Array.from(idents).sort().forEach(function(ident) {
   aggregated[ident] = result;
   Object.keys(source).forEach(function(browser) {
     const browserData = source[browser];
-    result[browser] = generateBrowserStructure(ident, browserData, browser);
+    result[browser] = generateBrowserStructure(ident, browser, browserData);
     addReadableLabels(result[browser]);
+    addGeneratedNotes(ident, browser, browserData, result[browser]);
   });
 
   result.checksum = {

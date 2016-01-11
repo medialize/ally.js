@@ -42,6 +42,9 @@
     {{#if redirectTarget }}
       <a href="#footnote-{{ redirectTarget }}" class="note target">T</a>
     {{/if}}
+    {{#if relatedElement }}
+      <a href="#footnote-{{ relatedElement }}" class="note target">R</a>
+    {{/if}}
     {{#each notes }}
       <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
     {{/each}}

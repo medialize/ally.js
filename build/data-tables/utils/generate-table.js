@@ -59,12 +59,14 @@ module.exports = function({
       expected.ident = ident;
 
       expected.notes = source.notes.getBrowser(ident, 'expected');
+      expected.notes.forEach(key => referencedNotes.add(String(key)));
       expected.redirectTarget = source.notes.getTarget(ident, 'expected');
+      expected.redirectTarget && referencedNotes.add(String(expected.redirectTarget));
+      expected.relatedElement = source.notes.getRelated(ident, 'expected');
+      expected.relatedElement && referencedNotes.add(String(expected.relatedElement));
+
       expected.isInert = !expected.browser.focusable && !expected.browser.tabbable;
       cells.push(_cellTemplate(expected));
-
-      expected.redirectTarget && referencedNotes.add(String(expected.redirectTarget));
-      expected.notes.forEach(key => referencedNotes.add(String(key)));
     }
 
     columns.forEach(function(browser) {
@@ -80,12 +82,14 @@ module.exports = function({
       }
 
       data.notes = source.notes.getBrowser(ident, browser);
+      data.notes.forEach(key => referencedNotes.add(String(key)));
       data.redirectTarget = source.notes.getTarget(ident, browser);
+      data.redirectTarget && referencedNotes.add(String(data.redirectTarget));
+      data.relatedElement = source.notes.getRelated(ident, browser);
+      data.relatedElement && referencedNotes.add(String(data.relatedElement));
+
       data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
-
-      data.redirectTarget && referencedNotes.add(String(data.redirectTarget));
-      data.notes.forEach(key => referencedNotes.add(String(key)));
     });
 
     const notes = source.notes.getIdent(ident);

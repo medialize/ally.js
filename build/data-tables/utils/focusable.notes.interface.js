@@ -63,6 +63,7 @@ class Notes {
       ally: [],
       browsers: {},
       target: {},
+      related: {},
     };
   }
 
@@ -152,11 +153,17 @@ class Notes {
     map.browsers[browser].forEach(key => index.browsers[browser].push(key));
   }
 
-  registerRedirection(browser, source, target) {
-    if (!this.index[source]) {
-      this.index[source] = this._getEmptyIndexStructure();
+  _ensureIndexStructure(ident, browser) {
+    if (!this.index[ident]) {
+      this.index[ident] = this._getEmptyIndexStructure();
     }
 
+    if (browser && !this.index[ident].browsers[browser]) {
+      this.index[ident].browsers[browser] = [];
+    }
+  }
+
+  registerRedirection(browser, source, target) {
     const key = source + ' --- ' + target;
     let message = this.redirections[key];
     if (!message) {
@@ -167,19 +174,29 @@ class Notes {
       this.redirections[key] = message;
     }
 
+    this._ensureIndexStructure(source, browser);
     this.index[source].target[browser] = message;
   }
+
   registerMissing(browser, ident) {
-    if (!this.index[ident]) {
-      this.index[ident] = this._getEmptyIndexStructure();
-    }
-
-    if (!this.index[ident].browsers[browser]) {
-      this.index[ident].browsers[browser] = [];
-    }
-
     const message = this._registerMessage('@element-not-tested');
+    this._ensureIndexStructure(ident, browser);
     this.index[ident].browsers[browser].push(message);
+  }
+
+  registerRelatedElement(browser, ident, state) {
+    const element = this.source['related:' + state.ident] || state.ident;
+    const message = [
+      'When this element is the activeElement, the reference element `' + element + '` has the following state:',
+      '',
+      '* ' + (state.contextActiveElement ? 'is' : 'is *not*') + ' the `activeElement` in its context',
+      '* ' + (state.cssFocus ? 'has' : 'does *not* have') + ' the `:focus` CSS pseudo class applied',
+      '* ' + (state.event ? 'receives' : 'does *not* receive') + ' a `focus` event',
+    ].filter(Boolean).join('\n');
+
+    const _message = this._registerMessage(message);
+    this._ensureIndexStructure(ident, browser);
+    this.index[ident].related[browser] = _message;
   }
 
   getNotes() {
@@ -198,6 +215,10 @@ class Notes {
   getTarget(ident, browser) {
     const _map = this.index[ident];
     return _map && _map.target[browser] || null;
+  }
+  getRelated(ident, browser) {
+    const _map = this.index[ident];
+    return _map && _map.related[browser] || null;
   }
   getBrowser(ident, browser) {
     const _map = this.index[ident];
