@@ -82,6 +82,14 @@ export default function(element) {
     }
   }
 
+  if (nodeName === 'iframe') {
+    // In IE9 all iframes are tabbable, IE10+ all iframes are only focusable
+    // In WebKit, Blink and Gecko iframes may be tabbable depending on content.
+    // Since we can't reliably investigate iframe documents because of the
+    // SameOriginPolicy, we're declaring everything only focusable.
+    return platform.is.IE9 && hasTabbableTabindexOrNone;
+  }
+
   if (platform.is.WEBKIT && platform.is.IOS && platform.majorVersion < 10) {
     // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
