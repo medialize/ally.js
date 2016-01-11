@@ -20,12 +20,6 @@ export default function(element) {
     return tabindex !== null && tabindex >= 0;
   }
 
-  if (nodeName === 'object' && element.getAttribute('type') === 'image/svg+xml' && platform.is.TRIDENT) {
-    // Internet Explorer cannot focus, but tab to: object[type="image/svg+xml"]
-    // [tabindex=-1] negates the tabbing
-    return tabindex === null || tabindex >= 0;
-  }
-
   if (nodeName === 'svg' && platform.is.TRIDENT) {
     return element.getAttribute('focusable') !== 'false';
   }

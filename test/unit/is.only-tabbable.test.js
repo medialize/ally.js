@@ -50,7 +50,7 @@ define([
       },
       'object element holding svg': function() {
         var element = document.getElementById('object-svg');
-        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT);
+        expect(isOnlyTabbable(element)).to.equal(false);
       },
       'svg element': function() {
         var element = document.getElementById('svg');

@@ -45,7 +45,7 @@ define([
           '#link-tabindex--1',
           '#image-map-area',
           supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
-          '#object-svg',
+          supports.canFocusObjectSvg && '#object-svg',
           platform.is.TRIDENT && '#svg',
           supports.canFocusObjectSvg && '#object-tabindex-svg',
           '#svg-link',
