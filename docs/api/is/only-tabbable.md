@@ -40,6 +40,10 @@ Boolean, `true` if the element is focus relevant.
 ## Examples
 
 
+## Changes
+
+* Since `v#master` all `<object>` elements in Internet Explorer are not considered only tabbable anymore.
+
 ## Notes
 
 See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)

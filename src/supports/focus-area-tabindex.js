@@ -1,8 +1,8 @@
 
-import platform from 'platform';
 import detectFocus from './detect-focus';
 import memorizeResult from './memorize-result';
 import gif from './media/gif';
+import platform from '../util/platform';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 export default memorizeResult(() => detectFocus({
@@ -16,7 +16,7 @@ export default memorizeResult(() => detectFocus({
     return element.querySelector('area');
   },
   validate: function(element) {
-    if (platform.name === 'Firefox') {
+    if (platform.is.GECKO) {
       // fixes https://github.com/medialize/ally.js/issues/35
       // Firefox loads the DataURI asynchronously, causing a false-negative
       return true;

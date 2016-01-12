@@ -1,8 +1,8 @@
 
-import platform from 'platform';
+import platform from '../util/platform';
 
 // https://jsbin.com/vafaba/3/edit?html,js,console,output
-const result = platform.name === 'Firefox' || platform.name === 'IE';
+const result = platform.is.GECKO || platform.is.TRIDENT;
 
 export default function() {
   return result;

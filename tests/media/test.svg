@@ -1,7 +1,22 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <a xlink:href="#void" data-label="svg a[xlink|href]">
-    <text x="10" y="20" data-label="svg a[xlink|href] text">an SVG</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="file:svg">
+  <a xlink:href="#void" data-label="file:svg a[xlink|href]">
+    <text x="10" y="20" data-label="file:svg a[xlink|href] text">an SVG</text>
   </a>
+  <a xlink:href="#void" data-label="file:svg a[xlink|href][tabindex=1]" tabindex="1">
+    <text x="10" y="20" data-label="file:svg a[xlink|href][tabindex=1] text">a link</text>
+  </a>
+  <a xlink:href="#void" data-label="file:svg a[xlink|href][tabindex=-1]" tabindex="-1">
+    <text x="10" y="20" data-label="file:svg a[xlink|href][tabindex=-1] text">a link</text>
+  </a>
+  <a xlink:href="#void" focusable="false" data-label="file:svg a[focusable=false]">
+    <text x="10" y="20" data-label="file:svg svg a[focusable=false]">a link</text>
+  </a>
+  <text x="10" y="20" data-label="file:svg svg text[focusable=true]">a link</text>
+  <script>//<![CDATA[
+    if (window.parent && window.parent.registerNestedDocument) {
+      window.parent.registerNestedDocument(location.hash.slice(1), document);
+    }
+  //]]></script>
 </svg>

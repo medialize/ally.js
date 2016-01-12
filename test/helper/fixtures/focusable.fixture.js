@@ -1,6 +1,6 @@
 define([
   './custom.fixture',
-  'platform',
+  'ally/util/platform',
   'ally/supports/media/gif',
   'ally/supports/media/svg',
   'ally/supports/media/mp3',
@@ -8,7 +8,7 @@ define([
 ], function(customFixture, platform, gif, svg, mp3, mp4) {
   return function(context) {
 
-    var avoidQuicktime = platform.name === 'Safari';
+    var avoidQuicktime = platform.is.WEBKIT;
 
     return customFixture([
       /*eslint-disable indent */
@@ -66,6 +66,22 @@ define([
       '<div id="scroll-container-without-overflow" style="width: 100px; height: 50px;">',
         '<div id="scroll-body-without-overflow" style="width: 500px; height: 40px;">scrollable content</div>',
       '</div>',
+      '<section id="section-scroll-container" style="width: 100px; height: 50px;">',
+        '<div id="section-scroll-body" style="width: 500px; height: 40px;">scrollable content</div>',
+      '</section>',
+      '<div id="div-section-overflow-scroll" style="width: 100px; height: 50px; overflow: scroll;">',
+        '<section id="div-section-overflow-scroll-body" style="width: 500px; height: 40px;">scrollable content</section>',
+      '</div>',
+      '<section id="section-div-overflow-scroll" style="width: 100px; height: 50px; overflow: scroll;">',
+        '<div id="section-div-overflow-scroll-body" style="width: 500px; height: 40px;">scrollable content</div>',
+      '</section>',
+      // flexbox fun
+      '<span id="flexbox-container" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+        '<span id="flexbox-container-child" style="display: block">content</span>',
+      '</span>',
+      '<span id="focusable-flexbox" tabindex="-1" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+        '<span id="focusable-flexbox-child" style="display: block">content</span>',
+      '</span>',
       /*eslint-enable indent */
     ], context);
   };

@@ -8,7 +8,7 @@ export default memorizeResult(() => detectFocus({
   element: 'div',
   mutate: function(element) {
     element.setAttribute('tabindex', '-1');
-    element.setAttribute('style', 'display: -ms-flexbox; display: flex;');
+    element.setAttribute('style', 'display: -webkit-flex; display: -ms-flexbox; display: flex;');
     element.innerHTML = '<span style="display: block;">hello</span>';
     return element.querySelector('span');
   },

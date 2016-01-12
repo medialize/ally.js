@@ -10,6 +10,10 @@ the util infrastructure does not contain any functionality relevant to a user of
 
 ## Contributing
 
+### Platform
+
+In order to make using [platform.js](https://github.com/bestiejs/platform.js) even simpler, this utility adds the few verifications ally.js actually needs.
+
 ### Translate input to node array
 
 Internally ally.js prefers to use Arrays of Nodes, but when accepting input from the outside we're not sure what we get. NodeList, HTMLCollection, jQuery object, a single Node or even just a string (to run through [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)) - `util/node-array.js` converts everything to array.

@@ -47,6 +47,7 @@ define([
           '#input-tabindex--1',
           '#span-contenteditable',
           '#img-ismap-link',
+          '#focusable-flexbox',
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
@@ -142,6 +143,7 @@ define([
           '#input-tabindex--1',
           '#span-contenteditable',
           '#img-ismap-link',
+          '#focusable-flexbox',
           '#first-input',
           '#second-input',
           '#third-input',

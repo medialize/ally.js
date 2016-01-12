@@ -3,7 +3,7 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/supports',
-  'platform',
+  'ally/util/platform',
   'ally/is/only-tabbable',
 ], function(
   registerSuite,
@@ -46,19 +46,19 @@ define([
       },
       'label with tabindex="0"': function() {
         var element = document.getElementById('label-tabindex-0');
-        expect(isOnlyTabbable(element)).to.equal(platform.name === 'Firefox');
+        expect(isOnlyTabbable(element)).to.equal(platform.is.GECKO);
       },
       'object element holding svg': function() {
         var element = document.getElementById('object-svg');
-        expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE');
+        expect(isOnlyTabbable(element)).to.equal(false);
       },
       'svg element': function() {
         var element = document.getElementById('svg');
-        expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE');
+        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT);
       },
       'svg link element': function() {
         var element = document.getElementById('svg-link');
-        expect(isOnlyTabbable(element)).to.equal(platform.name === 'IE' || platform.name === 'Firefox');
+        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT || platform.is.GECKO);
       },
       'svg text element': function() {
         var element = document.getElementById('svg-link-text');

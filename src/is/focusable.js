@@ -8,9 +8,11 @@
 //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
 
 import isFocusRelevant from './focus-relevant';
+import isValidArea from './valid-area';
 import isVisible from './visible';
 import isDisabled from './disabled';
 import isOnlyTabbable from './only-tabbable';
+import tabindexValue from '../util/tabindex-value';
 
 function isOnlyFocusRelevant(element) {
   const nodeName = element.nodeName.toLowerCase();
@@ -18,6 +20,19 @@ function isOnlyFocusRelevant(element) {
     // embed is considered focus-relevant but not focusable
     // see https://github.com/medialize/ally.js/issues/82
     return true;
+  }
+
+  const _tabindex = tabindexValue(element);
+  if (element.shadowRoot && _tabindex === null) {
+    // Shadow DOM host elements *may* receive focus
+    // even though they are not considered focuable
+    return true;
+  }
+
+  if (nodeName === 'area') {
+    // all <area>s are considered relevant,
+    // but only the valid <area>s are focusable
+    return !isValidArea(element);
   }
 
   return false;

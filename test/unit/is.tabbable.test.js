@@ -2,7 +2,7 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'platform',
+  'ally/util/platform',
   'ally/is/focusable',
   'ally/is/tabbable',
 ], function(registerSuite, expect, focusableFixture, platform, isFocusable, isTabbable) {
@@ -76,13 +76,32 @@ define([
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusable(element) && isTabbable(element)).to.equal(platform.name === 'Firefox');
+        expect(isFocusable(element) && isTabbable(element)).to.equal(platform.is.GECKO);
       },
       'extended: scroll body': function() {
         var element = document.getElementById('scroll-body');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);
       },
-
+      'extended: child of focusable flexbox': function() {
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div tabindex="-1" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild.firstElementChild;
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      'extended: flexbox container': function() {
+        var element = fixture.add([
+          /*eslint-disable indent */
+          '<div style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
+            '<span style="display: block;">hello</span>',
+          '</div>',
+          /*eslint-enable indent */
+        ]).firstElementChild;
+        expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
     };
   });
 });

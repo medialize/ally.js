@@ -8,9 +8,9 @@ import polyfillElementPrototypeMatches from '../prototype/element.prototype.matc
 import getParents from '../get/parents';
 import getWindow from '../util/get-window';
 import isValidTabindex from './valid-tabindex';
-import isValidArea from './valid-area';
 import {
   hasCssOverflowScroll,
+  hasCssDisplayFlex,
   isScrollableContainer,
   isUserModifyWritable,
 } from './is.util';
@@ -29,6 +29,11 @@ export default function(element) {
 
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/focus-relevant requires an argument of type Element');
+  }
+
+  if (element.shadowRoot) {
+    // a Shadow DOM host receives focus when the focus moves to its content
+    return true;
   }
 
   const nodeName = element.nodeName.toLowerCase();
@@ -51,7 +56,7 @@ export default function(element) {
   }
 
   if (nodeName === 'area') {
-    return isValidArea(element);
+    return true;
   }
 
   if (nodeName === 'a' && element.hasAttribute('href')) {
@@ -79,8 +84,6 @@ export default function(element) {
     return true;
   }
 
-  const validTabindex = isValidTabindex(element);
-
   if (nodeName === 'embed' || nodeName === 'keygen') {
     // embed is considered focus-relevant but not focusable
     // see https://github.com/medialize/ally.js/issues/82
@@ -103,6 +106,8 @@ export default function(element) {
   if (supports.canFocusSummary && nodeName === 'summary') {
     return true;
   }
+
+  const validTabindex = isValidTabindex(element);
 
   if (nodeName === 'img' && element.hasAttribute('usemap') && validTabindex) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
@@ -175,9 +180,16 @@ export default function(element) {
     }
   }
 
+  if (supports.canFocusFlexboxContainer && hasCssDisplayFlex(style)) {
+    // elements with display:flex are focusable in IE10-11
+    return true;
+  }
+
   const parent = element.parentElement;
   if (parent) {
-    if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName)) {
+    const parentNodeName = parent.nodeName.toLowerCase();
+    const parentStyle = window.getComputedStyle(parent, null);
+    if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName, parentNodeName, parentStyle)) {
       // scrollable bodies are focusable Internet Explorer
       // https://github.com/medialize/ally.js/issues/21
       return true;
@@ -185,8 +197,7 @@ export default function(element) {
 
     // Children of focusable elements with display:flex are focusable in IE10-11
     if (supports.canFocusChildrenOfFocusableFlexbox) {
-      const parentStyle = window.getComputedStyle(parent, null);
-      if (parentStyle.display.indexOf('flex') > -1) {
+      if (hasCssDisplayFlex(parentStyle)) {
         return true;
       }
     }

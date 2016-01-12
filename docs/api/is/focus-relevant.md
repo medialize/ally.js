@@ -43,6 +43,10 @@ Boolean, `true` if the element is focus relevant.
 * Since `v#master` the `<embed>` and `<keygen>` elements are considered focus-relevant, but *not* focusable.
 * Since `v#master` the `element.prototype.matches` polyfill is re-applied to allow elements from other documents (e.g. from an iframe).
 * Since `v#master` the `<object>` element properly distinguishes between SVG and SWF content.
+* Since `v#master` elements using Flexbox layout are properly identified in IE10 and IE11.
+* Since `v#master` the Shadow DOM hosts are considered focus-relevant, but *not* focusable.
+* Since `v#master` scrollable containers are properly identified in Internet Explorer.
+* Since `v#master` all `<area>` elements are considered focus-relevant.
 
 ## Notes
 
@@ -57,7 +61,6 @@ Boolean, `true` if the element is focus relevant.
 
 * [`ally.is.focusable`](focusable.md) tests focus-relevant elements if they're also visible and not disabled
 * [`ally.is.tabbable`](tabbable.md) tests elements if they're keyboard focusable
-* [`ally.is.validArea`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable.
 * [`ally.is.validTabindex`](valid-tabindex.md) is used to verify the element's `tabindex` value is valid
 * [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
 

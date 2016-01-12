@@ -3,7 +3,7 @@
 
 import isVisible from './visible';
 import getParents from '../get/parents';
-import {getImageOfArea} from './is.util';
+import {getImageOfArea} from '../util/image-map';
 
 import _supports from './valid-area.supports';
 let supports;

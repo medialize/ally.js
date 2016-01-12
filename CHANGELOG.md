@@ -11,6 +11,7 @@ The following lists show the changes to the library grouped by domain.
 #### Browsers
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
+* Adding full support for Opera 34 (Blink based, behaves like Chrome)
 * Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
 * Dropping manual focusable tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
 
@@ -24,9 +25,19 @@ The following lists show the changes to the library grouped by domain.
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [issue #82](https://github.com/medialize/ally.js/issues/82)
 * changing [`ally.is.validArea`][ally/is/valid-area] to properly handle `<area href="…">` vs. `<area>` - [issue #72](https://github.com/medialize/ally.js/issues/72)
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly handle `<object type="application/x-shockwave-flash">` in IE9 - [Issue #71](https://github.com/medialize/ally.js/issues/71)
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify Flexbox Layout in IE10 and IE11
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify scrollable containers in Internet Explorer
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider all `<area>` elements focus relevant, moving the focusable to verification to [`ally.is.focusable`][ally/is/focusable]
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
+* fixing [`ally.is.disabled`][ally/is/disabled] to properly handle `<form disabled>` in IE9 - IE11
+* adding [`ally.get.focusRedirectTarget`][ally/get/focus-redirect-target] to identify elements focus is forwarded to
+* fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
+* fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
+
 
 #### Keyboard support
 
@@ -42,6 +53,8 @@ The following lists show the changes to the library grouped by domain.
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
 * changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
+* changing user agent sniffing from detecting browser to rendering engine - [issue #97](https://github.com/medialize/ally.js/issues/97)
+* refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 
 #### Testing
 
@@ -207,6 +220,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/fix/pointer-focus-parent]: http://allyjs.io/api/fix/pointer-focus-parent.html
 [ally/get/active-elements]: http://allyjs.io/api/get/active-elements.html
 [ally/get/focus-target]: http://allyjs.io/api/get/focus-target.html
+[ally/get/focus-redirect-target]: http://allyjs.io/api/get/focus-redirect-target.html
 [ally/get/insignificant-branches]: http://allyjs.io/api/get/insignificant-branches.html
 [ally/get/parents]: http://allyjs.io/api/get/parents.html
 [ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html

@@ -2,8 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
+  '../helper/supports',
   'ally/get/focus-target',
-], function(registerSuite, expect, customFixture, getFocusTarget) {
+], function(registerSuite, expect, customFixture, supports, getFocusTarget) {
 
   registerSuite(function() {
     var fixture;
@@ -26,6 +27,7 @@ define([
           '<div data-label="none-outer">',
             '<span id="none" data-label="none-inner">nested</span>',
           '</div>',
+          '<label id="label-nested">label <input id="label-nested-target"></label>',
           /*eslint-enable indent */
         ]);
       },
@@ -66,6 +68,13 @@ define([
         });
 
         expect(target).to.equal(null);
+      },
+      'label redirect': function() {
+        var target = getFocusTarget({
+          context: '#label-nested',
+        });
+
+        expect(target.id).to.equal('label-nested-target');
       },
     };
   });

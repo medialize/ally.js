@@ -2,8 +2,9 @@
   headers="{{ identId }} {{ groupId }}-platform-{{ platform.ally.group }} {{ groupId }}-browser-{{ platform.ally.key }}"
   data-focusable="{{ browser.focusable }}"
   data-tabbable="{{ browser.tabbable }}"
-  data-focus-event="{{ browser.focusEvent }}"
-  data-focus-method="{{ browser.focusMethod }}"
+  {{#if browser.redirecting }}data-redirecting-to="{{ browser.redirecting }}"{{/if}}
+  {{#if browser.encapsulated }}data-encapsulated-in="{{ browser.encapsulated }}"{{/if}}
+  {{#if browser.focusHost }}data-focus-host="{{ browser.focusHost }}"{{/if}}
   data-tabindex="{{ browser.tabIndex }}"
   data-row="{{ ident }}"
   data-colum="{{ platform.ally.key }}"
@@ -19,6 +20,7 @@
       title="state of {{ cellData.libraryName }}"
       data-focusable="{{ cellData.focusable }}"
       data-tabbable="{{ cellData.tabbable }}"
+      {{#if cellData.redirecting }}data-redirecting-to="{{ cellData.redirecting }}"{{/if}}
     > {{ cellData.label }}</span>
   {{/if}}
   <div class="notes">
@@ -30,7 +32,19 @@
       {{#unless browser.focusEvent }}
         <a href="#footnote-E" class="note warning">E</a>
       {{/unless}}
+      {{#unless browser.focusStyle }}
+        <a href="#footnote-S" class="note warning">S</a>
+      {{/unless}}
     {{/unless}}
+    {{#if browser.focusHost }}
+      <a href="#footnote-C" class="note target">C</a>
+    {{/if}}
+    {{#if redirectTarget }}
+      <a href="#footnote-{{ redirectTarget }}" class="note target">T</a>
+    {{/if}}
+    {{#if relatedElement }}
+      <a href="#footnote-{{ relatedElement }}" class="note target">R</a>
+    {{/if}}
     {{#each notes }}
       <a href="#footnote-{{ this }}" class="note">{{ this }}</a>
     {{/each}}

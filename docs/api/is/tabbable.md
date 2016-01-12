@@ -43,7 +43,7 @@ Boolean, `true` if the element is focus relevant.
 ## Changes
 
 * Since `v#master` matching of `SVGElement`s is done document-independent, to allow elements from other documents (e.g. from an iframe).
-
+* Since `v#master` all `<iframe>` elements are considered focusable, not tabbable - except for IE9.
 
 ## Notes
 

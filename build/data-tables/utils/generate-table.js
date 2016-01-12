@@ -26,6 +26,7 @@ module.exports = function({
   browsers,
   skipIdents,
   skipExpected,
+  referencedNotes,
   cellTemplate,
   cellData,
   rowData,
@@ -41,7 +42,8 @@ module.exports = function({
 
   Object.keys(idents).forEach(function(ident) {
     const sourceIdent = source.data[ident];
-    if (skipIdents && skipIdents(sourceIdent)) {
+    const duplicateIdent = group.duplicate[ident] && source.data[group.duplicate[ident]];
+    if (skipIdents && skipIdents(ident, sourceIdent, duplicateIdent)) {
       return;
     }
 
@@ -55,6 +57,13 @@ module.exports = function({
       expected.groupId = group.id;
       expected.identId = identId;
       expected.ident = ident;
+
+      expected.notes = source.notes.getBrowser(ident, 'expected');
+      expected.notes.forEach(key => referencedNotes.add(String(key)));
+      expected.redirectTarget = source.notes.getTarget(ident, 'expected');
+      expected.redirectTarget && referencedNotes.add(String(expected.redirectTarget));
+      expected.relatedElement = source.notes.getRelated(ident, 'expected');
+      expected.relatedElement && referencedNotes.add(String(expected.relatedElement));
 
       expected.isInert = !expected.browser.focusable && !expected.browser.tabbable;
       cells.push(_cellTemplate(expected));
@@ -73,22 +82,30 @@ module.exports = function({
       }
 
       data.notes = source.notes.getBrowser(ident, browser);
+      data.notes.forEach(key => referencedNotes.add(String(key)));
+      data.redirectTarget = source.notes.getTarget(ident, browser);
+      data.redirectTarget && referencedNotes.add(String(data.redirectTarget));
+      data.relatedElement = source.notes.getRelated(ident, browser);
+      data.relatedElement && referencedNotes.add(String(data.relatedElement));
+
       data.isInert = !data.browser.focusable && !data.browser.tabbable;
       cells.push(_cellTemplate(data));
     });
 
-    const notes = source.notes.get(ident);
-    rows.push(_rowTemplate({
+    const notes = source.notes.getIdent(ident);
+    notes.forEach(key => referencedNotes.add(String(key)));
+
+    const row = _rowTemplate({
       groupId: group.id,
       identId,
       ident,
       label: idents[ident],
       labelHtml: highlightLabel(idents[ident], ident),
-      duplicates: group.duplicate[ident] || '',
       notes: notes,
-      rowData: rowData && rowData(ident, sourceIdent) || {},
+      rowData: rowData && rowData(ident, sourceIdent, referencedNotes) || {},
       cells: cells.join('\n'),
-    }));
+    });
+    rows.push(row);
   });
 
   if (!rows.length) {

@@ -18,6 +18,13 @@ When clicking on the `<span>` element, focus is given to the `<div>`, because it
 </div>
 ```
 
+When clicking on the `<label>` element, focus is given to the `<input>`, because it's the referenced form control.
+
+```html
+<label for="world">Hello</label>
+<input id="world" type="text">
+```
+
 
 ## Usage
 
@@ -45,7 +52,14 @@ var element = ally.get.focusTarget({
 ## Examples
 
 
+## Changes
+
+* Since `v#master` elements redirecting focus return their target elements.
+
+
 ## Notes
+
+See [`ally.get.focusRedirectTarget`](./focus-redirect-target.md#Notes)
 
 
 ## Related resources

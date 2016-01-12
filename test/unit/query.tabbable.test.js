@@ -2,7 +2,7 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'platform',
+  'ally/util/platform',
   '../helper/supports',
   'ally/query/tabbable',
 ], function(registerSuite, expect, focusableFixture, platform, supports, queryTabbable) {
@@ -29,7 +29,7 @@ define([
           '#tabindex-1',
           '#link',
           '#image-map-area',
-          platform.name === 'Firefox' && '#object-svg',
+          platform.is.GECKO && '#object-svg',
           supports.canFocusSvgMethod && '#svg-link',
           '#audio-controls',
           '#input',

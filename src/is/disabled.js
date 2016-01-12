@@ -4,12 +4,24 @@
 import getParents from '../get/parents';
 import isNativeDisabledSupported from './native-disabled-supported';
 
+import _supports from './disabled.supports';
+let supports;
+
 function isDisabledFieldset(element) {
   const nodeName = element.nodeName.toLowerCase();
   return nodeName === 'fieldset' && element.disabled;
 }
 
+function isDisabledForm(element) {
+  const nodeName = element.nodeName.toLowerCase();
+  return nodeName === 'form' && element.disabled;
+}
+
 export default function(element) {
+  if (!supports) {
+    supports = _supports();
+  }
+
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     throw new TypeError('is/disabled requires an argument of type Element');
   }
@@ -29,8 +41,14 @@ export default function(element) {
     return true;
   }
 
-  if (getParents({context: element}).some(isDisabledFieldset)) {
+  const parents = getParents({context: element});
+  if (parents.some(isDisabledFieldset)) {
     // a parental <fieldset> is disabld and inherits the state onto this element
+    return true;
+  }
+
+  if (!supports.canFocusFormDisabled && parents.some(isDisabledForm)) {
+    // a parental <form> is disabld and inherits the state onto this element
     return true;
   }
 

@@ -1,11 +1,10 @@
 
 // move <area> elements to the location of the <img> elements that reference them
 
-import cssEscape from 'css.escape';
-import 'array.prototype.findindex';
 import queryTabbable from './tabbable';
 import mergeInDomOrder from '../util/merge-dom-order';
 import getDocument from '../util/get-document';
+import {getMapByName} from '../util/image-map';
 
 class Maps {
   constructor(context) {
@@ -24,9 +23,7 @@ class Maps {
   }
 
   addMapByName(name) {
-    // apparently getElementsByName() also considers id attribute in IE & opera
-    // https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName
-    const map = this._document.querySelector('map[name="' + cssEscape(name) + '"]') || null;
+    const map = getMapByName(name, this._document);
     if (!map) {
       // if there is no map, the img[usemap] wasn't doing anything anyway
       return;

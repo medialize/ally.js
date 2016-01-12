@@ -2,11 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
-  'platform',
   '../helper/supports',
   'ally/query/tabbable',
   'ally/query/tabsequence.sort-area',
-], function(registerSuite, expect, focusableFixture, platform, supports, queryTabbable, sortArea) {
+], function(registerSuite, expect, focusableFixture, supports, queryTabbable, sortArea) {
 
   registerSuite(function() {
     var fixture;

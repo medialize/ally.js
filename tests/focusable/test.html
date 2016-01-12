@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-label="html">
-<head>
-	<meta charset="utf-8" />
-	<title>What Is Focusable?</title>
-	<style>
+<head data-label="head">
+	<meta data-label="meta" charset="utf-8" />
+	<title data-label="title">What Is Focusable?</title>
+	<style data-label="style">
 	  body :focus {
 	    outline: 2px solid hotpink;
 	  }
 
     .flexbox {
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
     }
@@ -23,23 +24,58 @@
           -ms-user-modify: read-write;
               user-modify: read-write;
     }
+
+    .manual-continuation {
+      border: 2px solid green;
+    }
 	</style>
 </head>
 <body onload="window.isLoaded=true;" data-label="body">
+  <script>
+    window.nestedDocuments = {};
+    window.registerNestedDocument = function(namespace, _document) {
+      if (!namespace) {
+        console.warn('nested document without namespace', _document);
+      }
 
-  <article>
-    <h1>What Elements Are Focusable?</h1>
-    <p>This document is a testing ground to identify what a browser deems focusable and tabbable.</p>
-    <p>
-      At first the document will add <code>focus</code> event handlers to every descendant of <code>&lt;body&gt;</code>.
+      window.nestedDocuments[namespace] = _document;
+
+      // import "label namespace" from parent document
+      namespace && [].forEach.call(_document.querySelectorAll('[data-label]'), function(element) {
+        element.setAttribute('data-label', namespace + ' -> ' + element.getAttribute('data-label'));
+      });
+    };
+
+    window.shadowRoots = {};
+    window.registerShadowRoot = function(namespace, _document) {
+      window.shadowRoots[namespace] = _document;
+    };
+  </script>
+
+  <article id="top" data-label="ignore">
+    <h1 data-label="h1">What Elements Are Focusable?</h1>
+    <p data-label="p">This document is a testing ground to identify what a browser deems focusable and tabbable.</p>
+    <p data-label="ignore">
+      At first the document will add <code data-label="code">focus</code> event handlers to every descendant of <code>&lt;body&gt;</code>.
       <!-- FocusManagement: http://www.w3.org/TR/html5/editing.html#focus-management -->
       It will then try to <code>.focus()</code> every element to identify which elements satisfiy Focus Managemenet.
-      After that you - the user - can hit <kbd>TAB</kbd> a couple of times (like 50 or something) to determine the browser's natural tabbing order
+      After that you - the user - can hit <kbd data-label="kbd">TAB</kbd> a couple of times (like 50 or something) to determine the browser's natural tabbing order
     </p>
+
+    <a href="#output-results" data-label="ignore">go to results</a>
+    <input id="tabsequence-start" type="text" data-label="ignore" tabindex="1" value="start of tabbing sequence">
   </article>
 
-  <article>
-    <h2 id="form-elements">Form Elements</h2>
+  <article data-label="article{ios}">
+    <h2 data-label="h2">iOS Form Element Navigation</h2>
+
+    <!-- checking iOS tabindex ordering -->
+    <input type="text" data-label="input[tabindex=2]" tabindex="2">
+    <input type="text" data-label="input[tabindex=1]" tabindex="1">
+  </article>
+
+  <article data-label="article{input}">
+    <h2 data-label="ignore">Form Control Elements</h2>
   
     <input type="text" id="label-target" data-label="input[type=text]">
     <input type="text" id="label-target-focusable" data-label="input[type=text][tabindex=-1]" tabindex="-1">
@@ -55,50 +91,131 @@
     <input type="reset" data-label="input[type=reset][tabindex=-1]" tabindex="-1">
     <input type="hidden" data-label="input[type=hidden]">
     <input type="hidden" data-label="input[type=hidden][tabindex=-1]" tabindex="-1">
-    <select data-label="select"><option>option</option></select>
+    <select data-label="select"><option data-label="option">option</option></select>
     <select data-label="select[tabindex=-1]" tabindex="-1"><option>option</option></select>
     <textarea rows="1" cols="10" data-label="textarea"></textarea>
     <textarea rows="1" cols="10" data-label="textarea[tabindex=-1]" tabindex="-1"></textarea>
     <button type="button" data-label="button[type=button]">button</button>
     <button type="button" data-label="button[type=button][tabindex=-1]" tabindex="-1">button</button>
-    <label data-label="label">label</label>
-    <label data-label="label[tabindex=-1]" tabindex="-1">label</label>
-    <label data-label="label[tabindex=0]" tabindex="0">label</label>
-    <label for="label-target" data-label="label[for=&quot;label-target&quot;]">label</label>
-    <label for="label-target-focusable" data-label="label[for=&quot;label-target-focusable&quot;]">label</label>
-    <label for="label-target" data-label="label[for=&quot;label-target&quot;][tabindex=-1]" tabindex="-1">label</label>
   </article>
 
   <!-- http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled -->
-  <article>
-    <h2 id="disabled-elements">Disabled Elements</h3>
+  <article data-label="article{disabled-input}">
+    <h2 data-label="ignore">Disabled Form Control Elements</h2>
 
     <input disabled type="text" data-label="input[type=text][disabled]">
     <input disabled type="password" data-label="input[type=password][disabled]">
     <input disabled type="checkbox" data-label="input[type=checkbox][disabled]">
     <input disabled type="radio" name="void-disabled-form-elements-1" data-label="input[type=radio][disabled]">
     <input disabled type="submit" data-label="input[type=submit][disabled]">
-    <input disabled type="reset" data-label="input[type=radio][disabled]">
+    <input disabled type="reset" data-label="input[type=reset][disabled]">
     <input disabled type="hidden" data-label="input[type=hidden][disabled]">
     <select disabled data-label="select[disabled]"><option>option</option></select>
     <textarea disabled rows="1" cols="10" data-label="textarea[disabled]"></textarea>
     <button disabled type="button" data-label="button[type=button][disabled]">button</button>
-    <label disabled data-label="label">label</label>
   </article>
 
-  <article>
-    <h2 id="navigation-elements">Navigation Elements</h2>
+  <article data-label="article{label}">
+    <h2 data-label="ignore">Label Element</h2>
+
+    <label data-label="label">label</label>
+    <label data-label="label[tabindex=-1]" tabindex="-1">label</label>
+    <label data-label="label[tabindex=0]" tabindex="0">label</label>
+    <label for="label-target" data-label="label[for=label-target]">label</label>
+    <label for="label-target-focusable" data-label="label[for=label-target-focusable]">label</label>
+    <label for="label-target" data-label="label[for=label-target][tabindex=-1]" tabindex="-1">label</label>
+    <label data-label="label:has(input)"><input data-label="label:has(input) input"> label</label>
+    <label disabled data-label="label[disabled]">label</label>
+  </article>
+
+  <article data-label="article{form}">
+    <h2 data-label="ignore">Form Element</h2>
+
+    <form data-label="form">
+      <input data-label="form input">
+    </form>
+    <form data-label="form[tabindex=-1]" tabindex="-1">
+      <input data-label="form[tabindex=-1] input">
+    </form>
+    <form data-label="form[tabindex=0]" tabindex="0">
+      <input data-label="form[tabindex=0] input">
+    </form>
+    <form data-label="form[disabled]" disabled>
+      <input data-label="form[disabled] input">
+    </form>
+    <form data-label="form[disabled][tabindex=-1]" tabindex="-1" disabled>
+      <input data-label="form[disabled][tabindex=-1] input">
+    </form>
+    <form data-label="form[disabled][tabindex=0]" tabindex="0" disabled>
+      <input data-label="form[disabled][tabindex=0] input">
+    </form>
+  </article>
+
+  <article data-label="article{fieldset}">
+    <h2 data-label="ignore">Fieldset Element</h2>
+
+    <fieldset data-label="fieldset">
+      <legend data-label="fieldset legend">legend</legend>
+      <input type="text" data-label="fieldset input[tabindex=-1]" tabindex="-1">
+      <input type="text" data-label="fieldset input">
+    </fieldset>
+
+    <fieldset data-label="ignore">
+      <legend data-label="fieldset:has(input[tabindex=-1]) legend">legend</legend>
+      <input type="text" data-label="fieldset:has(input[tabindex=-1]) input[tabindex=-1]" tabindex="-1">
+    </fieldset>
+
+    <a href="#void" data-label="fieldset{no-tabbable} a[tabindex=1]" tabindex="1">link</a>
+    <a href="#void" data-label="fieldset{no-tabbable} a">link</a>
+
+    <fieldset data-label="ignore">
+      <legend data-label="fieldset:has(textarea) legend">legend</legend>
+      <textarea rows="1" cols="10" data-label="fieldset:has(textarea) textarea"></textarea>
+    </fieldset>
+
+    <fieldset data-label="ignore">
+      <legend data-label="fieldset:has(select) legend">legend</legend>
+      <select data-label="fieldset:has(select) select"><option>option</option></select>
+    </fieldset>
+
+    <fieldset data-label="ignore">
+      <legend data-label="fieldset:has(button) legend">legend</legend>
+      <button type="button" data-label="fieldset:has(button) button">button</button>
+    </fieldset>
+
+    <fieldset data-label="ignore">
+      <legend data-label="fieldset:has(a) legend">legend</legend>
+      <a href="#void" data-label="fieldset:has(a) a">link</a>
+    </fieldset>
+
+    <fieldset data-label="fieldset:empty"></fieldset>
+
+    <fieldset disabled data-label="fieldset[disabled]">
+      <input type="text" data-label="fieldset[disabled] input">
+    </fieldset>
+
+    <fieldset disabled tabindex="0" data-label="fieldset[disabled][tabindex=0]">
+      <input type="text" data-label="fieldset[disabled][tabindex=0] input">
+    </fieldset>
+
+    <fieldset disabled tabindex="-1" data-label="fieldset[disabled][tabindex=-1]">
+      <input type="text" data-label="fieldset[disabled][tabindex=-1] input">
+    </fieldset>
+  </article>
+
+  <article data-label="article{links}">
+    <h2 data-label="ignore">Navigation Elements</h2>
 
     <a name="void-navigation-elements-1" data-label="a[name]">link</a>
     <a href="#void" data-label="a[href]">link</a>
-    <a href="" data-label="a[href=&quot;&quot;]">link</a>
+    <a href="" data-label="a[href=]">link</a>
     <a href="#void" data-label="a[href][tabindex=-1]" tabindex="-1">link</a>
 
     <span href="#void" data-label="span[href]">span with href attribute (invalid html)</span>
   </article>
 
   <!-- https://html.spec.whatwg.org/multipage/microdata.html#microdata -->
-  <article itemscope itemtype="http://schema.org/BlogPosting">
+  <article data-label="article{itemprop}" itemscope itemtype="http://schema.org/BlogPosting">
    <header>
     <h1 id="microdata-link" itemprop="headline">Microdata Link</h1>
     <p><time itemprop="datePublished" datetime="2013-08-29">today</time></p>
@@ -106,49 +223,67 @@
    </header>
   </article>
 
-  <article>
-    <h2 id="image-maps">Image Maps</h2>
+  <article data-label="article{image-maps}">
+    <h2 data-label="ignore">Image Maps</h2>
 
-    <map name="image-maps-1">
-      <area href="#void" shape="rect" coords="63,19,144,45" data-label="area[href].upper">
-      <area shape="rect" coords="63,50,144,60" data-label="area">
-      <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
+    <map name="image-maps-0" data-label="map">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[usemap] area[href].upper" data-reference="img[usemap]">
+      <area shape="rect" coords="63,50,144,60" data-label="img[usemap] area" data-reference="img[usemap]">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="img[usemap] area[href].lower" data-reference="img[usemap]">
     </map>
+    <img usemap="#image-maps-0" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap]">
 
-    <map name="image-maps-2">
-      <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.invalid-image area[href].upper">
-      <area shape="rect" coords="63,50,144,60" data-label="map.invalid-image area">
-      <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.invalid-image area[href].lower">
+    <input data-label="ignore">
+
+    <!--
+      In Firefox multiple uses of same image map hides elements from tabbing sequence
+      see https://bugzilla.mozilla.org/show_bug.cgi?id=1116126
+    -->
+    <map name="image-maps-1" data-label="img[usemap].duplicate map">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[usemap].duplicate area[href]" data-reference="img[usemap].duplicate.second">
     </map>
+    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].duplicate.first">
+    <input data-label="firefox-bug-1116126">
+    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].duplicate.second">
 
-    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].first">
-    <img usemap="#image-maps-2" src="#void" alt="not a valid image" data-label="img[usemap].invalid">
+    <input data-label="ignore">
 
-    <img usemap="#void" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap=&quot;void&quot;]">
+    <img usemap="#void" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap=void]">
     <img src="../media/image-map.png" alt="no map associated" data-label="img">
 
-    <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].second">
-
-    <map name="image-maps-focusable-1">
-      <area tabindex="-1" href="#void" shape="rect" coords="63,19,144,45" data-label="area[href][tabindex=-1].upper">
-      <area tabindex="-1" shape="rect" coords="63,50,144,60" data-label="area[tabindex=-1]">
-      <area tabindex="-1" href="#void" shape="rect" coords="63,59,144,85" data-label="area[href][tabindex=-1].lower">
+    <map name="image-maps-focusable-1" data-label="ignore">
+      <area tabindex="-1" href="#void" shape="rect" coords="63,19,144,45" data-label="area[href][tabindex=-1].upper" data-reference="img[usemap].focusable">
+      <area tabindex="-1" shape="rect" coords="63,50,144,60" data-label="area[tabindex=-1]" data-reference="img[usemap].focusable">
+      <area tabindex="-1" href="#void" shape="rect" coords="63,59,144,85" data-label="area[href][tabindex=-1].lower" data-reference="img[usemap].focusable">
     </map>
 
     <img usemap="#image-maps-focusable-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].focusable">
 
-    <map name="image-maps-focusable-2">
-      <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[tabindex=-1] area[href].upper">
-      <area shape="rect" coords="63,50,144,60" data-label="img[tabindex=-1] area">
-      <area href="#void" shape="rect" coords="63,59,144,85" data-label="img[tabindex=-1] area[href].lower">
+    <map name="image-maps-focusable-2" data-label="ignore">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="img[tabindex=-1] area[href].upper" data-reference="img[usemap][tabindex=-1]">
+      <area shape="rect" coords="63,50,144,60" data-label="img[tabindex=-1] area" data-reference="img[usemap][tabindex=-1]">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="img[tabindex=-1] area[href].lower" data-reference="img[usemap][tabindex=-1]">
     </map>
 
     <img tabindex="-1" usemap="#image-maps-focusable-2" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap][tabindex=-1]">
 
+    <input data-label="ignore">
+
+    <map name="image-maps-2" data-label="ignore">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.invalid-image area[href].upper" data-reference="img[usemap].invalid">
+      <area shape="rect" coords="63,50,144,60" data-label="map.invalid-image area" data-reference="img[usemap].invalid">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.invalid-image area[href].lower" data-reference="img[usemap].invalid">
+    </map>
+
+    <img usemap="#image-maps-2" src="#void" alt="not a valid image" data-label="img[usemap].invalid">
+
+    <!-- Firefox might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+
   </article>
 
-  <article>
-    <h2 id="image-maps-coordinate">Image Maps With Coordinates</h2>
+  <article data-label="article{ismap}">
+    <h2 data-label="ignore">Image Maps With Coordinates</h2>
 
     <a href="#void" data-label="a:has([ismap])">
       <img ismap src="../media/image-map.png" alt="clickable anywhere" data-label="a > img[ismap]">
@@ -162,8 +297,8 @@
   </article>
 
   <!-- http://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
-  <article>
-    <h2 id="browsing-contexts">Browsing Contexts</h2>
+  <article data-label="article{browsing}">
+    <h2 data-label="ignore">Browsing Contexts</h2>
     
     <iframe src="iframe.html#iframe" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
 
@@ -179,18 +314,70 @@
 
     <iframe src="iframe-focusable.html#iframe{focusable}[tabindex=-1]" name="iframe-4" width="200" height="100" data-label="iframe{focusable}[tabindex=-1]" tabindex="-1"></iframe>
 
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="../media/test.svg#iframe[src=svg]" name="iframe-5" width="200" height="100" data-label="iframe[src=svg]"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="../media/test.svg#iframe[src=svg][tabindex=-1]" name="iframe-6" width="200" height="100" data-label="iframe[src=svg][tabindex=-1]" tabindex="-1"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+  </article>
+
+  <article data-label="article{shadow}">
+    <h2 data-label="ignore">Shadow DOM</h2>
+
+    <div id="shadow-host-1" data-label="shadow-host"></div>
+    <div id="shadow-host-2" data-label="shadow-host[tabindex=-1]" tabindex="-1"></div>
+    <div id="shadow-host-3" data-label="shadow-host[tabindex=0]" tabindex="0"></div>
+    <script>
+      (function() {
+        function createShadowedContent(element) {
+          var prefix = element.getAttribute('data-label');
+          var outerRoot = element.createShadowRoot();
+          outerRoot.innerHTML = [
+            '<input type="text" tabindex="0" data-label="' + prefix + ' input[tabindex=0]">',
+            '<div id="inner-host" data-label="' + prefix + ' inner-host"></div>',
+            '<input type="text" tabindex="-1" data-label="' + prefix + ' input[tabindex=-1]">',
+            '<input type="text" tabindex="2" data-label="' + prefix + ' input[tabindex=2]">',
+          ].join('');
+
+          var innerHost = outerRoot.getElementById('inner-host');
+          var innerRoot = innerHost.createShadowRoot();
+          innerRoot.innerHTML = [
+            '<input type="text" tabindex="-1" data-label="' + prefix + ' inner-host input[tabindex=-1]">',
+            '<input type="text" tabindex="0" data-label="' + prefix + ' inner-host input[tabindex=0]">',
+            '<input type="text" tabindex="1" data-label="' + prefix + ' inner-host input[tabindex=1]">',
+          ].join('');
+
+          window.registerShadowRoot(prefix + ' inner-host', innerRoot);
+          window.registerShadowRoot(prefix, outerRoot);
+        }
+
+        if (!document.body.createShadowRoot) {
+          console.log('Shadow DOM not supported');
+          return;
+        }
+
+        createShadowedContent(document.getElementById('shadow-host-1'));
+        createShadowedContent(document.getElementById('shadow-host-2'));
+        createShadowedContent(document.getElementById('shadow-host-3'));
+      })();
+    </script>
   </article>
 
   <!--
     http://www.w3.org/TR/html5/dom.html#interactive-content
     https://blog.mediacru.sh/2013/12/23/The-right-way-to-encode-HTML5-video.html
   -->
-  <article>
-    <h2 id="interactive-content">Interactive Content</h2>
+  <article data-label="article{interactive}">
+    <h2 data-label="ignore">Interactive Content</h2>
 
     <audio data-label="audio">
-      <source src="../media/test.mp3"></source>
-      <source src="../media/test.ogg"></source>
+      <source data-label="source[mp3]" src="../media/test.mp3"></source>
+      <source data-label="source[ogg]" src="../media/test.ogg"></source>
       <p>no &lt;audio&gt; support</p>
     </audio>
 
@@ -254,15 +441,15 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg]">
+    <embed type="image/svg+xml" src="../media/test.svg#embed[type=svg]" width="640" height="480" data-label="embed[type=svg]">
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg][tabindex=-1]" tabindex="-1">
+    <embed type="image/svg+xml" src="../media/test.svg#embed[type=svg][tabindex=-1]" width="640" height="480" data-label="embed[type=svg][tabindex=-1]" tabindex="-1">
 
     <div tabindex="0" data-label="ignore"></div>
 
-    <embed type="image/svg+xml" src="../media/test.svg" width="640" height="480" data-label="embed[type=svg][tabindex=0]" tabindex="0">
+    <embed type="image/svg+xml" src="../media/test.svg#embed[type=svg][tabindex=0]" width="640" height="480" data-label="embed[type=svg][tabindex=0]" tabindex="0">
 
     <div tabindex="0" data-label="ignore"></div>
 
@@ -273,8 +460,8 @@
     <keygen name="interactive-content-keygen" challenge="challenge string" keytype="RSA" keyparams="pqg-params" data-label="keygen[tabindex=-1]" tabindex="-1">
   </article>
 
-  <article>
-    <h2 id="scrollable-content">Scrollable Content</h2>
+  <article data-label="article{scrollable}">
+    <h2 data-label="ignore">Scrollable Content</h2>
 
     <div data-label="div{scroll-container-horizontal}" style="width: 100px; height: 50px; overflow: auto;">
       <div data-label="div{scroll-body-horizontal}" style="width: 500px; height: 40px;">scrollable content</div>
@@ -328,12 +515,10 @@
     <div data-label="div{container-overflow-scroll}[tabindex=-1]" style="width: 100px; height: 50px; overflow: scroll;" tabindex="-1">
       <div data-label="div{body-overflow-scroll}[tabindex=-1]" style="width: 10px; height: 40px;">non overflowing content</div>
     </div>
-
-
   </article>
 
-  <article>
-    <h2 id="details-summary">Details/Summary</h2>
+  <article data-label="article{details}">
+    <h2 data-label="ignore">Details/Summary</h2>
 
     <details data-label="details">
       <summary data-label="details summary">Collapsed Details</summary>
@@ -342,12 +527,12 @@
 
     <details data-label="details[tabindex=-1]" tabindex="-1">
       <summary data-label="details[tabindex=-1] summary">Collapsed Details</summary>
-      <a href="#void" data-label="details a[href]">link</a>
+      <a href="#void" data-label="details[tabindex=-1] a[href]">link</a>
     </details>
 
-    <details data-label="details">
+    <details data-label="details:has(summary[tabindex=-1])">
       <summary data-label="details summary[tabindex=-1]" tabindex="-1">Collapsed Details</summary>
-      <a href="#void" data-label="details a[href]">link</a>
+      <a href="#void" data-label="details:has(summary[tabindex=-1]) a[href]">link</a>
     </details>
 
     <details open data-label="details[open]">
@@ -356,35 +541,47 @@
     </details>
   </article>
 
-  <article>
-    <h2 id="object">Object</h2>
+  <article data-label="article{object}">
+    <h2 data-label="ignore">Object</h2>
 
     <!--
       NOTE: Internet Explorer 11 gets stuck in the browser chrome, when it has to tab through 2 consecutive <object>s,
       that's why we added a couple of ignore-me fillers…
 
-      IE10 gets stuck either way, so we remove the <object> before testing the tabbing
+      IE10 gets stuck on <object> elements that have no height
     -->
 
     <div tabindex="0" data-label="ignore"></div>
     <div tabindex="0" data-label="ignore"></div>
 
     <p>regular</p>
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]" tabindex="-1">
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]" class="hide-from-ie10">
+      <param data-label="param" name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+
+    <!-- Firefox might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+    <div tabindex="0" data-label="ignore"></div>
+
+    <p>with tabindex</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=0]" tabindex="0" class="hide-from-ie10">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
-    <div tabindex="0" data-label="ignore"></div>
+    <!-- Firefox might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
     <div tabindex="0" data-label="ignore"></div>
 
     <p>with negative tabindex</p>
-    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=-1]" tabindex="-1">
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf][tabindex=-1]" tabindex="-1" class="hide-from-ie10">
       <param name="movie" value="../media/test.swf">
       <param name="quality" value="high">
     </object>
 
-    <div tabindex="0" data-label="ignore"></div>
+    <!-- Firefox might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
     <div tabindex="0" data-label="ignore"></div>
 
     <p>without height</p>
@@ -393,31 +590,43 @@
       <param name="quality" value="high">
     </object>
 
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
     <div tabindex="0" data-label="ignore"></div>
 
-    <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg]"></object>
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg]" width="200" height="50" data-label="object[src=svg]"></object>
 
     <div tabindex="0" data-label="ignore"></div>
-
-    <object type="image/svg+xml" data="../media/test.svg" width="200" height="50" data-label="object[src=svg][tabindex=-1]" tabindex="-1"></object>
-
     <div tabindex="0" data-label="ignore"></div>
 
-    <object type="image/svg+xml" data="../media/test.svg" width="200" height="0" data-label="object[src=svg][height=0]"></object>
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg][tabindex=-1]" width="200" height="50" data-label="object[src=svg][tabindex=-1]" tabindex="-1"></object>
 
     <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
 
-    <map name="image-maps-3">
-      <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.object area[href].upper">
-      <area shape="rect" coords="63,50,144,60" data-label="map.object area">
-      <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.object area[href].lower">
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg][tabindex=0]" width="200" height="50" data-label="object[src=svg][tabindex=0]" tabindex="0"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
+
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg][height=0]" width="200" height="0" data-label="object[src=svg][height=0]"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
+
+    <map name="image-maps-3" data-label="ignore">
+      <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.object area[href].upper" data-reference="object[usemap]">
+      <area shape="rect" coords="63,50,144,60" data-label="map.object area" data-reference="object[usemap]">
+      <area href="#void" shape="rect" coords="63,59,144,85" data-label="map.object area[href].lower" data-reference="object[usemap]">
     </map>
 
     <object usemap="#image-maps-3" data="../media/image-map.png" type="image/png" data-label="object[usemap]"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
   </article>
 
-  <article>
-    <h2 id="svg">SVG</h2>
+  <article data-label="article{svg}">
+    <h2 data-label="ignore">SVG</h2>
 
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg">
       <a xlink:href="#void" data-label="svg a[xlink|href]">
@@ -435,8 +644,8 @@
       <a xlink:href="#void" data-label="svg[tabindex=-1] a[xlink|href]">
         <text x="10" y="20" data-label="svg[tabindex=-1] a[xlink|href] text">a link</text>
       </a>
-      <text x="10" y="20" data-label="svg text">just text, no link</text>
-      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <text x="10" y="20" data-label="svg[tabindex=-1] text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg[tabindex=-1] rect" />
     </svg>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -445,8 +654,8 @@
       <a xlink:href="#void" data-label="svg[focusable=false] a[xlink|href]">
         <text x="10" y="20" data-label="svg[focusable=false] a[xlink|href] text">a link</text>
       </a>
-      <text x="10" y="20" data-label="svg text">just text, no link</text>
-      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <text x="10" y="20" data-label="svg[focusable=false] text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg[focusable=false] rect" />
     </svg>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -455,10 +664,13 @@
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=0]" tabindex="0">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=0] text">a link</text>
       </a>
-      <text x="10" y="20" data-label="svg text">just text, no link</text>
+      <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=1]" tabindex="1">
+        <text x="10" y="20" data-label="svg a[xlink|href][tabindex=1] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg:has(a[tabindex=0]) text">just text, no link</text>
       <rect x="20" y="20" width="5" height="5" tabindex="0" data-label="svg rect[tabindex=0]" />
       <rect x="20" y="20" width="5" height="5" tabindex="-1" data-label="svg rect[tabindex=-1]" />
-      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <rect x="20" y="20" width="5" height="5" data-label="svg:has(a[tabindex=0]) rect" />
       <a xlink:href="#void" focusable="false" data-label="svg a[focusable=false]">
         <rect x="10" y="20" width="10" height="10" fill="brown" />
       </a>
@@ -478,8 +690,8 @@
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=-1]" tabindex="-1">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=-1] text">a link</text>
       </a>
-      <text x="10" y="20" data-label="svg text">just text, no link</text>
-      <rect x="20" y="20" width="5" height="5" data-label="svg rect" />
+      <text x="10" y="20" data-label="svg:has(a[tabindex=-1]) text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg:has(a[tabindex=-1]) rect" />
     </svg>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -509,16 +721,16 @@
   </article>
 
   <!-- http://www.w3.org/TR/html5/editing.html#editing-host -->
-  <article>
-    <h2 id="editing-hosts">Editing Hosts</h2>
+  <article data-label="article{contenteditable}">
+    <h2 data-label="ignore">Editing Hosts</h2>
     
     <div contenteditable data-label="[contenteditable]:empty"></div>
     <div contenteditable data-label="[contenteditable]">foo</div>
     <div contenteditable tabindex="-1" data-label="[contenteditable][tabindex=-1]">foo</div>
   </article>
 
-  <article>
-    <h2 id="tabindex">Tabindex</h2>
+  <article data-label="article{tabindex}">
+    <h2 data-label="ignore">Tabindex</h2>
 
     <div tabindex="-2" data-label="[tabindex=-2]">tabindex <code>-2</code></div>
     <div tabindex="-1" data-label="[tabindex=-1]">tabindex <code>-1</code></div>
@@ -528,9 +740,9 @@
     <div tabindex=" +2" data-label="[tabindex= +2]">tabindex <code> +2</code></div>
 
 
-    <h3 id="invalid-tabindex">Invalid Tabindex</h3>
+    <h3 data-label="h3" id="invalid-tabindex">Invalid Tabindex</h3>
     <input tabindex="hello" data-label="input[tabindex=hello]">
-    <div tabindex="" data-label="[tabindex=&quot;&quot;]">empty tabindex</div>
+    <div tabindex="" data-label="[tabindex=]">empty tabindex</div>
     <div tabindex="hello" data-label="[tabindex=hello]">tabindex <code>hello</code></div>
     <div tabindex="3 " data-label="[tabindex=3 ]">tabindex <code>3 </code></div>
     <div tabindex="3x" data-label="[tabindex=3x]">tabindex <code>3x</code></div>
@@ -540,38 +752,17 @@
 
     <span tabindex="0" data-label="span[tabindex=0]:empty"></span>
     <span tabindex="-1" data-label="span[tabindex=-1]:empty"></span>
-
-    <h3 id="disabled-and-tabindex">Disabled And Tabindex</h3>
-    <fieldset disabled tabindex="0" data-label="fieldset[tabindex=0][disabled]"></fieldset>
-
-    <h3 id="disabled-and-focusable">Disabled And Focusable</h3>
-    <fieldset disabled tabindex="-1" data-label="fieldset[tabindex=-1][disabled]"></fieldset>
   </article>
 
-  <article>
-    <h2 id="fieldset-legend">Fieldset and Legend</h2>
-
-    <fieldset data-label="fieldset">
-      <legend data-label="fieldset legend">legend</legend>
-      <input type="text" data-label="fieldset input">
-    </fieldset>
-
-    <fieldset data-label="fieldset:empty"></fieldset>
-
-    <fieldset disabled data-label="fieldset[disabled]">
-      <input type="text" data-label="fieldset[disabled] input">
-    </fieldset>
-  </article>
-
-  <article>
-    <h2>Menu and Menuitems</h2>
+  <article data-label="article{menu}">
+    <h2 data-label="ignore">Menu and Menuitems</h2>
 
     <p>No browser hast implemented <code>&lt;menu type=&quot;toolbar&quot;&gt;</code> yet, so testing this now won't make a difference.</p>
   </article>
 
   <!-- https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute -->
-  <article>
-    <h2 id="hidden-attribute">hidden attribute</h2>
+  <article data-label="article{hidden}">
+    <h2 data-label="ignore">hidden attribute</h2>
 
     <div hidden data-label="[hidden]">
       <input type="text" data-label="[hidden] input">
@@ -584,10 +775,14 @@
     <div hidden data-label="[hidden][tabindex=0]" tabindex="0">
       <input type="text" data-label="[hidden][tabindex=0] input">
     </div>
+
+    <div hidden data-label="[hidden]{displayed}" style="display: block !important;">
+      <input type="text" data-label="[hidden]{displayed} input">
+    </div>
   </article>
 
-  <article>
-    <h2 id="css-visibility">CSS <code>visibility</code></h2>
+  <article data-label="article{visibility}">
+    <h2 data-label="ignore">CSS <code>visibility</code></h2>
 
     <div style="visibility:hidden">
       <a href="#void" data-label="{hidden} > a">link</a>
@@ -619,28 +814,22 @@
           </td>
         </tr>
         <tr style="visibility:collapse" data-label="table tbody tr{collapse}">
-          <td colspan="2" data-label="table tbody tr{collapse} td">
+          <td data-label="table tbody tr{collapse} td">
             <a href="#void" data-label="table tbody tr{collapse} td a">link</a>
-          </td>
-        </tr>
-        <tr style="visibility:collapse">
-          <td colspan="2" style="visibility: visible" data-label="table tbody tr{collapse} td{visible}">
-            <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
-            <a href="#void" data-label="table tbody tr{collapse} td{visible} a">link</a>
-          </td>
-        </tr>
-        <tr style="visibility:collapse">
-          <td colspan="2" data-label="table tbody tr{collapse} td">
             <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
             <a href="#void" style="visibility: visible" data-label="table tbody tr{collapse} td a{visible}">link</a>
+          </td>
+          <td style="visibility: visible" data-label="table tbody tr{collapse} td{visible}">
+            <!-- Note: Firefox 33 does not show the link, but it's tabbable! -->
+            <a href="#void" data-label="table tbody tr{collapse} td{visible} a">link</a>
           </td>
         </tr>
       </tbody>
     </table>
   </article>
 
-  <article>
-    <h2 id="css-Display">CSS <code>display</code></h2>
+  <article data-label="article{display}">
+    <h2 data-label="ignore">CSS <code>display</code></h2>
 
     <div style="display:none">
       <a href="#void" data-label="{none} > a">link</a>
@@ -651,21 +840,39 @@
     <div style="width:0; height:0" tabindex="0" data-label="div{no-dimension}"></div>
   </article>
 
-  <article>
-    <h2 id="css-flexbox">CSS <code>flexbox</code> (IE issue)</h2>
+  <article data-label="article{flexbox}">
+    <h2 data-label="ignore">CSS <code>flexbox</code></h2>
 
     <a href="#void" data-label="a{flexbox}" class="flexbox">
       <span data-label="a{flexbox} > span">link</span>
     </a>
 
-    <div tabindex="-1" data-label="[tabindex=&quot;-1&quot;]{flexbox}" class="flexbox">
-      <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span1">hello</span>
-      <span data-label="[tabindex=&quot;-1&quot;]{flexbox} > span2">world</span>
+    <div tabindex="-1" data-label="[tabindex=-1]{flexbox}" class="flexbox">
+      <span data-label="[tabindex=-1]{flexbox} > span">inert</span>
+      <span data-label="[tabindex=-1]{flexbox} > span[tabindex=-1]" tabindex="-1">focusable</span>
+      <span data-label="[tabindex=-1]{flexbox} > span[tabindex=0]" tabindex="0">tabbable</span>
     </div>
+
+    <span data-label="span{flexbox}" class="flexbox">
+      <span data-label="span{flexbox} > span">inert</span>
+      <span data-label="span{flexbox} > span[tabindex=-1]" tabindex="-1">focusable</span>
+      <span data-label="span{flexbox} > span[tabindex=0]" tabindex="0">tabbable</span>
+    </span>
+
+    <div data-label="div{flexbox}" class="flexbox">
+      <span style="-webkit-order: 2; -ms-flex-order: 2; order: 2;" data-label="div{flexbox} > span{order:2}">
+        <input data-label="div{flexbox} > span{order:2} > input">
+      </span>
+      <span style="-webkit-order: 1; -ms-flex-order: 1; order: 1;" data-label="div{flexbox} > span{order:1}">
+        <input data-label="div{flexbox} > span{order:1} > input">
+      </span>
+    </div>
+
+    <span data-label="span{flexbox}:empty" class="flexbox"></span>
   </article>
 
-  <article>
-    <h2 id="css-user-modify">CSS <code>user-modify</code></h2>
+  <article data-label="article{user-modify}">
+    <h2 data-label="ignore">CSS <code>user-modify</code></h2>
 
     <span data-label="span{user-modify}" class="user-modify">
       hello world
@@ -675,8 +882,8 @@
     </span>
   </article>
 
-  <article>
-    <h2 id="canvas-content">children of <code>canvas</code> element</h2>
+  <article data-label="article{canvas}">
+    <h2 data-label="ignore">children of <code>canvas</code> element</h2>
 
     <canvas width="150" height="150" data-label="canvas">
       <input type="text" data-label="canvas > input">
@@ -690,14 +897,23 @@
   </article>
 
   <hr>
-  <h2 id="output-results">Results</h2>
-  <pre id="results">click tab order to update the output of results</pre>
+  <a href="#top" data-label="ignore">go to top</a>
+  <h2 id="output-results" data-label="ignore">Results</h2>
 
-  <script>
-    window.iframeFocusEvent = function(event) {
-      console.log("focus within iframe", event);
-    };
+  <script data-label="script">
+    (function(){
+      var map = {};
+      [].forEach.call(document.querySelectorAll('data-label'), function(element) {
+        var label = element.getAttribute('data-label');
+        if (map[label]) {
+          console.warn('duplicate label', label);
+        }
+
+        map[label] = true;
+      });
+    })();
+
   </script>
-  <script src="../../node_modules/requirejs/require.js" data-main="focusable"></script>
+  <script data-label="ignore" src="../../node_modules/requirejs/require.js" data-main="focusable"></script>
 </body>
 </html>

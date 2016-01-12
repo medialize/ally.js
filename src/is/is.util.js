@@ -3,9 +3,6 @@
 // separate testing of this file's functions is not necessary,
 // as they're implicitly tested by way of the consumers
 
-import cssEscape from 'css.escape';
-import getDocument from '../util/get-document';
-
 export function isUserModifyWritable(style) {
   // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
   // https://github.com/medialize/ally.js/issues/17
@@ -21,7 +18,11 @@ export function hasCssOverflowScroll(style) {
   ].some(overflow => overflow === 'auto' || overflow === 'scroll');
 }
 
-export function isScrollableContainer(element, nodeName) {
+export function hasCssDisplayFlex(style) {
+  return style.display.indexOf('flex') > -1;
+}
+
+export function isScrollableContainer(element, nodeName, parentNodeName, parentStyle) {
   if (nodeName !== 'div' && nodeName !== 'span') {
     // Internet Explorer advances scrollable containers and bodies to focusable
     // only if the scrollable container is <div> or <span> - this does *not*
@@ -29,24 +30,9 @@ export function isScrollableContainer(element, nodeName) {
     return false;
   }
 
-  return element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth;
-}
-
-export function getImageOfArea(element) {
-  const map = element.parentElement;
-
-  if (!map.name || map.nodeName.toLowerCase() !== 'map') {
-    return null;
+  if (parentNodeName && parentNodeName !== 'div' && parentNodeName !== 'span' && !hasCssOverflowScroll(parentStyle)) {
+    return false;
   }
 
-  // NOTE: image maps can also be applied to <object> with image content,
-  // but no browser supports this at the moment
-
-  // HTML5 specifies HTMLMapElement.images to be an HTMLCollection of all
-  // <img> and <object> referencing the <map> element, but no browser implements this
-  //   http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element
-  //   https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement
-  // the image must be valid and loaded for the map to take effect
-  const _document = getDocument(element);
-  return _document.querySelector('img[usemap="#' + cssEscape(map.name) + '"]') || null;
+  return element.offsetHeight < element.scrollHeight || element.offsetWidth < element.scrollWidth;
 }

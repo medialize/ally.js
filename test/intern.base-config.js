@@ -65,6 +65,10 @@ define([
         id: 'JUnit',
         filename: 'reports/junit.xml',
       },
+      {
+        id: '../../../test/reporters/Errors',
+        filename: 'reports/errors.log',
+      },
     ],
 
     // Non-functional test suite(s) to run in each browser
@@ -76,6 +80,7 @@ define([
       'test/unit/fix.pointer-focus-input.test',
       'test/unit/fix.pointer-focus-parent.test',
       'test/unit/get.active-elements.test',
+      'test/unit/get.focus-redirect-target.test',
       'test/unit/get.focus-target.test',
       'test/unit/get.insignificant-branches.test',
       'test/unit/get.parents.test',
