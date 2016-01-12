@@ -65,6 +65,10 @@ define([
         id: 'JUnit',
         filename: 'reports/junit.xml',
       },
+      {
+        id: '../../../test/reporters/Errors',
+        filename: 'reports/errors.log',
+      },
     ],
 
     // Non-functional test suite(s) to run in each browser
