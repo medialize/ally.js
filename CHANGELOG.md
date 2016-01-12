@@ -12,6 +12,7 @@ The following lists show the changes to the library grouped by domain.
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
 * Adding full support for Opera 34 (Blink based, behaves like Chrome)
+* Adding manual focusable tests for Safari 6 and 8 on OSX
 * Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
 * Dropping manual focusable tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
 

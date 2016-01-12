@@ -3366,7 +3366,6 @@
         "ident": "iframe{focusable}[tabindex=-1]",
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "img": {
@@ -6437,7 +6436,6 @@
     }
   },
   "tabsequence": [
-    "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
     "input[tabindex=1]",
     "fieldset{no-tabbable} a[tabindex=1]",
     "shadow-host inner-host input[tabindex=1]",
@@ -7063,6 +7061,9 @@
     "tabsequence": [
       "input[tabindex=1]",
       "fieldset{no-tabbable} a[tabindex=1]",
+      "shadow-host inner-host input[tabindex=1]",
+      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
+      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
       "img[usemap] area[href].upper",
       "img[usemap] area",
       "img[usemap] area[href].lower",
@@ -7071,9 +7072,6 @@
       "img[tabindex=-1] area[href].upper",
       "img[tabindex=-1] area",
       "img[tabindex=-1] area[href].lower",
-      "shadow-host inner-host input[tabindex=1]",
-      "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
-      "shadow-host[tabindex=0] inner-host input[tabindex=1]",
       "[tabindex=1]",
       "input[tabindex=2]",
       "shadow-host input[tabindex=2]",
