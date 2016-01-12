@@ -150,17 +150,25 @@ define([
 
       var collectObservations = function() {
         blockTabKey = false;
-
         var keys = Object.keys(temp);
         temp = {};
-        // we're dealing with a hierarchy where the deepest element has the longest ident
-        // so simply sorting by the keys' length should suffice
-        keys.sort(function(a, b) {
-          return b.length - a.length;
+
+        // for nested elements the deepest element (actually having focus)
+        // contains the ancestral idents
+        keys = keys.filter(function(ident) {
+          if (ident === 'ignore') {
+            return false;
+          }
+
+          return !keys.some(function(_ident) {
+            return ident.length < _ident.length && _ident.substr(0, ident.length) === ident;
+          });
         });
 
+        // nested elements are filtered
+        // so we'll go with the first we got
         var ident = keys[0];
-        if (ident === 'ignore') {
+        if (!ident) {
           return;
         }
 
@@ -168,25 +176,41 @@ define([
         sequence.push(ident);
       };
 
-      var registerObservation = function(elementName) {
+      var registerObservation = function(type, elementName) {
+        if (!elementName) {
+          return;
+        }
+
         blockTabKey = true;
         temp[elementName] = true;
         window.clearTimeout(timer);
         timer = window.setTimeout(collectObservations, 20);
       };
 
+      var observers;
+      var evaluateObservers = function() {
+        observers.slice(1).forEach(function(observer) {
+          observer.evaluate();
+        });
+      };
+
       var documents = this._documentContexts();
-      var activeElementObservers = documents.map(function(_document) {
-        return new ActiveElementObserver(_document);
+      var activeElementObservers = documents.map(function(_document, index) {
+        return new ActiveElementObserver(_document, index === 0 ? evaluateObservers : null);
       });
       var cssFocusObservers = documents.map(function(_document) {
         return new CssFocusObserver(_document);
       });
 
-      var observers = [].concat(activeElementObservers).concat(cssFocusObservers);
-      observers.forEach(function(observer) {
-        observer.observe(registerObservation);
+      observers = [].concat(activeElementObservers).concat(cssFocusObservers);
+      activeElementObservers.slice(1).forEach(function(observer) {
+        observer.observe(registerObservation.bind(null, 'active'), true);
       });
+      cssFocusObservers.forEach(function(observer) {
+        observer.observe(registerObservation.bind(null, 'css'), true);
+      });
+
+      observers[0].observe(registerObservation.bind(null, 'active'));
 
       var keyEventListener = function(event) {
         if (event.keyCode === 9 && blockTabKey) {
@@ -195,6 +219,11 @@ define([
       };
 
       document.addEventListener('keydown', keyEventListener, true);
+
+      // ignore the nested document's initial activeElement
+      setTimeout(function() {
+        sequence.length = 0;
+      }, 200);
 
       return function() {
         document.removeEventListener('keydown', keyEventListener, true);
