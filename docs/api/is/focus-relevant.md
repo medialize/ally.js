@@ -48,6 +48,7 @@ Boolean, `true` if the element is focus relevant.
 * Since `v#master` scrollable containers are properly identified in Internet Explorer.
 * Since `v#master` all `<area>` elements are considered focus-relevant.
 
+
 ## Notes
 
 * **NOTE:** The `<body>` element may mistakenly considered focusable, because it is the default activeElement if no other element has focus - but it is not focusable, unless made so by adding the `tabindex` attribute.

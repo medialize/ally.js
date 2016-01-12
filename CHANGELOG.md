@@ -55,6 +55,7 @@ The following lists show the changes to the library grouped by domain.
 * changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
 * changing user agent sniffing from detecting browser to rendering engine - [issue #97](https://github.com/medialize/ally.js/issues/97)
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
+* refactoring `is/focus-relevant` and `is/tabbable` to allow running the identification with execptions via `is/focus-relevant.rules` and `is/tabbable.rules`, while maintaining module signature
 
 #### Testing
 
