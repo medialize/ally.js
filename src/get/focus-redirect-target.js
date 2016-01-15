@@ -49,7 +49,9 @@ function resolveLegendWithinFieldset(element) {
 function resolveLegendWithinDocument(element, _document) {
   // Firefox: *next* tabbable (in DOM order)
   const tabbable = queryTabbable({
-    context: _document,
+    // Firefox apparently needs to query from the body element,
+    // not the document, looking inside a dynamically written iframe
+    context: _document.body,
     strategy: 'strict',
   });
 
