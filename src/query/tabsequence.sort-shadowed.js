@@ -121,7 +121,8 @@ class Shadows {
       resolveElement: this._resolveHostElement.bind(this),
     });
 
-    if (tabindexValue(host)) {
+    const _tabindex = tabindexValue(host);
+    if (_tabindex !== null && _tabindex > -1) {
       return [host].concat(merged);
     }
 
