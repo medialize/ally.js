@@ -61,6 +61,9 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
 * **NOTE:** In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. `ally.query.tabindex` handles this appropriately. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
 * **NOTE:** In some browsers positive tabindexes are sorted localized to [Shadow DOM](http://caniuse.com/#feat=shadowdom), in some they are sorted globally. `ally.query.tabindex` handles this appropriately.
+* **WARNING:** In Firefox the Flexbox CSS property `order` affects the tabsequence, [Gecko 812687](https://bugzilla.mozilla.org/show_bug.cgi?id=812687), ally.js does not replicate this behavior.
+* **WARNING:** In Firefox referencing the same `<map>` can lead to elements missing from the tabsequence, [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126), ally.js does not replicate this behavior.
+* **WARNING:** In Firefox `<label tabindex="0">` is part of the tabsequence, [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285), ally.js does not replicate this behavior.
 
 
 ## Related resources
