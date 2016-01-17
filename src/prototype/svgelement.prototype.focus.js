@@ -8,6 +8,8 @@
 // TypeError: 'focus' called on an object that does not implement interface HTMLElement.
 // this works fine in IE11, though.
 
+import logger from '../util/logger';
+
 export default function polyfill(root) {
   if (root.SVGElement.prototype.focus) {
     return;
@@ -28,11 +30,11 @@ export default function polyfill(root) {
   } catch(e) {
     root.SVGElement.prototype.focus = function focusPolyfill() {
       // at least make apparent what is going wrong
-      root.window.console && window.console.warn && window.console.warn('SVGElement.focus() not possible');
+      logger.warn('SVGElement.focus() not possible');
     };
     root.SVGElement.prototype.blur = function blurPolyfill() {
       // at least make apparent what is going wrong
-      window.console && window.console.warn && window.console.warn('SVGElement.blur() not possible');
+      logger.warn('SVGElement.blur() not possible');
     };
   }
 

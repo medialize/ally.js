@@ -14,6 +14,12 @@ the util infrastructure does not contain any functionality relevant to a user of
 
 In order to make using [platform.js](https://github.com/bestiejs/platform.js) even simpler, this utility adds the few verifications ally.js actually needs.
 
+
+### Logger
+
+In order to safely access - and in the future possibly mutate - any calls to `console.log` et al, we're importing the logger utility, rather than referencing `console.*` directly.
+
+
 ### Translate input to node array
 
 Internally ally.js prefers to use Arrays of Nodes, but when accepting input from the outside we're not sure what we get. NodeList, HTMLCollection, jQuery object, a single Node or even just a string (to run through [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)) - `util/node-array.js` converts everything to array.
