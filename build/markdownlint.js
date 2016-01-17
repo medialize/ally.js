@@ -9,8 +9,6 @@ const cwd = path.resolve(process.cwd(), 'docs');
 // https://github.com/DavidAnson/markdownlint#rules
 // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
 const config = {
-  // as of 0.0.8 markdownlint will support options.frontMatter
-  ignore: 'frontmatter',
   'default': true,
   // Exclusions for deliberate/widespread violations
   MD001: true, // Header levels should only increment by one level at a time
@@ -32,16 +30,18 @@ const config = {
   },
   // MD029: false, // Ordered list item prefix
   // MD030: false, // Spaces after list markers
-  MD033: ['kbd', 'a'], // patched in rodneyrehm/markdownlint
+  MD033: {
+    // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md033---inline-html
+    /*eslint-disable camelcase */
+    allowed_elements: ['kbd', 'a'],
+    /*eslint-enable camelcase */
+  },
   // MD034: false, // Bare URL used
   // MD040: false,  // Fenced code blocks should have a language specified
 };
 
 markdownlint({
   files: glob.sync('**/*.md', {cwd: cwd, realpath: true}),
-  // as of 0.0.8 markdownlint will support front-matter
-  // MD041 does not like an empty line before the first header,
-  // so we'll simply consider that empty line frontMatter...
   frontMatter: /(^---$[^]*?^---$)?(\r\n|\r|\n){1,}/m,
   config: config,
 }, function(err, result) {

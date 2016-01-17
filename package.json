@@ -97,7 +97,7 @@
     "jquery-ui": "git://github.com/jquery/jquery-ui.git#1.11.4",
     "jsbin-sync": "^0.3.1",
     "jscs": "^2.1.1",
-    "markdownlint": "git://github.com/rodneyrehm/markdownlint#temporary-fixes",
+    "markdownlint": "^0.1.0",
     "metalsmith": "^2.0.1",
     "metalsmith-broken-link-checker": "^0.1.6",
     "metalsmith-collections": "^0.7.0",
