@@ -122,8 +122,11 @@ define([
       'test/unit/when.focusable.test',
       'test/unit/when.key.test',
       'test/unit/when.visible-area.test',
-      'test/unit/core.worker.test',
+      // making sore core holds what browser compatibility tables promise
       'test/unit/core.browser-compatibility.test',
+      // testing mere ability to load without failure
+      'test/unit/core.worker.test',
+      'test/unit/core.bundle.test',
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed
@@ -133,6 +136,6 @@ define([
     // ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
-    excludeInstrumentation: /^(?:tests|test|examples|node_modules)\//,
+    excludeInstrumentation: /^(?:tests|test|examples|node_modules|dist\/ally\.min)\//,
   };
 });
