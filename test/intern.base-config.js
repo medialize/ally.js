@@ -123,7 +123,7 @@ define([
       'test/unit/when.key.test',
       'test/unit/when.visible-area.test',
       'test/unit/core.worker.test',
-      'test/unit/browser-focusable.test',
+      'test/unit/core.browser-compatibility.test',
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed

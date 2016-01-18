@@ -83,7 +83,7 @@ define([
     }
 
     var suite = {
-      name: 'browser-focusable',
+      name: 'core: Browser Compatibility',
 
       before: function() {
         return framed.initialize(document.body);
