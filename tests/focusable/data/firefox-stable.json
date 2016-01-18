@@ -3366,7 +3366,6 @@
         "ident": "iframe{focusable}[tabindex=-1]",
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "img": {
@@ -6437,7 +6436,6 @@
     }
   },
   "tabsequence": [
-    "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
     "input[tabindex=1]",
     "fieldset{no-tabbable} a[tabindex=1]",
     "shadow-host inner-host input[tabindex=1]",
@@ -7066,14 +7064,6 @@
       "shadow-host inner-host input[tabindex=1]",
       "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
       "shadow-host[tabindex=0] inner-host input[tabindex=1]",
-      "img[usemap] area[href].upper",
-      "img[usemap] area",
-      "img[usemap] area[href].lower",
-      "img[usemap].duplicate area[href]",
-      "img[usemap].duplicate area[href]",
-      "img[tabindex=-1] area[href].upper",
-      "img[tabindex=-1] area",
-      "img[tabindex=-1] area[href].lower",
       "[tabindex=1]",
       "input[tabindex=2]",
       "shadow-host input[tabindex=2]",
@@ -7109,7 +7099,15 @@
       "fieldset:has(a) a",
       "a[href]",
       "a[href=]",
+      "img[usemap] area[href].upper",
+      "img[usemap] area",
+      "img[usemap] area[href].lower",
+      "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
+      "img[usemap].duplicate area[href]",
+      "img[tabindex=-1] area[href].upper",
+      "img[tabindex=-1] area",
+      "img[tabindex=-1] area[href].lower",
       "a:has([ismap])",
       "a:has([ismap][tabindex=-1])",
       "shadow-host input[tabindex=0]",

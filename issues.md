@@ -31,6 +31,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * embed element cannot be removed from the focus navigation sequence [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
 * embed element with tabindex="0" breaks sequential focus navigation [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
 * `<summary>` and `<a>` within `<details open>` not keyboard focusable [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)
+* label element with tabindex attribute is keyboard focusable [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285)
 
 
 ## Filed specification issues

@@ -22,11 +22,10 @@
 import tabindexValue from '../util/tabindex-value';
 import isNativeDisabledSupported from '../is/native-disabled-supported';
 import toggleAttributeValue from '../util/toggle-attribute-value';
+import logger from '../util/logger';
 
 function disabledFocus() {
-  /*eslint-disable no-console */
-  console.warn('trying to focus inert element', this);
-  /*eslint-enable no-console */
+  logger.warn('trying to focus inert element', this);
 }
 
 function disableTabindex(element, disabledState) {

@@ -169,8 +169,7 @@ define([
 
       data.focusable = false
         || data.scriptFocus.contextActiveElement
-        || data.scriptFocus.documentActiveElement
-        || data.scriptFocus.cssFocus;
+        || data.scriptFocus.documentActiveElement;
 
       if (data.tabindexAttribute === null) {
         delete data.tabindexAttribute;

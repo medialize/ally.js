@@ -1031,6 +1031,7 @@
         "contextActiveElement": true,
         "cssFocus": true
       },
+      "tabbable": true,
       "focusable": true
     },
     "button[type=button]": {
@@ -2031,8 +2032,7 @@
       "document": "html",
       "ally": {},
       "jquery": {},
-      "scriptFocus": {},
-      "tabbable": true
+      "scriptFocus": {}
     },
     "embed[type=svg] -> file:svg": {
       "document": "embed[type=svg]",
@@ -2241,8 +2241,7 @@
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {},
-      "tabbable": true
+      "scriptFocus": {}
     },
     "embed[type=svg][tabindex=0] -> file:svg": {
       "document": "embed[type=svg][tabindex=0]",
@@ -2928,8 +2927,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {},
       "scriptFocus": {
@@ -2938,7 +2936,6 @@
         "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "iframe -> body": {
@@ -2999,8 +2996,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {},
       "scriptFocus": {
@@ -3009,7 +3005,6 @@
         "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "iframe[src=svg] -> file:svg": {
@@ -3140,10 +3135,6 @@
         "onlyTabbable": true
       },
       "jquery": {},
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]"
-      },
-      "tabbable": true,
       "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
@@ -3295,8 +3286,7 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {},
       "scriptFocus": {
@@ -3305,7 +3295,6 @@
         "cssFocus": true,
         "event": true
       },
-      "tabbable": true,
       "focusable": true
     },
     "iframe{focusable} -> body": {
@@ -3615,9 +3604,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap] area[href].upper"
-      },
-      "tabbable": true,
-      "focusable": true
+      }
     },
     "img[usemap] area": {
       "tabindexProperty": 0,
@@ -3734,9 +3721,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap].duplicate area[href]"
-      },
-      "tabbable": true,
-      "focusable": true
+      }
     },
     "img[usemap].duplicate.second": {
       "tabindexProperty": 0,
@@ -3749,9 +3734,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap].duplicate area[href]"
-      },
-      "tabbable": true,
-      "focusable": true
+      }
     },
     "img[usemap].focusable": {
       "tabindexProperty": 0,
@@ -3764,8 +3747,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "area[href][tabindex=-1].upper"
-      },
-      "focusable": true
+      }
     },
     "img[usemap].invalid": {
       "tabindexProperty": 0,
@@ -3778,9 +3760,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "map.invalid-image area[href].upper"
-      },
-      "tabbable": true,
-      "focusable": true
+      }
     },
     "img[usemap][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -3796,8 +3776,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[tabindex=-1] area[href].upper"
-      },
-      "focusable": true
+      }
     },
     "input[tabindex=1]": {
       "tabindexProperty": 1,
@@ -4479,8 +4458,7 @@
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {},
-      "tabbable": true
+      "scriptFocus": {}
     },
     "object[src=svg] -> file:svg": {
       "document": "object[src=svg]",
@@ -6112,253 +6090,130 @@
     }
   },
   "tabsequence": [
-    "iframe[src=svg][tabindex=-1] -> file:svg",
-    "input[tabindex=1]",
     "input[tabindex=1]",
     "fieldset{no-tabbable} a[tabindex=1]",
-    "fieldset{no-tabbable} a[tabindex=1]",
-    "[tabindex=1]",
     "[tabindex=1]",
     "input[tabindex=2]",
-    "input[tabindex=2]",
-    "[tabindex=+2]",
     "[tabindex=+2]",
     "[tabindex= +2]",
-    "[tabindex= +2]",
-    "[tabindex=3 ]",
     "[tabindex=3 ]",
     "input[type=text]",
-    "input[type=text]",
-    "input[type=password]",
     "input[type=password]",
     "input[type=checkbox]",
-    "input[type=checkbox]",
-    "input[type=radio]",
     "input[type=radio]",
     "input[type=submit]",
-    "input[type=submit]",
-    "input[type=reset]",
     "input[type=reset]",
     "select",
-    "select",
-    "textarea",
     "textarea",
     "button[type=button]",
-    "button[type=button]",
-    "label[tabindex=0]",
     "label[tabindex=0]",
     "label:has(input) input",
-    "label:has(input) input",
-    "form input",
     "form input",
     "form[tabindex=-1] input",
-    "form[tabindex=-1] input",
-    "form[tabindex=0]",
     "form[tabindex=0]",
     "form[tabindex=0] input",
-    "form[tabindex=0] input",
-    "fieldset input",
     "fieldset input",
     "fieldset{no-tabbable} a",
-    "fieldset{no-tabbable} a",
-    "fieldset:has(textarea) textarea",
     "fieldset:has(textarea) textarea",
     "fieldset:has(select) select",
-    "fieldset:has(select) select",
-    "fieldset:has(button) button",
     "fieldset:has(button) button",
     "fieldset:has(a) a",
-    "fieldset:has(a) a",
-    "a[href]",
     "a[href]",
     "a[href=]",
-    "a[href=]",
-    "img[usemap]",
     "img[usemap] area[href].upper",
     "img[usemap] area[href].lower",
-    "img[usemap].duplicate.first",
     "img[usemap].duplicate area[href]",
     "firefox-bug-1116126",
-    "firefox-bug-1116126",
     "img[usemap].duplicate area[href]",
-    "img[usemap].duplicate.second",
     "map.invalid-image area[href].upper",
-    "img[usemap].invalid",
     "map.invalid-image area[href].lower",
     "a:has([ismap])",
-    "a:has([ismap])",
-    "a > img[ismap]",
     "a > img[ismap]",
     "a[tabindex=-1] > img[ismap]",
-    "a[tabindex=-1] > img[ismap]",
     "a:has([ismap][tabindex=-1])",
-    "a:has([ismap][tabindex=-1])",
-    "iframe",
     "iframe -> body",
-    "iframe{focusable} -> input[tabindex=1]",
-    "iframe{focusable}",
     "iframe{focusable} -> input[tabindex=1]",
     "iframe{focusable} -> body",
     "iframe{focusable} -> input",
-    "iframe{focusable} -> input",
     "iframe[src=svg] -> file:svg",
-    "iframe[src=svg]",
-    "iframe[src=svg] -> file:svg a[xlink|href]",
     "iframe[src=svg] -> file:svg a[xlink|href]",
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
-    "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
-    "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
     "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
     "iframe[src=svg] -> file:svg",
     "shadow-host[tabindex=0]",
-    "shadow-host[tabindex=0]",
-    "audio[controls]",
     "audio[controls]",
     "video[controls]",
-    "video[controls]",
-    "embed",
     "embed",
     "embed[type=mp4]",
-    "embed[type=mp4]",
-    "embed[type=svg] -> file:svg",
-    "embed[type=svg]",
     "embed[type=svg] -> file:svg",
     "embed[type=svg] -> file:svg a[xlink|href]",
-    "embed[type=svg] -> file:svg a[xlink|href]",
-    "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
     "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
-    "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
     "embed[type=svg][tabindex=0] -> file:svg",
-    "embed[type=svg][tabindex=0] -> file:svg",
-    "embed[type=svg][tabindex=0]",
-    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]",
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href]",
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
-    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
-    "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
     "details a[href]",
-    "details a[href]",
-    "details[tabindex=-1] a[href]",
     "details[tabindex=-1] a[href]",
     "details:has(summary[tabindex=-1]) a[href]",
-    "details:has(summary[tabindex=-1]) a[href]",
     "details[open] a[href]",
-    "details[open] a[href]",
-    "object[src=svg]",
-    "object[src=svg] -> file:svg",
     "object[src=svg] -> file:svg",
     "object[src=svg] -> file:svg a[xlink|href]",
-    "object[src=svg] -> file:svg a[xlink|href]",
-    "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
-    "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
-    "object[src=svg][tabindex=0] -> file:svg",
     "object[src=svg][tabindex=0] -> file:svg",
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href]",
-    "object[src=svg][tabindex=0] -> file:svg a[xlink|href]",
-    "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
-    "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
-    "object[src=svg][height=0] -> file:svg",
     "object[src=svg][height=0] -> file:svg",
     "object[src=svg][height=0] -> file:svg a[xlink|href]",
-    "object[src=svg][height=0] -> file:svg a[xlink|href]",
-    "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
     "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
-    "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
-    "svg",
     "svg",
     "svg a[xlink|href]",
-    "svg a[xlink|href]",
-    "svg rect[focusable=true]",
     "svg rect[focusable=true]",
     "svg[tabindex=-1]",
-    "svg[tabindex=-1]",
-    "svg[tabindex=-1] a[xlink|href]",
     "svg[tabindex=-1] a[xlink|href]",
     "svg[focusable=false] a[xlink|href]",
-    "svg[focusable=false] a[xlink|href]",
-    "svg:has(a[tabindex=0])",
     "svg:has(a[tabindex=0])",
     "svg a[xlink|href][tabindex=0]",
-    "svg a[xlink|href][tabindex=0]",
-    "svg a[xlink|href][tabindex=1]",
     "svg a[xlink|href][tabindex=1]",
     "svg{viewbox}",
-    "svg{viewbox}",
-    "svg rect[focusable=true]{viewbox}",
     "svg rect[focusable=true]{viewbox}",
     "svg:has(a[tabindex=-1])",
-    "svg:has(a[tabindex=-1])",
-    "svg a[xlink|href][tabindex=-1]",
     "svg a[xlink|href][tabindex=-1]",
     "svg{tiny}",
-    "svg{tiny}",
-    "svg{tiny} rect[focusable=true]",
     "svg{tiny} rect[focusable=true]",
     "svg{tiny} a[tabindex=-1]",
-    "svg{tiny} a[tabindex=-1]",
-    "svg{tiny} rect[focusable=true][tabindex=-1]",
     "svg{tiny} rect[focusable=true][tabindex=-1]",
     "svg{tiny}[focusable=false] a",
-    "svg{tiny}[focusable=false] a",
-    "[contenteditable]:empty",
     "[contenteditable]:empty",
     "[contenteditable]",
-    "[contenteditable]",
-    "[tabindex=0]",
     "[tabindex=0]",
     "input[tabindex=hello]",
-    "input[tabindex=hello]",
-    "div[tabindex=0]:empty",
     "div[tabindex=0]:empty",
     "span[tabindex=0]:empty",
-    "span[tabindex=0]:empty",
-    "[hidden] input",
     "[hidden] input",
     "[hidden][tabindex=-1] input",
-    "[hidden][tabindex=-1] input",
-    "[hidden][tabindex=0]",
     "[hidden][tabindex=0]",
     "[hidden][tabindex=0] input",
-    "[hidden][tabindex=0] input",
-    "[hidden]{displayed} input",
     "[hidden]{displayed} input",
     "{hidden} > a{visible}",
-    "{hidden} > a{visible}",
-    "{hidden} > {visible} > a",
     "{hidden} > {visible} > a",
     "table tbody tr td a",
-    "table tbody tr td a",
-    "table tbody tr{collapse} td a{visible}",
     "table tbody tr{collapse} td a{visible}",
     "table tbody tr{collapse} td{visible} a",
-    "table tbody tr{collapse} td{visible} a",
-    "div{no-dimension}",
     "div{no-dimension}",
     "a{flexbox}",
-    "a{flexbox}",
-    "[tabindex=-1]{flexbox} > span[tabindex=0]",
     "[tabindex=-1]{flexbox} > span[tabindex=0]",
     "span{flexbox} > span[tabindex=0]",
-    "span{flexbox} > span[tabindex=0]",
-    "div{flexbox} > span{order:2} > input",
     "div{flexbox} > span{order:2} > input",
     "div{flexbox} > span{order:1} > input",
-    "div{flexbox} > span{order:1} > input",
-    "canvas > input",
     "canvas > input",
     "canvas > a",
-    "canvas > a",
-    "canvas > [tabindex=0]",
     "canvas > [tabindex=0]",
     "html",
-    "html"
+    "body"
   ],
   "ally": {
     "focusableQuick": [
@@ -6684,9 +6539,6 @@
       "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a:has([ismap][tabindex=-1])",
-      "iframe",
-      "iframe{focusable}",
-      "iframe[src=svg]",
       "shadow-host[tabindex=0]",
       "audio[controls]",
       "video[controls]",
@@ -6761,9 +6613,6 @@
       "a > img[ismap]",
       "a[tabindex=-1] > img[ismap]",
       "a:has([ismap][tabindex=-1])",
-      "iframe",
-      "iframe{focusable}",
-      "iframe[src=svg]",
       "shadow-host[tabindex=0]",
       "audio[controls]",
       "video[controls]",
@@ -6843,9 +6692,6 @@
       "a > img[ismap]",
       "a[tabindex=-1] > img[ismap]",
       "a:has([ismap][tabindex=-1])",
-      "iframe",
-      "iframe{focusable}",
-      "iframe[src=svg]",
       "shadow-host[tabindex=0]",
       "audio[controls]",
       "video[controls]",

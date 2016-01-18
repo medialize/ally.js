@@ -16,30 +16,37 @@ define([
 
   CssFocusObserver.prototype = {
     tick: function() {
-      var focused = this.document.querySelector(':focus');
-      if (focused) {
-        var elementName = utils.elementName(focused);
-        if (this.lastElementName !== elementName) {
-          this.lastElementName = elementName;
-          if (this.callback) {
-            this.callback(elementName, focused);
-          } else {
-            this.history.push(elementName);
-          }
-        }
-      }
+      this.evaluate();
 
       if (this.running) {
         this.raf = requestAnimationFrame(this.tick);
       }
     },
+    evaluate: function() {
+      var focused = this.document.querySelector(':focus');
+      if (!focused) {
+        return;
+      }
 
-    observe: function(callback) {
+      var elementName = utils.elementName(focused);
+      if (this.lastElementName === elementName) {
+        return;
+      }
+
+      this.lastElementName = elementName;
+      if (this.callback) {
+        this.callback(elementName, focused);
+      } else {
+        this.history.push(elementName);
+      }
+    },
+
+    observe: function(callback, externalEvaluation) {
       this.lastElementName = null;
       this.callback = callback || null;
       this.history = [];
       this.running = true;
-      this.tick();
+      !externalEvaluation && this.tick();
     },
     terminate: function() {
       this.running = false;

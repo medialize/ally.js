@@ -1,13 +1,13 @@
 {
   "platform": {
-    "description": "Chrome 49.0.2618.0 on OS X 10.10.5",
+    "description": "Chrome 49.0.2621.0 on OS X 10.10.5",
     "layout": "Blink",
     "manufacturer": null,
     "name": "Chrome",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2618.0 Safari/537.36",
-    "version": "49.0.2618.0",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2621.0 Safari/537.36",
+    "version": "49.0.2621.0",
     "os": {
       "architecture": 32,
       "family": "OS X",

@@ -22,8 +22,6 @@ function moveContextToBeginning(elements, context) {
 }
 
 function sortElements(elements, _context) {
-  elements = sortTabindex(elements);
-
   if (supports.tabsequenceSortsAreaAtImagePosition) {
     // Some browsers sort <area> in DOM order, some place the <area>s
     // where the <img> referecing them would've been in DOM order.
@@ -31,6 +29,7 @@ function sortElements(elements, _context) {
     elements = sortArea(elements, _context);
   }
 
+  elements = sortTabindex(elements);
   return elements;
 }
 

@@ -43,7 +43,6 @@ function detectFocus(options) {
 }
 
 // cache detected support so we don't have to bother screen readers with unstoppable focus changes
-// and flood the console with net::ERR_INVALID_URL errors for audio/video tests
 export default function(options) {
   let value = cache.get(options.name);
   if (typeof value !== 'boolean') {

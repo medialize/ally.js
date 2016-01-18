@@ -3,9 +3,10 @@ define([
   'ally/prototype/window.requestanimationframe',
 ], function(utils) {
 
-  function ActiveElementObserver(doc) {
+  function ActiveElementObserver(doc, onTick) {
     this.document = doc || document;
     this.lastElementName = null;
+    this.onTick = onTick;
     this.callback = null;
     this.history = null;
     this.running = false;
@@ -15,6 +16,14 @@ define([
 
   ActiveElementObserver.prototype = {
     tick: function() {
+      this.evaluate();
+      this.onTick && this.onTick();
+
+      if (this.running) {
+        this.raf = requestAnimationFrame(this.tick);
+      }
+    },
+    evaluate: function() {
       var activeElement;
 
       try {
@@ -24,29 +33,29 @@ define([
         activeElement = null;
       }
 
-      if (activeElement) {
-        var elementName = utils.elementName(activeElement);
-        if (activeElement !== this.document.body && this.lastElementName !== elementName) {
-          this.lastElementName = elementName;
-          if (this.callback) {
-            this.callback(elementName, activeElement);
-          } else {
-            this.history.push(elementName);
-          }
-        }
+      if (!activeElement) {
+        return;
       }
 
-      if (this.running) {
-        this.raf = requestAnimationFrame(this.tick);
+      var elementName = utils.elementName(activeElement);
+      if (activeElement === this.document.body || this.lastElementName === elementName) {
+        return;
+      }
+
+      this.lastElementName = elementName;
+      if (this.callback) {
+        this.callback(elementName, activeElement);
+      } else {
+        this.history.push(elementName);
       }
     },
 
-    observe: function(callback) {
+    observe: function(callback, externalEvaluation) {
       this.lastElementName = null;
       this.callback = callback || null;
       this.history = [];
       this.running = true;
-      this.tick();
+      !externalEvaluation && this.tick();
     },
     terminate: function() {
       this.running = false;

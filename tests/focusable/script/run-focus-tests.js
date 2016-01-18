@@ -212,7 +212,6 @@ define([
     .then(runTabbingTest)
     .then(wait)
     .then(prepareResult)
-    // .then(function() { return tabsequence.results })
     .then(null, function(error) {
       /*eslint-disable no-console */
       console.error(error);
