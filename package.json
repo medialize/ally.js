@@ -68,10 +68,7 @@
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}') && jscs $(glob-cli '{src,test,build,tests/focusable}')",
     "lint:md": "node build/markdownlint.js",
     "lint:md:js": "eslint --ext md docs",
-    "ci:test": "npm-run-all --sequential lint:js ci:build:amd test:browserstack publish:lcov",
-    "ci:build:amd": "npm-run-all --sequential clean build:pre build:amd",
-    "ci:build": "npm-run-all --sequential clean build",
-    "ci:build:website": "npm-run-all --sequential lint:md ci:build:amd build:website",
+    "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website",
     "precommit": "npm run lint",
     "postmerge": "npm install"
   },

@@ -2,4 +2,27 @@ language: node_js
 sudo: false
 node_js:
 - '4.1'
-script: npm run ci:test
+script: npm run ci
+# https://docs.travis-ci.com/user/deployment/s3
+# https://github.com/travis-ci/dpl
+deploy:
+  - provider: s3
+    bucket: "ally.js"
+    endpoint: "ally.js.amazonaws.com"
+    region: "eu-central-1"
+    acl: public_read
+    local_dir: web
+    upload-dir: "travis/${TRAVIS_BUILD_NUMBER}/web"
+    skip_cleanup: true
+    on:
+      all_branches: true
+  - provider: s3
+    bucket: "ally.js"
+    endpoint: "ally.js.amazonaws.com"
+    region: "eu-central-1"
+    acl: public_read
+    local_dir: reports
+    upload-dir: "travis/${TRAVIS_BUILD_NUMBER}/reports"
+    skip_cleanup: true
+    on:
+      all_branches: true
