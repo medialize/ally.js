@@ -21,7 +21,9 @@ This *Browser Bug Workaround* targets an issue in Safari and Firefox **on Mac OS
 var handle = ally.fix.pointerFocusInput();
 // disengage the workaround
 handle.disengage();
+```
 
+```js
 // engage the workaround only for a sub-tree
 var handle = ally.fix.pointerFocusInput({
   context: '#element-to-fix',

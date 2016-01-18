@@ -23,7 +23,7 @@ Consult the data tables [what browsers consider focusable](../../data-tables/foc
 var elements = ally.query.focusable({
   context: '.within-filter-selector',
   includeContext: true,
-  strategy: "quick",
+  strategy: 'quick',
 });
 ```
 

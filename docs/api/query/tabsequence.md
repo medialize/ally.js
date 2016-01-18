@@ -25,7 +25,7 @@ The [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-
 var sequence = ally.query.tabsequence({
   context: '.within-filter-selector',
   includeContext: true,
-  strategy: "quick",
+  strategy: 'quick',
 });
 ```
 

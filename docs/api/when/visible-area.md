@@ -23,7 +23,7 @@ The callback may return `false` to indicate that another predicate (handled by t
 var handle = ally.when.visibleArea({
   context: '#element-to-focus',
   callback: function(element) {
-    console.log("element is visible", element)
+    console.log('element is visible', element);
   },
 });
 

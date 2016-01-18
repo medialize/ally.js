@@ -21,7 +21,7 @@ Consult the data tables [what browsers consider focusable](../../data-tables/foc
 var element = ally.query.firstTabbable({
   context: '.within-filter-selector',
   defaultToContext: true,
-  strategy: "quick",
+  strategy: 'quick',
 });
 ```
 

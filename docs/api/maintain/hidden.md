@@ -20,7 +20,7 @@ This allows an application to make sure no elements *other than the exempted* ar
 ```js
 var handle = ally.maintain.hidden({
   context: '.within-filter-selector',
-  filter: '.except-filter-selector'
+  filter: '.except-filter-selector',
 });
 
 handle.disengage();

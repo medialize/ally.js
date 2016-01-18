@@ -61,12 +61,12 @@ The modifier keys may have different names/symbols depending on operating system
 var handle = ally.when.key({
   enter: function(event, disengage) {
     // react to <kbd>Enter</kbd>
-    console.log("enter pressed on", event.target);
+    console.log('enter pressed on', event.target);
     disengage();
   },
   32: function(event, disengage) {
     // react to <kbd>Space</kbd>
-    console.log("space pressed on", event.target);
+    console.log('space pressed on', event.target);
   },
 });
 

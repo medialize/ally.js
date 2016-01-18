@@ -125,7 +125,7 @@ Linting is done automatically via git hooks by way of [husky](https://www.npmjs.
 
 Currently only a single ES6 function `Array.prototype.findIndex` is used in ally.js. Should we choose to use more ES6 functions, possibly things like `Set` and `Map`, we would have to include the [babel polyfill](http://babeljs.io/docs/usage/polyfill/) in our distribution. This step should not be taken lightly, as the polyfill is a heavyweight.
 
-```js
+```sh
 npm install babel-core
 cat node_modules/babel-core/browser-polyfill.js dist/ally.js > dist/ally.old-browser.js
 ```

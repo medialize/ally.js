@@ -26,7 +26,9 @@ Considering the following markup, clicking on the `<a>` element would focus the 
 var handle = ally.fix.pointerFocusParent();
 // disengage the workaround
 handle.disengage();
+```
 
+```js
 // engage the workaround only for a sub-tree
 var handle = ally.fix.pointerFocusParent({
   context: '#element-to-fix',

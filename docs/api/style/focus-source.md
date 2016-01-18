@@ -69,12 +69,12 @@ handle.disengage();
 handle.current(); // "key", "pointer", "script"
 
 // test if a focus source has occured before
-handle.used("key"); // true, false
+handle.used('key'); // true, false
 
 // make all focus events set a specified source
 // regardless of the identified interaction type
 // false acts as a reset
-handle.lock("pointer");
+handle.lock('pointer');
 ```
 
 ### Arguments

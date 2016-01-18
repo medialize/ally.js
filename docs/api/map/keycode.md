@@ -35,15 +35,15 @@ var map = {
   0: 48,
   1: 49,
   // ...
-  "num-0": 96,
-  "num-1": 97,
+  'num-0': 96,
+  'num-1': 97,
   // ...
 
   // Latin characters
   a: 65,
   // ...
   z: 90,
-}
+};
 ```
 
 The map knows the following keys:
@@ -62,7 +62,7 @@ The map knows the following keys:
 ## Usage
 
 ```js
-console.log("keycode of enter", ally.map.keycode.enter);
+console.log('keycode of enter', ally.map.keycode.enter);
 ```
 
 

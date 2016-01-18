@@ -25,7 +25,7 @@ var map = {
     multiple: true,
     values: ['additions', 'removals', 'text', 'all'],
   },
-}
+};
 ```
 
 ## Usage

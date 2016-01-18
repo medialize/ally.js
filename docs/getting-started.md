@@ -25,8 +25,8 @@ ally.js is made available for production use by [jsDelivr](http://www.jsdelivr.c
 ```html
 <script src="https://cdn.jsdelivr.net/ally.js/{{pkg.version}}/ally.min.js"></script>
 <script>
-  console.log("loaded ally.js in version", ally.version);
-  console.log("focusable elements", ally.query.focusable());
+  console.log('loaded ally.js in version', ally.version);
+  console.log('focusable elements', ally.query.focusable());
 </script>
 ```
 
@@ -35,8 +35,8 @@ ally.js is also available for production use by [cdnjs](https://cdnjs.com/librar
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ally.js/{{pkg.version}}/ally.min.js"></script>
 <script>
-  console.log("loaded ally.js in version", ally.version);
-  console.log("focusable elements", ally.query.focusable());
+  console.log('loaded ally.js in version', ally.version);
+  console.log('focusable elements', ally.query.focusable());
 </script>
 ```
 
@@ -56,8 +56,8 @@ bower install --save https://github.com/medialize/ally.js/releases/download/{{pk
 You can use [system-npm](https://github.com/stealjs/system-npm) to consume ally.js from [npm](https://www.npmjs.com/package/ally.js) in SystemJS:
 
 ```js
-System.import("ally.js!npm").then(function(ally) {
-  console.log("loaded ally.js in version", ally.version);
+System.import('ally.js!npm').then(function(ally) {
+  console.log('loaded ally.js in version', ally.version);
 });
 ```
 
@@ -67,8 +67,8 @@ System.import("ally.js!npm").then(function(ally) {
 ```html
 <script src="path/to/ally.min.js"></script>
 <script>
-  console.log("loaded ally.js in version", ally.version);
-  console.log("focusable elements", ally.query.focusable());
+  console.log('loaded ally.js in version', ally.version);
+  console.log('focusable elements', ally.query.focusable());
 </script>
 ```
 
@@ -79,18 +79,18 @@ The production UMD bundle contains all dependencies, allowing you to require all
 
 ```js
 var ally = require('ally.js');
-console.log("loaded ally.js in version", ally.version);
-console.log("focusable elements", ally.query.focusable());
+console.log('loaded ally.js in version', ally.version);
+console.log('focusable elements', ally.query.focusable());
 ```
 
 Alternatively you can use only specific modules provided by ally.js:
 
 ```js
 var version = require('ally.js/version');
-console.log("loaded version of ally.js", version);
+console.log('loaded version of ally.js', version);
 
 var queryFocusable = require('ally.js/query/focusable');
-console.log("focusable elements", queryFocusable());
+console.log('focusable elements', queryFocusable());
 ```
 
 * **NOTE:** The CommonJS modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
@@ -102,10 +102,10 @@ ally.js is authored in ES6 and its modules are accessible in the `src` directory
 
 ```js
 import version from 'ally.js/src/version';
-console.log("loaded version of ally.js", version);
+console.log('loaded version of ally.js', version);
 
 import queryFocusable from 'ally.js/src/query/focusable';
-console.log("focusable elements", queryFocusable());
+console.log('focusable elements', queryFocusable());
 ```
 
 * **NOTE:** The ES6 source modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
@@ -119,12 +119,12 @@ The production UMD bundle contains all dependencies, allowing you to require all
 require.config({
   paths: {
     'ally.js': 'node_modules/ally.js/ally.min',
-  }
+  },
 });
 
 require(['ally.js'], function(ally) {
-  console.log("loaded ally.js in version", ally.version);
-  console.log("focusable elements", ally.query.focusable());
+  console.log('loaded ally.js in version', ally.version);
+  console.log('focusable elements', ally.query.focusable());
 });
 ```
 
@@ -140,7 +140,7 @@ require.config({
     'domtokenlist-shim': 'node_modules/domtokenlist-shim/dist/domtokenlist',
     'css.escape': 'node_modules/css.escape/css.escape',
     'platform': 'node_modules/platform/platform',
-  }
+  },
 });
 ```
 
@@ -148,11 +148,11 @@ Now you can import specific modules using
 
 ```js
 require(['ally.js/version'], function(version) {
-  console.log("loaded version of ally.js", version);
+  console.log('loaded version of ally.js', version);
 });
 
 require(['ally.js/query/focusable'], function(queryFocusable) {
-  console.log("focusable elements", queryFocusable());
+  console.log('focusable elements', queryFocusable());
 });
 ```
 

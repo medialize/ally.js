@@ -40,8 +40,8 @@ function engage() {
   return {
     disengage: function() {
       component.disengage();
-    }
-  }
+    },
+  };
 }
 ```
 
@@ -65,8 +65,8 @@ function engage(options) {
       context.forEach(function(element) {
         component.disengage(element);
       });
-    }
-  }
+    },
+  };
 }
 ```
 

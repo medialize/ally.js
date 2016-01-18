@@ -37,7 +37,9 @@ Considering the following markup, clicking on one of the `<span>` elements would
 var handle = ally.fix.pointerFocusChildren();
 // disengage the workaround
 handle.disengage();
+```
 
+```js
 // engage the workaround only for a sub-tree
 var handle = ally.fix.pointerFocusChildren({
   context: '#element-to-fix',
