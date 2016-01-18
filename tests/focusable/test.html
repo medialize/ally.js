@@ -35,7 +35,7 @@
     window.nestedDocuments = {};
     window.registerNestedDocument = function(namespace, _document) {
       if (!namespace) {
-        console.warn('nested document without namespace', _document);
+        window.console && console.warn('nested document without namespace', _document);
       }
 
       window.nestedDocuments[namespace] = _document;
@@ -357,7 +357,7 @@
         }
 
         if (!document.body.createShadowRoot) {
-          console.log('Shadow DOM not supported');
+          window.console && console.log('Shadow DOM not supported');
           return;
         }
 
@@ -906,7 +906,7 @@
       [].forEach.call(document.querySelectorAll('data-label'), function(element) {
         var label = element.getAttribute('data-label');
         if (map[label]) {
-          console.warn('duplicate label', label);
+          window.console && console.warn('duplicate label', label);
         }
 
         map[label] = true;
