@@ -26,3 +26,4 @@ deploy:
     skip_cleanup: true
     on:
       all_branches: true
+after_deploy: node build/report-deployment.js

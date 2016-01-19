@@ -68,7 +68,7 @@
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}') && jscs $(glob-cli '{src,test,build,tests/focusable}')",
     "lint:md": "node build/markdownlint.js",
     "lint:md:js": "eslint --ext md docs",
-    "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website",
+    "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
     "precommit": "npm run lint",
     "postmerge": "npm install"
   },
@@ -87,6 +87,7 @@
     "eslint-plugin-markdown": "^1.0.0-beta.1",
     "exorcist": "^0.4.0",
     "gh-pages": "^0.8.0",
+    "github": "^0.2.4",
     "glob": "^6.0.4",
     "glob-cli": "^1.0.0",
     "handlebars": "^4.0.5",
