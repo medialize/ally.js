@@ -1,6 +1,6 @@
 {
   "name": "ally.js",
-  "version": "1.1.0-beta.2",
+  "version": "1.1.0-beta.3",
   "description": "JavaScript library to help web applications with accessibility concerns",
   "main": "ally.min.js",
   "npmName": "ally.js",
