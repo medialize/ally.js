@@ -13,9 +13,10 @@ import canFocusScrollBody from '../supports/focus-scroll-body';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
 import canFocusSummary from '../supports/focus-summary';
-import canFocusSvgMethod from '../supports/svg-focus-method';
+import canFocusSvg from '../supports/focus-svg';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
+import svgFocusMethod from '../supports/svg-focus-method';
 
 export default memorizeResult(function() {
   return {
@@ -32,8 +33,9 @@ export default memorizeResult(function() {
     canFocusScrollContainer: canFocusScrollContainer(),
     canFocusScrollContainerWithoutOverflow: canFocusScrollContainerWithoutOverflow(),
     canFocusSummary: canFocusSummary(),
-    canFocusSvgMethod: canFocusSvgMethod(),
+    canFocusSvg: canFocusSvg(),
     canFocusTable: canFocusTable(),
     canFocusVideoWithoutControls: canFocusVideoWithoutControls(),
+    svgFocusMethod: svgFocusMethod(),
   };
 });

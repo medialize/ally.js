@@ -2,20 +2,20 @@
 import memorizeResult from '../supports/memorize-result';
 import canFocusAudioWithoutControls from '../supports/focus-audio-without-controls';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import canFocusSvgMethod from '../supports/svg-focus-method';
 import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusSummary from '../supports/focus-summary';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
+import svgFocusMethod from '../supports/svg-focus-method';
 
 export default memorizeResult(function() {
   return {
     canFocusAudioWithoutControls: canFocusAudioWithoutControls(),
     canFocusVideoWithoutControls: canFocusVideoWithoutControls(),
-    canFocusSvgMethod: canFocusSvgMethod(),
     canFocusTable: canFocusTable(),
     canFocusFieldset: canFocusFieldset(),
     canFocusSummary: canFocusSummary(),
     cssShadowPiercingDeepCombinator: cssShadowPiercingDeepCombinator(),
+    svgFocusMethod: svgFocusMethod(),
   };
 });

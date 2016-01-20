@@ -45,9 +45,10 @@ define(function(require) {
     canFocusScrollBody: require('ally/supports/focus-scroll-body')(),
     canFocusScrollContainer: require('ally/supports/focus-scroll-container')(),
     canFocusScrollContainerWithoutOverflow: require('ally/supports/focus-scroll-container-without-overflow')(),
-    canFocusSvgMethod: require('ally/supports/svg-focus-method')(),
+    canFocusSvg: require('ally/supports/focus-svg')(),
     canFocusoutEvent: require('ally/supports/focusout-event')(),
     cssShadowPiercingDeepCombinator: require('ally/supports/css-shadow-piercing-deep-combinator')(),
+    svgFocusMethod: require('ally/supports/svg-focus-method')(),
     tabsequenceSortsAreaAtImagePosition: require('ally/supports/tabsequence-area-at-img-position')(),
   };
 

@@ -122,7 +122,7 @@ export default function(element, except = {
   }
 
   if (nodeName === 'svg') {
-    if (!supports.canFocusSvgMethod) {
+    if (!supports.svgFocusMethod) {
       // Firefox and IE supports.cannot focus SVG elements because SVGElement.prototype.focus is missing
       return false;
     }
@@ -135,7 +135,7 @@ export default function(element, except = {
   if (element.matches('svg a[*|href]')) {
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox supports.cannot focus <svg> child elements from script
-    return supports.canFocusSvgMethod;
+    return supports.svgFocusMethod;
   }
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
