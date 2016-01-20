@@ -5,6 +5,7 @@ define([
   '../helper/test-iframe-browser-data',
   '../helper/browser-focusable-data',
   'platform',
+  'ally/is/focus-relevant',
   'ally/is/focusable',
   'ally/is/tabbable',
   'ally/is/only-tabbable',
@@ -17,6 +18,7 @@ define([
   FocusableTestFrame,
   focusableTestData,
   platform,
+  isFocusRelevant,
   isFocusable,
   isTabbable,
   isOnlyTabbable,
@@ -108,6 +110,8 @@ define([
         var focusable = Boolean(element.focusable);
         var tabbable = focusable && Boolean(element.tabbable);
         var onlyTabbable = !focusable && Boolean(element.tabbable);
+        var focusRelevant = Boolean(focusable || onlyTabbable
+          || element.scriptFocus && element.scriptFocus.redirected);
 
         // evaluated state
         var _element = framed.getElement(label);
@@ -115,10 +119,15 @@ define([
           this.skip('element not found');
         }
 
+        var _focusRelevant = isFocusRelevant(_element);
         var _focusable = isFocusable(_element);
         var _tabbable = _focusable && isTabbable(_element);
         var _onlyTabbable = isOnlyTabbable(_element);
 
+        // focus-relevant is allowed to produce false-positives
+        // as it is only used as a pre-filter
+        var okFocusRelevant = _focusRelevant === focusRelevant || _focusRelevant && !focusRelevant;
+        expect(okFocusRelevant).to.equal(true, 'is/focus-relevant');
         expect(_focusable).to.equal(focusable, 'is/focusable');
         expect(_tabbable).to.equal(tabbable, 'is/tabbable');
         expect(_onlyTabbable).to.equal(onlyTabbable, 'is/only-tabbable');

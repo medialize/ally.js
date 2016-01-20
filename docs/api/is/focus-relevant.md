@@ -5,10 +5,12 @@ tags: argument-list
 
 # ally.is.focusRelevant
 
-Determines if an element is considered focusable by script.
+Determines if an element has any relevance to focus management.
 
 
 ## Description
+
+This module is a pre-filter for [`ally.is.focusable`](focusable.md), [`ally.is.tabbable`](tabbable.md), [`ally.is.onlyTabbable`](only-tabbable.md) and [`ally.get.focusRedirectTarget`](../get/focus-redirect-target.md). Elements may be considered focus-relevant, even though they do not in fact be focusable, tabbable, only-tabbable or redirect focus given their current conditions. But any element that is focusable, tabbable, only-tabbable or redirects focus *is* focus-relevant.
 
 Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
 
@@ -47,6 +49,7 @@ Boolean, `true` if the element is focus relevant.
 * Since `v#master` the Shadow DOM hosts are considered focus-relevant, but *not* focusable.
 * Since `v#master` scrollable containers are properly identified in Internet Explorer.
 * Since `v#master` all `<area>` elements are considered focus-relevant.
+* Since `v#master` every element that is either focusable, keyboard focusable, only tabbable or redirects focus is considered focus-relevant.
 
 
 ## Notes

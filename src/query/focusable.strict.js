@@ -7,43 +7,30 @@ import isFocusRelevant from '../is/focus-relevant';
 import isOnlyTabbable from '../is/only-tabbable';
 import getDocument from '../util/get-document';
 
-// see https://developer.mozilla.org/en-US/docs/Web/API/NodeFilter
-const FocusableFilter = function(node) {
-  if (node.shadowRoot) {
-    // return ShadowRoot elements regardless of them being focusable,
-    // so they can be walked recursively later
-    return NodeFilter.FILTER_ACCEPT;
-  }
+function createFilter(condition) {
+  // see https://developer.mozilla.org/en-US/docs/Web/API/NodeFilter
+  const filter = function(node) {
+    if (node.shadowRoot) {
+      // return ShadowRoot elements regardless of them being focusable,
+      // so they can be walked recursively later
+      return NodeFilter.FILTER_ACCEPT;
+    }
 
-  if (isFocusable(node)) {
-    // finds elements that could have been found by document.querySelectorAll()
-    return NodeFilter.FILTER_ACCEPT;
-  }
+    if (condition(node)) {
+      // finds elements that could have been found by document.querySelectorAll()
+      return NodeFilter.FILTER_ACCEPT;
+    }
 
-  return NodeFilter.FILTER_SKIP;
-};
-// IE requires a function, Browsers require {acceptNode: function}
-// see http://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
-FocusableFilter.acceptNode = FocusableFilter;
+    return NodeFilter.FILTER_SKIP;
+  };
+  // IE requires a function, Browsers require {acceptNode: function}
+  // see http://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
+  filter.acceptNode = filter;
+  return filter;
+}
 
-// see https://developer.mozilla.org/en-US/docs/Web/API/NodeFilter
-const PossiblyFocusableFilter = function(node) {
-  if (node.shadowRoot) {
-    // return ShadowRoot elements regardless of them being focusable,
-    // so they can be walked recursively later
-    return NodeFilter.FILTER_ACCEPT;
-  }
-
-  if (isOnlyTabbable(node) || isFocusRelevant(node)) {
-    // finds elements that could have been found by document.querySelectorAll()
-    return NodeFilter.FILTER_ACCEPT;
-  }
-
-  return NodeFilter.FILTER_SKIP;
-};
-// IE requires a function, Browsers require {acceptNode: function}
-// see http://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
-PossiblyFocusableFilter.acceptNode = PossiblyFocusableFilter;
+const FocusableFilter = createFilter(isFocusable);
+const PossiblyFocusableFilter = createFilter(isFocusRelevant);
 
 export default function queryFocusableStrict({context, includeContext, strategy} = {}) {
   if (!context) {

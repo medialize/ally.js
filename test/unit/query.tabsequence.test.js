@@ -98,7 +98,7 @@ define([
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
           platform.is.GECKO && '#object-svg',
-          supports.canFocusSvgMethod && '#svg-link',
+          supports.svgFocusMethod && '#svg-link',
           '#audio-controls',
           '#input',
           '#span-contenteditable',

@@ -89,12 +89,12 @@ define([
       },
       'img with usemap': function() {
         var element = document.getElementById('img-usemap');
-        expect(isFocusRelevant(element)).to.equal(false);
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusRedirectImgUsemap);
       },
       'img with usemap and tabindex': function() {
         var element = document.getElementById('img-usemap');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusImgUsemapTabindex);
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusRedirectImgUsemap || supports.canFocusImgUsemapTabindex);
       },
       'object element referencing svg': function() {
         var element = document.getElementById('object-svg');
@@ -127,12 +127,12 @@ define([
       },
       'label element': function() {
         var element = document.getElementById('label');
-        expect(isFocusRelevant(element)).to.equal(false);
+        expect(isFocusRelevant(element)).to.equal(true);
       },
       'label element with tabindex="-1"': function() {
         var element = document.getElementById('label');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusLabelTabindex);
+        expect(isFocusRelevant(element)).to.equal(true);
       },
       'audio element': function() {
         var element = document.getElementById('audio');
@@ -144,16 +144,16 @@ define([
       },
       'svg element': function() {
         var element = document.getElementById('svg');
-        expect(isFocusRelevant(element)).to.equal(false);
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg);
       },
       'svg element with tabindex="-1"': function() {
         var element = document.getElementById('svg');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvgMethod);
+        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg || supports.canFocusSvgTabindexAttribute);
       },
       'svg link element': function() {
         var element = document.getElementById('svg-link');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvgMethod);
+        expect(isFocusRelevant(element)).to.equal(true);
       },
       'embed element': function() {
         var element = document.getElementById('embed');

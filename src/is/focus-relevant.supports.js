@@ -9,6 +9,8 @@ import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusObjectSvg from '../supports/focus-object-svg';
 import canFocusObjectSwf from '../supports/focus-object-swf';
+import canFocusRedirectImgUsemap from '../supports/focus-redirect-img-usemap';
+import canFocusRedirectLegend from '../supports/focus-redirect-legend';
 import canFocusScrollBody from '../supports/focus-scroll-body';
 import canFocusScrollContainer from '../supports/focus-scroll-container';
 import canFocusScrollContainerWithoutOverflow from '../supports/focus-scroll-container-without-overflow';
@@ -30,6 +32,8 @@ export default memorizeResult(function() {
     canFocusLabelTabindex: canFocusLabelTabindex(),
     canFocusObjectSvg: canFocusObjectSvg(),
     canFocusObjectSwf: canFocusObjectSwf(),
+    canFocusRedirectImgUsemap: canFocusRedirectImgUsemap(),
+    canFocusRedirectLegend: canFocusRedirectLegend(),
     canFocusScrollBody: canFocusScrollBody(),
     canFocusScrollContainer: canFocusScrollContainer(),
     canFocusScrollContainerWithoutOverflow: canFocusScrollContainerWithoutOverflow(),

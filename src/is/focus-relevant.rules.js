@@ -5,6 +5,7 @@
 
 import '../prototype/svgelement.prototype.focus';
 import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
+import polyfillSVGElementPrototypeFocus from '../prototype/svgelement.prototype.focus';
 import getParents from '../get/parents';
 import getWindow from '../util/get-window';
 import isValidTabindex from './valid-tabindex';
@@ -43,15 +44,18 @@ export default function(element, except = {
     return true;
   }
 
-  if (nodeName === 'label' && !supports.canFocusLabelTabindex) {
-    // <label tabindex="0"> is only tabbable in Firefox, not script-focusable
-    // there's no way to make an element focusable other than by adding a tabindex,
-    // and focus behavior of the label element seems hard-wired to ignore tabindex
-    // in some browsers (like Gecko, Blink and WebKit)
-    return false;
+  if (nodeName === 'legend' && supports.canFocusRedirectLegend) {
+    // specifics filtered in focusable.rules
+    return true;
+  }
+
+  if (nodeName === 'label') {
+    // specifics filtered in focusable.rules
+    return true;
   }
 
   if (nodeName === 'area') {
+    // specifics filtered in focusable.rules
     return true;
   }
 
@@ -105,10 +109,10 @@ export default function(element, except = {
 
   const validTabindex = isValidTabindex(element);
 
-  if (nodeName === 'img' && element.hasAttribute('usemap') && validTabindex) {
+  if (nodeName === 'img' && element.hasAttribute('usemap')) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
     // it appears the tabindex is overruled so focus is still forwarded to the <map>
-    return supports.canFocusImgUsemapTabindex;
+    return validTabindex && supports.canFocusImgUsemapTabindex || supports.canFocusRedirectImgUsemap;
   }
 
   if (supports.canFocusTable && (nodeName === 'table' || nodeName === 'td')) {
@@ -121,21 +125,24 @@ export default function(element, except = {
     return true;
   }
 
+  const focusableAttribute = element.getAttribute('focusable');
+
   if (nodeName === 'svg') {
-    if (!supports.svgFocusMethod) {
-      // Firefox and IE supports.cannot focus SVG elements because SVGElement.prototype.focus is missing
-      return false;
-    }
-    // NOTE: in Chrome this would be something like 'svg, svg *,' as *every* svg element with a focus event listener is focusable
-    return validTabindex;
+    return validTabindex || supports.canFocusSvg
+      // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
+      || Boolean(supports.canFocusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
   }
 
   const _window = getWindow(element);
   polyfillElementPrototypeMatches(_window);
   if (element.matches('svg a[*|href]')) {
-    // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-    // Firefox supports.cannot focus <svg> child elements from script
-    return supports.svgFocusMethod;
+    return true;
+  }
+
+  polyfillSVGElementPrototypeFocus(_window);
+  if (supports.canFocusSvgFocusableAttribute && element.ownerSVGElement) {
+    // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
+    return Boolean(focusableAttribute && focusableAttribute === 'true');
   }
 
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
