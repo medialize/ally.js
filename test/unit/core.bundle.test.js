@@ -2,8 +2,7 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/test-worker',
-  'ally/version',
-], function(registerSuite, expect, TestWorker, version) {
+], function(registerSuite, expect, TestWorker) {
 
   registerSuite(function() {
     var worker;
@@ -33,7 +32,7 @@ define([
         worker.run('../../dist/ally.min.js', function(_module) {
           return _module.version;
         }).test(deferred, function(_module) {
-          expect(_module).to.equal(version);
+          expect(_module).to.be.a('string');
         });
       },
     };
