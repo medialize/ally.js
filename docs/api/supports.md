@@ -37,6 +37,7 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | focus-summary | boolean | true if the browser implements `<details>` and `<summary>` is focusable |
 | focus-svg | boolean | true if `<svg>` is focusable |
 | focus-svg-focusable-attribute | boolean | true if `<text focusable="true">` is focusable |
+| focus-svg-tabindex-attribute | boolean | true if `<text tabindex="-1">` is focusable |
 | focus-tabindex-trailing-characters | boolean | true if `<div tabindex="3x">` is focusable |
 | focus-table | boolean | true if `<table>`, `<tr>` and `<td>` are focusable |
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
