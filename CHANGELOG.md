@@ -18,7 +18,7 @@ The following lists show the changes to the library grouped by domain.
 
 #### Dependencies
 
-* upgrading to [css.escape](https://github.com/mathiasbynens/CSS.escape) v1.3.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
+* upgrading to [css.escape](https://github.com/mathiasbynens/CSS.escape) v1.5.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
 * upgrading to [platform.js](https://github.com/bestiejs/platform.js) v1.3.1
 * adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9
 
