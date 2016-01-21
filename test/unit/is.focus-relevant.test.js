@@ -31,6 +31,13 @@ define([
           isFocusRelevant(null);
         }).to.throw(TypeError, 'is/focus-relevant requires an argument of type Element');
       },
+      '.rules() and .except()': function() {
+        var element = document.getElementById('inert-div');
+        expect(isFocusRelevant.rules({
+          context: element,
+        })).to.equal(false, '.rules()');
+        expect(isFocusRelevant.rules.except({})(element)).to.equal(false, '.rules.except()');
+      },
       'inert div': function() {
         var element = document.getElementById('inert-div');
         expect(isFocusRelevant(element)).to.equal(false);

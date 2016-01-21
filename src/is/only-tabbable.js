@@ -1,16 +1,15 @@
 
+import contextToElement from '../util/context-to-element';
 import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 import platform from '../util/platform';
 
-export default function(element) {
-  if (element === document) {
-    element = document.documentElement;
-  }
-
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/only-tabbable requires an argument of type Element');
-  }
+function isOnlyTabbableRules({ context } = {}) {
+  const element = contextToElement({
+    message: 'is/only-tabbable requires an argument of type Element',
+    resolveDocument: true,
+    context,
+  });
 
   const nodeName = element.nodeName.toLowerCase();
   const tabindex = tabindexValue(element);
@@ -42,3 +41,20 @@ export default function(element) {
 
   return false;
 }
+
+// bind exceptions to an iterator callback
+isOnlyTabbableRules.except = function(except = {}) {
+  const isOnlyTabbable = function(context) {
+    return isOnlyTabbableRules({
+      context,
+      except,
+    });
+  };
+
+  isOnlyTabbable.rules = isOnlyTabbableRules;
+  return isOnlyTabbable;
+};
+
+// provide isOnlyTabbable(context) as default iterator callback
+const isOnlyTabbable = isOnlyTabbableRules.except({});
+export default isOnlyTabbable;

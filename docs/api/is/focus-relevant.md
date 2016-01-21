@@ -28,6 +28,13 @@ var isFocusRelevant = ally.is.focusRelevant(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.focusRelevant.rules(options)`:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+
 ### Returns
 
 Boolean, `true` if the element is focus relevant.
@@ -50,6 +57,7 @@ Boolean, `true` if the element is focus relevant.
 * Since `v#master` scrollable containers are properly identified in Internet Explorer.
 * Since `v#master` all `<area>` elements are considered focus-relevant.
 * Since `v#master` every element that is either focusable, keyboard focusable, only tabbable or redirects focus is considered focus-relevant.
+* Since `v#master` exceptions can be passed to `ally.is.focusRelevant.rules(options)`.
 
 
 ## Notes

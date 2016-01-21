@@ -28,6 +28,13 @@ var isOnlyTabbable = ally.is.onlyTabbable(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.onlyTabbable.rules(options)`:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+
 ### Returns
 
 Boolean, `true` if the element is only tabbable.
@@ -43,6 +50,8 @@ Boolean, `true` if the element is only tabbable.
 ## Changes
 
 * Since `v#master` all `<object>` elements in Internet Explorer are not considered only tabbable anymore.
+* Since `v#master` exceptions can be passed to `ally.is.onlyTabbable.rules(options)`.
+
 
 ## Notes
 
