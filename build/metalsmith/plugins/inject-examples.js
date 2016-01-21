@@ -1,5 +1,6 @@
 
 const path = require('path');
+const URI = require('urijs');
 const cheerio = require('cheerio');
 const utils = require('./utils.js');
 
@@ -16,7 +17,7 @@ function transform($, data, examples) {
     $label.remove();
     const $link = $li.find('a');
     const file = $link.attr('href');
-    const target = path.resolve(data.path.href, file);
+    const target = new URI(file, data.path.href).toString();
     const $example = examples[target];
     if (!$example) {
       /* eslint-disable no-console */
