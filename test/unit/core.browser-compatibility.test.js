@@ -68,12 +68,8 @@ define([
     var ignoreTabsequencePattern = /svg/;
     var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
-    var ignorePattern = /^(object|embed)/;
+    var ignorePattern = /(^|-> )(ignore|html|body|object|embed|param)/;
     var skipUntestable = keysMap([
-      // ignored elements
-      'ignore',
-      'html',
-      'body',
       // known mismatch
       'iframe',
       'iframe[src=svg]',

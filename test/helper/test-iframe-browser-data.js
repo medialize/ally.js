@@ -22,11 +22,10 @@ define([
   BrowserDataFrame.prototype.constructor = BrowserDataFrame;
 
   BrowserDataFrame.prototype.getElement = function(label) {
-    var _label = label.split(' -> ');
     var _document = this.document;
 
+    var _label = label.split(' -> ');
     if (_label.length === 2) {
-      label = _label[1];
       _document = this._getDocument(_label[0]);
     }
 
