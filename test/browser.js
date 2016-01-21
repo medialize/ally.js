@@ -1,5 +1,5 @@
 define([
-  './intern.base-config.js',
+  './intern',
 ], function(config) {
 
   delete config.reporters;

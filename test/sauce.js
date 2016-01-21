@@ -1,5 +1,5 @@
 define([
-  './intern.base-config.js',
+  './intern',
 ], function(config) {
 
   // https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/

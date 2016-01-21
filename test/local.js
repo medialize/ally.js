@@ -1,5 +1,5 @@
 define([
-  './intern.base-config.js',
+  './intern',
 ], function(config) {
 
   // NOTE: engaged via ./run-local.js to start the ChromeDriver
