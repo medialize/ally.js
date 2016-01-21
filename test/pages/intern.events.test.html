@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>capability</title>
+</head>
+<body>
+
+  <input id="first">
+  <input id="second">
+
+  <script src="../../node_modules/platform/platform.js"></script>
+  <script>
+    window.events = [];
+    function logEvent(event) {
+      events.push(event.type + ':' + (event.target.id || event.target.nodeName));
+    }
+
+    [
+      'focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DOMFocusOut', 'domfocusin', 'domfocusout',
+      'mousedown', 'mouseup', 'click', 'touchstart', 'touchend',
+      'pointerdown', 'pointerup', 'MSPointerDown', 'MSPointerUp',
+      'input', 'beforeinput',
+      'keydown', 'keyup', 'keypress',
+
+    ].forEach(function(eventName) {
+      document.body.addEventListener(eventName, logEvent, true);
+    });
+  </script>
+
+</body>
+</html>

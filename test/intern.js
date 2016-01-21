@@ -130,10 +130,9 @@ define([
     ],
 
     // Functional test suite(s) to run in each browser once non-functional tests are completed
-    functionalSuites: [],
-    // functionalSuites: [
-    //   'test/functional/fix.pointer-focus-children.test.js',
-    // ],
+    functionalSuites: [
+      'test/functional/intern.events.test.js',
+    ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
     excludeInstrumentation: /^(?:tests|test|examples|node_modules|dist\/ally\.min)\//,
