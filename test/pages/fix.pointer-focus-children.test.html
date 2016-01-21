@@ -16,18 +16,86 @@
       -ms-flex: 1 1 100px;
           flex: 1 1 10px;
     }
+
+    body :focus {
+      outline: 1px solid red;
+    }
   </style>
 </head>
 <body>
+  <h1>Unhandled Flexbox Click Focus</h1>
 
-  <div id="parent-fail" tabindex="-1" class="flex">
-    <span id="target-fail">one</span>
+  <h2>Normal</h2>
+  <div id="normal-fail-target" tabindex="-1">
+    <span id="normal-fail-source">target</span>
+  </div>
+
+  <h2>Flexed Child</h2>
+  <div id="child-fail-target" tabindex="-1" class="flex">
+    <span id="child-fail-source">target</span>
     <span>two</span>
   </div>
 
-  <div id="parent-fixed" tabindex="-1" class="flex">
-    <span id="target-fixed">one</span>
-    <span>two</span>
+  <h2>Flexed Descendant</h2>
+  <div id="nested-fail-target" tabindex="-1">
+    <div id="nested-fail-wrapper" class="flex">
+      <span id="nested-fail-source">target</span>
+      <span>two</span>
+    </div>
+  </div>
+
+  <h2>Normal Redirect</h2>
+  <div id="redirect-fail-wrapper">
+    <input id="redirect-fail-target">
+    <label for="redirect-fail-target" id="redirect-fail-source">target</label>
+  </div>
+
+  <h2>Flexed Redirect</h2>
+  <div id="redirect-flexed-fail-wrapper">
+    <input id="redirect-flexed-fail-target">
+    <label for="redirect-flexed-fail-target" class="flex">
+      <span id="redirect-flexed-fail-source">target</span>
+      <span>two</span>
+    </label>
+  </div>
+
+  <hr>
+
+  <h1>Handled Flexbox Click Focus</h1>
+  <div id="engage-fix">
+    <h2>Normal</h2>
+    <div id="normal-fixed-target" tabindex="-1">
+      <span id="normal-fixed-source">target</span>
+    </div>
+
+    <h2>Flexed Child</h2>
+    <div id="child-fixed-target" tabindex="-1" class="flex">
+      <span id="child-fixed-source">target</span>
+      <span>two</span>
+    </div>
+
+    <h2>Flexed Descendant</h2>
+    <div id="nested-fixed-target" tabindex="-1">
+      <div id="nested-fixed-wrapper" class="flex">
+        <span id="nested-fixed-source">target</span>
+        <span>two</span>
+      </div>
+    </div>
+
+    <h2>Normal Redirect</h2>
+    <div id="redirect-fixed-wrapper">
+      <input id="redirect-fixed-target">
+      <label for="redirect-fixed-target" id="redirect-fixed-source">target</label>
+    </div>
+
+    <h2>Flexed Redirect</h2>
+    <div id="redirect-flexed-fixed-wrapper">
+      <input id="redirect-flexed-fixed-target">
+      <label for="redirect-flexed-fixed-target" class="flex">
+        <span id="redirect-flexed-fixed-source">target</span>
+        <span>two</span>
+      </label>
+    </div>
   </div>
 
   <script src="../../node_modules/requirejs/require.js"></script>
@@ -37,13 +105,20 @@
         ally: '../../dist/amd',
         // shims required by ally.js
         'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
         'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform',
       }
     });
 
-    require(['ally/fix/pointer-focus-children'], function(fixPointerFocusChildren) {
+    require([
+      'ally/util/platform',
+      'ally/fix/pointer-focus-children',
+    ], function(platform, fixPointerFocusChildren) {
+      window.platform = platform;
+
       fixPointerFocusChildren({
-        context: '#parent-fixed',
+        context: '#engage-fix',
       });
     });
   </script>
