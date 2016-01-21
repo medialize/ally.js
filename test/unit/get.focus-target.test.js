@@ -28,6 +28,10 @@ define([
             '<span id="none" data-label="none-inner">nested</span>',
           '</div>',
           '<label id="label-nested">label <input id="label-nested-target"></label>',
+          '<div id="flexbox-container" tabindex="-1" ',
+            'style="display: -webkit-flexbox; display: -ms-flexbox; display: flex; width: 300px;">',
+            '<div id="flexbox-child">flexed</span>',
+          '</div>',
           /*eslint-enable indent */
         ]);
       },
@@ -75,6 +79,17 @@ define([
         });
 
         expect(target.id).to.equal('label-nested-target');
+      },
+      'flexbox parent': function() {
+        var target = getFocusTarget({
+          context: '#flexbox-child',
+          except: {
+            flexbox: true,
+            scrollable: true,
+          },
+        });
+
+        expect(target.id).to.equal('flexbox-container');
       },
     };
   });
