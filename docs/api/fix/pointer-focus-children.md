@@ -64,6 +64,11 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **EXAMPLE:** [`ally.fix.pointerFocusChildren` Example](./pointer-focus-children.example.html)
 
 
+## Changes
+
+* Since `v#master` the module is executed on `mousdown` instead of `pointerdown`.
+
+
 ## Notes
 
 * **NOTE:** CSS Transitions are disabled for any styles changed on `mousedown` (and `:active`) on the erroneously focusable child elements.
