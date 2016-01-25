@@ -145,7 +145,7 @@ function isFocusRelevantRules({
 
   const _window = getWindow(element);
   polyfillElementPrototypeMatches(_window);
-  if (element.matches('svg a[*|href]')) {
+  if (element.matches('svg a') && element.hasAttribute('xlink:href')) {
     return true;
   }
 
