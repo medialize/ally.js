@@ -25,7 +25,8 @@ The following lists show the changes to the library grouped by domain.
 
 #### Browser Behavior
 
-* fixing [`ally.fix.pointerFocusChildren`]([ally/fix/pointer-focus-children]) to use focus identity exceptions - [issue #103](https://github.com/medialize/ally.js/issues/103)
+* fixing [`ally.fix.pointerFocusChildren`][ally/fix/pointer-focus-children] to use focus identity exceptions - [issue #103](https://github.com/medialize/ally.js/issues/103)
+* fixing [`ally.fix.pointerFocusInput`][ally/fix/pointer-focus-input] to properly target nested content of `<button>` and `<label>` elements
 
 #### Focusable detection
 

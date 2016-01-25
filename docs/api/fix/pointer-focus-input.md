@@ -48,6 +48,11 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **EXAMPLE:** [`ally.fix.pointerFocusInput` Example](./pointer-focus-input.example.html)
 
 
+## Changes
+
+* Since `v#master` nested elements of `<button>` and `<label>` are targeted properly.
+
+
 ## Notes
 
 * **NOTE:** In Firefox the `<label>` element causes form fields to get focus upon being clicked, even if the form field itself would not get focus because of the ominous platform conventions.
