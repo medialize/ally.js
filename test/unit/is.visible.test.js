@@ -2,9 +2,10 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/custom.fixture',
+  '../helper/supports',
   'ally/is/visible',
   'ally/supports/media/mp3',
-], function(registerSuite, expect, customFixture, isVisible, mp3) {
+], function(registerSuite, expect, customFixture, supports, isVisible, mp3) {
 
   registerSuite(function() {
     var fixture;
@@ -53,7 +54,7 @@ define([
             '<area id="disconnected-area" href="#void" shape="rect" coords="63,19,144,45">',
           '</map>',
           // unknown dimension elements
-          '<audio id="unknown-dimension-audio" controls src="' + mp3 + '"></audio>',
+          (!supports.AVOID_MEDIA && '<audio id="unknown-dimension-audio" controls src="' + mp3 + '"></audio>') || '',
           // details/summary
           '<details id="details-closed"><summary id="summary"></summary> <a href="#void" id="details-closed-link">link</a></details>',
           '<details id="details-open" open><summary id="summary"></summary> <a href="#void" id="details-open-link">link</a></details>',
@@ -93,8 +94,8 @@ define([
       'HTML5 closed details element children': function() {
         var container = document.getElementById('details-closed');
         var element = document.getElementById('details-closed-link');
-        var supports = container.open === undefined;
-        expect(isVisible(element)).to.equal(supports);
+        var _supports = container.open === undefined;
+        expect(isVisible(element)).to.equal(_supports);
       },
       'HTML5 open details element children': function() {
         var container = document.getElementById('details-open');

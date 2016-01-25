@@ -1,14 +1,12 @@
 define([
   './custom.fixture',
-  'ally/util/platform',
+  '../supports',
   'ally/supports/media/gif',
   'ally/supports/media/svg',
   'ally/supports/media/mp3',
   'ally/supports/media/mp4',
-], function(customFixture, platform, gif, svg, mp3, mp4) {
+], function(customFixture, supports, gif, svg, mp3, mp4) {
   return function(context) {
-
-    var avoidQuicktime = platform.is.WEBKIT;
 
     return customFixture([
       /*eslint-disable indent */
@@ -38,13 +36,13 @@ define([
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
       '</svg>',
-      (!avoidQuicktime && '<embed id="embed" type="video/mp4" src="' + mp4 + '" width="640" height="480">') || '',
-      (!avoidQuicktime && '<embed id="embed-tabindex-0" type="video/mp4" src="' + mp4 + '" width="640" height="480" tabindex="0">') || '',
+      (!supports.AVOID_QUICKTIME && '<embed id="embed" type="video/mp4" src="' + mp4 + '" width="640" height="480">') || '',
+      (!supports.AVOID_QUICKTIME && '<embed id="embed-tabindex-0" type="video/mp4" src="' + mp4 + '" width="640" height="480" tabindex="0">') || '',
       '<embed type="image/svg+xml" id="embed-svg" data="' + svg + '" width="200" height="50">',
       '<embed type="image/svg+xml" id="embed-tabindex-svg" tabindex="-1" data="' + svg + '" width="200" height="50">',
       // interactive content
-      '<audio id="audio" src="' + mp3 + '"></audio>',
-      '<audio id="audio-controls" controls src="' + mp3 + '"></audio>',
+      (!supports.AVOID_MEDIA && '<audio id="audio" src="' + mp3 + '"></audio>') || '',
+      (!supports.AVOID_MEDIA && '<audio id="audio-controls" controls src="' + mp3 + '"></audio>') || '',
       // input elements
       '<label id="label">text</label>',
       '<input type="text" id="input">',

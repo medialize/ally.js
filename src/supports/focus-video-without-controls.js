@@ -7,7 +7,11 @@ export default memorizeResult(() => detectFocus({
   name: 'can-focus-video-without-controls',
   element: 'video',
   mutate: function(element) {
-    // invalid media file can trigger warning in console, data-uri to prevent HTTP request
-    element.setAttribute('src', mp4);
+    try {
+      // invalid media file can trigger warning in console, data-uri to prevent HTTP request
+      element.setAttribute('src', mp4);
+    } catch(e) {
+      // IE9 may throw "Error: Not implemented"
+    }
   },
 }));

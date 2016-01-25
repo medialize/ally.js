@@ -140,6 +140,10 @@ define([
         expect(element.style.pointerEvents).to.equal('', 'after disable undo');
       },
       'disable removes video controls': function() {
+        if (supports.AVOID_MEDIA) {
+          this.skip('Browser cannot deal with <video> and <audio>');
+        }
+
         var element = fixture.add('<video controls src="' + mp4 + '"></video>').firstElementChild;
         expect(element.hasAttribute('controls')).to.equal(true, 'before disable');
 

@@ -35,7 +35,6 @@ define([
           strategy: 'all',
         }).map(fixture.nodeToString);
 
-        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
         var expected = [
           '#tabindex--1',
           '#tabindex-0',
@@ -49,12 +48,12 @@ define([
           platform.is.TRIDENT && '#svg',
           supports.canFocusObjectSvg && '#object-tabindex-svg',
           '#svg-link',
-          canTestVideoEmbed && '#embed',
-          canTestVideoEmbed && '#embed-tabindex-0',
+          !supports.AVOID_QUICKTIME && '#embed',
+          !supports.AVOID_QUICKTIME && '#embed-tabindex-0',
           '#embed-svg',
           '#embed-tabindex-svg',
-          supports.canFocusAudioWithoutControls && '#audio',
-          '#audio-controls',
+          !supports.AVOID_MEDIA && supports.canFocusAudioWithoutControls && '#audio',
+          !supports.AVOID_MEDIA && '#audio-controls',
           '#input',
           '#input-tabindex--1',
           '#input-disabled',
@@ -155,7 +154,6 @@ define([
           strategy: 'all',
         }).map(fixture.nodeToString);
 
-        var canTestVideoEmbed = Boolean(document.getElementById('embed'));
         var expected = [
           '#tabindex--1',
           '#tabindex-0',
@@ -168,12 +166,12 @@ define([
           supports.canFocusObjectSvg && '#object-svg',
           supports.canFocusObjectSvg && '#object-tabindex-svg',
           '#svg-link',
-          canTestVideoEmbed && '#embed',
-          canTestVideoEmbed && '#embed-tabindex-0',
+          !supports.AVOID_QUICKTIME && '#embed',
+          !supports.AVOID_QUICKTIME && '#embed-tabindex-0',
           '#embed-svg',
           '#embed-tabindex-svg',
-          supports.canFocusAudioWithoutControls && '#audio',
-          '#audio-controls',
+          !supports.AVOID_MEDIA && supports.canFocusAudioWithoutControls && '#audio',
+          !supports.AVOID_MEDIA && '#audio-controls',
           '#input',
           '#input-tabindex--1',
           '#input-disabled',
