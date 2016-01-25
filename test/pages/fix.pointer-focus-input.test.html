@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Input Browser Bug</title>
+  <style>
+    .flex {
+      display: -webkit-flexbox;
+      display:     -ms-flexbox;
+      display:            flex;
+      width: 300px;
+    }
+
+    .flex > span {
+      display: block;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 10px;
+    }
+
+    body :focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unhandled Input Focus</h1>
+
+  <h2>Button</h2>
+  <button type="button" id="button-fail-source">button</button>
+
+  <h2>Button Nested</h2>
+  <button type="button" id="nested-button-fail-target">
+    <span id="nested-button-fail-source">button</span>
+  </button>
+
+  <h2>Input Button</h2>
+  <input type="button" id="input-button-fail-source" value="button">
+
+  <h2>Checkbox</h2>
+  <input type="checkbox" id="checkbox-fail-source">
+
+  <h2>Checkbox Label</h2>
+  <input type="checkbox" id="labeled-checkbox-fail-target">
+  <label for="labeled-checkbox-fail-target" id="labeled-checkbox-fail-source">target</label>
+
+  <h2>Checkbox Label Nested</h2>
+  <input type="checkbox" id="nested-labeled-checkbox-fail-target">
+  <label for="nested-labeled-checkbox-fail-target">
+    <span id="nested-labeled-checkbox-fail-source">target</span>
+  </label>
+
+  <h2>Slider</h2>
+  <input type="range" min="0" max="100" id="slider-fail-source">
+
+  <h2>Radio</h2>
+  <input type="radio" name="natural" id="radio-fail-source">
+  <input type="radio" name="natural">
+
+  <hr>
+
+  <h1>Handled Input Focus</h1>
+  <div id="engage-fix">
+    <h2>Button</h2>
+    <button type="button" id="button-fixed-source">button</button>
+
+    <h2>Button Nested</h2>
+    <button type="button" id="nested-button-fixed-target">
+      <span id="nested-button-fixed-source">button</span>
+    </button>
+
+    <h2>Input Button</h2>
+    <input type="button" id="input-button-fixed-source" value="button">
+
+    <h2>Checkbox</h2>
+    <input type="checkbox" id="checkbox-fixed-source">
+
+    <h2>Checkbox Label</h2>
+    <input type="checkbox" id="labeled-checkbox-fixed-target">
+    <label for="labeled-checkbox-fixed-target" id="labeled-checkbox-fixed-source">target</label>
+
+    <h2>Checkbox Label Nested</h2>
+    <input type="checkbox" id="nested-labeled-checkbox-fixed-target">
+    <label for="nested-labeled-checkbox-fixed-target">
+      <span id="nested-labeled-checkbox-fixed-source">target</span>
+    </label>
+
+    <h2>Slider</h2>
+    <input type="range" min="0" max="100" id="slider-fixed-source">
+
+    <h2>Radio</h2>
+    <input type="radio" name="natural" id="radio-fixed-source">
+    <input type="radio" name="natural">
+  </div>
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform',
+      }
+    });
+
+    require([
+      'ally/util/platform',
+      'ally/fix/pointer-focus-input',
+    ], function(platform, fixPointerFocusInput) {
+      window.platform = platform;
+
+      fixPointerFocusInput({
+        context: '#engage-fix',
+      });
+    });
+  </script>
+</body>
+</html>

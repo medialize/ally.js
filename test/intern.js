@@ -136,6 +136,7 @@ define([
       'test/functional/intern.events.test.js',
       'test/functional/maintain.tab-focus.test.js',
       'test/functional/fix.pointer-focus-children.test.js',
+      'test/functional/fix.pointer-focus-input.test.js',
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
