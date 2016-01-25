@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Parent Browser Bug</title>
+  <style>
+    .flex {
+      display: -webkit-flexbox;
+      display:     -ms-flexbox;
+      display:            flex;
+      width: 300px;
+    }
+
+    .flex > span {
+      display: block;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 10px;
+    }
+
+    body :focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unhandled Parent Focus</h1>
+
+  <!-- would fail because buttons may not take focus, see fix/pointer-focus-input
+  <h2>Button</h2>
+  <div tabindex="-1" id="button-fail-parent">
+    <button type="button" id="button-fail-source">button</button>
+  </div>
+
+  <h2>Nested Button</h2>
+  <div tabindex="-1" id="nested-button-fail-parent">
+    <button type="button" id="nested-button-fail-target">
+      <span id="nested-button-fail-source">button</span>
+    </button>
+  </div>
+  -->
+
+  <h2>Link</h2>
+  <div tabindex="-1" id="link-fail-parent">
+    <a href="#void" id="link-fail-source">target</a>
+  </div>
+
+  <!-- does not fail because the target element has a tabindex attribute
+  <h2>Focusable</h2>
+  <div tabindex="-1" id="focusable-fail-parent">
+    <span tabindex="-1" id="focusable-fail-source">target</span>
+  </div>
+  -->
+
+  <hr>
+
+  <h1>Handled Parent Focus</h1>
+  <div id="engage-fix">
+
+    <!-- would fail because buttons may not take focus, see fix/pointer-focus-input
+    <h2>Button</h2>
+    <div tabindex="-1" id="button-fixed-parent">
+      <button type="button" id="button-fixed-source">button</button>
+    </div>
+
+    <h2>Nested Button</h2>
+    <div tabindex="-1" id="nested-button-fixed-parent">
+      <button type="button" id="nested-button-fixed-target">
+        <span id="nested-button-fixed-source">button</span>
+      </button>
+    </div>
+    -->
+
+    <h2>Link</h2>
+    <div tabindex="-1" id="link-fixed-parent">
+      <a href="#void" id="link-fixed-source">target</a>
+    </div>
+
+    <!-- does not fail because the target element has a tabindex attribute
+    <h2>Focusable</h2>
+    <div tabindex="-1" id="focusable-fixed-parent">
+      <span tabindex="-1" id="focusable-fixed-source">target</span>
+    </div>
+    -->
+  </div>
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform',
+      }
+    });
+
+    require([
+      'ally/util/platform',
+      'ally/fix/pointer-focus-parent',
+      'ally/fix/pointer-focus-input',
+    ], function(platform, fixPointerFocusParent, fixPointerFocusInput) {
+      window.platform = platform;
+
+      fixPointerFocusParent({
+        context: '#engage-fix',
+      });
+
+      fixPointerFocusParent({
+        context: '#engage-both-fix',
+      });
+
+      fixPointerFocusInput({
+        context: '#engage-both-fix',
+      });
+    });
+  </script>
+</body>
+</html>
