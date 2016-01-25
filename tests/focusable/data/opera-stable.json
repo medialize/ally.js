@@ -1,13 +1,13 @@
 {
   "platform": {
-    "description": "Opera 34.0.2036.25 (like Chrome 47.0.2526.73) on OS X 10.10.5",
+    "description": "Opera 34.0.2036.50 (like Chrome 47.0.2526.111) on OS X 10.10.5",
     "layout": "Blink",
     "manufacturer": null,
     "name": "Opera",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.25",
-    "version": "34.0.2036.25",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36 OPR/34.0.2036.50",
+    "version": "34.0.2036.50",
     "os": {
       "architecture": 32,
       "family": "OS X",
@@ -1472,7 +1472,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6125,7 +6128,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6143,7 +6148,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7944,11 +7952,11 @@
       "shadow-host input[tabindex=0]",
       "shadow-host inner-host input[tabindex=1]",
       "shadow-host inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1]",
       "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=-1] input[tabindex=0]",
       "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
       "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=0]",
       "shadow-host[tabindex=0] input[tabindex=2]",
       "shadow-host[tabindex=0] input[tabindex=0]",
       "shadow-host[tabindex=0] inner-host input[tabindex=1]",
@@ -8103,11 +8111,14 @@
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
+      "span[tabindex=0]:empty",
+      "span[tabindex=-1]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=-1]",
@@ -8181,11 +8192,13 @@
       "[tabindex=]",
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
+      "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",

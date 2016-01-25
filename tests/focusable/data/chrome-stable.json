@@ -1,13 +1,13 @@
 {
   "platform": {
-    "description": "Chrome 47.0.2526.111 on OS X 10.10.5",
+    "description": "Chrome 48.0.2564.82 on OS X 10.10.5",
     "layout": "Blink",
     "manufacturer": null,
     "name": "Chrome",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36",
-    "version": "47.0.2526.111",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36",
+    "version": "48.0.2564.82",
     "os": {
       "architecture": 32,
       "family": "OS X",
@@ -1472,7 +1472,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -2550,19 +2553,11 @@
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "fieldset[disabled][tabindex=-1] input": {
       "tabindexProperty": 0,
@@ -2580,22 +2575,12 @@
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true,
-        "tabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "tabbable": true,
-      "focusable": true
+      "scriptFocus": {}
     },
     "fieldset[disabled][tabindex=0] input": {
       "tabindexProperty": 0,
@@ -4385,37 +4370,59 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusTarget": "input[type=text]"
+        "focusable": true
       },
       "jquery": {
         "focusable": true
       },
       "scriptFocus": {
-        "redirected": "input[type=text]"
-      }
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "label[tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true
+      },
       "jquery": {
         "focusable": true
       },
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
     },
     "label[tabindex=0]": {
       "tabindexProperty": 0,
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {},
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
       "jquery": {
         "focusable": true,
         "tabbable": true
       },
-      "scriptFocus": {}
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
     },
     "link[itemprop][href]": {
       "tabindexProperty": -1,
@@ -6126,7 +6133,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6144,7 +6153,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7276,6 +7288,7 @@
     "select",
     "textarea",
     "button[type=button]",
+    "label[tabindex=0]",
     "label:has(input) input",
     "form input",
     "form[tabindex=-1] input",
@@ -7291,7 +7304,6 @@
     "fieldset:has(select) select",
     "fieldset:has(button) button",
     "fieldset:has(a) a",
-    "fieldset[disabled][tabindex=0]",
     "a[href]",
     "a[href=]",
     "img[usemap] area[href].upper",
@@ -7389,6 +7401,9 @@
       "textarea[tabindex=-1]",
       "button[type=button]",
       "button[type=button][tabindex=-1]",
+      "label[tabindex=-1]",
+      "label[tabindex=0]",
+      "label[for=label-target][tabindex=-1]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1]",
@@ -7409,8 +7424,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
-      "fieldset[disabled][tabindex=-1]",
       "a[href]",
       "a[href=]",
       "a[href][tabindex=-1]",
@@ -7550,6 +7563,9 @@
       "textarea[tabindex=-1]",
       "button[type=button]",
       "button[type=button][tabindex=-1]",
+      "label[tabindex=-1]",
+      "label[tabindex=0]",
+      "label[for=label-target][tabindex=-1]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1]",
@@ -7570,8 +7586,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
-      "fieldset[disabled][tabindex=-1]",
       "a[href]",
       "a[href=]",
       "a[href][tabindex=-1]",
@@ -7703,6 +7717,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7719,7 +7734,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
       "img[usemap] area[href].upper",
@@ -7804,6 +7818,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7820,7 +7835,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
       "img[usemap] area[href].upper",
@@ -7913,6 +7927,7 @@
       "select",
       "textarea",
       "button[type=button]",
+      "label[tabindex=0]",
       "label:has(input) input",
       "form input",
       "form[tabindex=-1] input",
@@ -7928,7 +7943,6 @@
       "fieldset:has(select) select",
       "fieldset:has(button) button",
       "fieldset:has(a) a",
-      "fieldset[disabled][tabindex=0]",
       "a[href]",
       "a[href=]",
       "img[usemap] area[href].upper",
@@ -7945,11 +7959,11 @@
       "shadow-host input[tabindex=0]",
       "shadow-host inner-host input[tabindex=1]",
       "shadow-host inner-host input[tabindex=0]",
-      "shadow-host[tabindex=-1]",
       "shadow-host[tabindex=-1] input[tabindex=2]",
       "shadow-host[tabindex=-1] input[tabindex=0]",
       "shadow-host[tabindex=-1] inner-host input[tabindex=1]",
       "shadow-host[tabindex=-1] inner-host input[tabindex=0]",
+      "shadow-host[tabindex=0]",
       "shadow-host[tabindex=0] input[tabindex=2]",
       "shadow-host[tabindex=0] input[tabindex=0]",
       "shadow-host[tabindex=0] inner-host input[tabindex=1]",
@@ -8104,11 +8118,14 @@
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
+      "span[tabindex=0]:empty",
+      "span[tabindex=-1]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=-1]",
@@ -8182,11 +8199,13 @@
       "[tabindex=]",
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
+      "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
