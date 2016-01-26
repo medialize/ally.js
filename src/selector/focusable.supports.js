@@ -6,7 +6,6 @@ import canFocusTable from '../supports/focus-table';
 import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusSummary from '../supports/focus-summary';
 import cssShadowPiercingDeepCombinator from '../supports/css-shadow-piercing-deep-combinator';
-import svgFocusMethod from '../supports/svg-focus-method';
 
 export default memorizeResult(function() {
   return {
@@ -16,6 +15,5 @@ export default memorizeResult(function() {
     canFocusFieldset: canFocusFieldset(),
     canFocusSummary: canFocusSummary(),
     cssShadowPiercingDeepCombinator: cssShadowPiercingDeepCombinator(),
-    svgFocusMethod: svgFocusMethod(),
   };
 });

@@ -27,7 +27,7 @@ export default function() {
     + (supports.canFocusFieldset ? 'fieldset,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // Firefox supports.cannot focus <svg> child elements from script
-    + (supports.svgFocusMethod ? 'svg a[*|href],' : '')
+    + 'svg a[*|href],'
     // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
     // navigational elements
     + 'a[href],'
