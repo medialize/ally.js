@@ -4,7 +4,6 @@
 
 import isFocusable from '../is/focusable';
 import isFocusRelevant from '../is/focus-relevant';
-import isOnlyTabbable from '../is/only-tabbable';
 import getDocument from '../util/get-document';
 
 function createFilter(condition) {
@@ -29,13 +28,21 @@ function createFilter(condition) {
   return filter;
 }
 
-const FocusableFilter = createFilter(isFocusable);
 const PossiblyFocusableFilter = createFilter(isFocusRelevant);
 
-export default function queryFocusableStrict({context, includeContext, strategy} = {}) {
+export default function queryFocusableStrict({
+  context,
+  includeContext,
+  includeOnlyTabbable,
+  strategy,
+} = {}) {
   if (!context) {
     context = document.documentElement;
   }
+
+  const _isFocusable = isFocusable.rules.except({
+    onlyTabbable: includeOnlyTabbable,
+  });
 
   const _document = getDocument(context);
   // see https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker
@@ -45,7 +52,7 @@ export default function queryFocusableStrict({context, includeContext, strategy}
     // element type filter
     NodeFilter.SHOW_ELEMENT,
     // custom NodeFilter filter
-    strategy === 'all' ? PossiblyFocusableFilter : FocusableFilter,
+    strategy === 'all' ? PossiblyFocusableFilter : createFilter(_isFocusable),
     // deprecated, but IE requires it
     false
   );
@@ -54,12 +61,13 @@ export default function queryFocusableStrict({context, includeContext, strategy}
 
   while (walker.nextNode()) {
     if (walker.currentNode.shadowRoot) {
-      if (isFocusable(walker.currentNode)) {
+      if (_isFocusable(walker.currentNode)) {
         list.push(walker.currentNode);
       }
 
       list = list.concat(queryFocusableStrict({
         context: walker.currentNode.shadowRoot,
+        includeOnlyTabbable,
         strategy,
       }));
     } else {
@@ -70,10 +78,10 @@ export default function queryFocusableStrict({context, includeContext, strategy}
   // add context if requested and focusable
   if (includeContext) {
     if (strategy === 'all') {
-      if (isOnlyTabbable(context) || isFocusRelevant(context)) {
+      if (isFocusRelevant(context)) {
         list.unshift(context);
       }
-    } else if (isFocusable(context)) {
+    } else if (_isFocusable(context)) {
       list.unshift(context);
     }
   }

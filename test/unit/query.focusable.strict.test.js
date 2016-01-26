@@ -68,6 +68,48 @@ define([
         expect(result).to.deep.equal(expected);
       },
 
+      includeOnlyTabbable: function() {
+        var result = queryFocusable({
+          includeOnlyTabbable: true,
+          strategy: 'strict',
+        }).map(fixture.nodeToString);
+
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
+          supports.canFocusObjectSvg && '#object-svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          '#svg-link',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#span-contenteditable',
+          document.body.style.webkitUserModify !== undefined && '#span-user-modify',
+          '#img-ismap-link',
+          supports.canFocusImgIsmap && '#img-ismap',
+          supports.canFocusScrollContainer && '#scroll-container',
+          supports.canFocusScrollBody && '#scroll-body',
+          supports.canFocusScrollContainerWithoutOverflow && '#scroll-container-without-overflow',
+          supports.canFocusScrollContainerWithoutOverflow && '#scroll-body-without-overflow',
+          supports.canFocusScrollContainer && '#div-section-overflow-scroll',
+          supports.canFocusScrollContainer && !supports.canFocusScrollBody && '#section-div-overflow-scroll',
+          supports.canFocusScrollBody && '#section-div-overflow-scroll-body',
+          supports.canFocusFlexboxContainer && '#flexbox-container',
+          supports.canFocusFlexboxContainer && '#flexbox-container-child',
+          '#focusable-flexbox',
+          supports.canFocusChildrenOfFocusableFlexbox && '#focusable-flexbox-child',
+        ].filter(Boolean);
+
+        expect(result).to.deep.equal(expected);
+      },
+
       context: function() {
         var expected = [
           '#link',

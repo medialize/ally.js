@@ -53,6 +53,34 @@ define([
         expect(result).to.deep.equal(expected);
       },
 
+      includeOnlyTabbable: function() {
+        var result = queryFocusable({
+          includeOnlyTabbable: true,
+        }).map(fixture.nodeToString);
+
+        var expected = [
+          '#tabindex--1',
+          '#tabindex-0',
+          '#tabindex-1',
+          supports.canFocusInvalidTabindex && '#tabindex-bad',
+          '#link',
+          '#link-tabindex--1',
+          '#image-map-area',
+          supports.canFocusObjectSvg && '#object-svg',
+          supports.canFocusObjectSvg && '#object-tabindex-svg',
+          '#svg-link',
+          supports.canFocusAudioWithoutControls && '#audio',
+          '#audio-controls',
+          '#input',
+          '#input-tabindex--1',
+          '#span-contenteditable',
+          '#img-ismap-link',
+          '#focusable-flexbox',
+        ].filter(Boolean);
+
+        expect(result).to.deep.equal(expected);
+      },
+
       context: function() {
         var expected = [
           '#link',

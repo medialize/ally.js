@@ -115,6 +115,36 @@ define([
         }), 200);
       },
 
+      includeOnlyTabbable: function() {
+        var deferred = this.async(10000);
+
+        var expected = [
+          '#tabindex-1',
+          '#tabindex-0',
+          '#link',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          platform.is.GECKO && '#object-svg',
+          '#svg-link',
+          '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          '#img-ismap-link',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          '#end-of-line',
+        ].filter(Boolean);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var result = queryTabsequence({
+            includeOnlyTabbable: true,
+          }).map(fixture.nodeToString);
+
+          expect(result).to.deep.equal(expected);
+        }), 200);
+      },
+
       context: function() {
         var context = fixture.root.querySelector('.context');
         var input = document.createElement('input');

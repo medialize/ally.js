@@ -44,6 +44,32 @@ define([
         }), 200);
       },
 
+      includeOnlyTabbable: function() {
+        var deferred = this.async(10000);
+
+        var expected = [
+          '#tabindex-0',
+          '#tabindex-1',
+          '#link',
+          '#image-map-area',
+          platform.is.GECKO && '#object-svg',
+          '#svg-link',
+          '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          '#img-ismap-link',
+        ].filter(Boolean);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var result = queryTabbable({
+            includeOnlyTabbable: true,
+          }).map(fixture.nodeToString);
+
+          expect(result).to.deep.equal(expected);
+        }), 200);
+      },
+
       context: function() {
         var expected = ['#link'];
         var result = queryTabbable({
