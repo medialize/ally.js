@@ -39,6 +39,7 @@ define([
 
     var data = focusableTestData(platform);
     var ignoreTabsequencePattern = /svg/;
+    var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
     var ignorePattern = /^(object|embed)/;
     var skipUntestable = keysMap([
@@ -73,6 +74,7 @@ define([
       // In Firefox ShadowDOM is behind a flag
       if (!document.body.createShadowRoot) {
         ignoreTabsequencePattern = /svg|shadow-host/;
+        ignoreTabsequenceFocusablePattern = /shadow-host/;
       }
     }
 
@@ -172,6 +174,26 @@ define([
       expect(sequence).to.deep.equal(expected);
     };
 
+    suite['tabsequence with onlyTabbable'] = function() {
+      var ignored = function(label) {
+        return !skipUntestable[label]
+          && !skipTabsequence[label]
+          && !label.match(ignorePattern)
+          && (!ignoreTabsequenceFocusablePattern || !label.match(ignoreTabsequenceFocusablePattern))
+          && label.indexOf(' -> ') === -1;
+      };
+
+      var expected = data.tabsequence.filter(ignored);
+      var sequence = queryTabsequence({
+        context: framed.document.body,
+        includeOnlyTabbable: true,
+        strategy: 'strict',
+      }).map(function(element) {
+        return element.getAttribute('data-label');
+      }).filter(ignored);
+
+      expect(sequence).to.deep.equal(expected);
+    };
     return suite;
   });
 });
