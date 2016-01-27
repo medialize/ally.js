@@ -26,7 +26,7 @@ var isValidArea = ally.is.validArea(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is a valid area.
 
 ### Throws
 

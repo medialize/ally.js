@@ -30,7 +30,7 @@ var isTabbable = ally.is.tabbable(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is tabbable.
 
 ### Throws
 

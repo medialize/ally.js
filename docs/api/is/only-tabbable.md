@@ -30,7 +30,7 @@ var isOnlyTabbable = ally.is.onlyTabbable(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is only tabbable.
 
 ### Throws
 

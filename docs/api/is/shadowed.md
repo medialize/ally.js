@@ -26,7 +26,7 @@ var isShadowed = ally.is.shadowed(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is hosted in a `ShadowRoot`.
 
 ### Throws
 

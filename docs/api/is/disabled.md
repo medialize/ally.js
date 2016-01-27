@@ -28,7 +28,7 @@ var isDisabled = ally.is.disabled(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is disabled.
 
 ### Throws
 

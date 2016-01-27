@@ -28,7 +28,7 @@ var isVisible = ally.is.visible(element);
 
 ### Returns
 
-Boolean, `true` if the element is focus relevant.
+Boolean, `true` if the element is visible (i.e. not hidden by CSS).
 
 ### Throws
 
