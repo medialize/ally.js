@@ -34,6 +34,7 @@ define([
       'ally.js/is/visible',
       'ally.js/maintain/disabled',
       'ally.js/maintain/hidden',
+      'ally.js/maintain/tab-focus',
       'ally.js/observe/interaction-type',
       'ally.js/prototype/element.prototype.matches',
       'ally.js/prototype/svgelement.prototype.focus',

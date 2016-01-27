@@ -46,6 +46,7 @@ The following lists show the changes to the library grouped by domain.
 
 * changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
+* adding [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to trap <kbd>TAB</kbd> focus in the tabsequence - [issue #63](https://github.com/medialize/ally.js/issues/63)
 
 #### Internals
 
@@ -242,6 +243,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/is/visible]: http://allyjs.io/api/is/visible.html
 [ally/maintain/disabled]: http://allyjs.io/api/maintain/disabled.html
 [ally/maintain/hidden]: http://allyjs.io/api/maintain/hidden.html
+[ally/maintain/tab-focus]: http://allyjs.io/api/maintain/tab-focus.html
 [ally/map/attribute]: http://allyjs.io/api/map/attribute.html
 [ally/map/keycode]: http://allyjs.io/api/map/keycode.html
 [ally/observe/interaction-type]: http://allyjs.io/api/observe/interaction-type.html

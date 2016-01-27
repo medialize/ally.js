@@ -30,6 +30,7 @@ While it's best to use standardized features and leave browsers to figure things
 
 * [`ally.maintain.disabled`](maintain/disabled.md) renders elements inert to prevent any user interaction
 * [`ally.maintain.hidden`](maintain/hidden.md) sets `aria-hidden="true"` on insignificant branches
+* [`ally.maintain.tabFocus`](maintain/tab-focus.md) traps <kbd>TAB</kbd> focus in the tabsequence
 
 
 ## Finding elements
