@@ -9,7 +9,7 @@ define([
     var fixture;
 
     return {
-      name: 'get/active-elements',
+      name: 'get/shadow-host-parents',
 
       beforeEach: function() {
         fixture = shadowInputFixture();
