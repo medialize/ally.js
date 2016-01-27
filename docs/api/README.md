@@ -46,6 +46,7 @@ In order to work with focusable elements, we must first know which elements we'r
 
 Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#Single-options-argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
+* [`ally.is.activeElement`](is/active-element.md) returns true if the element is the activeElement of its host context, i.e. its document, iFrame or ShadowHost
 * [`ally.is.disabled`](is/disabled.md) returns true if the element is `:disabled`
 * [`ally.is.focusRelevant`](is/focus-relevant.md) returns true if the element is considered theoretically focusable
 * [`ally.is.focusable`](is/focusable.md) returns true if the element is considered focusable by script

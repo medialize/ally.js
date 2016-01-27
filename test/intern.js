@@ -86,6 +86,7 @@ define([
       'test/unit/get.parents.test',
       'test/unit/get.shadow-host-parents.test',
       'test/unit/get.shadow-host.test',
+      'test/unit/is.active-element.test',
       'test/unit/is.disabled.test',
       'test/unit/is.focus-relevant.test',
       'test/unit/is.focusable.test',

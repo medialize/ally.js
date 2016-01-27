@@ -39,6 +39,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
+* adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
 
 
 #### Keyboard support
@@ -229,6 +230,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/get/parents]: http://allyjs.io/api/get/parents.html
 [ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html
 [ally/get/shadow-host]: http://allyjs.io/api/get/shadow-host.html
+[ally/is/active-element]: http://allyjs.io/api/is/active-element.html
 [ally/is/disabled]: http://allyjs.io/api/is/disabled.html
 [ally/is/focus-relevant]: http://allyjs.io/api/is/focus-relevant.html
 [ally/is/focusable]: http://allyjs.io/api/is/focusable.html

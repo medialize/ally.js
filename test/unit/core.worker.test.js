@@ -22,6 +22,7 @@ define([
       'ally.js/get/shadow-host-parents',
       'ally.js/get/shadow-host',
       'ally.js/is/disabled',
+      'ally.js/is/active-element',
       'ally.js/is/focus-relevant',
       'ally.js/is/focusable',
       'ally.js/is/native-disabled-supported',
