@@ -15,6 +15,7 @@ define([
       'ally.js/fix/pointer-focus-input',
       'ally.js/fix/pointer-focus-parent',
       'ally.js/get/active-elements',
+      'ally.js/get/focus-redirect-target',
       'ally.js/get/focus-target',
       'ally.js/get/insignificant-branches',
       'ally.js/get/parents',
