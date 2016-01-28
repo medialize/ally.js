@@ -27,6 +27,8 @@ function detectFocus(options) {
   // remember scroll positions to restore after test
   const previousScrollTop = window.scrollTop;
   const previousScrollLeft = window.scrollLeft;
+  const previousBodyScrollTop = document.body.scrollTop;
+  const previousBodyScrollLeft = document.body.scrollLeft;
   // test if the element with invalid tabindex can be focused
   focus.focus && focus.focus();
   // validate test's result
@@ -39,6 +41,8 @@ function detectFocus(options) {
   // restore scroll position
   window.scrollTop !== previousScrollTop && (window.scrollTop = previousScrollTop);
   window.scrollLeft !== previousScrollLeft && (window.scrollLeft = previousScrollLeft);
+  document.body.scrollTop !== previousBodyScrollTop && (document.body.scrollTop = previousBodyScrollTop);
+  document.body.scrollLeft !== previousBodyScrollLeft && (document.body.scrollLeft = previousBodyScrollLeft);
   return allowsFocus;
 }
 
