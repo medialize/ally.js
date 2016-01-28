@@ -49,7 +49,7 @@ function detectFocus(options) {
 // cache detected support so we don't have to bother screen readers with unstoppable focus changes
 export default function(options) {
   let value = cache.get(options.name);
-  if (typeof value !== 'boolean') {
+  if (value === undefined) {
     value = detectFocus(options);
     cache.set(options.name, value);
   }
