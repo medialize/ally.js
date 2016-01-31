@@ -10,8 +10,9 @@ define([
     { browserName: 'internet explorer', version: '10', platform: 'Windows 8' },
     { browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
 
-    { browserName: 'firefox', version: '43', platform: [ 'OS X 10.11', 'Windows 8.1' ] },
-    { browserName: 'chrome', version: '47', platform: [ 'OS X 10.10', 'Windows 8.1' ] },
+    // Tested by BrowserStack
+    // { browserName: 'firefox', version: '43', platform: [ 'OS X 10.11', 'Windows 8.1' ] },
+    // { browserName: 'chrome', version: '47', platform: [ 'OS X 10.10', 'Windows 8.1' ] },
 
     // Safari VMs doen't work on SauceLabs
     // { browserName: 'safari', version: '9', platform: 'OS X 10.11' },
