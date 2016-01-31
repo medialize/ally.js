@@ -46,5 +46,8 @@ define([
   // https://theintern.github.io/intern/#option-tunnel
   config.tunnel = 'BrowserStackTunnel';
 
+  // overwriting default reporters until BrowserStack can handle IE again
+  config.reporters[2].filename = 'reports/browserstack.lcov.info';
+
   return config;
 });

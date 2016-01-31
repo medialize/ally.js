@@ -68,7 +68,9 @@
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}') && jscs $(glob-cli '{src,test,build,tests/focusable}')",
     "lint:md": "node build/markdownlint.js",
     "lint:md:js": "eslint --ext md docs",
-    "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
+    "ci": "npm-run-all --sequential lint clean build ci:test publish:lcov build:website analyze:bundle",
+    "ci:test": "npm-run-all --sequential test:browserstack test:sauce ci:merge-lcov",
+    "ci:merge-lcov": "lcov-result-merger 'reports/*.lcov.info' reports/lcov.info",
     "precommit": "npm run lint",
     "postmerge": "npm install"
   },
@@ -97,6 +99,7 @@
     "jquery-ui": "git://github.com/jquery/jquery-ui.git#1.11.4",
     "jsbin-sync": "^0.3.1",
     "jscs": "^2.8.0",
+    "lcov-result-merger": "^1.0.2",
     "markdownlint": "^0.1.0",
     "metalsmith": "^2.1.0",
     "metalsmith-broken-link-checker": "^0.1.8",
