@@ -5,36 +5,20 @@ node_js:
 script: npm run ci
 # https://docs.travis-ci.com/user/deployment/s3
 # https://github.com/travis-ci/dpl
-before_deploy: mkdir deploy-dist && mv dist/ally.js.tar.gz deploy-dist/ally.js.tar.gz
+before_deploy:
+- mkdir deploy
+- mv dist/ally.js.tar.gz deploy/ally.js.tar.gz
+- mv web deploy/web
+- mv reports deploy/reports
 deploy:
-  - provider: s3
-    bucket: "ally.js"
-    endpoint: "ally.js.amazonaws.com"
-    region: "eu-central-1"
-    acl: public_read
-    local_dir: web
-    upload-dir: "travis/${TRAVIS_BUILD_NUMBER}/web"
-    skip_cleanup: true
-    on:
-      all_branches: true
-  - provider: s3
-    bucket: "ally.js"
-    endpoint: "ally.js.amazonaws.com"
-    region: "eu-central-1"
-    acl: public_read
-    local_dir: reports
-    upload-dir: "travis/${TRAVIS_BUILD_NUMBER}/reports"
-    skip_cleanup: true
-    on:
-      all_branches: true
-  - provider: s3
-    bucket: "ally.js"
-    endpoint: "ally.js.amazonaws.com"
-    region: "eu-central-1"
-    acl: public_read
-    local_dir: deploy-dist
-    upload-dir: "travis/${TRAVIS_BUILD_NUMBER}/dist"
-    skip_cleanup: true
-    on:
-      all_branches: true
+  provider: s3
+  bucket: "ally.js"
+  endpoint: "ally.js.amazonaws.com"
+  region: "eu-central-1"
+  acl: public_read
+  local_dir: deploy
+  upload-dir: "travis/${TRAVIS_BUILD_NUMBER}"
+  skip_cleanup: true
+  on:
+    all_branches: true
 after_deploy: node build/report-deployment.js
