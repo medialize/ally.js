@@ -26,7 +26,7 @@ The following sequence steps are necessary to fully release ally.js
 * `git push --no-verify && git push --tags --no-verify` to push the changes to github
 * open the [github releases page](https://github.com/medialize/ally.js/releases), then
   * edit the new tag and copy-paste the relevant changes from `CHANGELOG.md`
-  * upload the files `dist/ally.js`, `dist/ally.js.map` and `dist/ally.js.zip`
+  * upload the files `dist/ally.js`, `dist/ally.js.map`, `dist/ally.js.zip` and `dist/ally.js.tar.gz`
   * mark as `pre-release` if the library was pushed to beta channel
 * `git checkout release && git merge master && git push --no-verify` to update the "latest stable release" branch
 * `npm run publish:website` to publish the website to the `gh-pages` branch

@@ -5,24 +5,32 @@ const fs = require('fs');
 const archiver = require('archiver');
 
 const cwd = process.cwd();
-const target = path.resolve(cwd, 'dist', 'ally.js.zip');
-const output = fs.createWriteStream(target);
-const archive = archiver('zip');
 
-output.on('close', function() {
-  /*eslint-disable no-console */
-  console.log(archive.pointer() + ' total bytes');
-  /*eslint-enable no-console */
+function createArchive(name, type, options) {
+  const target = path.resolve(cwd, 'dist', name);
+  const output = fs.createWriteStream(target);
+  const archive = archiver(type, options || {});
+
+  output.on('close', function() {
+    /*eslint-disable no-console */
+    console.log(archive.pointer() + ' total bytes');
+    /*eslint-enable no-console */
+  });
+
+  archive.on('error', function(err) {
+    throw err;
+  });
+
+  archive.pipe(output);
+
+  archive.bulk([
+    { expand: true, cwd: 'dist', src: ['**/*', '!*.zip', '!*.tar.gz', '!.*'] },
+  ]);
+
+  archive.finalize();
+}
+
+createArchive('ally.js.zip', 'zip');
+createArchive('ally.js.tar.gz', 'tar', {
+  gzip: true,
 });
-
-archive.on('error', function(err) {
-  throw err;
-});
-
-archive.pipe(output);
-
-archive.bulk([
-  { expand: true, cwd: 'dist', src: ['**/*', '!*.zip', '!.*'] },
-]);
-
-archive.finalize();

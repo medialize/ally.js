@@ -14,6 +14,7 @@ If you're not comfortable with package mangers, simply download the production r
 * <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js" class="download-file">ally.min.js</a> UMD bundle, ready for production use
 * <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.min.js.map" class="download-file">ally.min.js.map</a> for SourceMap support
 * <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip" class="download-file">ally.js.zip</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)
+* <a href="https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.tar.gz" class="download-file">ally.js.tar.gz</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)
 
 All downloads are hosted on the [github release page](https://github.com/medialize/ally.js/releases).
 
