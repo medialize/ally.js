@@ -23,7 +23,8 @@ define([
     // disabled because IE10 and IE11 currently don't return any results to Intern
     // { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
     // { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10' },
-    { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
+    // disabled because IE9 runs but never completes
+    // { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
 
     { browser: 'Firefox', browser_version: '42', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
     { browser: 'Chrome', browser_version: '47', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
