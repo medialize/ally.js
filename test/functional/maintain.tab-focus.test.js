@@ -8,12 +8,24 @@ define([
 
   registerSuite(function() {
     var timeout = 120000;
+    var advancesFocusOnTab = false;
 
     return {
       name: 'maintain/tab-focus',
 
       before: function() {
         return this.remote
+          .get(require.toUrl('test/pages/intern.events.test.html'))
+          .findById('first')
+            .click()
+            .end()
+          .pressKeys(keys.TAB)
+          .sleep(500)
+          .execute('return document.activeElement.id || document.activeElement.nodeName')
+          .then(function(activeElementId) {
+            advancesFocusOnTab = activeElementId === 'second';
+          })
+
           .get(require.toUrl('test/pages/maintain.tab-focus.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
@@ -22,6 +34,10 @@ define([
 
       forward: function() {
         this.timeout = timeout;
+        if (!advancesFocusOnTab) {
+          this.skip('Cannot test Tab focus via WebDriver in this browser');
+        }
+
         return this.remote
           .findById('first')
             .click()
@@ -55,6 +71,10 @@ define([
       },
       backward: function() {
         this.timeout = timeout;
+        if (!advancesFocusOnTab) {
+          this.skip('Cannot test Tab focus via WebDriver in this browser');
+        }
+
         return this.remote
           .findById('third')
             .click()
