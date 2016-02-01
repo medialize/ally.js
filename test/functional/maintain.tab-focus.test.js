@@ -4,7 +4,9 @@ define([
   'require',
   // https://theintern.github.io/leadfoot/keys.html
   'intern/dojo/node!leadfoot/keys',
-], function(registerSuite, expect, require, keys) {
+  // https://theintern.github.io/leadfoot/pollUntil.html
+  'intern/dojo/node!leadfoot/helpers/pollUntil',
+], function(registerSuite, expect, require, keys, pollUntil) {
 
   registerSuite(function() {
     var timeout = 120000;
@@ -29,7 +31,9 @@ define([
           .get(require.toUrl('test/pages/maintain.tab-focus.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
-          .setExecuteAsyncTimeout(timeout);
+          .setExecuteAsyncTimeout(timeout)
+          // wait until we're really initialized
+          .then(pollUntil('return window.platform'), timeout);
       },
 
       forward: function() {
