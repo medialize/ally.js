@@ -11,6 +11,7 @@ define([
   registerSuite(function() {
     var timeout = 120000;
     var advancesFocusOnTab = false;
+    var setsShiftKey = false;
 
     return {
       name: 'maintain/tab-focus',
@@ -26,6 +27,14 @@ define([
           .execute('return document.activeElement.id || document.activeElement.nodeName')
           .then(function(activeElementId) {
             advancesFocusOnTab = activeElementId === 'second';
+          })
+
+          .execute('window.events.length = 0')
+          .pressKeys([keys.TAB, keys.TAB])
+          .sleep(500)
+          .execute('return window.events[1]')
+          .then(function(tabKeyEvent) {
+            setsShiftKey = tabKeyEvent.indexOf(':shift') > -1;
           })
 
           .get(require.toUrl('test/pages/maintain.tab-focus.test.html'))
@@ -78,6 +87,9 @@ define([
         if (!advancesFocusOnTab) {
           this.skip('Cannot test Tab focus via WebDriver in this browser');
         }
+        if (!setsShiftKey) {
+          this.skip('Cannot test Shift Tab focus via WebDriver in this browser');
+        }
 
         return this.remote
           .findById('third')
@@ -89,8 +101,7 @@ define([
             expect(activeElementId).to.equal('third', 'initial position');
           })
 
-          .pressKeys(keys.SHIFT)
-          .pressKeys(keys.TAB)
+          .pressKeys([keys.SHIFT, keys.TAB])
           .pressKeys(keys.NULL)
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
@@ -98,8 +109,7 @@ define([
             expect(activeElementId).to.equal('second', 'after first Tab');
           })
 
-          .pressKeys(keys.SHIFT)
-          .pressKeys(keys.TAB)
+          .pressKeys([keys.SHIFT, keys.TAB])
           .pressKeys(keys.NULL)
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
@@ -107,8 +117,7 @@ define([
             expect(activeElementId).to.equal('first', 'after second Tab');
           })
 
-          .pressKeys(keys.SHIFT)
-          .pressKeys(keys.TAB)
+          .pressKeys([keys.SHIFT, keys.TAB])
           .pressKeys(keys.NULL)
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
