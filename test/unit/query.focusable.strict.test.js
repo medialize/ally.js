@@ -4,6 +4,7 @@ define([
   '../helper/fixtures/focusable.fixture',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/supports',
+  'ally/util/platform',
   'ally/query/focusable',
 ], function(
   registerSuite,
@@ -11,6 +12,7 @@ define([
   focusableFixture,
   shadowInputFixture,
   supports,
+  platform,
   queryFocusable
 ) {
 
@@ -85,6 +87,7 @@ define([
           supports.canFocusAreaWithoutHref && '#image-map-area-nolink',
           supports.canFocusObjectSvg && '#object-svg',
           supports.canFocusObjectSvg && '#object-tabindex-svg',
+          platform.is.TRIDENT && '#svg',
           '#svg-link',
           supports.canFocusAudioWithoutControls && '#audio',
           '#audio-controls',
