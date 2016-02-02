@@ -1,6 +1,7 @@
 define([
   './intern',
-], function(config) {
+  'intern/dojo/text!./config/firefox-profile.webcomponents.txt',
+], function(config, firefoxProfileWebcomponents) {
 
   config.capabilities = {
     project: 'ally.js',
@@ -31,6 +32,17 @@ define([
 
     { browser: 'Firefox', browser_version: '42', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 42' },
     { browser: 'Chrome', browser_version: '47', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 47' },
+
+    {
+      browser: 'Firefox',
+      browser_version: '42',
+      os: 'WINDOWS',
+      os_version: '8.1',
+      platform: 'WIN',
+      browserName: 'Firefox 42 (ShadowDOM)',
+      // dom.webcomponents.enabled=true
+      firefox_profile: firefoxProfileWebcomponents,
+    },
 
     { browser: 'Safari', browser_version: '9.0', os: 'OS X', os_version: 'El Capitan', platform: 'MAC', browserName: 'Safari 9' },
     { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
