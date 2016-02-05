@@ -52,7 +52,7 @@ Boolean, `true` if the element is tabbable.
 * Since `v#master` matching of `SVGElement`s is done document-independent, to allow elements from other documents (e.g. from an iframe).
 * Since `v#master` all `<iframe>` elements are considered focusable, not tabbable - except for IE9.
 * Since `v#master` exceptions can be passed to `ally.is.tabbable.rules(options)`.
-
+* Since `v#master` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 
 ## Notes
 

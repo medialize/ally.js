@@ -51,6 +51,7 @@ Boolean, `true` if the element is only tabbable.
 
 * Since `v#master` all `<object>` elements in Internet Explorer are not considered only tabbable anymore.
 * Since `v#master` exceptions can be passed to `ally.is.onlyTabbable.rules(options)`.
+* Since `v#master` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 
 
 ## Notes

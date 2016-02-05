@@ -70,6 +70,10 @@ function isOnlyFocusRelevant(element) {
   return false;
 }
 
+const _isOnlyTabbable = isOnlyTabbable.rules.except({
+  onlyFocusableBrowsingContext: true,
+});
+
 function isFocusableRules({
   context,
   except = {
@@ -101,7 +105,7 @@ function isFocusableRules({
     return false;
   }
 
-  if (!except.onlyTabbable && isOnlyTabbable(element)) {
+  if (!except.onlyTabbable && _isOnlyTabbable(element)) {
     // some elements may be keyboard focusable, but not script focusable
     return false;
   }

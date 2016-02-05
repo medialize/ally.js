@@ -53,6 +53,7 @@ Modules dealing with the focus identity of elements (e.g. the `rules()` function
 | shadow | boolean | `false` | Prevent elements from being considered focus-relevant because of being a `ShadowHost`. |
 | disabled | boolean | `false` | Prevent elements from *not* being considered focusable because they're disabled (e.g. `<input disabled>`). |
 | visible | boolean | `false` | Prevent elements from *not* being considered focusable because they're hidden (e.g. `<input style="display: none">`). |
+| onlyFocusableBrowsingContext | boolean `false` | Prevent elements from *not* being considered focusable if their browsing context host element (e.g. `<iframe>`, `<object>`) has `tabindex="-1"` set. |
 | onlyTabbable | boolean | `false` | Prevent elements from *not* being considered focusable because they're only keyboard focusable. |
 | notRendered | boolean | `false` | Prevent elements from being considered visible that can't be rendered (e.g. `<area>`). |
 | cssDisplay | boolean | `false` | Prevent elements from being considered invisible because of `display: none`. |

@@ -51,6 +51,7 @@ Boolean, `true` if the element is focusable.
 
 * Since `v#master` all `<area>` elements are considered focus-relevant, but only valid `<area>` elements are considered focusable.
 * Since `v#master` exceptions can be passed to `ally.is.focusable.rules(options)`.
+* Since `v#master` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 
 
 ## Notes
