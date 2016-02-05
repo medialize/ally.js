@@ -3,12 +3,14 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/supports',
+  'ally/util/platform',
   'ally/is/active-element',
 ], function(
   registerSuite,
   expect,
   focusableFixture,
   supports,
+  platform,
   isActiveElement
 ) {
 
@@ -50,6 +52,10 @@ define([
       ShadowDOM: function() {
         if (document.body.createShadowRoot === undefined) {
           this.skip('Shadow DOM not supported');
+        }
+
+        if (platform.is.GECKO) {
+          this.skip('Shadow DOM not properly supported');
         }
 
         var host = fixture.add([
