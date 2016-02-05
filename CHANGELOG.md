@@ -71,7 +71,7 @@ Intern unit tests are now run for the following browsers:
 * Internet Explorer 9, 10, 11
 * Safari 6.2, 7.1, 8, 9
 * Chrome 47
-* Firefox 42
+* Firefox 42, 42 with ShadowDOM enabled
 
 #### Sources
 

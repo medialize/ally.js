@@ -26,24 +26,5 @@ define([
   // https://theintern.github.io/intern/#option-tunnel
   config.tunnel = 'SauceLabsTunnel';
 
-  // overwriting default reporters until BrowserStack can handle IE again
-  config.reporters = [
-    'Runner',
-    {
-      id: 'Lcov',
-      filename: 'reports/sauce.lcov.info',
-      watermarks: {
-        statements: [ 50, 80 ],
-        lines: [ 50, 80 ],
-        functions: [ 50, 80 ],
-        branches: [ 50, 80 ],
-      },
-    },
-    {
-      id: '../../../test/reporters/Errors',
-      filename: 'reports/sauce.errors.log',
-    },
-  ];
-
   return config;
 });
