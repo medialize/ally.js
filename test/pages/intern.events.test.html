@@ -8,12 +8,26 @@
 
   <input id="first">
   <input id="second">
+  <input id="third">
 
   <script src="../../node_modules/platform/platform.js"></script>
   <script>
     window.events = [];
     function logEvent(event) {
-      events.push(event.type + ':' + (event.target.id || event.target.nodeName));
+      window.events.push(event.type + ':' + (event.target.id || event.target.nodeName));
+    }
+
+    function logKeyEvent(event) {
+      var message = [
+        event.type,
+        (event.target.id || event.target.nodeName),
+        event.keyCode,
+        event.altKey && 'alt',
+        event.ctrlKey && 'ctrl',
+        event.metaKey && 'meta',
+        event.shiftKey && 'shift',
+      ].filter(Boolean).join(':');
+      window.events.push(message);
     }
 
     [
@@ -21,10 +35,14 @@
       'mousedown', 'mouseup', 'click', 'touchstart', 'touchend',
       'pointerdown', 'pointerup', 'MSPointerDown', 'MSPointerUp',
       'input', 'beforeinput',
-      'keydown', 'keyup', 'keypress',
-
     ].forEach(function(eventName) {
       document.body.addEventListener(eventName, logEvent, true);
+    });
+
+    [
+      'keydown', 'keyup', 'keypress',
+    ].forEach(function(eventName) {
+      document.body.addEventListener(eventName, logKeyEvent, true);
     });
   </script>
 

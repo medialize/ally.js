@@ -39,12 +39,14 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
+* adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
 
 
 #### Keyboard support
 
 * changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
+* adding [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to trap <kbd>TAB</kbd> focus in the tabsequence - [issue #63](https://github.com/medialize/ally.js/issues/63)
 
 #### Internals
 
@@ -229,6 +231,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/get/parents]: http://allyjs.io/api/get/parents.html
 [ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html
 [ally/get/shadow-host]: http://allyjs.io/api/get/shadow-host.html
+[ally/is/active-element]: http://allyjs.io/api/is/active-element.html
 [ally/is/disabled]: http://allyjs.io/api/is/disabled.html
 [ally/is/focus-relevant]: http://allyjs.io/api/is/focus-relevant.html
 [ally/is/focusable]: http://allyjs.io/api/is/focusable.html
@@ -240,6 +243,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/is/visible]: http://allyjs.io/api/is/visible.html
 [ally/maintain/disabled]: http://allyjs.io/api/maintain/disabled.html
 [ally/maintain/hidden]: http://allyjs.io/api/maintain/hidden.html
+[ally/maintain/tab-focus]: http://allyjs.io/api/maintain/tab-focus.html
 [ally/map/attribute]: http://allyjs.io/api/map/attribute.html
 [ally/map/keycode]: http://allyjs.io/api/map/keycode.html
 [ally/observe/interaction-type]: http://allyjs.io/api/observe/interaction-type.html
