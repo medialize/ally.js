@@ -45,7 +45,7 @@ class InertSubtree {
     this.renderInert = this.renderInert.bind(this);
     this.filterElements = this.filterElements.bind(this);
 
-    const focusable = queryFocusable({
+    this._focusable = queryFocusable({
       context: this._context,
       includeContext: true,
       strategy: 'all',
@@ -61,7 +61,7 @@ class InertSubtree {
     }
 
     undoElementInert(this._context);
-    [].forEach.call(this._context.querySelectorAll('[data-ally-disabled], :disabled'), undoElementInert);
+    [].forEach.call(this._focusable, undoElementInert);
 
     this._filter = null;
     this._context = null;
