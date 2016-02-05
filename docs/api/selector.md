@@ -12,4 +12,4 @@ It is impossible to query focusable elements by way of CSS selector alone, becau
 
 ## Contributing
 
-While `ally/selector/focusable` will identify elements that are filtered by [`ally.query.focusable`](query/focusable.md), the inverse is not true - whatever cannot be identified as *potentially* focusable via CSS selector, will *not* be returned by [`ally.query.focusable`](query/focusable.md) either. To identify *everything*, the `query/focusable.strict` implementation uses  [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker) instead of `document.querySelectorAll()`.
+While `ally/selector/focusable` will identify elements that are filtered by [`ally.query.focusable`](query/focusable.md), the inverse is not true - whatever cannot be identified as *potentially* focusable via CSS selector, will *not* be returned by [`ally.query.focusable`](query/focusable.md) (with `strategy: "quick"`) either. To identify *everything*, the `query/focusable.strict` implementation uses  [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker) instead of `document.querySelectorAll()`.

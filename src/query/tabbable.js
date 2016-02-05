@@ -5,6 +5,20 @@
 import queryFocusable from './focusable';
 import isTabbable from '../is/tabbable';
 
-export default function({context, includeContext, strategy} = {}) {
-  return queryFocusable({context, includeContext, strategy}).filter(isTabbable);
+export default function({
+  context,
+  includeContext,
+  includeOnlyTabbable,
+  strategy,
+} = {}) {
+  const _isTabbable = isTabbable.rules.except({
+    onlyTabbable: includeOnlyTabbable,
+  });
+
+  return queryFocusable({
+    context,
+    includeContext,
+    includeOnlyTabbable,
+    strategy,
+  }).filter(_isTabbable);
 }

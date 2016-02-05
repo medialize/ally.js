@@ -6,7 +6,12 @@ import nodeArray from '../util/node-array';
 import queryFocusableStrict from './focusable.strict';
 import queryFocusableQuick from './focusable.quick';
 
-export default function({context, includeContext, strategy = 'quick'} = {}) {
+export default function({
+  context,
+  includeContext,
+  includeOnlyTabbable,
+  strategy = 'quick',
+} = {}) {
   context = nodeArray(context)[0];
   // alias document to document.documentElement for convenience
   if (!context || context.nodeType === Node.DOCUMENT_NODE) {
@@ -17,10 +22,17 @@ export default function({context, includeContext, strategy = 'quick'} = {}) {
     throw new TypeError('query/focusable requires an argument of type Element');
   }
 
+  const options = {
+    context,
+    includeContext,
+    includeOnlyTabbable,
+    strategy,
+  };
+
   if (strategy === 'quick') {
-    return queryFocusableQuick({context, includeContext});
+    return queryFocusableQuick(options);
   } else if (strategy === 'strict' || strategy === 'all') {
-    return queryFocusableStrict({context, includeContext, strategy});
+    return queryFocusableStrict(options);
   }
 
   throw new TypeError('query/focusable requires option.strategy to be one of ["quick", "strict"]');

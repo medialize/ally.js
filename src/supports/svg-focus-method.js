@@ -13,7 +13,7 @@ const result = typeof Element !== 'undefined' && (function() {
     // src/prototype/svgelement.prototype.focus.js adds a safety-filler for Firefox
     && getFunctionName(SVGElement.prototype.focus) === 'focus';
 
-  return hasElementFocus || hasNativeSvgFocus;
+  return Boolean(hasElementFocus || hasNativeSvgFocus);
 })();
 
 export default function() {

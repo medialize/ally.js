@@ -31,6 +31,8 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify scrollable containers in Internet Explorer
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider all `<area>` elements focus relevant, moving the focusable to verification to [`ally.is.focusable`][ally/is/focusable]
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify SVG links in IE9
+* refactoring [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify all elements that are either focusable, tabbable, only-tabbable or redirect focus
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
@@ -40,7 +42,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
 * adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
-
+* adding option `includeOnlyTabbable` to [`ally.query.firstTabbable`][ally/query/first-tabbable], [`ally.query.focusable`][ally/query/focusable], [`ally.query.tabbable`][ally/query/tabbable], [`ally.query.tabsequence`][ally/query/tabsequence] - [issue #100](https://github.com/medialize/ally.js/issues/100)
 
 #### Keyboard support
 
