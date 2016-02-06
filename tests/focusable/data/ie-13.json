@@ -1,9 +1,9 @@
 {
   "platform": {
-    "description": "IE 13.11082 (platform preview) on Windows NT 10.0 64-bit",
+    "description": "Microsoft Edge 13.11082 on Windows NT 10.0 64-bit",
     "layout": "Trident",
     "manufacturer": null,
-    "name": "IE",
+    "name": "Microsoft Edge",
     "prerelease": null,
     "product": null,
     "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.11082",
@@ -918,7 +918,8 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {
-        "focusable": true
+        "focusable": true,
+        "tabbable": true
       },
       "jquery": {
         "focusable": true,
@@ -1516,7 +1517,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -2847,10 +2851,6 @@
         "onlyTabbable": true
       },
       "jquery": {},
-      "hostElementFocus": {
-        "ident": "iframe[src=svg][tabindex=-1]"
-      },
-      "tabbable": true,
       "scriptFocus": {}
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]": {
@@ -3278,8 +3278,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap] area[href].upper"
-      },
-      "focusable": true
+      }
     },
     "img[usemap] area": {
       "tabindexProperty": 0,
@@ -3396,8 +3395,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap].duplicate area[href]"
-      },
-      "focusable": true
+      }
     },
     "img[usemap].duplicate.second": {
       "tabindexProperty": 0,
@@ -3410,8 +3408,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[usemap].duplicate area[href]"
-      },
-      "focusable": true
+      }
     },
     "img[usemap].focusable": {
       "tabindexProperty": 0,
@@ -3424,8 +3421,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "area[href][tabindex=-1].upper"
-      },
-      "focusable": true
+      }
     },
     "img[usemap].invalid": {
       "tabindexProperty": 0,
@@ -3438,8 +3434,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "map.invalid-image area[href].upper"
-      },
-      "focusable": true
+      }
     },
     "img[usemap][tabindex=-1]": {
       "tabindexProperty": -1,
@@ -3455,8 +3450,7 @@
       "scriptFocus": {
         "cssFocus": true,
         "redirected": "img[tabindex=-1] area[href].upper"
-      },
-      "focusable": true
+      }
     },
     "input[tabindex=1]": {
       "tabindexProperty": 1,
@@ -3859,7 +3853,9 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -4845,7 +4841,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -4863,7 +4861,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -5762,7 +5763,6 @@
     }
   },
   "tabsequence": [
-    "iframe[src=svg][tabindex=-1] -> file:svg",
     "input[tabindex=1]",
     "fieldset{no-tabbable} a[tabindex=1]",
     "[tabindex=1]",
@@ -6207,6 +6207,7 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
+      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -6283,6 +6284,7 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
+      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -6295,12 +6297,6 @@
     "tabsequence": [
       "input[tabindex=1]",
       "fieldset{no-tabbable} a[tabindex=1]",
-      "img[usemap] area[href].upper",
-      "img[usemap] area[href].lower",
-      "img[usemap].duplicate area[href]",
-      "img[usemap].duplicate area[href]",
-      "map.invalid-image area[href].upper",
-      "map.invalid-image area[href].lower",
       "[tabindex=1]",
       "input[tabindex=2]",
       "[tabindex=+2]",
@@ -6333,7 +6329,13 @@
       "fieldset:has(a) a",
       "a[href]",
       "a[href=]",
+      "img[usemap] area[href].upper",
+      "img[usemap] area[href].lower",
+      "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
+      "img[usemap].duplicate area[href]",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a > img[ismap]",
       "a[tabindex=-1] > img[ismap]",
@@ -6361,6 +6363,7 @@
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
       "div{no-dimension}",
+      "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
       "div{flexbox} > span{order:2} > input",
@@ -6451,6 +6454,7 @@
       "embed[type=ogv][tabindex=-1]",
       "embed[type=svg][tabindex=-1]",
       "embed[type=svg][tabindex=0]",
+      "keygen[tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
       "details a[href]",
       "details[tabindex=-1]",
@@ -6497,11 +6501,14 @@
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
+      "span[tabindex=0]:empty",
+      "span[tabindex=-1]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=-1]",
@@ -6589,11 +6596,13 @@
       "input[tabindex=hello]",
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
+      "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",
