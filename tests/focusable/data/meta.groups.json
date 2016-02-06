@@ -63,6 +63,8 @@
       "fieldset[disabled][tabindex=-1]": "<fieldset disabled tabindex=\"-1\">",
       "fieldset[disabled][tabindex=0]": "<fieldset disabled tabindex=\"0\">",
       "fieldset[disabled] input": "<input> within <fieldset disabled>",
+      "fieldset[disabled][tabindex=-1] input": "<input> within <fieldset disabled tabindex=\"-1\">",
+      "fieldset[disabled][tabindex=0] input": "<input> within <fieldset disabled tabindex=\"0\">",
 
       "fieldset legend": "<legend> within <fieldset>",
       "fieldset:has(input[tabindex=-1]) legend": "<legend> within <fieldset> that only contains <input tabindex=\"-1\">",
@@ -210,8 +212,8 @@
 
       "object[usemap]": "<object type=\"image/png\" usemap=\"#map\">",
       "map.object area": "<area> child of <map name=\"#…\"> with <object type=\"image/png\" usemap=\"#…\">",
-      "map.object area[href].upper": "<area href=\"…\"> <object type=\"image/png\" usemap=\"#…\" >",
-      "map.object area[href].lower": "<area href=\"…\"> <object type=\"image/png\" usemap=\"#…\" >"
+      "map.object area[href].upper": "<area href=\"…\"> with <object type=\"image/png\" usemap=\"#…\" >",
+      "map.object area[href].lower": "<area href=\"…\"> with <object type=\"image/png\" usemap=\"#…\" >"
     },
     "redundant": {
       "img[usemap]": [
@@ -322,6 +324,21 @@
       "iframe{focusable}[tabindex=-1] -> input": "<input> within <iframe src=\"…\" tabindex=\"-1\">",
       "iframe{focusable} -> input[tabindex=1]": "<input tabindex=\"1\"> within <iframe src=\"…\">",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1]": "<input tabindex=\"1\"> within <iframe src=\"…\" tabindex=\"-1\">",
+      "iframe{hidden}": "<iframe src=\"…\" style=\"visibility: hidden\">",
+      "iframe{hidden} -> html": "<html> within <iframe src=\"…\" style=\"visibility: hidden\">",
+      "iframe{hidden} -> body": "<body> within <iframe src=\"…\" style=\"visibility: hidden\">",
+      "iframe{hidden} -> input": "<input> within <iframe src=\"…\" style=\"visibility: hidden\">",
+      "iframe{hidden} -> input[tabindex=1]": "<input tabindex=\"-1\"> within <iframe src=\"…\" style=\"visibility: hidden\">",
+      "iframe{none}": "<iframe src=\"…\" style=\"display: none\">",
+      "iframe{none} -> html": "<html> within <iframe src=\"…\" style=\"display: none\">",
+      "iframe{none} -> body": "<body> within <iframe src=\"…\" style=\"display: none\">",
+      "iframe{none} -> input": "<input> within <iframe src=\"…\" style=\"display: none\">",
+      "iframe{none} -> input[tabindex=1]": "<input tabindex=\"-1\"> within <iframe src=\"…\" style=\"display: none\">",
+      "details iframe": "<iframe src=\"…\"> within <details>",
+      "details iframe -> html": "<html> within <iframe src=\"…\"> within <details>",
+      "details iframe -> body": "<body> within <iframe src=\"…\"> within <details>",
+      "details iframe -> input": "<input> within <iframe src=\"…\"> within <details>",
+      "details iframe -> input[tabindex=1]": "<input tabindex=\"-1\"> within <iframe src=\"…\"> within <details>",
       "inert-in-ally{iframe content}": "content in <iframe>"
     },
     "redundant": {
@@ -338,6 +355,22 @@
       ],
       "iframe[tabindex=-1] -> body": [
         "iframe{focusable}[tabindex=-1] -> body"
+      ],
+      "iframe{hidden} -> body": [
+        "iframe{none} -> body",
+        "details iframe -> body"
+      ],
+      "iframe{hidden} -> html": [
+        "iframe{none} -> html",
+        "details iframe -> html"
+      ],
+      "iframe{hidden} -> input": [
+        "iframe{none} -> input",
+        "details iframe -> input"
+      ],
+      "iframe{hidden} -> input[tabindex=1]": [
+        "iframe{none} -> input[tabindex=1]",
+        "details iframe -> input[tabindex=1]"
       ]
     },
     "inert-in-ally": [
@@ -352,7 +385,19 @@
       "iframe{focusable}[tabindex=-1] -> html",
       "iframe{focusable}[tabindex=-1] -> body",
       "iframe{focusable}[tabindex=-1] -> input",
-      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]"
+      "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
+      "iframe{hidden} -> html",
+      "iframe{hidden} -> body",
+      "iframe{hidden} -> input",
+      "iframe{hidden} -> input[tabindex=1]",
+      "iframe{none} -> html",
+      "iframe{none} -> body",
+      "iframe{none} -> input",
+      "iframe{none} -> input[tabindex=1]",
+      "details iframe -> html",
+      "details iframe -> body",
+      "details iframe -> input",
+      "details iframe -> input[tabindex=1]"
     ]
   },
 
@@ -389,11 +434,16 @@
       "object[src=swf][height=0]": "<object type=\"application/x-shockwave-flash\" data=\"…\" height=\"0\">",
       "object[src=swf][tabindex=-1]": "<object type=\"application/x-shockwave-flash\" data=\"…\" tabindex=\"-1\">",
       "object[src=swf][tabindex=0]": "<object type=\"application/x-shockwave-flash\" data=\"…\" tabindex=\"0\">",
+      "object[src=swf]{hidden}": "<object type=\"application/x-shockwave-flash\" data=\"…\" style=\"visibility: hidden\">",
+      "object[src=swf]{none}": "<object type=\"application/x-shockwave-flash\" data=\"…\" style=\"display: none\">",
 
       "object[src=svg]": "<object type=\"image/svg+xml\" data=\"…\">",
       "object[src=svg][height=0]": "<object type=\"image/svg+xml\" data=\"…\" height=\"0\">",
       "object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"-1\">",
-      "object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"0\">"
+      "object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\" data=\"…\" tabindex=\"0\">",
+      "object[src=svg]{hidden}": "<object type=\"image/svg+xml\" data=\"…\" style=\"visibility: hidden\">",
+      "object[src=svg]{none}": "<object type=\"image/svg+xml\" data=\"…\" style=\"display: none\">",
+      "details object[src=svg]": "<object type=\"image/svg+xml\" data=\"…\"> within <details>"
     },
     "redundant": {
       "object[src=swf]": [
@@ -570,6 +620,16 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object height=\"0\">",
+      "object[src=svg]{hidden} -> file:svg": "<svg> within <object style=\"visibility: hidden\">",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <object style=\"visibility: hidden\">",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object style=\"visibility: hidden\">",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object style=\"visibility: hidden\">",
+      "object[src=svg]{hidden} -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object style=\"visibility: hidden\">",
+      "details object[src=svg] -> file:svg": "<svg> within <object> within <details>",
+      "details object[src=svg] -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <object> within <details>",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object> within <details>",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object> within <details>",
+      "details object[src=svg] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object> within <details>",
       "inert-in-ally{object svg:file}": "content in <object>"
     },
     "inert-in-ally": [
@@ -592,7 +652,17 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
-      "object[src=svg][height=0] -> file:svg a[focusable=false]"
+      "object[src=svg][height=0] -> file:svg a[focusable=false]",
+      "object[src=svg]{hidden} -> file:svg",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href]",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1]",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1]",
+      "object[src=svg]{hidden} -> file:svg a[focusable=false]",
+      "details object[src=svg] -> file:svg",
+      "details object[src=svg] -> file:svg a[xlink|href]",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
+      "details object[src=svg] -> file:svg a[focusable=false]"
     ]
   },
 
