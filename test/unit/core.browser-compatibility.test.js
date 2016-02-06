@@ -38,6 +38,29 @@ define([
     var framed = new FocusableTestFrame();
 
     var data = focusableTestData(platform);
+    var suite = {
+      name: 'core: Browser Compatibility',
+
+      before: function() {
+        return framed.initialize(document.body);
+      },
+      after: function() {
+        framed.terminate();
+      },
+      'browser version': function() {
+        if (data) {
+          var ident = data.platform.name + ' ' + data.platform.version;
+          this.skip('Checking against ' + ident);
+        } else {
+          this.skip('No data to compare to');
+        }
+      },
+    };
+
+    if (!data) {
+      return suite;
+    }
+
     var ignoreTabsequencePattern = /svg/;
     var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
@@ -85,25 +108,6 @@ define([
       data.elements['label[for=label-target-focusable]'].scriptFocus.redirected = 'input[type=text][tabindex=-1]';
       data.elements['label[for=label-target]'].scriptFocus.redirected = 'input[type=text]';
     }
-
-    var suite = {
-      name: 'core: Browser Compatibility',
-
-      before: function() {
-        return framed.initialize(document.body);
-      },
-      after: function() {
-        framed.terminate();
-      },
-      'browser version': function() {
-        var ident = data.platform.name + ' ' + data.platform.version;
-        if (data) {
-          this.skip('Checking against ' + ident);
-        }
-
-        expect('').to.equal(ident, 'Test data available');
-      },
-    };
 
     function generateTest(label) {
       return function() {
