@@ -20,11 +20,19 @@ import queryFocusable from '../query/focusable';
 import elementDisabled from '../element/disabled';
 import {getParentComparator} from '../util/compare-position';
 
+let inertElementSet = [];
+
 function makeElementInert(element) {
+  inertElementSet.push(element);
   return elementDisabled(element, true);
 }
 
 function undoElementInert(element) {
+  const index = inertElementSet.indexOf(element);
+  if (index > -1) {
+    inertElementSet = inertElementSet.splice(index, 1);
+  }
+
   return elementDisabled(element, false);
 }
 
@@ -45,7 +53,7 @@ class InertSubtree {
     this.renderInert = this.renderInert.bind(this);
     this.filterElements = this.filterElements.bind(this);
 
-    this._focusable = queryFocusable({
+    const focusable = queryFocusable({
       context: this._context,
       includeContext: true,
       strategy: 'all',
@@ -61,7 +69,7 @@ class InertSubtree {
     }
 
     undoElementInert(this._context);
-    [].forEach.call(this._focusable, undoElementInert);
+    inertElementSet.forEach(undoElementInert);
 
     this._filter = null;
     this._context = null;
