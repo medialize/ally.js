@@ -3,7 +3,6 @@
 // of the element actually being focusable at the time of execution
 // i.e. <input disabled> is conisdered focus-relevant, but not focusable
 
-import '../prototype/svgelement.prototype.focus';
 import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
 import polyfillSVGElementPrototypeFocus from '../prototype/svgelement.prototype.focus';
 import getParents from '../get/parents';

@@ -11,6 +11,7 @@ The following lists show the changes to the library grouped by domain.
 #### Browsers
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
+* Adding full support for Microsoft Edge 12, 13
 * Adding full support for Opera 34 (Blink based, behaves like Chrome)
 * Adding manual focusable tests for Safari 6 and 8 on OSX
 * Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
@@ -58,6 +59,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
+* fixing `SVGElement.prototype.focus` to identify Microsoft Edge 13
 * changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
 * changing user agent sniffing from detecting browser to rendering engine - [issue #97](https://github.com/medialize/ally.js/issues/97)
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
@@ -66,12 +68,16 @@ The following lists show the changes to the library grouped by domain.
 
 #### Testing
 
-Intern unit tests are now run for the following browsers:
+Intern unit and functional tests are now run for the following browsers:
 
 * Internet Explorer 9, 10, 11
 * Safari 6.2, 7.1, 8, 9
 * Chrome 47
 * Firefox 42, 42 with ShadowDOM enabled
+
+Intern unit tests are run manually for the following browsers:
+
+* Microsoft Edge 12, 13
 
 #### Sources
 
