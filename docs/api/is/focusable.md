@@ -12,7 +12,7 @@ Determines if an element is considered focusable.
 
 An element is considered focusable if it is [`ally.is.focusRelevant`](./focus-relevant.md), [`ally.is.visible`](./visible.md) and not [`ally.is.disabled`](./disabled.md).
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js fails to consider focusable](../../data-tables/focusable.is.md) to learn how HTML elements behave.
 
 
 ## Usage
@@ -66,7 +66,7 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 * [`ally.is.validArea`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
-* [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)
+* [What ally.js fails to consider focusable](../../data-tables/focusable.is.md)
 
 
 ## Contributing

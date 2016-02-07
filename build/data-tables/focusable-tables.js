@@ -25,12 +25,14 @@ function rowDataAllyNotes(ident, sourceIdent, referencedNotes) {
   };
 }
 
-function skipIdentsIfMatches(labelGroup, labelName, checksum) {
+function skipIdentsIfMatches(labelGroup, labelName, checksum, skipInertByScope) {
   return function(ident, sourceIdent, duplicateIdent) {
-    if (ident.slice(0, 14) === 'inert-in-ally{') {
-      return false;
-    } else if (source.inertIdents.has(ident)) {
-      return true;
+    if (skipInertByScope) {
+      if (ident.slice(0, 14) === 'inert-in-ally{') {
+        return false;
+      } else if (source.inertIdents.has(ident)) {
+        return true;
+      }
     }
 
     if (duplicateIdent && duplicateIdent.checksum[checksum] === sourceIdent.checksum[checksum]) {
@@ -75,13 +77,13 @@ generateTableDocument({
   source,
   browsers,
   targetFile: path.resolve(targetDirectory, 'focusable.quick.html'),
-  title: 'Focusable Elements (Quick) - ally.js Compatibility Table',
+  title: 'Focusable Elements (Query Quick) - ally.js Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
     and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: quick</code></a>.</p>
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelQuick', 'allyQuick'),
+  skipIdents: skipIdentsIfMatches('ally', 'labelQuick', 'allyQuick', true),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -100,13 +102,13 @@ generateTableDocument({
   source,
   browsers,
   targetFile: path.resolve(targetDirectory, 'focusable.strict.html'),
-  title: 'Focusable Elements (Strict) - ally.js Compatibility Table',
+  title: 'Focusable Elements (Query Strict) - ally.js Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
     and what ally.js identifies using <a href="../api/query/focusable.html"><code>strategy: strict</code></a>.</p>
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelStrict', 'allyStrict'),
+  skipIdents: skipIdentsIfMatches('ally', 'labelStrict', 'allyStrict', true),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -115,6 +117,34 @@ generateTableDocument({
       label: data.ally.labelStrict,
       focusable: data.ally.focusableStrict,
       tabbable: !data.ally.focusableStrict && data.ally.onlyTabbable || data.ally.tabbableStrict,
+      redirecting: data.ally.redirecting,
+    };
+  },
+  rowData: rowDataAllyNotes,
+});
+
+generateTableDocument({
+  source,
+  browsers,
+  targetFile: path.resolve(targetDirectory, 'focusable.is.html'),
+  title: 'Focusable Elements - ally.js Compatibility Table',
+  introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
+    and what ally.js identifies using <a href="../api/is/focusable.html">ally.is.focusable</a>,
+    <a href="../api/is/tabbable.html">ally.is.tabbable</a>,
+    <a href="../api/is/only-tabbable.html">ally.is.onlyTabbable</a> and
+    <a href="../api/get/focus-redirect-target.html">ally.get.focusRedirectTarget</a>.</p>
+    <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
+    that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
+  skipExpected: true,
+  skipIdents: skipIdentsIfMatches('ally', 'label', 'ally'),
+  cellTemplate: 'table-cell.compare.hbs',
+  cellData: function(data) {
+    return {
+      libraryName: 'ally.js',
+      match: data.browser.label === data.ally.label && data.browser.redirecting === data.ally.redirecting,
+      label: data.ally.label,
+      focusable: data.ally.focusable,
+      tabbable: !data.ally.focusable && data.ally.onlyTabbable || data.ally.tabbable,
       redirecting: data.ally.redirecting,
     };
   },

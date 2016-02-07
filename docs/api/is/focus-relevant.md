@@ -12,7 +12,7 @@ Determines if an element has any relevance to focus management.
 
 This module is a pre-filter for [`ally.is.focusable`](focusable.md), [`ally.is.tabbable`](tabbable.md), [`ally.is.onlyTabbable`](only-tabbable.md) and [`ally.get.focusRedirectTarget`](../get/focus-redirect-target.md). Elements may be considered focus-relevant, even though they do not in fact be focusable, tabbable, only-tabbable or redirect focus given their current conditions. But any element that is focusable, tabbable, only-tabbable or redirects focus *is* focus-relevant.
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js fails to consider focusable](../../data-tables/focusable.is.md) to learn how HTML elements behave.
 
 
 ## Usage
@@ -78,7 +78,7 @@ Boolean, `true` if the element is focus relevant.
 * [`ally.query.focusable`](../query/focusable.md) finds focusable elements in the DOM
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
-* [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)
+* [What ally.js fails to consider focusable](../../data-tables/focusable.is.md)
 
 
 ## Contributing

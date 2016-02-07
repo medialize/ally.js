@@ -281,7 +281,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -494,7 +495,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -644,14 +646,15 @@
       "jquery": {},
       "scriptFocus": {
         "documentActiveElement": true,
-        "contextActiveElement": true
+        "contextActiveElement": true,
+        "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
         "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": false
+        "event": true
       },
       "focusable": true
     },
@@ -1086,8 +1089,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -1488,8 +1490,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -1620,7 +1621,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -1914,7 +1916,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -1945,7 +1948,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -1960,7 +1964,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -2135,7 +2140,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -2845,8 +2851,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -2867,7 +2872,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -3325,9 +3331,7 @@
     },
     "iframe[src=svg][tabindex=-1] -> file:svg": {
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {},
       "scriptFocus": {}
     },
@@ -3342,9 +3346,7 @@
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -3360,9 +3362,7 @@
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
       "tabindexAttribute": "-1",
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true
       },
@@ -3377,9 +3377,7 @@
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
       "tabindexAttribute": "1",
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -3651,8 +3649,7 @@
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3678,8 +3675,7 @@
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3982,14 +3978,15 @@
       },
       "scriptFocus": {
         "documentActiveElement": true,
-        "contextActiveElement": true
+        "contextActiveElement": true,
+        "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
         "cssFocus": true,
         "ident": "img[usemap]",
-        "event": false
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -4113,7 +4110,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -4298,7 +4296,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -4469,7 +4468,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -4501,7 +4501,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -4626,7 +4627,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true

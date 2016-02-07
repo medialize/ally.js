@@ -12,7 +12,7 @@ Determines if an element is considered tabbable and not focusable.
 
 An element is considered tabbable and not focusable if the element is part of the document's focus navigation sequence, but cannot be focused by script.
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js fails to consider focusable](../../data-tables/focusable.is.md) to learn how HTML elements behave.
 
 
 ## Usage
@@ -67,7 +67,7 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 * [`ally.is.tabbable`](tabbable.md) identifies keyboard focusable elements
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
-* [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)
+* [What ally.js fails to consider focusable](../../data-tables/focusable.is.md)
 
 
 ## Contributing
