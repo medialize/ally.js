@@ -1,6 +1,7 @@
 
 // determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
 
+import isVisible from './visible';
 import contextToElement from '../util/context-to-element';
 import tabindexValue from '../util/tabindex-value';
 import focusRelevant from './focus-relevant';
@@ -27,6 +28,7 @@ function isTabbableRules({
     flexbox: false,
     scrollable: false,
     shadow: false,
+    visible: false,
     onlyTabbable: false,
   },
 } = {}) {
@@ -53,6 +55,11 @@ function isTabbableRules({
     // iframe[tabindex="-1"] and object[tabindex="-1"] inherit the
     // tabbable demotion onto elements of their browsing contexts
     if (tabindexValue(frameElement) < 0) {
+      return false;
+    }
+
+    if (!except.visible && (platform.is.BLINK || platform.is.WEBKIT) && !isVisible(frameElement)) {
+      // Blink and WebKit consider elements in hidden browsing contexts focusable, but not tabbable
       return false;
     }
 

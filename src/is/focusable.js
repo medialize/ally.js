@@ -14,6 +14,7 @@ import isVisible from './visible';
 import isDisabled from './disabled';
 import isOnlyTabbable from './only-tabbable';
 import contextToElement from '../util/context-to-element';
+import getFrameElement from '../util/get-frame-element';
 import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 
@@ -111,8 +112,31 @@ function isFocusableRules({
   }
 
   // elements that are not rendered, cannot be focused
-  if (!except.visible && !isVisible(element)) {
-    return false;
+  if (!except.visible) {
+    const visibilityOptions = {
+      context: element,
+      except: {},
+    };
+
+    if (supports.canFocusInHiddenIframe) {
+      // WebKit and Blink can focus content in hidden <iframe> and <object>
+      visibilityOptions.except.browsingContext = true;
+    }
+
+    if (!isVisible.rules(visibilityOptions)) {
+      return false;
+    }
+  }
+
+  const frameElement = getFrameElement(element);
+  if (frameElement) {
+    const _nodeName = frameElement.nodeName.toLowerCase();
+    if (_nodeName === 'object' && !supports.canFocusInZeroDimensionObject) {
+      if (!frameElement.offsetWidth || !frameElement.offsetHeight) {
+        // WebKit can not focus content in <object> if it doesn't have dimensions
+        return false;
+      }
+    }
   }
 
   return true;

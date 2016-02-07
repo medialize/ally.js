@@ -6,6 +6,8 @@ import canFocusFieldset from '../supports/focus-fieldset';
 import canFocusFlexboxContainer from '../supports/focus-flexbox-container';
 import canFocusImgIsmap from '../supports/focus-img-ismap';
 import canFocusImgUsemapTabindex from '../supports/focus-img-usemap-tabindex';
+import canFocusInHiddenIframe from '../supports/focus-in-hidden-iframe';
+import canFocusInZeroDimensionObject from '../supports/focus-in-zero-dimension-object';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusObjectSvg from '../supports/focus-object-svg';
 import canFocusObjectSwf from '../supports/focus-object-swf';
@@ -29,6 +31,8 @@ export default memorizeResult(function() {
     canFocusFlexboxContainer: canFocusFlexboxContainer(),
     canFocusImgIsmap: canFocusImgIsmap(),
     canFocusImgUsemapTabindex: canFocusImgUsemapTabindex(),
+    canFocusInHiddenIframe: canFocusInHiddenIframe(),
+    canFocusInZeroDimensionObject: canFocusInZeroDimensionObject(),
     canFocusLabelTabindex: canFocusLabelTabindex(),
     canFocusObjectSvg: canFocusObjectSvg(),
     canFocusObjectSwf: canFocusObjectSwf(),

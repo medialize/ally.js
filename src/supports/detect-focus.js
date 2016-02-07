@@ -18,7 +18,7 @@ function detectFocus(options) {
   wrapper.setAttribute('aria-hidden', 'true');
   document.body.appendChild(wrapper);
   // create dummy element to test focusability of
-  const element = typeof options.element === 'string' ? document.createElement(options.element) : options.element();
+  const element = typeof options.element === 'string' ? document.createElement(options.element) : options.element(wrapper);
   // allow callback to further specify dummy element
   const focus = options.mutate && options.mutate(element, wrapper) || element;
   // element needs to be part of the DOM to be focusable

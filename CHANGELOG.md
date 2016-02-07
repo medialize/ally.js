@@ -81,6 +81,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring `selector/focusable` to extract `util/select-in-shadows` 
 * adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
 * adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
+* adding `supports/focus-in-hidden-iframe` to identify if content within a hidden iframe is focusable
 
 #### Testing
 

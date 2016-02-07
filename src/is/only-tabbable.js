@@ -1,4 +1,5 @@
 
+import isVisible from './visible';
 import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
 import getWindow from '../util/get-window';
@@ -9,6 +10,7 @@ function isOnlyTabbableRules({
   context,
   except = {
     onlyFocusableBrowsingContext: false,
+    visible: false,
   },
 } = {}) {
   const element = contextToElement({
@@ -19,10 +21,12 @@ function isOnlyTabbableRules({
 
   if (!except.onlyFocusableBrowsingContext && (platform.is.GECKO || platform.is.TRIDENT)) {
     const frameElement = getFrameElement(element);
-    if (frameElement && tabindexValue(frameElement) < 0) {
-      // iframe[tabindex="-1"] and object[tabindex="-1"] inherit the
-      // tabbable demotion onto elements of their browsing contexts
-      return false;
+    if (frameElement) {
+      if (tabindexValue(frameElement) < 0) {
+        // iframe[tabindex="-1"] and object[tabindex="-1"] inherit the
+        // tabbable demotion onto elements of their browsing contexts
+        return false;
+      }
     }
   }
 
