@@ -15,10 +15,10 @@ define([
 
   FrameProxy.prototype = {
     sanitizeSource: function(source) {
-      // remove <object> and <embed> elements avoid blocking QuickTime upgrade dialog in IE on BrowserStack
+      // remove <embed> elements avoid blocking QuickTime upgrade dialog in IE on BrowserStack
       // see https://github.com/medialize/ally.js/pull/80#issuecomment-163602788
+      // <object> are fine as long as they're only embedding SVG, Flash or images
       return source
-        .replace(/<object\s[\s\S]+?<\/object>/g, '')
         .replace(/<embed\s[^>]+>/g, '');
     },
 

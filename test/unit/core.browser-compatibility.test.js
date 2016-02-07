@@ -68,7 +68,7 @@ define([
     var ignoreTabsequencePattern = /svg/;
     var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
-    var ignorePattern = /(^|-> )(ignore|html|body|object|embed|param)/;
+    var ignorePattern = /(^|-> )(ignore|html|body|embed|param)/;
     var skipUntestable = keysMap([
       // known mismatch
       'iframe',
@@ -107,6 +107,13 @@ define([
       data.elements['label:has(input)'].scriptFocus.redirected = 'label:has(input) input';
       data.elements['label[for=label-target-focusable]'].scriptFocus.redirected = 'input[type=text][tabindex=-1]';
       data.elements['label[for=label-target]'].scriptFocus.redirected = 'input[type=text]';
+
+      if (parseInt(data.platform.version, 10) === 10) {
+        // these elements were removed from IE10's manual test
+        skipUntestable['object[src=swf]'] = true;
+        skipUntestable['object[src=swf][height=0]'] = true;
+        skipUntestable['object[src=swf][tabindex=0]'] = true;
+      }
     }
 
     function generateTest(label) {
