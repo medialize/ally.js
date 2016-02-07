@@ -20,19 +20,11 @@ import queryFocusable from '../query/focusable';
 import elementDisabled from '../element/disabled';
 import {getParentComparator} from '../util/compare-position';
 
-let inertElementSet = [];
-
 function makeElementInert(element) {
-  inertElementSet.push(element);
   return elementDisabled(element, true);
 }
 
 function undoElementInert(element) {
-  const index = inertElementSet.indexOf(element);
-  if (index > -1) {
-    inertElementSet = inertElementSet.splice(index, 1);
-  }
-
   return elementDisabled(element, false);
 }
 
@@ -47,6 +39,7 @@ class InertSubtree {
   constructor({context, filter} = {}) {
     this._context = nodeArray(context || document.documentElement)[0];
     this._filter = nodeArray(filter);
+    this._inertElementCache = [];
 
     this.disengage = this.disengage.bind(this);
     this.handleMutation = this.handleMutation.bind(this);
@@ -69,7 +62,15 @@ class InertSubtree {
     }
 
     undoElementInert(this._context);
-    inertElementSet.forEach(undoElementInert);
+    this._inertElementCache.forEach((element) => {
+      const index = this._inertElementCache.indexOf(element);
+
+      if (index > -1) {
+        this._inertElementCache = this._inertElementCache.splice(index, 1);
+      }
+
+      undoElementInert(element);
+    });
 
     this._filter = null;
     this._context = null;
@@ -86,7 +87,10 @@ class InertSubtree {
   }
 
   renderInert(elements) {
-    elements.filter(this.filterElements).forEach(makeElementInert);
+    elements.filter(this.filterElements).forEach((element) => {
+      this._inertElementCache.push(element);
+      makeElementInert(element);
+    });
   }
 
   filterContext(element) {
@@ -128,6 +132,7 @@ class InertSubtree {
       const addedFocusableElements = this.listQueryFocusable(addedElements);
       this.renderInert(addedFocusableElements);
     } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
+      this._inertElementCache.push(mutation.target);
       makeElementInert(mutation.target);
     }
   }
