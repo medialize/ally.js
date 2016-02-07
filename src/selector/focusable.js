@@ -4,6 +4,7 @@
 // a simple CSS selector…
 
 import '../prototype/svgelement.prototype.focus';
+import selectInShadows from '../util/select-in-shadows';
 
 import _supports from './focusable.supports';
 let supports;
@@ -49,10 +50,7 @@ export default function() {
     + '[contenteditable]';
 
   // where ShadowDOM is supported, we also want the shadowed focusable elements (via ">>>" or "/deep/")
-  if (supports.cssShadowPiercingDeepCombinator) {
-    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' '
-      + selector.replace(/\s*,\s*/g, ',').split(',').join(', html ' + supports.cssShadowPiercingDeepCombinator + ' ');
-  }
+  selector = selectInShadows(selector);
 
   return selector;
 }

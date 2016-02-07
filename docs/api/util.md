@@ -101,3 +101,6 @@ A component's `engage()` function may return an result object. The decorated `di
 `util/toggle-attribute-value` can will change an attribute's value, while saving its former value to allow restoring the previous state
 
 
+### Select in ShadowDOM
+
+`util/select-in-shadows` mutates a given CSS selector in order to make it match elements in ShadowDOM as well.

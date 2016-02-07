@@ -75,6 +75,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 * refactoring `is/focus-relevant` and `is/tabbable` to allow running the identification with execptions via `is/focus-relevant.rules` and `is/tabbable.rules`, while maintaining module signature
 * refactoring `console.log()` to go through `util/logger`
+* refactoring `selector/focusable` to extract `util/select-in-shadows` 
 
 #### Testing
 

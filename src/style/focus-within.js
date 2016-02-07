@@ -13,6 +13,7 @@ import shadowFocus from '../event/shadow-focus';
 import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
 import decorateService from '../util/decorate-service';
+import selectInShadows from '../util/select-in-shadows';
 
 import _supports from './focus-within.supports';
 let supports;
@@ -27,16 +28,14 @@ const blurEventName = typeof document !== 'undefined' && ('onfocusin' in documen
 // https://developer.mozilla.org/en-US/docs/Web/API/Element.classList
 
 const className = 'ally-focus-within';
+// defined in engage();
+let selector;
 let blurTimer;
 let shadowHandle;
 
 function applyFocusWithinClass(active) {
   let _active = active || getActiveElements();
-  let selector = '.' + className;
-  if (supports.cssShadowPiercingDeepCombinator) {
-    // select elements in shadow dom as well
-    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' ' + selector;
-  } else {
+  if (!supports.cssShadowPiercingDeepCombinator) {
     // no shadow-piercing descendant selector, no joy
     _active = _active.slice(-1);
   }
@@ -96,12 +95,6 @@ function disengage() {
   document.removeEventListener(focusEventName, handleDocumentFocusEvent, true);
   document.removeEventListener('shadow-focus', handleShadowFocusEvent, true);
 
-  let selector = '.' + className;
-  if (supports.cssShadowPiercingDeepCombinator) {
-    // select elements in shadow dom as well
-    selector += ', html ' + supports.cssShadowPiercingDeepCombinator + ' ' + selector;
-  }
-
   // remove any remaining ally-within-focus occurrences
   [].forEach.call(document.querySelectorAll(selector), function(element) {
     element.classList.remove(className);
@@ -111,6 +104,7 @@ function disengage() {
 function engage() {
   if (!supports) {
     supports = _supports();
+    selector = selectInShadows('.' + className);
   }
 
   shadowHandle = shadowFocus();
