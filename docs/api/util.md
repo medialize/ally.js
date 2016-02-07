@@ -114,4 +114,6 @@ A component's `engage()` function may return an result object. The decorated `di
 
 * `util/get-content-document` returns the `document` representing the content of an `<iframe>` or `<object>` element.
 * `util/get-document` returns the `document` an element is attached to.* `util/get-document` returns the `document` an element is attached to.
+* `util/get-frame-element` returns the `<iframe>` or `<object>` the element is hosted in.
 * `util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.`util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.
+

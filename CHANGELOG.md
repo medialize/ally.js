@@ -77,6 +77,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring `console.log()` to go through `util/logger`
 * refactoring `selector/focusable` to extract `util/select-in-shadows` 
 * adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
+* adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
 
 #### Testing
 
