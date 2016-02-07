@@ -124,6 +124,15 @@ function isFocusableRules({
       visibilityOptions.except.browsingContext = true;
     }
 
+    if (supports.canFocusObjectSvgHidden) {
+      // Blink allows focusing the object element, even if it has visibility: hidden;
+      // @browser-issue Blink https://code.google.com/p/chromium/issues/detail?id=586191
+      const nodeName = element.nodeName.toLowerCase();
+      if (nodeName === 'object') {
+        visibilityOptions.except.cssVisibility = true;
+      }
+    }
+
     if (!isVisible.rules(visibilityOptions)) {
       return false;
     }

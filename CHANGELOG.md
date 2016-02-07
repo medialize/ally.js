@@ -52,6 +52,7 @@ The following lists show the changes to the library grouped by domain.
 * adding option `includeOnlyTabbable` to [`ally.query.firstTabbable`][ally/query/first-tabbable], [`ally.query.focusable`][ally/query/focusable], [`ally.query.tabbable`][ally/query/tabbable], [`ally.query.tabsequence`][ally/query/tabsequence] - [issue #100](https://github.com/medialize/ally.js/issues/100)
 * fixing [`ally.is.visible`][ally/is/visible] to consider the state of the hosting `<iframe>` or `<object>` element
 * fixing [`ally.is.focusable`][ally/is/focusable], [`ally.is.tabbable`][ally/is/tabbable] and [`ally.is.onlyTabbable`][ally/is/only-tabbable] to consider the state of the hosting `<iframe>` or `<object>` element
+* fixing [`ally.is.focusable`][ally/is/focusable] to compensate Chrome being able to focus hidden `<object>` elements - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 
 #### Keyboard support
 
@@ -83,6 +84,7 @@ The following lists show the changes to the library grouped by domain.
 * adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
 * adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
 * adding `supports/focus-in-hidden-iframe` to identify if content within a hidden iframe is focusable
+* adding `supports/focus-object-svg-hidden` to identify if a hidden `<object>` element is focusable
 
 #### Testing
 

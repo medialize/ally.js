@@ -41,6 +41,7 @@ define(function(require) {
     canFocusInvalidTabindex: require('ally/supports/focus-invalid-tabindex')(),
     canFocusLabelTabindex: require('ally/supports/focus-label-tabindex')(),
     canFocusObjectSvg: require('ally/supports/focus-object-svg')(),
+    canFocusObjectSvgHidden: require('ally/supports/focus-object-svg-hidden')(),
     canFocusObjectSwf: require('ally/supports/focus-object-swf')(),
     canFocusRedirectLegend: require('ally/supports/focus-redirect-legend')(),
     canFocusRedirectImgUsemap: require('ally/supports/focus-redirect-img-usemap')(),

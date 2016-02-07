@@ -10,6 +10,7 @@ import canFocusInHiddenIframe from '../supports/focus-in-hidden-iframe';
 import canFocusInZeroDimensionObject from '../supports/focus-in-zero-dimension-object';
 import canFocusLabelTabindex from '../supports/focus-label-tabindex';
 import canFocusObjectSvg from '../supports/focus-object-svg';
+import canFocusObjectSvgHidden from '../supports/focus-object-svg-hidden';
 import canFocusObjectSwf from '../supports/focus-object-swf';
 import canFocusRedirectImgUsemap from '../supports/focus-redirect-img-usemap';
 import canFocusRedirectLegend from '../supports/focus-redirect-legend';
@@ -35,6 +36,7 @@ export default memorizeResult(function() {
     canFocusInZeroDimensionObject: canFocusInZeroDimensionObject(),
     canFocusLabelTabindex: canFocusLabelTabindex(),
     canFocusObjectSvg: canFocusObjectSvg(),
+    canFocusObjectSvgHidden: canFocusObjectSvgHidden(),
     canFocusObjectSwf: canFocusObjectSwf(),
     canFocusRedirectImgUsemap: canFocusRedirectImgUsemap(),
     canFocusRedirectLegend: canFocusRedirectLegend(),
