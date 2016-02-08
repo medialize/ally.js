@@ -28,6 +28,13 @@ var isTabbable = ally.is.tabbable(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.tabbable.rules(options)`:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+
 ### Returns
 
 Boolean, `true` if the element is tabbable.
@@ -44,6 +51,8 @@ Boolean, `true` if the element is tabbable.
 
 * Since `v#master` matching of `SVGElement`s is done document-independent, to allow elements from other documents (e.g. from an iframe).
 * Since `v#master` all `<iframe>` elements are considered focusable, not tabbable - except for IE9.
+* Since `v#master` exceptions can be passed to `ally.is.tabbable.rules(options)`.
+
 
 ## Notes
 

@@ -33,7 +33,7 @@ The Accessibility Tree (often abbreviated "AT", which may be ambiguous as it is 
 
 ## Sequential navigation focus order
 
-The Sequential Navigation Focus Order, also referred to as the Tabbing Order, is an ordered list of all keyboard focusable elements in a document. Unless elements are moved to the front of the list by specifying a positive `tabindex` attribute such as `tabindex="1"`, the tabbing order correlates to the DOM order. Users can usually navigate to the next and previous element in the list by pressing the <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> keys respectively.
+The Sequential Navigation Focus Order, also referred to as the Tabbing Order or *tabsequence*, is an ordered list of all keyboard focusable elements in a document. Unless elements are moved to the front of the list by specifying a positive `tabindex` attribute such as `tabindex="1"`, the tabbing order usually correlates to the DOM order. Users can usually navigate to the next and previous element in the list by pressing the <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> keys respectively.
 
 
 ## Virtual focus

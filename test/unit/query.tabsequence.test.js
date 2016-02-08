@@ -98,7 +98,7 @@ define([
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
           !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
           platform.is.GECKO && '#object-svg',
-          supports.canFocusSvgMethod && '#svg-link',
+          supports.svgFocusMethod && '#svg-link',
           '#audio-controls',
           '#input',
           '#span-contenteditable',
@@ -111,6 +111,36 @@ define([
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var result = queryTabsequence().map(fixture.nodeToString);
+          expect(result).to.deep.equal(expected);
+        }), 200);
+      },
+
+      includeOnlyTabbable: function() {
+        var deferred = this.async(10000);
+
+        var expected = [
+          '#tabindex-1',
+          '#tabindex-0',
+          '#link',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          platform.is.GECKO && '#object-svg',
+          '#svg-link',
+          '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          '#img-ismap-link',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          '#end-of-line',
+        ].filter(Boolean);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var result = queryTabsequence({
+            includeOnlyTabbable: true,
+          }).map(fixture.nodeToString);
+
           expect(result).to.deep.equal(expected);
         }), 200);
       },

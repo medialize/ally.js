@@ -2,10 +2,11 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
+  '../helper/supports',
   'ally/util/platform',
   'ally/is/focusable',
   'ally/is/tabbable',
-], function(registerSuite, expect, focusableFixture, platform, isFocusable, isTabbable) {
+], function(registerSuite, expect, focusableFixture, supports, platform, isFocusable, isTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -25,6 +26,13 @@ define([
         expect(function() {
           isTabbable(null);
         }).to.throw(TypeError, 'is/tabbable requires an argument of type Element');
+      },
+      '.rules() and .except()': function() {
+        var element = document.getElementById('tabindex--1');
+        expect(isTabbable.rules({
+          context: element,
+        })).to.equal(false, '.rules()');
+        expect(isTabbable.rules.except({})(element)).to.equal(false, '.rules.except()');
       },
       'inert div': function() {
         var element = document.getElementById('inert-div');
@@ -69,6 +77,19 @@ define([
       'input type="hidden"': function() {
         var element = document.getElementById('input-hidden');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);
+      },
+      'svg link': function() {
+        var element = document.getElementById('svg-link');
+        expect(isTabbable(element)).to.equal(supports.svgFocusMethod);
+      },
+      'svg link with .except({ onlyTabbable })': function() {
+        var element = document.getElementById('svg-link');
+        expect(isTabbable.rules({
+          context: element,
+          except: {
+            onlyTabbable: true,
+          },
+        })).to.equal(true);
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');

@@ -5,6 +5,7 @@ define([
   '../helper/test-iframe-browser-data',
   '../helper/browser-focusable-data',
   'platform',
+  'ally/is/focus-relevant',
   'ally/is/focusable',
   'ally/is/tabbable',
   'ally/is/only-tabbable',
@@ -17,6 +18,7 @@ define([
   FocusableTestFrame,
   focusableTestData,
   platform,
+  isFocusRelevant,
   isFocusable,
   isTabbable,
   isOnlyTabbable,
@@ -36,7 +38,31 @@ define([
     var framed = new FocusableTestFrame();
 
     var data = focusableTestData(platform);
+    var suite = {
+      name: 'core: Browser Compatibility',
+
+      before: function() {
+        return framed.initialize(document.body);
+      },
+      after: function() {
+        framed.terminate();
+      },
+      'browser version': function() {
+        if (data) {
+          var ident = data.platform.name + ' ' + data.platform.version;
+          this.skip('Checking against ' + ident);
+        } else {
+          this.skip('No data to compare to');
+        }
+      },
+    };
+
+    if (!data) {
+      return suite;
+    }
+
     var ignoreTabsequencePattern = /svg/;
+    var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
     var ignorePattern = /^(object|embed)/;
     var skipUntestable = keysMap([
@@ -71,35 +97,17 @@ define([
       // In Firefox ShadowDOM is behind a flag
       if (!document.body.createShadowRoot) {
         ignoreTabsequencePattern = /svg|shadow-host/;
+        ignoreTabsequenceFocusablePattern = /shadow-host/;
       }
     }
 
-    if (data.platform.name === 'IE') {
-      // IE does not forward focus upon script-focus, but does on pointer-focus,
+    if (data.platform.layout === 'Trident') {
+      // IE and Edge do not forward focus upon script-focus, but does on pointer-focus,
       // we'll act as if script-focus worked just like pointer-focus
       data.elements['label:has(input)'].scriptFocus.redirected = 'label:has(input) input';
       data.elements['label[for=label-target-focusable]'].scriptFocus.redirected = 'input[type=text][tabindex=-1]';
       data.elements['label[for=label-target]'].scriptFocus.redirected = 'input[type=text]';
     }
-
-    var suite = {
-      name: 'core: Browser Compatibility',
-
-      before: function() {
-        return framed.initialize(document.body);
-      },
-      after: function() {
-        framed.terminate();
-      },
-      'browser version': function() {
-        var ident = data.platform.name + ' ' + data.platform.version;
-        if (data) {
-          this.skip('Checking against ' + ident);
-        }
-
-        expect('').to.equal(ident, 'Test data available');
-      },
-    };
 
     function generateTest(label) {
       return function() {
@@ -108,6 +116,8 @@ define([
         var focusable = Boolean(element.focusable);
         var tabbable = focusable && Boolean(element.tabbable);
         var onlyTabbable = !focusable && Boolean(element.tabbable);
+        var focusRelevant = Boolean(focusable || onlyTabbable
+          || element.scriptFocus && element.scriptFocus.redirected);
 
         // evaluated state
         var _element = framed.getElement(label);
@@ -115,10 +125,15 @@ define([
           this.skip('element not found');
         }
 
+        var _focusRelevant = isFocusRelevant(_element);
         var _focusable = isFocusable(_element);
         var _tabbable = _focusable && isTabbable(_element);
         var _onlyTabbable = isOnlyTabbable(_element);
 
+        // focus-relevant is allowed to produce false-positives
+        // as it is only used as a pre-filter
+        var okFocusRelevant = _focusRelevant === focusRelevant || _focusRelevant && !focusRelevant;
+        expect(okFocusRelevant).to.equal(true, 'is/focus-relevant');
         expect(_focusable).to.equal(focusable, 'is/focusable');
         expect(_tabbable).to.equal(tabbable, 'is/tabbable');
         expect(_onlyTabbable).to.equal(onlyTabbable, 'is/only-tabbable');
@@ -163,6 +178,26 @@ define([
       expect(sequence).to.deep.equal(expected);
     };
 
+    suite['tabsequence with onlyTabbable'] = function() {
+      var ignored = function(label) {
+        return !skipUntestable[label]
+          && !skipTabsequence[label]
+          && !label.match(ignorePattern)
+          && (!ignoreTabsequenceFocusablePattern || !label.match(ignoreTabsequenceFocusablePattern))
+          && label.indexOf(' -> ') === -1;
+      };
+
+      var expected = data.tabsequence.filter(ignored);
+      var sequence = queryTabsequence({
+        context: framed.document.body,
+        includeOnlyTabbable: true,
+        strategy: 'strict',
+      }).map(function(element) {
+        return element.getAttribute('data-label');
+      }).filter(ignored);
+
+      expect(sequence).to.deep.equal(expected);
+    };
     return suite;
   });
 });

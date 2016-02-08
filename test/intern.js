@@ -86,6 +86,7 @@ define([
       'test/unit/get.parents.test',
       'test/unit/get.shadow-host-parents.test',
       'test/unit/get.shadow-host.test',
+      'test/unit/is.active-element.test',
       'test/unit/is.disabled.test',
       'test/unit/is.focus-relevant.test',
       'test/unit/is.focusable.test',
@@ -98,6 +99,7 @@ define([
       'test/unit/is.visible.test',
       'test/unit/maintain.disabled.test',
       'test/unit/maintain.hidden.test',
+      'test/unit/maintain.tab-focus.test',
       'test/unit/observe.interaction-type.test',
       'test/unit/prototype.element.prototype.matches.test',
       'test/unit/prototype.svgelement.prototype.focus.test',
@@ -132,6 +134,7 @@ define([
     // Functional test suite(s) to run in each browser once non-functional tests are completed
     functionalSuites: [
       'test/functional/intern.events.test.js',
+      'test/functional/maintain.tab-focus.test.js',
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis

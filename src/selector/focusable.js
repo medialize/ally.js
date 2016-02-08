@@ -26,8 +26,9 @@ export default function() {
     // IE11 supports.can focus <fieldset>
     + (supports.canFocusFieldset ? 'fieldset,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
-    // Firefox supports.cannot focus <svg> child elements from script
-    + (supports.canFocusSvgMethod ? 'svg a[*|href],' : '')
+    // svg a[*|href] does not match in IE9, but since we're filtering
+    // through is/focusable we can include all <a> from SVG
+    + 'svg a,'
     // may behave as 'svg, svg *,' in chrome as *every* svg element with a focus event listener is focusable
     // navigational elements
     + 'a[href],'
