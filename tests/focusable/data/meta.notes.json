@@ -218,8 +218,10 @@
       "iframe[src=svg]",
       "iframe[src=svg][tabindex=-1]",
 
-      "inert-in-ally{iframe content}",
-      "inert-in-ally{iframe svg:file}"
+      "inert-in-ally-query{iframe content}",
+      "inert-in-ally-is{iframe content}",
+      "inert-in-ally-query{iframe svg:file}",
+      "inert-in-ally-is{iframe svg:file}"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>` content inert",
     "general": "@sop-iframe"
@@ -254,7 +256,8 @@
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]",
-      "inert-in-ally{embed svg:file}"
+      "inert-in-ally-query{embed svg:file}",
+      "inert-in-ally-is{embed svg:file}"
     ],
     "ally": "Because there is no API to dive into the content document of an `<embed>` element, ally.js considers all `<embed>` content inert.",
     "general": "There is no API to interact with the content document of an `<embed>` element"
@@ -292,7 +295,8 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
       "object[src=svg][height=0] -> file:svg a[focusable=false]",
-      "inert-in-ally{object svg:file}"
+      "inert-in-ally-query{object svg:file}",
+      "inert-in-ally-is{object svg:file}"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<object>`s to determine their content, which is why ally.js considers all `<object>` content inert.",
     "general": "Technically the content of an `<object>` element [can be accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement)."
@@ -533,7 +537,8 @@
   "keygen": {
     "alias": [
       "keygen[tabindex=-1]",
-      "inert-in-ally{keygen}"
+      "inert-in-ally-query{keygen}",
+      "inert-in-ally-is{keygen}"
     ],
     "browsers": {
       "firefox-stable": "@firefox-keygen-select",

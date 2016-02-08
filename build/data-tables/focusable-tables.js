@@ -25,12 +25,13 @@ function rowDataAllyNotes(ident, sourceIdent, referencedNotes) {
   };
 }
 
-function skipIdentsIfMatches(labelGroup, labelName, checksum, skipInertByScope) {
+function skipIdentsIfMatches(labelGroup, labelName, checksum, inert) {
   return function(ident, sourceIdent, duplicateIdent) {
-    if (skipInertByScope) {
-      if (ident.slice(0, 14) === 'inert-in-ally{') {
+    if (inert) {
+      const key = 'inert-in-ally-' + inert + '{';
+      if (ident.slice(0, key.length) === key) {
         return false;
-      } else if (source.inertIdents.has(ident)) {
+      } else if (source.inertIdents[inert].has(ident)) {
         return true;
       }
     }
@@ -83,7 +84,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelQuick', 'allyQuick', true),
+  skipIdents: skipIdentsIfMatches('ally', 'labelQuick', 'allyQuick', 'query'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -108,7 +109,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'labelStrict', 'allyStrict', true),
+  skipIdents: skipIdentsIfMatches('ally', 'labelStrict', 'allyStrict', 'query'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
@@ -136,7 +137,7 @@ generateTableDocument({
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,
-  skipIdents: skipIdentsIfMatches('ally', 'label', 'ally'),
+  skipIdents: skipIdentsIfMatches('ally', 'label', 'ally', 'is'),
   cellTemplate: 'table-cell.compare.hbs',
   cellData: function(data) {
     return {
