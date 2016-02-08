@@ -8,15 +8,15 @@ define([
   registerSuite(function() {
     var timeout = 120000;
 
-    function makeFocusClickTest(prefix, fails) {
+    function makeFocusClickTest(prefix, hasTarget) {
       return function() {
         this.timeout = timeout;
         return this.remote
 
-          // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
+          // This fix is only relevant to WebKit
           .then(pollUntil('return window.platform'))
           .then(function(platform) {
-            if (!platform.is.IE10 && !platform.is.IE11) {
+            if (!platform.is.WEBKIT) {
               this.skip('irrelevant to current browser');
             }
           }.bind(this))
@@ -28,8 +28,11 @@ define([
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
           .then(function(activeElementId) {
-            expect(activeElementId).to.equal(fails ? (prefix + 'fail-source') : (prefix + 'fail-target'));
-          })
+            var expected = hasTarget ? (prefix + 'fail-target') : (prefix + 'fail-source');
+            if (activeElementId === expected) {
+              this.skip('Element focused naturally');
+            }
+          }.bind(this))
 
           // I have no clue why, but IE11 needs this for
           // the next click to actually focus something.
@@ -45,27 +48,27 @@ define([
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
           .then(function(activeElementId) {
-            expect(activeElementId).to.equal(prefix + 'fixed-target');
+            var expected = hasTarget ? (prefix + 'fixed-target') : (prefix + 'fixed-source');
+            expect(activeElementId).to.equal(expected);
           });
       };
     }
 
     return {
-      name: 'fix/pointer-focus-children',
+      name: 'fix/pointer-focus-parent',
 
       before: function() {
         return this.remote
-          .get(require.toUrl('test/pages/fix.pointer-focus-children.test.html'))
+          .get(require.toUrl('test/pages/fix.pointer-focus-parent.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
           .setExecuteAsyncTimeout(timeout);
       },
 
-      'div[tabindex="-1"] > span': makeFocusClickTest('normal-', false),
-      'div[tabindex="-1"]{flexbox} > span': makeFocusClickTest('child-', true),
-      'div[tabindex="-1"] > div{flexbox} > span': makeFocusClickTest('nested-', true),
-      'input + label': makeFocusClickTest('redirect-', false),
-      'input + label{flexbox} > span': makeFocusClickTest('redirect-flexed-', false),
+      // '<button>': makeFocusClickTest('button-', false),
+      // '<button><span>': makeFocusClickTest('nested-button-', true),
+      '<a href="">': makeFocusClickTest('link-', false),
+      // '<span tabindex="-1">': makeFocusClickTest('focusable-', false),
     };
   });
 });

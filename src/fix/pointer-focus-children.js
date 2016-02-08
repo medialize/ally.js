@@ -21,26 +21,28 @@ let engage;
 let disengage;
 // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
 const relevantToCurrentBrowser = platform.is.TRIDENT && (platform.is.IE10 || platform.is.IE11);
-// IE10 requires prefix, IE11 does not
-const eventName = typeof document !== 'undefined' && ('onpointerdown' in document ? 'pointerdown' : 'MSPointerDown');
 
 if (!relevantToCurrentBrowser) {
   engage = function() {};
 } else {
   const handleBeforeFocusEvent = function(event) {
     // find the element that would receive focus
-    const target = getFocusTarget({context: event.target});
+    const target = getFocusTarget({
+      context: event.target,
+      except: {
+        flexbox: true,
+        scrollable: true,
+      },
+    });
+
     if (!target || target === event.target) {
       // there's nothing to focus, or we're focusing the element clicked on
       return;
     }
 
-    // if the focus target does not have display:flex we're good
-    const display = window.getComputedStyle(target, null).getPropertyValue('display');
-    // flex, flexbox, -ms-flex, inline-flexbox (yeah, whatever…)
-    if (display.indexOf('flex') === -1) {
-      return;
-    }
+    window.setImmediate(function() {
+      target.focus();
+    });
 
     // hide all children, because hidden elements can't get focus
     // remember previous element style (not necessarily computed style)
@@ -65,11 +67,14 @@ if (!relevantToCurrentBrowser) {
   };
 
   engage = function(element) {
-    element.addEventListener(eventName, handleBeforeFocusEvent, true);
+    // WebDriver does not reliably dispatch PointerEvents so we'll go with
+    // mousedown, which shouldn't be a problem since we're targeting the
+    // focus handling which immediately follows mousedown.
+    element.addEventListener('mousedown', handleBeforeFocusEvent, true);
   };
 
   disengage = function(element) {
-    element.removeEventListener(eventName, handleBeforeFocusEvent, true);
+    element.removeEventListener('mousedown', handleBeforeFocusEvent, true);
   };
 }
 

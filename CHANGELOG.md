@@ -23,6 +23,11 @@ The following lists show the changes to the library grouped by domain.
 * upgrading to [platform.js](https://github.com/bestiejs/platform.js) v1.3.1
 * adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9
 
+#### Browser Behavior
+
+* fixing [`ally.fix.pointerFocusChildren`][ally/fix/pointer-focus-children] to use focus identity exceptions - [issue #103](https://github.com/medialize/ally.js/issues/103)
+* fixing [`ally.fix.pointerFocusInput`][ally/fix/pointer-focus-input] to properly target nested content of `<button>` and `<label>` elements
+
 #### Focusable detection
 
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [issue #82](https://github.com/medialize/ally.js/issues/82)

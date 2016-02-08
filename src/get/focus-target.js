@@ -8,7 +8,7 @@ import getParents from '../get/parents';
 import isFocusable from '../is/focusable';
 import contextToElement from '../util/context-to-element';
 
-export default function({context} = {}) {
+export default function({context, except} = {}) {
   const element = contextToElement({
     message: 'get/focus-target requires valid options.context',
     context,
@@ -16,8 +16,20 @@ export default function({context} = {}) {
 
   let result = null;
   const getTarget = function(_element) {
-    result = isFocusable(_element) && _element
-      || getFocusRedirectTarget({ context: _element, skipFocusable: true });
+    const focusable = isFocusable.rules({
+      context: _element,
+      except,
+    });
+
+    if (focusable) {
+      result = _element;
+      return true;
+    }
+
+    result = getFocusRedirectTarget({
+      context: _element,
+      skipFocusable: true,
+    });
 
     return Boolean(result);
   };

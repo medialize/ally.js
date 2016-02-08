@@ -39,6 +39,7 @@ var element = ally.get.focusTarget({
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | context | [`<selector>`](../concepts.md#Selector) | *required* | The element to start searching from. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
 
 ### Returns
 
@@ -55,6 +56,7 @@ var element = ally.get.focusTarget({
 ## Changes
 
 * Since `v#master` elements redirecting focus return their target elements.
+* Since `v#master` exceptions can be passed through to `ally.is.focusable` via the `except` argument.
 
 
 ## Notes
