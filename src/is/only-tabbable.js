@@ -19,6 +19,10 @@ function isOnlyTabbableRules({
     context,
   });
 
+  if (!except.visible && !isVisible(element)) {
+    return false;
+  }
+
   if (!except.onlyFocusableBrowsingContext && (platform.is.GECKO || platform.is.TRIDENT)) {
     const frameElement = getFrameElement(element);
     if (frameElement) {

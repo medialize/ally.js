@@ -71,10 +71,6 @@ function isOnlyFocusRelevant(element) {
   return false;
 }
 
-const _isOnlyTabbable = isOnlyTabbable.rules.except({
-  onlyFocusableBrowsingContext: true,
-});
-
 function isFocusableRules({
   context,
   except = {
@@ -86,6 +82,11 @@ function isFocusableRules({
   if (!supports) {
     supports = _supports();
   }
+
+  const _isOnlyTabbable = isOnlyTabbable.rules.except({
+    onlyFocusableBrowsingContext: true,
+    visible: except.visible,
+  });
 
   const element = contextToElement({
     message: 'is/focusable requires an argument of type Element',
