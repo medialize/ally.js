@@ -43,7 +43,8 @@ function skipIdentsIfMatches(labelGroup, labelName, checksum, inert) {
     // skip rows where every browser-cell equals the ally-cell
     return !source.columns.some(function(browser) {
       const data = sourceIdent[browser];
-      return data.browser.label !== data[labelGroup][labelName];
+      const label = data.browser.label === 'inert host' ? 'inert' : data.browser.label;
+      return label !== data[labelGroup][labelName];
     });
   };
 }
