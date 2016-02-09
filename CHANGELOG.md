@@ -2,7 +2,7 @@
 
 ## master
 
-**will eventually released as 1.1.0** - see [milestone](https://github.com/medialize/ally.js/milestones/1.1.0%20-%20second%20wave)
+**will eventually be released as 1.1.0** - see [milestone](https://github.com/medialize/ally.js/milestones/1.1.0%20-%20second%20wave)
 
 ### Changes
 
