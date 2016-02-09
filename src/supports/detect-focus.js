@@ -12,6 +12,7 @@ function detectFocus(options) {
   // wrap tests in an element hidden from screen readers to prevent them
   // from announcing focus, which can be quite irritating to the user
   const wrapper = document.createElement('div');
+  wrapper.setAttribute('style', 'position:fixed; position:absolute; top:0; left:-2px; width:1px; height:1px; overflow:hidden;');
   wrapper.setAttribute('aria-live', 'off');
   wrapper.setAttribute('aria-busy', 'true');
   wrapper.setAttribute('aria-hidden', 'true');
