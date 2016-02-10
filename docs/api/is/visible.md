@@ -10,7 +10,13 @@ Determines if an element is rendered.
 
 ## Description
 
-An element must be visible ([`ally.is.visible`](visible.md)) and may not be disabled ([`ally.is.disabled`](disabled.md)) to be considered focusable.
+An element is considered visible if it satisfies all of the following rules:
+
+* Neither the element nor an element of its ancestry has [`display: none;`](https://developer.mozilla.org/en/docs/Web/CSS/display) applied.
+* Neither the element nor an element of its ancestry has [`visibility: hidden;`](https://developer.mozilla.org/en/docs/Web/CSS/visibility) applied, unless a closer relative in the ancestry reverts that directive by defining `visibility: visible`.
+* The element is not a descendant of a collapsed [`<details>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details).
+
+An element can be visible, but not visible within the viewport.
 
 
 ## Usage
@@ -26,6 +32,13 @@ var isVisible = ally.is.visible(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.visible.rules(options)`:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+
 ### Returns
 
 Boolean, `true` if the element is visible (i.e. not hidden by CSS).
@@ -38,7 +51,14 @@ Boolean, `true` if the element is visible (i.e. not hidden by CSS).
 ## Examples
 
 
+## Changes
+
+* Since `v#master` exceptions can be passed to `ally.is.visible.rules(options)`.
+
+
 ## Notes
+
+* **NOTE:** `<area>` elements are not rendered by themselves, so they are *always* considered visible.
 
 
 ## Related resources

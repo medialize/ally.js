@@ -71,6 +71,13 @@ define([
           isVisible(null);
         }).to.throw(TypeError, 'is/visible requires an argument of type Element');
       },
+      '.rules() and .except()': function() {
+        var element = document.getElementById('visible-div');
+        expect(isVisible.rules({
+          context: element,
+        })).to.equal(true, '.rules()');
+        expect(isVisible.rules.except({})(element)).to.equal(true, '.rules.except()');
+      },
       div: function() {
         var element = document.getElementById('visible-div');
         expect(isVisible(element)).to.equal(true);
