@@ -260,6 +260,18 @@
     "general": "There is no API to interact with the content document of an `<embed>` element"
   },
 
+  "@object-hidden": "`<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)",
+  "object[src=svg]{hidden}": {
+    "alias": [
+      "object[src=swf]{hidden}"
+    ],
+    "browsers": {
+      "chrome-mobile": "@object-hidden",
+      "chrome-stable": "@object-hidden",
+      "chrome-nightly": "@object-hidden"
+    }
+  },
+
   "object[src=svg] -> file:svg": {
     "alias": [
       "object[src=svg] -> file:svg a[xlink|href]",
