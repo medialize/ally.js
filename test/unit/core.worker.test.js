@@ -11,7 +11,6 @@ define([
     // we'll load the ones with the fewest dependencies first,
     // so we don't hit timeouts caused by slow networks or VMs
     var modules = [
-      'ally.js/element/disabled',
       'ally.js/event/active-element',
       'ally.js/event/shadow-focus',
       'ally.js/prototype/element.prototype.matches',
@@ -41,6 +40,8 @@ define([
       'ally.js/get/parents',
       'ally.js/get/shadow-host-parents',
       'ally.js/get/shadow-host',
+      'ally.js/element/blur',
+      'ally.js/element/disabled',
       'ally.js/element/focus',
       'ally.js/observe/interaction-type',
       'ally.js/observe/shadow-mutations',

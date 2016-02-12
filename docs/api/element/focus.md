@@ -56,6 +56,8 @@ var result = ally.element.focus(element);
 
 ## Related resources
 
+* [`ally.element.blur`](./blur.md) shifts focus away from an element if it currently has focus.
+
 
 ## Contributing
 
