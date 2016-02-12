@@ -5,6 +5,7 @@
 import 'array.prototype.findindex';
 import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
+import getFrameElement from '../util/get-frame-element';
 
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
@@ -73,6 +74,7 @@ function isVisibleRules({
     cssDisplay: false,
     cssVisibility: false,
     detailsElement: false,
+    browsingContext: false,
   },
 } = {}) {
   const element = contextToElement({
@@ -102,6 +104,16 @@ function isVisibleRules({
 
   if (!except.detailsElement && collapsedParent(_path)) {
     return false;
+  }
+
+  if (!except.browsingContext) {
+    // elements within a browsing context are affected by the
+    // browsing context host element's visibility and tabindex
+    const frameElement = getFrameElement(element);
+    const _isVisible = isVisibleRules.except(except);
+    if (frameElement && !_isVisible(frameElement)) {
+      return false;
+    }
   }
 
   return true;

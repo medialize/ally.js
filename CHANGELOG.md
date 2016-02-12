@@ -49,6 +49,8 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
 * adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
 * adding option `includeOnlyTabbable` to [`ally.query.firstTabbable`][ally/query/first-tabbable], [`ally.query.focusable`][ally/query/focusable], [`ally.query.tabbable`][ally/query/tabbable], [`ally.query.tabsequence`][ally/query/tabsequence] - [issue #100](https://github.com/medialize/ally.js/issues/100)
+* fixing [`ally.is.visible`][ally/is/visible] to consider the state of the hosting `<iframe>` or `<object>` element
+
 
 #### Keyboard support
 

@@ -58,6 +58,7 @@ Modules dealing with the focus identity of elements (e.g. the `rules()` function
 | cssDisplay | boolean | `false` | Prevent elements from being considered invisible because of `display: none`. |
 | cssVisibility | boolean | `false` | Prevent elements from being considered invisible because of `visibility: hidden`. |
 | detailsElement | boolean | `false` | Prevent elements from being considered invisible because of being nested in a closed `<details>` element. |
+| browsingContext | boolean | `false` | Prevent elements from being considered invisible because of being nested in an invisible browsing context (`<iframe>` or `<object>`). |
 
 ## Service
 
