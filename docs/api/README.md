@@ -65,6 +65,7 @@ Unlike any other ally modules, these components do not take take [`options.conte
 Making up for missing or lacking DOM mutation APIs.
 
 * [`ally.element.disabled`](element/disabled.md) disables all elements, not only form controls
+* [`ally.element.focus`](element/focus.md) shifts focus to an element
 
 
 ## Reacting to element state

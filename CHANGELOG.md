@@ -3,6 +3,7 @@
 ## master
 
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
+* adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
 
 
 ## 1.1.0 - Reality Strikes Back
@@ -282,6 +283,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 
 
 [ally/element/disabled]: http://allyjs.io/api/element/disabled.html
+[ally/element/focus]: http://allyjs.io/api/element/focus.html
 [ally/event/active-element]: http://allyjs.io/api/event/active-element.html
 [ally/event/shadow-focus]: http://allyjs.io/api/event/shadow-focus.html
 [ally/fix/pointer-focus-children]: http://allyjs.io/api/fix/pointer-focus-children.html

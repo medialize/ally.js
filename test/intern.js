@@ -79,6 +79,7 @@ define([
     // Non-functional test suite(s) to run in each browser
     suites: [
       'test/unit/element.disabled.test',
+      'test/unit/element.focus.test',
       'test/unit/event.active-element.test',
       'test/unit/event.shadow-focus.test',
       'test/unit/fix.pointer-focus-children.test',
