@@ -19,10 +19,6 @@ var elements = ally.get.activeElements();
 
 ### Arguments
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
-| filter | [`<selector>`](../concepts.md#Selector) | *required* | The *significant elements* to exclude from the search. |
 
 ### Returns
 
