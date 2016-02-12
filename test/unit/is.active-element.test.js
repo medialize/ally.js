@@ -35,18 +35,32 @@ define([
       },
 
       simple: function() {
+        // make sure we start on <body> - IE does not necessarily agree
+        document.activeElement && document.activeElement.blur();
+        document.body.focus();
+
         var link = document.getElementById('link');
         var input = document.getElementById('input');
         expect(isActiveElement(link)).to.equal(false, 'link initial');
         expect(isActiveElement(input)).to.equal(false, 'input initial');
+        expect(isActiveElement(document.body)).to.equal(true, 'body initial');
+        expect(isActiveElement(document)).to.equal(false, 'document initial');
 
         link.focus();
         expect(isActiveElement(link)).to.equal(true, 'link active');
         expect(isActiveElement(input)).to.equal(false, 'input inactive');
+        expect(isActiveElement(document.body)).to.equal(false, 'body after focus');
+        expect(isActiveElement(document)).to.equal(false, 'document after focus');
 
         input.focus();
         expect(isActiveElement(link)).to.equal(false, 'link inactive');
         expect(isActiveElement(input)).to.equal(true, 'input active');
+
+        input.blur();
+        expect(isActiveElement(link)).to.equal(false, 'link blurred');
+        expect(isActiveElement(input)).to.equal(false, 'input blurred');
+        expect(isActiveElement(document.body)).to.equal(true, 'body blurred');
+        expect(isActiveElement(document)).to.equal(false, 'document blurred');
       },
 
       ShadowDOM: function() {
