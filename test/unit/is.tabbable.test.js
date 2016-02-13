@@ -34,6 +34,11 @@ define([
         })).to.equal(false, '.rules()');
         expect(isTabbable.rules.except({})(element)).to.equal(false, '.rules.except()');
       },
+      document: function() {
+        var _focusable = isFocusable(document);
+        var _tabbable = isTabbable(document);
+        expect(_focusable && _tabbable).to.equal(false);
+      },
       'inert div': function() {
         var element = document.getElementById('inert-div');
         expect(isFocusable(element) && isTabbable(element)).to.equal(false);
