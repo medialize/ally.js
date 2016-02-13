@@ -34,6 +34,9 @@ define([
           isValidTabindex(null);
         }).to.throw(TypeError, 'is/valid-tabindex requires an argument of type Element');
       },
+      document: function() {
+        expect(isValidTabindex(document)).to.equal(false);
+      },
       'non-tabindex': function() {
         var element = document.getElementById('non-tabindex');
         // expect(element.tabIndex).to.equal(-1);
