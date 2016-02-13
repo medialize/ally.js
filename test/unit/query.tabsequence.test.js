@@ -92,19 +92,19 @@ define([
         var deferred = this.async(10000);
 
         var expected = [
-          '#tabindex-1',
-          '#tabindex-0',
-          '#link',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
-          platform.is.GECKO && '#object-svg',
-          supports.svgFocusMethod && '#svg-link',
-          '#audio-controls',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#link',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && platform.is.GECKO && '#object-svg',
+          !platform.is.IOS && supports.svgFocusMethod && '#svg-link',
+          !platform.is.IOS && '#audio-controls',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && '#img-ismap-link',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
           '#end-of-line',
         ].filter(Boolean);
 
@@ -119,19 +119,19 @@ define([
         var deferred = this.async(10000);
 
         var expected = [
-          '#tabindex-1',
-          '#tabindex-0',
-          '#link',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
-          platform.is.GECKO && '#object-svg',
-          '#svg-link',
-          '#audio-controls',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#link',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && platform.is.GECKO && '#object-svg',
+          !platform.is.IOS && '#svg-link',
+          !platform.is.IOS && '#audio-controls',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && '#img-ismap-link',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
           '#end-of-line',
         ].filter(Boolean);
 
@@ -154,8 +154,8 @@ define([
 
         var expected = [
           '#tabindex-3',
-          '#link',
-        ];
+          !platform.is.IOS && '#link',
+        ].filter(Boolean);
         var result = queryTabsequence({
           context: '.context',
         }).map(fixture.nodeToString);
@@ -167,9 +167,10 @@ define([
         fixture.root.querySelector('.context').setAttribute('tabindex', '0');
 
         var expected = [
-          'div',
-          '#link',
-        ];
+          !platform.is.IOS && 'div',
+          !platform.is.IOS && '#link',
+        ].filter(Boolean);
+
         var result = queryTabsequence({
           context: '.context',
           includeContext: true,
@@ -191,7 +192,7 @@ define([
           '#input-0',
           '#input-1',
           '#input-2',
-          '#third-shadow-host',
+          !platform.is.IOS && '#third-shadow-host',
           '#input-3',
           '#input-4',
           '#input-5',
@@ -207,7 +208,7 @@ define([
           '#input-0',
           '#input-1',
           '#input-2',
-          '#third-shadow-host',
+          !platform.is.IOS && '#third-shadow-host',
           '#input-4',
           '#shadow-start',
           '#input-6',

@@ -2,8 +2,9 @@ define([
   'intern!object',
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
+  'ally/util/platform',
   'ally/query/first-tabbable',
-], function(registerSuite, expect, focusableFixture, queryFirstTabbable) {
+], function(registerSuite, expect, focusableFixture, platform, queryFirstTabbable) {
 
   registerSuite(function() {
     var fixture;
@@ -35,13 +36,19 @@ define([
       },
 
       document: function() {
-        var expected = document.getElementById('tabindex-0');
+        var expected = !platform.is.IOS
+          ? document.getElementById('tabindex-0')
+          : document.getElementById('input');
+
         var result = queryFirstTabbable();
         expect(result).to.equal(expected);
       },
 
       context: function() {
-        var expected = document.getElementById('link');
+        var expected = !platform.is.IOS
+          ? document.getElementById('link')
+          : null;
+
         var result = queryFirstTabbable({
           context: '.context',
         });
@@ -81,13 +88,20 @@ define([
       },
       'ignore [autofocus]': function() {
         var context = fixture.root.querySelector('.context');
+        // otherwise iOS would simply show the autofocus input
+        var _input = document.createElement('input');
+        context.appendChild(_input);
+
         var input = document.createElement('input');
         // add before autofocus, to prevent the element getting
         // focus in Trident and WebKit
         context.appendChild(input);
         input.setAttribute('autofocus', '');
 
-        var expected = document.getElementById('link');
+        var expected = !platform.is.IOS
+          ? document.getElementById('link')
+          : _input;
+
         var result = queryFirstTabbable({
           context: '.context',
           ignoreAutofocus: true,

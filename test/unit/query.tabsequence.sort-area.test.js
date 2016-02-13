@@ -3,9 +3,10 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/focusable.fixture',
   '../helper/supports',
+  'ally/util/platform',
   'ally/query/tabbable',
   'ally/query/tabsequence.sort-area',
-], function(registerSuite, expect, focusableFixture, supports, queryTabbable, sortArea) {
+], function(registerSuite, expect, focusableFixture, supports, platform, queryTabbable, sortArea) {
 
   registerSuite(function() {
     var fixture;
@@ -47,16 +48,16 @@ define([
         fixture.root.insertBefore(img, fixture.root.firstChild);
 
         var expected = [
-          '#image-map-area',
-          '#image-map-area-2',
-          '#tabindex-0',
-          '#tabindex-1',
-          '#link',
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#link',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
+          !platform.is.IOS && '#img-ismap-link',
           '#end-of-line',
-        ];
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
@@ -75,16 +76,16 @@ define([
         pivot.parentNode.insertBefore(img, pivot);
 
         var expected = [
-          '#tabindex-0',
-          '#tabindex-1',
-          '#link',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#link',
           '#input',
           '#span-contenteditable',
-          '#image-map-area',
-          '#image-map-area-2',
-          '#img-ismap-link',
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+          !platform.is.IOS && '#img-ismap-link',
           '#end-of-line',
-        ];
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
@@ -102,16 +103,16 @@ define([
         img.parentNode.appendChild(img);
 
         var expected = [
-          '#tabindex-0',
-          '#tabindex-1',
-          '#link',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#link',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
+          !platform.is.IOS && '#img-ismap-link',
           '#end-of-line',
-          '#image-map-area',
-          '#image-map-area-2',
-        ];
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
@@ -129,10 +130,10 @@ define([
         img.parentNode.id = 'img-container';
 
         var expected = [
-          '#image-map-area',
-          '#image-map-area-2',
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
           '#end-of-line',
-        ];
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
@@ -172,9 +173,9 @@ define([
         eol.parentNode.removeChild(eol);
 
         var expected = [
-          '#image-map-area',
-          '#image-map-area-2',
-        ];
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
@@ -183,7 +184,6 @@ define([
           var result = sortArea(tabbable, context).map(fixture.nodeToString);
 
           expect(tabbable.length).to.equal(0);
-          expect(result.length).to.equal(2);
           expect(result).to.deep.equal(expected);
         }), 200);
       },
@@ -199,18 +199,18 @@ define([
         fixture.root.insertBefore(img2, fixture.root.firstChild);
 
         var expected = [
-          '#image-map-area',
-          '#image-map-area-2',
-          '#tabindex-0',
-          '#tabindex-1',
-          '#link',
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#link',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
+          !platform.is.IOS && '#img-ismap-link',
           '#end-of-line',
-          '#image-map-area',
-          '#image-map-area-2',
-        ];
+          !platform.is.IOS && '#image-map-area',
+          !platform.is.IOS && '#image-map-area-2',
+        ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {

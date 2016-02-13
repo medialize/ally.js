@@ -21,9 +21,10 @@ define([
 
   var data = [].map.call(arguments, JSON.parse);
 
-  function findPlatform(name, version) {
+  function findPlatform(product, name, version) {
     var results = data.filter(function(browser) {
-      return browser.platform && (browser.platform.name === name);
+      return browser.platform && (browser.platform.name === name)
+        && (!product || product === browser.platform.product);
     });
 
     if (!version) {
@@ -49,9 +50,9 @@ define([
   }
 
   return function(platform) {
-    var results = findPlatform(platform.name, platform.version);
+    var results = findPlatform(platform.product, platform.name, platform.version);
     if (!results) {
-      results = findPlatform(platform.name);
+      results = findPlatform(platform.product, platform.name);
     }
 
     if (!results) {

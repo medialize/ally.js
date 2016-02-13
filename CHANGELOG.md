@@ -77,6 +77,7 @@ Intern unit and functional tests are now run for the following browsers:
 
 * Internet Explorer 9, 10, 11
 * Safari 6.2, 7.1, 8, 9
+* iOS Safari 9 (Emulator)
 * Chrome 47
 * Firefox 42, 42 with ShadowDOM enabled
 

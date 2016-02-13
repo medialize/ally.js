@@ -50,6 +50,10 @@ define([
       'browser version': function() {
         if (data) {
           var ident = data.platform.name + ' ' + data.platform.version;
+          if (data.platform.product) {
+            ident = data.platform.product + ' ' + ident;
+          }
+
           this.skip('Checking against ' + ident);
         } else {
           this.skip('No data to compare to');

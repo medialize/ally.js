@@ -49,11 +49,11 @@ define([
       },
       'tabindex="0"': function() {
         var element = document.getElementById('tabindex-0');
-        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+        expect(isFocusable(element) && isTabbable(element)).to.equal(!platform.is.IOS);
       },
       'tabindex="1"': function() {
         var element = document.getElementById('tabindex-1');
-        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+        expect(isFocusable(element) && isTabbable(element)).to.equal(!platform.is.IOS);
       },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');
@@ -61,7 +61,7 @@ define([
       },
       link: function() {
         var element = document.getElementById('link');
-        expect(isFocusable(element) && isTabbable(element)).to.equal(true);
+        expect(isFocusable(element) && isTabbable(element)).to.equal(!platform.is.IOS);
       },
       'link with tabindex="-1"': function() {
         var element = document.getElementById('link-tabindex--1');
@@ -85,7 +85,7 @@ define([
       },
       'svg link': function() {
         var element = document.getElementById('svg-link');
-        expect(isTabbable(element)).to.equal(supports.svgFocusMethod);
+        expect(isTabbable(element)).to.equal(supports.svgFocusMethod && !platform.is.IOS);
       },
       'svg link with .except({ onlyTabbable })': function() {
         var element = document.getElementById('svg-link');
@@ -94,7 +94,7 @@ define([
           except: {
             onlyTabbable: true,
           },
-        })).to.equal(true);
+        })).to.equal(!platform.is.IOS);
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');
