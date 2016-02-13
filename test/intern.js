@@ -28,7 +28,10 @@ define([
     // can be used here
     loaderOptions: {
       // Packages that should be registered with the loader in each testing environment
-      packages: [ { name: 'ally', location: 'dist/amd/' } ],
+      packages: [
+        { name: 'ally', location: 'dist/amd/' },
+        { name: 'sinon', location: 'node_modules/sinon/lib', main: 'sinon.js' },
+      ],
       paths: {
         'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
         'css.escape': 'node_modules/css.escape/css.escape',
