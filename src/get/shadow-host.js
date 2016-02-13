@@ -15,10 +15,6 @@ export default function({context} = {}) {
     element = element.parentNode;
   }
 
-  if (!container) {
-    return null;
-  }
-
   // https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType
   // NOTE: Firefox 34 does not expose ShadowRoot.host (but 37 does)
   if (container.nodeType === container.DOCUMENT_FRAGMENT_NODE && container.host) {
