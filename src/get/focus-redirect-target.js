@@ -31,13 +31,7 @@ function resolveLabelElement(element, _document) {
 
 function resolveLegendWithinFieldset(element) {
   // Chrome: first focusable input/select/textarea/button within <fieldset>
-
-  // legend must be the first child of a <fieldset>
   const fieldset = element.parentNode;
-  if (fieldset.nodeName.toLowerCase() !== 'fieldset') {
-    return null;
-  }
-
   const focusable = queryFocusable({
     context: fieldset,
     strategy: 'strict',
@@ -54,6 +48,10 @@ function resolveLegendWithinDocument(element, _document) {
     context: _document.body,
     strategy: 'strict',
   });
+
+  if (!tabbable.length) {
+    return null;
+  }
 
   // sort <legend> into the list of tabbable elements
   // so that we can identify the next element
@@ -73,6 +71,12 @@ function resolveLegendWithinDocument(element, _document) {
 function resolveLegendElement(element, _document) {
   // <legend> - first <input> in <fieldset>
   if (!supports.canFocusRedirectLegend) {
+    return null;
+  }
+
+  // legend must be the first child of a <fieldset>
+  const fieldset = element.parentNode;
+  if (fieldset.nodeName.toLowerCase() !== 'fieldset') {
     return null;
   }
 
