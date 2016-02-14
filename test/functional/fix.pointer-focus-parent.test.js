@@ -5,6 +5,15 @@ define([
   'intern/dojo/node!leadfoot/helpers/pollUntil',
 ], function(registerSuite, expect, require, pollUntil) {
 
+  // NOTE: The SafariDriver does *not* behave like Safari in regards to
+  // how mouse events are processed. While Safari, when used directly,
+  // exhibits bug https://bugs.webkit.org/show_bug.cgi?id=139945,
+  // Safari when used via WebDriver (and thus SafariDriver), does NOT.
+  // Chrome 27 is the last of the WebKit based versions and exhibits
+  // the same bug. However, BrowserStack's Chrome 27 won't run our Intern suite.
+  // This means we cannot test fix/pointer-focus-parent.js in a way that
+  // actually proves the script does something the browser would otherwise not.
+
   registerSuite(function() {
     var timeout = 120000;
 
@@ -65,10 +74,7 @@ define([
           .setExecuteAsyncTimeout(timeout);
       },
 
-      // '<button>': makeFocusClickTest('button-', false),
-      // '<button><span>': makeFocusClickTest('nested-button-', true),
       '<a href="">': makeFocusClickTest('link-', false),
-      // '<span tabindex="-1">': makeFocusClickTest('focusable-', false),
     };
   });
 });
