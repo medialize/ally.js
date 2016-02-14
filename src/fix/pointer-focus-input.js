@@ -36,10 +36,6 @@ if (!relevantToCurrentBrowser) {
       context: event.target,
     });
 
-    if (!target) {
-      return;
-    }
-
     // we need to set focus AFTER the mousedown finished, otherwise WebKit will ignore the call
     (window.setImmediate || window.setTimeout)(function() {
       target.focus();

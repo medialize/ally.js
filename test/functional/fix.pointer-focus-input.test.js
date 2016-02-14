@@ -72,7 +72,30 @@ define([
       '<input type="checkbox"> clicking on <label>': makeFocusClickTest('labeled-checkbox-', true),
       '<input type="checkbox"> clicking on <label><span>': makeFocusClickTest('nested-labeled-checkbox-', true),
       '<input type="range">': makeFocusClickTest('slider-', false),
-      '≤input type="radio">': makeFocusClickTest('radio-', false),
+      '<input type="radio">': makeFocusClickTest('radio-', false),
+      '<label> without input': function() {
+        this.timeout = timeout;
+        return this.remote
+
+          // This fix is only relevant to Safari and Firefox on OSX
+          .then(pollUntil('return window.platform'))
+          .then(function(platform) {
+            if (!platform.is.OSX || !platform.is.GECKO && !platform.is.WEBKIT) {
+              this.skip('irrelevant to current browser');
+            }
+          }.bind(this))
+
+          // make sure we're failing without the fix
+          .findById('impotent-label')
+            .click()
+            .end()
+          .sleep(500)
+          .execute('return document.activeElement.id || document.activeElement.nodeName')
+          .then(function(activeElementId) {
+            var _activeElementId = activeElementId.toLowerCase();
+            expect(_activeElementId).to.equal('body');
+          });
+      },
     };
   });
 });
