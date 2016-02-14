@@ -77,7 +77,7 @@ define([
         expect(fixture.input.after.disabled).to.equal(false, 'in filter');
         expect(input.disabled).to.equal(true, 'out of filter');
       },
-      'dom mutation': function() {
+      'mutation: adding tree': function() {
         if (!window.MutationObserver) {
           this.skip('MutationObserver not supported');
         }
@@ -98,7 +98,7 @@ define([
           expect(input.disabled).to.equal(true, 'added after the fact');
         }), 50);
       },
-      'dom mutation (single node)': function() {
+      'mutation: adding single node': function() {
         if (!window.MutationObserver) {
           this.skip('MutationObserver not supported');
         }
@@ -109,7 +109,7 @@ define([
         input.id = 'dynamic-input';
 
         handle = maintainDisabled({
-          context: '#intern-dom-fixture',
+          context: fixture.root,
           filter: '#after-wrapper, #outer-input',
         });
 
@@ -120,6 +120,27 @@ define([
         // dom mutation is observed asynchronously
         setTimeout(deferred.callback(function() {
           expect(input.disabled).to.equal(true, 'added after the fact');
+        }), 50);
+      },
+      'mutation: changing tabindex attribute': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
+        var deferred = this.async(10000);
+        var div = document.getElementById('after-wrapper');
+
+        handle = maintainDisabled({
+          context: fixture.root,
+          filter: '#outer-input',
+        });
+
+        expect(div.getAttribute('tabindex')).to.equal(null, 'div is inert');
+        div.setAttribute('tabindex', '-1');
+
+        // dom mutation is observed asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(div.getAttribute('data-ally-disabled')).to.equal('true', 'div is disabled');
         }), 50);
       },
       'Shadow DOM': function() {

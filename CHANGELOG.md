@@ -56,6 +56,10 @@ The following lists show the changes to the library grouped by domain.
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
 * adding [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to trap <kbd>TAB</kbd> focus in the tabsequence - [issue #63](https://github.com/medialize/ally.js/issues/63)
 
+#### Various
+
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly handle `tabindex` attribute changes
+
 #### Internals
 
 * fixing `ally.is.*` to work with other documents (e.g. iframes) - [issue #78](https://github.com/medialize/ally.js/issues/78)

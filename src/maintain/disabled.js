@@ -81,18 +81,7 @@ class InertSubtree {
     elements.filter(this.filterElements).forEach(makeElementInert);
   }
 
-  filterContext(element) {
-    // ignore elements that are not within the context sub-trees
-    const isParentOfElement = getParentComparator({element, includeSelf: true});
-    return isParentOfElement(this._context);
-  }
-
   filterElements(element) {
-    if (element === document.body && !element.hasAttribute('tabindex')) {
-      // ignore the body (default focus element) unless it was made focusable
-      return false;
-    }
-
     // ignore elements within the exempted sub-trees
     const isParentOfElement = getParentComparator({element, includeSelf: true});
     return !this._filter.some(isParentOfElement);
@@ -119,7 +108,7 @@ class InertSubtree {
 
       const addedFocusableElements = this.listQueryFocusable(addedElements);
       this.renderInert(addedFocusableElements);
-    } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
+    } else if (mutation.type === 'attributes' && this.filterElements(mutation.target)) {
       makeElementInert(mutation.target);
     }
   }
