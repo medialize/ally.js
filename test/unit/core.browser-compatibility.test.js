@@ -116,6 +116,44 @@ define([
       }
     }
 
+    if (data.platform.product === 'iPhone' && data.platform.name === 'Safari') {
+      [
+        '[contenteditable]',
+        '[contenteditable]:empty',
+        '[hidden]{displayed} input',
+        'canvas > input',
+        'div{flexbox} > span{order:1} > input',
+        'div{flexbox} > span{order:2} > input',
+        'fieldset input',
+        'fieldset:has(select) select',
+        'fieldset:has(textarea) textarea',
+        'firefox-bug-1116126',
+        'form input',
+        'form[disabled] input',
+        'form[disabled][tabindex=-1] input',
+        'form[disabled][tabindex=0] input',
+        'form[tabindex=-1] input',
+        'form[tabindex=0] input',
+        'input[tabindex=1]',
+        'input[tabindex=2]',
+        'input[tabindex=hello]',
+        'input[type=password]',
+        'input[type=text]',
+        'label:has(input) input',
+        'select',
+        'span{user-modify}',
+        'textarea',
+      ].forEach(function(ident) {
+        // cannot detect tabbables in an iframe
+        // is.tabbable.test will have to suffice
+        data.elements[ident].tabbable = false;
+      });
+
+      // cannot detect tabbables in an iframe
+      // query.tabsequence.test will have to suffice
+      data.tabsequence = [];
+    }
+
     function generateTest(label) {
       return function() {
         // static result state
