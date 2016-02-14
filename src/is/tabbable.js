@@ -101,8 +101,8 @@ function isTabbableRules({
     return false;
   }
 
-  if (platform.is.WEBKIT && platform.is.IOS && platform.majorVersion < 10) {
-    // iOS 8 only considers a hand full of elements tabbable (keyboard focusable)
+  if (platform.is.WEBKIT && platform.is.IOS) {
+    // iOS only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
     let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
       || nodeName === 'select'
