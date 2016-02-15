@@ -185,9 +185,12 @@ define([
         }
 
         var context = fixture.add('<input id="shadow-start"><div id="shadow-host"></div><input id="shadow-end">');
+        context.setAttribute('tabindex', '0');
+        context.id = 'context-element';
         createShadowDomStructure(document.getElementById('shadow-host'));
 
         var expectLocal = [
+          '#context-element',
           '#shadow-start',
           '#input-0',
           '#input-1',
@@ -203,6 +206,7 @@ define([
           '#shadow-end',
         ];
         var expectGlobal = [
+          '#context-element',
           '#input-7',
           '#input-3',
           '#input-0',
@@ -221,6 +225,7 @@ define([
         var result = queryTabsequence({
           context: context,
           strategy: 'strict',
+          includeContext: true,
         }).map(fixture.nodeToString);
 
         var expected = platform.is.GECKO ? expectGlobal : expectLocal;
