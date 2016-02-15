@@ -13,7 +13,7 @@
 import logger from '../util/logger';
 
 export default function polyfill(root) {
-  if (root.SVGElement.prototype.focus) {
+  if (!root.SVGElement || root.SVGElement.prototype.focus) {
     return;
   }
 
