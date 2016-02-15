@@ -125,6 +125,30 @@ define([
             expect(activeElementId).to.equal('third', 'after third Tab');
           });
       },
+      'out of tabsequence': function() {
+        this.timeout = timeout;
+        if (!advancesFocusOnTab) {
+          this.skip('Cannot test Tab focus via WebDriver in this browser');
+        }
+
+        return this.remote
+          .findById('before')
+            .click()
+            .end()
+          .sleep(500)
+          .execute('return document.activeElement.id || document.activeElement.nodeName')
+          .then(function(activeElementId) {
+            expect(activeElementId).to.equal('before', 'initial position');
+          })
+
+          .pressKeys(keys.TAB)
+          .sleep(500)
+          .execute('return document.activeElement.id || document.activeElement.nodeName')
+          .then(function(activeElementId) {
+            expect(activeElementId).to.equal('first', 'after first Tab');
+          });
+      },
+
     };
   });
 });

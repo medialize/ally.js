@@ -18,7 +18,9 @@ define([
           /*eslint-disable indent */
           '<div id="outer">',
             '<div id="inner">',
-              '<input type="text" id="target">',
+              '<input type="text" id="first">',
+              '<input type="text" id="second">',
+              '<input type="text" id="third">',
             '</div>',
           '</div>',
           /*eslint-enable indent */
@@ -37,10 +39,37 @@ define([
           context: fixture.root,
         });
 
-        // cannot test this because we can't synthesize keydown events for Tab
-        // testing this in functional/maintain.tab-focus.test.js
-
         expect(handle.disengage).to.be.a('function');
+      },
+      forward: function() {
+        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+          key: 'Tab',
+          keyCode: 9,
+        });
+
+        if (supportsSynthEvent.keyCode !== 9) {
+          this.skip('Synthetic Tab events not supported');
+        }
+
+        handle = maintainTabFocus();
+
+        document.getElementById('third').focus();
+
+        dispatchEvent.key(document.documentElement, 'keydown', {
+          key: 'Tab',
+          keyCode: 9,
+        });
+
+        expect(document.activeElement.id).to.equal('first', 'handle tab key');
+
+        handle.disengage();
+
+        dispatchEvent.key(document.documentElement, 'keydown', {
+          key: 'Tab',
+          keyCode: 9,
+        });
+
+        expect(document.activeElement.id).to.equal('first', 'tab key not handled after disengage');
       },
     };
   });
