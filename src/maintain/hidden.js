@@ -69,18 +69,15 @@ class HiddenSubtree {
 
   handleMutation(mutation) {
     if (mutation.type === 'childList') {
-      const addedElements = nodeArray(mutation.addedNodes).filter(element => element.nodeType === Node.ELEMENT_NODE);
-      if (!addedElements.length) {
-        return;
-      }
-
       // a new branch cannot contain a filtered element
       // (unless it is moved there, which is an edge-case we'll ignore for now),
       // so anything that is within context,
       // and not within a previously known insignificant branch and not within a filtered element,
       // must be an insignificant branch as well
-      const insignificantBranches = addedElements.filter(this.isInsignificantBranch);
-      insignificantBranches.forEach(makeElementHidden);
+      nodeArray(mutation.addedNodes)
+        .filter(element => element.nodeType === Node.ELEMENT_NODE)
+        .filter(this.isInsignificantBranch)
+        .forEach(makeElementHidden);
     }
   }
 
