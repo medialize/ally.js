@@ -28,6 +28,20 @@ define([
         fixture = null;
       },
 
+      invalid: function() {
+        expect(function() {
+          queryFocusable({
+            context: [{}],
+          });
+        }).to.throw(TypeError, 'query/focusable requires an argument of type Element');
+
+        expect(function() {
+          queryFocusable({
+            strategy: 'random',
+          });
+        }).to.throw(TypeError, 'query/focusable requires option.strategy to be one of ["quick", "strict", "all"]');
+      },
+
       document: function() {
         var result = queryFocusable().map(fixture.nodeToString);
         var expected = [

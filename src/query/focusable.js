@@ -35,5 +35,5 @@ export default function({
     return queryFocusableStrict(options);
   }
 
-  throw new TypeError('query/focusable requires option.strategy to be one of ["quick", "strict"]');
+  throw new TypeError('query/focusable requires option.strategy to be one of ["quick", "strict", "all"]');
 }
