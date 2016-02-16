@@ -69,8 +69,7 @@
     "lint:md": "node build/markdownlint.js",
     "lint:md:js": "eslint --ext md docs",
     "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
-    "precommit": "npm run lint",
-    "postmerge": "npm install"
+    "precommit": "npm run lint"
   },
   "devDependencies": {
     "archiver": "^0.21.0",
