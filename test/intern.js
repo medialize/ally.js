@@ -124,6 +124,7 @@ define([
       'test/unit/util.get-content-document.test',
       'test/unit/util.get-document.test',
       'test/unit/util.get-frame-element.test',
+      'test/unit/util.image-map.test',
       'test/unit/util.merge-dom-order.test',
       'test/unit/util.node-array.test',
       'test/unit/util.tabindex-value.test',
