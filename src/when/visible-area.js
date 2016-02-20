@@ -13,10 +13,6 @@ export default function({context, callback, area} = {}) {
     throw new TypeError('when/visible-area requires options.callback to be a function');
   }
 
-  if (context === undefined) {
-    throw new TypeError('when/visible-area requires valid options.context');
-  }
-
   if (typeof area !== 'number') {
     area = 1;
   }
