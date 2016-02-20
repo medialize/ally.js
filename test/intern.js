@@ -117,6 +117,7 @@ define([
       'test/unit/query.tabsequence.test',
       'test/unit/style.focus-within.test',
       'test/unit/style.focus-source.test',
+      'test/unit/util.compare-position.test',
       'test/unit/util.context-to-element.test',
       'test/unit/util.decorate-context.test',
       'test/unit/util.decorate-service.test',
