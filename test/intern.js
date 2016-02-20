@@ -121,6 +121,7 @@ define([
       'test/unit/util.decorate-context.test',
       'test/unit/util.decorate-service.test',
       'test/unit/util.get-content-document.test',
+      'test/unit/util.get-document.test',
       'test/unit/util.get-frame-element.test',
       'test/unit/util.merge-dom-order.test',
       'test/unit/util.node-array.test',
