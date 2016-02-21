@@ -6,6 +6,17 @@ layout: doc-page.html
 
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API documentation](api/README.md) to learn what the library actually provides.
 
+## Requirements
+
+In order to load successfully in IE8, the [es5-shim](https://github.com/es-shims/es5-shim/) has to be loaded. Please also see [Does ally.js support Internet Explorer 8 and below?](./questions.md##Does-ally-js-support-Internet-Explorer-8-and-below).
+
+The UMD bundle contains the following dependencies:
+
+* [platform.js](https://github.com/bestiejs/platform.js) because parsing the userAgent string yourself is ludicrous.
+* [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) because loading the entire ES6-shim is unnecessary.
+* [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape) for properly constructing CSS query selectors.
+* [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for proper [`.classList`](https://developer.mozilla.org/en/docs/Web/API/Element/classList) support.
+
 
 ## Downloading the UMD bundle
 
