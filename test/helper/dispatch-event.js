@@ -33,7 +33,7 @@ define([], function() {
       Object.defineProperty(event, 'shiftKey', {value: !!options.shiftKey});
       // Internet Explorer does not like this
       event.keyCode = options.keyCode;
-    } catch(e) {
+    } catch (e) {
       // IGNORE
       return false;
     }
@@ -106,7 +106,7 @@ define([], function() {
         Object.defineProperty(event, 'defaultPrevented', {value: true});
         // Internet Explorer does not like this
         event.defaultPrevented = true;
-      } catch(e) {
+      } catch (e) {
         // IGNORE
         return;
       }

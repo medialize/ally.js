@@ -30,7 +30,7 @@ onmessage = function(event) {
 
     try {
       result = callback.apply(null, arguments);
-    } catch(e) {
+    } catch (e) {
       error = e;
     }
 

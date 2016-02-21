@@ -33,7 +33,7 @@ export default function polyfill(root) {
     // make it easy to find these duds
     root.SVGElement.prototype.focus._polyfill = 'reassigned';
     root.SVGElement.prototype.blur._polyfill = 'reassigned';
-  } catch(e) {
+  } catch (e) {
     // developers expect the focus method to simply be there
     root.SVGElement.prototype.focus = function focusPolyfill() {
       // at least make apparent what is going wrong

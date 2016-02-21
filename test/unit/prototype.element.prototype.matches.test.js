@@ -33,6 +33,8 @@ define([
             prefixed = key;
             return true;
           }
+
+          return false;
         });
 
         if (!prefixed) {

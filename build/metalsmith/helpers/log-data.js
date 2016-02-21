@@ -15,7 +15,7 @@ module.exports = function(context) {
     delete data.root.partials;
     console.log('current data');
     console.log(JSON.stringify(data, null, 2));
-  } catch(e) {
+  } catch (e) {
     console.log('dumping everything because of circular references');
     console.log(context.data.root);
   }

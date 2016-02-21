@@ -42,7 +42,7 @@ define([
         || element.contentWindow && element.contentWindow.document
         // works on <object> and <iframe> that contain SVG
         || element.getSVGDocument && element.getSVGDocument();
-    } catch(e) {
+    } catch (e) {
       // IE may throw member not found exception
       // e.g. on <object type="image/png">
       return null;

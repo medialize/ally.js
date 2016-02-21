@@ -1,3 +1,4 @@
+/*global Promise*/
 define([
   './utils',
   './active-element-observer',
