@@ -62,16 +62,9 @@ class InertSubtree {
     }
 
     undoElementInert(this._context);
-    this._inertElementCache.forEach((element) => {
-      const index = this._inertElementCache.indexOf(element);
+    this._inertElementCache.forEach((element) => undoElementInert(element));
 
-      if (index > -1) {
-        this._inertElementCache = this._inertElementCache.splice(index, 1);
-      }
-
-      undoElementInert(element);
-    });
-
+    this._inertElementCache = null;
     this._filter = null;
     this._context = null;
     this._observer && this._observer.disconnect();
@@ -120,9 +113,8 @@ class InertSubtree {
 
       const addedFocusableElements = this.listQueryFocusable(addedElements);
       this.renderInert(addedFocusableElements);
-    } else if (mutation.type === 'attributes' && this.filterElements(mutation.target)) {
-      this._inertElementCache.push(mutation.target);
-      makeElementInert(mutation.target);
+    } else if (mutation.type === 'attributes') {
+      this.renderInert([mutation.target]);
     }
   }
 }

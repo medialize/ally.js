@@ -155,6 +155,9 @@ define([
         expect(handle.disengage).to.be.a('function');
         expect(fixture.input.after.disabled).to.equal(false, 'in filter');
         expect(fixture.input.first.disabled).to.equal(true, 'out of filter');
+
+        handle.disengage();
+        expect(fixture.input.first.disabled).to.equal(false, 'after disengage');
       },
       'concurrent instances': function() {
         var container = fixture.add('<input type="text" id="dynamic-input">', 'dynamic-wrapper');

@@ -92,6 +92,19 @@ define([
         elementDisabled(element, false);
         expect(element.hasAttribute('tabindex')).to.equal(false, 'after disable undo');
       },
+      'double execution': function() {
+        var element = document.getElementById('non-input');
+        expect(element.getAttribute('tabindex')).to.equal('0', 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('tabindex')).to.equal('-1', 'after disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('tabindex')).to.equal('-1', 'after second disable');
+
+        elementDisabled(element, false);
+        expect(element.getAttribute('tabindex')).to.equal('0', 'after disable undo');
+      },
       'disable restores tabindex="0"': function() {
         var element = document.getElementById('non-input');
         expect(element.getAttribute('tabindex')).to.equal('0', 'before disable');
