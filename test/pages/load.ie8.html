@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>load in ie8</title>
+</head>
+<body>
+
+  <h1>Loading ally.js in IE8</h1>
+  <p>run <code>npm install es5-shim</code> to make this work.</p>
+
+  <!--[if lt IE 9]>
+    <script src="../../node_modules/es5-shim/es5-shim.js"></script>
+    <script src="../../node_modules/es5-shim/es5-sham.js"></script>
+  <![endif]-->
+  <script src="../../dist/ally.min.js"></script>
+  <script>
+    var p = document.createElement('p');
+    p.innerHTML = 'loaded ' + ally.version;
+    document.body.appendChild(p);
+  </script>
+
+</body>
+</html>
