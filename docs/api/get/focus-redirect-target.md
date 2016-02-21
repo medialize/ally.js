@@ -53,7 +53,7 @@ var element = ally.get.focusRedirectTarget({
 
 ## Related resources
 
-* [`ally.is.focusRelevant`](../isfocus-relevant.md) is used to identify elements that can receive focus
+* [`ally.is.focusRelevant`](../is/focus-relevant.md) is used to identify elements that can receive focus
 * [`ally.is.focusable`](../is/focusable.md) identifies keyboard focusable elements
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
