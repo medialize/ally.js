@@ -207,8 +207,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -600,15 +599,14 @@
       },
       "scriptFocus": {
         "documentActiveElement": true,
-        "contextActiveElement": true,
-        "event": true
+        "contextActiveElement": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
         "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": true
+        "event": false
       },
       "focusable": true
     },
@@ -953,8 +951,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -1074,7 +1071,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -1091,8 +1089,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -1186,6 +1183,234 @@
       "tabbable": true,
       "focusable": true
     },
+    "details iframe": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "details iframe -> body": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "details iframe",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "encapsulated": "details iframe",
+        "event": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details iframe",
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
+    },
+    "details iframe -> html": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "details iframe",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "encapsulated": "details iframe",
+        "event": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details iframe",
+        "event": true
+      },
+      "focusable": true
+    },
+    "details iframe -> input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "details iframe",
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "encapsulated": "details iframe",
+        "event": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details iframe",
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
+    },
+    "details iframe -> input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "details iframe",
+      "ally": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "encapsulated": "details iframe",
+        "event": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details iframe",
+        "event": true
+      },
+      "tabbable": true,
+      "focusable": true
+    },
+    "details object[src=svg]": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg": {
+      "document": "details object[src=svg]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {},
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details object[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[focusable=false]": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href]": {
+      "document": "details object[src=svg]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details object[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href] text": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "details object[src=svg]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details object[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1] text": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=1]": {
+      "tabindexAttribute": "1",
+      "document": "details object[src=svg]",
+      "ally": {
+        "onlyTabbable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "hostElementFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "ident": "details object[src=svg]"
+      },
+      "tabbable": true,
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=1] text": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg svg a[focusable=false]": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "details object[src=svg] -> file:svg svg text[focusable=true]": {
+      "document": "details object[src=svg]",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
     "details summary": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
@@ -1265,8 +1490,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -1622,7 +1846,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -1659,8 +1886,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -1675,8 +1901,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -1803,7 +2028,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -2355,8 +2581,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -2626,8 +2851,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -3107,9 +3331,7 @@
     },
     "iframe[src=svg][tabindex=-1] -> file:svg": {
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {},
       "scriptFocus": {}
     },
@@ -3124,9 +3346,7 @@
     },
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -3142,9 +3362,7 @@
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
       "tabindexAttribute": "-1",
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true
       },
@@ -3159,9 +3377,7 @@
     "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
       "tabindexAttribute": "1",
       "document": "iframe[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -3433,8 +3649,7 @@
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3460,8 +3675,7 @@
       "hasFocusMethod": true,
       "document": "iframe{focusable}[tabindex=-1]",
       "ally": {
-        "focusable": true,
-        "tabbable": true
+        "focusable": true
       },
       "jquery": {
         "focusable": true,
@@ -3480,6 +3694,132 @@
         "event": true
       },
       "focusable": true
+    },
+    "iframe{hidden}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "iframe{hidden} -> body": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "contextActiveElement": true
+      },
+      "hostElementFocus": {
+        "ident": "iframe{hidden}",
+        "event": false
+      },
+      "focusable": true
+    },
+    "iframe{hidden} -> html": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{hidden}",
+        "event": false
+      }
+    },
+    "iframe{hidden} -> input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{hidden}",
+        "event": false
+      }
+    },
+    "iframe{hidden} -> input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "iframe{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{hidden}",
+        "event": false
+      }
+    },
+    "iframe{none}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "iframe{none} -> body": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "contextActiveElement": true
+      },
+      "hostElementFocus": {
+        "ident": "iframe{none}",
+        "event": false
+      },
+      "focusable": true
+    },
+    "iframe{none} -> html": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{none}",
+        "event": false
+      }
+    },
+    "iframe{none} -> input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "iframe{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{none}",
+        "event": false
+      }
+    },
+    "iframe{none} -> input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "iframe{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {},
+      "hostElementFocus": {
+        "ident": "iframe{none}",
+        "event": false
+      }
     },
     "img": {
       "tabindexProperty": 0,
@@ -4155,7 +4495,9 @@
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -4674,9 +5016,7 @@
     },
     "object[src=svg][tabindex=-1] -> file:svg": {
       "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {},
       "scriptFocus": {}
     },
@@ -4691,9 +5031,7 @@
     },
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]": {
       "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -4709,9 +5047,7 @@
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]": {
       "tabindexAttribute": "-1",
       "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true
       },
@@ -4726,9 +5062,7 @@
     "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]": {
       "tabindexAttribute": "1",
       "document": "object[src=svg][tabindex=-1]",
-      "ally": {
-        "onlyTabbable": true
-      },
+      "ally": {},
       "jquery": {
         "focusable": true,
         "tabbable": true
@@ -4870,6 +5204,157 @@
       "jquery": {},
       "scriptFocus": {}
     },
+    "object[src=svg]{hidden}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[focusable=false]": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href]": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href] text": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1] text": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1]": {
+      "tabindexAttribute": "1",
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1] text": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg svg a[focusable=false]": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{hidden} -> file:svg svg text[focusable=true]": {
+      "document": "object[src=svg]{hidden}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[focusable=false]": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href]": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href] text": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href][tabindex=-1]": {
+      "tabindexAttribute": "-1",
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href][tabindex=-1] text": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href][tabindex=1]": {
+      "tabindexAttribute": "1",
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg a[xlink|href][tabindex=1] text": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg svg a[focusable=false]": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=svg]{none} -> file:svg svg text[focusable=true]": {
+      "document": "object[src=svg]{none}",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
     "object[src=swf]": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
@@ -4906,8 +5391,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -4952,6 +5436,22 @@
       },
       "tabbable": true,
       "focusable": true
+    },
+    "object[src=swf]{hidden}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "object[src=swf]{none}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
     },
     "object[usemap]": {
       "tabindexProperty": 0,
@@ -5117,6 +5617,22 @@
       "tabbable": true,
       "focusable": true
     },
+    "shadow-host{hidden}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "shadow-host{none}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
     "source[mp3]": {
       "tabindexProperty": 0,
       "hasFocusMethod": true,
@@ -5149,7 +5665,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -5167,7 +5685,10 @@
         "focusable": true,
         "tabbable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -5619,6 +6140,90 @@
       "jquery": {},
       "scriptFocus": {}
     },
+    "svg{hidden}": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} a[xlink|href]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} a[xlink|href] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} rect[focusable=true]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} rect[onfocus]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{hidden} text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none}": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} a[xlink|href]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} a[xlink|href] text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} rect": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} rect[focusable=true]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} rect[onfocus]": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{none} text": {
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
     "svg{tiny}": {
       "document": "html",
       "ally": {
@@ -5766,8 +6371,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -5980,8 +6584,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "tabbable": true,
       "focusable": true
@@ -6008,7 +6611,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -6199,6 +6803,13 @@
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
     "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
     "details a[href]",
+    "details iframe -> input[tabindex=1]",
+    "details iframe -> body",
+    "details iframe -> input",
+    "details object[src=svg] -> file:svg",
+    "details object[src=svg] -> file:svg a[xlink|href]",
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
+    "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
     "details[tabindex=-1] a[href]",
     "details:has(summary[tabindex=-1]) a[href]",
     "details[open] a[href]",
@@ -6335,6 +6946,7 @@
       "video[controls][tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
       "details a[href]",
+      "details iframe",
       "details[tabindex=-1]",
       "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
@@ -6494,6 +7106,7 @@
       "div{container-overflow-scroll}[tabindex=-1]",
       "div{body-overflow-scroll}[tabindex=-1]",
       "details a[href]",
+      "details iframe",
       "details[tabindex=-1]",
       "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
@@ -6701,12 +7314,6 @@
     "tabsequence": [
       "input[tabindex=1]",
       "fieldset{no-tabbable} a[tabindex=1]",
-      "img[usemap] area[href].upper",
-      "img[usemap] area[href].lower",
-      "img[usemap].duplicate area[href]",
-      "img[usemap].duplicate area[href]",
-      "map.invalid-image area[href].upper",
-      "map.invalid-image area[href].lower",
       "[tabindex=1]",
       "input[tabindex=2]",
       "[tabindex=+2]",
@@ -6735,7 +7342,13 @@
       "fieldset:has(a) a",
       "a[href]",
       "a[href=]",
+      "img[usemap] area[href].upper",
+      "img[usemap] area[href].lower",
+      "img[usemap].duplicate area[href]",
       "firefox-bug-1116126",
+      "img[usemap].duplicate area[href]",
+      "map.invalid-image area[href].upper",
+      "map.invalid-image area[href].lower",
       "a:has([ismap])",
       "a > img[ismap]",
       "a[tabindex=-1] > img[ismap]",
@@ -6853,8 +7466,10 @@
       "embed[type=ogv][tabindex=-1]",
       "embed[type=svg][tabindex=-1]",
       "embed[type=svg][tabindex=0]",
+      "keygen[tabindex=-1]",
       "div{container-overflow-scroll}[tabindex=-1]",
       "details a[href]",
+      "details object[src=svg]",
       "details[tabindex=-1]",
       "details[tabindex=-1] a[href]",
       "details summary[tabindex=-1]",
@@ -6899,11 +7514,14 @@
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
       "div[tabindex=-1]:empty",
+      "span[tabindex=0]:empty",
+      "span[tabindex=-1]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=-1]",
@@ -6962,6 +7580,7 @@
       "shadow-host[tabindex=0]",
       "embed[type=svg][tabindex=0]",
       "details a[href]",
+      "details object[src=svg]",
       "details[tabindex=-1] a[href]",
       "details:has(summary[tabindex=-1]) a[href]",
       "details[open] a[href]",
@@ -6991,11 +7610,13 @@
       "input[tabindex=hello]",
       "[tabindex=3 ]",
       "div[tabindex=0]:empty",
+      "span[tabindex=0]:empty",
       "[hidden]{displayed} input",
       "table tbody tr td a",
       "table tbody tr{collapse} td a",
       "table tbody tr{collapse} td a{visible}",
       "table tbody tr{collapse} td{visible} a",
+      "div{no-dimension}",
       "a{flexbox}",
       "[tabindex=-1]{flexbox} > span[tabindex=0]",
       "span{flexbox} > span[tabindex=0]",

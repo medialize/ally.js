@@ -15,3 +15,4 @@ if (!empty($_POST['results'])) {
 }
 
 echo '<p><a href="./test.html">back to the test</a></p>';
+echo '<p><a href="./test.html?manual=1">investigate test file</a></p>';

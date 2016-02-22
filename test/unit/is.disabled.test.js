@@ -86,6 +86,12 @@ define([
         var res = isDisabled(element);
         expect(res).to.equal(!supports.canFocusDisabledForm);
       },
+      'ally.element.disabled': function() {
+        var element = document.getElementById('non-disabled-input');
+        element.setAttribute('data-ally-disabled', 'true');
+        var res = isDisabled(element);
+        expect(res).to.equal(true);
+      },
     };
   });
 });

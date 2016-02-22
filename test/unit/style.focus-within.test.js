@@ -53,6 +53,7 @@ define([
         _expect('after disengage', []);
       },
       'follow focus': function() {
+        var deferred = this.async(10000);
         _expect('before engage', []);
 
         if (document.activeElement === document.documentElement) {
@@ -72,6 +73,12 @@ define([
         fixture.input.after.focus();
         expect(document.activeElement).to.equal(fixture.input.after);
         _expect('after sequence', 'html body #intern-dom-fixture #after-wrapper #after-input'.split(' '));
+
+        document.activeElement.blur();
+        setTimeout(deferred.callback(function() {
+          expect(document.activeElement).to.equal(document.body);
+          _expect('blurred', 'html body'.split(' '));
+        }), 200);
       },
       'follow focus into Shadow DOM': function() {
         if (!supports.cssShadowPiercingDeepCombinator) {

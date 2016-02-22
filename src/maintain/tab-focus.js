@@ -8,6 +8,11 @@ export default function({ context } = {}) {
     context = document.documentElement;
   }
 
+  // Make sure the supports tests are run before intercepting the Tab key,
+  // or IE10 and IE11 will fail to process the first Tab key event. Not
+  // limiting this warm-up to IE because it may be a problem elsewhere, too.
+  queryTabsequence();
+
   return whenKey({
     '?shift+tab': function(event) {
       // we're completely taking over the Tab key handling

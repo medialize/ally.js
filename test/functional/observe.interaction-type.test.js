@@ -12,7 +12,7 @@ define([
     var timeout = 120000;
 
     return {
-      name: 'maintain/tab-focus',
+      name: 'observe/interaction-type',
 
       before: function() {
         return this.remote

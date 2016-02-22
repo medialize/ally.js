@@ -68,12 +68,8 @@ define([
     var ignoreTabsequencePattern = /svg/;
     var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
-    var ignorePattern = /^(object|embed)/;
+    var ignorePattern = /(^|-> )(ignore|html|body|embed|param)/;
     var skipUntestable = keysMap([
-      // ignored elements
-      'ignore',
-      'html',
-      'body',
       // known mismatch
       'iframe',
       'iframe[src=svg]',
@@ -111,6 +107,51 @@ define([
       data.elements['label:has(input)'].scriptFocus.redirected = 'label:has(input) input';
       data.elements['label[for=label-target-focusable]'].scriptFocus.redirected = 'input[type=text][tabindex=-1]';
       data.elements['label[for=label-target]'].scriptFocus.redirected = 'input[type=text]';
+
+      if (parseInt(data.platform.version, 10) === 10) {
+        // these elements were removed from IE10's manual test
+        skipUntestable['object[src=swf]'] = true;
+        skipUntestable['object[src=swf][height=0]'] = true;
+        skipUntestable['object[src=swf][tabindex=0]'] = true;
+      }
+    }
+
+    if (data.platform.product === 'iPhone' && data.platform.name === 'Safari') {
+      [
+        '[contenteditable]',
+        '[contenteditable]:empty',
+        '[hidden]{displayed} input',
+        'canvas > input',
+        'div{flexbox} > span{order:1} > input',
+        'div{flexbox} > span{order:2} > input',
+        'fieldset input',
+        'fieldset:has(select) select',
+        'fieldset:has(textarea) textarea',
+        'firefox-bug-1116126',
+        'form input',
+        'form[disabled] input',
+        'form[disabled][tabindex=-1] input',
+        'form[disabled][tabindex=0] input',
+        'form[tabindex=-1] input',
+        'form[tabindex=0] input',
+        'input[tabindex=1]',
+        'input[tabindex=2]',
+        'input[tabindex=hello]',
+        'input[type=password]',
+        'input[type=text]',
+        'label:has(input) input',
+        'select',
+        'span{user-modify}',
+        'textarea',
+      ].forEach(function(ident) {
+        // cannot detect tabbables in an iframe
+        // is.tabbable.test will have to suffice
+        data.elements[ident].tabbable = false;
+      });
+
+      // cannot detect tabbables in an iframe
+      // query.tabsequence.test will have to suffice
+      data.tabsequence = [];
     }
 
     function generateTest(label) {

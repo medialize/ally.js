@@ -25,15 +25,15 @@ define([
     { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10', nativeEvents: true },
     { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
 
-    { browser: 'Firefox', browser_version: '42', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
-    { browser: 'Chrome', browser_version: '47', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
+    { browser: 'Firefox', browser_version: '44', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
+    { browser: 'Chrome', browser_version: '48', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
 
-    { browser: 'Firefox', browser_version: '42', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 42' },
-    { browser: 'Chrome', browser_version: '47', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 47' },
+    { browser: 'Firefox', browser_version: '44', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 42' },
+    { browser: 'Chrome', browser_version: '48', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 47' },
 
     {
       browser: 'Firefox',
-      browser_version: '42',
+      browser_version: '44',
       os: 'WINDOWS',
       os_version: '8.1',
       platform: 'WIN',

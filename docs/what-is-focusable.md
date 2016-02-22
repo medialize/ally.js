@@ -15,7 +15,7 @@ An HTML element can be a member of exactly one of the following five categories:
 In which of these buckets elements are sorted, depends on the browser. Have a look at the following comparison tables:
 
 * [What browsers consider focusable](./data-tables/focusable.md) details in which category the various HTML elements fall per browser
-* [Differences between browsers and ally.js](http://rodneyrehm.de/t/ally-website-preview/data-tables/focusable.strict.html) shows the *few* situations that ally.js cannot identify properly
+* [Differences between browsers and ally.js](./data-tables/focusable.is.md) shows the *few* situations that ally.js cannot identify properly
 
 
 ---

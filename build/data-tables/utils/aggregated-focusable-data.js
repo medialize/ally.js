@@ -142,6 +142,7 @@ function generateBrowserStructure(ident, browser, browserData) {
       label: null,
     },
     ally: {
+      label: null,
       focusable: Boolean(ally.focusable),
       focusableStrict: browserData.ally.focusableStrict.has(ident),
       focusableQuick: browserData.ally.focusableQuick.has(ident),
@@ -184,6 +185,13 @@ function addReadableLabels(src) {
     src.jquery.tabbable,
     null, // onlyTabbable
     null, // redirecting
+    null // focusHost
+  );
+  src.ally.label = readableLabel(
+    src.ally.focusable,
+    src.ally.tabbable,
+    src.ally.onlyTabbable,
+    src.ally.redirecting,
     null // focusHost
   );
   src.ally.labelQuick = readableLabel(
@@ -252,6 +260,9 @@ Array.from(idents).sort().forEach(function(ident) {
     }),
     jquery: calculateBrowserChecksum(result, function(data) {
       return [data.browser.label, data.jquery.label];
+    }),
+    ally: calculateBrowserChecksum(result, function(data) {
+      return [data.browser.label, data.ally.label];
     }),
     allyStrict: calculateBrowserChecksum(result, function(data) {
       return [data.browser.label, data.ally.labelStrict];

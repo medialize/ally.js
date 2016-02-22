@@ -18,7 +18,13 @@ export default function polyfill(root) {
   }
 
   // remember what had focus to restore after test
-  const previousActiveElement = root.document.activeElement;
+  let previousActiveElement;
+  // IE will throw an unknown error (-2147467259) in SVG documents
+  try {
+    previousActiveElement = root.document.activeElement;
+  } catch (e) {
+    previousActiveElement = null;
+  }
 
   try {
     // create a dummy <svg> so we can check if HTMLElement's focus() can deal with it
@@ -49,8 +55,10 @@ export default function polyfill(root) {
   }
 
   // restore focus to what it was before test and cleanup
-  root.document.activeElement && root.document.activeElement.blur();
-  previousActiveElement && previousActiveElement.focus();
+  if (previousActiveElement !== null) {
+    root.document.activeElement && root.document.activeElement.blur();
+    previousActiveElement.focus();
+  }
 }
 
 typeof window !== 'undefined' && polyfill(window);

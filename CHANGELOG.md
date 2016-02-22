@@ -47,8 +47,12 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
+* fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not require elements to satisfy [`ally.is.visible`][ally/is/visible]
 * adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
 * adding option `includeOnlyTabbable` to [`ally.query.firstTabbable`][ally/query/first-tabbable], [`ally.query.focusable`][ally/query/focusable], [`ally.query.tabbable`][ally/query/tabbable], [`ally.query.tabsequence`][ally/query/tabsequence] - [issue #100](https://github.com/medialize/ally.js/issues/100)
+* fixing [`ally.is.visible`][ally/is/visible] to consider the state of the hosting `<iframe>` or `<object>` element
+* fixing [`ally.is.focusable`][ally/is/focusable], [`ally.is.tabbable`][ally/is/tabbable] and [`ally.is.onlyTabbable`][ally/is/only-tabbable] to consider the state of the hosting `<iframe>` or `<object>` element
+* fixing [`ally.is.focusable`][ally/is/focusable] to compensate Chrome being able to focus hidden `<object>` elements - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 
 #### Keyboard support
 
@@ -60,6 +64,7 @@ The following lists show the changes to the library grouped by domain.
 
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly handle `tabindex` attribute changes
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly disengage within ShadowHosts - [issue #107](https://github.com/medialize/ally.js/issues/107), [PR #108](https://github.com/medialize/ally.js/pull/108)
+* fixing [`ally.get.parents`][ally/get/parents] to resolve ancestry for `SVGElement` in Internet Explorer
 
 #### Internals
 
@@ -75,6 +80,11 @@ The following lists show the changes to the library grouped by domain.
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 * refactoring `is/focus-relevant` and `is/tabbable` to allow running the identification with execptions via `is/focus-relevant.rules` and `is/tabbable.rules`, while maintaining module signature
 * refactoring `console.log()` to go through `util/logger`
+* refactoring `selector/focusable` to extract `util/select-in-shadows` 
+* adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
+* adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
+* adding `supports/focus-in-hidden-iframe` to identify if content within a hidden iframe is focusable
+* adding `supports/focus-object-svg-hidden` to identify if a hidden `<object>` element is focusable
 
 #### Testing
 

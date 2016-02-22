@@ -1,9 +1,11 @@
 
 // determine if an element can be focused by keyboard (i.e. is part of the document's sequential focus navigation order)
 
+import isVisible from './visible';
 import contextToElement from '../util/context-to-element';
 import tabindexValue from '../util/tabindex-value';
 import focusRelevant from './focus-relevant';
+import getFrameElement from '../util/get-frame-element';
 import platform from '../util/platform';
 import {getImageOfArea} from '../util/image-map';
 import {
@@ -26,6 +28,7 @@ function isTabbableRules({
     flexbox: false,
     scrollable: false,
     shadow: false,
+    visible: false,
     onlyTabbable: false,
   },
 } = {}) {
@@ -40,6 +43,31 @@ function isTabbableRules({
     // The on-screen keyboard does not provide a way to focus the next input element (like iOS does).
     // That leaves us with no option to advance focus by keyboard, ergo nothing is tabbable (keyboard focusable).
     return false;
+  }
+
+  const frameElement = getFrameElement(element);
+  if (frameElement) {
+    if (platform.is.WEBKIT && platform.is.IOS && platform.majorVersion < 10) {
+      // iOS only does not consider anything from another browsing context keyboard focusable
+      return false;
+    }
+
+    // iframe[tabindex="-1"] and object[tabindex="-1"] inherit the
+    // tabbable demotion onto elements of their browsing contexts
+    if (tabindexValue(frameElement) < 0) {
+      return false;
+    }
+
+    if (!except.visible && (platform.is.BLINK || platform.is.WEBKIT) && !isVisible(frameElement)) {
+      // Blink and WebKit consider elements in hidden browsing contexts focusable, but not tabbable
+      return false;
+    }
+
+    // Webkit and Blink don't consider anything in <object> tabbable
+    const frameNodeName = frameElement.nodeName.toLowerCase();
+    if (frameNodeName === 'object' && (platform.is.BLINK || platform.is.WEBKIT)) {
+      return false;
+    }
   }
 
   const nodeName = element.nodeName.toLowerCase();

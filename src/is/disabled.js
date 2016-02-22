@@ -47,7 +47,7 @@ export default function(element) {
     return true;
   }
 
-  if (!supports.canFocusFormDisabled && parents.some(isDisabledForm)) {
+  if (!supports.canFocusDisabledForm && parents.some(isDisabledForm)) {
     // a parental <form> is disabld and inherits the state onto this element
     return true;
   }

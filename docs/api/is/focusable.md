@@ -12,7 +12,7 @@ Determines if an element is considered focusable.
 
 An element is considered focusable if it is [`ally.is.focusRelevant`](./focus-relevant.md), [`ally.is.visible`](./visible.md) and not [`ally.is.disabled`](./disabled.md).
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js fails to consider focusable](../../data-tables/focusable.is.md) to learn how HTML elements behave.
 
 
 ## Usage
@@ -51,6 +51,8 @@ Boolean, `true` if the element is focusable.
 
 * Since `v#master` all `<area>` elements are considered focus-relevant, but only valid `<area>` elements are considered focusable.
 * Since `v#master` exceptions can be passed to `ally.is.focusable.rules(options)`.
+* Since `v#master` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
+* Since `v#master` hidden `<object>` elements are focusable in Chrome - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191).
 
 
 ## Notes
@@ -66,7 +68,7 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 * [`ally.is.validArea`](valid-area.md) is used to identify if `<area>` elements satisfy the requirements to be considered focusable
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
-* [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)
+* [What ally.js fails to consider focusable](../../data-tables/focusable.is.md)
 
 
 ## Contributing

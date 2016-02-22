@@ -1,7 +1,6 @@
 define([
   'intern/dojo/text!../../tests/focusable/data/chrome-nightly.json',
   'intern/dojo/text!../../tests/focusable/data/chrome-stable.json',
-  'intern/dojo/text!../../tests/focusable/data/chrome-47.json',
   'intern/dojo/text!../../tests/focusable/data/firefox-nightly.json',
   'intern/dojo/text!../../tests/focusable/data/firefox-stable.json',
   'intern/dojo/text!../../tests/focusable/data/ie-13.json',
