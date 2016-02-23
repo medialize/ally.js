@@ -22,7 +22,7 @@ define([
       invalid: function() {
         expect(function() {
           isShadowed(null);
-        }).to.throw(TypeError, 'is/shadowed requires an argument of type Element');
+        }).to.throw(TypeError, 'is/shadowed requires valid options.context');
       },
       document: function() {
         expect(isShadowed(document)).to.equal(false);

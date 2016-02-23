@@ -14,7 +14,7 @@ function isOnlyTabbableRules({
   },
 } = {}) {
   const element = contextToElement({
-    message: 'is/only-tabbable requires an argument of type Element',
+    label: 'is/only-tabbable',
     resolveDocument: true,
     context,
   });

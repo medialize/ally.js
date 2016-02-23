@@ -94,7 +94,10 @@ define([
       invalid: function() {
         expect(function() {
           isVisible(null);
-        }).to.throw(TypeError, 'is/visible requires an argument of type Element');
+        }).to.throw(TypeError, 'is/visible requires valid options.context');
+        expect(function() {
+          isVisible([true]);
+        }).to.throw(TypeError, 'is/visible requires options.context to be an Element');
       },
       '.rules() and .except()': function() {
         var element = document.getElementById('visible-div');

@@ -1,6 +1,7 @@
 
 // determine if an <area> element is being properly used by and <img> via a <map>
 
+import contextToElement from '../util/context-to-element';
 import isVisible from './visible';
 import getParents from '../get/parents';
 import {getImageOfArea} from '../util/image-map';
@@ -11,14 +12,15 @@ let supports;
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
 // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L88-L107
-export default function(element) {
+export default function(context) {
   if (!supports) {
     supports = _supports();
   }
 
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/valid-area requires an argument of type Element');
-  }
+  const element = contextToElement({
+    label: 'is/valid-area',
+    context,
+  });
 
   const nodeName = element.nodeName.toLowerCase();
   if (nodeName !== 'area') {

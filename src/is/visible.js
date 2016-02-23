@@ -78,7 +78,7 @@ function isVisibleRules({
   },
 } = {}) {
   const element = contextToElement({
-    message: 'is/visible requires an argument of type Element',
+    label: 'is/visible',
     resolveDocument: true,
     context,
   });

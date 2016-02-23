@@ -10,7 +10,7 @@ import contextToElement from '../util/context-to-element';
 
 export default function({context, except} = {}) {
   const element = contextToElement({
-    message: 'get/focus-target requires valid options.context',
+    label: 'get/focus-target',
     context,
   });
 

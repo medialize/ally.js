@@ -32,7 +32,7 @@ define([
       invalid: function() {
         expect(function() {
           isValidTabindex(null);
-        }).to.throw(TypeError, 'is/valid-tabindex requires an argument of type Element');
+        }).to.throw(TypeError, 'is/valid-tabindex requires valid options.context');
       },
       document: function() {
         expect(isValidTabindex(document)).to.equal(false);

@@ -105,7 +105,7 @@ export default function({context, skipFocusable} = {}) {
   }
 
   const element = contextToElement({
-    message: 'get/focus-redirect-target requires valid options.context',
+    label: 'get/focus-redirect-target',
     context,
   });
 

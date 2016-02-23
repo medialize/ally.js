@@ -2,7 +2,7 @@
 // http://www.w3.org/TR/html5/editing.html#focusable
 // http://www.w3.org/WAI/PF/aria-practices/#keyboard
 
-import nodeArray from '../util/node-array';
+import contextToElement from '../util/context-to-element';
 import queryFocusableStrict from './focusable.strict';
 import queryFocusableQuick from './focusable.quick';
 
@@ -12,18 +12,15 @@ export default function({
   includeOnlyTabbable,
   strategy = 'quick',
 } = {}) {
-  context = nodeArray(context)[0];
-  // alias document to document.documentElement for convenience
-  if (!context || context.nodeType === Node.DOCUMENT_NODE) {
-    context = document.documentElement;
-  }
-
-  if (context.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('query/focusable requires an argument of type Element');
-  }
+  const element = contextToElement({
+    label: 'query/focusable',
+    resolveDocument: true,
+    defaultToDocument: true,
+    context,
+  });
 
   const options = {
-    context,
+    context: element,
     includeContext,
     includeOnlyTabbable,
     strategy,

@@ -25,7 +25,10 @@ define([
       invalid: function() {
         expect(function() {
           isTabbable(null);
-        }).to.throw(TypeError, 'is/tabbable requires an argument of type Element');
+        }).to.throw(TypeError, 'is/tabbable requires valid options.context');
+        expect(function() {
+          isTabbable([true]);
+        }).to.throw(TypeError, 'is/tabbable requires options.context to be an Element');
       },
       '.rules() and .except()': function() {
         var element = document.getElementById('tabindex--1');

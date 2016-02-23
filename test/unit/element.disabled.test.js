@@ -39,7 +39,7 @@ define([
       invalid: function() {
         expect(function() {
           elementDisabled(null);
-        }).to.throw(TypeError, 'element/disabled requires an argument of type Element');
+        }).to.throw(TypeError, 'element/disabled requires valid options.context');
       },
       'non-input': function() {
         var element = document.getElementById('non-input');
