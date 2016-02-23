@@ -43,6 +43,7 @@ define([
       'ally.js/get/shadow-host-parents',
       'ally.js/get/shadow-host',
       'ally.js/observe/interaction-type',
+      'ally.js/observe/shadow-mutations',
       'ally.js/query/first-tabbable',
       'ally.js/query/focusable',
       'ally.js/query/shadow-hosts',

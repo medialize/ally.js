@@ -124,6 +124,7 @@ Emitting events when there's no standardized equivalent
 Translate volatile events to stateful interfaces
 
 * [`ally.observe.interactionType`](observe/interaction-type.md) observes user interaction method to distinguish pointer and keyboard actions
+* [`ally.observe.shadowMutations`](observe/shadow-mutations.md) registers `MutationObserver`s across nested `ShadowRoot`s
 
 
 ---
