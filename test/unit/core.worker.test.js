@@ -45,6 +45,7 @@ define([
       'ally.js/observe/interaction-type',
       'ally.js/query/first-tabbable',
       'ally.js/query/focusable',
+      'ally.js/query/shadow-hosts',
       'ally.js/query/tabbable',
       'ally.js/query/tabsequence.sort-area',
       'ally.js/query/tabsequence.sort-tabindex',

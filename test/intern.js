@@ -111,6 +111,7 @@ define([
       'test/unit/query.focusable.all.test',
       'test/unit/query.focusable.strict.test',
       'test/unit/query.focusable.test',
+      'test/unit/query.shadow-hosts.test',
       'test/unit/query.tabbable.test',
       'test/unit/query.tabsequence.sort-area.test',
       'test/unit/query.tabsequence.sort-tabindex.test',
