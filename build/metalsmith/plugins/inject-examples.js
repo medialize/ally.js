@@ -31,9 +31,11 @@ function transform($, data, examples) {
     utils.makeHeadlineLinkable($title, $);
 
     const jsbin = String($example('link[rel="jsbin"]').attr('href'));
+    const jsbinEmbed = new URI(jsbin).segment('embed').query('output').toString();
+    const jsbinEdit = new URI(jsbin).segment('edit').toString();
     const $embedScript = $('<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>');
     const $embedLink = $('<a class="jsbin-embed" href=""></a>')
-      .attr('href', path.join(jsbin, 'embed?output'))
+      .attr('href', jsbinEmbed)
       .text(title + ' on jsbin.com');
 
     const $linkSource = $link.clone()
@@ -42,7 +44,7 @@ function transform($, data, examples) {
     const $linkJsbin = $('<a href=""></a>')
       .text('play with the example on jsbin.com')
       .attr('target', '_blank')
-      .attr('href', path.join(jsbin, 'edit'));
+      .attr('href', jsbinEdit);
     const $subline = $('<p>')
       .append($linkJsbin)
       .append(' or ')
