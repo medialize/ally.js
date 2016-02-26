@@ -14,7 +14,7 @@ export default function({context} = {}) {
     list.push(element);
     // IE does know support parentElement on SVGElement
     element = element.parentNode;
-    if (element.nodeType !== Node.ELEMENT_NODE) {
+    if (element && element.nodeType !== Node.ELEMENT_NODE) {
       element = null;
     }
   }
