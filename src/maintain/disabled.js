@@ -18,6 +18,7 @@
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
 import elementDisabled from '../element/disabled';
+import observeShadowMutations from '../observe/shadow-mutations';
 import {getParentComparator} from '../util/compare-position';
 
 function makeElementInert(element) {
@@ -53,7 +54,12 @@ class InertSubtree {
     });
 
     this.renderInert(focusable);
-    this.startObserver();
+
+    this.shadowObserver = observeShadowMutations({
+      context: this._context,
+      config: observerConfig,
+      callback: mutations => mutations.forEach(this.handleMutation),
+    });
   }
 
   disengage() {
@@ -67,8 +73,8 @@ class InertSubtree {
     this._inertElementCache = null;
     this._filter = null;
     this._context = null;
-    this._observer && this._observer.disconnect();
-    this._observer = null;
+    this.shadowObserver && this.shadowObserver.disengage();
+    this.shadowObserver = null;
   }
 
   listQueryFocusable(list) {
@@ -90,18 +96,6 @@ class InertSubtree {
     // ignore elements within the exempted sub-trees
     const isParentOfElement = getParentComparator({element, includeSelf: true});
     return !this._filter.some(isParentOfElement);
-  }
-
-  startObserver() {
-    if (!window.MutationObserver) {
-      // not supporting IE10 via Mutation Events, because they're too expensive
-      // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events
-      return;
-    }
-    // http://caniuse.com/#search=mutation
-    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-    this._observer = new MutationObserver(mutations => mutations.forEach(this.handleMutation));
-    this._observer.observe(this._context, observerConfig);
   }
 
   handleMutation(mutation) {
