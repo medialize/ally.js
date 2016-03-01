@@ -53,7 +53,7 @@ function applyFocusWithinClass(active) {
       return;
     }
 
-    element.classList.remove(className);
+    element.classList && element.classList.remove(className);
   });
 
   // apply the class only to elements that do not yet have it (minimize dom action)
@@ -62,7 +62,7 @@ function applyFocusWithinClass(active) {
       return;
     }
 
-    element.classList.add(className);
+    element.classList && element.classList.add(className);
   });
 }
 
