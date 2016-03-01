@@ -149,6 +149,7 @@ define([
       'test/functional/fix.pointer-focus-input.test.js',
       'test/functional/fix.pointer-focus-parent.test.js',
       'test/functional/observe.interaction-type.test.js',
+      'test/functional/style.focus-within.test.js',
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
