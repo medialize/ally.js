@@ -7,7 +7,7 @@ require.config({
     'ally.js': '../../dist/amd',
     // provide paths to dependencies
     'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
-    'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
+    'domtokenlist-shim': '../../node_modules/domtokenlist-shim',
     'css.escape': '../../node_modules/css.escape/css.escape',
     platform: '../../node_modules/platform/platform',
   },

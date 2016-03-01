@@ -8,7 +8,7 @@
     style/focus-within()
 */
 
-import 'domtokenlist-shim';
+import 'domtokenlist-shim/dist/domtokenlist-polyfill-umd';
 import shadowFocus from '../event/shadow-focus';
 import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
