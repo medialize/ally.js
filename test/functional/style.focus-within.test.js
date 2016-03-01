@@ -11,6 +11,7 @@ define([
   registerSuite(function() {
     var timeout = 120000;
     var advancesFocusOnTab = false;
+    var advancesFocusToLinks = false;
 
     // Since we cannot .focus() SVG content in Firefox and Internet Explorer,
     // we need to run this unit test as a functional test, so we can emit
@@ -32,6 +33,16 @@ define([
             advancesFocusOnTab = activeElementId === 'second';
           })
 
+          .findById('second')
+            .click()
+            .end()
+          .pressKeys(keys.TAB)
+          .sleep(500)
+          .execute('return document.activeElement.id || document.activeElement.nodeName')
+          .then(function(activeElementId) {
+            advancesFocusToLinks = activeElementId === 'third';
+          })
+
           .get(require.toUrl('test/pages/style.focus-within.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
@@ -44,6 +55,10 @@ define([
         this.timeout = timeout;
         if (!advancesFocusOnTab) {
           this.skip('Cannot test Tab focus via WebDriver in this browser');
+        }
+
+        if (!advancesFocusToLinks) {
+          this.skip('Cannot test Tab to link focus via WebDriver in this browser');
         }
 
         return this.remote
