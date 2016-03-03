@@ -1,5 +1,5 @@
 {
-  "extends": "./.eslintrc-default",
+  "extends": "eslint:recommended",
   "parser": "babel-eslint",
   "settings": {
     "ecmascript": 6
