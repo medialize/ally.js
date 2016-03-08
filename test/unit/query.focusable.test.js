@@ -31,15 +31,15 @@ define([
       invalid: function() {
         expect(function() {
           queryFocusable({
-            context: [{}],
+            context: [true],
           });
-        }).to.throw(TypeError, 'query/focusable requires an argument of type Element');
+        }).to.throw(TypeError, 'query/focusable requires options.context to be an Element', 'non-element context');
 
         expect(function() {
           queryFocusable({
             strategy: 'random',
           });
-        }).to.throw(TypeError, 'query/focusable requires option.strategy to be one of ["quick", "strict", "all"]');
+        }).to.throw(TypeError, 'query/focusable requires option.strategy to be one of ["quick", "strict", "all"]', 'bad strategy');
       },
 
       document: function() {

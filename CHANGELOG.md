@@ -64,7 +64,10 @@ The following lists show the changes to the library grouped by domain.
 
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly handle `tabindex` attribute changes
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly disengage within ShadowHosts - [issue #107](https://github.com/medialize/ally.js/issues/107), [PR #108](https://github.com/medialize/ally.js/pull/108)
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly observe within ShadowHosts - [issue #107](https://github.com/medialize/ally.js/issues/110)
 * fixing [`ally.get.parents`][ally/get/parents] to resolve ancestry for `SVGElement` in Internet Explorer
+* adding [`ally.query.shadowHosts`][ally/query/shadow-hosts] to find elements hosting `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
+* adding [`ally.observe.shadowMutations`][ally/observe/shadow-mutations] to register `MutationObserver`s across nested `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
 
 #### Internals
 
@@ -276,8 +279,10 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/map/attribute]: http://allyjs.io/api/map/attribute.html
 [ally/map/keycode]: http://allyjs.io/api/map/keycode.html
 [ally/observe/interaction-type]: http://allyjs.io/api/observe/interaction-type.html
+[ally/observe/shadow-mutations]: http://allyjs.io/api/observe/shadow-mutations.html
 [ally/query/first-tabbable]: http://allyjs.io/api/query/first-tabbable.html
 [ally/query/focusable]: http://allyjs.io/api/query/focusable.html
+[ally/query/shadow-hosts]: http://allyjs.io/api/query/shadow-hosts.html
 [ally/query/tabbable]: http://allyjs.io/api/query/tabbable.html
 [ally/query/tabsequence]: http://allyjs.io/api/query/tabsequence.html
 [ally/style/focus-source]: http://allyjs.io/api/style/focus-source.html

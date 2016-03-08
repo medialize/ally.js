@@ -31,7 +31,7 @@ define([
       invalid: function() {
         expect(function() {
           isActiveElement(null);
-        }).to.throw(TypeError, 'is/active-element requires an argument of type Element');
+        }).to.throw(TypeError, 'is/active-element requires valid options.context');
       },
 
       simple: function() {

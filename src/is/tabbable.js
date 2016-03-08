@@ -33,7 +33,7 @@ function isTabbableRules({
   },
 } = {}) {
   const element = contextToElement({
-    message: 'is/tabbable requires an argument of type Element',
+    label: 'is/tabbable',
     resolveDocument: true,
     context,
   });

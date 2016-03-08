@@ -29,7 +29,10 @@ define([
       invalid: function() {
         expect(function() {
           isFocusRelevant(null);
-        }).to.throw(TypeError, 'is/focus-relevant requires an argument of type Element');
+        }).to.throw(TypeError, 'is/focus-relevant requires valid options.context');
+        expect(function() {
+          isFocusRelevant([true]);
+        }).to.throw(TypeError, 'is/focus-relevant requires options.context to be an Element');
       },
       '.rules() and .except()': function() {
         var element = document.getElementById('inert-div');

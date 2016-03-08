@@ -1,11 +1,11 @@
 
-import nodeArray from '../util/node-array';
+import contextToElement from '../util/context-to-element';
 
 export default function({context} = {}) {
-  let element = nodeArray(context)[0];
-  if (!element) {
-    throw new TypeError('get/shadow-host requires valid options.context');
-  }
+  let element = contextToElement({
+    label: 'get/shadow-host',
+    context,
+  });
 
   // walk up to the root
   let container = null;

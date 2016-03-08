@@ -29,7 +29,10 @@ define([
       invalid: function() {
         expect(function() {
           isFocusable(null);
-        }).to.throw(TypeError, 'is/focusable requires an argument of type Element');
+        }).to.throw(TypeError, 'is/focusable requires valid options.context');
+        expect(function() {
+          isFocusable([true]);
+        }).to.throw(TypeError, 'is/focusable requires options.context to be an Element');
       },
       '.rules() and .except()': function() {
         var element = document.getElementById('inert-div');

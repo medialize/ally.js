@@ -32,7 +32,7 @@ function isFocusRelevantRules({
   }
 
   const element = contextToElement({
-    message: 'is/focus-relevant requires an argument of type Element',
+    label: 'is/focus-relevant',
     resolveDocument: true,
     context,
   });

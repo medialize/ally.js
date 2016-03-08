@@ -1,6 +1,7 @@
 
 // Determine if an element supports the disabled attribute
 
+import contextToElement from '../util/context-to-element';
 import _supports from './native-disabled-supported.supports';
 let supports;
 
@@ -15,7 +16,7 @@ const disabledElements = {
   form: true,
 };
 
-export default function(element) {
+export default function(context) {
   if (!supports) {
     supports = _supports();
 
@@ -30,9 +31,10 @@ export default function(element) {
     disabledElementsPattern = new RegExp('^(' + Object.keys(disabledElements).join('|') + ')$');
   }
 
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/native-disabled-supported requires an argument of type Element');
-  }
+  const element = contextToElement({
+    label: 'is/native-disabled-supported',
+    context,
+  });
 
   const nodeName = element.nodeName.toLowerCase();
   return Boolean(disabledElementsPattern.test(nodeName));

@@ -5,7 +5,7 @@ import contextToElement from '../util/context-to-element';
 export default function({context} = {}) {
   const list = [];
   let element = contextToElement({
-    message: 'get/shadow-host-parents requires valid options.context',
+    label: 'get/shadow-host-parents',
     context,
   });
 

@@ -39,6 +39,7 @@ In order to work with focusable elements, we must first know which elements we'r
 
 * [`ally.query.firstTabbable`](query/first-tabbable.md) finds the first keyboard focusable element
 * [`ally.query.focusable`](query/focusable.md) finds all focusable elements
+* [`ally.query.shadowHosts`](query/shadow-hosts.md) finds all elements hosting a `ShadowRoot`
 * [`ally.query.tabbable`](query/tabbable.md) finds all keyboard focusable elements in DOM order
 * [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
@@ -123,6 +124,7 @@ Emitting events when there's no standardized equivalent
 Translate volatile events to stateful interfaces
 
 * [`ally.observe.interactionType`](observe/interaction-type.md) observes user interaction method to distinguish pointer and keyboard actions
+* [`ally.observe.shadowMutations`](observe/shadow-mutations.md) registers `MutationObserver`s across nested `ShadowRoot`s
 
 
 ---

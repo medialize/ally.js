@@ -5,18 +5,18 @@
 
 import whenVisibleArea from './visible-area';
 import isFocusable from '../is/focusable';
+import contextToElement from '../util/context-to-element';
 import getDocument from '../util/get-document';
-import nodeArray from '../util/node-array';
 
 export default function({context, callback, area} = {}) {
   if (typeof callback !== 'function') {
     throw new TypeError('when/focusable requires options.callback to be a function');
   }
 
-  const element = nodeArray(context)[0];
-  if (!element) {
-    throw new TypeError('when/focusable requires valid options.context');
-  }
+  const element = contextToElement({
+    label: 'when/focusable',
+    context,
+  });
 
   const filterCallback = function(target) {
     if (!isFocusable(target)) {

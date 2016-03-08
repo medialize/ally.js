@@ -1,6 +1,7 @@
 
 // determine if an element's tabindex attribute has a valid value
 
+import contextToElement from '../util/context-to-element';
 import _supports from './valid-tabindex.supports';
 let supports;
 
@@ -9,7 +10,7 @@ let supports;
 const validIntegerPatternNoTrailing = /^\s*(-|\+)?[0-9]+\s*$/;
 const validIntegerPatternWithTrailing = /^\s*(-|\+)?[0-9]+.*$/;
 
-export default function(element) {
+export default function(context) {
   if (!supports) {
     supports = _supports();
   }
@@ -18,13 +19,11 @@ export default function(element) {
     ? validIntegerPatternWithTrailing
     : validIntegerPatternNoTrailing;
 
-  if (element === document) {
-    element = document.documentElement;
-  }
-
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/valid-tabindex requires an argument of type Element');
-  }
+  const element = contextToElement({
+    label: 'is/valid-tabindex',
+    resolveDocument: true,
+    context,
+  });
 
   if (!element.hasAttribute('tabindex')) {
     return false;

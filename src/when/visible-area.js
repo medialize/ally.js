@@ -6,7 +6,7 @@
 import '../prototype/window.requestanimationframe';
 import isVisible from '../is/visible';
 import visibleArea from '../util/visible-area';
-import nodeArray from '../util/node-array';
+import contextToElement from '../util/context-to-element';
 
 export default function({context, callback, area} = {}) {
   if (typeof callback !== 'function') {
@@ -17,10 +17,10 @@ export default function({context, callback, area} = {}) {
     area = 1;
   }
 
-  const element = nodeArray(context)[0];
-  if (!element) {
-    throw new TypeError('when/visible-area requires valid options.context');
-  }
+  const element = contextToElement({
+    label: 'when/visible-area',
+    context,
+  });
 
   if (isVisible(element) && visibleArea(element) >= area && callback(element) !== false) {
     // element is already visible, trivial escape

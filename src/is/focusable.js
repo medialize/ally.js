@@ -89,7 +89,7 @@ function isFocusableRules({
   });
 
   const element = contextToElement({
-    message: 'is/focusable requires an argument of type Element',
+    label: 'is/focusable',
     resolveDocument: true,
     context,
   });

@@ -56,7 +56,7 @@ define([
       invalid: function() {
         expect(function() {
           isValidArea(null);
-        }).to.throw(TypeError, 'is/valid-area requires an argument of type Element');
+        }).to.throw(TypeError, 'is/valid-area requires valid options.context');
       },
       'div element': function() {
         var element = document.getElementById('non-area');
