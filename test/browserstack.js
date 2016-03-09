@@ -19,8 +19,8 @@ define([
   // see https://www.browserstack.com/automate/capabilities
   /*eslint-disable camelcase */
   config.environments = [
-    // disabled because of https://github.com/theintern/intern/issues/555
-    // { browser: 'Edge', browser_version: '12.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge12' },
+    { browser: 'Edge', browser_version: '13.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge13' },
+
     { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
     { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10', nativeEvents: true },
     { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
