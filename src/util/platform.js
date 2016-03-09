@@ -10,10 +10,11 @@ import _platform from 'platform';
 const platform = JSON.parse(JSON.stringify(_platform));
 
 // operating system
-const ANDROID = platform.os.family === 'Android';
-const WINDOWS = platform.os.family.slice(0, 7) === 'Windows';
-const OSX = platform.os.family === 'OS X';
-const IOS = platform.os.family === 'iOS';
+const os = platform.os.family || '';
+const ANDROID = os === 'Android';
+const WINDOWS = os.slice(0, 7) === 'Windows';
+const OSX = os === 'OS X';
+const IOS = os === 'iOS';
 
 // layout
 const BLINK = platform.layout === 'Blink';
