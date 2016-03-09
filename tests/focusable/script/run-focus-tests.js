@@ -152,6 +152,18 @@ define([
       });
     }
 
+    // Apple Safari 8 cannot continue progressing through the tabbing order
+    // once it encounters a <use> element referencing focusable content
+    // see http://jsbin.com/yukogaluju/1/edit?html,js,output
+    if (platform.name === 'Safari' && parseInt(platform.version) === 8) {
+      /*eslint-disable no-alert */
+      alert('removing <use> because Safari 8 might get stuck');
+      /*eslint-enable no-alert */
+      [].forEach.call(document.querySelectorAll('.hide-from-safari8'), function(element) {
+        element.parentNode.removeChild(element);
+      });
+    }
+
     resetActiveElement();
 
     /*eslint-disable no-alert */

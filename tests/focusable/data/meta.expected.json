@@ -2859,6 +2859,191 @@
     "tabbable": true,
     "index": 0
   },
+  "svg{use:foreign}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use:foreign} use": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use:foreign} use[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g circle": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g[onfocus] circle": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g[onfocus] rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g{focusable}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g{focusable} circle[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} defs g{focusable} link": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "svg{use} defs g{focusable} rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} g": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} g link": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} g rect[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} link{10}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{1}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{2}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{3}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{4}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{5}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{6}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{7}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{8}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} link{9}": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg{use} use{inline-shape}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{inline-shape}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus-content:1}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus-content:1}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus-content:2}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus-content:2}[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus:1}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape-with-focus:2}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{use} use{shape}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
   "svg{viewbox}": {
     "focusable": false,
     "tabbable": false,

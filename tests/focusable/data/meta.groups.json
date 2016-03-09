@@ -583,6 +583,72 @@
   },
 
   {
+    "label": "SVG use element",
+    "idents": {
+      "svg{use}": "<svg> with <use> as content",
+      "svg{use} defs g[onfocus]": "<g onfocus> within <defs>",
+      "svg{use} defs g{focusable} circle[onfocus]": "<circle onfocus> within <defs>",
+      "svg{use} defs g{focusable} link": "<a xlink:href=\"…\"> within <defs>",
+      "svg{use} g link": "<a xlink:href=\"…\"> within <g>",
+      "svg{use} g rect[onfocus]": "<rect onfocus> within <g>",
+      "svg{use} link{1}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{2}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{3}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{4}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{5}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{6}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{7}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{8}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{9}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} link{10}": "<a xlink:href=\"…\"> only relevant to tabsequence",
+      "svg{use} use{inline-shape}": "<use> referencing element outside of <defs>",
+      "svg{use} use{shape-with-focus-content:1}": "<use> referencing focusable content",
+      "svg{use} use{shape-with-focus-content:2}": "<use> referencing in <defs> that has focusable content",
+      "svg{use} use{shape-with-focus:1}": "<use> referencing in <defs> that is potentially focusable",
+      "svg{use} use{shape-with-focus:2}": "<use> referencing in <defs> that is potentially focusable",
+      "svg{use:foreign}": "<svg> with <use> as content",
+      "svg{use:foreign} use": "<use> referencing another <svg>'s content",
+      "svg{use} use{inline-shape}[tabindex=-1]": "<use tabindex=\"-1\"> referencing element outside of <defs>",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]": "<use tabindex=\"-1\"> referencing focusable content",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]": "<use tabindex=\"-1\"> referencing in <defs> that is potentially focusable",
+      "svg{use:foreign} use[tabindex=-1]": "<use tabindex=\"-1\"> referencing another <svg>'s content"
+    },
+    "redundant": {
+      "svg{use}": [
+        "svg{use:foreign}"
+      ],
+      "svg{use} use{shape-with-focus-content:1}": [
+        "svg{use} use{inline-shape}",
+        "svg{use} use{shape-with-focus:1}",
+        "svg{use:foreign} use"
+      ],
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]": [
+        "svg{use} use{inline-shape}[tabindex=-1]",
+        "svg{use} use{shape-with-focus:1}[tabindex=-1]",
+        "svg{use:foreign} use[tabindex=-1]"
+      ]
+    },
+    "irrelevant": [
+      "svg{use} defs g[onfocus]",
+      "svg{use} defs g{focusable} circle[onfocus]",
+      "svg{use} g rect[onfocus]",
+      "svg{use} link{1}",
+      "svg{use} link{2}",
+      "svg{use} link{3}",
+      "svg{use} link{4}",
+      "svg{use} link{5}",
+      "svg{use} link{6}",
+      "svg{use} link{7}",
+      "svg{use} link{8}",
+      "svg{use} link{9}",
+      "svg{use} link{10}",
+      "svg{use} use{shape-with-focus:2}",
+      "svg{use} use{shape-with-focus-content:2}",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]"
+    ]
+  },
+
+  {
     "label": "SVG Document in Iframe Element",
     "idents": {
       "iframe[src=svg] -> file:svg": "<svg> within <iframe>",

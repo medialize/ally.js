@@ -437,6 +437,11 @@
 
   "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
   "svg rect[onfocus]": {
+    "alias": [
+      "svg{use} defs g[onfocus]",
+      "svg{use} defs g{focusable} circle[onfocus]",
+      "svg{use} g rect[onfocus]"
+    ],
     "general": "[SVG 2: Focus](https://svgwg.org/svg2-draft/single-page.html#interact-Focus) says:\n\n> In particular, user agents may support using keyboard focus to reveal ‘title’ element text as tooltips, and may allow focus to reach elements which have been assigned listeners for mouse, pointer, or focus events",
     "ally": "Elements made focusable by way of adding a `focus` event listener cannot be identified by ally.js",
     "browsers": {
