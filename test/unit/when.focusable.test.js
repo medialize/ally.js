@@ -117,6 +117,7 @@ define([
             }
 
             deferred.resolve();
+            return true;
           }),
         });
 

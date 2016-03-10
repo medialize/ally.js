@@ -72,7 +72,7 @@ define([
         expect(sibling.hasAttribute('aria-hidden')).to.equal(false, 'sibling after disengaged');
         expect(cousin2.hasAttribute('aria-hidden')).to.equal(false, 'cousin-2 after disengaged');
       },
-      'dom mutation': function() {
+      'mutation: adding uncle': function() {
         if (!window.MutationObserver) {
           this.skip('MutationObserver not supported');
         }
@@ -80,6 +80,7 @@ define([
         var deferred = this.async(10000);
 
         handle = maintainHidden({
+          context: fixture.root,
           filter: '#target',
         });
 
@@ -87,6 +88,52 @@ define([
         // dom mutation is observed asynchronously
         setTimeout(deferred.callback(function() {
           expect(dynamic.getAttribute('aria-hidden')).to.equal('true', 'dynamic after the fact');
+
+          handle.disengage();
+          expect(dynamic.hasAttribute('aria-hidden')).to.equal(false, 'dynamic after disengaged');
+        }), 50);
+      },
+      'mutation: adding child': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
+        var deferred = this.async(10000);
+
+        handle = maintainHidden({
+          context: fixture.root,
+          filter: '#target',
+        });
+
+        var dynamic = document.createElement('div');
+        var target = document.getElementById('target');
+        target.appendChild(dynamic);
+        // dom mutation is observed asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(dynamic.hasAttribute('aria-hidden')).to.equal(false, 'dynamic after the fact');
+
+          handle.disengage();
+          expect(dynamic.hasAttribute('aria-hidden')).to.equal(false, 'dynamic after disengaged');
+        }), 50);
+      },
+      'mutation: adding cousin': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
+        var deferred = this.async(10000);
+
+        handle = maintainHidden({
+          context: fixture.root,
+          filter: '#target',
+        });
+
+        var dynamic = document.createElement('div');
+        var target = document.getElementById('uncle-2');
+        target.appendChild(dynamic);
+        // dom mutation is observed asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(dynamic.hasAttribute('aria-hidden')).to.equal(false, 'dynamic after the fact');
 
           handle.disengage();
           expect(dynamic.hasAttribute('aria-hidden')).to.equal(false, 'dynamic after disengaged');

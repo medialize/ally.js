@@ -43,7 +43,7 @@
         var element = document.querySelector(selector);
         element.focus();
         log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
-      } catch(e) {
+      } catch (e) {
         log.textContent += selector + ': ' + e + '\n';
       }
     });
@@ -64,7 +64,7 @@
         var element = document.querySelector(selector);
         element.focus();
         log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
-      } catch(e) {
+      } catch (e) {
         log.textContent += selector + ': ' + e + '\n';
       }
     });

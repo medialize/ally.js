@@ -37,7 +37,7 @@ module.exports = function({
   let idents = group.idents;
   if (Array.isArray(group.idents)) {
     idents = {};
-    group.idents.forEach(ident => idents[ident] = ident);
+    group.idents.forEach(ident => (idents[ident] = ident));
   }
 
   Object.keys(idents).forEach(function(ident) {

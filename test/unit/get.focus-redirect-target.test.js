@@ -166,6 +166,39 @@ define([
           expect(target).to.equal(null);
         }
       },
+      'legend element not within fieldset': function() {
+        fixture.add('<div><legend id="div-legend">invalid</legend><a href="#void" id="div-legend-link">link</a></div>');
+        var target = getFocusRedirectTarget({
+          context: document.getElementById('div-legend'),
+        });
+
+        expect(target).to.equal(null);
+      },
+      'legend element without tabbable elements': function() {
+        fixture.remove();
+        fixture = customFixture([
+          '<fieldset><legend id="legend-target">legend</legend></fieldset>',
+        ]);
+
+        var target = getFocusRedirectTarget({
+          context: document.getElementById('legend-target'),
+        });
+
+        expect(target).to.equal(null);
+      },
+      'legend element without following tabbable elements': function() {
+        fixture.remove();
+        fixture = customFixture([
+          '<a href="#void">link</a>',
+          '<fieldset><legend id="legend-target">legend</legend></fieldset>',
+        ]);
+
+        var target = getFocusRedirectTarget({
+          context: document.getElementById('legend-target'),
+        });
+
+        expect(target).to.equal(null);
+      },
 
       'img element with usemap attribute': function() {
         var target = getFocusRedirectTarget({

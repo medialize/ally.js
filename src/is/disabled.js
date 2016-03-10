@@ -1,6 +1,7 @@
 
 // Determine if an element is disabled (i.e. not editable)
 
+import contextToElement from '../util/context-to-element';
 import getParents from '../get/parents';
 import isNativeDisabledSupported from './native-disabled-supported';
 
@@ -17,14 +18,15 @@ function isDisabledForm(element) {
   return nodeName === 'form' && element.disabled;
 }
 
-export default function(element) {
+export default function(context) {
   if (!supports) {
     supports = _supports();
   }
 
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/disabled requires an argument of type Element');
-  }
+  const element = contextToElement({
+    label: 'is/disabled',
+    context,
+  });
 
   if (element.hasAttribute('data-ally-disabled')) {
     // treat ally's element/disabled like the DOM native element.disabled
@@ -47,7 +49,7 @@ export default function(element) {
     return true;
   }
 
-  if (!supports.canFocusFormDisabled && parents.some(isDisabledForm)) {
+  if (!supports.canFocusDisabledForm && parents.some(isDisabledForm)) {
     // a parental <form> is disabld and inherits the state onto this element
     return true;
   }

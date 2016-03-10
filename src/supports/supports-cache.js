@@ -30,7 +30,7 @@ function writeLocalStorage(key, value) {
     // This can happen when a document is reloaded while Developer Tools have focus.
     try {
       window.localStorage && window.localStorage.removeItem(key);
-    } catch(e) {
+    } catch (e) {
       // ignore
     }
 

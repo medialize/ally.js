@@ -35,6 +35,7 @@ var sequence = ally.query.tabsequence({
 | ---- | ---- | ------- | ----------- |
 | context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | includeContext | boolean | `false` | Prepend the `context` element if it is focusable. |
+| includeOnlyTabbable | boolean | `false` | Include elements that would otherwise be ignored because they're considered only tabbable, |
 | strategy | `"quick"`, `"strict"`, `"all"` | `"quick"` | The approach used to find elements. |
 
 ### Returns
@@ -53,6 +54,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 * Since `v#master` the module can move `<area>` elements to the place of the `<img>` elements they're referenced from.
 * Since `v#master` the module can sort elements in [Shadow DOM](http://caniuse.com/#feat=shadowdom) localized to the `ShadowRoot`.
+* Since `v#master` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
 
 
 ## Notes

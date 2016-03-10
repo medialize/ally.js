@@ -30,6 +30,7 @@ While it's best to use standardized features and leave browsers to figure things
 
 * [`ally.maintain.disabled`](maintain/disabled.md) renders elements inert to prevent any user interaction
 * [`ally.maintain.hidden`](maintain/hidden.md) sets `aria-hidden="true"` on insignificant branches
+* [`ally.maintain.tabFocus`](maintain/tab-focus.md) traps <kbd>TAB</kbd> focus in the tabsequence
 
 
 ## Finding elements
@@ -38,6 +39,7 @@ In order to work with focusable elements, we must first know which elements we'r
 
 * [`ally.query.firstTabbable`](query/first-tabbable.md) finds the first keyboard focusable element
 * [`ally.query.focusable`](query/focusable.md) finds all focusable elements
+* [`ally.query.shadowHosts`](query/shadow-hosts.md) finds all elements hosting a `ShadowRoot`
 * [`ally.query.tabbable`](query/tabbable.md) finds all keyboard focusable elements in DOM order
 * [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 
@@ -46,6 +48,7 @@ In order to work with focusable elements, we must first know which elements we'r
 
 Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#Single-options-argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
+* [`ally.is.activeElement`](is/active-element.md) returns true if the element is the activeElement of its host context, i.e. its document, iFrame or ShadowHost
 * [`ally.is.disabled`](is/disabled.md) returns true if the element is `:disabled`
 * [`ally.is.focusRelevant`](is/focus-relevant.md) returns true if the element is considered theoretically focusable
 * [`ally.is.focusable`](is/focusable.md) returns true if the element is considered focusable by script
@@ -121,6 +124,7 @@ Emitting events when there's no standardized equivalent
 Translate volatile events to stateful interfaces
 
 * [`ally.observe.interactionType`](observe/interaction-type.md) observes user interaction method to distinguish pointer and keyboard actions
+* [`ally.observe.shadowMutations`](observe/shadow-mutations.md) registers `MutationObserver`s across nested `ShadowRoot`s
 
 
 ---

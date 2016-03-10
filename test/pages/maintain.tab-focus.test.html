@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Maintain Tab Focus</title>
+  <style>
+    body :focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Maintain Tab Focus</h1>
+
+  <input id="before">
+  <input id="before-1" tabindex="1">
+
+  <div id="container">
+    <input id="second">
+    <input id="first" tabindex="1">
+    <input id="third">
+  </div>
+
+  <input id="after">
+  <input id="after-1" tabindex="1">
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform'
+      }
+    });
+
+    require([
+      'ally/util/platform',
+      'ally/maintain/tab-focus',
+    ], function(platform, maintainTabFocus) {
+      window.platform = platform;
+
+      maintainTabFocus({
+        context: '#container',
+      });
+    });
+  </script>
+</body>
+</html>

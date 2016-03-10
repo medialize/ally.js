@@ -210,6 +210,7 @@
 
   // Data filled by openDialog() and later used by closeDialog()
   var keyHandle;
+  var tabHandle;
   var disabledHandle;
   var hiddenHandle;
   var focusedElementBeforeDialogOpened;
@@ -258,6 +259,13 @@
       filter: dialog,
     });
 
+    // Make sure that Tab key controlled focus is trapped within
+    // the tabsequence of the dialog and does not reach the
+    // browser's UI, e.g. the location bar.
+    tabHandle = ally.maintain.tabFocus({
+      context: dialog,
+    });
+
     // React to enter and escape keys as mandated by ARIA Practices
     keyHandle = ally.when.key({
       escape: closeDialogByKey,
@@ -289,6 +297,8 @@
   function closeDialog() {
     // undo listening to keyboard
     keyHandle.disengage();
+    // undo trapping Tab key focus
+    tabHandle.disengage();
     // undo hiding elements outside of the dialog
     hiddenHandle.disengage();
     // undo disabling elements outside of the dialog

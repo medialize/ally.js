@@ -4,6 +4,8 @@
 
 import 'array.prototype.findindex';
 import getParents from '../get/parents';
+import contextToElement from '../util/context-to-element';
+import getFrameElement from '../util/get-frame-element';
 
 // http://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
@@ -65,17 +67,24 @@ function collapsedParent(_path) {
   });
 }
 
-export default function(element) {
-  if (element === document) {
-    element = document.documentElement;
-  }
-
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/visible requires an argument of type Element');
-  }
+function isVisibleRules({
+  context,
+  except = {
+    notRendered: false,
+    cssDisplay: false,
+    cssVisibility: false,
+    detailsElement: false,
+    browsingContext: false,
+  },
+} = {}) {
+  const element = contextToElement({
+    label: 'is/visible',
+    resolveDocument: true,
+    context,
+  });
 
   const nodeName = element.nodeName.toLowerCase();
-  if (notRenderedElementsPattern.test(nodeName)) {
+  if (!except.notRendered && notRenderedElementsPattern.test(nodeName)) {
     return true;
   }
 
@@ -85,17 +94,44 @@ export default function(element) {
   // but IE allows focusing <audio style="display:none">, but not <div display:none><audio>
   // this is irrelevant to other browsers, as the controls attribute is required to make <audio> focusable
   const isAudioWithoutControls = nodeName === 'audio' && !element.hasAttribute('controls');
-  if (notDisplayed(isAudioWithoutControls ? _path.slice(1) : _path)) {
+  if (!except.cssDisplay && notDisplayed(isAudioWithoutControls ? _path.slice(1) : _path)) {
     return false;
   }
 
-  if (notVisible(_path)) {
+  if (!except.cssVisibility && notVisible(_path)) {
     return false;
   }
 
-  if (collapsedParent(_path)) {
+  if (!except.detailsElement && collapsedParent(_path)) {
     return false;
+  }
+
+  if (!except.browsingContext) {
+    // elements within a browsing context are affected by the
+    // browsing context host element's visibility and tabindex
+    const frameElement = getFrameElement(element);
+    const _isVisible = isVisibleRules.except(except);
+    if (frameElement && !_isVisible(frameElement)) {
+      return false;
+    }
   }
 
   return true;
 }
+
+// bind exceptions to an iterator callback
+isVisibleRules.except = function(except = {}) {
+  const isVisible = function(context) {
+    return isVisibleRules({
+      context,
+      except,
+    });
+  };
+
+  isVisible.rules = isVisibleRules;
+  return isVisible;
+};
+
+// provide isVisible(context) as default iterator callback
+const isVisible = isVisibleRules.except({});
+export default isVisible;

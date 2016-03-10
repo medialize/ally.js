@@ -5,6 +5,7 @@
 // https://github.com/angular/material/blob/v0.11.1/src/components/dialog/dialog.js#L748-L783
 // to avoid this behavior: http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
 
+import contextToElement from '../util/context-to-element';
 import nodeArray from '../util/node-array';
 import {getParentComparator} from '../util/compare-position';
 import getDocument from '../util/get-document';
@@ -59,9 +60,13 @@ function queryInsignificantBranches({context, filter}) {
 }
 
 export default function({context, filter} = {}) {
-  context = nodeArray(context || document.documentElement)[0];
-  filter = nodeArray(filter);
+  context = contextToElement({
+    label: 'get/insignificant-branches',
+    defaultToDocument: true,
+    context,
+  });
 
+  filter = nodeArray(filter);
   if (!filter.length) {
     throw new TypeError('get/insignificant-branches requires valid options.filter');
   }

@@ -5,7 +5,10 @@
       "iframe -> html",
       "iframe{focusable} -> html",
       "iframe[tabindex=-1] -> html",
-      "iframe{focusable}[tabindex=-1] -> html"
+      "iframe{focusable}[tabindex=-1] -> html",
+      "iframe{hidden} -> html",
+      "iframe{none} -> html",
+      "details iframe -> html"
     ],
     "ally": "@ally-doc-inert",
     "general": "The `<html>` element itself is not considered focusable, but some browsers may give it focus when focus is passed from browser UI to the document."
@@ -16,7 +19,10 @@
       "iframe -> body",
       "iframe{focusable} -> body",
       "iframe[tabindex=-1] -> body",
-      "iframe{focusable}[tabindex=-1] -> body"
+      "iframe{focusable}[tabindex=-1] -> body",
+      "iframe{hidden} -> body",
+      "iframe{none} -> body",
+      "details iframe -> body"
     ],
     "ally": "@ally-doc-inert",
     "general": "The `<body>` element itself is not considered focusable, but it is has focus (i.e. is `document.activeElement`) if no other element has focus."
@@ -68,7 +74,8 @@
       "ie-9": "@ie-label-click-script",
       "ie-10": "@ie-label-click-script",
       "ie-11": "@ie-label-click-script",
-      "ie-12": "@ie-label-click-script"
+      "ie-12": "@ie-label-click-script",
+      "ie-13": "@ie-label-click-script"
     }
   },
 
@@ -211,8 +218,10 @@
       "iframe[src=svg]",
       "iframe[src=svg][tabindex=-1]",
 
-      "inert-in-ally{iframe content}",
-      "inert-in-ally{iframe svg:file}"
+      "inert-in-ally-query{iframe content}",
+      "inert-in-ally-is{iframe content}",
+      "inert-in-ally-query{iframe svg:file}",
+      "inert-in-ally-is{iframe svg:file}"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<iframe>`s to determine their content, which is why ally.js considers all `<iframe>` content inert",
     "general": "@sop-iframe"
@@ -247,10 +256,23 @@
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]",
-      "inert-in-ally{embed svg:file}"
+      "inert-in-ally-query{embed svg:file}",
+      "inert-in-ally-is{embed svg:file}"
     ],
     "ally": "Because there is no API to dive into the content document of an `<embed>` element, ally.js considers all `<embed>` content inert.",
     "general": "There is no API to interact with the content document of an `<embed>` element"
+  },
+
+  "@object-hidden": "`<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)",
+  "object[src=svg]{hidden}": {
+    "alias": [
+      "object[src=swf]{hidden}"
+    ],
+    "browsers": {
+      "chrome-mobile": "@object-hidden",
+      "chrome-stable": "@object-hidden",
+      "chrome-nightly": "@object-hidden"
+    }
   },
 
   "object[src=svg] -> file:svg": {
@@ -273,7 +295,8 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]",
       "object[src=svg][height=0] -> file:svg a[focusable=false]",
-      "inert-in-ally{object svg:file}"
+      "inert-in-ally-query{object svg:file}",
+      "inert-in-ally-is{object svg:file}"
     ],
     "ally": "Because of the [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) we can't reliably look inside `<object>`s to determine their content, which is why ally.js considers all `<object>` content inert.",
     "general": "Technically the content of an `<object>` element [can be accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement)."
@@ -395,6 +418,8 @@
       "chrome-nightly": "@svg-onfocus",
       "chrome-mobile": "@svg-onfocus",
       "opera-stable":  "@svg-onfocus",
+      "safari-6": "@svg-onfocus",
+      "safari-8": "@svg-onfocus",
       "safari-9": "@svg-onfocus",
       "webkit-nightly": "@svg-onfocus",
       "ios-9": "@svg-onfocus"
@@ -436,13 +461,25 @@
 
   "-details-webkit-151767": {
     "alias": [
+      "details object[src=svg]",
+      "details a[href]",
+      "details[tabindex=-1] a[href]",
+      "details:has(summary[tabindex=-1]) a[href]"
+    ],
+    "browsers": {
+      "webkit-nightly": "This element should be keyboard focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
+    }
+  },
+
+  "-details-closed-webkit-151767": {
+    "alias": [
       "details summary",
       "details[tabindex=-1] summary",
       "details[open] summary",
       "details[open] a[href]"
     ],
     "browsers": {
-      "webkit-nightly": "This element should be keyboard focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
+      "webkit-nightly": "This element should *not* be focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
     }
   },
 
@@ -500,7 +537,8 @@
   "keygen": {
     "alias": [
       "keygen[tabindex=-1]",
-      "inert-in-ally{keygen}"
+      "inert-in-ally-query{keygen}",
+      "inert-in-ally-is{keygen}"
     ],
     "browsers": {
       "firefox-stable": "@firefox-keygen-select",
@@ -612,6 +650,15 @@
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
+      "iframe{hidden} -> input --- iframe{hidden}": "@encapsulated-iframe",
+      "iframe{hidden} -> input[tabindex=1] --- iframe{hidden}": "@encapsulated-iframe",
+      "iframe{hidden} -> html --- iframe{hidden}": "@encapsulated-iframe",
+      "iframe{none} -> input --- iframe{none}": "@encapsulated-iframe",
+      "iframe{none} -> input[tabindex=1] --- iframe{none}": "@encapsulated-iframe",
+      "details iframe -> html --- details iframe": "@encapsulated-iframe",
+      "details iframe -> body --- details iframe": "@encapsulated-iframe",
+      "details iframe -> input --- details iframe": "@encapsulated-iframe",
+      "details iframe -> input[tabindex=1] --- details iframe": "@encapsulated-iframe",
       "svg a[xlink|href] --- iframe[src=svg]": "@encapsulated-iframe",
       "svg a[xlink|href] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe"
     }
@@ -662,6 +709,10 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][height=0]": "@encapsulated-object",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][height=0]": "@encapsulated-object",
       "object[src=svg][height=0] -> file:svg a[focusable=false] --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg]{hidden} -> file:svg a[focusable=false] --- object[src=svg]{hidden}": "@encapsulated-object",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href] --- object[src=svg]{hidden}": "@encapsulated-object",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg]{hidden}": "@encapsulated-object",
+      "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1] --- object[src=svg]{hidden}": "@encapsulated-object",
       "svg a[xlink|href] --- object[src=svg]": "@encapsulated-object",
       "svg a[xlink|href] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
       "svg a[xlink|href] --- object[src=svg][tabindex=0]": "@encapsulated-object",
@@ -699,6 +750,9 @@
   "related:iframe[tabindex=-1]": "<iframe>",
   "related:iframe{focusable}": "<iframe>",
   "related:iframe{focusable}[tabindex=-1]": "<iframe>",
+  "related:iframe{hidden}": "<iframe>",
+  "related:iframe{none}": "<iframe>",
+  "related:details iframe": "<iframe>",
 
   "related:img[usemap]": "<img usemap=\"…\">",
   "related:img[usemap][tabindex=-1]": "<img usemap=\"…\">",
@@ -715,6 +769,8 @@
   "related:object[src=svg][height=0]": "<object type=\"image/svg+xml\">",
   "related:object[src=svg][tabindex=-1]": "<object type=\"image/svg+xml\">",
   "related:object[src=svg][tabindex=0]": "<object type=\"image/svg+xml\">",
+  "related:object[src=svg]{hidden}": "<object type=\"image/svg+xml\">",
+  "related:object[src=svg]{none}": "<object type=\"image/svg+xml\">",
 
   "related:shadow-host": "ShadowHost",
   "related:shadow-host inner-host": "ShadowHost",
@@ -722,6 +778,9 @@
   "related:shadow-host[tabindex=-1] inner-host": "ShadowHost",
   "related:shadow-host[tabindex=0]": "ShadowHost",
   "related:shadow-host[tabindex=0] inner-host": "ShadowHost",
+  "related:shadow-host{hidden}": "ShadowHost",
+  "related:shadow-host{hidden} inner-host": "ShadowHost",
+  "related:shadow-host{none} inner-host": "ShadowHost",
 
   "@element-not-tested": "This element could not be tested in this browser."
 }

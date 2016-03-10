@@ -18,6 +18,7 @@
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
 import elementDisabled from '../element/disabled';
+import observeShadowMutations from '../observe/shadow-mutations';
 import {getParentComparator} from '../util/compare-position';
 
 function makeElementInert(element) {
@@ -39,6 +40,7 @@ class InertSubtree {
   constructor({context, filter} = {}) {
     this._context = nodeArray(context || document.documentElement)[0];
     this._filter = nodeArray(filter);
+    this._inertElementCache = [];
 
     this.disengage = this.disengage.bind(this);
     this.handleMutation = this.handleMutation.bind(this);
@@ -52,7 +54,12 @@ class InertSubtree {
     });
 
     this.renderInert(focusable);
-    this.startObserver();
+
+    this.shadowObserver = observeShadowMutations({
+      context: this._context,
+      config: observerConfig,
+      callback: mutations => mutations.forEach(this.handleMutation),
+    });
   }
 
   disengage() {
@@ -61,12 +68,13 @@ class InertSubtree {
     }
 
     undoElementInert(this._context);
-    [].forEach.call(this._context.querySelectorAll('[data-ally-disabled], :disabled'), undoElementInert);
+    this._inertElementCache.forEach((element) => undoElementInert(element));
 
+    this._inertElementCache = null;
     this._filter = null;
     this._context = null;
-    this._observer && this._observer.disconnect();
-    this._observer = null;
+    this.shadowObserver && this.shadowObserver.disengage();
+    this.shadowObserver = null;
   }
 
   listQueryFocusable(list) {
@@ -78,36 +86,16 @@ class InertSubtree {
   }
 
   renderInert(elements) {
-    elements.filter(this.filterElements).forEach(makeElementInert);
-  }
-
-  filterContext(element) {
-    // ignore elements that are not within the context sub-trees
-    const isParentOfElement = getParentComparator({element, includeSelf: true});
-    return isParentOfElement(this._context);
+    elements.filter(this.filterElements).forEach((element) => {
+      this._inertElementCache.push(element);
+      makeElementInert(element);
+    });
   }
 
   filterElements(element) {
-    if (element === document.body && !element.hasAttribute('tabindex')) {
-      // ignore the body (default focus element) unless it was made focusable
-      return false;
-    }
-
     // ignore elements within the exempted sub-trees
     const isParentOfElement = getParentComparator({element, includeSelf: true});
     return !this._filter.some(isParentOfElement);
-  }
-
-  startObserver() {
-    if (!window.MutationObserver) {
-      // not supporting IE10 via Mutation Events, because they're too expensive
-      // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events
-      return;
-    }
-    // http://caniuse.com/#search=mutation
-    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-    this._observer = new MutationObserver(mutations => mutations.forEach(this.handleMutation));
-    this._observer.observe(this._context, observerConfig);
   }
 
   handleMutation(mutation) {
@@ -119,8 +107,8 @@ class InertSubtree {
 
       const addedFocusableElements = this.listQueryFocusable(addedElements);
       this.renderInert(addedFocusableElements);
-    } else if (mutation.type === 'attribute' && !this.filterElements(mutation.target) && this.filterContext(mutation.target)) {
-      makeElementInert(mutation.target);
+    } else if (mutation.type === 'attributes') {
+      this.renderInert([mutation.target]);
     }
   }
 }

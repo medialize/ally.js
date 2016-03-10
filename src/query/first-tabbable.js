@@ -24,12 +24,23 @@ function hasNoPositiveTabindex(element) {
   return element.tabIndex <= 0;
 }
 
-export default function({context, sequence, strategy, ignoreAutofocus, defaultToContext} = {}) {
+export default function({
+  context,
+  sequence,
+  strategy,
+  ignoreAutofocus,
+  defaultToContext,
+  includeOnlyTabbable,
+} = {}) {
   let index = -1;
 
   if (!sequence) {
     context = nodeArray(context || document.body)[0];
-    sequence = queryTabbable({ context, strategy });
+    sequence = queryTabbable({
+      context,
+      includeOnlyTabbable,
+      strategy,
+    });
   }
 
   if (sequence.length && !ignoreAutofocus) {
@@ -42,7 +53,11 @@ export default function({context, sequence, strategy, ignoreAutofocus, defaultTo
     index = sequence.findIndex(hasNoPositiveTabindex);
   }
 
-  if (index === -1 && defaultToContext && context && isFocusable(context)) {
+  const _isFocusable = isFocusable.rules.except({
+    onlyTabbable: includeOnlyTabbable,
+  });
+
+  if (index === -1 && defaultToContext && context && _isFocusable(context)) {
     return context;
   }
 

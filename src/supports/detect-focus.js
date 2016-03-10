@@ -12,12 +12,13 @@ function detectFocus(options) {
   // wrap tests in an element hidden from screen readers to prevent them
   // from announcing focus, which can be quite irritating to the user
   const wrapper = document.createElement('div');
+  wrapper.setAttribute('style', 'position:fixed; position:absolute; top:0; left:-2px; width:1px; height:1px; overflow:hidden;');
   wrapper.setAttribute('aria-live', 'off');
   wrapper.setAttribute('aria-busy', 'true');
   wrapper.setAttribute('aria-hidden', 'true');
   document.body.appendChild(wrapper);
   // create dummy element to test focusability of
-  const element = typeof options.element === 'string' ? document.createElement(options.element) : options.element();
+  const element = typeof options.element === 'string' ? document.createElement(options.element) : options.element(wrapper);
   // allow callback to further specify dummy element
   const focus = options.mutate && options.mutate(element, wrapper) || element;
   // element needs to be part of the DOM to be focusable

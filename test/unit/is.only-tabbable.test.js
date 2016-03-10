@@ -37,9 +37,18 @@ define([
       invalid: function() {
         expect(function() {
           isOnlyTabbable(null);
-        }).to.throw(TypeError, 'is/only-tabbable requires an argument of type Element');
+        }).to.throw(TypeError, 'is/only-tabbable requires valid options.context');
+        expect(function() {
+          isOnlyTabbable([true]);
+        }).to.throw(TypeError, 'is/only-tabbable requires options.context to be an Element');
       },
-
+      '.rules() and .except()': function() {
+        var element = document.getElementById('inert-div');
+        expect(isOnlyTabbable.rules({
+          context: element,
+        })).to.equal(false, '.rules()');
+        expect(isOnlyTabbable.rules.except({})(element)).to.equal(false, '.rules.except()');
+      },
       'label with tabindex="-1"': function() {
         var element = document.getElementById('label-tabindex--1');
         expect(isOnlyTabbable(element)).to.equal(false);

@@ -1,11 +1,13 @@
 define([
   'intern!object',
   'intern/chai!expect',
+  'sinon',
   '../helper/fixtures/custom.fixture',
   '../helper/supports',
+  'ally/util/logger',
   'ally/element/disabled',
   'ally/supports/media/mp4',
-], function(registerSuite, expect, customFixture, supports, elementDisabled, mp4) {
+], function(registerSuite, expect, sinon, customFixture, supports, logger, elementDisabled, mp4) {
 
   registerSuite(function() {
     var fixture;
@@ -14,6 +16,7 @@ define([
       name: 'element/disabled',
 
       beforeEach: function() {
+        sinon.spy(logger, 'warn');
         fixture = customFixture([
           /*eslint-disable indent */
           '<div tabindex="0" id="non-input"></div>',
@@ -28,6 +31,7 @@ define([
         ]);
       },
       afterEach: function() {
+        logger.warn.restore();
         fixture.remove();
         fixture = null;
       },
@@ -35,7 +39,7 @@ define([
       invalid: function() {
         expect(function() {
           elementDisabled(null);
-        }).to.throw(TypeError, 'element/disabled requires an argument of type Element');
+        }).to.throw(TypeError, 'element/disabled requires valid options.context');
       },
       'non-input': function() {
         var element = document.getElementById('non-input');
@@ -88,6 +92,19 @@ define([
         elementDisabled(element, false);
         expect(element.hasAttribute('tabindex')).to.equal(false, 'after disable undo');
       },
+      'double execution': function() {
+        var element = document.getElementById('non-input');
+        expect(element.getAttribute('tabindex')).to.equal('0', 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('tabindex')).to.equal('-1', 'after disable');
+
+        elementDisabled(element, true);
+        expect(element.getAttribute('tabindex')).to.equal('-1', 'after second disable');
+
+        elementDisabled(element, false);
+        expect(element.getAttribute('tabindex')).to.equal('0', 'after disable undo');
+      },
       'disable restores tabindex="0"': function() {
         var element = document.getElementById('non-input');
         expect(element.getAttribute('tabindex')).to.equal('0', 'before disable');
@@ -126,6 +143,11 @@ define([
         elementDisabled(element, true);
         expect(element.focus === HTMLElement.prototype.focus).to.equal(false, 'after disable');
 
+        element.focus();
+        expect(logger.warn.calledOnce).to.equal(true, 'one warning logged');
+        expect(logger.warn.calledWith('trying to focus inert element', element))
+          .to.equal(true, 'proper warning logged');
+
         elementDisabled(element, false);
         expect(element.focus === HTMLElement.prototype.focus).to.equal(true, 'after disable undo');
       },
@@ -149,9 +171,27 @@ define([
 
         elementDisabled(element, true);
         expect(element.hasAttribute('controls')).to.equal(false, 'after disable');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(true, 'after disable');
 
         elementDisabled(element, false);
         expect(element.hasAttribute('controls')).to.equal(true, 'after disable undo');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'after disable undo');
+      },
+      'disable does not ignore video without controls': function() {
+        if (supports.AVOID_MEDIA) {
+          this.skip('Browser cannot deal with <video> and <audio>');
+        }
+
+        var element = fixture.add('<video src="' + mp4 + '"></video>').firstElementChild;
+        expect(element.hasAttribute('controls')).to.equal(false, 'before disable');
+
+        elementDisabled(element, true);
+        expect(element.hasAttribute('controls')).to.equal(false, 'after disable');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(true, 'after disable');
+
+        elementDisabled(element, false);
+        expect(element.hasAttribute('controls')).to.equal(false, 'after disable undo');
+        expect(element.hasAttribute('data-ally-disabled')).to.equal(false, 'after disable undo');
       },
       'disable adds focusable="false"': function() {
         var element = document.getElementById('svg-link');
@@ -183,6 +223,7 @@ define([
         elementDisabled(element, false);
         expect(element.hasAttribute('focusable')).to.equal(false, 'after disable undo');
       },
+
     };
   });
 });

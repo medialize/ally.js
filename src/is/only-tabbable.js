@@ -1,15 +1,37 @@
 
+import isVisible from './visible';
+import contextToElement from '../util/context-to-element';
+import getFrameElement from '../util/get-frame-element';
 import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 import platform from '../util/platform';
 
-export default function(element) {
-  if (element === document) {
-    element = document.documentElement;
+function isOnlyTabbableRules({
+  context,
+  except = {
+    onlyFocusableBrowsingContext: false,
+    visible: false,
+  },
+} = {}) {
+  const element = contextToElement({
+    label: 'is/only-tabbable',
+    resolveDocument: true,
+    context,
+  });
+
+  if (!except.visible && !isVisible(element)) {
+    return false;
   }
 
-  if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-    throw new TypeError('is/only-tabbable requires an argument of type Element');
+  if (!except.onlyFocusableBrowsingContext && (platform.is.GECKO || platform.is.TRIDENT)) {
+    const frameElement = getFrameElement(element);
+    if (frameElement) {
+      if (tabindexValue(frameElement) < 0) {
+        // iframe[tabindex="-1"] and object[tabindex="-1"] inherit the
+        // tabbable demotion onto elements of their browsing contexts
+        return false;
+      }
+    }
   }
 
   const nodeName = element.nodeName.toLowerCase();
@@ -42,3 +64,20 @@ export default function(element) {
 
   return false;
 }
+
+// bind exceptions to an iterator callback
+isOnlyTabbableRules.except = function(except = {}) {
+  const isOnlyTabbable = function(context) {
+    return isOnlyTabbableRules({
+      context,
+      except,
+    });
+  };
+
+  isOnlyTabbable.rules = isOnlyTabbableRules;
+  return isOnlyTabbable;
+};
+
+// provide isOnlyTabbable(context) as default iterator callback
+const isOnlyTabbable = isOnlyTabbableRules.except({});
+export default isOnlyTabbable;

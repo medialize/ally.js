@@ -9,16 +9,19 @@ define([
       name: 'util/context-to-element',
 
       multiple: function() {
+        var first = document.createElement('div');
+        var second = document.createElement('div');
         var element = contextToElement({
-          context: ['thing', 'thing2'],
+          context: [first, second],
         });
-        expect(element).to.equal('thing');
+        expect(element).to.equal(first);
       },
       single: function() {
+        var first = document.createElement('div');
         var element = contextToElement({
-          context: ['thing'],
+          context: [first],
         });
-        expect(element).to.equal('thing');
+        expect(element).to.equal(first);
       },
       null: function() {
         expect(function() {
@@ -38,9 +41,29 @@ define([
         expect(function() {
           contextToElement({
             context: null,
-            message: 'hello world',
+            label: 'gustav',
           });
-        }).to.throw(TypeError, 'hello world');
+        }).to.throw(TypeError, 'gustav requires valid options.context');
+        expect(function() {
+          contextToElement({
+            context: [true],
+            label: 'gustav',
+          });
+        }).to.throw(TypeError, 'gustav requires options.context to be an Element');
+      },
+      resolveDocument: function() {
+        var element = contextToElement({
+          context: document,
+          resolveDocument: true,
+        });
+        expect(element).to.equal(document.documentElement);
+      },
+      defaultToDocument: function() {
+        var element = contextToElement({
+          context: null,
+          defaultToDocument: true,
+        });
+        expect(element).to.equal(document.documentElement);
       },
     };
   });

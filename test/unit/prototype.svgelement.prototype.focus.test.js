@@ -1,9 +1,8 @@
 define([
   'intern!object',
   'intern/chai!expect',
-  '../helper/function-name',
   'ally/prototype/svgelement.prototype.focus',
-], function(registerSuite, expect, getFunctionName) {
+], function(registerSuite, expect) {
 
   registerSuite(function() {
 
@@ -21,7 +20,7 @@ define([
         expect(SVGElement.prototype.focus).to.be.a('function');
       },
       wrapped: function() {
-        if (getFunctionName(SVGElement.prototype.focus) !== 'focusPolyfill') {
+        if (SVGElement.prototype.focus._polyfill !== 'noop') {
           this.skip('SVGElement.prototype.focus supported');
         }
 

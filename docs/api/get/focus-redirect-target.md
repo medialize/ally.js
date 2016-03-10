@@ -12,7 +12,7 @@ Identifies the element that would get focus passed to when `element.focus()` is 
 
 Some elements forward focus to another element instead of taking focus themselves.
 
-Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js considers focusable](../../data-tables/focusable.strict.md) to learn how HTML elements behave.
+Consult the data tables [what browsers consider focusable](../../data-tables/focusable.md) and [what ally.js fails to consider focusable](../../data-tables/focusable.is.md) to learn how HTML elements behave.
 
 
 ## Usage
@@ -53,11 +53,11 @@ var element = ally.get.focusRedirectTarget({
 
 ## Related resources
 
-* [`ally.is.focusRelevant`](../isfocus-relevant.md) is used to identify elements that can receive focus
+* [`ally.is.focusRelevant`](../is/focus-relevant.md) is used to identify elements that can receive focus
 * [`ally.is.focusable`](../is/focusable.md) identifies keyboard focusable elements
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
-* [What ally.js Considers Focusable](../../data-tables/focusable.strict.md)
+* [What ally.js fails to consider focusable](../../data-tables/focusable.is.md)
 
 
 ## Contributing

@@ -29,7 +29,17 @@ define([
       invalid: function() {
         expect(function() {
           isFocusable(null);
-        }).to.throw(TypeError, 'is/focusable requires an argument of type Element');
+        }).to.throw(TypeError, 'is/focusable requires valid options.context');
+        expect(function() {
+          isFocusable([true]);
+        }).to.throw(TypeError, 'is/focusable requires options.context to be an Element');
+      },
+      '.rules() and .except()': function() {
+        var element = document.getElementById('inert-div');
+        expect(isFocusable.rules({
+          context: element,
+        })).to.equal(false, '.rules()');
+        expect(isFocusable.rules.except({})(element)).to.equal(false, '.rules.except()');
       },
       'inert div': function() {
         var element = document.getElementById('inert-div');
@@ -112,6 +122,19 @@ define([
       'audio element with controls': function() {
         var element = document.getElementById('audio-controls');
         expect(isFocusable(element)).to.equal(true);
+      },
+      'svg link': function() {
+        var element = document.getElementById('svg-link');
+        expect(isFocusable(element)).to.equal(supports.svgFocusMethod);
+      },
+      'svg link with .except({ onlyTabbable })': function() {
+        var element = document.getElementById('svg-link');
+        expect(isFocusable.rules({
+          context: element,
+          except: {
+            onlyTabbable: true,
+          },
+        })).to.equal(true);
       },
       'extended: CSS user-modify': function() {
         var _supports = document.body.style.webkitUserModify !== undefined;

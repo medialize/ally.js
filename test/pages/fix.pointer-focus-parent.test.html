@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fix Pointer Focus Parent Browser Bug</title>
+  <style>
+    .flex {
+      display: -webkit-flexbox;
+      display:     -ms-flexbox;
+      display:            flex;
+      width: 300px;
+    }
+
+    .flex > span {
+      display: block;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 10px;
+    }
+
+    body :focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unhandled Parent Focus</h1>
+
+  <h2>Link</h2>
+  <div tabindex="-1" id="link-fail-parent">
+    <a href="#void" id="link-fail-source">target</a>
+  </div>
+
+  <hr>
+
+  <h1>Handled Parent Focus</h1>
+  <div id="engage-fix">
+
+    <h2>Link</h2>
+    <div tabindex="-1" id="link-fixed-parent">
+      <a href="#void" id="link-fixed-source">target</a>
+    </div>
+  </div>
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim/dist/domtokenlist',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform',
+      }
+    });
+
+    require([
+      'ally/util/platform',
+      'ally/fix/pointer-focus-parent',
+    ], function(platform, fixPointerFocusParent) {
+      window.platform = platform;
+
+      fixPointerFocusParent({
+        context: '#engage-fix',
+      });
+    });
+  </script>
+</body>
+</html>

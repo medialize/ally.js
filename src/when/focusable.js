@@ -5,23 +5,18 @@
 
 import whenVisibleArea from './visible-area';
 import isFocusable from '../is/focusable';
+import contextToElement from '../util/context-to-element';
 import getDocument from '../util/get-document';
-import nodeArray from '../util/node-array';
 
 export default function({context, callback, area} = {}) {
   if (typeof callback !== 'function') {
     throw new TypeError('when/focusable requires options.callback to be a function');
   }
 
-  if (context === undefined) {
-    throw new TypeError('when/focusable requires valid options.context');
-  }
-
-  const element = nodeArray(context)[0];
-  const _document = getDocument(element);
-  if (!element) {
-    throw new TypeError('when/focusable requires valid options.context');
-  }
+  const element = contextToElement({
+    label: 'when/focusable',
+    context,
+  });
 
   const filterCallback = function(target) {
     if (!isFocusable(target)) {
@@ -31,6 +26,7 @@ export default function({context, callback, area} = {}) {
     return callback(target);
   };
 
+  const _document = getDocument(element);
   const handle = whenVisibleArea({ context: element, callback: filterCallback, area });
   const disengage = function() {
     _document.removeEventListener('focus', disengage, true);

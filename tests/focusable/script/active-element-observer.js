@@ -28,7 +28,7 @@ define([
 
       try {
         activeElement = this.document.activeElement;
-      } catch(e) {
+      } catch (e) {
         // IE13 does not like this
         activeElement = null;
       }

@@ -24,7 +24,7 @@ function createArchive(name, type, options) {
   archive.pipe(output);
 
   archive.bulk([
-    { expand: true, cwd: 'dist', src: ['**/*', '!*.zip', '!*.tar.gz', '!.*'] },
+    { expand: true, cwd: 'dist', src: ['**/*', '!*.zip', '!*.tar.gz', '!.*'], dest: 'ally.js/' },
   ]);
 
   archive.finalize();

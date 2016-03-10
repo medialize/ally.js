@@ -49,6 +49,13 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * **EXAMPLE:** [`ally.maintain.disabled` Example](./disabled.example.html)
 
 
+## Changes
+
+* Since `v#master` changing `tabindex` attribute values are properly handled.
+* Since `v#master` the `disengage()` method reverts elements within ShadowHosts to their previous state.
+* Since `v#master` DOM mutations within `ShadowRoot`s are properly observed.
+
+
 ## Notes
 
 * **NOTE:** `ShadowHost`s are pierced and `ShadowRoot` content is made inert as well (except for closed shadow trees).

@@ -33,13 +33,23 @@ function sortElements(elements, _context) {
   return elements;
 }
 
-export default function({context, includeContext, strategy} = {}) {
+export default function({
+  context,
+  includeContext,
+  includeOnlyTabbable,
+  strategy,
+} = {}) {
   if (!supports) {
     supports = _supports();
   }
 
   const _context = nodeArray(context)[0] || document.documentElement;
-  let elements = queryTabbable({context: _context, includeContext, strategy});
+  let elements = queryTabbable({
+    context: _context,
+    includeContext,
+    includeOnlyTabbable,
+    strategy,
+  });
 
   if (document.body.createShadowRoot && platform.is.BLINK) {
     // sort tabindex localized to shadow dom

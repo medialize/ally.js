@@ -92,25 +92,55 @@ define([
         var deferred = this.async(10000);
 
         var expected = [
-          '#tabindex-1',
-          '#tabindex-0',
-          '#link',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
-          platform.is.GECKO && '#object-svg',
-          supports.canFocusSvgMethod && '#svg-link',
-          '#audio-controls',
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#link',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && platform.is.GECKO && '#object-svg',
+          !platform.is.IOS && supports.svgFocusMethod && '#svg-link',
+          !platform.is.IOS && '#audio-controls',
           '#input',
           '#span-contenteditable',
-          '#img-ismap-link',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
-          supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && '#img-ismap-link',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
           '#end-of-line',
         ].filter(Boolean);
 
         // NOTE: Firefox decodes DataURIs asynchronously
         setTimeout(deferred.callback(function() {
           var result = queryTabsequence().map(fixture.nodeToString);
+          expect(result).to.deep.equal(expected);
+        }), 200);
+      },
+
+      includeOnlyTabbable: function() {
+        var deferred = this.async(10000);
+
+        var expected = [
+          !platform.is.IOS && '#tabindex-1',
+          !platform.is.IOS && '#tabindex-0',
+          !platform.is.IOS && '#link',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && !supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          !platform.is.IOS && platform.is.GECKO && '#object-svg',
+          !platform.is.IOS && '#svg-link',
+          !platform.is.IOS && '#audio-controls',
+          '#input',
+          '#span-contenteditable',
+          !platform.is.IOS && '#img-ismap-link',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area',
+          !platform.is.IOS && supports.tabsequenceSortsAreaAtImagePosition && '#image-map-area-2',
+          '#end-of-line',
+        ].filter(Boolean);
+
+        // NOTE: Firefox decodes DataURIs asynchronously
+        setTimeout(deferred.callback(function() {
+          var result = queryTabsequence({
+            includeOnlyTabbable: true,
+          }).map(fixture.nodeToString);
+
           expect(result).to.deep.equal(expected);
         }), 200);
       },
@@ -124,8 +154,8 @@ define([
 
         var expected = [
           '#tabindex-3',
-          '#link',
-        ];
+          !platform.is.IOS && '#link',
+        ].filter(Boolean);
         var result = queryTabsequence({
           context: '.context',
         }).map(fixture.nodeToString);
@@ -137,9 +167,10 @@ define([
         fixture.root.querySelector('.context').setAttribute('tabindex', '0');
 
         var expected = [
-          'div',
-          '#link',
-        ];
+          !platform.is.IOS && 'div',
+          !platform.is.IOS && '#link',
+        ].filter(Boolean);
+
         var result = queryTabsequence({
           context: '.context',
           includeContext: true,
@@ -154,14 +185,17 @@ define([
         }
 
         var context = fixture.add('<input id="shadow-start"><div id="shadow-host"></div><input id="shadow-end">');
+        context.setAttribute('tabindex', '0');
+        context.id = 'context-element';
         createShadowDomStructure(document.getElementById('shadow-host'));
 
         var expectLocal = [
+          '#context-element',
           '#shadow-start',
           '#input-0',
           '#input-1',
           '#input-2',
-          '#third-shadow-host',
+          !platform.is.IOS && '#third-shadow-host',
           '#input-3',
           '#input-4',
           '#input-5',
@@ -172,12 +206,13 @@ define([
           '#shadow-end',
         ];
         var expectGlobal = [
+          '#context-element',
           '#input-7',
           '#input-3',
           '#input-0',
           '#input-1',
           '#input-2',
-          '#third-shadow-host',
+          !platform.is.IOS && '#third-shadow-host',
           '#input-4',
           '#shadow-start',
           '#input-6',
@@ -190,6 +225,7 @@ define([
         var result = queryTabsequence({
           context: context,
           strategy: 'strict',
+          includeContext: true,
         }).map(fixture.nodeToString);
 
         var expected = platform.is.GECKO ? expectGlobal : expectLocal;

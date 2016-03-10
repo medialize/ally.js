@@ -28,7 +28,10 @@ define([
     // can be used here
     loaderOptions: {
       // Packages that should be registered with the loader in each testing environment
-      packages: [ { name: 'ally', location: 'dist/amd/' } ],
+      packages: [
+        { name: 'ally', location: 'dist/amd/' },
+        { name: 'sinon', location: 'node_modules/sinon/lib', main: 'sinon.js' },
+      ],
       paths: {
         'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
         'css.escape': 'node_modules/css.escape/css.escape',
@@ -86,6 +89,7 @@ define([
       'test/unit/get.parents.test',
       'test/unit/get.shadow-host-parents.test',
       'test/unit/get.shadow-host.test',
+      'test/unit/is.active-element.test',
       'test/unit/is.disabled.test',
       'test/unit/is.focus-relevant.test',
       'test/unit/is.focusable.test',
@@ -98,7 +102,9 @@ define([
       'test/unit/is.visible.test',
       'test/unit/maintain.disabled.test',
       'test/unit/maintain.hidden.test',
+      'test/unit/maintain.tab-focus.test',
       'test/unit/observe.interaction-type.test',
+      'test/unit/observe.shadow-mutations.test',
       'test/unit/prototype.element.prototype.matches.test',
       'test/unit/prototype.svgelement.prototype.focus.test',
       'test/unit/prototype.window.customevent.test',
@@ -106,15 +112,21 @@ define([
       'test/unit/query.focusable.all.test',
       'test/unit/query.focusable.strict.test',
       'test/unit/query.focusable.test',
+      'test/unit/query.shadow-hosts.test',
       'test/unit/query.tabbable.test',
       'test/unit/query.tabsequence.sort-area.test',
       'test/unit/query.tabsequence.sort-tabindex.test',
       'test/unit/query.tabsequence.test',
       'test/unit/style.focus-within.test',
       'test/unit/style.focus-source.test',
+      'test/unit/util.compare-position.test',
       'test/unit/util.context-to-element.test',
       'test/unit/util.decorate-context.test',
       'test/unit/util.decorate-service.test',
+      'test/unit/util.get-content-document.test',
+      'test/unit/util.get-document.test',
+      'test/unit/util.get-frame-element.test',
+      'test/unit/util.image-map.test',
       'test/unit/util.merge-dom-order.test',
       'test/unit/util.node-array.test',
       'test/unit/util.tabindex-value.test',
@@ -132,6 +144,11 @@ define([
     // Functional test suite(s) to run in each browser once non-functional tests are completed
     functionalSuites: [
       'test/functional/intern.events.test.js',
+      'test/functional/maintain.tab-focus.test.js',
+      'test/functional/fix.pointer-focus-children.test.js',
+      'test/functional/fix.pointer-focus-input.test.js',
+      'test/functional/fix.pointer-focus-parent.test.js',
+      'test/functional/observe.interaction-type.test.js',
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis

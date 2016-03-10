@@ -9,16 +9,20 @@
     listOfElements.some(isChildOf)
 */
 
-export function getParentComparator({parent, element, includeSelf}) {
+export function getParentComparator({parent, element, includeSelf} = {}) {
   if (parent) {
     return function isChildOf(node) {
-      return includeSelf && node === parent
-        || parent.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+      return Boolean(
+        includeSelf && node === parent
+        || parent.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_CONTAINED_BY
+      );
     };
   } else if (element) {
     return function isParentOf(node) {
-      return includeSelf && element === node
-        || node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+      return Boolean(
+        includeSelf && element === node
+        || node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_CONTAINED_BY
+      );
     };
   }
 

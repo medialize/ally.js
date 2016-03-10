@@ -304,7 +304,6 @@ A naive implementation might listen to `keydown` events, filtering for <kbd>Tab<
 
 * focus may *not only* be shifted through <kbd>Tab</kbd>, as users of [spatial navigation](http://blog.codinghorror.com/spatial-navigation-and-opera/) will attest
 * assistive tools that provide more than sequential focus navigation (i.e. random access) may list all focusable elements of the page, including those visually behind the backdrop
-* by redirecting focus to stay within the dialog it becomes impossible to reach the browser's UI by pressing <kbd>Tab</kbd>, so we're breaking native browser behavior
 
 We could do away with the need to react to <kbd>Tab</kbd>, by simply hiding everything outside the dialog. But while setting everything to `visibility: hidden;` would certainly do the job, it would also visually hide *everything but the dialog*, rendering the backdrop useless. Most visual designers I know digress.
 
@@ -324,6 +323,7 @@ function openDialog() {
   disabledHandle = ally.maintain.disabled({
     filter: dialog,
   });
+
   // create or show the dialog
   dialog.hidden = false;
 }
@@ -335,6 +335,40 @@ function closeDialog() {
   dialog.hidden = true;
 }
 ```
+
+### Reacting to <kbd>Tab</kbd> and <kbd>Shift Tab</kbd>
+
+When the last element of the document's tabbing order has focus and the user presses the <kbd>Tab</kbd> key, focus is not wrapped around to the first element of the tabbing order, but to the browser's UI (e.g. location bar or tabs). The same is true for the first element being focused and the user pressing <kbd>Shift Tab</kbd>.
+
+This is not quite the behavior we see in the modal dialogs provided by our operating systems, where focus is always trapped within the dialog. This is a behavior keyboard users have come to expect and we need to replicate in our web UIs as well.
+
+While [`ally.maintain.disabled`](../api/maintain/disabled.md) makes sure we can't focus any other element within the document, we still need to observe the <kbd>Tab</kbd> key to make focus wrap within the dialog's tabbing order. That's what [`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) is for.
+
+```js
+var dialog = document.getElementById('dialog');
+var tabHandle;
+
+function openDialog() {
+  // Make sure that Tab key controlled focus is trapped within
+  // the tabsequence of the dialog and does not reach the
+  // browser's UI, e.g. the location bar.
+  tabHandle = ally.maintain.tabFocus({
+    context: dialog,
+  });
+
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // undo trapping Tab key focus
+  tabHandle.disengage();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+```
+
+* **NOTE:** [`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) was added in version `v#master`.
 
 ### Reacting to <kbd>Enter</kbd> and <kbd>Escape</kbd>
 

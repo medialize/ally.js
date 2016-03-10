@@ -41,7 +41,13 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 ## Examples
 
 
+## Changes
+
+* Since `v#master` parents can be resolved for `SVGElements` in Internet Explorer.
+
+
 ## Notes
+
 
 
 ## Related resources

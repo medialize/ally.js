@@ -42,6 +42,25 @@ Many components work on the DOM. Components ingest elements identified by variou
 * [`jQuery`](http://api.jquery.com/jQuery/) instance
 
 
+## Focus identification exceptions
+
+Modules dealing with the focus identity of elements (e.g. the `rules()` functions of `ally.is.focusable`, `ally.is.tabbable`, …) may accept an options object called `except` to customize the way focus identity is determined.
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| flexbox | boolean | `false` | Prevent elements from being considered focus-relevant because of having Flexbox layout. |
+| scrollable | boolean | `false` | Prevent elements from being considered focus-relevant because of being scrollable. |
+| shadow | boolean | `false` | Prevent elements from being considered focus-relevant because of being a `ShadowHost`. |
+| disabled | boolean | `false` | Prevent elements from *not* being considered focusable because they're disabled (e.g. `<input disabled>`). |
+| visible | boolean | `false` | Prevent elements from *not* being considered focusable because they're hidden (e.g. `<input style="display: none">`). |
+| onlyFocusableBrowsingContext | boolean `false` | Prevent elements from *not* being considered focusable if their browsing context host element (e.g. `<iframe>`, `<object>`) has `tabindex="-1"` set. |
+| onlyTabbable | boolean | `false` | Prevent elements from *not* being considered focusable because they're only keyboard focusable. |
+| notRendered | boolean | `false` | Prevent elements from being considered visible that can't be rendered (e.g. `<area>`). |
+| cssDisplay | boolean | `false` | Prevent elements from being considered invisible because of `display: none`. |
+| cssVisibility | boolean | `false` | Prevent elements from being considered invisible because of `visibility: hidden`. |
+| detailsElement | boolean | `false` | Prevent elements from being considered invisible because of being nested in a closed `<details>` element. |
+| browsingContext | boolean | `false` | Prevent elements from being considered invisible because of being nested in an invisible browsing context (`<iframe>` or `<object>`). |
+
 ## Service
 
 A Service (`<service>`) is a utility that continuously performs an action. A service usually observes the DOM or waits for events to be processed. Services can be started and stopped. Think of services as event listeners that you attach and remove when necessary. But unlike disconnect between [`addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and [`removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener), ally.js services make it easy to disengage (stop, remove, abort, …):

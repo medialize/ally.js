@@ -6,6 +6,19 @@ layout: doc-page.html
 
 There are a couple of questions we have been asked over and over again…
 
+## Does ally.js support Internet Explorer 8 and below?
+
+The short answer is *no*. IE8 is too far behind on various APIs to make the existing code work. Additionally, our test system [Intern](https://theintern.github.io/) does not run on IE8. Also [Microsoft ended support for IE8 in January 2016](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support).
+
+While ally.js has not been tested to *run* on IE8, we have made sure that it can be *loaded* without problems. Since ally.js is compiled to ES5, you will need to load the [es5-shim](https://github.com/es-shims/es5-shim/) in IE8:
+
+```html
+<!--[if lt IE 9]>
+  <script src="node_modules/es5-shim/es5-shim.js"></script>
+  <script src="node_modules/es5-shim/es5-sham.js"></script>
+<![endif]-->
+```
+
 
 ## Do I need ally.js for static websites?
 

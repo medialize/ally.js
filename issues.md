@@ -28,10 +28,12 @@ This document is used for collecting all the bugs reported and issues raised bec
 * Focus Link Target (sequential focus navigation starting point) - [Blink 454172](https://code.google.com/p/chromium/issues/detail?id=454172), [WebKit 141136](https://bugs.webkit.org/show_bug.cgi?id=141136), [Trident 1111056](https://connect.microsoft.com/IE/feedback/details/1111056)
 * element.scrollIntoView() confused by scroll-behavior:smooth; - [Gecko 1139745](https://bugzilla.mozilla.org/show_bug.cgi?id=1139745)
 * audio and video elements with controls cannot be removed from the focus navigation sequence - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
-* embed element cannot be removed from the focus navigation sequence [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
-* embed element with tabindex="0" breaks sequential focus navigation [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
-* `<summary>` and `<a>` within `<details open>` not keyboard focusable [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)
-* label element with tabindex attribute is keyboard focusable [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285)
+* embed element cannot be removed from the focus navigation sequence - [Gecko 1185657](https://bugzilla.mozilla.org/show_bug.cgi?id=1185657)
+* embed element with tabindex="0" breaks sequential focus navigation - [Gecko 1195457](https://bugzilla.mozilla.org/show_bug.cgi?id=1195457)
+* `<summary>` and `<a>` within `<details open>` not keyboard focusable - [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)
+* label element with tabindex attribute is keyboard focusable - [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285)
+* `<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
+* Tab focus navigation should not break on hidden SVG - [Blink 586200](https://code.google.com/p/chromium/issues/detail?id=586200), [WebKit 154114](https://bugs.webkit.org/show_bug.cgi?id=154114)
 
 
 ## Filed specification issues

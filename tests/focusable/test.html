@@ -38,6 +38,7 @@
         window.console && console.warn('nested document without namespace', _document);
       }
 
+      namespace = decodeURIComponent(namespace);
       window.nestedDocuments[namespace] = _document;
 
       // import "label namespace" from parent document
@@ -59,7 +60,7 @@
       At first the document will add <code data-label="code">focus</code> event handlers to every descendant of <code>&lt;body&gt;</code>.
       <!-- FocusManagement: http://www.w3.org/TR/html5/editing.html#focus-management -->
       It will then try to <code>.focus()</code> every element to identify which elements satisfiy Focus Managemenet.
-      After that you - the user - can hit <kbd data-label="kbd">TAB</kbd> a couple of times (like 50 or something) to determine the browser's natural tabbing order
+      After that you - the user - can hit <kbd data-label="kbd">TAB</kbd> a couple of times (like 250 or something) to determine the browser's natural tabbing order
     </p>
 
     <a href="#output-results" data-label="ignore">go to results</a>
@@ -324,6 +325,15 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <iframe src="iframe-focusable.html#iframe{hidden}" name="iframe-7" width="200" height="100" data-label="iframe{hidden}" style="visibility:hidden;"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+    <iframe src="iframe-focusable.html#iframe{none}" name="iframe-8" width="200" height="100" data-label="iframe{none}" style="display:none;"></iframe>
+
+    <div tabindex="0" data-label="ignore"></div>
+
+
   </article>
 
   <article data-label="article{shadow}">
@@ -332,6 +342,8 @@
     <div id="shadow-host-1" data-label="shadow-host"></div>
     <div id="shadow-host-2" data-label="shadow-host[tabindex=-1]" tabindex="-1"></div>
     <div id="shadow-host-3" data-label="shadow-host[tabindex=0]" tabindex="0"></div>
+    <div id="shadow-host-4" data-label="shadow-host{hidden}" style="visibility: hidden;"></div>
+    <div id="shadow-host-4" data-label="shadow-host{none}" style="display: none;"></div>
     <script>
       (function() {
         function createShadowedContent(element) {
@@ -364,6 +376,7 @@
         createShadowedContent(document.getElementById('shadow-host-1'));
         createShadowedContent(document.getElementById('shadow-host-2'));
         createShadowedContent(document.getElementById('shadow-host-3'));
+        createShadowedContent(document.getElementById('shadow-host-4'));
       })();
     </script>
   </article>
@@ -522,7 +535,19 @@
 
     <details data-label="details">
       <summary data-label="details summary">Collapsed Details</summary>
+
       <a href="#void" data-label="details a[href]">link</a>
+
+      <div tabindex="0" data-label="ignore"></div>
+      <iframe src="iframe-focusable.html#details%20iframe" name="iframe-9" width="200" height="100" data-label="details iframe"></iframe>
+
+      <div tabindex="0" data-label="ignore"></div>
+      <div tabindex="0" data-label="ignore"></div>
+
+      <object type="image/svg+xml" data="../media/test.svg#details%20object[src=svg]" width="200" height="200" data-label="details object[src=svg]"></object>
+
+      <div tabindex="0" data-label="ignore"></div>
+      <div tabindex="0" data-label="ignore"></div>
     </details>
 
     <details data-label="details[tabindex=-1]" tabindex="-1">
@@ -539,6 +564,7 @@
       <summary data-label="details[open] summary">Expanded Details</summary>
       <a href="#void" data-label="details[open] a[href]">link</a>
     </details>
+
   </article>
 
   <article data-label="article{object}">
@@ -593,6 +619,24 @@
     <input data-label="ignore" class="manual-continuation" value="click here if stuck">
     <div tabindex="0" data-label="ignore"></div>
 
+    <p>hidden</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]{hidden}" style="visibility:hidden;" class="hide-from-ie10">
+      <param name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+    <div tabindex="0" data-label="ignore"></div>
+
+    <p>display none</p>
+    <object data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50" data-label="object[src=swf]{none}" style="display: none;" class="hide-from-ie10">
+      <param name="movie" value="../media/test.swf">
+      <param name="quality" value="high">
+    </object>
+
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+    <div tabindex="0" data-label="ignore"></div>
+
     <object type="image/svg+xml" data="../media/test.svg#object[src=svg]" width="200" height="50" data-label="object[src=svg]"></object>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -613,6 +657,15 @@
     <div tabindex="0" data-label="ignore"></div>
     <div tabindex="0" data-label="ignore"></div>
 
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg]{hidden}" width="200" height="200" style="visibility: hidden;" data-label="object[src=svg]{hidden}"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
+
+    <object type="image/svg+xml" data="../media/test.svg#object[src=svg]{none}" width="200" height="200" style="display: none;" data-label="object[src=svg]{none}"></object>
+
+    <div tabindex="0" data-label="ignore"></div>
+    <div tabindex="0" data-label="ignore"></div>
     <map name="image-maps-3" data-label="ignore">
       <area href="#void" shape="rect" coords="63,19,144,45" data-label="map.object area[href].upper" data-reference="object[usemap]">
       <area shape="rect" coords="63,50,144,60" data-label="map.object area" data-reference="object[usemap]">
@@ -640,6 +693,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>svg with negative tabindex</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[tabindex=-1]" tabindex="-1">
       <a xlink:href="#void" data-label="svg[tabindex=-1] a[xlink|href]">
         <text x="10" y="20" data-label="svg[tabindex=-1] a[xlink|href] text">a link</text>
@@ -650,6 +704,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>svg containing positive tabindex</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[focusable=false]" focusable="false">
       <a xlink:href="#void" data-label="svg[focusable=false] a[xlink|href]">
         <text x="10" y="20" data-label="svg[focusable=false] a[xlink|href] text">a link</text>
@@ -660,6 +715,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>tiny profile focusable="false"</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=0])">
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=0]" tabindex="0">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=0] text">a link</text>
@@ -678,6 +734,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>svg with viewbox</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{viewbox}" viewBox="0 0 30 30">
       <rect x="20" y="20" width="5" height="5" tabindex="0" data-label="svg rect[tabindex=0]{viewbox}" />
       <rect x="20" y="20" width="5" height="5" tabindex="-1" data-label="svg rect[tabindex=-1]{viewbox}" />
@@ -686,6 +743,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>svg containing negative tabindex</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=-1])">
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=-1]" tabindex="-1">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=-1] text">a link</text>
@@ -696,6 +754,7 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>tiny profile</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}">
       <rect x="5" y="5" width="10" height="10" fill="red" data-label="svg{tiny} rect" />
       <rect x="10" y="10" width="10" height="10" fill="blue" tabindex="0" data-label="svg{tiny} rect[tabindex=0]" />
@@ -712,11 +771,42 @@
 
     <div tabindex="0" data-label="ignore"></div>
 
+    <h3>tiny profile focusable="false"</h3>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}[focusable=false]" focusable="false">
       <a xlink:href="#void" data-label="svg{tiny}[focusable=false] a">
         <rect x="10" y="20" width="10" height="10" fill="brown" />
       </a>
     </svg>
+
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+
+    <h3>visibility hidden SVG</h3>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{hidden}" style="visibility: hidden;">
+      <a xlink:href="#void" data-label="svg{hidden} a[xlink|href]">
+        <text x="10" y="20" data-label="svg{hidden} a[xlink|href] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg{hidden} text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg{hidden} rect" />
+      <rect x="20" y="20" width="5" height="5" onfocus="" data-label="svg{hidden} rect[onfocus]" />
+      <rect x="15" y="15" width="10" height="10" fill="green" focusable="true" data-label="svg{hidden} rect[focusable=true]" />
+    </svg>
+
+    <!-- Chrome might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+
+    <h3>display none SVG</h3>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{none}" style="display: none;">
+      <a xlink:href="#void" data-label="svg{none} a[xlink|href]">
+        <text x="10" y="20" data-label="svg{none} a[xlink|href] text">a link</text>
+      </a>
+      <text x="10" y="20" data-label="svg{none} text">just text, no link</text>
+      <rect x="20" y="20" width="5" height="5" data-label="svg{none} rect" />
+      <rect x="20" y="20" width="5" height="5" onfocus="" data-label="svg{none} rect[onfocus]" />
+      <rect x="15" y="15" width="10" height="10" fill="green" focusable="true" data-label="svg{none} rect[focusable=true]" />
+    </svg>
+
+    <!-- Chrome might get stuck on the previous element -->
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
 
   </article>
 
@@ -913,6 +1003,8 @@
       });
     })();
 
+    // make sure we're not running with some outdated config
+    localStorage.clear();
   </script>
   <script src="../../node_modules/requirejs/require.js" data-label="ignore" data-main="focusable"></script>
 </body>

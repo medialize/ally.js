@@ -2,7 +2,7 @@
 
 ## master
 
-**will eventually released as 1.1.0** - see [milestone](https://github.com/medialize/ally.js/milestones/1.1.0%20-%20second%20wave)
+**will eventually be released as 1.1.0** - see [milestone](https://github.com/medialize/ally.js/milestones/1.1.0%20-%20second%20wave)
 
 ### Changes
 
@@ -11,6 +11,7 @@ The following lists show the changes to the library grouped by domain.
 #### Browsers
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
+* Adding full support for Microsoft Edge 12, 13
 * Adding full support for Opera 34 (Blink based, behaves like Chrome)
 * Adding manual focusable tests for Safari 6 and 8 on OSX
 * Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
@@ -22,6 +23,11 @@ The following lists show the changes to the library grouped by domain.
 * upgrading to [platform.js](https://github.com/bestiejs/platform.js) v1.3.1
 * adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9
 
+#### Browser Behavior
+
+* fixing [`ally.fix.pointerFocusChildren`][ally/fix/pointer-focus-children] to use focus identity exceptions - [issue #103](https://github.com/medialize/ally.js/issues/103)
+* fixing [`ally.fix.pointerFocusInput`][ally/fix/pointer-focus-input] to properly target nested content of `<button>` and `<label>` elements
+
 #### Focusable detection
 
 * changing [`ally.is.focusRelevant`][ally/is/focus-relevant] and [`ally.is.focusable`][ally/is/focusable] to regard `<keygen>` and `<embed>` focus-relevant but *not* focusable - [issue #82](https://github.com/medialize/ally.js/issues/82)
@@ -31,6 +37,8 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify scrollable containers in Internet Explorer
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider all `<area>` elements focus relevant, moving the focusable to verification to [`ally.is.focusable`][ally/is/focusable]
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify SVG links in IE9
+* refactoring [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify all elements that are either focusable, tabbable, only-tabbable or redirect focus
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
@@ -39,12 +47,27 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<iframe>` elements not tabbable
 * fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not consider `<object>` elements only tabbable anymore
-
+* fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to not require elements to satisfy [`ally.is.visible`][ally/is/visible]
+* adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
+* adding option `includeOnlyTabbable` to [`ally.query.firstTabbable`][ally/query/first-tabbable], [`ally.query.focusable`][ally/query/focusable], [`ally.query.tabbable`][ally/query/tabbable], [`ally.query.tabsequence`][ally/query/tabsequence] - [issue #100](https://github.com/medialize/ally.js/issues/100)
+* fixing [`ally.is.visible`][ally/is/visible] to consider the state of the hosting `<iframe>` or `<object>` element
+* fixing [`ally.is.focusable`][ally/is/focusable], [`ally.is.tabbable`][ally/is/tabbable] and [`ally.is.onlyTabbable`][ally/is/only-tabbable] to consider the state of the hosting `<iframe>` or `<object>` element
+* fixing [`ally.is.focusable`][ally/is/focusable] to compensate Chrome being able to focus hidden `<object>` elements - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 
 #### Keyboard support
 
 * changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
+* adding [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to trap <kbd>TAB</kbd> focus in the tabsequence - [issue #63](https://github.com/medialize/ally.js/issues/63)
+
+#### Various
+
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly handle `tabindex` attribute changes
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly disengage within ShadowHosts - [issue #107](https://github.com/medialize/ally.js/issues/107), [PR #108](https://github.com/medialize/ally.js/pull/108)
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to properly observe within ShadowHosts - [issue #107](https://github.com/medialize/ally.js/issues/110)
+* fixing [`ally.get.parents`][ally/get/parents] to resolve ancestry for `SVGElement` in Internet Explorer
+* adding [`ally.query.shadowHosts`][ally/query/shadow-hosts] to find elements hosting `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
+* adding [`ally.observe.shadowMutations`][ally/observe/shadow-mutations] to register `MutationObserver`s across nested `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
 
 #### Internals
 
@@ -54,20 +77,31 @@ The following lists show the changes to the library grouped by domain.
 * fixing `supports/supports-cache` to respect ally.js version change
 * fixing `supports/focus-label-tabindex` in Chrome 49
 * fixing ShadowDOM related unit tests in WebKit
+* fixing `SVGElement.prototype.focus` to identify Microsoft Edge 13
 * changing modules to be able to load in non-browser environments - [issue #92](https://github.com/medialize/ally.js/issues/92)
 * changing user agent sniffing from detecting browser to rendering engine - [issue #97](https://github.com/medialize/ally.js/issues/97)
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 * refactoring `is/focus-relevant` and `is/tabbable` to allow running the identification with execptions via `is/focus-relevant.rules` and `is/tabbable.rules`, while maintaining module signature
 * refactoring `console.log()` to go through `util/logger`
+* refactoring `selector/focusable` to extract `util/select-in-shadows` 
+* adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
+* adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
+* adding `supports/focus-in-hidden-iframe` to identify if content within a hidden iframe is focusable
+* adding `supports/focus-object-svg-hidden` to identify if a hidden `<object>` element is focusable
 
 #### Testing
 
-Intern unit tests are now run for the following browsers:
+Intern unit and functional tests are now run for the following browsers:
 
 * Internet Explorer 9, 10, 11
 * Safari 6.2, 7.1, 8, 9
+* iOS Safari 9 (Emulator)
 * Chrome 47
-* Firefox 42
+* Firefox 42, 42 with ShadowDOM enabled
+
+Intern unit tests are run manually for the following browsers:
+
+* Microsoft Edge 12, 13
 
 #### Sources
 
@@ -229,6 +263,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/get/parents]: http://allyjs.io/api/get/parents.html
 [ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html
 [ally/get/shadow-host]: http://allyjs.io/api/get/shadow-host.html
+[ally/is/active-element]: http://allyjs.io/api/is/active-element.html
 [ally/is/disabled]: http://allyjs.io/api/is/disabled.html
 [ally/is/focus-relevant]: http://allyjs.io/api/is/focus-relevant.html
 [ally/is/focusable]: http://allyjs.io/api/is/focusable.html
@@ -240,11 +275,14 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/is/visible]: http://allyjs.io/api/is/visible.html
 [ally/maintain/disabled]: http://allyjs.io/api/maintain/disabled.html
 [ally/maintain/hidden]: http://allyjs.io/api/maintain/hidden.html
+[ally/maintain/tab-focus]: http://allyjs.io/api/maintain/tab-focus.html
 [ally/map/attribute]: http://allyjs.io/api/map/attribute.html
 [ally/map/keycode]: http://allyjs.io/api/map/keycode.html
 [ally/observe/interaction-type]: http://allyjs.io/api/observe/interaction-type.html
+[ally/observe/shadow-mutations]: http://allyjs.io/api/observe/shadow-mutations.html
 [ally/query/first-tabbable]: http://allyjs.io/api/query/first-tabbable.html
 [ally/query/focusable]: http://allyjs.io/api/query/focusable.html
+[ally/query/shadow-hosts]: http://allyjs.io/api/query/shadow-hosts.html
 [ally/query/tabbable]: http://allyjs.io/api/query/tabbable.html
 [ally/query/tabsequence]: http://allyjs.io/api/query/tabsequence.html
 [ally/style/focus-source]: http://allyjs.io/api/style/focus-source.html

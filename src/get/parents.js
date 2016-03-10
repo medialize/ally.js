@@ -6,13 +6,17 @@ import contextToElement from '../util/context-to-element';
 export default function({context} = {}) {
   const list = [];
   let element = contextToElement({
-    message: 'get/parents requires valid options.context',
+    label: 'get/parents',
     context,
   });
 
   while (element) {
     list.push(element);
-    element = element.parentElement;
+    // IE does know support parentElement on SVGElement
+    element = element.parentNode;
+    if (element && element.nodeType !== Node.ELEMENT_NODE) {
+      element = null;
+    }
   }
 
   return list;
