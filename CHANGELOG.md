@@ -21,7 +21,7 @@ The following lists show the changes to the library grouped by domain.
 
 * upgrading to [css.escape](https://github.com/mathiasbynens/CSS.escape) v1.5.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
 * upgrading to [platform.js](https://github.com/bestiejs/platform.js) v1.3.1
-* adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9
+* adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9 DOM `classList` and SVG `classList` in IE11
 
 #### Browser Behavior
 
@@ -68,6 +68,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.parents`][ally/get/parents] to resolve ancestry for `SVGElement` in Internet Explorer
 * adding [`ally.query.shadowHosts`][ally/query/shadow-hosts] to find elements hosting `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
 * adding [`ally.observe.shadowMutations`][ally/observe/shadow-mutations] to register `MutationObserver`s across nested `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
+* fixing [`ally.style.focusWithin`][ally/style/focus-within] to support SVG in IE10 and IE11
 
 #### Internals
 

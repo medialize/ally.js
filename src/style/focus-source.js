@@ -24,7 +24,7 @@
   Alternate implementation: https://github.com/alice/modality
 */
 
-import 'domtokenlist-shim';
+import 'domtokenlist-shim/dist/domtokenlist-polyfill-umd';
 import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeObserver from '../observe/interaction-type';
 import decorateService from '../util/decorate-service';

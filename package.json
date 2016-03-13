@@ -123,7 +123,7 @@
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",
     "css.escape": "^1.5.0",
-    "domtokenlist-shim": "git://github.com/rodneyrehm/domtokenlist#fix/non-browser-environment",
+    "domtokenlist-shim": "git://github.com/rodneyrehm/domtokenlist#1.2.0-alpha.1",
     "platform": "^1.3.1"
   }
 }

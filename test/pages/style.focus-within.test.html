@@ -2,27 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Maintain Tab Focus</title>
+  <title>Style focus-within</title>
   <style>
+    body .ally-focus-within {
+      outline: 1px solid blue;
+    }
     body :focus {
       outline: 1px solid red;
     }
   </style>
 </head>
 <body>
-  <h1>Maintain Tab Focus</h1>
+  <h1>Style focus-within</h1>
 
   <input id="before">
-  <input id="before-1" tabindex="1">
 
   <div id="container">
-    <input id="second">
-    <input id="first" tabindex="1">
-    <input id="third">
-  </div>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" focusable="false">
+      <a xlink:href="#void" id="svg-link">
+        <text x="10" y="20" id="svg-link-text">text</text>
+      </a>
+    </svg>
 
-  <input id="after">
-  <input id="after-1" tabindex="1">
+    <input id="after">
+  </div>
 
   <script src="../../node_modules/requirejs/require.js"></script>
   <script>
@@ -39,13 +42,11 @@
 
     require([
       'ally/util/platform',
-      'ally/maintain/tab-focus',
-    ], function(platform, maintainTabFocus) {
+      'ally/style/focus-within',
+    ], function(platform, styleFocusWithin) {
       window.platform = platform;
 
-      maintainTabFocus({
-        context: '#container',
-      });
+      styleFocusWithin();
     });
   </script>
 </body>
