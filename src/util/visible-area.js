@@ -135,5 +135,8 @@ export default function(element) {
   const area = _element.width * _element.height;
   const maxArea = Math.min(area, _area.area);
   // Firefox may return sub-pixel bounding client rect
-  return Math.round(_visible.width) * Math.round(_visible.height) / maxArea;
+  const visibleArea = Math.round(_visible.width) * Math.round(_visible.height) / maxArea;
+  // Edge might not reach 0.5 exactly
+  const factor = 10000;
+  return Math.round(visibleArea * factor) / factor;
 }
