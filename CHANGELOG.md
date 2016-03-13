@@ -19,6 +19,7 @@
 * refactoring all unit and functional tests to use [BDD interface](https://theintern.github.io/intern/#interface-tdd) to improve clarity of a test's intent
 * fixing [`ally.maintain.tabFocus`][ally/maintain|tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
 * refactoring `element.prototype.matches` to `util/matches-element`
+* adding [`ally.get.activeElement`][ally/get/active-element] - [issue #119](https://github.com/medialize/ally.js/issues/119)
 
 
 ## 1.2.0 - Adios DOMTokenList
@@ -325,6 +326,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 [ally/fix/pointer-focus-children]: http://allyjs.io/api/fix/pointer-focus-children.html
 [ally/fix/pointer-focus-input]: http://allyjs.io/api/fix/pointer-focus-input.html
 [ally/fix/pointer-focus-parent]: http://allyjs.io/api/fix/pointer-focus-parent.html
+[ally/get/active-element]: http://allyjs.io/api/get/active-element.html
 [ally/get/active-elements]: http://allyjs.io/api/get/active-elements.html
 [ally/get/focus-target]: http://allyjs.io/api/get/focus-target.html
 [ally/get/focus-redirect-target]: http://allyjs.io/api/get/focus-redirect-target.html

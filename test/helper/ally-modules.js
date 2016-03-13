@@ -36,6 +36,7 @@ define([], function() {
       'visible',
     ],
     get: [
+      'active-element',
       'active-elements',
       'focus-redirect-target',
       'focus-target',
