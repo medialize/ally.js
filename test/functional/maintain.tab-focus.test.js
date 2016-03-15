@@ -42,7 +42,7 @@ define([
           .setFindTimeout(timeout)
           .setExecuteAsyncTimeout(timeout)
           // wait until we're really initialized
-          .then(pollUntil('return window.platform'), timeout);
+          .then(pollUntil('return window.platform'));
       },
 
       forward: function() {
