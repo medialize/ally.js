@@ -42,11 +42,42 @@ define([
       firefox_profile: firefoxProfileWebcomponents,
     },
 
-    // Disabled because Intern and SafariDriver and BrowserStack aren't playing nice
-    // { browser: 'Safari', browser_version: '9.0', os: 'OS X', os_version: 'El Capitan', platform: 'MAC', browserName: 'Safari 9' },
-    // { browser: 'Safari', browser_version: '8', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Safari 8' },
-    // { browser: 'Safari', browser_version: '7.1', os: 'OS X', os_version: 'Mavericks', platform: 'MAC', browserName: 'Safari 7' },
-    // { browser: 'Safari', browser_version: '6.2', os: 'OS X', os_version: 'Mountain Lion', platform: 'MAC', browserName: 'Safari 6' },
+    {
+      browser: 'Safari',
+      browser_version: '9.0',
+      os: 'OS X',
+      os_version: 'El Capitan',
+      platform: 'MAC',
+      browserName: 'Safari 9',
+      'browserstack.safari.driver': '2.48',
+    },
+    {
+      browser: 'Safari',
+      browser_version: '8',
+      os: 'OS X',
+      os_version: 'Yosemite',
+      platform: 'MAC',
+      browserName: 'Safari 8',
+      'browserstack.safari.driver': '2.48',
+    },
+    {
+      browser: 'Safari',
+      browser_version: '7.1',
+      os: 'OS X',
+      os_version: 'Mavericks',
+      platform: 'MAC',
+      browserName: 'Safari 7',
+      'browserstack.safari.driver': '2.48',
+    },
+    {
+      browser: 'Safari',
+      browser_version: '6.2',
+      os: 'OS X',
+      os_version: 'Mountain Lion',
+      platform: 'MAC',
+      browserName: 'Safari 6',
+      'browserstack.safari.driver': '2.48',
+    },
 
     // Disabled because tests are flaky and BrowserStack-Support claims Intern is the culprit
     // { browserName: 'iPhone', platform: 'MAC', device: 'iPhone 6S' },
