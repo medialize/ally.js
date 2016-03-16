@@ -33,7 +33,7 @@ const observerConfig = {
   attributes: true,
   childList: true,
   subtree: true,
-  attributeFilter: ['tabindex'],
+  attributeFilter: ['tabindex', 'disabled', 'data-ally-disabled'],
 };
 
 class InertSubtree {
@@ -86,10 +86,17 @@ class InertSubtree {
   }
 
   renderInert(elements) {
-    elements.filter(this.filterElements).forEach((element) => {
+    const makeInert = (element) => {
       this._inertElementCache.push(element);
       makeElementInert(element);
-    });
+    };
+
+    elements
+      .filter(this.filterElements)
+      // ignore elements that already are disabled
+      // so we don't enable them on disengage()
+      .filter(element => !elementDisabled(element))
+      .forEach(makeInert);
   }
 
   filterElements(element) {
