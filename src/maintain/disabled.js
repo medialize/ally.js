@@ -17,6 +17,7 @@
 
 import nodeArray from '../util/node-array';
 import queryFocusable from '../query/focusable';
+import isDisabled from '../is/disabled';
 import elementDisabled from '../element/disabled';
 import observeShadowMutations from '../observe/shadow-mutations';
 import {getParentComparator} from '../util/compare-position';
@@ -87,8 +88,10 @@ class InertSubtree {
 
   renderInert(elements) {
     elements.filter(this.filterElements).forEach((element) => {
-      this._inertElementCache.push(element);
-      makeElementInert(element);
+      if (!isDisabled(element)) {
+        this._inertElementCache.push(element);
+        makeElementInert(element);
+      }
     });
   }
 
