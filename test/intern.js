@@ -35,7 +35,7 @@ define([
       paths: {
         'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
         'css.escape': 'node_modules/css.escape/css.escape',
-        'domtokenlist-shim': 'node_modules/domtokenlist-shim/dist/domtokenlist',
+        'domtokenlist-shim': 'node_modules/domtokenlist-shim',
         platform: 'node_modules/platform/platform',
       },
     },
@@ -149,6 +149,7 @@ define([
       'test/functional/fix.pointer-focus-input.test.js',
       'test/functional/fix.pointer-focus-parent.test.js',
       'test/functional/observe.interaction-type.test.js',
+      'test/functional/style.focus-within.test.js',
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
