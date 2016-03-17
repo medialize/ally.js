@@ -66,7 +66,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Changes
 
-* Since `v#master` the module is executed on `mousdown` instead of `pointerdown`.
+* Since `v1.1.0` the module is executed on `mousdown` instead of `pointerdown`.
 
 
 ## Notes

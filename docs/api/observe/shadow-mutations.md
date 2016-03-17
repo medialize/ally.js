@@ -59,7 +59,7 @@ The callback is invoked with one argument, an `array` of [`MutationRecord`s](htt
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.1.0`.
 
 
 ## Notes

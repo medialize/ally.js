@@ -49,10 +49,10 @@ Boolean, `true` if the element is focusable.
 
 ## Changes
 
-* Since `v#master` all `<area>` elements are considered focus-relevant, but only valid `<area>` elements are considered focusable.
-* Since `v#master` exceptions can be passed to `ally.is.focusable.rules(options)`.
-* Since `v#master` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
-* Since `v#master` hidden `<object>` elements are focusable in Chrome - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191).
+* Since `v1.1.0` all `<area>` elements are considered focus-relevant, but only valid `<area>` elements are considered focusable.
+* Since `v1.1.0` exceptions can be passed to `ally.is.focusable.rules(options)`.
+* Since `v1.1.0` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
+* Since `v1.1.0` hidden `<object>` elements are focusable in Chrome - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191).
 
 
 ## Notes

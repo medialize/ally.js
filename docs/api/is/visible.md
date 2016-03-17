@@ -54,8 +54,8 @@ Boolean, `true` if the element is visible (i.e. not hidden by CSS).
 
 ## Changes
 
-* Since `v#master` exceptions can be passed to `ally.is.visible.rules(options)`.
-* Since `v#master` the state of the hosting `<iframe>` or `<object>` element is considered.
+* Since `v1.1.0` exceptions can be passed to `ally.is.visible.rules(options)`.
+* Since `v1.1.0` the state of the hosting `<iframe>` or `<object>` element is considered.
 
 
 ## Notes

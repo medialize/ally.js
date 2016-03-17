@@ -50,7 +50,7 @@ var element = ally.query.firstTabbable({
 
 ## Changes
 
-* Since `v#master` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
+* Since `v1.1.0` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
 
 
 ## Notes

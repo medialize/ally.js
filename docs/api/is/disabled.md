@@ -40,7 +40,7 @@ Boolean, `true` if the element is disabled.
 
 ## Changes
 
-* Since `v#master` the `<form disabled>` is handled properly in Internet Explorer 9 - 11.
+* Since `v1.1.0` the `<form disabled>` is handled properly in Internet Explorer 9 - 11.
 
 
 ## Notes

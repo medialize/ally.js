@@ -37,7 +37,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.1.0`.
 
 
 ## Notes

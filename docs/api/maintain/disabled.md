@@ -51,10 +51,10 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Changes
 
-* Since `v#master` changing `tabindex` attribute values are properly handled.
-* Since `v#master` the `disengage()` method reverts elements within ShadowHosts to their previous state.
-* Since `v#master` DOM mutations within `ShadowRoot`s are properly observed.
-* Since `v#master` initially disabled elements are not accidentally enabled when disengaging the service.
+* Since `v1.1.0` changing `tabindex` attribute values are properly handled.
+* Since `v1.1.0` the `disengage()` method reverts elements within ShadowHosts to their previous state.
+* Since `v1.1.0` DOM mutations within `ShadowRoot`s are properly observed.
+* Since `v1.1.0` initially disabled elements are not accidentally enabled when disengaging the service.
 
 
 ## Notes
