@@ -3,8 +3,9 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/supports',
+  'ally/element/disabled',
   'ally/maintain/disabled',
-], function(registerSuite, expect, shadowInputFixture, supports, maintainDisabled) {
+], function(registerSuite, expect, shadowInputFixture, supports, elementDisabled, maintainDisabled) {
 
   registerSuite(function() {
     var fixture;
@@ -180,6 +181,55 @@ define([
         handle.disengage();
         expect(fixture.input.after.disabled).to.equal(false, 'alpha after disengaging first handle');
         expect(input.disabled).to.equal(true, 'bravo after disengaging first handle');
+      },
+      'initially disabled elements': function() {
+        fixture.input.after.disabled = true;
+        var div = fixture.add('<div tabindex="0">yup</div>').firstElementChild;
+        elementDisabled(div, true);
+
+        handle = maintainDisabled({
+          context: fixture.root,
+        });
+
+        expect(fixture.input.outer.disabled).to.equal(true, 'maintaining element disabled');
+        expect(fixture.input.after.disabled).to.equal(true, 'input remains disabled');
+        expect(elementDisabled(div)).to.equal(true, 'div remains disabled');
+
+        handle.disengage();
+
+        expect(fixture.input.outer.disabled).to.equal(false, 'disengaged element re-enabled');
+        expect(fixture.input.after.disabled).to.equal(true, 'disengaged input remains disabled');
+        expect(elementDisabled(div)).to.equal(true, 'disengaged div remains disabled');
+      },
+      'mutation: initially disabled elements': function() {
+        if (!window.MutationObserver) {
+          this.skip('MutationObserver not supported');
+        }
+
+        var deferred = this.async(10000);
+
+        fixture.input.after.disabled = true;
+        var div = fixture.add('<div tabindex="0">yup</div>').firstElementChild;
+        elementDisabled(div, true);
+
+        handle = maintainDisabled({
+          context: fixture.root,
+        });
+
+        expect(fixture.input.after.disabled).to.equal(true, 'input initially disabled');
+        expect(elementDisabled(div)).to.equal(true, 'div initially disabled');
+
+        fixture.input.after.disabled = false;
+        elementDisabled(div, false);
+
+        expect(fixture.input.after.disabled).to.equal(false, 'input enabled');
+        expect(elementDisabled(div)).to.equal(false, 'div enabled');
+
+        // dom mutation is observed asynchronously
+        setTimeout(deferred.callback(function() {
+          expect(fixture.input.after.disabled).to.equal(true, 'input maintained disabled');
+          expect(elementDisabled(div)).to.equal(true, 'div maintained disabled');
+        }), 50);
       },
     };
   });
