@@ -38,8 +38,8 @@ Boolean, `true` if the element is a valid area.
 
 ## Changes
 
-* Since `v#master` the `<img usemap="#…" …>` is resolved in the same document `<map>` is from (e.g. within an iframe)
-* Since `v#master` the existence of the `href` attribute is considered.
+* Since `v1.1.0` the `<img usemap="#…" …>` is resolved in the same document `<map>` is from (e.g. within an iframe)
+* Since `v1.1.0` the existence of the `href` attribute is considered.
 
 
 ## Notes

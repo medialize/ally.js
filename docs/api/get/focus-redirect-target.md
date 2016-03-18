@@ -43,7 +43,7 @@ var element = ally.get.focusRedirectTarget({
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.1.0`.
 
 
 ## Notes

@@ -49,16 +49,16 @@ Boolean, `true` if the element is focus relevant.
 
 ## Changes
 
-* Since `v#master` the `<embed>` and `<keygen>` elements are considered focus-relevant, but *not* focusable.
-* Since `v#master` the `element.prototype.matches` polyfill is re-applied to allow elements from other documents (e.g. from an iframe).
-* Since `v#master` the `<object>` element properly distinguishes between SVG and SWF content.
-* Since `v#master` elements using Flexbox layout are properly identified in IE10 and IE11.
-* Since `v#master` the Shadow DOM hosts are considered focus-relevant, but *not* focusable.
-* Since `v#master` scrollable containers are properly identified in Internet Explorer.
-* Since `v#master` all `<area>` elements are considered focus-relevant.
-* Since `v#master` every element that is either focusable, keyboard focusable, only tabbable or redirects focus is considered focus-relevant.
-* Since `v#master` exceptions can be passed to `ally.is.focusRelevant.rules(options)`.
-* Since `v#master` IE9 properly resolves SVG links (`<a xlink:href="…">`).
+* Since `v1.1.0` the `<embed>` and `<keygen>` elements are considered focus-relevant, but *not* focusable.
+* Since `v1.1.0` the `element.prototype.matches` polyfill is re-applied to allow elements from other documents (e.g. from an iframe).
+* Since `v1.1.0` the `<object>` element properly distinguishes between SVG and SWF content.
+* Since `v1.1.0` elements using Flexbox layout are properly identified in IE10 and IE11.
+* Since `v1.1.0` the Shadow DOM hosts are considered focus-relevant, but *not* focusable.
+* Since `v1.1.0` scrollable containers are properly identified in Internet Explorer.
+* Since `v1.1.0` all `<area>` elements are considered focus-relevant.
+* Since `v1.1.0` every element that is either focusable, keyboard focusable, only tabbable or redirects focus is considered focus-relevant.
+* Since `v1.1.0` exceptions can be passed to `ally.is.focusRelevant.rules(options)`.
+* Since `v1.1.0` IE9 properly resolves SVG links (`<a xlink:href="…">`).
 
 
 ## Notes

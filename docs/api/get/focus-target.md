@@ -55,8 +55,8 @@ var element = ally.get.focusTarget({
 
 ## Changes
 
-* Since `v#master` elements redirecting focus return their target elements.
-* Since `v#master` exceptions can be passed through to `ally.is.focusable` via the `except` argument.
+* Since `v1.1.0` elements redirecting focus return their target elements.
+* Since `v1.1.0` exceptions can be passed through to `ally.is.focusable` via the `except` argument.
 
 
 ## Notes

@@ -38,7 +38,7 @@ Boolean, `true` if the element is the activeElement of its host context.
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.1.0`.
 
 
 ## Notes

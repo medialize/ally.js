@@ -368,7 +368,7 @@ function closeDialog() {
 }
 ```
 
-* **NOTE:** [`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) was added in version `v#master`.
+* **NOTE:** [`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) was added in version `v1.1.0`.
 
 ### Reacting to <kbd>Enter</kbd> and <kbd>Escape</kbd>
 

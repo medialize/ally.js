@@ -51,8 +51,8 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Changes
 
-* Since `v#master` the `context` option can point to another document (e.g. `<body>` in an iframe)
-* Since `v#master` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
+* Since `v1.1.0` the `context` option can point to another document (e.g. `<body>` in an iframe)
+* Since `v1.1.0` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
 
 
 ## Notes

@@ -68,9 +68,9 @@ console.log('keycode of enter', ally.map.keycode.enter);
 
 ## Changes
 
-* `v#master` replaced the key `command` by `meta`.
-* `v#master` added `a` - `z`, `0` - `9`, `num-0` - `num-9`, `f13` - `f25`, `page-down`, `page-up`, `caps-lock`.
-* `v#master` added `_alias` to resolve multiple keyCodes for the same logical key.
+* `v1.1.0` replaced the key `command` by `meta`.
+* `v1.1.0` added `a` - `z`, `0` - `9`, `num-0` - `num-9`, `f13` - `f25`, `page-down`, `page-up`, `caps-lock`.
+* `v1.1.0` added `_alias` to resolve multiple keyCodes for the same logical key.
 
 
 ## Notes

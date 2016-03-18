@@ -110,8 +110,8 @@ The callback is executed in the context of `context` (that's where `this` inside
 
 ## Changes
 
-* `v#master` introduced the extended `<key-binding>` syntax (thereby changing the default modifier key behavior).
-* `v#master` introduced the options `context` and `filter`.
+* `v1.1.0` introduced the extended `<key-binding>` syntax (thereby changing the default modifier key behavior).
+* `v1.1.0` introduced the options `context` and `filter`.
 
 
 ## Notes

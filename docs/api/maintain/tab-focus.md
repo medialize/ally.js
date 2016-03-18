@@ -45,7 +45,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.1.0`.
 
 
 ## Notes

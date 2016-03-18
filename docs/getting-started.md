@@ -120,7 +120,7 @@ import queryFocusable from 'ally.js/src/query/focusable';
 console.log('focusable elements', queryFocusable());
 ```
 
-* **NOTE:** The ES6 source modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+* **NOTE:** The ES6 source modules are available from the [github repository](https://github.com/medialize/ally.js) through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 
 
 ## Using AMD modules
