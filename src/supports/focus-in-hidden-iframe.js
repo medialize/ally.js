@@ -23,7 +23,8 @@ export default memorizeResult(() => detectFocus({
 
     // writing the iframe's content is synchronous
     _document.open();
-    _document.write('<input>');
+    const input = _document.createElement('input');
+    _document.body.appendChild(input);
     _document.close();
 
     return _document.querySelector('input');
