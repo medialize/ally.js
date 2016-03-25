@@ -1,5 +1,10 @@
 # ally.js change log
 
+## master
+
+* fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
+
+
 ## 1.1.0 - Reality Strikes Back
 
 *March 18th 2016.* We're continuing our journey to *make accessibility simpler*. Version 1.1.0 - the first major update follows 4 months after making ally.js public in November 2015. In this time we've released [5 beta versions](https://github.com/medialize/ally.js/releases) and pushed [about 330 commits](https://github.com/medialize/ally.js/compare/1.0.1...1.1.0) in an effort to increase browser support and fix the myriad of bugs typically encountered in version one of any software.
