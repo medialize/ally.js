@@ -120,6 +120,7 @@ In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a 
 
 * **NOTE:** I'm informing you of something you SHOULD know
 * **WARNING:** I'm informing you of something you MUST know (because it's not obvious)
+* **TIP:** I'm informing you of a best practice
 * **HELP:** I'm informing you of something you can contribute to this project
 ```
 

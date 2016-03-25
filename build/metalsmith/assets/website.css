@@ -308,6 +308,7 @@ main .what-ally-is .logo {
  ************************************************************/
 
 main .warning,
+main .tip,
 main .help,
 main .note {
   padding: 12px;
@@ -317,6 +318,7 @@ main .note {
 main .warning > strong:first-child {
   color: #DA0000;
 }
+main .tip > strong:first-child,
 main .help > strong:first-child {
   color: blue;
 }

@@ -83,7 +83,7 @@ function convertNoteBlocks($/*, data*/) {
     const $li = $label.parent();
     const $ul = $li.parent();
     const label = $label.text();
-    if (label !== 'NOTE:' && label !== 'WARNING:' && label !== 'HELP:') {
+    if (label !== 'NOTE:' && label !== 'WARNING:' && label !== 'HELP:' && label !== 'TIP:') {
       return;
     }
 
