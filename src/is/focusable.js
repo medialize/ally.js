@@ -7,7 +7,6 @@
 //   Gecko: `svg a[xlink|href]` is not identified as focusable (because SVGElement.prototype.focus is missing)
 //   Blink, WebKit: SVGElements that have been made focusable by adding a focus event listener are not identified as focusable
 
-import polyfillSVGElementPrototypeFocus from '../prototype/svgelement.prototype.focus';
 import isFocusRelevant from './focus-relevant';
 import isValidArea from './valid-area';
 import isVisible from './visible';
@@ -15,7 +14,6 @@ import isDisabled from './disabled';
 import isOnlyTabbable from './only-tabbable';
 import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
-import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 
 import _supports from './focus-relevant.supports';
@@ -48,8 +46,6 @@ function isOnlyFocusRelevant(element) {
     return _tabindex === null;
   }
 
-  const _window = getWindow(element);
-  polyfillSVGElementPrototypeFocus(_window);
   if (supports.canFocusSvgFocusableAttribute && (element.ownerSVGElement || nodeName === 'svg')) {
     // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
     const focusableAttribute = element.getAttribute('focusable');

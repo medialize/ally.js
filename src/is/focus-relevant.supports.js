@@ -22,7 +22,6 @@ import canFocusSvg from '../supports/focus-svg';
 import canFocusSvgFocusableAttribute from '../supports/focus-svg-focusable-attribute';
 import canFocusTable from '../supports/focus-table';
 import canFocusVideoWithoutControls from '../supports/focus-video-without-controls';
-import svgFocusMethod from '../supports/svg-focus-method';
 
 export default memorizeResult(function() {
   return {
@@ -48,6 +47,5 @@ export default memorizeResult(function() {
     canFocusSvgFocusableAttribute: canFocusSvgFocusableAttribute(),
     canFocusTable: canFocusTable(),
     canFocusVideoWithoutControls: canFocusVideoWithoutControls(),
-    svgFocusMethod: svgFocusMethod(),
   };
 });

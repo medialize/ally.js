@@ -109,7 +109,6 @@ define([
       'test/unit/observe.interaction-type.test',
       'test/unit/observe.shadow-mutations.test',
       'test/unit/prototype.element.prototype.matches.test',
-      'test/unit/prototype.svgelement.prototype.focus.test',
       'test/unit/prototype.window.customevent.test',
       'test/unit/query.first-tabbable.test',
       'test/unit/query.focusable.all.test',

@@ -4,6 +4,7 @@
 
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
 * adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
+* removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
 
 
 ## 1.1.0 - Reality Strikes Back

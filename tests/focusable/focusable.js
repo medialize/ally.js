@@ -19,13 +19,6 @@ require.config({
   },
 });
 
-define('ally/prototype/svgelement.prototype.focus', [], function() {
-  /*eslint-disable no-console */
-  console.info('disabling SVGElement.prototype.focus polyfill during test');
-  /*eslint-enable no-console */
-  return function() {};
-});
-
 function runFocusTests() {
   require(['./script/run-focus-tests'], function(results) {
 

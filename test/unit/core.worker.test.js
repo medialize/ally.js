@@ -15,7 +15,6 @@ define([
       'ally.js/event/active-element',
       'ally.js/event/shadow-focus',
       'ally.js/prototype/element.prototype.matches',
-      'ally.js/prototype/svgelement.prototype.focus',
       'ally.js/prototype/window.customevent',
       'ally.js/util/context-to-element',
       'ally.js/util/decorate-context',
