@@ -53,8 +53,8 @@ define(function(require) {
     canFocusSvgTabindexAttribute: require('ally/supports/focus-svg-tabindex-attribute')(),
     canFocusoutEvent: require('ally/supports/focusout-event')(),
     cssShadowPiercingDeepCombinator: require('ally/supports/css-shadow-piercing-deep-combinator')(),
-    svgFocusMethod: require('ally/supports/svg-focus-method')(),
     tabsequenceSortsAreaAtImagePosition: require('ally/supports/tabsequence-area-at-img-position')(),
+    svgFocusMethod: Boolean(SVGElement.prototype.focus),
   };
 
 });

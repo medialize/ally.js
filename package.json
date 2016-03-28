@@ -34,6 +34,7 @@
   "scripts": {
     "init": "npm install && npm run build && npm run build:website",
     "test": "node test/run-local.js",
+    "test:server": "intern-runner config=test/browser",
     "test:sauce": "intern-runner config=test/sauce",
     "test:browserstack": "intern-runner config=test/browserstack",
     "clean": "rm -rf dist web reports && mkdirp dist web reports",

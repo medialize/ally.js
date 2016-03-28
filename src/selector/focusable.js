@@ -3,7 +3,6 @@
 // there are too many edge cases that they could be covered in
 // a simple CSS selector…
 
-import '../prototype/svgelement.prototype.focus';
 import selectInShadows from '../util/select-in-shadows';
 
 import _supports from './focusable.supports';

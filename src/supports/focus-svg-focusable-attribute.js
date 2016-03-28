@@ -1,5 +1,4 @@
 
-import '../prototype/svgelement.prototype.focus';
 import detectFocus from './detect-focus';
 import memorizeResult from './memorize-result';
 import platform from '../util/platform';
@@ -14,7 +13,7 @@ export default memorizeResult(() => detectFocus({
   },
   validate: function(element) {
     const focus = element.querySelector('text');
-    if (platform.is.TRIDENT && (!focus.focus || focus.focus._polyfill === 'noop')) {
+    if (platform.is.TRIDENT) {
       // Edge 13 does not allow polyfilling the missing SVGElement.prototype.focus anymore
       return true;
     }

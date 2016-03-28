@@ -1,5 +1,4 @@
 
-import '../prototype/svgelement.prototype.focus';
 import detectFocus from './detect-focus';
 import memorizeResult from './memorize-result';
 

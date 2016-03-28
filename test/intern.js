@@ -79,6 +79,7 @@ define([
     // Non-functional test suite(s) to run in each browser
     suites: [
       'test/unit/element.disabled.test',
+      'test/unit/element.focus.test',
       'test/unit/event.active-element.test',
       'test/unit/event.shadow-focus.test',
       'test/unit/fix.pointer-focus-children.test',
@@ -108,7 +109,6 @@ define([
       'test/unit/observe.interaction-type.test',
       'test/unit/observe.shadow-mutations.test',
       'test/unit/prototype.element.prototype.matches.test',
-      'test/unit/prototype.svgelement.prototype.focus.test',
       'test/unit/prototype.window.customevent.test',
       'test/unit/query.first-tabbable.test',
       'test/unit/query.focusable.all.test',

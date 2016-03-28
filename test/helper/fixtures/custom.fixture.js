@@ -8,7 +8,7 @@ define([], function() {
         document.body.focus();
       }
 
-      document.activeElement && document.activeElement.blur();
+      document.activeElement && document.activeElement.blur && document.activeElement.blur();
       previous.parentNode.removeChild(previous);
     }
 
@@ -18,7 +18,7 @@ define([], function() {
         // IE10 does not redirect focus to <body> when the activeElement is removed
         // blur shadowed activeElements before removal
         // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1117535#c5
-        document.activeElement && document.activeElement.blur();
+        document.activeElement && document.activeElement.blur && document.activeElement.blur();
         fixture.root.parentNode.removeChild(fixture.root);
       },
       add: function(_html, id) {

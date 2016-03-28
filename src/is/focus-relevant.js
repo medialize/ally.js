@@ -4,7 +4,6 @@
 // i.e. <input disabled> is conisdered focus-relevant, but not focusable
 
 import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
-import polyfillSVGElementPrototypeFocus from '../prototype/svgelement.prototype.focus';
 import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
 import getWindow from '../util/get-window';
@@ -148,7 +147,6 @@ function isFocusRelevantRules({
     return true;
   }
 
-  polyfillSVGElementPrototypeFocus(_window);
   if (supports.canFocusSvgFocusableAttribute && element.ownerSVGElement) {
     // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
     return Boolean(focusableAttribute && focusableAttribute === 'true');
