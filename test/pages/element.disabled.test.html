@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Element Disabled</title>
+  <style>
+    body :focus {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Element Disabled</h1>
+
+  <input id="before">
+
+  <div id="container">
+    <div id="inert-div">a</div>
+    <div tabindex="-1" id="tabindex--1">a</div>
+    <div tabindex="0" id="tabindex-0">a</div>
+    <div tabindex="1" id="tabindex-1">a</div>
+
+    <a href="#" id="link">yep</a>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">
+      <a xlink:href="#void" id="svg-link">
+        <text x="10" y="20" id="svg-link-text">text</text>
+      </a>
+    </svg>
+
+    <video id="video" poster="../../test/media/test.poster.png" controls>
+      <source src="../../test/media/test.mp4"></source>
+      <source src="../../test/media/test.webm"></source>
+      <source src="../../test/media/test.ogv"></source>
+      <p>no &lt;video&gt; support</p>
+    </video>
+
+    <audio id="audio" controls>
+      <source src="../../test/media/test.mp3"></source>
+      <source src="../../test/media/test.ogg"></source>
+      <p>no &lt;audio&gt; support</p>
+    </audio>
+  </div>
+
+  <input id="after">
+
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        ally: '../../dist/amd',
+        // shims required by ally.js
+        'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
+        'domtokenlist-shim': '../../node_modules/domtokenlist-shim',
+        'css.escape': '../../node_modules/css.escape/css.escape',
+        'platform': '../../node_modules/platform/platform'
+      }
+    });
+
+    require([
+      'ally/util/platform',
+      'ally/query/focusable',
+      'ally/element/disabled',
+    ], function(platform, queryFocusable, elementDisabled) {
+      window.platform = platform;
+
+      queryFocusable({
+        context: '#container',
+        strategy: 'all',
+      }).forEach(function(element) {
+        elementDisabled(element, true);
+      });
+    });
+  </script>
+</body>
+</html>

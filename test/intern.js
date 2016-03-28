@@ -146,10 +146,11 @@ define([
     // Functional test suite(s) to run in each browser once non-functional tests are completed
     functionalSuites: [
       'test/functional/intern.events.test.js',
-      'test/functional/maintain.tab-focus.test.js',
+      'test/functional/element.disabled.test.js',
       'test/functional/fix.pointer-focus-children.test.js',
       'test/functional/fix.pointer-focus-input.test.js',
       'test/functional/fix.pointer-focus-parent.test.js',
+      'test/functional/maintain.tab-focus.test.js',
       'test/functional/observe.interaction-type.test.js',
       'test/functional/style.focus-within.test.js',
     ],
