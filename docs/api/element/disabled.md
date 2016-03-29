@@ -59,6 +59,11 @@ var isDisabled = ally.element.disabled(element);
 * **EXAMPLE:** [`ally.element.disabled` Example](./disabled.example.html)
 
 
+## Changes
+
+* As of `v#master` `<a xlink:href="…">` is demoted to `<a>` in order to remove the element from the document's tabbing order in Firefox.
+
+
 ## Notes
 
 * **WARNING:** Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
