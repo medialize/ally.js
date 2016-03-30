@@ -62,4 +62,5 @@ The `handle.get()` method does not accept any arguments and returns an object wi
 * [module source](https://github.com/medialize/ally.js/blob/master/src/observe/interaction-type.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/observe/interaction-type.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/observe.interaction-type.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/observe.interaction-type.test.js)
 

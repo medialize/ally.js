@@ -63,4 +63,5 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * [module source](https://github.com/medialize/ally.js/blob/master/src/maintain/tab-focus.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/maintain/tab-focus.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/maintain.tab-focus.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/maintain.tab-focus.test.js)
 

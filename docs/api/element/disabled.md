@@ -84,4 +84,5 @@ var isDisabled = ally.element.disabled(element);
 * [module source](https://github.com/medialize/ally.js/blob/master/src/element/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/element/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/element.disabled.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/element.disabled.test.js)
 
