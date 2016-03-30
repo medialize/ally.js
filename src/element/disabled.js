@@ -22,8 +22,12 @@
 import contextToElement from '../util/context-to-element';
 import tabindexValue from '../util/tabindex-value';
 import isNativeDisabledSupported from '../is/native-disabled-supported';
+import toggleAttribute from '../util/toggle-attribute';
 import toggleAttributeValue from '../util/toggle-attribute-value';
 import logger from '../util/logger';
+
+import _supports from './disabled.supports';
+let supports;
 
 function disabledFocus() {
   logger.warn('trying to focus inert element', this);
@@ -47,36 +51,26 @@ function disableTabindex(element, disabledState) {
 }
 
 function disableVideoControls(element, disabledState) {
-  // Chrome leaves <video controls tabindex="-1"> in document focus navigation sequence
-  const nodeName = element.nodeName.toLowerCase();
-  if (nodeName !== 'video' && nodeName !== 'audio') {
-    return;
-  }
-
-  if (disabledState) {
-    if (element.hasAttribute('controls')) {
-      element.setAttribute('data-inert-controls', '');
-      element.removeAttribute('controls');
-    }
-  } else {
-    const restoreControls = element.hasAttribute('data-inert-controls');
-    if (restoreControls) {
-      element.removeAttribute('data-inert-controls');
-      element.setAttribute('controls', '');
-    }
-  }
+  toggleAttribute({
+    element,
+    attribute: 'controls',
+    remove: disabledState,
+  });
 }
 
 function disableSvgFocusable(element, disabledState) {
-  const nodeName = element.nodeName.toLowerCase();
-  if (nodeName !== 'svg' && !element.ownerSVGElement) {
-    return;
-  }
-
   toggleAttributeValue({
     element,
     attribute: 'focusable',
     temporaryValue: disabledState ? 'false' : undefined,
+  });
+}
+
+function disableSvgLink(element, disabledState) {
+  toggleAttribute({
+    element,
+    attribute: 'xlink:href',
+    remove: disabledState,
   });
 }
 
@@ -118,8 +112,23 @@ function setElementDisabled(element, disabledState) {
   disableTabindex(element, disabledState);
   disableScriptFocus(element, disabledState);
   disablePointerEvents(element, disabledState);
-  disableVideoControls(element, disabledState);
-  disableSvgFocusable(element, disabledState);
+
+  const nodeName = element.nodeName.toLowerCase();
+  if (nodeName === 'video' || nodeName === 'audio') {
+    // Blink and Gecko leave <video controls tabindex="-1"> in document focus navigation sequence
+    // Blink leaves <audio controls tabindex="-1"> in document focus navigation sequence
+    disableVideoControls(element, disabledState);
+  }
+
+  if (nodeName === 'svg' || element.ownerSVGElement) {
+    if (supports.canFocusSvgFocusableAttribute) {
+      // Internet Explorer knows focusable="false" instead of tabindex="-1"
+      disableSvgFocusable(element, disabledState);
+    } else if (!supports.canFocusSvgTabindexAttribute && nodeName === 'a') {
+      // Firefox neither knows focusable="false" nor tabindex="-1"
+      disableSvgLink(element, disabledState);
+    }
+  }
 
   if (disabledState) {
     element.setAttribute('data-ally-disabled', 'true');
@@ -129,6 +138,10 @@ function setElementDisabled(element, disabledState) {
 }
 
 export default function(context, disabledState) {
+  if (!supports) {
+    supports = _supports();
+  }
+
   const element = contextToElement({
     label: 'element/disabled',
     context,

@@ -198,7 +198,8 @@ define([
         expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
 
         elementDisabled(element, true);
-        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : null;
+        expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
         expect(element.hasAttribute('focusable')).to.equal(false, 'after disable undo');
@@ -208,7 +209,8 @@ define([
         expect(element.getAttribute('focusable')).to.equal('true', 'before disable');
 
         elementDisabled(element, true);
-        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : 'true';
+        expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
         expect(element.getAttribute('focusable')).to.equal('true', 'after disable undo');
@@ -218,10 +220,24 @@ define([
         expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
 
         elementDisabled(element, true);
-        expect(element.getAttribute('focusable')).to.equal('false', 'after disable');
+        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : null;
+        expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
         expect(element.hasAttribute('focusable')).to.equal(false, 'after disable undo');
+      },
+      'disable removes SVG link': function() {
+        var element = document.getElementById('svg-link');
+
+        var initialValue = element.getAttribute('xlink:href');
+        expect(element.hasAttribute('xlink:href')).to.equal(true, 'before disable');
+
+        elementDisabled(element, true);
+        var expected = supports.canFocusSvgFocusableAttribute || supports.canFocusSvgTabindexAttribute;
+        expect(element.hasAttribute('xlink:href')).to.equal(expected, 'after disable');
+
+        elementDisabled(element, false);
+        expect(element.getAttribute('xlink:href')).to.equal(initialValue, 'after disable undo');
       },
 
     };
