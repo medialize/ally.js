@@ -7,7 +7,6 @@ import {getParentComparator} from '../util/compare-position';
 // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=286933
 
 export default function(map = {}) {
-  let disengage;
   const bindings = {};
 
   const context = nodeArray(map.context)[0] || document.documentElement;
@@ -74,7 +73,7 @@ export default function(map = {}) {
 
   context.addEventListener('keydown', handleKeyDown, false);
 
-  disengage = function() {
+  const disengage = function() {
     context.removeEventListener('keydown', handleKeyDown, false);
   };
 

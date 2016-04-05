@@ -75,7 +75,7 @@
   "devDependencies": {
     "archiver": "^0.21.0",
     "babel": "^5.8.23",
-    "babel-eslint": "^4.1.2",
+    "babel-eslint": "^6.0.2",
     "babelify": "^6.3.0",
     "browserify": "^13.0.0",
     "cheerio": "^0.20.0",
@@ -83,7 +83,7 @@
     "coveralls": "^2.11.6",
     "dalek-driver-chrome": "git://github.com/dalekjs/dalek-driver-chrome.git#fbae6e4",
     "es6-promise": "^3.0.2",
-    "eslint": "2.2.0",
+    "eslint": "^2.7.0",
     "eslint-plugin-markdown": "^1.0.0-beta.1",
     "exorcist": "^0.4.0",
     "gh-pages": "^0.10.0",

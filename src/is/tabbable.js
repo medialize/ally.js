@@ -19,9 +19,6 @@ import {
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
 const focusableElementsPattern = /^(fieldset|table|td|body)$/;
 
-let isFocusRelevantWithoutFlexbox;
-let isTabbableWithoutFlexbox;
-
 function isTabbableRules({
   context,
   except = {
@@ -221,8 +218,8 @@ isTabbableRules.except = function(except = {}) {
   return isTabbable;
 };
 
-isFocusRelevantWithoutFlexbox = focusRelevant.rules.except({flexbox: true});
-isTabbableWithoutFlexbox = isTabbableRules.except({flexbox: true});
+const isFocusRelevantWithoutFlexbox = focusRelevant.rules.except({flexbox: true});
+const isTabbableWithoutFlexbox = isTabbableRules.except({flexbox: true});
 
 // provide isTabbable(context) as default iterator callback
 const isTabbable = isTabbableRules.except({});
