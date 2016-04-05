@@ -10,7 +10,6 @@ define([
 
   registerSuite(function() {
     var timeout = 120000;
-    var advancesFocusOnTab = false;
     var setsShiftKey = false;
 
     return {
@@ -26,8 +25,10 @@ define([
           .sleep(500)
           .execute('return document.activeElement.id || document.activeElement.nodeName')
           .then(function(activeElementId) {
-            advancesFocusOnTab = activeElementId === 'second';
-          })
+            if (activeElementId !== 'second') {
+              this.skip('Cannot test Tab focus via WebDriver in this browser');
+            }
+          }.bind(this))
 
           .execute('window.events.length = 0')
           .pressKeys([keys.TAB, keys.TAB])
@@ -47,10 +48,6 @@ define([
 
       forward: function() {
         this.timeout = timeout;
-        if (!advancesFocusOnTab) {
-          this.skip('Cannot test Tab focus via WebDriver in this browser');
-        }
-
         return this.remote
           .findById('first')
             .click()
@@ -84,9 +81,7 @@ define([
       },
       backward: function() {
         this.timeout = timeout;
-        if (!advancesFocusOnTab) {
-          this.skip('Cannot test Tab focus via WebDriver in this browser');
-        }
+
         if (!setsShiftKey) {
           this.skip('Cannot test Shift Tab focus via WebDriver in this browser');
         }
@@ -127,10 +122,6 @@ define([
       },
       'out of tabsequence': function() {
         this.timeout = timeout;
-        if (!advancesFocusOnTab) {
-          this.skip('Cannot test Tab focus via WebDriver in this browser');
-        }
-
         return this.remote
           .findById('before')
             .click()

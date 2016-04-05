@@ -12,15 +12,6 @@ define([
       return function() {
         this.timeout = timeout;
         return this.remote
-
-          // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.IE10 && !platform.is.IE11) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this))
-
           // make sure we're failing without the fix
           .findById(prefix + 'fail-source')
             .click()
@@ -58,7 +49,14 @@ define([
           .get(require.toUrl('test/pages/fix.pointer-focus-children.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
-          .setExecuteAsyncTimeout(timeout);
+          .setExecuteAsyncTimeout(timeout)
+          // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
+          .then(pollUntil('return window.platform'))
+          .then(function(platform) {
+            if (!platform.is.IE10 && !platform.is.IE11) {
+              this.skip('irrelevant to current browser');
+            }
+          }.bind(this));
       },
 
       'div[tabindex="-1"] > span': makeFocusClickTest('normal-', false),
@@ -70,14 +68,6 @@ define([
       'div[tabindex="-1"]': function() {
         this.timeout = timeout;
         return this.remote
-
-          // This fix is only relevant to IE10 (Trident/6) and IE11 (Trident/7)
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.IE10 && !platform.is.IE11) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this))
 
           // I have no clue why, but IE11 needs this for
           // the next click to actually focus something.

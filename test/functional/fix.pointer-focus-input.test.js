@@ -12,15 +12,6 @@ define([
       return function() {
         this.timeout = timeout;
         return this.remote
-
-          // This fix is only relevant to Safari and Firefox on OSX
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.OSX || !platform.is.GECKO && !platform.is.WEBKIT) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this))
-
           // make sure we're failing without the fix
           .findById(prefix + 'fail-source')
             .click()
@@ -62,7 +53,14 @@ define([
           .get(require.toUrl('test/pages/fix.pointer-focus-input.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
-          .setExecuteAsyncTimeout(timeout);
+          .setExecuteAsyncTimeout(timeout)
+          // This fix is only relevant to Safari and Firefox on OSX
+          .then(pollUntil('return window.platform'))
+          .then(function(platform) {
+            if (!platform.is.OSX || !platform.is.GECKO && !platform.is.WEBKIT) {
+              this.skip('irrelevant to current browser');
+            }
+          }.bind(this));
       },
 
       '<button>': makeFocusClickTest('button-', false),
@@ -76,15 +74,6 @@ define([
       '<label> without input': function() {
         this.timeout = timeout;
         return this.remote
-
-          // This fix is only relevant to Safari and Firefox on OSX
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.OSX || !platform.is.GECKO && !platform.is.WEBKIT) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this))
-
           // make sure we're failing without the fix
           .findById('impotent-label')
             .click()

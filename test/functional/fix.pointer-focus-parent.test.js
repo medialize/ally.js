@@ -21,15 +21,6 @@ define([
       return function() {
         this.timeout = timeout;
         return this.remote
-
-          // This fix is only relevant to WebKit
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.WEBKIT) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this))
-
           // make sure we're failing without the fix
           .findById(prefix + 'fail-source')
             .click()
@@ -71,7 +62,14 @@ define([
           .get(require.toUrl('test/pages/fix.pointer-focus-parent.test.html'))
           .setPageLoadTimeout(timeout)
           .setFindTimeout(timeout)
-          .setExecuteAsyncTimeout(timeout);
+          .setExecuteAsyncTimeout(timeout)
+          // This fix is only relevant to WebKit
+          .then(pollUntil('return window.platform'))
+          .then(function(platform) {
+            if (!platform.is.WEBKIT) {
+              this.skip('irrelevant to current browser');
+            }
+          }.bind(this));
       },
 
       '<a href="">': makeFocusClickTest('link-', false),
