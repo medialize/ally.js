@@ -32,7 +32,7 @@ var result = ally.element.focus(element);
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to focus |
+| element | [`<selector>`](../concepts.md#Selector) | *required* | The Element to focus. First element of the collections is used. |
 
 ### Returns
 
@@ -40,7 +40,7 @@ var result = ally.element.focus(element);
 
 ### Throws
 
-[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument does not resolve to an `HTMLElement`.
 
 
 ## Examples
@@ -55,6 +55,8 @@ var result = ally.element.focus(element);
 
 
 ## Related resources
+
+* [`ally.element.blur`](./blur.md) shifts focus away from an element if it currently has focus.
 
 
 ## Contributing

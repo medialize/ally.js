@@ -81,4 +81,5 @@ handle.disengage();
 * [module source](https://github.com/medialize/ally.js/blob/master/src/style/focus-within.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-within.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-within.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/style.focus-within.test.js)
 

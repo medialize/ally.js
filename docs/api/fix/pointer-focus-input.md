@@ -70,4 +70,5 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * [module source](https://github.com/medialize/ally.js/blob/master/src/fix/pointer-focus-input.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/fix/pointer-focus-input.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/fix.pointer-focus-input.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/fix.pointer-focus-input.test.js)
 

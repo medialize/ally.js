@@ -40,8 +40,8 @@ var isDisabled = ally.element.disabled(element);
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to modify |
-| state | boolean, `undefined` | `undefined` | `true` to disable the element, `false` |
+| element | [`<selector>`](../concepts.md#Selector) | *required* | The Element to modify. First element of the collections is used. |
+| state | boolean, `undefined` | `undefined` | `true` to disable the element, `false` to enable the element. |
 
 
 ### Returns
@@ -51,7 +51,7 @@ var isDisabled = ally.element.disabled(element);
 
 ### Throws
 
-[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument is not of type `HTMLElement`.
+[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) if `element` argument does not resolve to an `HTMLElement`.
 
 
 ## Examples
@@ -84,4 +84,5 @@ var isDisabled = ally.element.disabled(element);
 * [module source](https://github.com/medialize/ally.js/blob/master/src/element/disabled.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/element/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/element.disabled.test.js)
+* [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/element.disabled.test.js)
 
