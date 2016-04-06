@@ -73,7 +73,7 @@
     "precommit": "npm run lint"
   },
   "devDependencies": {
-    "archiver": "^0.21.0",
+    "archiver": "^1.0.0",
     "babel": "^5.8.23",
     "babel-eslint": "^6.0.2",
     "babelify": "^6.3.0",
