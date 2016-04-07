@@ -8,7 +8,7 @@ The build infrastructure consists of a few tools made available through `npm run
 
 This document is concerned with building the JavaScript source code. See [Documentation Infrastructure](docs.md) for how the documentation and website are generated.
 
-* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
 
 
 ## Building

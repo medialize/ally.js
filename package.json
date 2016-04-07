@@ -32,7 +32,7 @@
     "tabbable"
   ],
   "scripts": {
-    "init": "npm install && npm run build && npm run build:website",
+    "init": "npm install && npm-run-all --sequential clean build build:website",
     "test": "node test/run-local.js",
     "test:server": "intern-runner config=test/browser",
     "test:sauce": "intern-runner config=test/sauce",

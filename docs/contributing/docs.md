@@ -8,7 +8,7 @@ The documentation is authored in markdown in the `docs` directory. We're using [
 
 The idea is to create a documentation that can be read on github and on the generated website.
 
-* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
 
 
 ## Building the website
