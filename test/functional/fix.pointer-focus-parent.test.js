@@ -1,7 +1,7 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
@@ -14,7 +14,7 @@ define(function(require) {
   // This means we cannot test fix/pointer-focus-parent.js in a way that
   // actually proves the script does something the browser would otherwise not.
 
-  registerSuite(function() {
+  bdd.describe('fix/pointer-focus-parent', function() {
     var timeout = 120000;
 
     function makeFocusClickTest(prefix, hasTarget) {
@@ -54,25 +54,21 @@ define(function(require) {
       };
     }
 
-    return {
-      name: 'fix/pointer-focus-parent',
+    bdd.before(function() {
+      return this.remote
+        .get(require.toUrl('test/pages/fix.pointer-focus-parent.test.html'))
+        .setPageLoadTimeout(timeout)
+        .setFindTimeout(timeout)
+        .setExecuteAsyncTimeout(timeout)
+        // This fix is only relevant to WebKit
+        .then(pollUntil('return window.platform'))
+        .then(function(platform) {
+          if (!platform.is.WEBKIT) {
+            this.skip('irrelevant to current browser');
+          }
+        }.bind(this));
+    });
 
-      before: function() {
-        return this.remote
-          .get(require.toUrl('test/pages/fix.pointer-focus-parent.test.html'))
-          .setPageLoadTimeout(timeout)
-          .setFindTimeout(timeout)
-          .setExecuteAsyncTimeout(timeout)
-          // This fix is only relevant to WebKit
-          .then(pollUntil('return window.platform'))
-          .then(function(platform) {
-            if (!platform.is.WEBKIT) {
-              this.skip('irrelevant to current browser');
-            }
-          }.bind(this));
-      },
-
-      '<a href="">': makeFocusClickTest('link-', false),
-    };
+    bdd.it('should handle links nested in focusable containers', makeFocusClickTest('link-', false));
   });
 });
