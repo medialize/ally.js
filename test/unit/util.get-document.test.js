@@ -1,8 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'ally/util/get-document',
-], function(registerSuite, expect, getDocument) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var getDocument = require('ally/util/get-document');
 
   registerSuite(function() {
     return {

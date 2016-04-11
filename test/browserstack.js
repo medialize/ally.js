@@ -1,7 +1,8 @@
-define([
-  './intern',
-  'intern/dojo/text!./config/firefox-profile.webcomponents.txt',
-], function(config, firefoxProfileWebcomponents) {
+define(function(require) {
+  'use strict';
+
+  var config = require('./intern');
+  var firefoxProfileWebcomponents = require('intern/dojo/text!./config/firefox-profile.webcomponents.txt');
 
   config.capabilities = {
     project: 'ally.js',

@@ -1,6 +1,7 @@
-define([
-  './intern',
-], function(config) {
+define(function(require) {
+  'use strict';
+
+  var config = require('./intern');
 
   // https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
   config.environments = [

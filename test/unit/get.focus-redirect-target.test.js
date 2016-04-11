@@ -1,11 +1,12 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  'ally/get/focus-redirect-target',
-  'ally/supports/media/gif',
-], function(registerSuite, expect, customFixture, supports, getFocusRedirectTarget, gif) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var supports = require('../helper/supports');
+  var getFocusRedirectTarget = require('ally/get/focus-redirect-target');
+  var gif = require('ally/supports/media/gif');
 
   registerSuite(function() {
     var fixture;

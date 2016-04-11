@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/function-name',
-  'ally/prototype/window.customevent',
-], function(registerSuite, expect, getFunctionName, CustomEvent) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var getFunctionName = require('../helper/function-name');
+  var CustomEvent = require('ally/prototype/window.customevent');
 
   registerSuite(function() {
 

@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/util/platform',
-  'ally/util/visible-area',
-], function(registerSuite, expect, customFixture, platform, visibleArea) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var platform = require('ally/util/platform');
+  var visibleArea = require('ally/util/visible-area');
 
   registerSuite(function() {
     var fixture;

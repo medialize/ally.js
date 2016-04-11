@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/shadow-input.fixture',
-  '../helper/supports',
-  'ally/style/focus-within',
-], function(registerSuite, expect, shadowInputFixture, supports, styleFocusWithin) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var supports = require('../helper/supports');
+  var styleFocusWithin = require('ally/style/focus-within');
 
   registerSuite(function() {
     var fixture;

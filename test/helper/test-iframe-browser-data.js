@@ -1,12 +1,9 @@
-define([
-  './test-frame',
-  'css.escape',
-  'intern/dojo/text!../../tests/focusable/test.html',
-], function(
-  TestFrame,
-  cssEscape,
-  sourceHtml
-) {
+define(function(require) {
+  'use strict';
+
+  var TestFrame = require('./test-frame');
+  var cssEscape = require('css.escape');
+  var sourceHtml = require('intern/dojo/text!../../tests/focusable/test.html');
 
   var source = sourceHtml
     // remove <script src="…"> because we don't want to run the tests themselves

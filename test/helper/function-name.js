@@ -1,4 +1,5 @@
 define([], function() {
+  'use strict';
 
   return function getFunctionName(func) {
     var s = String(func).match(/function\s+([^\(]+)\(/);

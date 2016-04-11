@@ -1,4 +1,7 @@
-define(['./custom.fixture'], function(customFixture) {
+define(function(require) {
+  'use strict';
+
+  var customFixture = require('./custom.fixture');
 
   function createShadowRoot(fixture) {
     if (!fixture.shadow) {

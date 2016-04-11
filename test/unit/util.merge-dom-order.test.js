@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/util/merge-dom-order',
-  'ally/util/sort-dom-order',
-], function(registerSuite, expect, customFixture, mergeDomOrder, sortDomOrder) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var mergeDomOrder = require('ally/util/merge-dom-order');
+  var sortDomOrder = require('ally/util/sort-dom-order');
 
   registerSuite(function() {
     var fixture;

@@ -1,9 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'require',
-  'intern/dojo/node!leadfoot/helpers/pollUntil',
-], function(registerSuite, expect, require, pollUntil) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
   registerSuite(function() {
     var timeout = 120000;

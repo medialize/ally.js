@@ -1,4 +1,6 @@
 define([], function() {
+  'use strict';
+
   return function(html, context) {
     var previous = document.getElementById('intern-dom-fixture');
     if (previous) {

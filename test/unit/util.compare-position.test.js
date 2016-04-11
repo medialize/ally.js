@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/util/compare-position',
-], function(registerSuite, expect, customFixture, comparePosition) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var comparePosition = require('ally/util/compare-position');
 
   registerSuite(function() {
     var fixture;

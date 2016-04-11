@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/dispatch-event',
-  '../helper/fixtures/custom.fixture',
-  'ally/maintain/tab-focus',
-], function(registerSuite, expect, dispatchEvent, customFixture, maintainTabFocus) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var dispatchEvent = require('../helper/dispatch-event');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var maintainTabFocus = require('ally/maintain/tab-focus');
 
   registerSuite(function() {
     var fixture;

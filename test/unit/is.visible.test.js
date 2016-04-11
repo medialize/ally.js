@@ -1,12 +1,13 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  '../helper/test-frame',
-  'ally/is/visible',
-  'ally/supports/media/mp3',
-], function(registerSuite, expect, customFixture, supports, TestFrame, isVisible, mp3) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var supports = require('../helper/supports');
+  var TestFrame = require('../helper/test-frame');
+  var isVisible = require('ally/is/visible');
+  var mp3 = require('ally/supports/media/mp3');
 
   registerSuite(function() {
     var fixture;

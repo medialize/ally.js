@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/dispatch-event',
-  'ally/observe/interaction-type',
-], function(registerSuite, expect, dispatchEvent, observeInteractionType) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var dispatchEvent = require('../helper/dispatch-event');
+  var observeInteractionType = require('ally/observe/interaction-type');
 
   registerSuite(function() {
     var handle;

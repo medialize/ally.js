@@ -1,30 +1,18 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'intern/dojo/Promise',
-  '../helper/test-iframe-browser-data',
-  '../helper/browser-focusable-data',
-  'platform',
-  'ally/is/focus-relevant',
-  'ally/is/focusable',
-  'ally/is/tabbable',
-  'ally/is/only-tabbable',
-  'ally/get/focus-redirect-target',
-  'ally/query/tabsequence',
-], function(
-  registerSuite,
-  expect,
-  Promise,
-  FocusableTestFrame,
-  focusableTestData,
-  platform,
-  isFocusRelevant,
-  isFocusable,
-  isTabbable,
-  isOnlyTabbable,
-  getFocusRedirectTarget,
-  queryTabsequence
-) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var FocusableTestFrame = require('../helper/test-iframe-browser-data');
+  var focusableTestData = require('../helper/browser-focusable-data');
+  var platform = require('platform');
+  var isFocusRelevant = require('ally/is/focus-relevant');
+  var isFocusable = require('ally/is/focusable');
+  var isTabbable = require('ally/is/tabbable');
+  var isOnlyTabbable = require('ally/is/only-tabbable');
+  var getFocusRedirectTarget = require('ally/get/focus-redirect-target');
+  var queryTabsequence = require('ally/query/tabsequence');
+
   registerSuite(function() {
 
     function keysMap(list) {

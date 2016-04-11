@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/util/image-map',
-  'ally/supports/media/gif',
-], function(registerSuite, expect, customFixture, imageMap, gif) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var imageMap = require('ally/util/image-map');
+  var gif = require('ally/supports/media/gif');
 
   registerSuite(function() {
     var fixture;

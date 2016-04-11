@@ -1,10 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  'ally/get/focus-target',
-], function(registerSuite, expect, customFixture, supports, getFocusTarget) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var getFocusTarget = require('ally/get/focus-target');
 
   registerSuite(function() {
     var fixture;

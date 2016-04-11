@@ -1,11 +1,12 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/test-frame',
-  'ally/util/platform',
-  'ally/util/get-content-document',
-], function(registerSuite, expect, customFixture, TestFrame, platform, getContentDocument) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var TestFrame = require('../helper/test-frame');
+  var platform = require('ally/util/platform');
+  var getContentDocument = require('ally/util/get-content-document');
 
   registerSuite(function() {
     var fixture;

@@ -1,12 +1,13 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'sinon',
-  '../helper/fixtures/focusable.fixture',
-  '../helper/supports',
-  'ally/util/platform',
-  'ally/element/focus',
-], function(registerSuite, expect, sinon, focusableFixture, supports, platform, elementFocus) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var sinon = require('sinon');
+  var focusableFixture = require('../helper/fixtures/focusable.fixture');
+  var supports = require('../helper/supports');
+  var platform = require('ally/util/platform');
+  var elementFocus = require('ally/element/focus');
 
   registerSuite(function() {
     var fixture;

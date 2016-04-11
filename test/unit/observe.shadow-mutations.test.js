@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'sinon',
-  '../helper/fixtures/shadow-input.fixture',
-  'ally/observe/shadow-mutations',
-], function(registerSuite, expect, sinon, shadowInputFixture, observeShadowMutations) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var sinon = require('sinon');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var observeShadowMutations = require('ally/observe/shadow-mutations');
 
   registerSuite(function() {
     var fixture;

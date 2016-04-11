@@ -1,12 +1,13 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/shadow-input.fixture',
-  '../helper/supports',
-  'ally/get/parents',
-  'ally/element/disabled',
-  'ally/maintain/disabled',
-], function(registerSuite, expect, shadowInputFixture, supports, getParents, elementDisabled, maintainDisabled) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var supports = require('../helper/supports');
+  var getParents = require('ally/get/parents');
+  var elementDisabled = require('ally/element/disabled');
+  var maintainDisabled = require('ally/maintain/disabled');
 
   registerSuite(function() {
     var fixture;

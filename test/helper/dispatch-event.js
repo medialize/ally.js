@@ -1,4 +1,7 @@
 define([], function() {
+  // if this file executes in strict mode,
+  // KeyboardEvents are not created properly
+  'do not use strict';
 
   // possibly replace this with https://github.com/termi/DOM-Keyboard-Event-Level-3-polyfill
   function createKeyEvent(type, options) {

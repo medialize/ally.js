@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/when/focusable',
-], function(registerSuite, expect, customFixture, whenFocusable) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var whenFocusable = require('ally/when/focusable');
 
   registerSuite(function() {
     var fixture;

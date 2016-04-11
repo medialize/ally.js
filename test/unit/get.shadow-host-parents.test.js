@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/shadow-input.fixture',
-  'ally/get/shadow-host-parents',
-], function(registerSuite, expect, shadowInputFixture, getShadowHostParents) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var getShadowHostParents = require('ally/get/shadow-host-parents');
 
   registerSuite(function() {
     var fixture;

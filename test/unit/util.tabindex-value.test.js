@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  'ally/util/tabindex-value',
-], function(registerSuite, expect, customFixture, supports, tabindexValue) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var supports = require('../helper/supports');
+  var tabindexValue = require('ally/util/tabindex-value');
 
   registerSuite(function() {
     var fixture;

@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/get/insignificant-branches',
-], function(registerSuite, expect, customFixture, getInsignificantBranches) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var getInsignificantBranches = require('ally/get/insignificant-branches');
 
   registerSuite(function() {
     var fixture;

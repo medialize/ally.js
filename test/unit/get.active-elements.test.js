@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/shadow-input.fixture',
-  'ally/get/active-elements',
-], function(registerSuite, expect, shadowInputFixture, getActiveElements) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var getActiveElements = require('ally/get/active-elements');
 
   registerSuite(function() {
     var fixture;

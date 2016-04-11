@@ -1,6 +1,7 @@
-define([
-  './intern',
-], function(config) {
+define(function(require) {
+  'use strict';
+
+  var config = require('./intern');
 
   // make sure to start the proxy, but not run the tests when
   // this config is used with the intern-runner CLI

@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/query/tabsequence.sort-tabindex',
-], function(registerSuite, expect, customFixture, sortTabindex) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var sortTabindex = require('ally/query/tabsequence.sort-tabindex');
 
   registerSuite(function() {
     var fixture;

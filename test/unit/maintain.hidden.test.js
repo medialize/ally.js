@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/maintain/hidden',
-], function(registerSuite, expect, customFixture, maintainHidden) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var maintainHidden = require('ally/maintain/hidden');
 
   registerSuite(function() {
     var fixture;

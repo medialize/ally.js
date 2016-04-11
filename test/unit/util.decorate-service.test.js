@@ -1,8 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'ally/util/decorate-service',
-], function(registerSuite, expect, decorateService) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var decorateService = require('ally/util/decorate-service');
 
   registerSuite(function() {
     return {

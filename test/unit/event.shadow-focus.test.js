@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/shadow-input.fixture',
-  'ally/event/shadow-focus',
-], function(registerSuite, expect, shadowInputFixture, eventShadowFocus) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var eventShadowFocus = require('ally/event/shadow-focus');
 
   registerSuite(function() {
     var fixture;

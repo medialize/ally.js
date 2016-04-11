@@ -1,10 +1,8 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'require',
-  // https://theintern.github.io/leadfoot/keys.html
-  'intern/dojo/node!leadfoot/keys',
-], function(registerSuite, expect, require, keys) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var keys = require('intern/dojo/node!leadfoot/keys');
 
   // This is a test of Intern/WebDriver capability regarding events dispatched
   // when simulating user actions, triggered by the following leadfoot issue

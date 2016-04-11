@@ -1,12 +1,13 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/focusable.fixture',
-  '../helper/supports',
-  'ally/util/platform',
-  'ally/is/focusable',
-  'ally/is/tabbable',
-], function(registerSuite, expect, focusableFixture, supports, platform, isFocusable, isTabbable) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var focusableFixture = require('../helper/fixtures/focusable.fixture');
+  var supports = require('../helper/supports');
+  var platform = require('ally/util/platform');
+  var isFocusable = require('ally/is/focusable');
+  var isTabbable = require('ally/is/tabbable');
 
   registerSuite(function() {
     var fixture;

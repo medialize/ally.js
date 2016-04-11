@@ -1,13 +1,14 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'sinon',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  'ally/util/logger',
-  'ally/element/disabled',
-  'ally/supports/media/mp4',
-], function(registerSuite, expect, sinon, customFixture, supports, logger, elementDisabled, mp4) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var sinon = require('sinon');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var supports = require('../helper/supports');
+  var logger = require('ally/util/logger');
+  var elementDisabled = require('ally/element/disabled');
+  var mp4 = require('ally/supports/media/mp4');
 
   registerSuite(function() {
     var fixture;

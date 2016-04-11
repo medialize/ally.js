@@ -1,10 +1,11 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/function-name',
-  'ally/prototype/element.prototype.matches',
-], function(registerSuite, expect, customFixture, getFunctionName) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var getFunctionName = require('../helper/function-name');
+  require('ally/prototype/element.prototype.matches');
 
   registerSuite(function() {
     var fixture;

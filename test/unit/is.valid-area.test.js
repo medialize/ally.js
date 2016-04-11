@@ -1,12 +1,13 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  '../helper/supports',
-  'ally/is/valid-area',
-  'ally/supports/media/gif',
-  'ally/supports/media/gif.invalid',
-], function(registerSuite, expect, customFixture, supports, isValidArea, gif, invalidGif) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var supports = require('../helper/supports');
+  var isValidArea = require('ally/is/valid-area');
+  var gif = require('ally/supports/media/gif');
+  var invalidGif = require('ally/supports/media/gif.invalid');
 
   registerSuite(function() {
     var fixture;

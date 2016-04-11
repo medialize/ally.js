@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/util/node-array',
-], function(registerSuite, expect, customFixture, nodeArray) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var nodeArray = require('ally/util/node-array');
 
   registerSuite(function() {
     var fixture;

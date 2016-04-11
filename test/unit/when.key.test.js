@@ -1,11 +1,12 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/dispatch-event',
-  '../helper/fixtures/custom.fixture',
-  'ally/when/key',
-  'ally/when/key.binding',
-], function(registerSuite, expect, dispatchEvent, customFixture, whenKey, keyBinding) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var dispatchEvent = require('../helper/dispatch-event');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var whenKey = require('ally/when/key');
+  var keyBinding = require('ally/when/key.binding');
 
   registerSuite(function() {
     var fixture;

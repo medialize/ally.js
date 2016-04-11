@@ -1,12 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'require',
-  // https://theintern.github.io/leadfoot/keys.html
-  'intern/dojo/node!leadfoot/keys',
-  // https://theintern.github.io/leadfoot/pollUntil.html
-  'intern/dojo/node!leadfoot/helpers/pollUntil',
-], function(registerSuite, expect, require, keys, pollUntil) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var keys = require('intern/dojo/node!leadfoot/keys');
+  var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
   registerSuite(function() {
     var timeout = 120000;

@@ -1,6 +1,6 @@
-define([
-  // 'intern',
-], function(/*intern*/) {
+define([], function() {
+  'use strict';
+
   // see extending config example at
   // https://github.com/mozilla/fxa-content-server/blob/master/tests/intern.js
   // if we ever need to deal with arguments

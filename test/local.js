@@ -1,6 +1,7 @@
-define([
-  './intern',
-], function(config) {
+define(function(require) {
+  'use strict';
+
+  var config = require('./intern');
 
   // NOTE: engaged via ./run-local.js to start the ChromeDriver
 

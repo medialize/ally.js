@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/fix/pointer-focus-children',
-], function(registerSuite, expect, customFixture, fixPointerFocusChildren) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var fixPointerFocusChildren = require('ally/fix/pointer-focus-children');
 
   registerSuite(function() {
     var fixture;

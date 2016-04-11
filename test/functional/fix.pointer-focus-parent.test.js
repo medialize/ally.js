@@ -1,9 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'require',
-  'intern/dojo/node!leadfoot/helpers/pollUntil',
-], function(registerSuite, expect, require, pollUntil) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
   // NOTE: The SafariDriver does *not* behave like Safari in regards to
   // how mouse events are processed. While Safari, when used directly,

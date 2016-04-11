@@ -1,13 +1,14 @@
-define([
-  './custom.fixture',
-  '../supports',
-  'ally/supports/media/gif',
-  'ally/supports/media/svg',
-  'ally/supports/media/mp3',
-  'ally/supports/media/mp4',
-], function(customFixture, supports, gif, svg, mp3, mp4) {
-  return function(context) {
+define(function(require) {
+  'use strict';
 
+  var customFixture = require('./custom.fixture');
+  var supports = require('../supports');
+  var gif = require('ally/supports/media/gif');
+  var svg = require('ally/supports/media/svg');
+  var mp3 = require('ally/supports/media/mp3');
+  var mp4 = require('ally/supports/media/mp4');
+
+  return function(context) {
     return customFixture([
       /*eslint-disable indent */
       // tabindex attribute

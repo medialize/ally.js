@@ -1,7 +1,8 @@
-define([
-  'intern/dojo/node!charm',
-  'intern/lib/util',
-], function(charm, util) {
+define(function(require) {
+  'use strict';
+
+  var charm = require('intern/dojo/node!charm');
+  var util = require('intern/lib/util');
 
   function Errors(config) {
     config = config || {};

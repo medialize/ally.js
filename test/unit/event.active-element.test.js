@@ -1,9 +1,10 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/fixtures/custom.fixture',
-  'ally/event/active-element',
-], function(registerSuite, expect, customFixture, eventActiveElement) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var customFixture = require('../helper/fixtures/custom.fixture');
+  var eventActiveElement = require('ally/event/active-element');
 
   registerSuite(function() {
     var fixture;

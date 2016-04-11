@@ -1,8 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  'ally/util/context-to-element',
-], function(registerSuite, expect, contextToElement) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var contextToElement = require('ally/util/context-to-element');
 
   registerSuite(function() {
     return {

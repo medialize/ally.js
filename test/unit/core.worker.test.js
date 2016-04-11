@@ -1,8 +1,9 @@
-define([
-  'intern!object',
-  'intern/chai!expect',
-  '../helper/test-worker',
-], function(registerSuite, expect, TestWorker) {
+define(function(require) {
+  'use strict';
+
+  var registerSuite = require('intern!object');
+  var expect = require('intern/chai!expect');
+  var TestWorker = require('../helper/test-worker');
 
   registerSuite(function() {
     var worker;

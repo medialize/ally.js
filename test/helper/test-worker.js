@@ -1,6 +1,7 @@
-define([
-  'intern/dojo/Promise',
-], function(Promise) {
+define(function(require) {
+  'use strict';
+
+  var Promise = require('intern/dojo/Promise');
 
   function WorkerProxy() {
     this.counter = 0;
