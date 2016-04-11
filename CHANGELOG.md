@@ -6,6 +6,7 @@
 * adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
 * removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
 * fixing [`ally.element.disabled`][ally/element/disabled] to remove SVG links from the document's tabbing order in Firefox
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 
 
 ## 1.1.0 - Reality Strikes Back
