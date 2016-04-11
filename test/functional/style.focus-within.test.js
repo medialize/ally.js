@@ -5,6 +5,20 @@ define(function(require) {
   var expect = require('intern/chai!expect');
   var keys = require('intern/dojo/node!leadfoot/keys');
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
+  var makeCustomCommand = require('../helper/leadfoot-commands');
+
+  var FocusWithinCommand = makeCustomCommand({
+    expectHierarchy: function(expected, message) {
+      return this.parent
+        .execute(
+          'return [].map.call(document.querySelectorAll(".ally-focus-within"), '
+          + 'function(e) { return e.id || e.nodeName.toUpperCase(); })'
+        )
+        .then(function(elements) {
+          expect(elements).to.deep.equal(expected, message);
+        });
+    },
+  });
 
   bdd.describe('style/focus-within', function() {
     var timeout = 120000;
@@ -15,35 +29,11 @@ define(function(require) {
 
     bdd.before(function() {
       return this.remote
-        .get(require.toUrl('test/pages/intern.events.test.html'))
-        .findById('first')
-          .click()
-          .end()
-        .pressKeys(keys.TAB)
-        .sleep(500)
-        .execute('return document.activeElement.id || document.activeElement.nodeName')
-        .then(function(activeElementId) {
-          if (activeElementId !== 'second') {
-            this.skip('Cannot test Tab focus via WebDriver in this browser');
-          }
-        }.bind(this))
-
-        .findById('second')
-          .click()
-          .end()
-        .pressKeys(keys.TAB)
-        .sleep(500)
-        .execute('return document.activeElement.id || document.activeElement.nodeName')
-        .then(function(activeElementId) {
-          if (activeElementId !== 'third') {
-            this.skip('Cannot test Tab to link focus via WebDriver in this browser');
-          }
-        }.bind(this))
+        .skipUnlessCapability(this, 'shiftFocusOnTab', 'Cannot test Tab focus via WebDriver in this browser')
+        .skipUnlessCapability(this, 'shiftFocusOnTabToLink', 'Cannot test Tab to link via WebDriver in this browser')
+        .setTimeouts(timeout)
 
         .get(require.toUrl('test/pages/style.focus-within.test.html'))
-        .setPageLoadTimeout(timeout)
-        .setFindTimeout(timeout)
-        .setExecuteAsyncTimeout(timeout)
         // wait until we're really initialized
         .then(pollUntil('return window.platform'));
     });
@@ -51,43 +41,19 @@ define(function(require) {
     bdd.it('should follow into inline SVG', function() {
       this.timeout = timeout;
       return this.remote
-        .findById('before')
-          .click()
-          .end()
-        .sleep(500)
-        .execute('return document.activeElement.id || document.activeElement.nodeName')
-        .then(function(activeElementId) {
-          expect(activeElementId).to.equal('before', 'initial position');
-        })
-        .execute('return [].map.call(document.querySelectorAll(".ally-focus-within"), function(e) { return e.id || e.nodeName })')
-        .then(function(elements) {
-          var expected = ['HTML', 'BODY', 'before'];
-          expect(elements).to.deep.equal(expected, '.ally-focus-within after first Tab');
-        })
+        .useCommand(FocusWithinCommand)
+
+        .focusById('before')
+        .expectActiveElement('before', 'initial position')
+        .expectHierarchy(['HTML', 'BODY', 'before'], '.ally-focus-within initial')
 
         .pressKeys(keys.TAB)
-        .sleep(500)
-        .execute('return document.activeElement.id || document.activeElement.nodeName')
-        .then(function(activeElementId) {
-          expect(activeElementId).to.equal('svg-link', 'activeElement after first Tab');
-        })
-        .execute('return [].map.call(document.querySelectorAll(".ally-focus-within"), function(e) { return e.id || e.nodeName })')
-        .then(function(elements) {
-          var expected = ['HTML', 'BODY', 'container', 'svg', 'svg-link'];
-          expect(elements).to.deep.equal(expected, '.ally-focus-within after first Tab');
-        })
+        .expectActiveElement('svg-link', 'activeElement after first Tab')
+        .expectHierarchy(['HTML', 'BODY', 'container', 'svg', 'svg-link'], '.ally-focus-within after first Tab')
 
         .pressKeys(keys.TAB)
-        .sleep(500)
-        .execute('return document.activeElement.id || document.activeElement.nodeName')
-        .then(function(activeElementId) {
-          expect(activeElementId).to.equal('after', 'after second Tab');
-        })
-        .execute('return [].map.call(document.querySelectorAll(".ally-focus-within"), function(e) { return e.id || e.nodeName })')
-        .then(function(elements) {
-          var expected = ['HTML', 'BODY', 'container', 'after'];
-          expect(elements).to.deep.equal(expected, '.ally-focus-within after second Tab');
-        });
+        .expectActiveElement('after', 'activeElement after second Tab')
+        .expectHierarchy(['HTML', 'BODY', 'container', 'after'], '.ally-focus-within after second Tab');
     });
   });
 });
