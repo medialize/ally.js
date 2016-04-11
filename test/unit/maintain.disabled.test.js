@@ -3,9 +3,10 @@ define([
   'intern/chai!expect',
   '../helper/fixtures/shadow-input.fixture',
   '../helper/supports',
+  'ally/get/parents',
   'ally/element/disabled',
   'ally/maintain/disabled',
-], function(registerSuite, expect, shadowInputFixture, supports, elementDisabled, maintainDisabled) {
+], function(registerSuite, expect, shadowInputFixture, supports, getParents, elementDisabled, maintainDisabled) {
 
   registerSuite(function() {
     var fixture;
@@ -65,6 +66,14 @@ define([
         expect(handle.disengage).to.be.a('function');
         expect(fixture.input.outer.disabled).to.equal(true, 'out of filter');
         expect(fixture.input.after.disabled).to.equal(false, 'in filter');
+
+        var disabledAncestors = getParents({
+          context: '#after-wrapper',
+        }).filter(function(element) {
+          return elementDisabled(element);
+        }).map(fixture.nodeToString);
+
+        expect(disabledAncestors).to.deep.equal([], 'disabled ancestory');
       },
       'context and filter': function() {
         var input = fixture.add('<input id="dyamic-input">').firstElementChild;

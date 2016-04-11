@@ -46,6 +46,7 @@ class InertSubtree {
     this.handleMutation = this.handleMutation.bind(this);
     this.renderInert = this.renderInert.bind(this);
     this.filterElements = this.filterElements.bind(this);
+    this.filterParentElements = this.filterParentElements.bind(this);
 
     const focusable = queryFocusable({
       context: this._context,
@@ -93,6 +94,7 @@ class InertSubtree {
 
     elements
       .filter(this.filterElements)
+      .filter(this.filterParentElements)
       // ignore elements that already are disabled
       // so we don't enable them on disengage()
       .filter(element => !elementDisabled(element))
@@ -102,6 +104,12 @@ class InertSubtree {
   filterElements(element) {
     // ignore elements within the exempted sub-trees
     const isParentOfElement = getParentComparator({element, includeSelf: true});
+    return !this._filter.some(isParentOfElement);
+  }
+
+  filterParentElements(element) {
+    // ignore ancestors of the exempted sub-trees
+    const isParentOfElement = getParentComparator({parent: element});
     return !this._filter.some(isParentOfElement);
   }
 

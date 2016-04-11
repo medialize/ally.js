@@ -55,6 +55,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 * Since `v1.1.0` the `disengage()` method reverts elements within ShadowHosts to their previous state.
 * Since `v1.1.0` DOM mutations within `ShadowRoot`s are properly observed.
 * Since `v1.1.0` initially disabled elements are not accidentally enabled when disengaging the service.
+* Since `v#master` ancestors of exempted sub-trees (defined by `filter` option) are *not* disabled anymore.
 
 
 ## Notes

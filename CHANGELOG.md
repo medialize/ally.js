@@ -3,6 +3,7 @@
 ## master
 
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 
 
 ## 1.1.0 - Reality Strikes Back
