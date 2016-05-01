@@ -1,36 +1,34 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var fixPointerFocusInput = require('ally/fix/pointer-focus-input');
 
-  registerSuite(function() {
+  bdd.describe('fix/pointer-focus-input', function() {
     var fixture;
     var handle;
 
-    return {
-      name: 'fix/pointer-focus-input',
+    bdd.beforeEach(function() {
+      fixture = customFixture([
+        '<div></div>',
+      ]);
+    });
 
-      beforeEach: function() {
-        fixture = customFixture([
-          '<div></div>',
-        ]);
-      },
-      afterEach: function() {
-        // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage({ force: true });
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      // make sure a failed test cannot leave listeners behind
+      handle && handle.disengage({ force: true });
+      fixture.remove();
+      fixture = null;
+    });
 
-      lifecycle: function() {
-        expect(fixPointerFocusInput).to.be.a('function');
-        handle = fixPointerFocusInput();
-        expect(handle.disengage).to.be.a('function');
-        handle.disengage();
-      },
-    };
+    bdd.it('should be a global service API', function() {
+      expect(fixPointerFocusInput).to.be.a('function');
+      handle = fixPointerFocusInput();
+      expect(handle.disengage).to.be.a('function');
+      handle.disengage();
+    });
+
   });
 });

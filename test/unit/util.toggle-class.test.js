@@ -1,55 +1,69 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var toggleClass = require('ally/util/toggle-class').toggleClass;
   var removeClass = require('ally/util/toggle-class').removeClass;
   var addClass = require('ally/util/toggle-class').addClass;
 
-  registerSuite(function() {
-    return {
-      name: 'util/toggle-class',
+  bdd.describe('util/toggle-class', function() {
+    bdd.describe('toggleClass()', function() {
+      bdd.it('should add class', function() {
+        var div = document.createElement('div');
+        toggleClass(div, 'test');
+        expect(div.className).to.equal('test');
+      });
 
-      'toggle (add)': function() {
-        var div = document.createElement('div');
-        toggleClass(div, 'test');
-        expect(div.className).to.equal('test');
-      },
-      'toggle (twice)': function() {
-        var div = document.createElement('div');
-        toggleClass(div, 'test');
-        toggleClass(div, 'test');
-        expect(div.className).to.equal('');
-      },
-      'toggle - force remove': function() {
+      bdd.it('should remove class', function() {
         var div = document.createElement('div');
         div.className = 'test';
-        toggleClass(div, 'test', false);
+        toggleClass(div, 'test');
         expect(div.className).to.equal('');
-      },
-      'toggle - force add': function() {
+      });
+
+      bdd.describe('with force=false', function() {
+        bdd.it('should remove class', function() {
+          var div = document.createElement('div');
+          div.className = 'test';
+          toggleClass(div, 'test', false);
+          expect(div.className).to.equal('');
+        });
+      });
+
+      bdd.describe('with force=true', function() {
+        bdd.it('should add class', function() {
+          var div = document.createElement('div');
+          toggleClass(div, 'test', true);
+          expect(div.className).to.equal('test');
+        });
+
+        bdd.it('should not duplicate existing class', function() {
+          var div = document.createElement('div');
+          div.className = 'test';
+          toggleClass(div, 'test', true);
+          expect(div.className).to.equal('test');
+        });
+      });
+    });
+
+    bdd.describe('addClass()', function() {
+      bdd.it('should add a class', function() {
         var div = document.createElement('div');
-        toggleClass(div, 'test', true);
-        expect(div.className).to.equal('test');
-      },
-      'toggle - force add twice': function() {
+        div.className = 'alpha';
+        addClass(div, 'bravo');
+        expect(div.className).to.equal('alpha bravo');
+      });
+    });
+
+    bdd.describe('removeClass()', function() {
+      bdd.it('should remove a class', function() {
         var div = document.createElement('div');
-        toggleClass(div, 'test', true);
-        toggleClass(div, 'test', true);
-        expect(div.className).to.equal('test');
-      },
-      'add': function() {
-        var div = document.createElement('div');
-        addClass(div, 'test');
-        expect(div.className).to.equal('test');
-      },
-      'remove': function() {
-        var div = document.createElement('div');
-        div.className = 'test';
-        removeClass(div, 'test');
-        expect(div.className).to.equal('');
-      },
-    };
+        div.className = 'alpha bravo';
+        removeClass(div, 'alpha');
+        expect(div.className).to.equal('bravo');
+      });
+    });
+
   });
 });

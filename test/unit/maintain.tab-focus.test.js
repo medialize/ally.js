@@ -1,77 +1,66 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var dispatchEvent = require('../helper/dispatch-event');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var maintainTabFocus = require('ally/maintain/tab-focus');
 
-  registerSuite(function() {
+  bdd.describe('maintain/tab-focus', function() {
     var fixture;
     var handle;
 
-    return {
-      name: 'maintain/tab-focus',
-
-      beforeEach: function() {
-        fixture = customFixture([
-          /*eslint-disable indent */
-          '<div id="outer">',
-            '<div id="inner">',
-              '<input type="text" id="first">',
-              '<input type="text" id="second">',
-              '<input type="text" id="third">',
-            '</div>',
+    bdd.before(function() {
+      fixture = customFixture([
+        /*eslint-disable indent */
+        '<div id="outer">',
+          '<div id="inner">',
+            '<input type="text" id="first">',
+            '<input type="text" id="second">',
+            '<input type="text" id="third">',
           '</div>',
-          /*eslint-enable indent */
-        ]);
-      },
-      afterEach: function() {
-        // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage({ force: true });
-        fixture.remove();
-        fixture = null;
-      },
+        '</div>',
+        /*eslint-disable indent */
+      ]);
 
-      lifecycle: function() {
-        expect(maintainTabFocus).to.be.a('function');
-        handle = maintainTabFocus({
-          context: fixture.root,
-        });
+      var supportsSynthEvent = dispatchEvent.createKey('keydown', {
+        key: 'Tab',
+        keyCode: 9,
+      });
 
-        expect(handle.disengage).to.be.a('function');
-      },
-      forward: function() {
-        var supportsSynthEvent = dispatchEvent.createKey('keydown', {
-          key: 'Tab',
-          keyCode: 9,
-        });
+      if (supportsSynthEvent.keyCode !== 9) {
+        this.skip('Synthetic Tab events not supported');
+      }
+    });
 
-        if (supportsSynthEvent.keyCode !== 9) {
-          this.skip('Synthetic Tab events not supported');
-        }
+    bdd.after(function() {
+      handle && handle.disengage({ force: true });
+      fixture.remove();
+      fixture = null;
+    });
 
-        handle = maintainTabFocus();
+    bdd.it('should wrap focus from last to first element', function() {
+      handle = maintainTabFocus();
 
-        document.getElementById('third').focus();
+      document.getElementById('third').focus();
 
-        dispatchEvent.key(document.documentElement, 'keydown', {
-          key: 'Tab',
-          keyCode: 9,
-        });
+      dispatchEvent.key(document.documentElement, 'keydown', {
+        key: 'Tab',
+        keyCode: 9,
+      });
 
-        expect(document.activeElement.id).to.equal('first', 'handle tab key');
+      expect(document.activeElement.id).to.equal('first', 'handle tab key');
 
-        handle.disengage();
+      handle.disengage();
 
-        dispatchEvent.key(document.documentElement, 'keydown', {
-          key: 'Tab',
-          keyCode: 9,
-        });
+      dispatchEvent.key(document.documentElement, 'keydown', {
+        key: 'Tab',
+        keyCode: 9,
+      });
 
-        expect(document.activeElement.id).to.equal('first', 'tab key not handled after disengage');
-      },
-    };
+      expect(document.activeElement.id).to.equal('first', 'tab key not handled after disengage');
+    });
+
   });
 });

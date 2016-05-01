@@ -1,13 +1,13 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var mergeDomOrder = require('ally/util/merge-dom-order');
   var sortDomOrder = require('ally/util/sort-dom-order');
 
-  registerSuite(function() {
+  bdd.describe('util/merge-dom-order', function() {
     var fixture;
 
     var splitList = function(list) {
@@ -28,114 +28,122 @@ define(function(require) {
       };
     };
 
-    return {
-      name: 'util/merge-dom-order',
+    bdd.beforeEach(function() {
+      fixture = customFixture([
+        '<div data-label="1"></div>',
+        '<div data-label="2"></div>',
+        '<div data-label="3"></div>',
+        '<div data-label="4"></div>',
+        '<div data-label="5"></div>',
+        '<div data-label="6"></div>',
+        '<div data-label="7"></div>',
+      ]);
+    });
 
-      beforeEach: function() {
-        fixture = customFixture([
-          '<div data-label="1"></div>',
-          '<div data-label="2"></div>',
-          '<div data-label="3"></div>',
-          '<div data-label="4"></div>',
-          '<div data-label="5"></div>',
-          '<div data-label="6"></div>',
-          '<div data-label="7"></div>',
-        ]);
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      simple: function() {
-        var source = [].slice.call(fixture.root.children, 0);
-        var data = splitList(source);
-        expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
-        expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+    bdd.it('should merge two arrays of elements in dom order', function() {
+      var source = [].slice.call(fixture.root.children, 0);
+      var data = splitList(source);
 
-        var expected = '1 2 3 4 5 6 7'.split(' ');
-        var result = mergeDomOrder({
-          list: data.nodes,
-          elements: data.extracted,
-        }).map(fixture.nodeToString);
+      expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
+      expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        expect(result).to.deep.equal(expected);
-      },
-      inverse: function() {
-        var source = [].slice.call(fixture.root.children, 0);
-        var data = splitList(source);
-        expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
-        expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+      var expected = '1 2 3 4 5 6 7'.split(' ');
+      var result = mergeDomOrder({
+        list: data.nodes,
+        elements: data.extracted,
+      }).map(fixture.nodeToString);
 
-        var expected = '1 2 3 4 5 6 7'.split(' ');
-        var result = mergeDomOrder({
-          list: sortDomOrder(data.extracted),
-          elements: sortDomOrder(data.nodes).reverse(),
-        }).map(fixture.nodeToString);
+      expect(result).to.deep.equal(expected, 'merged in dom order');
+    });
 
-        expect(result).to.deep.equal(expected);
-      },
-      resolve: function() {
-        var source = [].slice.call(fixture.root.children, 0);
-        var data = splitList(source);
-        expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
-        expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+    bdd.it('should merge two arrays of elements in dom order if both arrays are out of order', function() {
+      var source = [].slice.call(fixture.root.children, 0);
+      var data = splitList(source);
 
-        var expected = '1 #2 3 #4 5 #6 7'.split(' ');
-        var result = mergeDomOrder({
-          list: data.nodes,
-          elements: data.extracted,
-          resolveElement: function(element) {
-            var label = element.getAttribute('data-label');
-            element.setAttribute('data-label', '#' + label);
-            return element;
-          },
-        }).map(fixture.nodeToString);
+      expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
+      expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        expect(result).to.deep.equal(expected);
-      },
-      multiple: function() {
-        var source = [].slice.call(fixture.root.children, 0);
-        var data = splitList(source);
-        expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
-        expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+      var expected = '1 2 3 4 5 6 7'.split(' ');
+      var result = mergeDomOrder({
+        list: sortDomOrder(data.extracted),
+        elements: sortDomOrder(data.nodes).reverse(),
+      }).map(fixture.nodeToString);
 
-        var expected = '1 #2 @2 3 #4 @4 5 #6 @6 7'.split(' ');
-        var result = mergeDomOrder({
-          list: data.nodes,
-          elements: data.extracted,
-          resolveElement: function(element) {
-            var label = element.getAttribute('data-label');
-            element.setAttribute('data-label', '#' + label);
-            var sibling = document.createElement('div');
-            sibling.setAttribute('data-label', '@' + label);
-            return [element, sibling];
-          },
-        }).map(fixture.nodeToString);
+      expect(result).to.deep.equal(expected, 'merged in dom order');
+    });
 
-        expect(result).to.deep.equal(expected);
-      },
-      replace: function() {
-        var source = [].slice.call(fixture.root.children, 0);
-        var data = splitList(source);
-        expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
-        expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+    bdd.it('should allow to resolve elements after insertion point was identified', function() {
+      var source = [].slice.call(fixture.root.children, 0);
+      var data = splitList(source);
 
-        var expected = '1 #2 @2 3 #4 @4 5 #6 @6 7'.split(' ');
-        var result = mergeDomOrder({
-          list: source,
-          elements: data.extracted,
-          resolveElement: function(element) {
-            var label = element.getAttribute('data-label');
-            element.setAttribute('data-label', '#' + label);
-            var sibling = document.createElement('div');
-            sibling.setAttribute('data-label', '@' + label);
-            return [element, sibling];
-          },
-        }).map(fixture.nodeToString);
+      expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
+      expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
 
-        expect(result).to.deep.equal(expected);
-      },
-    };
+      var expected = '1 #2 3 #4 5 #6 7'.split(' ');
+      var result = mergeDomOrder({
+        list: data.nodes,
+        elements: data.extracted,
+        resolveElement: function(element) {
+          var label = element.getAttribute('data-label');
+          element.setAttribute('data-label', '#' + label);
+          return element;
+        },
+      }).map(fixture.nodeToString);
+
+      expect(result).to.deep.equal(expected, 'merged in dom order');
+    });
+
+    bdd.it('should allow to replace elements after insertion point was identified', function() {
+      var source = [].slice.call(fixture.root.children, 0);
+      var data = splitList(source);
+
+      expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
+      expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+
+      var expected = '1 #2 @2 3 #4 @4 5 #6 @6 7'.split(' ');
+      var result = mergeDomOrder({
+        list: data.nodes,
+        elements: data.extracted,
+        resolveElement: function(element) {
+          var label = element.getAttribute('data-label');
+          element.setAttribute('data-label', '#' + label);
+          var sibling = document.createElement('div');
+          sibling.setAttribute('data-label', '@' + label);
+          return [element, sibling];
+        },
+      }).map(fixture.nodeToString);
+
+      expect(result).to.deep.equal(expected, 'merged in dom order');
+    });
+
+    bdd.it('should allow to skip elements after insertion point was identified', function() {
+      var source = [].slice.call(fixture.root.children, 0);
+      var data = splitList(source);
+
+      expect(data.nodes.length).to.not.equal(source.length, 'nodes list');
+      expect(data.extracted.length).to.not.equal(source.length, 'extracted list');
+
+      var expected = '1 2 3 5 7'.split(' ');
+      var result = mergeDomOrder({
+        list: data.nodes,
+        elements: data.extracted,
+        resolveElement: function(element) {
+          var label = parseInt(element.getAttribute('data-label'));
+          if (label > 2) {
+            return null;
+          }
+
+          return element;
+        },
+      }).map(fixture.nodeToString);
+
+      expect(result).to.deep.equal(expected, 'merged in dom order');
+    });
+
   });
 });

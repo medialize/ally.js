@@ -1,38 +1,48 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
   var queryShadowHosts = require('ally/query/shadow-hosts');
 
-  registerSuite(function() {
+  bdd.describe('query/shadow-hosts', function() {
     var fixture;
 
-    return {
-      name: 'query/shadow-hosts',
+    bdd.beforeEach(function() {
+      fixture = shadowInputFixture();
+    });
 
-      beforeEach: function() {
-        fixture = shadowInputFixture();
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      invalid: function() {
-        expect(function() {
-          queryShadowHosts({
-            context: [true],
-          });
-        }).to.throw(TypeError, 'query/shadow-hosts requires options.context to be an Element');
-      },
+    bdd.it('should handle invalid input', function() {
+      expect(function() {
+        queryShadowHosts({
+          context: [true],
+        });
+      }).to.throw(TypeError, 'query/shadow-hosts requires options.context to be an Element');
+    });
 
-      document: function() {
+    bdd.it('should not fail if ShadowDOM is not supported', function() {
+      if (document.body.createShadowRoot !== undefined) {
+        this.skip('ShadowDOM is supported');
+      }
+
+      var result = queryShadowHosts()
+      expect(result).to.deep.equal([]);
+    });
+
+    bdd.describe('for ShadowDOM', function() {
+      bdd.before(function() {
         if (document.body.createShadowRoot === undefined) {
-          this.skip('Shadow DOM not supported');
+          this.skip('ShadowDOM is not supported');
         }
+      });
 
+      bdd.it('should find all ShadowHost elements', function() {
         var expected = [
           '#first-shadow-host',
           '#second-shadow-host',
@@ -45,12 +55,9 @@ define(function(require) {
         });
 
         expect(elements).to.deep.equal(expected);
-      },
-      'ShadowHost as context': function() {
-        if (document.body.createShadowRoot === undefined) {
-          this.skip('Shadow DOM not supported');
-        }
+      });
 
+      bdd.it('should find all ShadowHost elements with ShadowHost as context', function() {
         var expected = [
           '#first-shadow-host',
           '#second-shadow-host',
@@ -60,8 +67,10 @@ define(function(require) {
         var elements = queryShadowHosts({
           context: fixture.shadow.first,
         }).map(fixture.nodeToString);
+
         expect(elements).to.deep.equal(expected);
-      },
-    };
+      });
+    });
+
   });
 });

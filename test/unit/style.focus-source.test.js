@@ -1,143 +1,154 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
+  var delay = require('../helper/delay');
   var dispatchEvent = require('../helper/dispatch-event');
   var styleFocusSource = require('ally/style/focus-source');
 
-  registerSuite(function() {
+  bdd.describe('style/focus-source', function() {
     var fixture;
     var handle;
 
-    return {
-      name: 'style/focus-source',
+    function simulateTabKeyTo(element) {
+      dispatchEvent.key(document.documentElement, 'keydown', {
+        key: 'Tab',
+        keyCode: 9,
+      });
 
-      beforeEach: function() {
-        fixture = shadowInputFixture();
-      },
-      afterEach: function() {
-        // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage({ force: true });
-        fixture.remove();
-        fixture = null;
-      },
+      element.focus();
+      dispatchEvent.key(document.documentElement, 'keyup', {
+        key: 'Tab',
+        keyCode: 9,
+      });
+    }
 
-      lifecycle: function() {
-        var deferred = this.async(10000);
-        expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'before engage');
+    function simulateClickOn(element) {
+      dispatchEvent.mouse(document.documentElement, 'mousedown', {});
+      element.focus();
+      dispatchEvent.mouse(document.documentElement, 'mouseup', {});
+    }
 
-        // initiate with delay because of IE10's async focus event from previous test
-        setTimeout(deferred.callback(function() {
-          handle = styleFocusSource();
-          expect(handle.disengage).to.be.a('function');
-          expect(handle.lock).to.be.a('function');
-          expect(handle.current).to.be.a('function');
-          expect(handle.used).to.be.a('function');
+    bdd.before(function() {
+      fixture = shadowInputFixture();
+    });
 
-          expect(document.documentElement.getAttribute('data-focus-source')).to.equal('initial', 'attribute after engage');
-          expect(handle.current()).to.equal('initial', 'current after engage');
+    bdd.after(function() {
+      handle && handle.disengage({ force: true });
+      fixture.remove();
+      fixture = null;
+    });
 
-          fixture.input.outer.focus();
-          expect(document.activeElement).to.equal(fixture.input.outer, 'focus shift');
-          expect(document.documentElement.getAttribute('data-focus-source')).to.equal('script', 'attribute focus shift');
-          expect(handle.current()).to.equal('script', 'current focus shift');
-          expect(handle.used('initial')).to.equal(true, 'used(initial) focus shift');
-          expect(handle.used('script')).to.equal(true, 'used(script) focus shift');
-          expect(handle.used('key')).to.equal(false, 'used(key) focus shift');
-          expect(handle.used('pointer')).to.equal(false, 'used(pointer) focus shift');
+    bdd.describe('lifecycle', function() {
+      bdd.afterEach(function() {
+        if (document.activeElement && document.activeElement !== document.body) {
+          document.activeElement.blur();
+        }
 
-          handle.disengage();
-          handle = null;
-          expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'after disengage');
-        }), 100);
-      },
-      key: function() {
-        var deferred = this.async(10000);
-        // initiate with delay because of IE10's async focus event from previous test
-        setTimeout(deferred.rejectOnError(function() {
-          handle = styleFocusSource();
-          expect(handle.used('initial')).to.equal(true, 'used focus shift');
+        // allow the EventLoop to run ally.style.focusSource's cleanup
+        return delay(20);
+      });
 
-          dispatchEvent.key(document.documentElement, 'keydown', {
-            key: 'Tab',
-            keyCode: 9,
-          });
-          fixture.input.outer.focus();
-          dispatchEvent.key(document.documentElement, 'keyup', {
-            key: 'Tab',
-            keyCode: 9,
-          });
-
-          expect(document.documentElement.getAttribute('data-focus-source')).to.equal('key', 'attribute after focus shift');
-          expect(handle.current()).to.equal('key', 'current() after focus shift');
-          expect(document.documentElement.className.indexOf('focus-source-key') !== -1).to.equal(true, 'class after focus shift');
-          expect(handle.used('key')).to.equal(true, 'used(key) after focus shift');
-          expect(handle.used('pointer')).to.equal(false, 'used(pointer) after focus shift');
-
-          // allow for observe/interaction-type disengaging async
-          setTimeout(deferred.callback(function() {
-            fixture.input.after.focus();
-            expect(handle.current()).to.equal('script', 'current() after second focus shift');
-          }), 100);
-        }), 100);
-      },
-      pointer: function() {
-        var deferred = this.async(10000);
-        // initiate with delay because of IE10's async focus event from previous test
-        setTimeout(deferred.rejectOnError(function() {
-          handle = styleFocusSource();
-
-          dispatchEvent.mouse(document.documentElement, 'mousedown', {});
-          fixture.input.outer.focus();
-          dispatchEvent.mouse(document.documentElement, 'mouseup', {});
-
-          expect(document.documentElement.getAttribute('data-focus-source')).to.equal('pointer', 'attribute after focus shift');
-          expect(handle.current()).to.equal('pointer', 'current() after focus shift');
-          expect(document.documentElement.className.indexOf('focus-source-pointer') !== -1).to.equal(true, 'class after focus shift');
-          expect(handle.used('key')).to.equal(false, 'used(key) after focus shift');
-          expect(handle.used('pointer')).to.equal(true, 'used(pointer) after focus shift');
-
-          // allow for observe/interaction-type disengaging async
-          setTimeout(deferred.callback(function() {
-            fixture.input.after.focus();
-            expect(handle.current()).to.equal('script', 'current() after second focus shift');
-          }), 100);
-        }), 100);
-      },
-      'lock()': function() {
+      bdd.it('should engage a service', function() {
         handle = styleFocusSource();
+        expect(handle.disengage).to.be.a('function', 'handle.disengage');
+        expect(handle.lock).to.be.a('function', 'handle.lock');
+        expect(handle.current).to.be.a('function', 'handle.current');
+        expect(handle.used).to.be.a('function', 'handle.used');
+      });
 
-        dispatchEvent.mouse(document.documentElement, 'mousedown', {});
+      bdd.it('should start in initial state', function() {
+        expect(document.documentElement.getAttribute('data-focus-source')).to.equal('initial', 'attribute');
+        expect(handle.current()).to.equal('initial', 'handle.current()');
+      });
+
+      bdd.it('should register focus shift by script', function() {
         fixture.input.outer.focus();
-        dispatchEvent.mouse(document.documentElement, 'mouseup', {});
 
-        expect(handle.current()).to.equal('pointer', 'current() after focus shift');
+        expect(document.activeElement).to.equal(fixture.input.outer, 'activeElement');
+        expect(document.documentElement.getAttribute('data-focus-source')).to.equal('script', 'attribute');
+        expect(document.documentElement.className.indexOf('focus-source-script') !== -1).to.equal(true, 'script class');
+        expect(document.documentElement.className.indexOf('focus-source-key') !== -1).to.equal(false, 'key class');
+        expect(document.documentElement.className.indexOf('focus-source-pointer') !== -1).to.equal(false, 'pointer class');
+        expect(handle.current()).to.equal('script', 'handle.current()');
+        expect(handle.used('initial')).to.equal(true, 'handle.used(initial)');
+        expect(handle.used('script')).to.equal(true, 'handle.used(script)');
+        expect(handle.used('key')).to.equal(false, 'handle.used(key)');
+        expect(handle.used('pointer')).to.equal(false, 'handle.used(pointer)');
+      });
 
+      bdd.it('should register focus shift by keyboard', function() {
+        simulateTabKeyTo(fixture.input.outer);
+
+        expect(document.documentElement.getAttribute('data-focus-source')).to.equal('key', 'attribute');
+        expect(document.documentElement.className.indexOf('focus-source-script') !== -1).to.equal(true, 'script class');
+        expect(document.documentElement.className.indexOf('focus-source-key') !== -1).to.equal(true, 'key class');
+        expect(document.documentElement.className.indexOf('focus-source-pointer') !== -1).to.equal(false, 'pointer class');
+        expect(handle.current()).to.equal('key', 'handle.current()');
+        expect(handle.used('initial')).to.equal(true, 'handle.used(initial)');
+        expect(handle.used('script')).to.equal(true, 'handle.used(script)');
+        expect(handle.used('key')).to.equal(true, 'handle.used(key)');
+        expect(handle.used('pointer')).to.equal(false, 'handle.used(pointer)');
+      });
+
+      bdd.it('should register focus shift by script after keyboard', function() {
+        fixture.input.after.focus();
+        expect(handle.current()).to.equal('script', 'handle.current()');
+      });
+
+      bdd.it('should register focus shift by pointer', function() {
+        simulateClickOn(fixture.input.outer);
+
+        expect(document.documentElement.getAttribute('data-focus-source')).to.equal('pointer', 'attribute');
+        expect(document.documentElement.className.indexOf('focus-source-script') !== -1).to.equal(true, 'script class');
+        expect(document.documentElement.className.indexOf('focus-source-key') !== -1).to.equal(true, 'key class');
+        expect(document.documentElement.className.indexOf('focus-source-pointer') !== -1).to.equal(true, 'pointer class');
+        expect(handle.current()).to.equal('pointer', 'handle.current()');
+        expect(handle.used('initial')).to.equal(true, 'handle.used(initial)');
+        expect(handle.used('script')).to.equal(true, 'handle.used(script)');
+        expect(handle.used('key')).to.equal(true, 'handle.used(key) after focus shift');
+        expect(handle.used('pointer')).to.equal(true, 'handle.used(pointer) after focus shift');
+      });
+
+      bdd.it('should register focus shift by script after pointer', function() {
+        fixture.input.after.focus();
+        expect(handle.current()).to.equal('script', 'handle.current()');
+      });
+
+      bdd.it('should retain "key" on lock("key")', function() {
         handle.lock('key');
         fixture.input.after.focus();
-        expect(handle.current()).to.equal('key', 'current() after second focus shift');
+        expect(handle.current()).to.equal('key', 'handle.current()');
 
         fixture.input.outer.focus();
-        expect(handle.current()).to.equal('key', 'current() after third focus shift');
-      },
-      'unlock()': function() {
-        handle = styleFocusSource();
+        expect(handle.current()).to.equal('key', 'handle.current() repeat');
+      });
 
-        dispatchEvent.mouse(document.documentElement, 'mousedown', {});
-        fixture.input.outer.focus();
-        dispatchEvent.mouse(document.documentElement, 'mouseup', {});
-
-        expect(handle.current()).to.equal('pointer', 'current() after focus shift');
-
-        handle.lock('key');
+      bdd.it('should retain "pointer" on lock("pointer")', function() {
+        handle.lock('pointer');
         fixture.input.after.focus();
-        expect(handle.current()).to.equal('key', 'current() after second focus shift');
+        expect(handle.current()).to.equal('pointer', 'handle.current()');
+
+        fixture.input.outer.focus();
+        expect(handle.current()).to.equal('pointer', 'handle.current() repeat');
+      });
+
+      bdd.it('should unlock on unlock()', function() {
         handle.unlock();
-        fixture.input.outer.focus();
-        expect(handle.current()).to.equal('pointer', 'current() after third focus shift');
-      },
-    };
+
+        fixture.input.after.focus();
+        expect(handle.current()).to.equal('script', 'handle.current()');
+      });
+
+      bdd.it('should cleanup after disengage', function() {
+        handle.disengage();
+        handle = null;
+
+        expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'attribute');
+      });
+    });
+
   });
 });

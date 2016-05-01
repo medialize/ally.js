@@ -1,93 +1,97 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var decorateContext = require('ally/util/decorate-context');
 
-  registerSuite(function() {
-    return {
-      name: 'util/decorate-context',
+  bdd.describe('util/decorate-context', function() {
 
-      'default context': function() {
-        var engaged = [];
-        var decorated = decorateContext({
-          engage: function(element) {
-            engaged.push(element);
-          },
-          disengage: function() {},
-        });
+    bdd.it('should engage and disengage the service', function() {
+      var engaged = [];
+      var disengaged = [];
 
-        expect(decorated).to.be.a('function');
+      var decorated = decorateContext({
+        engage: function(element) {
+          engaged.push(element);
+        },
+        disengage: function(element) {
+          disengaged.push(element);
+        },
+      });
 
-        decorated();
-        expect(engaged.length).to.equal(1);
-        expect(engaged[0]).to.equal(document);
-      },
-      lifecycle: function() {
-        var engaged = [];
-        var disengaged = [];
-        var decorated = decorateContext({
-          engage: function(element) {
-            engaged.push(element);
-          },
-          disengage: function(element) {
-            disengaged.push(element);
-          },
-        });
+      expect(decorated).to.be.a('function');
 
-        expect(decorated).to.be.a('function');
+      var handle = decorated({
+        context: ['hello', 'world'],
+      });
 
-        var handle = decorated({
-          context: ['hello', 'world'],
-        });
-        expect(engaged).to.deep.equal('hello world'.split(' '), 'engaged elements after start');
-        expect(disengaged).to.deep.equal([], 'disengaged elements after start');
-        expect(handle).to.be.a('object', 'type of handle');
-        expect(handle.disengage).to.be.a('function');
+      expect(engaged).to.deep.equal(['hello', 'world'], 'engaged elements after start');
+      expect(disengaged).to.deep.equal([], 'disengaged elements after start');
+      expect(handle).to.be.a('object', 'type of handle');
+      expect(handle.disengage).to.be.a('function');
 
-        handle.disengage();
-        expect(disengaged).to.deep.equal('hello world'.split(' '), 'disengaged elements after stop');
-      },
-      'engage only': function() {
-        var engaged = [];
-        var decorated = decorateContext({
-          engage: function(element) {
-            engaged.push(element);
-          },
-        });
+      handle.disengage();
+      expect(disengaged).to.deep.equal('hello world'.split(' '), 'disengaged elements after stop');
+    });
 
-        expect(decorated).to.be.a('function');
+    bdd.it('should provide the document as default context for the service', function() {
+      var engaged = [];
+      var decorated = decorateContext({
+        engage: function(element) {
+          engaged.push(element);
+        },
+        disengage: function() {},
+      });
 
-        var handle = decorated({
-          context: ['hello', 'world'],
-        });
-        expect(engaged).to.deep.equal('hello world'.split(' '), 'engaged elements after start');
-        expect(handle).to.be.a('object', 'type of handle');
-        expect(handle.disengage).to.be.a('function');
+      expect(decorated).to.be.a('function');
 
-        handle.disengage();
-      },
-      'disengage only': function() {
-        var disengaged = [];
-        var decorated = decorateContext({
-          disengage: function(element) {
-            disengaged.push(element);
-          },
-        });
+      decorated();
+      expect(engaged.length).to.equal(1);
+      expect(engaged[0]).to.equal(document);
+    });
 
-        expect(decorated).to.be.a('function');
+    bdd.it('should accept only a callback to engage the service', function() {
+      var engaged = [];
+      var decorated = decorateContext({
+        engage: function(element) {
+          engaged.push(element);
+        },
+      });
 
-        var handle = decorated({
-          context: ['hello', 'world'],
-        });
-        expect(disengaged).to.deep.equal([], 'disengaged elements after start');
-        expect(handle).to.be.a('object', 'type of handle');
-        expect(handle.disengage).to.be.a('function');
+      expect(decorated).to.be.a('function');
 
-        handle.disengage();
-        expect(disengaged).to.deep.equal('hello world'.split(' '), 'disengaged elements after stop');
-      },
-    };
+      var handle = decorated({
+        context: ['hello', 'world'],
+      });
+
+      expect(engaged).to.deep.equal(['hello', 'world'], 'engaged elements after start');
+      expect(handle).to.be.a('object', 'type of handle');
+      expect(handle.disengage).to.be.a('function');
+
+      handle.disengage();
+    });
+
+    bdd.it('should accept only a callback to disengage the service', function() {
+      var disengaged = [];
+      var decorated = decorateContext({
+        disengage: function(element) {
+          disengaged.push(element);
+        },
+      });
+
+      expect(decorated).to.be.a('function');
+
+      var handle = decorated({
+        context: ['hello', 'world'],
+      });
+      expect(disengaged).to.deep.equal([], 'disengaged elements after start');
+      expect(handle).to.be.a('object', 'type of handle');
+      expect(handle.disengage).to.be.a('function');
+
+      handle.disengage();
+      expect(disengaged).to.deep.equal(['hello', 'world'], 'disengaged elements after stop');
+    });
+
   });
 });

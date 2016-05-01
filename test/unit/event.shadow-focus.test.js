@@ -1,139 +1,127 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
   var eventShadowFocus = require('ally/event/shadow-focus');
 
-  registerSuite(function() {
+  bdd.describe('event/shadow-focus', function() {
     var fixture;
     var events;
     var handle;
     var handleEvent;
-    var collectShadowFocusEvents = function(event) {
+
+    function collectShadowFocusEvents(event) {
       events.push(events.detail);
       handleEvent && handleEvent(event);
-    };
-    var collectFocusEvents = function(event) {
+    }
+
+    function collectFocusEvents(event) {
       handleEvent && handleEvent(event);
-    };
+    }
 
-    return {
-      name: 'event/shadow-focus',
+    function before() {
+      fixture = shadowInputFixture();
+      events = [];
+      document.addEventListener('shadow-focus', collectShadowFocusEvents, true);
+      document.addEventListener('focus', collectFocusEvents, true);
 
-      beforeEach: function() {
-        fixture = shadowInputFixture();
-        events = [];
-        document.addEventListener('shadow-focus', collectShadowFocusEvents, true);
-        document.addEventListener('focus', collectFocusEvents, true);
-      },
-      afterEach: function() {
-        // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage({ force: true });
-        document.removeEventListener('shadow-focus', collectShadowFocusEvents, true);
-        document.removeEventListener('focus', collectFocusEvents, true);
-        fixture.remove();
-        fixture = null;
-        events = null;
-      },
+      if (!fixture.shadow.first) {
+        this.skip('ShadowDOM is not supported');
+      }
+    }
 
-      lifecycle: function() {
-        if (!fixture.shadow.first) {
-          this.skip('Shadow DOM not supported');
-        }
+    function after() {
+      // make sure a failed test cannot leave listeners behind
+      handle && handle.disengage({ force: true });
+      document.removeEventListener('shadow-focus', collectShadowFocusEvents, true);
+      document.removeEventListener('focus', collectFocusEvents, true);
+      fixture.remove();
+      fixture = null;
+      events = null;
+    }
 
-        var deferred = this.async(10000);
+    bdd.describe('lifecycle', function() {
+      bdd.before(before);
+      bdd.after(after);
+
+      bdd.it('should engage', function() {
         handle = eventShadowFocus();
-        var waitForOuter;
-        var waitForFirst;
-        var waitForSecond;
-        var waitForDone;
 
         expect(handle.disengage).to.be.a('function');
         expect(events.length).to.equal(0);
+      });
+
+      bdd.it('should detect focus shift from body to #outer', function() {
+        var deferred = this.async(10000);
 
         // body -> #outer
-        waitForOuter = function() {
-          handleEvent = deferred.rejectOnError(function(event) {
-            expect(event.type).to.equal('focus');
-            expect(event.target).to.equal(fixture.input.outer);
-            expect(events.length).to.equal(0);
+        handleEvent = deferred.callback(function(event) {
+          expect(event.type).to.equal('focus');
+          expect(event.target).to.equal(fixture.input.outer);
+          expect(events.length).to.equal(0);
+        });
 
-            waitForFirst();
-          });
+        fixture.input.outer.focus();
+      });
 
-          setTimeout(function() {
-            fixture.input.outer.focus();
-          });
-        };
+      bdd.it('should detect focus shift from #outer to #first', function() {
+        var deferred = this.async(10000);
 
-        // #outer -> #first
-        waitForFirst = function() {
-          handleEvent = deferred.rejectOnError(function(event) {
-            if (event.type === 'focus') {
-              return;
-            }
+        // body -> #outer
+        handleEvent = deferred.callback(function(event) {
+          if (event.type === 'focus') {
+            return;
+          }
 
-            expect(event.type).to.equal('shadow-focus');
-            expect(event.detail.active).to.equal(fixture.input.first);
-            expect(event.detail.hosts.length).to.equal(1);
-            expect(event.detail.hosts[0]).to.equal(fixture.shadow.first);
-            expect(events.length).to.equal(1);
+          expect(event.type).to.equal('shadow-focus');
+          expect(event.detail.active).to.equal(fixture.input.first);
+          expect(event.detail.hosts.length).to.equal(1);
+          expect(event.detail.hosts[0]).to.equal(fixture.shadow.first);
+          expect(events.length).to.equal(1);
+        });
 
-            waitForSecond();
-          });
+        fixture.input.first.focus();
+      });
 
-          setTimeout(function() {
-            fixture.input.first.focus();
-          });
-        };
+      bdd.it('should detect focus shift from #first to #second', function() {
+        var deferred = this.async(10000);
 
-        // #first -> #second
-        waitForSecond = function() {
-          handleEvent = deferred.rejectOnError(function(event) {
-            if (event.type === 'focus') {
-              return;
-            }
+        // body -> #outer
+        handleEvent = deferred.callback(function(event) {
+          if (event.type === 'focus') {
+            return;
+          }
 
-            expect(event.type).to.equal('shadow-focus');
-            expect(event.detail.active).to.equal(fixture.input.second);
-            expect(event.detail.hosts.length).to.equal(2);
-            expect(event.detail.hosts[0]).to.equal(fixture.shadow.second);
-            expect(event.detail.hosts[1]).to.equal(fixture.shadow.first);
-            expect(events.length).to.equal(2);
+          expect(event.type).to.equal('shadow-focus');
+          expect(event.detail.active).to.equal(fixture.input.second);
+          expect(event.detail.hosts.length).to.equal(2);
+          expect(event.detail.hosts[0]).to.equal(fixture.shadow.second);
+          expect(event.detail.hosts[1]).to.equal(fixture.shadow.first);
+          expect(events.length).to.equal(2);
+        });
 
-            waitForDone();
-          });
+        fixture.input.second.focus();
+      });
 
-          setTimeout(function() {
-            fixture.input.second.focus();
-          });
-        };
+      bdd.it('should disengage', function() {
+        var deferred = this.async(10000);
 
-        // disengage -> body
-        waitForDone = function() {
-          // make sure no events are collected after disengaging the event emitter
-          handleEvent = deferred.rejectOnError(function() {
-            if (event.type === 'focus') {
-              return;
-            }
+        handleEvent = deferred.rejectOnError(function() {
+          if (event.type === 'focus') {
+            return;
+          }
 
-            throw new Error('event handler not disengaged');
-          });
+          throw new Error('event handler not disengaged');
+        });
 
-          handle.disengage();
-          setTimeout(function() {
-            document.activeElement.blur();
-            setTimeout(deferred.rejectOnError(function() {
-              expect(events.length).to.equal(2);
-              deferred.resolve();
-            }), 20);
-          });
-        };
-
-        waitForOuter();
-      },
-    };
+        handle.disengage();
+        document.activeElement.blur();
+        setTimeout(deferred.callback(function() {
+          expect(events.length).to.equal(2);
+        }), 20);
+      });
+    });
   });
 });

@@ -1,7 +1,7 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
@@ -9,61 +9,37 @@ define(function(require) {
   var platform = require('ally/util/platform');
   var queryFocusable = require('ally/query/focusable');
 
-  registerSuite(function() {
+  bdd.describe('query/focusable.strict', function() {
     var fixture;
 
-    return {
-      name: 'query/focusable.strict',
+    bdd.beforeEach(function() {
+      var deferred = this.async(10000);
+      fixture = focusableFixture();
+      // NOTE: Firefox decodes DataURIs asynchronously
+      setTimeout(deferred.resolve, 200);
+    });
 
-      beforeEach: function() {
-        fixture = focusableFixture();
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      document: function() {
-        var result = queryFocusable({
-          strategy: 'strict',
-        }).map(fixture.nodeToString);
-        var expected = [
-          '#tabindex--1',
-          '#tabindex-0',
-          '#tabindex-1',
-          supports.focusInvalidTabindex && '#tabindex-bad',
-          '#link',
-          '#link-tabindex--1',
-          '#image-map-area',
-          supports.focusAreaWithoutHref && '#image-map-area-nolink',
-          supports.focusObjectSvg && '#object-svg',
-          supports.focusObjectSvg && '#object-tabindex-svg',
-          supports.svgFocusMethod && '#svg-link',
-          supports.focusAudioWithoutControls && '#audio',
-          '#audio-controls',
-          '#input',
-          '#input-tabindex--1',
-          '#span-contenteditable',
-          document.body.style.webkitUserModify !== undefined && '#span-user-modify',
-          '#img-ismap-link',
-          supports.focusImgIsmap && '#img-ismap',
-          supports.focusScrollContainer && '#scroll-container',
-          supports.focusScrollBody && '#scroll-body',
-          supports.focusScrollContainerWithoutOverflow && '#scroll-container-without-overflow',
-          supports.focusScrollContainerWithoutOverflow && '#scroll-body-without-overflow',
-          supports.focusScrollContainer && '#div-section-overflow-scroll',
-          supports.focusScrollContainer && !supports.focusScrollBody && '#section-div-overflow-scroll',
-          supports.focusScrollBody && '#section-div-overflow-scroll-body',
-          supports.focusFlexboxContainer && '#flexbox-container',
-          supports.focusFlexboxContainer && '#flexbox-container-child',
-          '#focusable-flexbox',
-          supports.focusChildrenOfFocusableFlexbox && '#focusable-flexbox-child',
-        ].filter(Boolean);
+    bdd.it('should search within given context', function() {
+      var expected = [
+        '#link',
+        '#link-tabindex--1',
+      ];
 
-        expect(result).to.deep.equal(expected);
-      },
+      var result = queryFocusable({
+        strategy: 'strict',
+        context: '.context',
+      }).map(fixture.nodeToString);
 
-      includeOnlyTabbable: function() {
+      expect(result).to.deep.equal(expected);
+    });
+
+    bdd.describe('for option includeOnlyTabbable', function() {
+      bdd.it('should find elements which are either focusable or onlyTabbable', function() {
         var result = queryFocusable({
           includeOnlyTabbable: true,
           strategy: 'strict',
@@ -104,22 +80,11 @@ define(function(require) {
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      context: function() {
-        var expected = [
-          '#link',
-          '#link-tabindex--1',
-        ];
-        var result = queryFocusable({
-          strategy: 'strict',
-          context: '.context',
-        }).map(fixture.nodeToString);
-
-        expect(result).to.deep.equal(expected);
-      },
-
-      'context and self': function() {
+    bdd.describe('for option includeContext', function() {
+      bdd.it('should find elements within context and the context element itself', function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '-1');
 
         var expected = [
@@ -127,6 +92,7 @@ define(function(require) {
           '#link',
           '#link-tabindex--1',
         ];
+
         var result = queryFocusable({
           strategy: 'strict',
           context: '.context',
@@ -134,9 +100,52 @@ define(function(require) {
         }).map(fixture.nodeToString);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      'children of <canvas>': function() {
+    bdd.it('should find all focusable elements', function() {
+      var result = queryFocusable({
+        strategy: 'strict',
+      }).map(fixture.nodeToString);
+
+      var expected = [
+        '#tabindex--1',
+        '#tabindex-0',
+        '#tabindex-1',
+        supports.focusInvalidTabindex && '#tabindex-bad',
+        '#link',
+        '#link-tabindex--1',
+        '#image-map-area',
+        supports.focusAreaWithoutHref && '#image-map-area-nolink',
+        supports.focusObjectSvg && '#object-svg',
+        supports.focusObjectSvg && '#object-tabindex-svg',
+        supports.svgFocusMethod && '#svg-link',
+        supports.focusAudioWithoutControls && '#audio',
+        '#audio-controls',
+        '#input',
+        '#input-tabindex--1',
+        '#span-contenteditable',
+        document.body.style.webkitUserModify !== undefined && '#span-user-modify',
+        '#img-ismap-link',
+        supports.focusImgIsmap && '#img-ismap',
+        supports.focusScrollContainer && '#scroll-container',
+        supports.focusScrollBody && '#scroll-body',
+        supports.focusScrollContainerWithoutOverflow && '#scroll-container-without-overflow',
+        supports.focusScrollContainerWithoutOverflow && '#scroll-body-without-overflow',
+        supports.focusScrollContainer && '#div-section-overflow-scroll',
+        supports.focusScrollContainer && !supports.focusScrollBody && '#section-div-overflow-scroll',
+        supports.focusScrollBody && '#section-div-overflow-scroll-body',
+        supports.focusFlexboxContainer && '#flexbox-container',
+        supports.focusFlexboxContainer && '#flexbox-container-child',
+        '#focusable-flexbox',
+        supports.focusChildrenOfFocusableFlexbox && '#focusable-flexbox-child',
+      ].filter(Boolean);
+
+      expect(result).to.deep.equal(expected);
+    });
+
+    bdd.describe('for children of <canvas>', function() {
+      bdd.it('should find all focusable elements', function() {
         var container = fixture.add([
           /*eslint-disable indent */
           '<canvas>',
@@ -158,6 +167,7 @@ define(function(require) {
           '#canvas-span-tabindex-0',
           '#canvas-span-tabindex--1',
         ];
+
         var result = queryFocusable({
           strategy: 'strict',
           context: container,
@@ -165,13 +175,17 @@ define(function(require) {
         }).map(fixture.nodeToString);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      'extended: Shadow DOM': function() {
+    bdd.describe('for ShadowDOM', function() {
+      bdd.before(function() {
         if (document.body.createShadowRoot === undefined) {
-          this.skip('Shadow DOM not supported');
+          this.skip('ShadowDOM is not supported');
         }
+      });
 
+      bdd.it('should find elements nested in ShadowRoot', function() {
         var host = document.createElement('div');
         host.id = 'first-shadow-host';
         fixture.root.appendChild(host);
@@ -180,6 +194,7 @@ define(function(require) {
         var result = queryFocusable({
           strategy: 'strict',
         }).map(fixture.nodeToString);
+
         var expected = [
           '#tabindex--1',
           '#tabindex-0',
@@ -213,7 +228,8 @@ define(function(require) {
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
-      },
-    };
+      });
+    });
+
   });
 });

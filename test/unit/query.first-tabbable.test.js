@@ -1,63 +1,62 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var platform = require('ally/util/platform');
   var queryFirstTabbable = require('ally/query/first-tabbable');
 
-  registerSuite(function() {
+  bdd.describe('query/first-tabbable', function() {
     var fixture;
 
-    return {
-      name: 'query/first-tabbable',
+    bdd.beforeEach(function() {
+      fixture = focusableFixture();
+    });
 
-      beforeEach: function() {
-        fixture = focusableFixture();
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      none: function() {
-        var context = fixture.root.querySelector('.context');
-        context.setAttribute('tabindex', '-1');
-        [].forEach.call(context.children, function(element) {
-          element.setAttribute('tabindex', '-1');
-        });
+    bdd.it('should default to using document as context', function() {
+      var expected = !platform.is.IOS
+        ? document.getElementById('tabindex-0')
+        : document.getElementById('input');
 
-        var expected = null;
-        var result = queryFirstTabbable({
-          context: '.context',
-        });
+      var result = queryFirstTabbable();
+      expect(result).to.equal(expected);
+    });
 
-        expect(result).to.equal(expected);
-      },
+    bdd.it('should search within context', function() {
+      var expected = !platform.is.IOS
+        ? document.getElementById('link')
+        : null;
 
-      document: function() {
-        var expected = !platform.is.IOS
-          ? document.getElementById('tabindex-0')
-          : document.getElementById('input');
+      var result = queryFirstTabbable({
+        context: '.context',
+      });
 
-        var result = queryFirstTabbable();
-        expect(result).to.equal(expected);
-      },
+      expect(result).to.equal(expected);
+    });
 
-      context: function() {
-        var expected = !platform.is.IOS
-          ? document.getElementById('link')
-          : null;
+    bdd.it('should return null as empty result', function() {
+      var context = fixture.root.querySelector('.context');
+      context.setAttribute('tabindex', '-1');
+      [].forEach.call(context.children, function(element) {
+        element.setAttribute('tabindex', '-1');
+      });
 
-        var result = queryFirstTabbable({
-          context: '.context',
-        });
+      var expected = null;
+      var result = queryFirstTabbable({
+        context: '.context',
+      });
 
-        expect(result).to.equal(expected);
-      },
+      expect(result).to.equal(expected);
+    });
 
-      'default to context': function() {
+    bdd.describe('with option.defaultToContext', function() {
+      bdd.it('should return context if it contains no tabbable element', function() {
         var context = fixture.root.querySelector('.context');
         context.setAttribute('tabindex', '-1');
         [].forEach.call(context.children, function(element) {
@@ -71,12 +70,33 @@ define(function(require) {
         });
 
         expect(result).to.equal(expected);
-      },
-      'find [autofocus]': function() {
+      });
+    });
+
+    bdd.describe('for option.defaultToContext', function() {
+      bdd.it('should return context if it contains no tabbable element', function() {
+        var context = fixture.root.querySelector('.context');
+        context.setAttribute('tabindex', '-1');
+        [].forEach.call(context.children, function(element) {
+          element.setAttribute('tabindex', '-1');
+        });
+
+        var expected = context;
+        var result = queryFirstTabbable({
+          context: '.context',
+          defaultToContext: true,
+        });
+
+        expect(result).to.equal(expected);
+      });
+    });
+
+    bdd.describe('for option.ignoreAutofocus', function() {
+      bdd.it('should return [autofocus] element when flag not supplied', function() {
         var context = fixture.root.querySelector('.context');
         var input = document.createElement('input');
-        // add before autofocus, to prevent the element getting
-        // focus in Trident and WebKit
+        // add element to DOM before setting autofocus attribute
+        // to prevent the element getting focus in Trident and WebKit
         context.appendChild(input);
         input.setAttribute('autofocus', '');
 
@@ -86,8 +106,9 @@ define(function(require) {
         });
 
         expect(result).to.equal(expected);
-      },
-      'ignore [autofocus]': function() {
+      });
+
+      bdd.it('should not return [autofocus] element when flag is supplied', function() {
         var context = fixture.root.querySelector('.context');
         // otherwise iOS would simply show the autofocus input
         var _input = document.createElement('input');
@@ -109,7 +130,8 @@ define(function(require) {
         });
 
         expect(result).to.equal(expected);
-      },
-    };
+      });
+    });
+
   });
 });

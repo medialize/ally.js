@@ -57,7 +57,7 @@ define(function(require) {
     };
 
     if (document.body.createShadowRoot === undefined) {
-      // NOTE: Shadow DOM is not supported
+      // NOTE: ShadowDOM is not supported
       return fixture;
     }
 

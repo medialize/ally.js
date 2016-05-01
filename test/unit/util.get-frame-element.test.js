@@ -1,52 +1,23 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
+  var Promise = require('intern/dojo/Promise');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var TestFrame = require('../helper/test-frame');
   var getFrameElement = require('ally/util/get-frame-element');
 
-  registerSuite(function() {
-    var fixture;
-    var frame;
-    var parsedLoaded = null;
-    var createdLoaded = null;
+  bdd.describe('util/get-frame-element', function() {
+    bdd.it('should not resolve elements from the current browsing context', function() {
+      var frameElement = getFrameElement(document.body);
+      expect(frameElement).to.equal(null);
+    });
 
-    return {
-      name: 'util/get-frame-element',
+    bdd.describe('for <iframe> elements', function() {
+      var frame;
 
-      before: function() {
-        fixture = customFixture([
-          /*eslint-disable indent */
-          '<object type="image/svg+xml" typemustmatch="false" id="object-svg" data="../../tests/media/test.svg" width="200" height="50"></object>',
-          /*eslint-enable indent */
-        ]);
-
-        var parsedObject = document.getElementById('object-svg');
-        parsedObject.onload = function() {
-          parsedLoaded = true;
-        };
-        parsedObject.onerror = function() {
-          parsedLoaded = false;
-        };
-
-        var dynamicObject = document.createElement('object');
-        dynamicObject.setAttribute('type', 'image/svg+xml');
-        dynamicObject.setAttribute('typemustmatch', 'false');
-        dynamicObject.setAttribute('id', 'object-svg-created');
-        dynamicObject.setAttribute('width', '200');
-        dynamicObject.setAttribute('height', '50');
-        dynamicObject.setAttribute('data', '../../tests/media/test.svg');
-        fixture.root.appendChild(dynamicObject);
-
-        dynamicObject.onload = function() {
-          createdLoaded = true;
-        };
-        dynamicObject.onerror = function() {
-          createdLoaded = false;
-        };
-
+      bdd.before(function() {
         frame = new TestFrame([
           /*eslint-disable indent */
           '<!DOCTYPE html>',
@@ -63,89 +34,115 @@ define(function(require) {
         ].join(''));
 
         return frame.initialize(document.body);
-      },
-      after: function() {
-        delete window.registerNestedDocument;
-        fixture.remove();
-        fixture = null;
+      });
+
+      bdd.after(function() {
         frame.terminate();
         frame = null;
-      },
+      });
 
-      body: function() {
-        var frameElement = getFrameElement(document.body);
-        expect(frameElement).to.equal(null);
-      },
-
-      'iframe html': function() {
+      bdd.it('should resolve the element hosting the contentDocument', function() {
         var element = frame.document.getElementById('target');
         var frameElement = getFrameElement(element);
         expect(frameElement).to.equal(frame.element);
-      },
+      });
+    });
 
-      'object svg': function() {
-        var deferred = this.async(60000);
-        var executeTest = deferred.callback(function() {
-          var objectElement = document.getElementById('object-svg');
-          var objectDocument = objectElement.contentDocument;
-          var element = objectDocument.querySelector('a');
+    bdd.describe('for parsed <object> elements', function() {
+      var fixture;
+      var object;
 
-          var frameElement = getFrameElement(element);
-          expect(frameElement).to.equal(objectElement);
+      bdd.before(function() {
+        var dfd = new Promise.Deferred();
 
-          var cachedFrameElement = getFrameElement(element);
-          expect(cachedFrameElement).to.equal(objectElement);
-        });
+        fixture = customFixture([
+          /*eslint-disable indent */
+          '<object type="image/svg+xml" typemustmatch="false" id="object-svg" data="../../tests/media/test.svg" width="200" height="50"></object>',
+          /*eslint-enable indent */
+        ]);
 
-        // Tests on BrowserStack may not have the file available immediately
-        // I'm not eager to find out if the load event thing works cross browser
-        var testLoaded = function() {
-          if (parsedLoaded === false) {
-            this.skip('failed loading object element');
-          }
+        object = document.getElementById('object-svg');
+        object.onload = function() {
+          dfd.resolve();
+        };
+        object.onerror = function() {
+          dfd.reject('error while loading <object>');
+        };
 
-          if (!parsedLoaded) {
-            setTimeout(testLoaded, 200);
-            return;
-          }
+        return dfd.promise;
+      });
 
-          executeTest();
-        }.bind(this);
+      bdd.after(function() {
+        fixture.remove();
+        fixture = null;
+      });
 
-        testLoaded();
-      },
+      bdd.it('should resolve the element hosting the contentDocument', function() {
+        var objectDocument = object.contentDocument;
+        var element = objectDocument.querySelector('a');
 
-      'object svg (document.createElement)': function() {
-        var deferred = this.async(60000);
-        var executeTest = deferred.callback(function() {
-          var objectElement = document.getElementById('object-svg-created');
-          var objectDocument = objectElement.contentDocument;
-          var element = objectDocument.querySelector('a');
+        var frameElement = getFrameElement(element);
+        expect(frameElement).to.equal(object);
+      });
 
-          var frameElement = getFrameElement(element);
-          expect(frameElement).to.equal(objectElement);
+      bdd.it('should resolve the element hosting the contentDocument from cache', function() {
+        var objectDocument = object.contentDocument;
+        var element = objectDocument.querySelector('a');
 
-          var cachedFrameElement = getFrameElement(element);
-          expect(cachedFrameElement).to.equal(objectElement);
-        });
+        var cachedFrameElement = getFrameElement(element);
+        expect(cachedFrameElement).to.equal(object);
+      });
+    });
 
-        // Tests on BrowserStack may not have the file available immediately
-        // I'm not eager to find out if the load event thing works cross browser
-        var testLoaded = function() {
-          if (createdLoaded === false) {
-            this.skip('failed loading object element');
-          }
+    bdd.describe('for injected <object> elements', function() {
+      var fixture;
+      var object;
 
-          if (!createdLoaded) {
-            setTimeout(testLoaded, 200);
-            return;
-          }
+      bdd.before(function() {
+        var dfd = new Promise.Deferred();
 
-          executeTest();
-        }.bind(this);
+        fixture = customFixture('<div></div>');
 
-        testLoaded();
-      },
-    };
+        object = document.createElement('object');
+        object.setAttribute('type', 'image/svg+xml');
+        object.setAttribute('typemustmatch', 'false');
+        object.setAttribute('id', 'object-svg-created');
+        object.setAttribute('width', '200');
+        object.setAttribute('height', '50');
+        object.setAttribute('data', '../../tests/media/test.svg');
+        fixture.root.appendChild(object);
+
+        object.onload = function() {
+          dfd.resolve();
+        };
+        object.onerror = function() {
+          dfd.reject('error while loading <object>');
+        };
+
+        return dfd.promise;
+      });
+
+      bdd.after(function() {
+        fixture.remove();
+        fixture = null;
+      });
+
+      bdd.it('should resolve the element hosting the contentDocument', function() {
+        var objectDocument = object.contentDocument;
+        var element = objectDocument.querySelector('a');
+
+        var frameElement = getFrameElement(element);
+        expect(frameElement).to.equal(object);
+      });
+
+      bdd.it('should resolve the element hosting the contentDocument from cache', function() {
+        var objectDocument = object.contentDocument;
+        var element = objectDocument.querySelector('a');
+
+        var cachedFrameElement = getFrameElement(element);
+        expect(cachedFrameElement).to.equal(object);
+      });
+    });
+
   });
 });

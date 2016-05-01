@@ -1,7 +1,7 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var FocusableTestFrame = require('../helper/test-iframe-browser-data');
   var focusableTestData = require('../helper/browser-focusable-data');
@@ -13,57 +13,48 @@ define(function(require) {
   var getFocusRedirectTarget = require('ally/get/focus-redirect-target');
   var queryTabsequence = require('ally/query/tabsequence');
 
-  registerSuite(function() {
-
-    function keysMap(list) {
-      var map = {};
-      list.forEach(function(key) {
-        map[key] = true;
-      });
-      return map;
-    }
+  bdd.describe('core: Focusable Browser Compatibility', function() {
 
     var framed = new FocusableTestFrame();
-
     var data = focusableTestData(platform);
-    var suite = {
-      name: 'core: Browser Compatibility',
 
-      before: function() {
-        return framed.initialize(document.body);
-      },
-      after: function() {
-        framed.terminate();
-      },
-      'browser version': function() {
-        if (data) {
-          var ident = data.platform.name + ' ' + data.platform.version;
-          if (data.platform.product) {
-            ident = data.platform.product + ' ' + ident;
-          }
+    bdd.before(function() {
+      if (!data) {
+        this.skip('No data available to compare against');
+      }
 
-          this.skip('Checking against ' + ident);
-        } else {
-          this.skip('No data to compare to');
-        }
-      },
-    };
+      return framed.initialize(document.body);
+    });
+
+    bdd.after(function() {
+      framed.terminate();
+    });
+
+    // This test is a hack to print some data
+    bdd.it('should compare against the correct data', function() {
+      var ident = data.platform.name + ' ' + data.platform.version;
+      if (data.platform.product) {
+        ident = data.platform.product + ' ' + ident;
+      }
+
+      this.skip(ident);
+    });
 
     if (!data) {
-      return suite;
+      return;
     }
 
     var ignoreTabsequencePattern = /svg/;
     var ignoreTabsequenceFocusablePattern = null;
     var skipTabsequence = {};
     var ignorePattern = /(^|-> )(ignore|html|body|embed|param)/;
-    var skipUntestable = keysMap([
+    var skipUntestable = {
       // known mismatch
-      'iframe',
-      'iframe[src=svg]',
-      'keygen',
-      'keygen[tabindex=-1]',
-    ]);
+      'iframe': true,
+      'iframe[src=svg]': true,
+      'keygen': true,
+      'keygen[tabindex=-1]': true,
+    };
 
     if (data.platform.layout === 'Blink' || data.platform.layout === 'WebKit') {
       skipUntestable['svg rect[onfocus]'] = true;
@@ -178,59 +169,59 @@ define(function(require) {
       };
     }
 
-    if (!data) {
-      return suite;
-    }
+    bdd.describe('focusable state', function() {
+      Object.keys(data.elements).forEach(function(label) {
+        if (skipUntestable[label] || label.match(ignorePattern)) {
+          // silently skip what we know we can't test
+          return;
+        }
 
-    Object.keys(data.elements).forEach(function(label) {
-      if (skipUntestable[label] || label.match(ignorePattern)) {
-        // silently skip what we know we can't test
-        return;
-      }
-
-      suite[label] = generateTest(label);
+        bdd.it('should match for ' + label, generateTest(label));
+      });
     });
 
-    suite.tabsequence = function() {
-      var ignored = function(label) {
-        return !skipUntestable[label]
-          && !skipTabsequence[label]
-          && !label.match(ignorePattern)
-          && !label.match(ignoreTabsequencePattern)
-          && label.indexOf(' -> ') === -1;
-      };
-
-      var expected = data.tabsequence.filter(ignored);
-      var sequence = queryTabsequence({
-        context: framed.document.body,
-        strategy: 'strict',
-      }).map(function(element) {
+    bdd.describe('tabbing sequence', function() {
+      function extractLabel(element) {
         return element.getAttribute('data-label');
-      }).filter(ignored);
+      }
 
-      expect(sequence).to.deep.equal(expected);
-    };
+      bdd.it('should match for script focusable elements', function() {
+        var ignored = function(label) {
+          return !skipUntestable[label]
+            && !skipTabsequence[label]
+            && !label.match(ignorePattern)
+            && !label.match(ignoreTabsequencePattern)
+            && label.indexOf(' -> ') === -1;
+        };
 
-    suite['tabsequence with onlyTabbable'] = function() {
-      var ignored = function(label) {
-        return !skipUntestable[label]
-          && !skipTabsequence[label]
-          && !label.match(ignorePattern)
-          && (!ignoreTabsequenceFocusablePattern || !label.match(ignoreTabsequenceFocusablePattern))
-          && label.indexOf(' -> ') === -1;
-      };
+        var expected = data.tabsequence.filter(ignored);
+        var sequence = queryTabsequence({
+          context: framed.document.body,
+          strategy: 'strict',
+        }).map(extractLabel).filter(ignored);
 
-      var expected = data.tabsequence.filter(ignored);
-      var sequence = queryTabsequence({
-        context: framed.document.body,
-        includeOnlyTabbable: true,
-        strategy: 'strict',
-      }).map(function(element) {
-        return element.getAttribute('data-label');
-      }).filter(ignored);
+        expect(sequence).to.deep.equal(expected);
+      });
 
-      expect(sequence).to.deep.equal(expected);
-    };
-    return suite;
+      bdd.it('should match when including onlyTabbable', function() {
+        var ignored = function(label) {
+          return !skipUntestable[label]
+            && !skipTabsequence[label]
+            && !label.match(ignorePattern)
+            && (!ignoreTabsequenceFocusablePattern || !label.match(ignoreTabsequenceFocusablePattern))
+            && label.indexOf(' -> ') === -1;
+        };
+
+        var expected = data.tabsequence.filter(ignored);
+        var sequence = queryTabsequence({
+          context: framed.document.body,
+          includeOnlyTabbable: true,
+          strategy: 'strict',
+        }).map(extractLabel).filter(ignored);
+
+        expect(sequence).to.deep.equal(expected);
+      });
+    });
+
   });
 });

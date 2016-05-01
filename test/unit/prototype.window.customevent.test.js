@@ -1,23 +1,20 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var getFunctionName = require('../helper/function-name');
   var CustomEvent = require('ally/prototype/window.customevent');
 
-  registerSuite(function() {
+  bdd.describe('prototype/window.customevent', function() {
 
-    return {
-      name: 'prototype/window.customevent',
+    bdd.it('should provide window.CustomEvent', function() {
+      if (getFunctionName(CustomEvent) !== 'CustomEventPolyfill') {
+        this.skip('CustomEvent supported natively');
+      }
 
-      polyfilled: function() {
-        if (getFunctionName(CustomEvent) !== 'CustomEventPolyfill') {
-          this.skip('CustomEvent supported natively');
-        }
+      expect(CustomEvent).to.be.a('function');
+    });
 
-        expect(CustomEvent).to.be.a('function');
-      },
-    };
   });
 });

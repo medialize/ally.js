@@ -1,64 +1,61 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var nodeArray = require('ally/util/node-array');
 
-  registerSuite(function() {
+  bdd.describe('util/node-array', function() {
     var fixture;
 
-    return {
-      name: 'util/node-array',
+    bdd.before(function() {
+      fixture = customFixture([
+        '<div class="test-foo"></div>',
+        '<div class="test-foo"></div>',
+        '<div id="test-bar"></div>',
+      ]);
+    });
 
-      beforeEach: function() {
-        fixture = customFixture([
-          '<div class="test-foo"></div>',
-          '<div class="test-foo"></div>',
-          '<div id="test-bar"></div>',
-        ]);
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.after(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      undefined: function() {
-        var res = nodeArray(undefined);
-        expect(res).to.be.a('array');
-        expect(res.length).to.equal(0);
-      },
-      array: function() {
-        var res = nodeArray([123]);
-        expect(res).to.be.a('array');
-        expect(res.length).to.equal(1);
-      },
-      node: function() {
-        var node = document.getElementById('test-bar');
-        var res = nodeArray(node);
-        expect(res).to.be.a('array');
-        expect(res[0]).to.equal(node);
-      },
-      string: function() {
-        var node = document.querySelectorAll('.test-foo');
-        var res = nodeArray('.test-foo');
-        expect(res).to.be.a('array');
-        expect(res[0]).to.equal(node[0]);
-        expect(res[1]).to.equal(node[1]);
-      },
-      iterable: function() {
-        var node = document.querySelectorAll('.test-foo');
-        var res = nodeArray(node);
-        expect(res).to.be.a('array');
-        expect(res[0]).to.equal(node[0]);
-        expect(res[1]).to.equal(node[1]);
-      },
-      invalid: function() {
-        expect(function() {
-          nodeArray(new Date());
-        }).to.throw(TypeError);
-      },
-    };
+    bdd.it('should handle invalid input', function() {
+      expect(function() {
+        nodeArray(new Date());
+      }).to.throw(TypeError);
+    });
+
+    bdd.it('should ignore `undefined`', function() {
+      var res = nodeArray(undefined);
+      expect(res).to.deep.equal([]);
+    });
+
+    bdd.it('should accept arrays', function() {
+      var res = nodeArray([123, 234]);
+      expect(res).to.deep.equal([123, 234]);
+    });
+
+    bdd.it('should accept iterable values', function() {
+      var nodes = document.querySelectorAll('.test-foo');
+      var list = [].slice.call(nodes, 0);
+      var res = nodeArray(nodes);
+      expect(res).to.deep.equal(list);
+    });
+
+    bdd.it('should accept DOM nodes', function() {
+      var node = document.getElementById('test-bar');
+      var res = nodeArray(node);
+      expect(res).to.deep.equal([node]);
+    });
+
+    bdd.it('should resolve CSS query selectors', function() {
+      var nodes = [].slice.call(document.querySelectorAll('.test-foo'), 0);
+      var res = nodeArray('.test-foo');
+      expect(res).to.deep.equal(nodes);
+    });
+
   });
 });

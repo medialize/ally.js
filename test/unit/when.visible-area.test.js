@@ -1,149 +1,171 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var customFixture = require('../helper/fixtures/custom.fixture');
   var whenVisibleArea = require('ally/when/visible-area');
 
-  registerSuite(function() {
+  bdd.describe('when/visible-area', function() {
     var fixture;
     var handle;
 
-    return {
-      name: 'when/visible-area',
-
-      beforeEach: function() {
-        fixture = customFixture([
-          /*eslint-disable indent */
-          '<div id="outer">',
-            '<div id="inner">',
-              '<input type="text" id="target">',
-            '</div>',
+    bdd.beforeEach(function() {
+      fixture = customFixture([
+        /*eslint-disable indent */
+        '<div id="outer">',
+          '<div id="inner">',
+            '<input type="text" id="target">',
           '</div>',
-          /*eslint-enable indent */
-        ]);
+        '</div>',
+        /*eslint-enable indent */
+      ]);
 
-        fixture.outer = document.getElementById('outer');
-        fixture.inner = document.getElementById('inner');
-        fixture.target = document.getElementById('target');
+      fixture.outer = document.getElementById('outer');
+      fixture.inner = document.getElementById('inner');
+      fixture.target = document.getElementById('target');
 
-        // move target out of view by making the parent scrollable
-        var reset = 'box-sizing: border-box; margin:0; padding:0; border:0;';
-        fixture.outer.setAttribute('style', reset + ' width: 200px; height: 50px; overflow: hidden;');
-        fixture.inner.setAttribute('style', reset + ' width: 1000px; height: 50px; padding-left: 200px;');
-        fixture.target.setAttribute('style', reset + ' width: 200px; height: 50px;');
-        fixture.outer.scrollLeft = 0;
-      },
-      afterEach: function() {
-        // make sure a failed test cannot leave listeners behind
-        handle && handle.disengage({ force: true });
-        fixture.remove();
-        fixture = null;
-      },
+      // move target out of view by making the parent scrollable
+      var reset = 'box-sizing: border-box; margin:0; padding:0; border:0;';
+      fixture.outer.setAttribute('style', reset + ' width: 200px; height: 50px; overflow: hidden;');
+      fixture.inner.setAttribute('style', reset + ' width: 1000px; height: 50px; padding-left: 200px;');
+      fixture.target.setAttribute('style', reset + ' width: 200px; height: 50px;');
+      fixture.outer.scrollLeft = 0;
+    });
 
-      'invalid invocation': function() {
-        expect(function() {
-          handle = whenVisibleArea();
-        }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
+    bdd.afterEach(function() {
+      handle && handle.disengage({ force: true });
+      fixture.remove();
+      fixture = null;
+    });
 
-        expect(function() {
-          handle = whenVisibleArea({
-            context: document.body,
-          });
-        }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
-
-        expect(function() {
-          handle = whenVisibleArea({
-            callback: function() {},
-          });
-        }).to.throw(TypeError, 'when/visible-area requires valid options.context');
-      },
-      'visible initially': function() {
-        var deferred = this.async(10000);
-        // scroll to 100% visibility
-        fixture.outer.scrollLeft = 200;
-        handle = whenVisibleArea({
-          context: '#target',
-          callback: deferred.callback(function() {
-            expect(fixture.outer.scrollLeft).to.equal(200);
-          }),
-        });
-      },
-      'scroll parent, area: 1': function() {
-        var deferred = this.async(10000);
-        handle = whenVisibleArea({
-          context: '#target',
-          callback: deferred.callback(function() {
-            expect(fixture.outer.scrollLeft).to.equal(200);
-          }),
-        });
-
-        // scroll to 75% visibility
-        fixture.outer.scrollLeft = 150;
-
-        setTimeout(function() {
-          // scroll to 100% visibility
-          fixture.outer.scrollLeft = 200;
-        }, 50);
-      },
-      'scroll parent, area: 0.5': function() {
-        var deferred = this.async(10000);
-        handle = whenVisibleArea({
-          context: '#target',
-          area: 0.5,
-          callback: deferred.callback(function() {
-            expect(fixture.outer.scrollLeft).to.equal(100);
-          }),
-        });
-
-        // scroll to 25% visibility
-        fixture.outer.scrollLeft = 50;
-
-        setTimeout(function() {
-          // scroll to 50% visibility
-          fixture.outer.scrollLeft = 100;
-        }, 50);
-      },
-      'repeat callback': function() {
-        var deferred = this.async(10000);
-        var counter = 3;
-        handle = whenVisibleArea({
-          context: '#target',
-          callback: deferred.rejectOnError(function() {
-            expect(fixture.outer.scrollLeft).to.equal(200);
-            counter--;
-            if (counter) {
-              return false;
-            }
-
-            deferred.resolve();
-            return true;
-          }),
-        });
-
-        setTimeout(function() {
-          // scroll to 100% visibility
-          fixture.outer.scrollLeft = 200;
-        }, 50);
-      },
-      'disengage observer': function() {
-        var deferred = this.async(10000);
-        handle = whenVisibleArea({
-          context: '#target',
-          callback: deferred.rejectOnError(function() {
-            throw new Error('should have been aborted');
-          }),
-        });
-
+    bdd.it('should handle invalid input', function() {
+      expect(function() {
+        handle = whenVisibleArea();
         handle.disengage();
+      }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
+
+      expect(function() {
+        handle = whenVisibleArea({
+          context: document.body,
+        });
+        handle.disengage();
+      }).to.throw(TypeError, 'when/visible-area requires options.callback to be a function');
+
+      expect(function() {
+        handle = whenVisibleArea({
+          callback: function() {},
+        });
+        handle.disengage();
+      }).to.throw(TypeError, 'when/visible-area requires valid options.context');
+    });
+
+    bdd.it('should handle initially visible elements asynchronously', function() {
+      var deferred = this.async(10000);
+
+      // scroll to 100% visibility
+      fixture.outer.scrollLeft = 200;
+
+      var synchronouslySet = false;
+      handle = whenVisibleArea({
+        context: '#target',
+        callback: deferred.callback(function() {
+          expect(synchronouslySet).to.equal(true, 'callback invoked async');
+        }),
+      });
+
+      synchronouslySet = true;
+    });
+
+    bdd.it('should execute the callback when the element is visible 100%', function() {
+      var deferred = this.async(10000);
+
+      handle = whenVisibleArea({
+        context: '#target',
+        callback: deferred.callback(function() {
+          expect(fixture.outer.scrollLeft).to.equal(200);
+        }),
+      });
+
+      // scroll to 75% visibility
+      fixture.outer.scrollLeft = 150;
+
+      setTimeout(function() {
         // scroll to 100% visibility
         fixture.outer.scrollLeft = 200;
+      }, 50);
+    });
 
-        setTimeout(function() {
+    bdd.it('should execute the callback when the element is visible 50%', function() {
+      var deferred = this.async(10000);
+
+      handle = whenVisibleArea({
+        context: '#target',
+        area: 0.5,
+        callback: deferred.callback(function() {
+          expect(fixture.outer.scrollLeft).to.equal(100);
+        }),
+      });
+
+      // scroll to 25% visibility
+      fixture.outer.scrollLeft = 50;
+
+      setTimeout(function() {
+        // scroll to 50% visibility
+        fixture.outer.scrollLeft = 100;
+      }, 50);
+    });
+
+    bdd.it('should allow to re-execute the callback', function() {
+      var deferred = this.async(10000);
+      var counter = 3;
+
+      handle = whenVisibleArea({
+        context: '#target',
+        callback: deferred.rejectOnError(function() {
+          expect(fixture.outer.scrollLeft).to.equal(200);
+
+          counter--;
+          if (counter) {
+            return false;
+          }
+
           deferred.resolve();
-        }, 50);
-      },
-    };
+          return true;
+        }),
+      });
+
+      // scroll to 75% visibility
+      fixture.outer.scrollLeft = 150;
+
+      setTimeout(function() {
+        // scroll to 100% visibility
+        fixture.outer.scrollLeft = 200;
+      }, 50);
+    });
+
+    bdd.it('should ceize operation on .disengage()', function() {
+      var deferred = this.async(10000);
+
+      handle = whenVisibleArea({
+        context: '#target',
+        callback: deferred.rejectOnError(function() {
+          throw new Error('should have been aborted');
+        }),
+      });
+
+      // scroll to 75% visibility
+      fixture.outer.scrollLeft = 150;
+
+      handle.disengage();
+
+      // scroll to 100% visibility
+      fixture.outer.scrollLeft = 200;
+
+      setTimeout(function() {
+        deferred.resolve();
+      }, 200);
+    });
+
   });
 });

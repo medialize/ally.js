@@ -1,67 +1,58 @@
 define(function(require) {
   'use strict';
 
-  var registerSuite = require('intern!object');
+  var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
   var supports = require('../helper/supports');
+  var platform = require('ally/util/platform');
   var queryFocusable = require('ally/query/focusable');
 
-  registerSuite(function() {
+  bdd.describe('query/focusable', function() {
     var fixture;
 
-    return {
-      name: 'query/focusable',
+    bdd.beforeEach(function() {
+      var deferred = this.async(10000);
+      fixture = focusableFixture();
+      // NOTE: Firefox decodes DataURIs asynchronously
+      setTimeout(deferred.resolve, 200);
+    });
 
-      beforeEach: function() {
-        fixture = focusableFixture();
-      },
-      afterEach: function() {
-        fixture.remove();
-        fixture = null;
-      },
+    bdd.afterEach(function() {
+      fixture.remove();
+      fixture = null;
+    });
 
-      invalid: function() {
-        expect(function() {
-          queryFocusable({
-            context: [true],
-          });
-        }).to.throw(TypeError, 'query/focusable requires options.context to be an Element', 'non-element context');
+    bdd.it('should handle invalid input', function() {
+      expect(function() {
+        queryFocusable({
+          context: true,
+        });
+      }).to.throw(TypeError, 'unexpected input true', 'non-element context');
 
-        expect(function() {
-          queryFocusable({
-            strategy: 'random',
-          });
-        }).to.throw(TypeError, 'query/focusable requires option.strategy to be one of ["quick", "strict", "all"]', 'bad strategy');
-      },
+      expect(function() {
+        queryFocusable({
+          strategy: 'random',
+        });
+      }).to.throw(TypeError, 'query/focusable requires option.strategy to be one of ["quick", "strict", "all"]', 'bad strategy');
+    });
 
-      document: function() {
-        var result = queryFocusable().map(fixture.nodeToString);
-        var expected = [
-          '#tabindex--1',
-          '#tabindex-0',
-          '#tabindex-1',
-          supports.focusInvalidTabindex && '#tabindex-bad',
-          '#link',
-          '#link-tabindex--1',
-          '#image-map-area',
-          supports.focusObjectSvg && '#object-svg',
-          supports.focusObjectSvg && '#object-tabindex-svg',
-          supports.svgFocusMethod && '#svg-link',
-          supports.focusAudioWithoutControls && '#audio',
-          '#audio-controls',
-          '#input',
-          '#input-tabindex--1',
-          '#span-contenteditable',
-          '#img-ismap-link',
-          '#focusable-flexbox',
-        ].filter(Boolean);
+    bdd.it('should search within given context', function() {
+      var expected = [
+        '#link',
+        '#link-tabindex--1',
+      ];
 
-        expect(result).to.deep.equal(expected);
-      },
+      var result = queryFocusable({
+        context: '.context',
+      }).map(fixture.nodeToString);
 
-      includeOnlyTabbable: function() {
+      expect(result).to.deep.equal(expected);
+    });
+
+    bdd.describe('for option includeOnlyTabbable', function() {
+      bdd.it('should find elements which are either focusable or onlyTabbable', function() {
         var result = queryFocusable({
           includeOnlyTabbable: true,
         }).map(fixture.nodeToString);
@@ -87,21 +78,11 @@ define(function(require) {
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      context: function() {
-        var expected = [
-          '#link',
-          '#link-tabindex--1',
-        ];
-        var result = queryFocusable({
-          context: '.context',
-        }).map(fixture.nodeToString);
-
-        expect(result).to.deep.equal(expected);
-      },
-
-      'context and self': function() {
+    bdd.describe('for option includeContext', function() {
+      bdd.it('should find elements within context and the context element itself', function() {
         fixture.root.querySelector('.context').setAttribute('tabindex', '-1');
 
         var expected = [
@@ -109,15 +90,44 @@ define(function(require) {
           '#link',
           '#link-tabindex--1',
         ];
+
         var result = queryFocusable({
           context: '.context',
           includeContext: true,
         }).map(fixture.nodeToString);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      'children of <canvas>': function() {
+    bdd.it('should find all focusable elements', function() {
+      var result = queryFocusable().map(fixture.nodeToString);
+
+      var expected = [
+        '#tabindex--1',
+        '#tabindex-0',
+        '#tabindex-1',
+        supports.focusInvalidTabindex && '#tabindex-bad',
+        '#link',
+        '#link-tabindex--1',
+        '#image-map-area',
+        supports.focusObjectSvg && '#object-svg',
+        supports.focusObjectSvg && '#object-tabindex-svg',
+        supports.svgFocusMethod && '#svg-link',
+        supports.focusAudioWithoutControls && '#audio',
+        '#audio-controls',
+        '#input',
+        '#input-tabindex--1',
+        '#span-contenteditable',
+        '#img-ismap-link',
+        '#focusable-flexbox',
+      ].filter(Boolean);
+
+      expect(result).to.deep.equal(expected);
+    });
+
+    bdd.describe('for children of <canvas>', function() {
+      bdd.it('should find all focusable elements', function() {
         var container = fixture.add([
           /*eslint-disable indent */
           '<canvas>',
@@ -139,29 +149,31 @@ define(function(require) {
           '#canvas-span-tabindex-0',
           '#canvas-span-tabindex--1',
         ];
+
         var result = queryFocusable({
           context: container,
           includeContext: true,
         }).map(fixture.nodeToString);
 
         expect(result).to.deep.equal(expected);
-      },
+      });
+    });
 
-      'Shadow DOM': function() {
+    bdd.describe('for ShadowDOM', function() {
+      bdd.before(function() {
         if (document.body.createShadowRoot === undefined) {
-          this.skip('Shadow DOM not supported');
+          this.skip('ShadowDOM is not supported');
         }
+      });
 
-        if (!supports.cssShadowPiercingDeepCombinator) {
-          this.skip('Shadow DOM "shadow-piercing descendant combinator" not supported');
-        }
-
+      bdd.it('should find elements nested in ShadowRoot', function() {
         var host = document.createElement('div');
         host.id = 'first-shadow-host';
         fixture.root.appendChild(host);
         shadowInputFixture.createShadowRoot(fixture);
 
         var result = queryFocusable().map(fixture.nodeToString);
+
         var expected = [
           '#tabindex--1',
           '#tabindex-0',
@@ -180,13 +192,14 @@ define(function(require) {
           '#span-contenteditable',
           '#img-ismap-link',
           '#focusable-flexbox',
-          '#first-input',
-          '#second-input',
-          '#third-input',
+          !platform.is.GECKO && '#first-input',
+          !platform.is.GECKO && '#second-input',
+          !platform.is.GECKO && '#third-input',
         ].filter(Boolean);
 
         expect(result).to.deep.equal(expected);
-      },
-    };
+      });
+    });
+
   });
 });
