@@ -91,6 +91,11 @@ define(function(require) {
   config.maxConcurrency = 2;
   // https://theintern.github.io/intern/#option-tunnel
   config.tunnel = 'BrowserStackTunnel';
+  config.tunnelOptions = {
+    hostname: 'hub.browserstack.com',
+    protocol: 'https',
+    port: 443,
+  };
 
   return config;
 });
