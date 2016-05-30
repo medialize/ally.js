@@ -144,7 +144,7 @@ function isTabbableRules({
     }
   }
 
-  if (platform.is.GECKO) {
+  if (!except.scrollable && platform.is.GECKO) {
     // Firefox considers scrollable containers keyboard focusable,
     // even though their tabIndex property is -1
     const style = window.getComputedStyle(element, null);

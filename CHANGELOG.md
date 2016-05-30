@@ -14,6 +14,7 @@
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
 * [build] replacing broken [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) plugin - [issue #149](https://github.com/medialize/ally.js/issues/149)
 * improving [`ally.style.focusSource`][ally/style/focus-source] by adding `.unlock()` - [issue #151](https://github.com/medialize/ally.js/issues/151)
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to respect `except.scrollable`
 
 
 ## 1.2.0 - Adios DOMTokenList
