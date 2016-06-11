@@ -120,7 +120,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring `is/is.util.js` to extract image map related functions into `utils/image-map`
 * refactoring `is/focus-relevant` and `is/tabbable` to allow running the identification with execptions via `is/focus-relevant.rules` and `is/tabbable.rules`, while maintaining module signature
 * refactoring `console.log()` to go through `util/logger`
-* refactoring `selector/focusable` to extract `util/select-in-shadows` 
+* refactoring `selector/focusable` to extract `util/select-in-shadows`
 * fixing `ally.is.*` to work with other documents (e.g. iframes) - [issue #78](https://github.com/medialize/ally.js/issues/78)
 * fixing `supports/*` to not raise network errors - [issue #68](https://github.com/medialize/ally.js/issues/68)
 * fixing `supports/*` to run when required instead of on script load, restore scroll position - [issue #60](https://github.com/medialize/ally.js/issues/60)
@@ -228,7 +228,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * renamed `focus/disable-focus` to `maintain/disabled`
 
 
-## 0.0.7 (July 8th 2015) ##
+## 0.0.7 (July 8th 2015)
 
 * adding `event/shadow-focus` to emit custom event when focus changes within the Shadow DOM - extracted from `focus/within`
 * adding `event/interaction-type-listener` to track user input to differentiate keyboard and pointer input
@@ -237,25 +237,25 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * deprecating [`focus/trap`](http://allyjs.io/examples/trap-focus.html), use [`focus/disable-focus`](http://allyjs.io/examples/disable-focus.html) instead
 
 
-## 0.0.6 (June 17th 2015) ##
+## 0.0.6 (June 17th 2015)
 
 * fixing [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html) to subtract scrollbars from visible space
 
 
-## 0.0.5 (June 15th 2015) ##
+## 0.0.5 (June 15th 2015)
 
 * adding [`dom/when-visible`](http://allyjs.io/examples/focus-when-visible.html) to execute callback when an element becomes visible
 * improving [`dom/when-visible`](http://allyjs.io/examples/focus-when-visible.html) to also wait until an element becomes focusable
 
 
-## 0.0.4 (February 3rd 2015) ##
+## 0.0.4 (February 3rd 2015)
 
 * adding [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html)
 * adding [`focus/when-visible`](http://allyjs.io/examples/focus-when-visible.html)
 * fixing [`fix-browser/pointer-focus-children`](http://allyjs.io/examples/fix-pointer-focus-children.html) to temporarily disable transitions
 
 
-## 0.0.3 (January 7th 2015) ##
+## 0.0.3 (January 7th 2015)
 
 * adding [`fix-browser/pointer-focus-children`](http://allyjs.io/examples/fix-pointer-focus-children.html)
 * adding `dom/focus-target` to find the first focusable element in an element's ancestry
@@ -264,7 +264,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * fixing `dom/is-visible` to look at computed styles, not the element's styles (duh!)
 
 
-## 0.0.2 (January 5th 2015) ##
+## 0.0.2 (January 5th 2015)
 
 * adding [`fix-browser/pointer-focus-input`](http://allyjs.io/examples/fix-pointer-focus-input.html)
 * adding [`dom/active-elements`](http://allyjs.io/examples/active-elements.html) to identify the actually focsued element and its host elements in ShadowDOM
@@ -281,7 +281,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * fixing linting errors
 
 
-## 0.0.1 (December 25th 2014) ##
+## 0.0.1 (December 25th 2014)
 
 * initial release "focus"
 

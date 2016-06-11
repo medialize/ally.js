@@ -12,7 +12,7 @@ It does not make sense to implement the same things over and over again, which i
 With ally.js v1.0.0 I've laid the foundation for a library solving the "stupid problems" (like "what is focusable?") so developers won't have to anymore. Here are the topics I'd cover next (not necessarily in that order) and would love your support:
 
 * [x] simplify managing focus
-* [x] simplify basic keyboard interaction (`enter`, `escape`, `space`) 
+* [x] simplify basic keyboard interaction (`enter`, `escape`, `space`)
 * [ ] implement a DOM based interface to simplify handling [WAI-ARIA state attributes](http://www.w3.org/TR/wai-aria/states_and_properties) (along the lines of [IBM-Watson/a11y.js](https://github.com/IBM-Watson/a11y.js))
   * easily creating unique-IDs for linking elements e.g. `<label for="uniq-123">…</label><input id="uniq-123">`
   * toggling states
