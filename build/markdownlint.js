@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
 const markdownlint = require('markdownlint');
-const glob = require('glob');
-const path = require('path');
 
-const cwd = path.resolve(process.cwd(), 'docs');
+const files = process.argv.slice(2);
 
 // https://github.com/DavidAnson/markdownlint#rules
 // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
@@ -41,7 +39,7 @@ const config = {
 };
 
 markdownlint({
-  files: glob.sync('**/*.md', {cwd: cwd, realpath: true}),
+  files,
   frontMatter: /(^---$[^]*?^---$)?(\r\n|\r|\n){1,}/m,
   config: config,
 }, function(err, result) {

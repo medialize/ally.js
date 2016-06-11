@@ -67,8 +67,8 @@
     "publish:coveralls": "cat reports/lcov.info | coveralls",
     "lint": "npm-run-all --parallel lint:js lint:md lint:md:js",
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}')",
-    "lint:md": "node build/markdownlint.js",
-    "lint:md:js": "eslint --ext md docs",
+    "lint:md": "node build/markdownlint.js $(glob-cli '{*.md,docs/**/*.md}')",
+    "lint:md:js": "eslint --ext md $(glob-cli 'docs/**/*.md')",
     "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
     "precommit": "npm run lint"
   },
