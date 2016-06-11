@@ -115,7 +115,7 @@ npm run lint:js
 npm run lint:md
 ```
 
-Linting is done automatically via git hooks by way of [husky](https://www.npmjs.com/package/husky).
+Linting is done automatically during `git commit` by way of [pre-commit](https://www.npmjs.com/package/pre-commit) and limited to the actually changed files by way of [lint-staged](https://www.npmjs.com/package/lint-staged) in order to keep `git commit` as fast as possible.
 
 ---
 

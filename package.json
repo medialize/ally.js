@@ -70,7 +70,18 @@
     "lint:md": "node build/markdownlint.js $(glob-cli '{*.md,docs/**/*.md}')",
     "lint:md:js": "eslint --ext md $(glob-cli 'docs/**/*.md')",
     "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
-    "precommit": "npm run lint"
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint",
+    "lint-staged:md": "node build/markdownlint.js",
+    "lint-staged:md:js": "eslint --ext md"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "lint-staged:js": "{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}",
+    "lint-staged:md": "{*.md,docs/**/*.md}",
+    "lint-staged:md:js": "docs/**/*.md"
   },
   "devDependencies": {
     "archiver": "^1.0.0",
@@ -91,11 +102,11 @@
     "glob": "^7.0.0",
     "glob-cli": "^1.0.0",
     "handlebars": "^4.0.5",
-    "husky": "^0.11.1",
     "intern": "^3.2.1",
     "jquery": "^2.1.4",
     "jquery-ui": "git://github.com/jquery/jquery-ui.git#1.11.4",
     "jsbin-sync": "^0.3.1",
+    "lint-staged": "^1.0.1",
     "markdownlint": "^0.1.0",
     "metalsmith": "^2.1.0",
     "metalsmith-broken-link-checker": "^0.1.8",
@@ -110,6 +121,7 @@
     "metalsmith-static": "0.0.5",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^1.7.0",
+    "pre-commit": "^1.1.3",
     "prismjs": "^1.3.0",
     "remarkable": "^1.6.1",
     "replace": "^0.3.0",
