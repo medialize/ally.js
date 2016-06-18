@@ -44,7 +44,6 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | focus-tabindex-trailing-characters | boolean | true if `<div tabindex="3x">` is focusable |
 | focus-table | boolean | true if `<table>`, `<tr>` and `<td>` are focusable |
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
-| focusout-event | boolean | true if `focusout` is dispatched synchronously |
 | tabsequence-area-at-img-position | boolean | true if `<area>` are tabbed at the DOM position of `<img usemap="…">` |
 
 

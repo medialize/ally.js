@@ -92,7 +92,7 @@ define(function(require) {
           context: document.getElementById('label-tabindex'),
         });
 
-        if (supports.canFocusLabelTabindex) {
+        if (supports.focusLabelTabindex) {
           expect(target).to.equal(null);
         } else {
           expect(target.id).to.equal('label-tabindex-target');
@@ -104,9 +104,9 @@ define(function(require) {
           context: document.getElementById('legend'),
         });
 
-        if (supports.canFocusRedirectLegend === 'focusable') {
+        if (supports.focusRedirectLegend === 'focusable') {
           expect(target.id).to.equal('legend-target-focusable');
-        } else if (supports.canFocusRedirectLegend === 'tabbable') {
+        } else if (supports.focusRedirectLegend === 'tabbable') {
           expect(target.id).to.equal('legend-target-tabbable');
         } else {
           expect(target).to.equal(null);
@@ -117,7 +117,7 @@ define(function(require) {
           context: document.getElementById('legend-textarea'),
         });
 
-        if (supports.canFocusRedirectLegend) {
+        if (supports.focusRedirectLegend) {
           expect(target.id).to.equal('legend-textarea-target');
         } else {
           expect(target).to.equal(null);
@@ -128,7 +128,7 @@ define(function(require) {
           context: document.getElementById('legend-select'),
         });
 
-        if (supports.canFocusRedirectLegend) {
+        if (supports.focusRedirectLegend) {
           expect(target.id).to.equal('legend-select-target');
         } else {
           expect(target).to.equal(null);
@@ -139,7 +139,7 @@ define(function(require) {
           context: document.getElementById('legend-button'),
         });
 
-        if (supports.canFocusRedirectLegend) {
+        if (supports.focusRedirectLegend) {
           expect(target.id).to.equal('legend-button-target');
         } else {
           expect(target).to.equal(null);
@@ -150,7 +150,7 @@ define(function(require) {
           context: document.getElementById('legend-a'),
         });
 
-        if (supports.canFocusRedirectLegend === 'tabbable') {
+        if (supports.focusRedirectLegend === 'tabbable') {
           expect(target.id).to.equal('legend-a-target');
         } else {
           expect(target).to.equal(null);
@@ -161,7 +161,7 @@ define(function(require) {
           context: document.getElementById('legend-empty'),
         });
 
-        if (supports.canFocusRedirectLegend === 'tabbable') {
+        if (supports.focusRedirectLegend === 'tabbable') {
           expect(target.id).to.equal('legend-empty-target');
         } else {
           expect(target).to.equal(null);
@@ -206,7 +206,7 @@ define(function(require) {
           context: document.getElementById('img'),
         });
 
-        if (supports.canFocusRedirectImgUsemap) {
+        if (supports.focusRedirectImgUsemap) {
           expect(target.id).to.equal('img-target');
         } else {
           expect(target).to.equal(null);

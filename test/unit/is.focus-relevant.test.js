@@ -54,7 +54,7 @@ define(function(require) {
       },
       'tabindex="bad"': function() {
         var element = document.getElementById('tabindex-bad');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusInvalidTabindex);
+        expect(isFocusRelevant(element)).to.equal(supports.focusInvalidTabindex);
       },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');
@@ -94,20 +94,20 @@ define(function(require) {
       },
       'img with usemap': function() {
         var element = document.getElementById('img-usemap');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusRedirectImgUsemap);
+        expect(isFocusRelevant(element)).to.equal(supports.focusRedirectImgUsemap);
       },
       'img with usemap and tabindex': function() {
         var element = document.getElementById('img-usemap');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusRedirectImgUsemap || supports.canFocusImgUsemapTabindex);
+        expect(isFocusRelevant(element)).to.equal(supports.focusRedirectImgUsemap || supports.focusImgUsemapTabindex);
       },
       'object element referencing svg': function() {
         var element = document.getElementById('object-svg');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
+        expect(isFocusRelevant(element)).to.equal(supports.focusObjectSvg);
       },
       'object element with tabindex="-1" referencing svg': function() {
         var element = document.getElementById('object-tabindex-svg');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusObjectSvg);
+        expect(isFocusRelevant(element)).to.equal(supports.focusObjectSvg);
       },
       'area element': function() {
         var deferred = this.async(10000);
@@ -141,7 +141,7 @@ define(function(require) {
       },
       'audio element': function() {
         var element = document.getElementById('audio');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusAudioWithoutControls);
+        expect(isFocusRelevant(element)).to.equal(supports.focusAudioWithoutControls);
       },
       'audio element with controls': function() {
         var element = document.getElementById('audio-controls');
@@ -149,12 +149,12 @@ define(function(require) {
       },
       'svg element': function() {
         var element = document.getElementById('svg');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg);
+        expect(isFocusRelevant(element)).to.equal(supports.focusSvg);
       },
       'svg element with tabindex="-1"': function() {
         var element = document.getElementById('svg');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusSvg || supports.canFocusSvgTabindexAttribute);
+        expect(isFocusRelevant(element)).to.equal(supports.focusSvg || supports.focusSvgTabindexAttribute);
       },
       'svg link element': function() {
         var element = document.getElementById('svg-link');
@@ -183,15 +183,15 @@ define(function(require) {
       },
       'extended: img with ismap attribute': function() {
         var element = document.getElementById('img-ismap');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusImgIsmap);
+        expect(isFocusRelevant(element)).to.equal(supports.focusImgIsmap);
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusScrollContainerWithoutOverflow);
+        expect(isFocusRelevant(element)).to.equal(supports.focusScrollContainerWithoutOverflow);
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusScrollContainer);
+        expect(isFocusRelevant(element)).to.equal(supports.focusScrollContainer);
       },
       'extended: child of focusable flexbox': function() {
         var element = fixture.add([
@@ -201,7 +201,7 @@ define(function(require) {
           '</div>',
           /*eslint-enable indent */
         ]).firstElementChild.firstElementChild;
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
+        expect(isFocusRelevant(element)).to.equal(supports.focusChildrenOfFocusableFlexbox);
       },
       'extended: flexbox container': function() {
         var element = fixture.add([
@@ -211,7 +211,7 @@ define(function(require) {
           '</div>',
           /*eslint-enable indent */
         ]).firstElementChild;
-        expect(isFocusRelevant(element)).to.equal(supports.canFocusFlexboxContainer);
+        expect(isFocusRelevant(element)).to.equal(supports.focusFlexboxContainer);
       },
       'extended: Shadow DOM host': function() {
         if (document.body.createShadowRoot === undefined) {

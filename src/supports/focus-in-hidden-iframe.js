@@ -1,12 +1,7 @@
-
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
-
 // references to the iframe's browsing context
 let _document;
 
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-in-hidden-iframe',
+export default {
   element: function(wrapper) {
     const iframe = document.createElement('iframe');
 
@@ -33,4 +28,4 @@ export default memorizeResult(() => detectFocus({
     const focus = _document.querySelector('input');
     return _document.activeElement === focus;
   },
-}));
+};

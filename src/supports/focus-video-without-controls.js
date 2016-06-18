@@ -1,10 +1,7 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
 import mp4 from './media/mp4';
 
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-video-without-controls',
+export default {
   element: 'video',
   mutate: function(element) {
     try {
@@ -14,4 +11,4 @@ export default memorizeResult(() => detectFocus({
       // IE9 may throw "Error: Not implemented"
     }
   },
-}));
+};

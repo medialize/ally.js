@@ -1,11 +1,6 @@
 
-import cache from './supports-cache';
-import memorizeResult from './memorize-result';
-
-const testName = 'supports-css-shadow-piercing-deep-combinator';
-
-export default memorizeResult(function() {
-  let combinator = cache.get(testName);
+export default function() {
+  let combinator;
 
   // see http://dev.w3.org/csswg/css-scoping-1/#deep-combinator
   // https://bugzilla.mozilla.org/show_bug.cgi?id=1117572
@@ -24,6 +19,5 @@ export default memorizeResult(function() {
     }
   }
 
-  cache.set(testName, combinator);
   return combinator;
-});
+}

@@ -37,11 +37,11 @@ define(function(require) {
       },
       'tabindex=""': function() {
         var element = document.getElementById('tabindex-empty');
-        expect(tabindexValue(element)).to.equal(supports.allowsInvalidTabindexValue ? -1 : null);
+        expect(tabindexValue(element)).to.equal(supports.focusInvalidTabindex ? -1 : null);
       },
       'tabindex="bad"': function() {
         var element = document.getElementById('tabindex-bad');
-        expect(tabindexValue(element)).to.equal(supports.allowsInvalidTabindexValue ? -1 : null);
+        expect(tabindexValue(element)).to.equal(supports.focusInvalidTabindex ? -1 : null);
       },
       'tabindex="-2"': function() {
         var element = document.getElementById('tabindex--2');

@@ -15,7 +15,7 @@ import getParents from '../get/parents';
 import decorateService from '../util/decorate-service';
 import selectInShadows from '../util/select-in-shadows';
 
-import _supports from './focus-within.supports';
+import _supports from '../supports/supports';
 let supports;
 
 // preferring focusin/out because they are synchronous in IE10+11

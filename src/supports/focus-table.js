@@ -1,9 +1,5 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
-
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-table',
+export default {
   element: 'table',
   mutate: function(element) {
     // IE9 has a problem replacing TBODY contents with innerHTML.
@@ -13,4 +9,4 @@ export default memorizeResult(() => detectFocus({
     fragment.innerHTML = '<tr><td>cell</td></tr>';
     element.appendChild(fragment);
   },
-}));
+};

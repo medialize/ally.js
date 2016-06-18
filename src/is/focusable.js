@@ -16,7 +16,7 @@ import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
 import tabindexValue from '../util/tabindex-value';
 
-import _supports from './focus-relevant.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function isOnlyFocusRelevant(element) {
@@ -39,14 +39,14 @@ function isOnlyFocusRelevant(element) {
     // there's no way to make an element focusable other than by adding a tabindex,
     // and focus behavior of the label element seems hard-wired to ignore tabindex
     // in some browsers (like Gecko, Blink and WebKit)
-    return !supports.canFocusLabelTabindex || _tabindex === null;
+    return !supports.focusLabelTabindex || _tabindex === null;
   }
 
   if (nodeName === 'legend' ) {
     return _tabindex === null;
   }
 
-  if (supports.canFocusSvgFocusableAttribute && (element.ownerSVGElement || nodeName === 'svg')) {
+  if (supports.focusSvgFocusableAttribute && (element.ownerSVGElement || nodeName === 'svg')) {
     // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
     const focusableAttribute = element.getAttribute('focusable');
     return focusableAttribute && focusableAttribute === 'false';
@@ -55,7 +55,7 @@ function isOnlyFocusRelevant(element) {
   if (nodeName === 'img' && element.hasAttribute('usemap')) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
     // it appears the tabindex is overruled so focus is still forwarded to the <map>
-    return _tabindex === null || !supports.canFocusImgUsemapTabindex;
+    return _tabindex === null || !supports.focusImgUsemapTabindex;
   }
 
   if (nodeName === 'area') {
@@ -115,12 +115,12 @@ function isFocusableRules({
       except: {},
     };
 
-    if (supports.canFocusInHiddenIframe) {
+    if (supports.focusInHiddenIframe) {
       // WebKit and Blink can focus content in hidden <iframe> and <object>
       visibilityOptions.except.browsingContext = true;
     }
 
-    if (supports.canFocusObjectSvgHidden) {
+    if (supports.focusObjectSvgHidden) {
       // Blink allows focusing the object element, even if it has visibility: hidden;
       // @browser-issue Blink https://code.google.com/p/chromium/issues/detail?id=586191
       const nodeName = element.nodeName.toLowerCase();
@@ -137,7 +137,7 @@ function isFocusableRules({
   const frameElement = getFrameElement(element);
   if (frameElement) {
     const _nodeName = frameElement.nodeName.toLowerCase();
-    if (_nodeName === 'object' && !supports.canFocusInZeroDimensionObject) {
+    if (_nodeName === 'object' && !supports.focusInZeroDimensionObject) {
       if (!frameElement.offsetWidth || !frameElement.offsetHeight) {
         // WebKit can not focus content in <object> if it doesn't have dimensions
         return false;

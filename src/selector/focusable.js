@@ -5,7 +5,7 @@
 
 import selectInShadows from '../util/select-in-shadows';
 
-import _supports from './focusable.supports';
+import _supports from '../supports/supports';
 let supports;
 
 let selector;
@@ -22,9 +22,9 @@ export default function() {
   // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   selector = ''
     // IE11 supports.can focus <table> and <td>
-    + (supports.canFocusTable ? 'table, td,' : '')
+    + (supports.focusTable ? 'table, td,' : '')
     // IE11 supports.can focus <fieldset>
-    + (supports.canFocusFieldset ? 'fieldset,' : '')
+    + (supports.focusFieldset ? 'fieldset,' : '')
     // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
     // svg a[*|href] does not match in IE9, but since we're filtering
     // through is/focusable we can include all <a> from SVG
@@ -40,9 +40,9 @@ export default function() {
     + 'iframe, object, embed,'
     // interactive content
     + 'keygen,'
-    + (supports.canFocusAudioWithoutControls ? 'audio,' : 'audio[controls],')
-    + (supports.canFocusVideoWithoutControls ? 'video,' : 'video[controls],')
-    + (supports.canFocusSummary ? 'summary,' : '')
+    + (supports.focusAudioWithoutControls ? 'audio,' : 'audio[controls],')
+    + (supports.focusVideoWithoutControls ? 'video,' : 'video[controls],')
+    + (supports.focusSummary ? 'summary,' : '')
     // validity determined by is/valid-tabindex.js
     + '[tabindex],'
     // editing hosts

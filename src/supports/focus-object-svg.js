@@ -1,10 +1,8 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
 import svg from './media/svg';
 import platform from '../util/platform';
 
-export default memorizeResult(() => detectFocus({
+export default {
   name: 'can-focus-object-svg',
   element: 'object',
   mutate: function(element) {
@@ -22,4 +20,4 @@ export default memorizeResult(() => detectFocus({
 
     return document.activeElement === element;
   },
-}));
+};

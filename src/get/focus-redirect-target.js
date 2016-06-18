@@ -7,7 +7,7 @@ import getDocument from '../util/get-document';
 import mergeInDomOrder from '../util/merge-dom-order';
 import {getMapOfImage} from '../util/image-map';
 
-import _supports from './focus-redirect-target.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function formControlElement(element) {
@@ -70,7 +70,7 @@ function resolveLegendWithinDocument(element, _document) {
 
 function resolveLegendElement(element, _document) {
   // <legend> - first <input> in <fieldset>
-  if (!supports.canFocusRedirectLegend) {
+  if (!supports.focusRedirectLegend) {
     return null;
   }
 
@@ -80,7 +80,7 @@ function resolveLegendElement(element, _document) {
     return null;
   }
 
-  if (supports.canFocusRedirectLegend === 'tabbable') {
+  if (supports.focusRedirectLegend === 'tabbable') {
     // Firefox goes for *next* tabbable (in DOM order)
     return resolveLegendWithinDocument(element, _document);
   }
@@ -90,7 +90,7 @@ function resolveLegendElement(element, _document) {
 }
 
 function resolveImgElement(element) {
-  if (!supports.canFocusRedirectImgUsemap) {
+  if (!supports.focusRedirectImgUsemap) {
     return null;
   }
 

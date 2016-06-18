@@ -15,7 +15,7 @@ import {
   isUserModifyWritable,
 } from './is.util';
 
-import _supports from './focus-relevant.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function isFocusRelevantRules({
@@ -52,7 +52,7 @@ function isFocusRelevantRules({
     return true;
   }
 
-  if (nodeName === 'legend' && supports.canFocusRedirectLegend) {
+  if (nodeName === 'legend' && supports.focusRedirectLegend) {
     // specifics filtered in is/focusable
     return true;
   }
@@ -78,10 +78,10 @@ function isFocusRelevantRules({
 
   if (nodeName === 'object') {
     const svgType = element.getAttribute('type');
-    if (!supports.canFocusObjectSvg && svgType === 'image/svg+xml') {
+    if (!supports.focusObjectSvg && svgType === 'image/svg+xml') {
       // object[type="image/svg+xml"] is not focusable in Internet Explorer
       return false;
-    } else if (!supports.canFocusObjectSwf && svgType === 'application/x-shockwave-flash') {
+    } else if (!supports.focusObjectSwf && svgType === 'application/x-shockwave-flash') {
       // object[type="application/x-shockwave-flash"] is not focusable in Internet Explorer 9
       return false;
     }
@@ -103,15 +103,15 @@ function isFocusRelevantRules({
     return true;
   }
 
-  if (nodeName === 'audio' && (supports.canFocusAudioWithoutControls || element.hasAttribute('controls'))) {
+  if (nodeName === 'audio' && (supports.focusAudioWithoutControls || element.hasAttribute('controls'))) {
     return true;
   }
 
-  if (nodeName === 'video' && (supports.canFocusVideoWithoutControls || element.hasAttribute('controls'))) {
+  if (nodeName === 'video' && (supports.focusVideoWithoutControls || element.hasAttribute('controls'))) {
     return true;
   }
 
-  if (supports.canFocusSummary && nodeName === 'summary') {
+  if (supports.focusSummary && nodeName === 'summary') {
     return true;
   }
 
@@ -120,15 +120,15 @@ function isFocusRelevantRules({
   if (nodeName === 'img' && element.hasAttribute('usemap')) {
     // Gecko, Trident and Edge do not allow an image with an image map and tabindex to be focused,
     // it appears the tabindex is overruled so focus is still forwarded to the <map>
-    return validTabindex && supports.canFocusImgUsemapTabindex || supports.canFocusRedirectImgUsemap;
+    return validTabindex && supports.focusImgUsemapTabindex || supports.focusRedirectImgUsemap;
   }
 
-  if (supports.canFocusTable && (nodeName === 'table' || nodeName === 'td')) {
+  if (supports.focusTable && (nodeName === 'table' || nodeName === 'td')) {
     // IE10-11 supports.can focus <table> and <td>
     return true;
   }
 
-  if (supports.canFocusFieldset && nodeName === 'fieldset') {
+  if (supports.focusFieldset && nodeName === 'fieldset') {
     // IE10-11 supports.can focus <fieldset>
     return true;
   }
@@ -136,9 +136,9 @@ function isFocusRelevantRules({
   const focusableAttribute = element.getAttribute('focusable');
 
   if (nodeName === 'svg') {
-    return validTabindex || supports.canFocusSvg
+    return validTabindex || supports.focusSvg
       // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
-      || Boolean(supports.canFocusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
+      || Boolean(supports.focusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
   }
 
   const _window = getWindow(element);
@@ -147,7 +147,7 @@ function isFocusRelevantRules({
     return true;
   }
 
-  if (supports.canFocusSvgFocusableAttribute && element.ownerSVGElement) {
+  if (supports.focusSvgFocusableAttribute && element.ownerSVGElement) {
     // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
     return Boolean(focusableAttribute && focusableAttribute === 'true');
   }
@@ -162,7 +162,7 @@ function isFocusRelevantRules({
     return true;
   }
 
-  if (supports.canFocusImgIsmap && nodeName === 'img' && element.hasAttribute('ismap')) {
+  if (supports.focusImgIsmap && nodeName === 'img' && element.hasAttribute('ismap')) {
     // IE10-11 considers the <img> in <a href><img ismap> focusable
     // https://github.com/medialize/ally.js/issues/20
     const hasLinkParent = getParents({context: element}).some(
@@ -175,8 +175,8 @@ function isFocusRelevantRules({
   }
 
   // https://github.com/medialize/ally.js/issues/21
-  if (!except.scrollable && supports.canFocusScrollContainer) {
-    if (supports.canFocusScrollContainerWithoutOverflow) {
+  if (!except.scrollable && supports.focusScrollContainer) {
+    if (supports.focusScrollContainerWithoutOverflow) {
       // Internet Explorer does will consider the scrollable area focusable
       // if the element is a <div> or a <span> and it is in fact scrollable,
       // regardless of the CSS overflow property
@@ -190,7 +190,7 @@ function isFocusRelevantRules({
     }
   }
 
-  if (!except.flexbox && supports.canFocusFlexboxContainer && hasCssDisplayFlex(style)) {
+  if (!except.flexbox && supports.focusFlexboxContainer && hasCssDisplayFlex(style)) {
     // elements with display:flex are focusable in IE10-11
     return true;
   }
@@ -199,14 +199,14 @@ function isFocusRelevantRules({
   if (!except.scrollable && parent) {
     const parentNodeName = parent.nodeName.toLowerCase();
     const parentStyle = window.getComputedStyle(parent, null);
-    if (supports.canFocusScrollBody && isScrollableContainer(parent, nodeName, parentNodeName, parentStyle)) {
+    if (supports.focusScrollBody && isScrollableContainer(parent, nodeName, parentNodeName, parentStyle)) {
       // scrollable bodies are focusable Internet Explorer
       // https://github.com/medialize/ally.js/issues/21
       return true;
     }
 
     // Children of focusable elements with display:flex are focusable in IE10-11
-    if (supports.canFocusChildrenOfFocusableFlexbox) {
+    if (supports.focusChildrenOfFocusableFlexbox) {
       if (hasCssDisplayFlex(parentStyle)) {
         return true;
       }

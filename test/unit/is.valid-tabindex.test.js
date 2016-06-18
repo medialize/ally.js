@@ -62,7 +62,7 @@ define(function(require) {
       'tabindex "0char" (trailing non-numeric characters)': function() {
         var element = document.getElementById('tabindex-0-char');
         expect(element.tabIndex).to.equal(0);
-        expect(isValidTabindex(element)).to.equal(supports.allowsTrailingCharacters);
+        expect(isValidTabindex(element)).to.equal(supports.focusTabindexTrailingCharacters);
       },
       'tabindex "1"': function() {
         var element = document.getElementById('tabindex-1');
@@ -73,13 +73,13 @@ define(function(require) {
         var element = document.getElementById('tabindex-bad');
         // expect(element.tabIndex).to.equal(-1);
         // IE: 0, rest: -1
-        expect(isValidTabindex(element)).to.equal(supports.canFocusInvalidTabindex);
+        expect(isValidTabindex(element)).to.equal(supports.focusInvalidTabindex);
       },
       'tabindex ""': function() {
         var element = document.getElementById('tabindex-empty');
         // expect(element.tabIndex).to.equal(-1);
         // IE: 0, rest: -1
-        expect(isValidTabindex(element)).to.equal(supports.canFocusInvalidTabindex);
+        expect(isValidTabindex(element)).to.equal(supports.focusInvalidTabindex);
       },
     };
   });

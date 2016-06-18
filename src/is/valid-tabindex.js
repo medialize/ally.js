@@ -2,7 +2,7 @@
 // determine if an element's tabindex attribute has a valid value
 
 import contextToElement from '../util/context-to-element';
-import _supports from './valid-tabindex.supports';
+import _supports from '../supports/supports';
 let supports;
 
 // http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
@@ -15,7 +15,7 @@ export default function(context) {
     supports = _supports();
   }
 
-  const validIntegerPattern = supports.allowsTrailingCharacters
+  const validIntegerPattern = supports.focusTabindexTrailingCharacters
     ? validIntegerPatternWithTrailing
     : validIntegerPatternNoTrailing;
 
@@ -35,7 +35,7 @@ export default function(context) {
   }
 
   // @browser-issue Gecko https://bugzilla.mozilla.org/show_bug.cgi?id=1128054
-  if (supports.allowsInvalidValue) {
+  if (supports.focusInvalidTabindex) {
     return true;
   }
   // an element matches the tabindex selector even if its value is invalid

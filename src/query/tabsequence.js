@@ -8,7 +8,7 @@ import platform from '../util/platform';
 import sortArea from './tabsequence.sort-area';
 import sortShadowed from './tabsequence.sort-shadowed';
 import sortTabindex from './tabsequence.sort-tabindex';
-import _supports from './tabsequence.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function moveContextToBeginning(elements, context) {
@@ -22,7 +22,7 @@ function moveContextToBeginning(elements, context) {
 }
 
 function sortElements(elements, _context) {
-  if (supports.tabsequenceSortsAreaAtImagePosition) {
+  if (supports.tabsequenceAreaAtImgPosition) {
     // Some browsers sort <area> in DOM order, some place the <area>s
     // where the <img> referecing them would've been in DOM order.
     // https://github.com/medialize/ally.js/issues/5

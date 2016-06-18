@@ -70,12 +70,12 @@ define(function(require) {
       'disabled fieldset': function() {
         var element = document.getElementById('disabled-fieldset');
         var res = isDisabled(element);
-        expect(res).to.equal(!supports.canFocusDisabledFieldset);
+        expect(res).to.equal(!supports.focusFieldsetDisabled);
       },
       'disabled form input': function() {
         var element = document.getElementById('disabled-form-input');
         var res = isDisabled(element);
-        expect(res).to.equal(!supports.canFocusDisabledForm);
+        expect(res).to.equal(!supports.focusFormDisabled);
       },
       'non-disabled form': function() {
         var element = document.getElementById('non-disabled-form');
@@ -85,7 +85,7 @@ define(function(require) {
       'disabled form': function() {
         var element = document.getElementById('disabled-form');
         var res = isDisabled(element);
-        expect(res).to.equal(!supports.canFocusDisabledForm);
+        expect(res).to.equal(!supports.focusFormDisabled);
       },
       'ally.element.disabled': function() {
         var element = document.getElementById('non-disabled-input');
