@@ -7,13 +7,13 @@ export default {
     element.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>';
     return element.firstChild;
   },
-  validate: function(element) {
+  validate: function(element, _document) {
     const focus = element.firstChild;
     if (platform.is.TRIDENT) {
       // Edge 13 does not allow polyfilling the missing SVGElement.prototype.focus anymore
       return true;
     }
 
-    return document.activeElement === focus;
+    return _document.activeElement === focus;
   },
 };

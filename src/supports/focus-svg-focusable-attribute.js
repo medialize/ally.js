@@ -8,13 +8,13 @@ export default {
       + '<text focusable="true">a</text></svg>';
     return element.querySelector('text');
   },
-  validate: function(element) {
+  validate: function(element, _document) {
     const focus = element.querySelector('text');
     if (platform.is.TRIDENT) {
       // Edge 13 does not allow polyfilling the missing SVGElement.prototype.focus anymore
       return true;
     }
 
-    return document.activeElement === focus;
+    return _document.activeElement === focus;
   },
 };

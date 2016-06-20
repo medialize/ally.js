@@ -12,7 +12,7 @@ export default {
 
     return element.querySelector('area');
   },
-  validate: function(element) {
+  validate: function(element, _document) {
     if (platform.is.GECKO) {
       // fixes https://github.com/medialize/ally.js/issues/35
       // Firefox loads the DataURI asynchronously, causing a false-negative
@@ -20,6 +20,6 @@ export default {
     }
 
     const focus = element.querySelector('area');
-    return document.activeElement === focus;
+    return _document.activeElement === focus;
   },
 };

@@ -8,7 +8,7 @@ export default {
     // take care of focus in validate();
     return false;
   },
-  validate: function(element) {
+  validate: function(element, _document) {
     const focusable = element.querySelector('input[tabindex="-1"]');
     const tabbable = element.querySelector('input[tabindex="0"]');
 
@@ -17,8 +17,8 @@ export default {
     element.focus();
 
     element.querySelector('legend').focus();
-    return document.activeElement === focusable && 'focusable'
-      || document.activeElement === tabbable && 'tabbable'
+    return _document.activeElement === focusable && 'focusable'
+      || _document.activeElement === tabbable && 'tabbable'
       || '';
   },
 };
