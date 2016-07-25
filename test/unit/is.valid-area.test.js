@@ -74,7 +74,7 @@ define(function(require) {
           var element = document.getElementById('image-map-area');
           expect(isValidArea(element)).to.equal(true, 'valid area');
           element = document.getElementById('image-map-area-nolink');
-          expect(isValidArea(element)).to.equal(supports.canFocusAreaWithoutHref, 'no href');
+          expect(isValidArea(element)).to.equal(supports.focusAreaWithoutHref, 'no href');
         }), 200);
       },
       'area in map for img in link': function() {
@@ -83,7 +83,7 @@ define(function(require) {
       },
       'area in map for broken img': function() {
         var element = document.getElementById('broken-map-area');
-        expect(isValidArea(element)).to.equal(supports.canFocusBrokenImageMap);
+        expect(isValidArea(element)).to.equal(supports.focusBrokenImageMap);
       },
     };
   });

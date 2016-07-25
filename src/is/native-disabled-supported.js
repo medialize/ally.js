@@ -2,7 +2,7 @@
 // Determine if an element supports the disabled attribute
 
 import contextToElement from '../util/context-to-element';
-import _supports from './native-disabled-supported.supports';
+import _supports from '../supports/supports';
 let supports;
 
 // http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
@@ -20,11 +20,11 @@ export default function(context) {
   if (!supports) {
     supports = _supports();
 
-    if (supports.canFocusDisabledFieldset) {
+    if (supports.focusFieldsetDisabled) {
       delete disabledElements.fieldset;
     }
 
-    if (supports.canFocusDisabledForm) {
+    if (supports.focusFormDisabled) {
       delete disabledElements.form;
     }
 

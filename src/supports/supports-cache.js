@@ -57,11 +57,15 @@ cache.userAgent = userAgent;
 cache.version = version;
 
 export default {
-  get: function getCacheValue(key) {
-    return cache[key];
+  get: function() {
+    return cache;
   },
-  set: function setCacheValue(key, value) {
-    cache[key] = value;
+  set: function(values) {
+    Object.keys(values).forEach(function(key) {
+      cache[key] = values[key];
+    });
+
+    cache.time = new Date().toISOString();
     writeLocalStorage(cacheKey, cache);
   },
 };

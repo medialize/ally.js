@@ -1,10 +1,6 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
-
 // Children of focusable elements with display:flex are focusable in IE10-11
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-children-of-focusable-flexbox',
+export default {
   element: 'div',
   mutate: function(element) {
     element.setAttribute('tabindex', '-1');
@@ -12,4 +8,4 @@ export default memorizeResult(() => detectFocus({
     element.innerHTML = '<span style="display: block;">hello</span>';
     return element.querySelector('span');
   },
-}));
+};

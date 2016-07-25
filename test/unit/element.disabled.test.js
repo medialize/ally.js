@@ -199,7 +199,7 @@ define(function(require) {
         expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
 
         elementDisabled(element, true);
-        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : null;
+        var expected = supports.focusSvgFocusableAttribute ? 'false' : null;
         expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
@@ -210,7 +210,7 @@ define(function(require) {
         expect(element.getAttribute('focusable')).to.equal('true', 'before disable');
 
         elementDisabled(element, true);
-        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : 'true';
+        var expected = supports.focusSvgFocusableAttribute ? 'false' : 'true';
         expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
@@ -221,7 +221,7 @@ define(function(require) {
         expect(element.hasAttribute('focusable')).to.equal(false, 'before disable');
 
         elementDisabled(element, true);
-        var expected = supports.canFocusSvgFocusableAttribute ? 'false' : null;
+        var expected = supports.focusSvgFocusableAttribute ? 'false' : null;
         expect(element.getAttribute('focusable')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);
@@ -234,7 +234,7 @@ define(function(require) {
         expect(element.hasAttribute('xlink:href')).to.equal(true, 'before disable');
 
         elementDisabled(element, true);
-        var expected = supports.canFocusSvgFocusableAttribute || supports.canFocusSvgTabindexAttribute;
+        var expected = supports.focusSvgFocusableAttribute || supports.focusSvgTabindexAttribute;
         expect(element.hasAttribute('xlink:href')).to.equal(expected, 'after disable');
 
         elementDisabled(element, false);

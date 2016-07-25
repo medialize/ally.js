@@ -26,7 +26,7 @@ import toggleAttribute from '../util/toggle-attribute';
 import toggleAttributeValue from '../util/toggle-attribute-value';
 import logger from '../util/logger';
 
-import _supports from './disabled.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function disabledFocus() {
@@ -121,10 +121,10 @@ function setElementDisabled(element, disabledState) {
   }
 
   if (nodeName === 'svg' || element.ownerSVGElement) {
-    if (supports.canFocusSvgFocusableAttribute) {
+    if (supports.focusSvgFocusableAttribute) {
       // Internet Explorer knows focusable="false" instead of tabindex="-1"
       disableSvgFocusable(element, disabledState);
-    } else if (!supports.canFocusSvgTabindexAttribute && nodeName === 'a') {
+    } else if (!supports.focusSvgTabindexAttribute && nodeName === 'a') {
       // Firefox neither knows focusable="false" nor tabindex="-1"
       disableSvgLink(element, disabledState);
     }

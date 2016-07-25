@@ -1,21 +1,24 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
+// see http://jsbin.com/nenirisage/edit?html,js,console,output
 
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-redirect-legend',
+export default {
   element: 'fieldset',
   mutate: function(element) {
     element.innerHTML = '<legend>legend</legend><input tabindex="-1"><input tabindex="0">';
+    // take care of focus in validate();
+    return false;
   },
-  validate: function(element) {
-    const focus = element.querySelector('legend');
+  validate: function(element, _document) {
     const focusable = element.querySelector('input[tabindex="-1"]');
     const tabbable = element.querySelector('input[tabindex="0"]');
 
-    focus.focus();
-    return document.activeElement === focusable && 'focusable'
-      || document.activeElement === tabbable && 'tabbable'
+    // Firefox requires this test to focus the <fieldset> first, while this is not necessary in
+    // http://jsbin.com/nenirisage/edit?html,js,console,output
+    element.focus();
+
+    element.querySelector('legend').focus();
+    return _document.activeElement === focusable && 'focusable'
+      || _document.activeElement === tabbable && 'tabbable'
       || '';
   },
-}));
+};

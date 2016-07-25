@@ -1,9 +1,7 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
 import mp3 from './media/mp3';
 
-export default memorizeResult(() => detectFocus({
+export default {
   name: 'can-focus-audio-without-controls',
   element: 'audio',
   mutate: function(element) {
@@ -14,4 +12,4 @@ export default memorizeResult(() => detectFocus({
       // IE9 may throw "Error: Not implemented"
     }
   },
-}));
+};

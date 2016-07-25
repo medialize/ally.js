@@ -6,7 +6,7 @@ import isVisible from './visible';
 import getParents from '../get/parents';
 import {getImageOfArea} from '../util/image-map';
 
-import _supports from './valid-area.supports';
+import _supports from '../supports/supports';
 let supports;
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
@@ -28,7 +28,7 @@ export default function(context) {
   }
 
   const hasTabindex = element.hasAttribute('tabindex');
-  if (!supports.canFocusAreaTabindex && hasTabindex) {
+  if (!supports.focusAreaTabindex && hasTabindex) {
     // Blink and WebKit do not consider <area tabindex="-1" href="#void"> focusable
     return false;
   }
@@ -40,15 +40,15 @@ export default function(context) {
 
   // Firefox only allows fully loaded images to reference image maps
   // https://stereochro.me/ideas/detecting-broken-images-js
-  if (!supports.canFocusBrokenImageMaps && (!img.complete || !img.naturalHeight || img.offsetWidth <= 0 || img.offsetHeight <= 0)) {
+  if (!supports.focusBrokenImageMap && (!img.complete || !img.naturalHeight || img.offsetWidth <= 0 || img.offsetHeight <= 0)) {
     return false;
   }
 
   // Firefox supports.can focus area elements even if they don't have an href attribute
-  if (!supports.canFocusAreaWithoutHref && !element.href) {
+  if (!supports.focusAreaWithoutHref && !element.href) {
     // Internet explorer supports.can focus area elements without href if either
     // the area element or the image element has a tabindex attribute
-    return supports.canFocusAreaTabindex && hasTabindex || supports.canFocusAreaImgTabindex && img.hasAttribute('tabindex');
+    return supports.focusAreaTabindex && hasTabindex || supports.focusAreaImgTabindex && img.hasAttribute('tabindex');
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap

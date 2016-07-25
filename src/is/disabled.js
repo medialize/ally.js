@@ -5,7 +5,7 @@ import contextToElement from '../util/context-to-element';
 import getParents from '../get/parents';
 import isNativeDisabledSupported from './native-disabled-supported';
 
-import _supports from './disabled.supports';
+import _supports from '../supports/supports';
 let supports;
 
 function isDisabledFieldset(element) {
@@ -49,7 +49,7 @@ export default function(context) {
     return true;
   }
 
-  if (!supports.canFocusDisabledForm && parents.some(isDisabledForm)) {
+  if (!supports.focusFormDisabled && parents.some(isDisabledForm)) {
     // a parental <form> is disabld and inherits the state onto this element
     return true;
   }

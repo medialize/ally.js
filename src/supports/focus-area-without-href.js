@@ -1,12 +1,9 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
 import gif from './media/gif';
 import platform from '../util/platform';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-usemap
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-area-without-href',
+export default {
   element: 'div',
   mutate: function(element) {
     element.innerHTML = '<map name="image-map-area-href-test">'
@@ -15,7 +12,7 @@ export default memorizeResult(() => detectFocus({
 
     return element.querySelector('area');
   },
-  validate: function(element) {
+  validate: function(element, _document) {
     if (platform.is.GECKO) {
       // fixes https://github.com/medialize/ally.js/issues/35
       // Firefox loads the DataURI asynchronously, causing a false-negative
@@ -23,6 +20,6 @@ export default memorizeResult(() => detectFocus({
     }
 
     const focus = element.querySelector('area');
-    return document.activeElement === focus;
+    return _document.activeElement === focus;
   },
-}));
+};

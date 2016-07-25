@@ -54,7 +54,7 @@ define(function(require) {
       },
       'tabindex="bad"': function() {
         var element = document.getElementById('tabindex-bad');
-        expect(isFocusable(element)).to.equal(supports.canFocusInvalidTabindex);
+        expect(isFocusable(element)).to.equal(supports.focusInvalidTabindex);
       },
       'anchor (<a> without href)': function() {
         var element = document.getElementById('anchor');
@@ -99,7 +99,7 @@ define(function(require) {
       'img with usemap and tabindex': function() {
         var element = document.getElementById('img-usemap');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusable(element)).to.equal(supports.canFocusImgUsemapTabindex);
+        expect(isFocusable(element)).to.equal(supports.focusImgUsemapTabindex);
       },
       'label element': function() {
         var element = document.getElementById('label');
@@ -108,11 +108,11 @@ define(function(require) {
       'label element with tabindex="-1"': function() {
         var element = document.getElementById('label');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusable(element)).to.equal(supports.canFocusLabelTabindex);
+        expect(isFocusable(element)).to.equal(supports.focusLabelTabindex);
       },
       'audio element': function() {
         var element = document.getElementById('audio');
-        expect(isFocusable(element)).to.equal(supports.canFocusAudioWithoutControls);
+        expect(isFocusable(element)).to.equal(supports.focusAudioWithoutControls);
       },
       'audio element with controls': function() {
         var element = document.getElementById('audio-controls');
@@ -138,19 +138,19 @@ define(function(require) {
       },
       'extended: img with ismap attribute': function() {
         var element = document.getElementById('img-ismap');
-        expect(isFocusable(element)).to.equal(supports.canFocusImgIsmap);
+        expect(isFocusable(element)).to.equal(supports.focusImgIsmap);
       },
       'extended: scroll container without overflow': function() {
         var element = document.getElementById('scroll-container-without-overflow');
-        expect(isFocusable(element)).to.equal(supports.canFocusScrollContainerWithoutOverflow);
+        expect(isFocusable(element)).to.equal(supports.focusScrollContainerWithoutOverflow);
       },
       'extended: scroll container': function() {
         var element = document.getElementById('scroll-container');
-        expect(isFocusable(element)).to.equal(supports.canFocusScrollContainer);
+        expect(isFocusable(element)).to.equal(supports.focusScrollContainer);
       },
       'extended: scroll body': function() {
         var element = document.getElementById('scroll-body');
-        expect(isFocusable(element)).to.equal(supports.canFocusScrollBody);
+        expect(isFocusable(element)).to.equal(supports.focusScrollBody);
       },
       'extended: child of focusable flexbox': function() {
         var element = fixture.add([
@@ -160,7 +160,7 @@ define(function(require) {
           '</div>',
           /*eslint-enable indent */
         ]).firstElementChild.firstElementChild;
-        expect(isFocusable(element)).to.equal(supports.canFocusChildrenOfFocusableFlexbox);
+        expect(isFocusable(element)).to.equal(supports.focusChildrenOfFocusableFlexbox);
       },
       'extended: Shadow DOM host': function() {
         if (document.body.createShadowRoot === undefined) {

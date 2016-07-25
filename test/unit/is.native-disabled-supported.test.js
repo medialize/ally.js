@@ -60,12 +60,12 @@ define(function(require) {
       'non-disabled fieldset': function() {
         var element = document.getElementById('non-disabled-fieldset');
         var res = isNativeDisabledSupported(element);
-        expect(res).to.equal(!supports.canFocusDisabledFieldset);
+        expect(res).to.equal(!supports.focusFieldsetDisabled);
       },
       'disabled fieldset': function() {
         var element = document.getElementById('disabled-fieldset');
         var res = isNativeDisabledSupported(element);
-        expect(res).to.equal(!supports.canFocusDisabledFieldset);
+        expect(res).to.equal(!supports.focusFieldsetDisabled);
       },
     };
   });

@@ -1,36 +1,28 @@
 
-import detectFocus from './detect-focus';
-import memorizeResult from './memorize-result';
-
-// references to the iframe's browsing context
-let _document;
-
-export default memorizeResult(() => detectFocus({
-  name: 'can-focus-in-hidden-iframe',
-  element: function(wrapper) {
-    const iframe = document.createElement('iframe');
+export default {
+  element: function(wrapper, _document) {
+    const iframe = _document.createElement('iframe');
 
     // iframe must be part of the DOM before accessing the contentWindow is possible
     wrapper.appendChild(iframe);
 
-    const _window = iframe.contentWindow;
-    _document = _window.document;
-
+    // create the iframe's default document (<html><head></head><body></body></html>)
+    const iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.close();
     return iframe;
   },
   mutate: function(iframe) {
     iframe.style.visibility = 'hidden';
 
-    // writing the iframe's content is synchronous
-    _document.open();
-    _document.close();
-    const input = _document.createElement('input');
-    _document.body.appendChild(input);
-
-    return _document.querySelector('input');
+    const iframeDocument = iframe.contentWindow.document;
+    const input = iframeDocument.createElement('input');
+    iframeDocument.body.appendChild(input);
+    return input;
   },
-  validate: function() {
-    const focus = _document.querySelector('input');
-    return _document.activeElement === focus;
+  validate: function(iframe) {
+    const iframeDocument = iframe.contentWindow.document;
+    const focus = iframeDocument.querySelector('input');
+    return iframeDocument.activeElement === focus;
   },
-}));
+};
