@@ -32,7 +32,12 @@ define(function(require) {
           .setFindTimeout(timeout)
           .setExecuteAsyncTimeout(timeout)
           // wait until we're really initialized
-          .then(pollUntil('return window.platform'));
+          .then(pollUntil('return window.platform'))
+          .then(function(platform) {
+            if (platform.is.IE10) {
+              this.skip('This Test will not run on BrowserStack in IE10');
+            }
+          }.bind(this));
       },
 
       'skips disabled elements': function() {
