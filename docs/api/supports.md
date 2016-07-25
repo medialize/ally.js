@@ -5,7 +5,11 @@ tags: internal
 
 # Supports - Browser compatibility
 
-The supports infrastructure is a set of tests determining browser behavior and compatibility at runtime. Because the tests change focus to detect compatibility and load invalid `<video>` and `<audio>` sources, results are cached in [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). For the tests to run properly, the document needs to have focus during execution. If it does not, e.g. because the browser's DevTools have focus, the cache is voided.
+The supports infrastructure is a set of tests determining browser behavior and compatibility at runtime. This piece of the infrastructure does for focus management what [Modernizr](https://modernizr.com/) does for the rest of the web platform.
+
+The tests change focus to detect compatibility and thereby cause focus change announcements in screen readers, as well as [force the browser to perform layout / reflow operations](https://gist.github.com/paulirish/5d52fb081b3570c81e3a#what-forces-layout--reflow), commonly known as [layout thrashing](http://kellegous.com/j/2013/01/26/layout-performance/). To limit these effects, tests are performed in an iframe and cached in [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), so only the first impression of a document on a given domain will have to live with the overhead.
+
+For the tests to run properly, the document needs to have focus during execution. If it does not, e.g. because the browser's DevTools have focus, the cache is invalidated.
 
 
 ## Available compatibility tests
@@ -47,8 +51,12 @@ The supports infrastructure is a set of tests determining browser behavior and c
 | tabsequence-area-at-img-position | boolean | true if `<area>` are tabbed at the DOM position of `<img usemap="…">` |
 
 
+## Changes
+
+* As of `v#master` *all* tests are run at once and within an iframe to limit layout thrashing.
+
+
 ## Contributing
 
-Tests go in `src/supports` and either use the `./detect-focus.js` helper like most of the tests, or the `./supports-cache.js` API directly, like `./css-shadow-piercing-deep-combinator.js` shows.
-
+Tests go in `src/supports` and results are used through the `src/supports/supports.js` module.
 

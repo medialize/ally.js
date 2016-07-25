@@ -9,6 +9,7 @@
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 * bumping [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) to not break in IE8 - [issue #112](https://github.com/medialize/ally.js/issues/112)
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
+* running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 
 ## 1.1.0 - Reality Strikes Back
 
