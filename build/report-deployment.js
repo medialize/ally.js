@@ -19,7 +19,7 @@ const github = new Github({
 });
 
 github.authenticate({
-  type: 'token',
+  type: 'oauth',
   token: data.token,
 }, function(err) {
   if (err) {
