@@ -2,6 +2,10 @@
 
 ## master
 
+* Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
+
+---
+
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
 * adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
 * removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
@@ -10,6 +14,7 @@
 * bumping [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) to not break in IE8 - [issue #112](https://github.com/medialize/ally.js/issues/112)
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
+* [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
 
 ## 1.1.0 - Reality Strikes Back
 
