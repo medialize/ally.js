@@ -4,7 +4,7 @@
 
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
-
+* fixing [`ally.event.shadowFocus`][ally/event/shadow-focus] to not access `document.body` before it's available - [issue #144](https://github.com/medialize/ally.js/pull/144)
 
 ## 1.1.0 - Reality Strikes Back
 
