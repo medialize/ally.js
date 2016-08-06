@@ -104,7 +104,7 @@
     "glob": "^7.0.0",
     "glob-cli": "^1.0.0",
     "handlebars": "^4.0.5",
-    "intern": "^3.2.1",
+    "intern": "3.2.3",
     "jquery": "^2.1.4",
     "jquery-ui": "git://github.com/jquery/jquery-ui.git#1.11.4",
     "jsbin-sync": "^0.3.1",
