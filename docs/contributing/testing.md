@@ -12,7 +12,7 @@ The test infrastructure is located in the `test` directory. Note that the `tests
 
 Intern handles both unit and functional tests. Unit tests are the ones that verify a function's integrity without user interaction (like clicking on things or pressing keys). Functional tests are the ones that use [leadfoot](http://theintern.github.io/leadfoot/) to simulate a human being using the browser. Both types of tests are executed in the browser, there is no point testing things in Node.
 
-For local development the command `npm run test` can be used to spawn an instance of ChromeDriver interfacing with Google Chrome and automatically executing the tests setup defined in `test/local.js`. To run tests against a whole battery of browsers in the cloud we use [BrowserStack](http://browserstack.com) and [SauceLabs](https://saucelabs.com). To run those locally, you'll need the secret access keys (which you'll only get if you're a core contributor, sorry). The results of all tests executed on SauceLab's infrastructure are [made public](https://saucelabs.com/u/allyjs).
+For local development the command `npm run test` can be used to run tests in local Google Chrome. To run tests against a whole battery of browsers in the cloud we use [BrowserStack](http://browserstack.com) and [SauceLabs](https://saucelabs.com). To run those locally, you'll need the secret access keys (which you'll only get if you're a core contributor, sorry).
 
 Coverage reports are made available in the directory `reports/coverage`.
 
@@ -27,24 +27,16 @@ You can run the unit tests in any browser by navigating to the following URL (re
 http://${hostname}>/${path}/ally.js/node_modules/intern/client.html?config=test/browser
 ```
 
-(we're not using `test/sauce` or `test/local` in the browser because of the `reporters` those configurations load)
+(we're not using `test/sauce` or `test/chrome` in the browser because of the `reporters` those configurations load)
 
 
 ## Locally running all tests in the browser
 
-Both unit and functional tests can be executed in Google Chrome locally via `npm run test` or `node test/run-local.js`. You could also [install and start ChromeDriver yourself](https://theintern.github.io/intern/#local-selenium) and then run `./node_modules/.bin/intern-runner config=test/local`. The `test/run-local.js` uses [dalek-driver-chrome](https://github.com/dalekjs/dalek-driver-chrome) to download, install and start ChromeDriver automatically.
+Both unit and functional tests can be executed in Google Chrome locally via `npm run test`. This requires Java, as the [SeleniumTunnel](https://theintern.github.io/digdug/module-digdug_SeleniumTunnel.html) simply spawns a [Selenium Standalone Server](http://www.seleniumhq.org/download/).
 
 ```sh
 # run all tests locally in Google Chrome
 npm run test
-
-# run all tests locally in Google Chrome (without npm)
-node test/run-local.js
-
-# run selected suites in Google Chrome
-node test/run-local.js \
-  suites=test/unit/selected-test \
-  functionalSuites=tests/functional/selected-test
 ```
 
 * **NOTE:** The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.

@@ -3,10 +3,12 @@ define(function(require) {
 
   var config = require('./intern');
 
-  // NOTE: engaged via ./run-local.js to start the ChromeDriver
-
   // https://theintern.github.io/intern/#option-tunnel
-  config.tunnel = 'NullTunnel';
+  config.tunnel = 'SeleniumTunnel';
+  config.tunnelOptions = {
+    drivers: ['chrome'],
+  };
+
   // https://theintern.github.io/intern/#option-environments
   config.environments = [
     { browserName: 'chrome' },
