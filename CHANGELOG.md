@@ -1,10 +1,16 @@
 # ally.js change log
 
-## master
+## 1.1.1 - Augmented Reality
+
+*August 6th 2016.* We're releasing a few fixes that have been hanging in the master branch as a bugfix release to 1.1, because waiting for 1.2 to come together is not an option for everyone.
+
+
+### The changes
 
 * fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 * fixing [`ally.event.shadowFocus`][ally/event/shadow-focus] to not access `document.body` before it's available - [issue #144](https://github.com/medialize/ally.js/pull/144)
+
 
 ## 1.1.0 - Reality Strikes Back
 
