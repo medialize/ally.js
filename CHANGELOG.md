@@ -1,25 +1,29 @@
 # ally.js change log
 
-## 1.1.1 - Augmented Reality
-
-*August 6th 2016.* We're releasing a few fixes that have been hanging in the master branch as a bugfix release to 1.1, because waiting for 1.2 to come together is not an option for everyone.
-
-
-### The changes
+## master
 
 * Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
 
 ---
 
-* fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
 * adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
 * removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
 * fixing [`ally.element.disabled`][ally/element/disabled] to remove SVG links from the document's tabbing order in Firefox
-* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 * bumping [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) to not break in IE8 - [issue #112](https://github.com/medialize/ally.js/issues/112)
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
+
+
+## 1.1.1 - Augmented Reality
+
+*August 6th 2016.* We're releasing a few fixes that have been hanging in the master branch as a bugfix release to 1.1, because waiting for 1.2 to come together is not an option for everyone.
+
+
+### The changes of v1.1.1
+
+* fixing `supports/focus-in-hiden-iframe` to avoid `document.write()` - [issue #126](https://github.com/medialize/ally.js/issues/126)
+* fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 * fixing [`ally.event.shadowFocus`][ally/event/shadow-focus] to not access `document.body` before it's available - [issue #144](https://github.com/medialize/ally.js/pull/144)
 
 
@@ -28,7 +32,7 @@
 *March 18th 2016.* We're continuing our journey to *make accessibility simpler*. Version 1.1.0 - the first major update follows 4 months after making ally.js public in November 2015. In this time we've released [5 beta versions](https://github.com/medialize/ally.js/releases) and pushed [about 330 commits](https://github.com/medialize/ally.js/compare/1.0.1...1.1.0) in an effort to increase browser support and fix the myriad of bugs typically encountered in version one of any software.
 
 
-### The highlights
+### The highlights of v1.1.0
 
 * We got rid of those pesky console warnings triggered by the library's initial tests.
 * We added full support for Internet Explorer 9 and made the library *loadable but not executable* in IE8 and NodeJS.
@@ -41,7 +45,7 @@ Even though this is a "stability release" a few new features snuck in, most nota
 * With [`ally.maintain.tabFocus`][ally/maintain/tab-focus] we can now trap <kbd>TAB</kbd> focus in the tabsequence.
 
 
-### The numbers
+### The numbers of v1.1.0
 
 * ☻ We've increased test coverage from ~93% to ~99%
 * ☹ The library grew from ~20KB to ~28KB gzipped (~80KB to ~126KB minified) - *yes, we grew by 50%*
@@ -55,7 +59,7 @@ A few numbers explaining the increased file size:
 * ~2KB added for improved keyboard event handling
 
 
-### The changes
+### The changes of v1.1.0
 
 The following lists show the changes to the library grouped by domain.
 
