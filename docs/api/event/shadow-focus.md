@@ -50,6 +50,11 @@ The `event.detail` property provides the following data:
 ## Examples
 
 
+## Changes
+
+* Since `v#master` the module does not access `document.body` at load time anymore.
+
+
 ## Notes
 
 
