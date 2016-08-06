@@ -1,6 +1,11 @@
 # ally.js change log
 
-## master
+## 1.1.1 - Augmented Reality
+
+*August 6th 2016.* We're releasing a few fixes that have been hanging in the master branch as a bugfix release to 1.1, because waiting for 1.2 to come together is not an option for everyone.
+
+
+### The changes
 
 * Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
 
@@ -16,6 +21,7 @@
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
 * fixing [`ally.event.shadowFocus`][ally/event/shadow-focus] to not access `document.body` before it's available - [issue #144](https://github.com/medialize/ally.js/pull/144)
+
 
 ## 1.1.0 - Reality Strikes Back
 

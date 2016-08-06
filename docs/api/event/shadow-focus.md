@@ -52,7 +52,7 @@ The `event.detail` property provides the following data:
 
 ## Changes
 
-* Since `v#master` the module does not access `document.body` at load time anymore.
+* Since `v1.1.1` the module does not access `document.body` at load time anymore.
 
 
 ## Notes
