@@ -70,7 +70,7 @@ module.exports = function plugin(/*options*/) {
     const data = metalsmith.metadata();
     const examples = {};
     data.Examples.forEach(function(file) {
-      const key = file.path.href
+      const key = file.path.href;
       examples[key] = cheerio.load(file.contents);
     });
 
