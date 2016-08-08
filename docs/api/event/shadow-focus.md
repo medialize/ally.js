@@ -5,7 +5,7 @@ tags: internal, shadow-dom, global-service
 
 # ally.event.shadowFocus
 
-Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
+Observes focus changes within ShadowDOMs and emits `shadow-focus` [CustomEvent](https://developer.mozilla.org/en/docs/Web/API/CustomEvent)s.
 
 
 ## Description
@@ -16,7 +16,7 @@ Observes focus changes within Shadow DOMs and emits `shadow-focus` [CustomEvent]
 ```js
 document.addEventListener('shadow-focus', function(event) {
   // event.detail.elements: complete focus ancestry (array of nodes)
-  // event.detail.active: the actually focused element within the Shadow DOM
+  // event.detail.active: the actually focused element within the ShadowDOM
   // event.detail.hosts: the shadow host ancestry of the active element
 }, false);
 
@@ -42,7 +42,7 @@ The `event.detail` property provides the following data:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| event.detail.active | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The actually focused element *within* the Shadow DOM. |
+| event.detail.active | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The actually focused element *within* the ShadowDOM. |
 | event.detail.elements | array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The complete focus ancestry |
 | event.detail.hosts | array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | The ShadowHost ancestry of the active element. |
 
@@ -70,5 +70,5 @@ The `event.detail` property provides the following data:
 * [module source](https://github.com/medialize/ally.js/blob/master/src/event/shadow-focus.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/event/shadow-focus.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/event.shadow-focus.test.js)
-* this module does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support Shadow DOM
+* this module does *not* use [`ally/prototype/window.customevent.js`](https://github.com/medialize/ally.js/blob/master/src/prototype/window.customevent.js) for Internet Explorer compatibility because IE does not support ShadowDOM
 

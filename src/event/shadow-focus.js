@@ -1,12 +1,12 @@
 
 /*
-  Utility to observe focus changes within Shadow DOMs.
+  Utility to observe focus changes within ShadowDOMs.
 
   USAGE:
     engage();
     document.body.addEventListener('shadow-focus', function(event) {
       // event.detail.elements: complete focus ancestry (array of nodes)
-      // event.detail.active: the actually focused element within the Shadow DOM
+      // event.detail.active: the actually focused element within the ShadowDOM
       // event.detail.hosts: the shadow host ancestry of the active element
     }, false);
 
@@ -20,7 +20,7 @@ let engage;
 let disengage;
 
 if (typeof document === 'undefined' || !document.documentElement.createShadowRoot) {
-  // no need to initialize any of this if we don't have Shadow DOM available
+  // no need to initialize any of this if we don't have ShadowDOM available
   engage = disengage = function() {};
 } else {
   let blurTimer;

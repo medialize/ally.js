@@ -37,7 +37,7 @@ function isFocusRelevantRules({
   });
 
   if (!except.shadow && element.shadowRoot) {
-    // a Shadow DOM host receives focus when the focus moves to its content
+    // a ShadowDOM host receives focus when the focus moves to its content
     return true;
   }
 

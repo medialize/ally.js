@@ -29,7 +29,7 @@ function isOnlyFocusRelevant(element) {
 
   const _tabindex = tabindexValue(element);
   if (element.shadowRoot && _tabindex === null) {
-    // Shadow DOM host elements *may* receive focus
+    // ShadowDOM host elements *may* receive focus
     // even though they are not considered focuable
     return true;
   }

@@ -38,7 +38,7 @@ Boolean, `true` if the element is hosted in a `ShadowRoot`.
 
 ## Notes
 
-* **NOTE:** Requires [Shadow DOM](http://caniuse.com/#feat=shadowdom) support
+* **NOTE:** Requires [ShadowDOM](http://caniuse.com/#feat=shadowdom) support
 
 
 ## Related resources

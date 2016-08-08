@@ -14,9 +14,9 @@ The [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-
 
 * Value of the `tabindex` attribute. The sequence generally starts with all positive tabindex elements with `tabindex="1"` in DOM order, then all elements with `tabindex="2"` in DOM order, then all elements with `tabindex="3"`, … until the highest tabindex is reached, at which point the sequence continues with the `tabindex="0"` (which is set implicitly for a number of HTML elements, e.g. `<input>`).
 * `<area>` elements may either be sorted in DOM order of the `<area>` itsel, *or* the `<img>` referencing the map.
-* Within a [Shadow DOM](http://caniuse.com/#feat=shadowdom) positive tabindex elements may either be sorted localized to the `ShadowRoot`, *or* globally in the document.
+* Within a [ShadowDOM](http://caniuse.com/#feat=shadowdom) positive tabindex elements may either be sorted localized to the `ShadowRoot`, *or* globally in the document.
 
-`ally.query.tabsequence` uses [`ally.query.tabbable`](tabbable.md) to find keyboard focusable elements and then sorts the element positions respecting `Shadow DOM`, `<area>` vs `<img>` replacement and `tabindex` attribute value.
+`ally.query.tabsequence` uses [`ally.query.tabbable`](tabbable.md) to find keyboard focusable elements and then sorts the element positions respecting `ShadowDOM`, `<area>` vs `<img>` replacement and `tabindex` attribute value.
 
 
 ## Usage
@@ -53,7 +53,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 ## Changes
 
 * Since `v1.1.0` the module can move `<area>` elements to the place of the `<img>` elements they're referenced from.
-* Since `v1.1.0` the module can sort elements in [Shadow DOM](http://caniuse.com/#feat=shadowdom) localized to the `ShadowRoot`.
+* Since `v1.1.0` the module can sort elements in [ShadowDOM](http://caniuse.com/#feat=shadowdom) localized to the `ShadowRoot`.
 * Since `v1.1.0` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
 
 
@@ -62,7 +62,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
 * **NOTE:** In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. `ally.query.tabindex` handles this appropriately. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)
-* **NOTE:** In some browsers positive tabindexes are sorted localized to [Shadow DOM](http://caniuse.com/#feat=shadowdom), in some they are sorted globally. `ally.query.tabindex` handles this appropriately.
+* **NOTE:** In some browsers positive tabindexes are sorted localized to [ShadowDOM](http://caniuse.com/#feat=shadowdom), in some they are sorted globally. `ally.query.tabindex` handles this appropriately.
 * **WARNING:** In Firefox the Flexbox CSS property `order` affects the tabsequence, [Gecko 812687](https://bugzilla.mozilla.org/show_bug.cgi?id=812687), ally.js does not replicate this behavior.
 * **WARNING:** In Firefox referencing the same `<map>` from multiple `<img>` elements can lead to elements missing from the tabsequence, [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126), ally.js does not replicate this behavior.
 * **WARNING:** In Firefox `<label tabindex="0">` is part of the tabsequence, [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285), ally.js does not replicate this behavior.

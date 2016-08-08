@@ -31,7 +31,7 @@ body .ally-focus-within:focus {
 }
 ```
 
-The `:focus-within` polyfill also works within the Shadow DOM, allowing the document styles to descend into the dark:
+The `:focus-within` polyfill also works within the ShadowDOM, allowing the document styles to descend into the dark:
 
 ```css
 body >>> .ally-focus-within {
@@ -68,7 +68,7 @@ handle.disengage();
 
 * **NOTE:** In Firefox the [setting](about:config) `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
 * **NOTE:** Firefox 34 does not expose `ShadowRoot.host`, coupled with `document.activeElement` pointing to the wrong element, we cannot find the first ShadowHost and can thus not apply `focus-within` properly. The `ShadowRoot.host` issue has been fixed in Firefox 37 (at the latest).
-* **NOTE:** The focus-within class is added asynchronously in Shadow DOM, but synchronously for the document.
+* **NOTE:** The focus-within class is added asynchronously in ShadowDOM, but synchronously for the document.
 
 
 ## Related resources

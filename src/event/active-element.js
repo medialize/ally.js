@@ -1,7 +1,7 @@
 
 /*
   Debugging tool that observe changes to activeElement regardless of focus/blur events.
-  This utility does *not* work with Shadow DOM.
+  This utility does *not* work with ShadowDOM.
 
   USAGE:
     engage();

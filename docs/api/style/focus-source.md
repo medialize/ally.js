@@ -42,7 +42,7 @@ html.focus-source-key > body :focus {
 }
 ```
 
-The focus changes are also observed within the Shadow DOM, allowing the document styles to descend into the dark:
+The focus changes are also observed within the ShadowDOM, allowing the document styles to descend into the dark:
 
 ```css
 html[data-focus-source="pointer"] >>> :focus {

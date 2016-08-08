@@ -106,7 +106,7 @@ The following lists show the changes to the library grouped by domain.
 * refactoring [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify all elements that are either focusable, tabbable, only-tabbable or redirect focus
 * refactoring [`ally.query.tabsequence`][ally/query/tabsequence] to extract `util/merge-dom-order` and `util/sort-dom-order`
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify Flexbox Layout in IE10 and IE11
-* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider Shadow DOM host elements
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider ShadowDOM host elements
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify scrollable containers in Internet Explorer
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to consider all `<area>` elements focus relevant, moving the focusable to verification to [`ally.is.focusable`][ally/is/focusable]
 * fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to properly identify SVG links in IE9
@@ -119,7 +119,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.is.disabled`][ally/is/disabled] to properly handle `<form disabled>` in IE9 - IE11
 * fixing [`ally.get.focusTarget`][ally/get/focus-target] to resolve elements redirecting focus to other elements
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
-* fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within Shadow DOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
+* fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within ShadowDOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 
 #### Keyboard support
 
@@ -208,7 +208,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * adding ES6 build infrastructure - [issue #1](https://github.com/medialize/ally.js/issues/1)
 * adding unit tests - [issue #2](https://github.com/medialize/ally.js/issues/2) (>90% coverage!)
 * adding [`ally.query.firstTabbable`][ally/query/first-tabbable] (replacing `focus/first`) to find the first keyboard focusable element in a sub-tree
-* adding `strategy: 'strict'` option to [`ally.query.focusable`][ally/query/focusable] to find elements by filters unavailable to `querySelectorAll()` - i.e. Shadow DOM without the "Shadow Piercing Descendant Combinator", scrollable containers, `-webkit-user-modify: read-write` - [issue #17](https://github.com/medialize/ally.js/issues/17), [issue #21](https://github.com/medialize/ally.js/issues/21)
+* adding `strategy: 'strict'` option to [`ally.query.focusable`][ally/query/focusable] to find elements by filters unavailable to `querySelectorAll()` - i.e. ShadowDOM without the "Shadow Piercing Descendant Combinator", scrollable containers, `-webkit-user-modify: read-write` - [issue #17](https://github.com/medialize/ally.js/issues/17), [issue #21](https://github.com/medialize/ally.js/issues/21)
 * [`ally.query.focusable`][ally/query/focusable] no longer considers `<html>` and `<body>` focusable - [issue #31](https://github.com/medialize/ally.js/issues/31)
 * adding [`ally.is.focusRelevant`][ally/is/focus-relevant] to identify technically focusable elements (refactored from [`ally.is.focusable`][ally/is/focusable])
 * adding [`ally.is.onlyTabbable`][ally/is/only-tabbable] to identify elements that cannot be focused by script, but by keyboard
@@ -259,7 +259,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 
 ## 0.0.7 (July 8th 2015)
 
-* adding `event/shadow-focus` to emit custom event when focus changes within the Shadow DOM - extracted from `focus/within`
+* adding `event/shadow-focus` to emit custom event when focus changes within the ShadowDOM - extracted from `focus/within`
 * adding `event/interaction-type-listener` to track user input to differentiate keyboard and pointer input
 * adding [`focus/source`](http://allyjs.io/examples/focus-source.html) to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
 * adding [`focus/disable-focus`](http://allyjs.io/examples/disable-focus.html) to render elements inert and remove them from the document's focus navigation sequence
