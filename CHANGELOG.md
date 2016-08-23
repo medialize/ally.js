@@ -1,12 +1,6 @@
 # ally.js change log
 
-
-## 1.2.0 - Adios DOMTokenList
-
-*August 23rd 2016.* We're releasing this fix to remove a dependency we've loaded directly off a [forked github repository](https://github.com/rodneyrehm/domtokenlist/releases/tag/1.2.0-alpha.4), rather than from npm.
-
-
-### The changes
+## master
 
 * Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
 
@@ -18,7 +12,16 @@
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
+
+
+## 1.2.0 - Adios DOMTokenList
+
+*August 23rd 2016.* We're releasing this fix to remove a dependency we've loaded directly off a [forked github repository](https://github.com/rodneyrehm/domtokenlist/releases/tag/1.2.0-alpha.4), rather than from npm.
+
+### The changes of v1.2.0
+
 * replacing [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) by [`ally.util.toggleClass`][ally/util] - [issue #147](https://github.com/medialize/ally.js/issues/147)
+
 
 ## 1.1.1 - Augmented Reality
 
