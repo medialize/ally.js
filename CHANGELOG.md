@@ -1,6 +1,12 @@
 # ally.js change log
 
-## master
+
+## 1.2.0 - Adios DOMTokenList
+
+*August 23rd 2016.* We're releasing this fix to remove a dependency we've loaded directly off a [forked github repository](https://github.com/rodneyrehm/domtokenlist/releases/tag/1.2.0-alpha.4), rather than from npm.
+
+
+### The changes
 
 * Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
 
