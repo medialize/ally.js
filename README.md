@@ -34,7 +34,6 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 * [ES5-shim](https://github.com/es-shims/es5-shim) (implicitly expected)
 * [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) (or complete [ES6-shim](https://github.com/paulmillr/es6-shim))
 * [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape)
-* [domtokenlist-shim](https://github.com/jwilsson/domtokenlist)
 
 
 ## Resources

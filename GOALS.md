@@ -16,7 +16,7 @@ With ally.js v1.0.0 I've laid the foundation for a library solving the "stupid p
 * [ ] implement a DOM based interface to simplify handling [WAI-ARIA state attributes](http://www.w3.org/TR/wai-aria/states_and_properties) (along the lines of [IBM-Watson/a11y.js](https://github.com/IBM-Watson/a11y.js))
   * easily creating unique-IDs for linking elements e.g. `<label for="uniq-123">…</label><input id="uniq-123">`
   * toggling states
-  * easy support for multiple-id-values, e.g. `aria-labeledby="id-1 id-2 id-3"` possibly via [DOMTokenList](https://dom.spec.whatwg.org/#interface-domtokenlist)
+  * easy support for multiple-id-values, e.g. `aria-labeledby="id-1 id-2 id-3"` possibly via [DOMTokenList](https://dom.spec.whatwg.org/#interface-domtokenlist), e.g. via [tokenlist](https://github.com/rodneyrehm/tokenlist)
 * [ ] implement a keyboard command abstraction that maps the keyboard interactions suggested by [WAI-ARIA Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/) (e.g. [Listbox](http://www.w3.org/WAI/PF/aria-practices/#Listbox)) to [Indie UI Event Triggers](https://w3c.github.io/indie-ui/indie-ui-events.html#triggers)
 * [ ] implement the corresponding [Indie UI Event Actions](https://w3c.github.io/indie-ui/indie-ui-events.html#actions) against DOM elements depending on their `role="…"` attribute
 

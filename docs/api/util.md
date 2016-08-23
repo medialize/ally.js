@@ -117,3 +117,6 @@ A component's `engage()` function may return an result object. The decorated `di
 * `util/get-frame-element` returns the `<iframe>` or `<object>` the element is hosted in.
 * `util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.`util/get-window` returns the `window` (also known as `defaultView`) of the document and element is attached to.
 
+### Mutate Element.className (classList)
+
+`util/toggle-class` mutates a given element's `class` attribute without using [`classList`](https://developer.mozilla.org/en/docs/Web/API/Element/classList), as this is not consistently available on `Element` and `SVGEelement`.

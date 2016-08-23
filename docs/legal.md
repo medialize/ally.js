@@ -19,7 +19,7 @@ The logo is a composition of the [United Nations Accessibility Logo](http://www.
 In its UMD bundle ally.js contains resources of the following projects:
 
 * [array.prototype.findindex](https://github.com/paulmillr/Array.prototype.findIndex), also MIT license
-* [domtokenlist-shim](https://github.com/jwilsson/domtokenlist), also MIT license
+* [domtokenlist-shim](https://github.com/jwilsson/domtokenlist), also MIT license, removed in `v#master`
 * [css.escape](https://github.com/mathiasbynens/CSS.escape), also MIT license
 * [platform.js](https://github.com/bestiejs/platform.js), also MIT License
 

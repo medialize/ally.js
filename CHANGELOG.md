@@ -9,11 +9,10 @@
 * adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
 * removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
 * fixing [`ally.element.disabled`][ally/element/disabled] to remove SVG links from the document's tabbing order in Firefox
-* bumping [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) to not break in IE8 - [issue #112](https://github.com/medialize/ally.js/issues/112)
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
-
+* replacing [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) by [`ally.util.toggleClass`][ally/util] - [issue #147](https://github.com/medialize/ally.js/issues/147)
 
 ## 1.1.1 - Augmented Reality
 

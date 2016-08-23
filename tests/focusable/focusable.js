@@ -5,7 +5,6 @@ require.config({
     // shims required by ally.js
     'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
     'css.escape': '../../node_modules/css.escape/css.escape',
-    'domtokenlist-shim': '../../node_modules/domtokenlist-shim',
     'es6-promise': '../../node_modules/es6-promise/dist/es6-promise',
     // stuff used for testing and co
     platform: '../../node_modules/platform/platform',
