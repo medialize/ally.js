@@ -37,7 +37,6 @@ define([], function() {
 
         'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
         'css.escape': 'node_modules/css.escape/css.escape',
-        'domtokenlist-shim': 'node_modules/domtokenlist-shim',
         platform: 'node_modules/platform/platform',
       },
     },

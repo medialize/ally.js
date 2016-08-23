@@ -72,7 +72,7 @@ define(function(require) {
 
           expect(document.documentElement.getAttribute('data-focus-source')).to.equal('key', 'attribute after focus shift');
           expect(handle.current()).to.equal('key', 'current() after focus shift');
-          expect(document.documentElement.classList.contains('focus-source-key')).to.equal(true, 'class after focus shift');
+          expect(document.documentElement.className.indexOf('focus-source-key') !== -1).to.equal(true, 'class after focus shift');
           expect(handle.used('key')).to.equal(true, 'used(key) after focus shift');
           expect(handle.used('pointer')).to.equal(false, 'used(pointer) after focus shift');
 
@@ -95,7 +95,7 @@ define(function(require) {
 
           expect(document.documentElement.getAttribute('data-focus-source')).to.equal('pointer', 'attribute after focus shift');
           expect(handle.current()).to.equal('pointer', 'current() after focus shift');
-          expect(document.documentElement.classList.contains('focus-source-pointer')).to.equal(true, 'class after focus shift');
+          expect(document.documentElement.className.indexOf('focus-source-pointer') !== -1).to.equal(true, 'class after focus shift');
           expect(handle.used('key')).to.equal(false, 'used(key) after focus shift');
           expect(handle.used('pointer')).to.equal(true, 'used(pointer) after focus shift');
 
