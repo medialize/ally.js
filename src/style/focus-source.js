@@ -24,7 +24,7 @@
   Alternate implementation: https://github.com/alice/modality
 */
 
-import 'domtokenlist-shim/dist/domtokenlist-polyfill-umd';
+import { addClass, removeClass } from '../util/toggle-class';
 import shadowFocus from '../event/shadow-focus';
 import engageInteractionTypeObserver from '../observe/interaction-type';
 import decorateService from '../util/decorate-service';
@@ -64,7 +64,7 @@ function handleFocusEvent(event) {
 
   if (event.type !== blurEventName) {
     if (!used[source]) {
-      document.documentElement.classList.add('focus-source-' + source);
+      addClass(document.documentElement, 'focus-source-' + source);
     }
 
     used[source] = true;
@@ -89,7 +89,7 @@ function disengage() {
   handleFocusEvent({type: blurEventName});
   current = lock = null;
   Object.keys(used).forEach(function(key) {
-    document.documentElement.classList.remove('focus-source-' + key);
+    removeClass(document.documentElement, 'focus-source-' + key);
     used[key] = false;
   });
   // kill interaction type identification listener

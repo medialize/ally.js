@@ -8,7 +8,7 @@
     style/focus-within()
 */
 
-import 'domtokenlist-shim/dist/domtokenlist-polyfill-umd';
+import { addClass, removeClass } from '../util/toggle-class';
 import shadowFocus from '../event/shadow-focus';
 import getActiveElements from '../get/active-elements';
 import getParents from '../get/parents';
@@ -21,11 +21,6 @@ let supports;
 // preferring focusin/out because they are synchronous in IE10+11
 const focusEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusin' : 'focus');
 const blurEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusout' : 'blur');
-
-// NOTE: require classList polyfill may be necessary (not available on SVGElement)
-// http://caniuse.com/#feat=classlist available since IE10
-// https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills#classlist
-// https://developer.mozilla.org/en-US/docs/Web/API/Element.classList
 
 const className = 'ally-focus-within';
 // defined in engage();
@@ -53,7 +48,7 @@ function applyFocusWithinClass(active) {
       return;
     }
 
-    element.classList && element.classList.remove(className);
+    removeClass(element, className);
   });
 
   // apply the class only to elements that do not yet have it (minimize dom action)
@@ -62,7 +57,7 @@ function applyFocusWithinClass(active) {
       return;
     }
 
-    element.classList && element.classList.add(className);
+    addClass(element, className);
   });
 }
 
@@ -97,7 +92,7 @@ function disengage() {
 
   // remove any remaining ally-within-focus occurrences
   [].forEach.call(document.querySelectorAll(selector), function(element) {
-    element.classList.remove(className);
+    removeClass(element, className);
   });
 }
 
