@@ -1,5 +1,10 @@
 # ally.js change log
 
+## master
+
+* replacing [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) by [`ally.util.toggleClass`][ally/util] - [issue #147](https://github.com/medialize/ally.js/issues/147)
+
+
 ## 1.1.1 - Augmented Reality
 
 *August 6th 2016.* We're releasing a few fixes that have been hanging in the master branch as a bugfix release to 1.1, because waiting for 1.2 to come together is not an option for everyone.
