@@ -21,13 +21,13 @@ Tests are run by [TravisCI](https://travis-ci.org/medialize/ally.js) on every pu
 
 ## Locally running unit tests in the browser
 
-You can run the unit tests in any browser by navigating to the following URL (replacing `${host}` and `${path}` accordingly):
+You can run the unit tests in any browser by starting the server using `npm run test:server` and navigating to the following URL:
 
 ```text
-http://${hostname}>/${path}/ally.js/node_modules/intern/client.html?config=test/browser
+http://localhost:9000/node_modules/intern/client.html?config=test/browser
 ```
 
-(we're not using `test/sauce` or `test/chrome` in the browser because of the `reporters` those configurations load)
+* **NOTE:** The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
 
 
 ## Locally running all tests in the browser
