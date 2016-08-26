@@ -57,6 +57,10 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 * **EXAMPLE:** [`ally.when.visibleArea` Example](./visible-area.example.html)
 
+## Changes
+
+* As of `v#master` the callback is [always executed asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony).
+
 
 ## Notes
 

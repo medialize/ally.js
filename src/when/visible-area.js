@@ -22,25 +22,29 @@ export default function({context, callback, area} = {}) {
     context,
   });
 
-  if (isVisible(element) && visibleArea(element) >= area && callback(element) !== false) {
-    // element is already visible, trivial escape
-    return null;
-  }
-
   let raf;
+  let evaluate = null;
   const disengage = function() {
     raf && cancelAnimationFrame(raf);
   };
 
-  const runWhenReady = function() {
-    if (!isVisible(element) || visibleArea(element) < area || callback(element) === false) {
-      raf = requestAnimationFrame(runWhenReady);
+  const predicate = function() {
+    return !isVisible(element) || visibleArea(element) < area || callback(element) === false;
+  };
+
+  const checkPredicate = function() {
+    if (predicate()) {
+      evaluate();
       return;
     }
 
     disengage();
   };
 
-  runWhenReady();
+  evaluate = function() {
+    raf = requestAnimationFrame(checkPredicate);
+  };
+
+  evaluate();
   return { disengage };
 }

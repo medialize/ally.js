@@ -15,6 +15,7 @@
 * [build] replacing broken [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) plugin - [issue #149](https://github.com/medialize/ally.js/issues/149)
 * improving [`ally.style.focusSource`][ally/style/focus-source] by adding `.unlock()` - [issue #151](https://github.com/medialize/ally.js/issues/151)
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to respect `except.scrollable`
+* refactoring [`ally.when.visibleArea`][ally/when/visible-area] to always [execute the callback asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
 
 
 ## 1.2.0 - Adios DOMTokenList
