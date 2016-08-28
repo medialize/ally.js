@@ -16,6 +16,7 @@
 * improving [`ally.style.focusSource`][ally/style/focus-source] by adding `.unlock()` - [issue #151](https://github.com/medialize/ally.js/issues/151)
 * fixing [`ally.is.tabbable`][ally/is/tabbable] to respect `except.scrollable`
 * refactoring [`ally.when.visibleArea`][ally/when/visible-area] to always [execute the callback asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
+* refactoring all unit and functional tests to use [BDD interface](https://theintern.github.io/intern/#interface-tdd) to improve clarity of a test's intent
 
 
 ## 1.2.0 - Adios DOMTokenList
