@@ -2,7 +2,6 @@
 const metalsmith = require('metalsmith');
 const remarkable = require('metalsmith-markdown-remarkable');
 const paths = require('metalsmith-paths');
-const packageJson = require('metalsmith-packagejson');
 const registerHelpers = require('metalsmith-register-helpers');
 const layouts = require('metalsmith-layouts');
 const linkChecker = require('metalsmith-broken-link-checker');
@@ -11,6 +10,7 @@ const staticFiles = require('metalsmith-static');
 const redirect = require('metalsmith-redirect');
 const inPlace = require('metalsmith-in-place');
 
+const importJson = require('./plugins/import-json');
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
 const injectExamples = require('./plugins/inject-examples');
@@ -83,7 +83,10 @@ function getCollectionsMap() {
 metalsmith(__dirname)
   .source('../../docs')
   .destination('../../web')
-  .use(packageJson())
+  .use(importJson({
+    key: 'pkg',
+    file: 'package.json',
+  }))
   .use(function(files) {
     Object.keys(files).forEach(function(path) {
       files[path].originalPath = path;

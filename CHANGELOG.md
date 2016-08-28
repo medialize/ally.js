@@ -12,6 +12,7 @@
 * [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
 * running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
 * [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
+* [build] replacing broken [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) plugin - [issue #149](https://github.com/medialize/ally.js/issues/149)
 
 
 ## 1.2.0 - Adios DOMTokenList
