@@ -3,7 +3,6 @@ define(function(require) {
 
   var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
-  var keys = require('intern/dojo/node!leadfoot/keys');
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
   var makeCustomCommand = require('../helper/leadfoot-commands');
 
@@ -30,7 +29,14 @@ define(function(require) {
     bdd.before(function() {
       return this.remote
         .skipUnlessCapability(this, 'shiftFocusOnTab', 'Cannot test Tab focus via WebDriver in this browser')
-        .skipUnlessCapability(this, 'shiftFocusOnTabToLink', 'Cannot test Tab to link via WebDriver in this browser')
+        // on BrowserStack's OSX Firefox will not tab to links because the
+        // System Preference > Keyboard > Shortcuts > Full Keyboard Access
+        // is "Text boxes and lists only" by default
+        .skipUnlessCapability(
+          this,
+          ['shiftFocusOnTabToLink', 'shiftFocusOnAltTabToLink'],
+          'Cannot test Tab focus to link via WebDriver in this browser'
+        )
         .setTimeouts(timeout)
 
         .get(require.toUrl('test/pages/style.focus-within.test.html'))
@@ -47,11 +53,11 @@ define(function(require) {
         .expectActiveElement('before', 'initial position')
         .expectHierarchy(['HTML', 'BODY', 'before'], '.ally-focus-within initial')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('svg-link', 'activeElement after first Tab')
         .expectHierarchy(['HTML', 'BODY', 'container', 'svg', 'svg-link'], '.ally-focus-within after first Tab')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('after', 'activeElement after second Tab')
         .expectHierarchy(['HTML', 'BODY', 'container', 'after'], '.ally-focus-within after second Tab');
     });

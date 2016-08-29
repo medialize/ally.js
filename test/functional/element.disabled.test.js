@@ -2,7 +2,6 @@ define(function(require) {
   'use strict';
 
   var bdd = require('intern!bdd');
-  var keys = require('intern/dojo/node!leadfoot/keys');
   require('../helper/leadfoot-commands');
 
   bdd.describe('element/disabled', function() {
@@ -27,7 +26,7 @@ define(function(require) {
         .focusById('before')
         .expectActiveElement('before', 'initial position')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('after', 'after first Tab');
     });
   });

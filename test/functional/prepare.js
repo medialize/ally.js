@@ -46,6 +46,20 @@ define(function(require) {
         });
     });
 
+    bdd.it('should understand "shiftFocusOnAltTabToLink"', function() {
+      return this.remote
+        .skipPlatform(this, function(platform) {
+          return !(platform.is.WEBKIT && platform.is.OSX);
+        }, 'ALT+TAB is a matter of Safari on OSX')
+
+        .focusById('second')
+        .pressKeys([keys.ALT, keys.TAB])
+        .pressKeys(keys.NULL)
+        .withActiveElement(function(activeElementId) {
+          this.session.capabilities.shiftFocusOnAltTabToLink = activeElementId === 'third';
+        });
+    });
+
     bdd.it('should understand "shiftModifierKey"', function() {
       return this.remote
         .execute('window.events.length = 0')

@@ -3,6 +3,7 @@ define(function(require) {
 
   var Command = require('intern/dojo/node!leadfoot/Command');
   var expect = require('intern/chai!expect');
+  var keys = require('intern/dojo/node!leadfoot/keys');
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
   Command.prototype.setTimeouts = function(timeout) {
@@ -28,6 +29,30 @@ define(function(require) {
     });
   };
 
+  Command.prototype.focusForward = function() {
+    return new this.constructor(this, function () {
+      var _keys = this.session.capabilities.shiftFocusOnAltTabToLink
+        ? [keys.ALT, keys.TAB]
+        : [keys.TAB];
+
+      return this.parent
+        .pressKeys(_keys)
+        .pressKeys(keys.NULL);
+    });
+  };
+
+  Command.prototype.focusBackward = function() {
+    return new this.constructor(this, function () {
+      var _keys = this.session.capabilities.shiftFocusOnAltTabToLink
+        ? [keys.ALT, keys.SHIFT, keys.TAB]
+        : [keys.SHIFT, keys.TAB];
+
+      return this.parent
+        .pressKeys(_keys)
+        .pressKeys(keys.NULL);
+    });
+  };
+
   Command.prototype.focusBody = function() {
     return new this.constructor(this, function () {
       return this.parent
@@ -46,9 +71,17 @@ define(function(require) {
     });
   };
 
-  Command.prototype.skipUnlessCapability = function(test, capability, message) {
+  Command.prototype.skipUnlessCapability = function(test, capabilities, message) {
     return new this.constructor(this, function () {
-      if (this.session.capabilities[capability]) {
+      if (!Array.isArray(capabilities)) {
+        capabilities = [capabilities];
+      }
+
+      var supported = capabilities.some(function(capability) {
+        return Boolean(this.session.capabilities[capability]);
+      }, this);
+
+      if (supported) {
         return;
       }
 

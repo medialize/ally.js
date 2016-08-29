@@ -14,7 +14,9 @@ export default function({ context } = {}) {
   queryTabsequence();
 
   return whenKey({
-    '?shift+tab': function(event) {
+    // Safari on OSX may require ALT+TAB to reach links,
+    // see https://github.com/medialize/ally.js/issues/146
+    '?alt+?shift+tab': function(event) {
       // we're completely taking over the Tab key handling
       event.preventDefault();
 

@@ -46,6 +46,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 ## Changes
 
 * Added in `v1.1.0`.
+* As of `v#master` it also works with <kbd>Option Tab</kbd> in Safari for macOS - [#146](https://github.com/medialize/ally.js/issues/146).
 
 
 ## Notes

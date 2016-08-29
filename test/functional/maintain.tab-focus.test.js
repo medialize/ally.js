@@ -2,7 +2,6 @@ define(function(require) {
   'use strict';
 
   var bdd = require('intern!bdd');
-  var keys = require('intern/dojo/node!leadfoot/keys');
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
   require('../helper/leadfoot-commands');
 
@@ -25,13 +24,13 @@ define(function(require) {
         .focusById('first')
         .expectActiveElement('first', 'initial position')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('second', 'after first Tab')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('third', 'after second Tab')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('first', 'after third Tab');
     });
 
@@ -43,16 +42,13 @@ define(function(require) {
         .focusById('third')
         .expectActiveElement('third', 'initial position')
 
-        .pressKeys([keys.SHIFT, keys.TAB])
-        .pressKeys(keys.NULL)
+        .focusBackward()
         .expectActiveElement('second', 'after first Tab')
 
-        .pressKeys([keys.SHIFT, keys.TAB])
-        .pressKeys(keys.NULL)
+        .focusBackward()
         .expectActiveElement('first', 'after second Tab')
 
-        .pressKeys([keys.SHIFT, keys.TAB])
-        .pressKeys(keys.NULL)
+        .focusBackward()
         .expectActiveElement('third', 'after third Tab');
     });
 
@@ -62,7 +58,7 @@ define(function(require) {
         .focusById('before')
         .expectActiveElement('before', 'initial position')
 
-        .pressKeys(keys.TAB)
+        .focusForward()
         .expectActiveElement('first', 'after first Tab');
     });
   });
