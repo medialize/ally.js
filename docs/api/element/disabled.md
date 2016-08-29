@@ -23,6 +23,7 @@ The following things are done in order to make an element inert:
 * adding the CSS property `pointer-events: none;` to prevent any interaction from mouse and touch
 * adding `aria-disabled="true"` to inform the AccessibilityTree of the element's state
 
+* **NOTE:** The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
 
 ## Usage
 
