@@ -10,7 +10,7 @@ Shifts focus to an element if it does not already have focus.
 
 ## Description
 
-The [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method is available on all [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement). Considering the following HTML, applying `focus()` to the `<span>` element does not do anything. `ally.element.focus()` uses [`ally.get.focusTarget`](../get/focus-target.md) to identify the nearest focusable ancestor, in this case the `<a>`, and shifts focus to that.
+The [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method is available on all [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement). Considering the following HTML, applying `focus()` to the `<span>` element does not do anything. `ally.element.focus()` can use [`ally.get.focusTarget`](../get/focus-target.md) to identify the nearest focusable ancestor, in this case the `<a>`, and shifts focus to that.
 
 ```html
 <a href="#victim">
@@ -33,6 +33,14 @@ var result = ally.element.focus(element);
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | element | [`<selector>`](../concepts.md#Selector) | *required* | The Element to focus. First element of the collections is used. |
+| options | [`<focus options>`](#Focus-options-argument) | `{defaultToAncestor: true}` | The Element to test. |
+
+#### Focus options argument
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| defaultToAncestor | boolean | `false` | If the Element itself is not focusable the first focusable element in its ancestry is used instead. |
+
 
 ### Returns
 

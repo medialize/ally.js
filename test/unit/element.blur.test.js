@@ -57,7 +57,9 @@ define(function(require) {
 
     bdd.it('should blur SVG elements', function() {
       var element = document.getElementById('svg-link');
-      elementFocus(element);
+      elementFocus(element, {
+        defaultToAncestor: true,
+      });
 
       var result = elementBlur(element);
       var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;

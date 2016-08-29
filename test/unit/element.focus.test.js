@@ -58,7 +58,10 @@ define(function(require) {
       element.textContent = 'hello world';
       target.appendChild(element);
 
-      var result = elementFocus(element);
+      var result = elementFocus(element, {
+        defaultToAncestor: true,
+      });
+
       expect(result).to.equal(target);
     });
 
@@ -86,7 +89,11 @@ define(function(require) {
       bdd.it('should redirect focus from descendants of SVG links', function() {
         var element = document.getElementById('svg-link-text');
         var target = document.getElementById('svg-link');
-        var result = elementFocus(element);
+
+        var result = elementFocus(element, {
+          defaultToAncestor: true,
+        });
+
         var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;
         expect(result).to.equal(canFocusSvg ? target : null);
       });
