@@ -80,7 +80,11 @@ function convertNoteBlocks($/*, data*/) {
   // replace NOTE: and WARNING: lists by proper blocks
   $('ul li strong').each(function() {
     const $label = $(this);
-    const $li = $label.parent();
+    let $li = $label.parent();
+    if ($li.is('p')) {
+      $li = $li.parent();
+    }
+
     const $ul = $li.parent();
     const label = $label.text();
     if (label !== 'NOTE:' && label !== 'WARNING:' && label !== 'HELP:' && label !== 'TIP:') {
@@ -89,7 +93,13 @@ function convertNoteBlocks($/*, data*/) {
 
     const $div = $('<div>').attr('class', label.slice(0, -1).toLowerCase());
     $div.append($li.html());
-    $ul.before($div);
+
+    if ($li.is(':last-child')) {
+      $ul.after($div);
+    } else {
+      $ul.before($div);
+    }
+
     $li.remove();
     if (!$ul.children().length) {
       $ul.remove();
