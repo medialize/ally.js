@@ -138,5 +138,7 @@ export default function(element) {
   const visibleArea = Math.round(_visible.width) * Math.round(_visible.height) / maxArea;
   // Edge might not reach 0.5 exactly
   const factor = 10000;
-  return Math.round(visibleArea * factor) / factor;
+  const roundedVisibleArea = Math.round(visibleArea * factor) / factor;
+  // clamp the value at 1
+  return Math.min(roundedVisibleArea, 1);
 }
