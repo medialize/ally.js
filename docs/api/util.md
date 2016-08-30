@@ -120,3 +120,7 @@ A component's `engage()` function may return an result object. The decorated `di
 ### Mutate Element.className (classList)
 
 `util/toggle-class` mutates a given element's `class` attribute without using [`classList`](https://developer.mozilla.org/en/docs/Web/API/Element/classList), as this is not consistently available on `Element` and `SVGEelement`.
+
+### Reset scroll positions
+
+`util/reset-scrolling` collects the scroll positions of the given element's ancestors. The function returned as a result will reset the elements to the collected elements' positions. This is useful to revert the effect of an operation that causes unpreventable scrolling.
