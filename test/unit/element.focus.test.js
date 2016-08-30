@@ -8,6 +8,7 @@ define(function(require) {
   var supports = require('../helper/supports');
   var platform = require('ally/util/platform');
   var elementFocus = require('ally/element/focus');
+  var visibleArea = require('ally/util/visible-area');
 
   bdd.describe('element/focus', function() {
     var fixture;
@@ -96,6 +97,42 @@ define(function(require) {
 
         var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;
         expect(result).to.equal(canFocusSvg ? target : null);
+      });
+    });
+
+    bdd.describe('for option.undoScrolling', function() {
+      bdd.beforeEach(function() {
+        // shift #link-tabindex--1 out of sight
+        var container = document.querySelector('.context');
+        var spacer = document.getElementById('link');
+
+        container.setAttribute('style', 'overflow: auto; height: 100px;');
+        spacer.setAttribute('style', 'margin: 100px 0; display: block;');
+      });
+
+      bdd.it('should by scroll focused element into view by default', function() {
+        var target = document.getElementById('link-tabindex--1');
+
+        expect(visibleArea(target)).to.equal(0);
+
+        var result = elementFocus(target);
+
+        expect(result).to.equal(target);
+        // Trident scrolls the element to about 98% visibility
+        expect(visibleArea(target)).to.be.at.least(0.9);
+      });
+
+      bdd.it('should revert scroll positions after focusing element', function() {
+        var target = document.getElementById('link-tabindex--1');
+
+        expect(visibleArea(target)).to.equal(0);
+
+        var result = elementFocus(target, {
+          undoScrolling: true,
+        });
+
+        expect(result).to.equal(target);
+        expect(visibleArea(target)).to.equal(0);
       });
     });
 

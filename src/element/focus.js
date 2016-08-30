@@ -6,6 +6,7 @@ import isActiveElement from '../is/active-element';
 import isFocusable from '../is/focusable';
 import contextToElement from '../util/context-to-element';
 import getWindow from '../util/get-window';
+import resetScrolling from '../util/reset-scrolling';
 
 function focus(element) {
   if (element.focus) {
@@ -40,6 +41,7 @@ const except = {
 
 export default function(context, {
   defaultToAncestor,
+  undoScrolling,
 } = {}) {
   const element = contextToElement({
     label: 'element/focus',
@@ -68,5 +70,14 @@ export default function(context, {
     return target;
   }
 
-  return focus(target);
+  let _undoScrolling;
+  if (undoScrolling) {
+    _undoScrolling = resetScrolling(target);
+  }
+
+  const result = focus(target);
+
+  _undoScrolling && _undoScrolling();
+
+  return result;
 }
