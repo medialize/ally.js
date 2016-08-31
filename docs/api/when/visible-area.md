@@ -69,6 +69,8 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Related resources
 
+* [Managing focus in animated UI](../../tutorials/focusing-in-animated-ui.md)
+
 
 ## Contributing
 

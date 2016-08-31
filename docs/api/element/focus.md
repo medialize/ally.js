@@ -10,7 +10,7 @@ Shifts focus to an element if it does not already have focus.
 
 ## Description
 
-The [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method is available on all [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement). Considering the following HTML, applying `focus()` to the `<span>` element does not do anything. `ally.element.focus()` can use [`ally.get.focusTarget`](../get/focus-target.md) to identify the nearest focusable ancestor, in this case the `<a>`, and shifts focus to that.
+The [`Element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method is available on all [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement). Considering the following HTML, applying `focus()` to the `<span>` element does not do anything. `ally.element.focus()` can use [`ally.get.focusTarget`](../get/focus-target.md) to identify the nearest focusable ancestor, in this case the `<a>`, and shifts focus to that.
 
 ```html
 <a href="#victim">
@@ -67,6 +67,7 @@ var result = ally.element.focus(element);
 ## Related resources
 
 * [`ally.element.blur`](./blur.md) shifts focus away from an element if it currently has focus.
+* [Managing focus in animated UI](../../tutorials/focusing-in-animated-ui.md)
 
 
 ## Contributing

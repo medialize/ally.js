@@ -70,6 +70,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 * [`ally.is.visible`](../is/visible.md) is used to identify if the element is focusable
 * [`ally.when.visibleArea`](visible-area.md) is used internally to wait until element is visible in viewport, before checking if it is focusable
+* [Managing focus in animated UI](../../tutorials/focusing-in-animated-ui.md)
 
 
 ## Contributing

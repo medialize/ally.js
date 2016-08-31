@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Failing Focus in Animated UI</title>
+  <link rel="jsbin" href="https://jsbin.com/pehehe/">
+  <style id="example-css">
+
+    main p {
+      margin: 0;
+    }
+    
+    main p + p {
+      margin-top: 10px;
+    }
+
+    #cropper {
+      width: 200px;
+      border: 1px solid black;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    section ul {
+      box-sizing: border-box;
+      width: 600px;
+      border: 1px solid grey;
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+              flex-wrap: nowrap;
+      -webkit-justify-content: center;
+                -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-align-content: stretch;
+         -ms-flex-line-pack: stretch;
+              align-content: stretch;
+      -webkit-align-items: stretch;
+           -ms-flex-align: stretch;
+              align-items: stretch;
+
+      transition: transform 1s ease-in-out;
+    }
+
+    section[data-active-item="first"] ul {
+      transform: translate3d(0px, 0px, 0px);
+    }
+
+    section[data-active-item="second"] ul {
+      transform: translate3d(-200px, 0px, 0px);
+    }
+
+    section[data-active-item="third"] ul {
+      transform: translate3d(-400px, 0px, 0px);
+    }
+
+    section[data-active-item="first"] #first,
+    section[data-active-item="second"] #second,
+    section[data-active-item="third"] #third {
+      visibility: inherit;
+      transition: visibility 0s 0s linear;
+    }
+
+    section ul li {
+      display: flex;
+      box-sizing: border-box;
+      width: 200px;
+      padding: 20px;
+      margin: 0;
+
+      visibility: hidden;
+      transition: visibility 0s 1s linear;
+    }
+
+    #first {
+      background: #ccccff;
+    }
+    #second {
+      background: #ccffcc;
+    }
+    #third {
+      background: #ffcccc;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1>Failing Focus in Animated UI</h1>
+
+  <p>This example shows the basic concept of a carousel, accordion and similar content-revealing UI widgets.</p>
+  <p>
+    The buttons reveal their associated slides by using the CSS properties <code>transform</code> and <code>transition</code>.
+    The checkbox controls if focus should be shifted to the slide as it is revealed.
+  </p>
+  <p>Note how shifting focus interferes with the content being presented, because of the browser scrolling elements into view when they become the active element.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <section data-active-item="first">
+      
+      <fieldset>
+        <legend>show slide</legend>
+
+        <p>
+          <button type="button" data-show="first">first</button>
+          <button type="button" data-show="second">second</button>
+          <button type="button" data-show="third">third</button>
+        </p>
+        <p>
+          <label><input type="checkbox" id="with-focus"> shift focus to slide</label>
+        </p>
+        <p>
+          <button type="button" id="reset">reset scroll position</button>
+        </p>
+      </fieldset>
+
+      <div id="cropper">
+        <ul>
+          <li id="first" tabindex="-1">First</li>
+          <li id="second" tabindex="-1">Second</li>
+          <li id="third" tabindex="-1">Third</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script id="example-js">
+  var section = document.querySelector('section');
+  var withFocus = document.getElementById('with-focus');
+  section.addEventListener('click', function(event) {
+    var id = event.target.getAttribute('data-show');
+    if (!id) {
+      return;
+    }
+
+    // transition to slide
+    section.setAttribute('data-active-item', id);
+
+    if (withFocus.checked) {
+      // shift focus to slide
+      document.getElementById(id).focus();
+    }
+  }, true);
+
+  var cropper = document.getElementById('cropper');
+  var reset = document.getElementById('reset');
+  reset.addEventListener('click', function() {
+    cropper.scrollLeft = 0;
+  }, true);
+
+</script>
+
+</body>
+</html>
