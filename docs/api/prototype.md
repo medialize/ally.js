@@ -7,7 +7,8 @@ tags: internal
 
 The prototype infrastructure makes functions available in modern browsers available to older browsers lacking the native support.
 
-* `prototype/element.prototoype.matches.js` polyfills [Element.matches](https://developer.mozilla.org/en-US/docs/Web/API/Element.matches)
+Polyfills should only extend JavaScript and BOM (Browser Object Model). Polyfills that extend the DOM (Document Object Model), i.e. the `Element` interface, are to be avoided, as they prove difficult in multi-document scenarios (e.g. `<iframe>`, `<object>`) and may not be made available on all inheriting interfaces (e.g. `SVGElement`).
+
 * `prototype/window.customevent.js` polyfills the [`CustomEvent`](https://developer.mozilla.org/en/docs/Web/API/CustomEvent) constructor (but returns it rather than overwriting `window.CustomEvent` in Internet Explorer)
 * `prototype/window.requestanimationframe.js` polyfills the [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame) function for older Internet Explorer
 

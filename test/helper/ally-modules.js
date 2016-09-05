@@ -11,7 +11,6 @@ define([], function() {
       'shadow-focus',
     ],
     prototype: [
-      'element.prototype.matches',
       'window.customevent',
     ],
     util: [

@@ -124,3 +124,7 @@ A component's `engage()` function may return an result object. The decorated `di
 ### Reset scroll positions
 
 `util/reset-scrolling` collects the scroll positions of the given element's ancestors. The function returned as a result will reset the elements to the collected elements' positions. This is useful to revert the effect of an operation that causes unpreventable scrolling.
+
+### Match element agains CSS selector
+
+`util/element-matches` provides a simple interface to using [Element.matches](https://developer.mozilla.org/en-US/docs/Web/API/Element.matches) through its various vendor-prefixed names.

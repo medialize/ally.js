@@ -1,13 +1,13 @@
 define([
   './utils',
-  'ally/prototype/element.prototype.matches',
+  'ally/util/element-matches',
   'ally/is/focusable',
   'ally/is/tabbable',
   'ally/is/only-tabbable',
   'ally/get/focus-redirect-target',
   'jquery',
   'jquery-ui/core',
-], function(utils, polyfillMatches, isFocusable, isTabbable, isOnlyTabbable, getFocusRedirectTarget, $) {
+], function(utils, elementMatches, isFocusable, isTabbable, isOnlyTabbable, getFocusRedirectTarget, $) {
 
   // infrastructure grabbing all the elements we have
   function Elements() {
@@ -245,7 +245,6 @@ define([
       };
     },
     analyzeActiveElementState: function(element, previousActiveElement) {
-      polyfillMatches(element.ownerDocument.defaultView);
       var meta = this.analyzeElementMeta(element);
       var data = {
         // true if the element is the activeElement of the master document
@@ -253,7 +252,7 @@ define([
         // true if the element is the activeElement within the nested document or ShadowRoot
         contextActiveElement: utils.getRootNode(element).activeElement === element,
         // true if the element has the :focus pseudo class set
-        cssFocus: element.matches(':focus'),
+        cssFocus: elementMatches(element, ':focus'),
       };
 
       // in case the element did not become the activeElement itself

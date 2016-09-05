@@ -18,6 +18,7 @@
 * refactoring [`ally.when.visibleArea`][ally/when/visible-area] to always [execute the callback asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
 * refactoring all unit and functional tests to use [BDD interface](https://theintern.github.io/intern/#interface-tdd) to improve clarity of a test's intent
 * fixing [`ally.maintain.tabFocus`][ally/maintain|tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
+* refactoring `element.prototype.matches` to `util/matches-element`
 
 
 ## 1.2.0 - Adios DOMTokenList

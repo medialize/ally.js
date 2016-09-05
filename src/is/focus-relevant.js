@@ -3,10 +3,9 @@
 // of the element actually being focusable at the time of execution
 // i.e. <input disabled> is conisdered focus-relevant, but not focusable
 
-import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
 import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
-import getWindow from '../util/get-window';
+import elementMatches from '../util/element-matches';
 import isValidTabindex from './valid-tabindex';
 import {
   hasCssOverflowScroll,
@@ -141,9 +140,7 @@ function isFocusRelevantRules({
       || Boolean(supports.focusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
   }
 
-  const _window = getWindow(element);
-  polyfillElementPrototypeMatches(_window);
-  if (element.matches('svg a') && element.hasAttribute('xlink:href')) {
+  if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
     return true;
   }
 

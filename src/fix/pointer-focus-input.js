@@ -9,10 +9,9 @@
   option `accessibility.mouse_focuses_formcontrol` in about:config
 */
 
-import polyfillElementPrototypeMatches from '../prototype/element.prototype.matches';
 import getFocusTarget from '../get/focus-target';
 import decorateContext from '../util/decorate-context';
-import getWindow from '../util/get-window';
+import elementMatches from '../util/element-matches';
 import platform from '../util/platform';
 
 let engage;
@@ -24,9 +23,7 @@ if (!relevantToCurrentBrowser) {
   engage = function() {};
 } else {
   const handleMouseDownEvent = function(event) {
-    const _window = getWindow(event.target);
-    polyfillElementPrototypeMatches(_window);
-    if (event.defaultPrevented || !event.target.matches('input, button, button *')) {
+    if (event.defaultPrevented || !elementMatches(event.target, 'input, button, button *')) {
       // abort if the mousedown event was cancelled,
       // or we're not dealing with an affected form control
       return;
@@ -43,9 +40,7 @@ if (!relevantToCurrentBrowser) {
   };
 
   const handleMouseUpEvent = function(event) {
-    const _window = getWindow(event.target);
-    polyfillElementPrototypeMatches(_window);
-    if (event.defaultPrevented || !event.target.matches('label, label *')) {
+    if (event.defaultPrevented || !elementMatches(event.matches, 'label, label *')) {
       // abort if the mouseup event was cancelled,
       // or we're not dealing with a <label>
       return;
