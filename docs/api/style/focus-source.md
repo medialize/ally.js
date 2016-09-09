@@ -97,11 +97,15 @@ The `handle.current()` method does not accept any arguments and returns one of t
 
 ### handle.used(`<string>`)
 
-The `handle.used()` method accepts one string argument and returns `true` if it matches the current interaction type.
+The `handle.used()` method accepts one string argument and returns `true` if that interaction type has ever been used before.
 
-### handle.lock(`<string>`)
+### handle.lock(`<string>|<boolean>`)
 
 The `handle.lock()` method accepts one string argument and sets that as the interaction type for all subsequent `handle.current()` invocations. The lock is reset when `false` is passed.
+
+### handle.unlock()
+
+The `handle.unlock()` method releases the focus-source lock.
 
 
 ## Examples
