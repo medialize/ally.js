@@ -68,14 +68,40 @@ handle.disengage();
 // get current focus source
 handle.current(); // "key", "pointer", "script"
 
-// test if a focus source has occured before
+// test if a focus source has occurred at least once before
 handle.used('key'); // true, false
 
-// make all focus events set a specified source
+// make all focus events use a specific source type
 // regardless of the identified interaction type
-// false acts as a reset
 handle.lock('pointer');
+// revert locking into a specific source type
+handle.unlock();
 ```
+
+The identified focus source is retained when shifting focus to another element:
+
+```js
+var handle = ally.style.focusSource();
+
+element.addEventListener('click', function() {
+  otherElement.focus();
+});
+```
+
+Use `.lock()` to retain the identified focus source when shifting focus asynchronously:
+
+```js
+var handle = ally.style.focusSource();
+
+element.addEventListener('click', function() {
+  handle.lock(handle.current());
+  setTimeout(function() {
+    otherElement.focus();
+    handle.unlock();
+  });
+});
+```
+
 
 ### Arguments
 
@@ -99,9 +125,9 @@ The `handle.current()` method does not accept any arguments and returns one of t
 
 The `handle.used()` method accepts one string argument and returns `true` if that interaction type has ever been used before.
 
-### handle.lock(`<string>|<boolean>`)
+### handle.lock(`<string>`)
 
-The `handle.lock()` method accepts one string argument and sets that as the interaction type for all subsequent `handle.current()` invocations. The lock is reset when `false` is passed.
+The `handle.lock()` method accepts one string argument and sets that as the interaction type for all subsequent `handle.current()` invocations.
 
 ### handle.unlock()
 
@@ -111,6 +137,11 @@ The `handle.unlock()` method releases the focus-source lock.
 ## Examples
 
 * **EXAMPLE:** [`ally.style.focusSource` Example](./focus-source.example.html)
+
+
+## Changes
+
+* In `v#master` the method `handle.unlock()` was added to supersede `handle.lock(false)`, which is still available, but removed from documentation.
 
 
 ## Notes
