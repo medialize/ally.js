@@ -84,6 +84,10 @@ function lockFocusSource(source) {
   lock = source;
 }
 
+function unlockFocusSource() {
+  lock = false;
+}
+
 function disengage() {
   // clear dom state
   handleFocusEvent({type: blurEventName});
@@ -118,6 +122,7 @@ function engage() {
     used: getUsedFocusSource,
     current: getCurrentFocusSource,
     lock: lockFocusSource,
+    unlock: unlockFocusSource,
   };
 }
 

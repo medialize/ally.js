@@ -122,6 +122,22 @@ define(function(require) {
         fixture.input.outer.focus();
         expect(handle.current()).to.equal('key', 'current() after third focus shift');
       },
+      'unlock()': function() {
+        handle = styleFocusSource();
+
+        dispatchEvent.mouse(document.documentElement, 'mousedown', {});
+        fixture.input.outer.focus();
+        dispatchEvent.mouse(document.documentElement, 'mouseup', {});
+
+        expect(handle.current()).to.equal('pointer', 'current() after focus shift');
+
+        handle.lock('key');
+        fixture.input.after.focus();
+        expect(handle.current()).to.equal('key', 'current() after second focus shift');
+        handle.unlock();
+        fixture.input.outer.focus();
+        expect(handle.current()).to.equal('pointer', 'current() after third focus shift');
+      },
     };
   });
 });
