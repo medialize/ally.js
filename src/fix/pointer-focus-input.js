@@ -40,7 +40,7 @@ if (!relevantToCurrentBrowser) {
   };
 
   const handleMouseUpEvent = function(event) {
-    if (event.defaultPrevented || !elementMatches(event.matches, 'label, label *')) {
+    if (event.defaultPrevented || !elementMatches(event.target, 'label, label *')) {
       // abort if the mouseup event was cancelled,
       // or we're not dealing with a <label>
       return;
