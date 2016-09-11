@@ -4,7 +4,7 @@ layout: doc-page.html
 
 # Managing focus in animated UI
 
-Managing focus is pretty straight forward: invoke the `element.focus()` to make `element` the active element. If the element is not visible in the viewport, browsers will scroll that element into view. From a user's point of view it makes a lot of sense to *see* where their keyboard input is directed to, even though no HTML specification has ever defined this behavior ([WHATWG HTML #94](https://github.com/whatwg/html/issues/94)). What worked really well for static documents, *can* be a bit of a problem for UI components that are transitioned into view as part of the web app's logic. 
+Managing focus is pretty straight forward: invoke the `element.focus()` to make `element` the active element. If the element is not visible in the viewport, browsers will scroll that element into view. From a user's point of view it makes a lot of sense to *see* where their keyboard input is directed to, even though no HTML specification has ever defined this behavior ([WHATWG HTML #94](https://github.com/whatwg/html/issues/94)). What worked really well for static documents, *can* be a bit of a problem for UI components that are transitioned into view as part of the web app's logic.
 
 Consider a new dialog is constructed off-screen and then moved into view in an animated fashion. Right after the elements are available in the DOM, the applications sends focus to one of its elements, as often required by [WAI-ARIA Authoring Practices](http://w3c.github.io/aria/practices/aria-practices.html). Since the element is still off-screen, the browser scrolls whatever elements it must, so that the element becomes visible in the viewport. But the application itself also kicks off an animation to move the element into view. And the end result is that the dialog came into view by way of the browser scrolling, and back out of view by way of the application's animation. Play with the following example to see this problem in action:
 
@@ -124,7 +124,7 @@ With a little more effort when crafting the CSS transition, we can make this syn
 }
 ```
 
-The [`transition-property`](https://developer.mozilla.org/en/docs/Web/CSS/transition-property) effectively *removed* the transition of `visibility` when showing the element, but the transition for hiding it is retained. 
+The [`transition-property`](https://developer.mozilla.org/en/docs/Web/CSS/transition-property) effectively *removed* the transition of `visibility` when showing the element, but the transition for hiding it is retained.
 
 Note that setting the [`transition-duration`](https://developer.mozilla.org/en/docs/Web/CSS/transition-duration) and [`transition-delay`](https://developer.mozilla.org/en/docs/Web/CSS/transition-delay) to `0s` would've achieved the same effect, but meant more repetition of CSS.
 
