@@ -6,6 +6,7 @@ layout: doc-page.html
 
 ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the "web platform" should've provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the [API documentation](api/README.md) to learn what the library actually provides.
 
+
 ## Requirements
 
 In order to load successfully in IE8, the [es5-shim](https://github.com/es-shims/es5-shim/) has to be loaded. Please also see [Does ally.js support Internet Explorer 8 and below?](./questions.md##Does-ally-js-support-Internet-Explorer-8-and-below).
@@ -51,6 +52,15 @@ ally.js is also available for production use by [cdnjs](https://cdnjs.com/librar
 </script>
 ```
 
+ally.js is also available via [unpkg.com](https://unpkg.com):
+
+```html
+<script src="https://unpkg.com/ally.js@{{pkg.version}}/ally.min.js"></script>
+<script>
+  console.log('loaded ally.js in version', ally.version);
+  console.log('focusable elements', ally.query.focusable());
+</script>
+```
 
 ## Installing via package manager
 
@@ -167,6 +177,11 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
 ```
 
 * **NOTE:** The AMD modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+
+
+## Integrations
+
+* [ember-cli-ally](https://www.npmjs.com/package/ember-cli-ally) exposes ally.js to ember-cli apps as 'ally'
 
 
 ---
