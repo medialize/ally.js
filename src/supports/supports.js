@@ -30,6 +30,7 @@ import focusScrollContainer from './focus-scroll-container';
 import focusSummary from './focus-summary';
 import focusSvgFocusableAttribute from './focus-svg-focusable-attribute';
 import focusSvgTabindexAttribute from './focus-svg-tabindex-attribute';
+import focusSvgNegativeTabindexAttribute from './focus-svg-negative-tabindex-attribute';
 import focusSvg from './focus-svg';
 import focusTabindexTrailingCharacters from './focus-tabindex-trailing-characters';
 import focusTable from './focus-table';
@@ -69,6 +70,7 @@ const testDescriptions = {
   focusSummary,
   focusSvgFocusableAttribute,
   focusSvgTabindexAttribute,
+  focusSvgNegativeTabindexAttribute,
   focusSvg,
   focusTabindexTrailingCharacters,
   focusTable,
