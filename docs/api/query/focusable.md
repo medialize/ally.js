@@ -64,6 +64,10 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#notes)
 
+:::note
+Querying the DOM for focus-relevant (focusable, tabbable, only-tabbable) elements will *not* include elements of the documents of nested browsing contexts such as `<iframe>` and `<object>`.
+:::
+
 :::warning
 Any element marked `only-tabbable` in the [focusable browser compatibility tables](../../data-tables/focusable.md) is *not* identified by [`ally.is.focusable`](../is/focusable.md) or [`ally.is.tabbable`](../is/tabbable.md), only by [`ally.is.onlyTabbable`](../is/only-tabbable.md). That is because these elements cannot be interacted with via script, i.e. calling `element.focus()` does not have any effect.
 :::
