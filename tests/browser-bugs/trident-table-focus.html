@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: table and td focusable</title>
+</head>
+<body>
+
+  <p>
+    The only thing focusable on this page should be the <code>&lt;a&gt;</code>.
+    But in IE11 <code>&lt;table&gt;</code> <code>&lt;td&gt;</code> (but not <code>&lt;th&gt;</code>) and <code>&lt;fieldset&gt;</code> are also focusable.
+  </p>
+
+
+  <table>
+    <tbody>
+      <tr>
+        <th>cell</th>
+        <td>cell</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <fieldset></fieldset>
+
+  <a href="#void">link</a>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['p', 'table', 'tbody', 'tr', 'td', 'td', 'fieldset', 'a'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" data-label="html">
+<head>
+  <meta charset="utf-8" />
+  <title>iframe dummy with focusable element</title>
+</head>
+<body data-label="body">
+
+<p>I am just a dummy &lt;iframe&gt; with a focusable element</p>
+<p><input data-label="input"></p>
+<p><input data-label="input[tabindex=1]" tabindex="1"></p>
+
+<script>
+  window.parent.registerNestedDocument(location.hash.slice(1), document);
+</script>
+
+</body>
+</html>

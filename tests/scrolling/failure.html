@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Focus Scrolling Failure</title>
+
+  <style>
+    #wrapper {
+      width: 90vw;
+      height: 300px;
+      overflow:hidden;
+      margin: 0;
+      padding: 0;
+      border: 3px solid silver;
+    }
+    #container {
+      width: 360vw;
+      height: 300px;
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      white-space: nowrap;
+      transition: transform 1s ease-out;
+    }
+    #column-1,
+    #column-2,
+    #column-3,
+    #column-4 {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 90vw;
+      height: 300px;
+      margin: 0;
+      padding: 30px;
+      background: #CCFFFF;
+    }
+    #column-2 {
+      background: #FFCCFF;
+    }
+    #column-3 {
+      background: #FFFFCC;
+    }
+    #column-4 {
+      background: #CCFFCC;
+    }
+
+    #container[data-column="1"] {
+      transform: translate3d(0px, 0px, 0px);
+    }
+    #container[data-column="2"] {
+      transform: translate3d(-90vw, 0px, 0px);
+    }
+    #container[data-column="3"] {
+      transform: translate3d(-180vw, 0px, 0px);
+    }
+    #container[data-column="4"] {
+      transform: translate3d(-270vw, 0px, 0px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Focus Scrolling Failure</h1>
+
+  <p>
+    Focusing an element makes browsers bring that element into view. This can interfere with application
+    specific view management, as the following (trivial) multi-column setup shows. The scrolling performed
+    by the browser has effect on <code>scrollLeft</code> and <code>scrollTop</code>, whereas applications
+    can mimic scrolling in a number of ways. This example uses CSS Transforms to make use of CSS Transitions.
+  </p>
+
+  <p>
+    Hit the "move" button to see how a column is revealed properly (without focus being changed). 
+    Hit "focus" and notice that nothing is happening on screen. Hit "reset", then try "focus" again,
+    notice how the browser moves the focused element into view. Hit "reset" again and try "focus, move"
+    and "move, focus" to see how the combination of custom view management and focus screws things up.
+    Hit "reset" then "move, focus delayed" to see what happens when the application first manages its
+    view state and sets focus once that's done.
+  </p>
+
+  <hr>
+  <button type="button" id="reset">reset (column 1)</button>
+  <button type="button" id="activate-move">move (column 3)</button>
+  <button type="button" id="activate-focus">focus (column 2)</button>
+  <button type="button" id="activate-focus-move">focus, move (column 2)</button>
+  <button type="button" id="activate-move-focus">move, focus (column 3)</button>
+  <button type="button" id="activate-move-focus-delayed">move, focus delayed (column 4)</button>
+  <hr>
+
+  <div id="wrapper">
+    <div id="container" data-column="1">
+      <div id="column-1">
+        <input type="text" value="column 1">
+      </div>
+      <div id="column-2">
+        <input type="text" value="column 2">
+      </div>
+      <div id="column-3">
+        <input type="text" value="column 3">
+      </div>
+      <div id="column-4">
+        <input type="text" value="column 4">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('activate-focus-move').addEventListener('click', function() {
+      document.querySelector('#column-2 input').focus();
+      document.getElementById('container').setAttribute('data-column', 2);
+    }, true);
+
+    document.getElementById('activate-move-focus').addEventListener('click', function() {
+      document.querySelector('#column-3 input').focus();
+      document.getElementById('container').setAttribute('data-column', 3);
+    }, true);
+
+    document.getElementById('activate-move-focus-delayed').addEventListener('click', function() {
+      document.getElementById('container').setAttribute('data-column', 4);
+      setTimeout(function() {
+        // wait for the transition to end
+        document.querySelector('#column-4 input').focus();
+      }, 1100)
+    }, true);
+
+    document.getElementById('activate-focus').addEventListener('click', function() {
+      document.querySelector('#column-2 input').focus();
+    }, true);
+
+    document.getElementById('activate-move').addEventListener('click', function() {
+      document.getElementById('container').setAttribute('data-column', 3);
+    }, true);
+
+    document.getElementById('reset').addEventListener('click', function() {
+      document.querySelector('#column-1 input').focus();
+      document.getElementById('container').setAttribute('data-column', 1);
+      document.getElementById('wrapper').scrollLeft = 0;
+    }, true);
+    
+    document.querySelector('#column-1 input').focus();
+  </script>
+
+</body>
+</html>

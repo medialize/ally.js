@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.maintain.hidden Example</title><link rel="canonical" href="http://allyjs.io/api/maintain/tab-focus.example.html">
+  <link rel="jsbin" href="https://jsbin.com/keyazuh/">
+  <style id="example-css">
+    :disabled,
+    [data-ally-disabled] {
+      outline: 1px solid red;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.maintain.tabFocus</code> Example</h1>
+
+  <p>
+    Use the <code>trap focus</code> button to engage <code>ally.maintain.disabled</code> and <code>ally.maintain.tabFocus</code> so that only the input elements <em>first</em>, <em>second</em> and <em>third</em> can be focused by pressing the <kbd>Tab</kbd> key.
+    Press the <kbd>Escape</kbd> key to stop trapping focus.
+    Note that the disabled elements are visualized with reduced opacity and a red border only for this demo.
+  </p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button id="toggle" type="button">trap focus</button>
+
+    <hr>
+
+    <input type="text" value="before">
+
+    <div id="container">
+      <input type="text" value="second" tabindex="0">
+      <input type="text" value="not keyboard focusable" tabindex="-1">
+      <input type="text" value="first" tabindex="1" id="start-focus">
+      <input type="text" value="third" tabindex="0">
+    </div>
+
+    <input type="text" value="after">
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var handle;
+
+  var wrapper = document.getElementById('example-html');
+  var container = document.getElementById('container');
+  var toggle = document.getElementById('toggle');
+
+  toggle.addEventListener('click', function() {
+    handle = ally.maintain.tabFocus({
+      context: container,
+    });
+
+    ally.when.key({
+      escape: function(event, disengage) {
+        handle.disengage();
+        handle = null;
+        toggle.focus();
+        disengage();
+      },
+    });
+
+    document.getElementById('start-focus').focus();
+  });
+
+</script>
+
+</body>
+</html>

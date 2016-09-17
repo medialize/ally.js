@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>modal dialog test</title>
+</head>
+<body>
+  <!--
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+
+
+    A dialog element can be both a control group owner object and a focusable area,
+    if it has both an open attribute specified and a tabindex attribute specified and is being rendered.
+    http://www.w3.org/html/wg/drafts/html/master/editing.html#focusing-steps
+
+  -->
+  <p>
+    When opening a dialog through <code>.openModal()</code> the first focusable (yes, even <code>[tabindex="-1"]</code>) gets focus,
+    unless a form element has <code>[autofocus]</code>. Positive tabindex (<code>[tabindex="1"]</code>) is prepended to the tab-order,
+    making it accessible directly through <kbd>Shift + Tab</kbd> or after a full loop through the browser chrome (address bar, etc.).
+    If the first focusable DOM element has a positive tabindex (<code>[tabindex="3"]</code>), the tabbing-sequence is entered at that
+    point, continuing with <code>[tabindex="4"]</code> on <kbd>Tab</kbd> and going back to <code>[tabindex="2"]</code> on
+    <kbd>Shift Tab</kbd>. While opening the dialog <code>[autofocus]</code> is respected, it is ignored upon the document gaining focus
+    again, after focus was on browser UI. In this case, the tabbing sequence starts with <code>[tabindex="1"]</code> if available,
+    otherwise with the first focusable DOM element.
+  </p>
+
+  <p>Note: it is not possible to focus the browser chrome from script.</p>
+  <p>Note: <code>&lt;dialog&gt;</code> is currently <a href="http://caniuse.com/#feat=dialog">only supported by Blink</a>.</p>
+
+
+  <dialog id="favDialog">
+    <form method="dialog">
+      <section>
+        <p>
+          <div id="focusable" tabindex="-1">focusable</div>
+          <input type="text" id="plain">
+          <input type="text" id="with-autofocus" autofocus>
+          <input type="text" id="with-tabindex" tabindex="1">
+        </p>
+      </section>
+      <menu>
+        <button id="cancel" type="reset">Cancel</button>
+        <button type="submit">Confirm</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <menu>
+    <button id="updateDetails">Update details</button>
+  </menu>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.documentElement.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+    var previousActiveElement = document.activeElement;
+    setInterval(function() {
+      if (previousActiveElement === document.activeElement) {
+        return;
+      }
+
+      previousActiveElement = document.activeElement;
+      log.textContent += 'activeElement: ' + (previousActiveElement.id || previousActiveElement.nodeName) + '\n';
+    }, 100);
+
+
+    var updateButton = document.getElementById('updateDetails');
+    var cancelButton = document.getElementById('cancel');
+
+    // Update button opens a modal dialog
+    updateButton.addEventListener('click', function() {
+      document.getElementById('favDialog').showModal();
+    });
+
+    // Form cancel button closes the dialog box
+    cancelButton.addEventListener('click', function() {
+      document.getElementById('favDialog').close();
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.maintain.hidden Example</title><link rel="canonical" href="http://allyjs.io/api/maintain/hidden.example.html">
+  <link rel="jsbin" href="https://jsbin.com/kaqoca/">
+  <style id="example-css">
+    div {
+      margin: 10px;
+      border: 2px solid grey;
+      padding: 5px;
+    }
+
+    [aria-hidden] {
+      border: 2px solid red;
+      background: rgba(254, 0, 0, 0.3);
+    }
+
+    #target,
+    #target-2 {
+      border: 2px solid blue;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.maintain.hidden</code> Example</h1>
+
+  <p>
+    Use the <code>toggle hidden</code> button to hide all elements (except the buttons and what&apos;s within the blue border).
+    Use the <code>add elements</code> button to see that the <code>aria-hidden</code> attribute is applied to dynamically added content as well.
+    Note that the hidden elements are visualized with red border and background only for this demo.
+  </p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button id="toggle" type="button">toggle hidden</button>
+    <button id="add" type="button">add elements</button>
+
+    <hr>
+
+    <div id="uncle-1">
+      <div id="cousin-1">Cousin</div>
+    </div>
+    <div id="parent">
+      <div id="target">Target</div>
+      <div id="sibling">Sibling</div>
+    </div>
+    <div id="uncle-2">
+      <div id="cousin-2">Cousin 2</div>
+      <div id="target-2">Target 2</div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var handle;
+
+  var wrapper = document.getElementById('example-html');
+  var uncle = document.getElementById('uncle-1');
+  var target = document.getElementById('target');
+
+  var toggle = document.getElementById('toggle');
+  var add = document.getElementById('add');
+
+  toggle.addEventListener('click', function() {
+    if (handle) {
+      handle.disengage();
+      handle = null;
+    } else {
+      handle = ally.maintain.hidden({
+        context: wrapper,
+        filter: '#target, target-2, #toggle, #add'
+      });
+    }
+  });
+
+  add.addEventListener('click', function() {
+    var elementWrapper = document.createElement('div');
+    elementWrapper.textContent = "new uncle should be hidden";
+    wrapper.appendChild(elementWrapper);
+
+    var elementUncle = document.createElement('div');
+    elementUncle.textContent = "new cousin should be hidden";
+    uncle.appendChild(elementUncle);
+
+    var elemenTarget = document.createElement('div');
+    target.appendChild(elemenTarget);
+    elemenTarget.textContent = "should not be hidden";
+  });
+</script>
+
+</body>
+</html>

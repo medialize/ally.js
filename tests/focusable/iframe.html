@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" data-label="html">
+<head data-label="head">
+  <meta charset="utf-8" />
+  <title>iframe dummy</title>
+</head>
+<body data-label="body">
+
+<p>I am just a dummy &lt;iframe&gt;</p>
+
+<script>
+  window.parent.registerNestedDocument(location.hash.slice(1), document);
+</script>
+
+</body>
+</html>

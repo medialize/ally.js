@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.query.shadowHosts - ally.js</title><link rel="canonical" href="http://allyjs.io/api/query/shadow-hosts.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="active">
+              <a href="../index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="../../contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Usage">Usage</a></li>
+        
+        
+        <li><a href="#Changes">Changes</a></li>
+        
+        
+        <li><a href="#Contributing">Contributing</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/api/query/shadow-hosts.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="ally.query.shadowHosts" href="https://github.com/medialize/ally.js/issues/new?title=[ally.query.shadowHosts]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>API</em></h1><ul>
+          <li class="">
+            <a class="" href="../index.html">API index</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../concepts.html">API concepts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/blur.html">ally.element.blur</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/disabled.html">ally.element.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/focus.html">ally.element.focus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../event/active-element.html">ally.event.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../event/shadow-focus.html">ally.event.shadowFocus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-children.html">ally.fix.pointerFocusChildren</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-input.html">ally.fix.pointerFocusInput</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-parent.html">ally.fix.pointerFocusParent</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/active-element.html">ally.get.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/active-elements.html">ally.get.activeElements</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/focus-redirect-target.html">ally.get.focusRedirectTarget</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/focus-target.html">ally.get.focusTarget</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/insignificant-branches.html">ally.get.insignificantBranches</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/parents.html">ally.get.parents</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/shadow-host.html">ally.get.shadowHost</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/shadow-host-parents.html">ally.get.shadowHostParents</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/active-element.html">ally.is.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/disabled.html">ally.is.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/focusable.html">ally.is.focusable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/focus-relevant.html">ally.is.focusRelevant</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/only-tabbable.html">ally.is.onlyTabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/shadowed.html">ally.is.shadowed</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/tabbable.html">ally.is.tabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/valid-area.html">ally.is.validArea</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/valid-tabindex.html">ally.is.validTabindex</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/visible.html">ally.is.visible</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/disabled.html">ally.maintain.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/hidden.html">ally.maintain.hidden</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/tab-focus.html">ally.maintain.tabFocus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../map/attribute.html">ally.map.attribute</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../map/keycode.html">ally.map.keycode</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../observe/interaction-type.html">ally.observe.interactionType</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../observe/shadow-mutations.html">ally.observe.shadowMutations</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="first-tabbable.html">ally.query.firstTabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="focusable.html">ally.query.focusable</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="shadow-hosts.html">ally.query.shadowHosts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="tabbable.html">ally.query.tabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="tabsequence.html">ally.query.tabsequence</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../style/focus-source.html">ally.style.focusSource</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../style/focus-within.html">ally.style.focusWithin</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/focusable.html">ally.when.focusable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/key.html">ally.when.key</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/visible-area.html">ally.when.visibleArea</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../prototype.html">Prototype polyfills</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../selector.html">Selector</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../supports.html">Supports - Browser compatibility</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../util.html">Utilities</a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="ally-query-shadowHosts" href="#ally-query-shadowHosts" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.query.shadowHosts</h1>
+<p>finds all elements hosting a <code>ShadowRoot</code>.</p>
+
+<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<pre><code class="language-javascript">var elements = ally.query.shadowHosts({
+  context: &apos;.within-filter-selector&apos;,
+});
+</code></pre>
+<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<table>
+<thead>
+<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which to search. The first element of a collection is used.</td></tr>
+</tbody>
+</table>
+<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
+<p>Array of <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>.</p>
+
+
+<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<ul>
+<li>Added in <code>v1.1.0</code>.</li>
+</ul>
+
+
+<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<ul>
+<li><a href="https://github.com/medialize/ally.js/blob/master/src/query/shadow-hosts.js">module source</a></li>
+<li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/query/shadow-hosts.md">document source</a></li>
+<li><a href="https://github.com/medialize/ally.js/blob/master/test/unit/query.shadow-hosts.test.js">unit test</a></li>
+</ul>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

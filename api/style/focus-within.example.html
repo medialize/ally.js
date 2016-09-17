@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.style.focusWithin Example</title><link rel="canonical" href="http://allyjs.io/api/style/focus-within.example.html">
+  <link rel="jsbin" href="https://jsbin.com/qohalu/">
+  <style id="example-css">
+    /* separate blocks because ">>>" or "/deep/" might not be supported and thus render the selector void */
+    .example.ally-focus-within,
+    .example .ally-focus-within {
+      margin: 2px;
+      border: 2px solid red;
+    }
+    .example >>> .ally-focus-within {
+      margin: 2px;
+      border: 2px solid red;
+    }
+    .example /deep/ .ally-focus-within {
+      margin: 2px;
+      border: 2px solid red;
+    }
+    svg .ally-focus-within {
+      outline: 2px red solid;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.style.focusWithin</code> Example</h1>
+
+  <p>The ancestry of the focused element should be visible by red borders. The first and the last input are outside of the style scope - they are there to provide focusable elements to verify that the <code>ally-focus-within</code> class is properly removed.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <input id="before-input" type="text" value="before styled">
+    <div class="example">
+      <div id="first-shadow-host"></div>
+      <div>
+        <input id="outer-input" type="text" value="outer input">
+      </div>
+      <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <a xlink:href="#void" data-label="svg a[xlink|href]">
+          <text x="10" y="20" data-label="svg a[xlink|href] text">an SVG</text>
+        </a>
+      </svg>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var handle = ally.style.focusWithin();
+  var input = document.getElementById('before-input');
+
+  // create shadow dom structure:
+  if (document.body.createShadowRoot !== undefined) {
+    var shadowed = createShadowedContent(
+      document.getElementById('first-shadow-host'),
+      '<div id="second-shadow-host"></div><div id="third-shadow-host"></div>'
+    );
+    var second = createShadowedContent(
+      shadowed.getElementById('second-shadow-host'),
+      '<input id="first-input" type="text" value="::shadow ::shadow input">'
+    );
+    createShadowedContent(
+      shadowed.getElementById('third-shadow-host'),
+      '<input id="second-input" type="text" value="::shadow ::shadow input">'
+    );
+
+    input = second.querySelector('input');
+  }
+
+  input.focus();
+
+  function createShadowedContent(host, html) {
+    var root = host.createShadowRoot();
+    root.innerHTML = html;
+    return root;
+  }
+</script>
+
+</body>
+</html>

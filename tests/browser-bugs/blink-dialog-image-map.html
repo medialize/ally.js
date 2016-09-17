@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: image map not tabbable when used in dialog element</title>
+</head>
+<body>
+
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=447289
+  -->
+
+  <p>
+    Note: This Issue is not about the dialog element, it's about how image maps are handled in the document's sequential navigation focus order.
+    The dialog example is just an extreme example.
+  </p>
+
+  <p>
+    Open the dialog by pressing the [Open Dialog] button. Hit <kbd>Tab</kbd> a couple of times and see how the image map links are not focused
+  </p>
+
+  <p>
+    see <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787">Sequential Navigation Focus Order for Image Maps</a>
+  </p>
+
+  <p>Note: <code>&lt;dialog&gt;</code> is currently <a href="http://caniuse.com/#feat=dialog">only supported by Blink</a>.</p>
+
+
+  <map name="image-maps-1">
+    <area href="#void" shape="rect" coords="63,19,144,45" id="map-1-area-1">
+    <area href="#void" shape="rect" coords="63,59,144,85" id="map-1-area-2">
+  </map>
+
+  <dialog id="favDialog">
+    <form method="dialog">
+      <section>
+        <p>
+          <input type="text" id="input">
+        </p>
+        <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas">
+      </section>
+      <menu>
+        <button id="cancel" type="reset">Cancel</button>
+        <button type="submit">Confirm</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <menu>
+    <button id="updateDetails">Open Dialog</button>
+  </menu>
+
+
+  <dialog id="favDialog2">
+    <form method="dialog">
+      <section>
+        <p>
+          <input type="text" id="input2">
+        </p>
+        <map name="image-maps-2">
+          <area href="#void" shape="rect" coords="63,19,144,45" id="map-2-area-1">
+          <area href="#void" shape="rect" coords="63,59,144,85" id="map-2-area-2">
+        </map>
+        <img usemap="#image-maps-2" src="../media/image-map.png" alt="two clickable areas">
+      </section>
+      <menu>
+        <button id="cancel2" type="reset">Cancel</button>
+        <button type="submit">Confirm</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <menu>
+    <button id="updateDetails2">Open Dialog 2</button>
+  </menu>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.documentElement.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+
+    var updateButton = document.getElementById('updateDetails');
+    var cancelButton = document.getElementById('cancel');
+
+    // Update button opens a modal dialog
+    updateButton.addEventListener('click', function() {
+      document.getElementById('favDialog').showModal();
+    });
+
+    // Form cancel button closes the dialog box
+    cancelButton.addEventListener('click', function() {
+      document.getElementById('favDialog').close();
+    });
+
+
+    updateButton = document.getElementById('updateDetails2');
+    cancelButton = document.getElementById('cancel2');
+
+    // Update button opens a modal dialog
+    updateButton.addEventListener('click', function() {
+      document.getElementById('favDialog2').showModal();
+    });
+
+    // Form cancel button closes the dialog box
+    cancelButton.addEventListener('click', function() {
+      document.getElementById('favDialog2').close();
+    });
+
+  </script>
+
+</body>
+</html>

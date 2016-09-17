@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: broken audio is focusable</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1128047
+  -->
+
+  <p>
+    Gecko will not render an <code>&lt;audio controls&gt;</code> if it can't find a valid <code>source</code>. While not rendered, the element remains focusable and is still part of the document's tabbing order.
+  </p>
+
+  <hr>
+
+  <audio id="audio-element" controls>
+    <source src="../media/te-st.mp3"></source>
+    <p>no &lt;audio&gt; support</p>
+  </audio>
+
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'target.offsetHeight: ' + event.target.offsetHeight + '\n';
+      log.textContent += 'focus event: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+    
+    document.querySelector('audio').focus();
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: Losing focus at object + object</title>
+  <style>
+  body :focus {
+    outline: 2px solid hotpink;
+  }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://connect.microsoft.com/IE/feedback/details/1109020
+  -->
+
+  <p>
+    Trident and Spartan will not focus an <code>&lt;object&gt;</code> if it references an svg, it will for an swf, though.
+    Both object elements can be tabbed to, though.
+  </p>
+
+
+  <object id="svg-object" type="image/svg+xml" data="../media/test.svg" width="200" height="50"></object>
+
+  <input type="text">
+
+  <object id="swf-object" data="../media/test.swf" type="application/x-shockwave-flash" width="200" height="50">
+    <param name="movie" value="../media/test.swf">
+    <param name="quality" value="high">
+  </object>
+
+
+  <input type="text">
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    // just in case…
+    if (!SVGElement.prototype.focus) {
+      log.textContent += 'SVGElement.focus mapped\n';
+      SVGElement.prototype.focus = HTMLElement.prototype.focus;
+    }
+
+    ['#svg-object', 'input', '#swf-object'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+  </script>
+</body>
+</html>

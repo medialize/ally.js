@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Documentation infrastructure - ally.js</title><link rel="canonical" href="http://allyjs.io/contributing/docs.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Building-the-website">Building the website</a></li>
+        
+        
+        <li><a href="#Authoring-documentation">Authoring documentation</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/contributing/docs.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Documentation infrastructure" href="https://github.com/medialize/ally.js/issues/new?title=[Documentation%20infrastructure]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Contributing</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Contributing</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="build.html">Build infrastructure</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="docs.html">Documentation infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="release.html">Releasing ally.js</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="testing.html">Test infrastructure</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Documentation-infrastructure" href="#Documentation-infrastructure" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Documentation infrastructure</h1>
+<p>The documentation is authored in markdown in the <code>docs</code> directory. We&apos;re using <a href="https://www.npmjs.com/package/remarkable">Remarkable</a> (but staying close to <a href="https://help.github.com/articles/github-flavored-markdown/">Github Flavored Markdown</a>) to convert the markdown to HTML. <a href="https://github.com/DavidAnson/markdownlint/">markdownlint</a> is there to lint the files, its configuration is maintained in <code>build/markdownlint.js</code>, see the <a href="https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md">Rules</a>.</p>
+<p>The idea is to create a documentation that can be read on github and on the generated website.</p>
+<div class="note"><strong>NOTE:</strong> If this is your first contact with ally.js, make sure to run <code>npm run init</code> after cloning the repository. This will run <code>npm install</code>, <code>npm run clean</code>, <code>npm run build</code> and <code>npm run build:website</code> to make sure your local copy is ready.</div>
+<h2><a id="Building-the-website" href="#Building-the-website" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Building the website</h2>
+<p>The doc source are converted to HTML by <a href="http://metalsmith.io/">metalsmith</a>, the scripts and configuration are maintained in the <code>build/metalsmith</code> directory.</p>
+<p>The website is comprised of 3 elements, the markdown sources, data tables and some legacy files from <code>./tests</code>.</p>
+<pre><code class="language-bash"># lint the markdown
+npm run lint:md
+
+# build the library (to `./dist`)
+npm run build
+
+# generate website (to `./web`)
+npm run build:website
+
+# generate only the markdown files
+npm run build:docs
+
+# generate only the data tables
+npm run build:data-tables
+
+# generate only the legacy files
+npm run build:legacy
+</code></pre>
+<p>The commands <code>lint:md</code> and <code>build:website</code> are also executed by <code>npm run lint</code> and <code>npm run build</code>.</p>
+<div class="note"><strong>NOTE:</strong> Before you build the website using <code>npm run build:website</code> you need to have run <code>npm run build</code> before, in order for the library components to be available to the website build. You don&apos;t need to build the library every time you build the website, which is why this step is disconnected. If you ran <code>npm run init</code> after cloning the repository, everything is taken care of already.</div>
+<p>If you&apos;re new to metalsmith, have a look at <a href="https://github.com/segmentio/metalsmith/tree/master/examples/static-site">simple static site demo</a> and <a href="http://www.robinthrift.com/posts/getting-to-know-metalsmith/">getting to know metalsmith</a>.</p>
+<p>We use the following plugins:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/metalsmith-packagejson">metalsmith-packagejson</a> to import <code>package.json</code></li>
+<li><a href="https://github.com/attentif/metalsmith-markdown-remarkable">metalsmith-markdown-remarkable</a> (see <a href="https://github.com/jonschlinkert/remarkable#options">config options</a></li>
+<li><a href="https://github.com/losttype/metalsmith-register-helpers">metalsmith-register-helpers</a> to use custom handlebar helpers</li>
+<li><a href="https://github.com/superwolff/metalsmith-layouts">metalsmith-layouts</a> to use <a href="http://handlebarsjs.com/">handlebars</a> templates</li>
+<li><a href="https://github.com/davidxmoody/metalsmith-broken-link-checker">metalsmith-broken-link-checker</a> to verify link integrity</li>
+<li><a href="https://github.com/segmentio/metalsmith-collections">metalsmith-collections</a> to deal with groups of files</li>
+<li><a href="https://github.com/TheHydroImpulse/metalsmith-static">metalsmith-static</a> to copy static assets</li>
+<li><a href="https://github.com/aymericbeaumet/metalsmith-redirect/">metalsmith-redirect</a> to create HTML redirection files to forward old URLs to their new homes</li>
+</ul>
+<h2><a id="Authoring-documentation" href="#Authoring-documentation" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Authoring documentation</h2>
+<p>The public API provided by ally.js needs to be explained in <code>docs/api</code>. As every component has its source file, it has an accompanying markdown file for documentation. ally.js contains components that are not meant to be used directly, thus do not have to be documented in detail.</p>
+<p>Anything you document should be written in a way that caters to an audience that may not know very much about accessibility. If bigger picture explanations are required, consider writing a tutorial instead of cramming it into the API docs.</p>
+<h3><a id="Embedding-examples-and-Demos" href="#Embedding-examples-and-Demos" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Embedding examples and Demos</h3>
+<p>You can add HTML to markdown files in order to embed <a href="https://jsbin.com">JSBin.com</a> demos by using the following markdown in any document:</p>
+<pre><code class="language-markdown">* **EXAMPLE:** [name of demo](./name.example.html)
+</code></pre>
+<p>A demo document is named <code>${slug}.example.html</code> (for multiple <code>${slug}.example-2.html</code>) and placed in the same directory as the referencing document. So for <code>docs/api/element/disabled.md</code> the example file would be <code>docs/api/element/disabled.example.html</code>.</p>
+<p>Example documents must follow the following general structure.</p>
+<pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;title&gt;ally.js ${example_title} Example&lt;/title&gt;
+  &lt;link rel=&quot;jsbin&quot; href=&quot;&quot;&gt;
+  &lt;style id=&quot;example-css&quot;&gt;
+    ${example_style}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;article id=&quot;example-introduction&quot;&gt;
+  &lt;h1&gt;Accessible ${example_title} Tutorial&lt;/h1&gt;
+  &lt;p&gt;${example_description}&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;div id=&quot;example-html&quot;&gt;
+  &lt;main&gt;
+    ${example_markup}
+  &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script id=&quot;example-js&quot;&gt;
+  ${example_script}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The command <code>npm run publish:jsbin</code> uses <a href="https://github.com/rodneyrehm/jsbin-sync">jsbin-sync</a> to find all <code>example*.html</code> files and upload them to <a href="https://jsbin.com">JSBin.com</a>. <em>This can only be executed by <a href="https://github.com/rodneyrehm">Rod</a>, as we&apos;re using his personal JSBin pro account for this.</em> New examples will have their empty <code>&lt;link rel=&quot;jsbin&quot; href=&quot;&quot;&gt;</code> element updated to the URL returned by JSBin, but this is the only change applied to source files. Contents of <code>#example-js</code> and <code>#example-css</code> go into the bin&apos;s JavaScript and CSS sections, respecively. The bin&apos;s HTML section contains the HTML document, <em>without</em> the <code>&lt;script id=&quot;example-js&quot;&gt;</code>, <code>&lt;style id=&quot;example-css&quot;&gt;</code> and <code>&lt;link rel=&quot;jsbin&quot;&gt;</code> elements.</p>
+<h3><a id="Notes-and-warnings" href="#Notes-and-warnings" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Notes and warnings</h3>
+<p>In API pages (<code>layout: doc-api.html</code>) a separate block <code>## Notes</code> can contain a list of notes and warnings in the following form:</p>
+<pre><code class="language-markdown">## Notes
+
+* **NOTE:** I&apos;m informing you of something you SHOULD know
+* **WARNING:** I&apos;m informing you of something you MUST know (because it&apos;s not obvious)
+* **TIP:** I&apos;m informing you of a best practice
+* **HELP:** I&apos;m informing you of something you can contribute to this project
+</code></pre>
+<p>In any other doc page (e.g. <code>layout: doc-page.html</code>) notes and warnings do not have to (but can) be contained in a <code>## Notes</code> section. The notation (list with bold identifier, identifier upper-cased and containing the colon) remains the same. The list notation is used to allow <code>build/metalsmith/plugins/prepare.js</code> reformatting those blocks to <code>&lt;div class=&quot;note&quot;&gt;&#x2026;&lt;/div&gt;</code> while still allowing github to render something readable.</p>
+<div class="help"><strong>HELP:</strong> Got a better Idea to solve this? <a href="https://github.com/medialize/ally.js/issues/new">file an issue</a>!</div>
+<h3><a id="Definitions" href="#Definitions" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Definitions</h3>
+<p>Document can make use of definition lists. An unordered list containing only items starting with the term in strong emphasis ending with a colon (<code>:</code>) will be converted from <code>&lt;ul&gt;</code> to <code>&lt;dl&gt;</code> for the purpose of proper semantics:</p>
+<pre><code class="language-markdown">* **Term 1:** Explanation 1
+* **Term 2:** Explanation 2
+</code></pre>
+<h3><a id="API-classifications" href="#API-classifications" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>API classifications</h3>
+<p>API documents must declare their traits, which is done via the <code>tags</code> property in the <a href="http://jekyllrb.com/docs/frontmatter/">front matter</a> section of the document:</p>
+<pre><code class="language-markdown">---
+layout: template.html
+tags: option-argument, service, svg
+---
+
+# Headline
+</code></pre>
+<dl><dt>argument-options:</dt><dd> To declare the module belongs to the family of components expecting a <a href="../api/concepts.html#Single-options-argument">single options argument</a></dd><dt>argument-list:</dt><dd> To declare the module expects plain arguments, not the <a href="../api/concepts.html#Single-options-argument">single options argument</a> pattern</dd><dt>service:</dt><dd> To declare the module belongs to the family of <a href="../api/concepts.html#Service">Service</a> components</dd><dt>global-service:</dt><dd> To declare the module belongs to the family of <a href="../api/concepts.html#Global-service">Global Service</a> components</dd><dt>data:</dt><dd> To declare the module provides data, not functionality</dd><dt>internal:</dt><dd> To declare the module is intended for internal use only</dd><dt>browser-fix:</dt><dd> To declare the module&apos;s only intention is to counter a specific browser quirk</dd><dt>content-document:</dt><dd> To declare the module resolves <code>&lt;object&gt;</code> and <code>&lt;iframe&gt;</code> elements to their content documents</dd><dt>shadow-dom:</dt><dd> To declare special support for ShadowDOM</dd><dt>svg:</dt><dd> To declare special support for SVG</dd></dl>
+<h3><a id="API-changes" href="#API-changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>API changes</h3>
+<p>In addition to the less specific <a href="https://github.com/medialize/ally.js/tree/master/CHANGELOG.md">CHANGELOG.md</a>, API documents must declare specific changes in detail:</p>
+<pre><code class="language-markdown">## Changes
+
+* `v1.2.3` introduced the option `gustav`
+* `v1.3.0` removed the option `otto`
+* Since `v1.6.0` the function returns coffee instead of tea
+</code></pre>
+<p>Since the exact release version a change will be included in is not necessarily known during development, the placeholder <code>v#master</code> should be used.</p>
+<div class="note"><strong>NOTE:</strong> The version notation may be extended to also contain addition <code>+v1.0.0</code> / removal <code>-v1.0.0</code> / change <code>~v1.0.0</code> should this become necessary. The website builder may replace the code elements by links to the change log.</div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

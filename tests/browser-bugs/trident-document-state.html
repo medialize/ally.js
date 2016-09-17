@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: activeElement during document ready stages</title>
+</head>
+<body>
+
+  <p>
+    While parsing the document Trident (IE11) sets <code>document.activeElement = null</code>,
+    after <code>DOMContentLoaded</code> it is set to <code>&lt;html&gt;</code>,
+    after <code>document.activeElement.blur()</code>  it is set to <code>&lt;body&gt;</code>.
+    IE12, Gecko, Blink and WebKit have it set to <code>&lt;body&gt;</code> during all stages.
+  </p>
+
+
+  <a href="#void">link</a>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    log.textContent += 'parsing: ' + (document.activeElement && document.activeElement.nodeName || 'null') + '\n';
+
+    window.addEventListener('DOMContentLoaded', function() {
+      log.textContent += 'ready: ' + (document.activeElement && document.activeElement.nodeName || 'null') + '\n';
+    }, false);
+
+    window.addEventListener('load', function() {
+      log.textContent += 'loaded: ' + (document.activeElement && document.activeElement.nodeName || 'null') + '\n';
+      document.activeElement.blur();
+      log.textContent += 'blured: ' + (document.activeElement && document.activeElement.nodeName || 'null') + '\n';
+    }, false);
+
+  </script>
+</body>
+</html>

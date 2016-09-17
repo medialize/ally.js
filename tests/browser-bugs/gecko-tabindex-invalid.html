@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: invalid tabindex value makes element focusable</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1128054
+  -->
+
+  <p>
+    Gecko will consider the element <code>&lt;span tabindex="hello"&gt;</code> focusable, contrary to the <a href="http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers">rules for parsing integers</a>.
+  </p>
+
+  <hr>
+
+  <span tabindex="hello">I should not be focusable</span>
+
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus event: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+    
+    document.querySelector('span').focus();
+  </script>
+</body>
+</html>

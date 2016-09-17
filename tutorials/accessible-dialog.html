@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Accessible dialog tutorial - ally.js</title><link rel="canonical" href="http://allyjs.io/tutorials/accessible-dialog.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="../contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#The-visual-effect">The visual effect</a></li>
+        
+        
+        <li><a href="#HTML-the-dialog-s-structure">HTML - the dialog&apos;s structure</a></li>
+        
+        
+        <li><a href="#CSS-Visual-Appearance">CSS - Visual Appearance</a></li>
+        
+        
+        <li><a href="#JavaScript-User-Interaction">JavaScript - User Interaction</a></li>
+        
+        
+        <li><a href="#Interactive-demo">Interactive demo</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/tutorials/accessible-dialog.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Accessible dialog tutorial" href="https://github.com/medialize/ally.js/issues/new?title=[Accessible%20dialog%20tutorial]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Tutorials</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Tutorials</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="accessible-dialog.html">Accessible dialog tutorial</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="hiding-elements.html">Hiding DOM elements</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="focusing-in-animated-ui.html">Managing focus in animated UI</a>
+          </li>
+          
+          
+          
+          
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Accessible-dialog-tutorial" href="#Accessible-dialog-tutorial" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Accessible dialog tutorial</h1>
+<p>This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">WAI-ARIA 1.0 Authoring Practices</a>.</p>
+<p>HTML5.1 specifies the <a href="http://www.w3.org/TR/html51/semantics.html#the-dialog-element"><code>&lt;dialog&gt;</code> element</a> that natively does most of what is explained here. But since <a href="http://caniuse.com/#feat=dialog">browser support</a> is rather limited, making use of <code>&lt;dialog&gt;</code> is not yet possible.</p>
+<p>The code discussed in this tutorial is available in <a href="./dialog.example.html">ally.js Dialog Example</a> and can be <a href="#Interactive-demo">interacted with</a> below.</p>
+<h2><a id="The-visual-effect" href="#The-visual-effect" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>The visual effect</h2>
+<p>Before we get into the technical things, let&apos;s first discuss what a dialog is. From a user experience perspective it is a piece of information, or a set of interactions, provided to the user in a way that disrupts the user&apos;s current interaction. The user is made to focus on the dialog&apos;s content and ignore the rest of the application or website. Visually this is usually achieved by layering a box in the visual center of the application and by positioning a translucent layer (i.e. showing the content behind it, but in a distorted manner) behind the dialog, to emphasize that the layer is the only important thing.</p>
+<p>To achieve this <em>visual effect</em> we don&apos;t need much code:</p>
+<pre><code class="language-markup">&lt;div id=&quot;dialog&quot;&gt;
+  &lt;p&gt;I am the dialog&apos;s content&lt;/p&gt;
+  &lt;button type=&quot;button&quot;&gt;close dialog&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">#dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  transform: translate3d(-50%,-50%,0);
+  background: white;
+  border: 100% solid rgba(0, 0, 0, 2.5);
+}
+</code></pre>
+<p>But visual appearance is not the <em>only</em> thing we care about, especially not when claiming something is <em>accessible</em>. In the following sections we&apos;ll discuss how to take that visual experience to a technical level that we might call accessible.</p>
+<h2><a id="HTML-the-dialog-s-structure" href="#HTML-the-dialog-s-structure" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>HTML - the dialog&apos;s structure</h2>
+<p>First of all we need a container for the dialog to live in, we use a <code>&lt;div&gt;</code> element, because it doesn&apos;t have any semantic meaning itself. We explain that the <code>&lt;div&gt;</code> actually <em>is</em> a dialog by adding <a href="http://www.w3.org/TR/wai-aria/roles#dialog"><code>role=&quot;dialog&quot;</code></a>. Roles are defined by ARIA, which allow us to express the <em>meaning</em> of an element. We also add <code>tabindex=&quot;-1&quot;</code> to allow the dialog container to be focused, something we&apos;ll revisit soon. Because dialogs are not always visible, we also add the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden"><code>hidden</code> attribute</a>.</p>
+<p>To structure the content rendered by the dialog, we&apos;ll use <code>&lt;header&gt;</code> for the introduction, <code>&lt;section&gt;</code> for the content and <code>&lt;footer&gt;</code> for the buttons to interact with the dialog.</p>
+<pre><code class="language-markup">&lt;div role=&quot;dialog&quot; tabindex=&quot;-1&quot; hidden&gt;
+  &lt;header&gt;&lt;/header&gt;
+  &lt;section&gt;&lt;/section&gt;
+  &lt;footer&gt;&lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Now that we have the bare bones, we should talk about a dialog&apos;s generic content, like titles and descriptions. All dialogs have a title, most will also have a description. To explain that the title and description actually belong to the dialog, we use the attributes <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby"><code>aria-labelledby</code></a> and <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby"><code>aria-describedby</code></a> respectively.</p>
+<pre><code class="language-markup">&lt;div role=&quot;dialog&quot; aria-labelledby=&quot;dialog-title&quot; aria-describedby=&quot;dialog-description&quot;&gt;
+  &lt;header&gt;
+    &lt;h1 id=&quot;dialog-title&quot;&gt;Name Entry&lt;/h1&gt;
+    &lt;p id=&quot;dialog-description&quot;&gt;Please enter your full name.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;section&gt;&lt;/section&gt;
+  &lt;footer&gt;&lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<p>All dialogs have at least a button to close it. Most will have more buttons, for example to invoke an action (e.g. &quot;save&quot;, &quot;ok&quot;, &quot;go&quot;). To render those, we use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code> element</a>. Since dialogs often provide input elements, it makes sense to throw a <code>&lt;form&gt;</code> into the mix. Having a <code>&lt;form&gt;</code> element in there also allows us to make better use of <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation">validation</a>, should we need to. The browsers on mobile phones generally require a <code>&lt;form&gt;</code> element, to show the &quot;go&quot; button in the on screen keyboard.</p>
+<pre><code class="language-markup">&lt;div role=&quot;dialog&quot;&gt;
+  &lt;form class=&quot;dialog-content&quot;&gt;
+    &lt;header&gt;&lt;/header&gt;
+    &lt;section&gt;&lt;/section&gt;
+    &lt;footer&gt;
+      &lt;button type=&quot;button&quot; id=&quot;close-dialog&quot;&gt;close&lt;/button&gt;
+      &lt;button type=&quot;submit&quot; id=&quot;save-dialog&quot;&gt;save&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+<p>In this demo we ask for the user&apos;s name, so the content will be a simple input element:</p>
+<pre><code class="language-markup">&lt;label for=&quot;dialog-user-name&quot;&gt;Name&lt;/label&gt;
+&lt;input id=&quot;dialog-user-name&quot;&gt;
+</code></pre>
+<p>The last ingredient is the element that renders the backdrop. Since we&apos;re nesting the dialog&apos;s content in the <code>&lt;form&gt;</code> element, we can create the dialog&apos;s backdrop using CSS generated content (<code>::before</code>), so we don&apos;t need an additional element to cover that. If we weren&apos;t nesting the dialog&apos;s contents, we&apos;d not be able to get by without a separate element for the backdrop, if we wanted it to appear animated.</p>
+<hr>
+<p>These snippets assemble to the following HTML construct:</p>
+<pre><code class="language-markup">&lt;div id=&quot;dialog&quot; role=&quot;dialog&quot; aria-labelledby=&quot;dialog-title&quot; aria-describedby=&quot;dialog-description&quot; tabindex=&quot;-1&quot; hidden&gt;
+  &lt;form class=&quot;dialog-content&quot;&gt;
+    &lt;header&gt;
+      &lt;h1 id=&quot;dialog-title&quot;&gt;Name Entry&lt;/h1&gt;
+      &lt;p id=&quot;dialog-description&quot;&gt;Please enter your full name.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;label for=&quot;within-dialog&quot;&gt;Name&lt;/label&gt; &lt;input id=&quot;within-dialog&quot;&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+      &lt;button type=&quot;button&quot; id=&quot;close-dialog&quot;&gt;Close&lt;/button&gt;
+      &lt;button type=&quot;submit&quot; id=&quot;save-dialog&quot;&gt;Save&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+<h2><a id="CSS-Visual-Appearance" href="#CSS-Visual-Appearance" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>CSS - Visual Appearance</h2>
+<p>Now that we have a semantically useful dialog construct, we need to make it &quot;look good&quot;. Let&apos;s start by making the dialog appear on top of the entire viewport, regardless of the document&apos;s current scroll positions:</p>
+<pre><code class="language-css">#dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0);
+  z-index: 999;
+}
+</code></pre>
+<p>Let&apos;s continue with the backdrop to obfuscate the document while the dialog is visible. In case we don&apos;t need a special animation for the backdrop, we could simply apply the translucent background <code>background: rgba(0, 0, 0, 0.25);</code> to the <code>#dialog</code> itself. We want a fade-in effect for the backdrop, which we achieve by using <a href="https://developer.mozilla.org/en/docs/Web/CSS/transition">CSS Transitions</a>.</p>
+<pre><code class="language-css">#dialog:before {
+  content: &quot;&quot;;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 999;
+
+  /* fade in */
+  transition: opacity 0.2s ease-in-out;
+}
+</code></pre>
+<p>Having the container span the viewport, and the backdrop obfuscating the content, we&apos;re ready to show the dialog&apos;s content in a centered box:</p>
+<pre><code class="language-css">/* show the dialog in the center of the screen */
+#dialog .dialog-content {
+  box-sizing: border-box;
+  /* maintain on screen even during scroll (potentially problematic on mobile) */
+  position: fixed;
+  /* when centering, try using FlexBox instead of this junk */
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  transform: translate3d(-50%,-50%,0);
+
+  /* dialogs are usually boxy things that are on top of everything */
+  padding: 20px;
+  border: 1px solid #CCC;
+  background: white;
+  z-index: 1000;
+
+  /* zoom in from the center */
+  transition: transform 0.2s ease-in-out;
+}
+</code></pre>
+<p>The dialog&apos;s frame is ready, time to style the content we&apos;re presenting to the user.</p>
+<pre><code class="language-css">#dialog h1 {
+  margin: 0;
+}
+#dialog footer {
+  margin-top: 20px;
+}
+</code></pre>
+<p>With that in place, we have the visible state covered. But since dialogs are not always visible, and we want a nice revealing animation, we need to allow the dialog to become invisible:</p>
+<pre><code class="language-css">#dialog[hidden] {
+  /*
+    [hidden] usually sets display:none, which we
+    need to revert in order to allow animations
+  */
+  display: block;
+  /*
+    actually hide the element,
+    making its contents unaccessible
+  */
+  visibility: hidden;
+  /*
+    make sure the element is out of viewport
+  */
+  transform: translate3d(0px, -1px, 0px) scale(0);
+  /*
+    delay transform until animations are done
+  */
+  transition:
+    visibility 0s linear 0.2s,
+    transform 0s linear 0.2s;
+}
+</code></pre>
+<p>For the backdrop we essentially need to do the same, but also apply <code>opacity</code>. to avoid duplicating styles, we extend the selector and overwrite the <code>opacity</code> specifics for the backdrop:</p>
+<pre><code class="language-css">#dialog[hidden],
+#dialog[hidden]:before {
+  display: block;
+  visibility: hidden;
+  transform: translate3d(0px, -1px, 0px) scale(0);
+  transition:
+    visibility 0s linear 0.2s,
+    transform 0s linear 0.2s;
+}
+#dialog[hidden]:before {
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0s linear 0.2s,
+    transform 0s linear 0.2s;
+}
+</code></pre>
+<p>All that is remaining now, is hiding the dialog box itself. As with the backdrop, the only difference to the dialog container is going to be <em>how</em> we hide it, so we extend the selector again:</p>
+<pre><code class="language-css">#dialog[hidden],
+#dialog[hidden]:before,
+#dialog[hidden] .dialog-content {
+  display: block;
+  visibility: hidden;
+  transform: translate3d(0px, -1px, 0px) scale(0);
+  transition:
+    visibility 0s linear 0.2s,
+    transform 0s linear 0.2s;
+}
+#dialog[hidden]:before {
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0s linear 0.2s,
+    transform 0s linear 0.2s;
+}
+#dialog[hidden] .dialog-content {
+  transform: translate3d(0px, -1px, 0px) scale(0);
+  transition:
+    transform 0.2s ease-in-out,
+    visibility 0s linear 0.2s;
+}
+</code></pre>
+<h2><a id="JavaScript-User-Interaction" href="#JavaScript-User-Interaction" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>JavaScript - User Interaction</h2>
+<p>Up to now we covered what we&apos;re doing by providing semantically useful HTML <em>structure</em>. We&apos;ve also described what the visual <em>appearance</em> of the dialog should be. It&apos;s time to visit JavaScript to define the <em>behavior</em>. What we have to do is described by <a href="http://www.w3.org/WAI/PF/aria-practices/#dialog_modal">WAI-ARIA 1.0 Authoring Practices</a>, which we&apos;ll now walk through step by step. Here&apos;s what we need to do:</p>
+<ul>
+<li>react to the <kbd>Enter</kbd> and <kbd>Escape</kbd> keys in order close the dialog, while respecting that some elements, when focused, may react to those keys themselves</li>
+<li>make sure no element outside of the dialog can be focused (by any means, including keyboard and mouse)</li>
+<li>focus the first keyboard focusable (tabbable) element in the dialog upon opening the dialog, or focus the dialog itself, if it doesn&apos;t contain any focusable elements</li>
+<li>focus the element that had focus before the dialog was shown upon closing the dialog</li>
+</ul>
+<p>There are a few more things we&apos;ll want to consider, that ARIA Practices does not mention specifically:</p>
+<ul>
+<li>make sure no element outside of the dialog is visible to screen readers (analog to how we obfuscate the content visually by way of the backdrop)</li>
+<li>make sure to transfer focus to the dialog only when the dialog is visible, to avoid the document from being scrolled by the browser</li>
+</ul>
+<p>We start with grabbing the elements we need to deal with and defining functions to open and close the dialog:</p>
+<pre><code class="language-javascript">// Grab the elements we need to interact with
+var openButton = document.getElementById(&apos;open-dialog&apos;);
+var dialog = document.getElementById(&apos;dialog&apos;);
+var closeButton = document.getElementById(&apos;close-dialog&apos;);
+
+function openDialog() {
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+
+// wire up showing/hiding the dialog
+openButton.addEventListener(&apos;click&apos;, openDialog, false);
+closeButton.addEventListener(&apos;click&apos;, closeDialog, false);
+</code></pre>
+<h3><a id="Trapping-focus-inside-the-dialog" href="#Trapping-focus-inside-the-dialog" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Trapping focus inside the dialog</h3>
+<p>While a dialog is shown, we need to make sure that elements outside of the dialog cannot be interacted with. The backdrop achieves this for the mouse, as you&apos;re unable to click on anything anymore. But for other means of input, like the keyboard, elements are still accessible simply by hitting the <kbd>Tab</kbd> key often enough to reach them.</p>
+<p>A naive implementation might listen to <code>keydown</code> events, filtering for <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> to shift focus to the <em>first</em> element when focus would leave the dialog at the end, or shift focus to the <em>last</em> element, when focus would leave the dialog at its beginning. But this approach has a few problems:</p>
+<ul>
+<li>focus may <em>not only</em> be shifted through <kbd>Tab</kbd>, as users of <a href="http://blog.codinghorror.com/spatial-navigation-and-opera/">spatial navigation</a> will attest</li>
+<li>assistive tools that provide more than sequential focus navigation (i.e. random access) may list all focusable elements of the page, including those visually behind the backdrop</li>
+</ul>
+<p>We could do away with the need to react to <kbd>Tab</kbd>, by simply hiding everything outside the dialog. But while setting everything to <code>visibility: hidden;</code> would certainly do the job, it would also visually hide <em>everything but the dialog</em>, rendering the backdrop useless. Most visual designers I know digress.</p>
+<p>So what we really want to do is make everything that is focusable outside of the dialog, not focusable while the dialog is shown. This is no small feat, as browsers offer <em>absolutely no API</em> to achieve that and disagree on what exactly is focusable - see <a href="../data-tables/focusable.html">what browsers consider focusable</a>. On top of that only form elements know the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/%3Adisabled"><code>disabled</code> property</a>. ally.js has got you covered with <a href="../api/query/focusable.html"><code>ally.query.focusable</code></a> to <em>find</em> focusable elements, and <a href="../api/element/disabled.html"><code>ally.element.disabled</code></a> to <em>disable any element</em>.</p>
+<p>To make things even more comfortable for you, ally.js provides <a href="../api/maintain/disabled.html"><code>ally.maintain.disabled</code></a> to disable any focusable element and observe changes to the DOM, so any element added to the DOM while the dialog is being shown are disabled as well. The <code>disengage()</code> method stops observing the DOM and re-enables all elements that were disabled by the service.</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+var disabledHandle;
+
+function openDialog() {
+  // Make sure that no element outside of the dialog
+  // can be interacted with while the dialog is visible.
+  // This means we don&apos;t have to handle Tab and Shift+Tab,
+  // but can defer that to the browser&apos;s internal handling.
+  disabledHandle = ally.maintain.disabled({
+    filter: dialog,
+  });
+
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // undo disabling elements outside of the dialog
+  disabledHandle.disengage();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+</code></pre>
+<h3><a id="Reacting-to-Tab-and-Shift-Tab" href="#Reacting-to-Tab-and-Shift-Tab" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Reacting to <kbd>Tab</kbd> and <kbd>Shift Tab</kbd></h3>
+<p>When the last element of the document&apos;s tabbing order has focus and the user presses the <kbd>Tab</kbd> key, focus is not wrapped around to the first element of the tabbing order, but to the browser&apos;s UI (e.g. location bar or tabs). The same is true for the first element being focused and the user pressing <kbd>Shift Tab</kbd>.</p>
+<p>This is not quite the behavior we see in the modal dialogs provided by our operating systems, where focus is always trapped within the dialog. This is a behavior keyboard users have come to expect and we need to replicate in our web UIs as well.</p>
+<p>While <a href="../api/maintain/disabled.html"><code>ally.maintain.disabled</code></a> makes sure we can&apos;t focus any other element within the document, we still need to observe the <kbd>Tab</kbd> key to make focus wrap within the dialog&apos;s tabbing order. That&apos;s what <a href="../api/maintain/tab-focus.html"><code>ally.maintain.tabFocus</code></a> is for.</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+var tabHandle;
+
+function openDialog() {
+  // Make sure that Tab key controlled focus is trapped within
+  // the tabsequence of the dialog and does not reach the
+  // browser&apos;s UI, e.g. the location bar.
+  tabHandle = ally.maintain.tabFocus({
+    context: dialog,
+  });
+
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // undo trapping Tab key focus
+  tabHandle.disengage();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+</code></pre>
+<div class="note"><strong>NOTE:</strong> <a href="../api/maintain/tab-focus.html"><code>ally.maintain.tabFocus</code></a> was added in version <code>v1.1.0</code>.</div>
+<h3><a id="Reacting-to-Enter-and-Escape" href="#Reacting-to-Enter-and-Escape" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Reacting to <kbd>Enter</kbd> and <kbd>Escape</kbd></h3>
+<p>The <kbd>Escape</kbd> key usually closes (dismisses) a dialog and the <kbd>Enter</kbd> key usually activates the dialog&apos;s primary action. Because our example uses a <code>&lt;form&gt;</code> and a submit button for the save action, we don&apos;t have to listen for <kbd>Enter</kbd>, but can instead rely on the <code>submit</code> event of the <code>&lt;form&gt;</code>.</p>
+<p>If we hadn&apos;t done that, we&apos;d have to make sure that the currently focused element does not have an enter-specific activation whenever the <kbd>Enter</kbd> key was pressed. The activation of a link (<code>&lt;a href=&quot;&#x2026;&quot;&gt;</code>) is to open the referenced address. If we were to naively listen for <code>keydown</code> events and close the dialog upon <kbd>Enter</kbd>, we destroy the ability to interact with elements such as the link by keyboard. Since the is no way to reliably tell if an element is reacting to <kbd>Enter</kbd>, it seems easier to avoid that scenario entirely.</p>
+<p>The <kbd>Escape</kbd> key on the other hand doesn&apos;t have any activation and can be used naively. For simple (naive) keyboard bindings, ally.js provides <a href="../api/when/key.html"><code>ally.when.key</code></a> to execute a callback whenever the registered key was pressed. Because event handlers are executed before the native activation is performed, we need to either prevent the default action (using <a href="https://developer.mozilla.org/en/docs/Web/API/Event/preventDefault"><code>event.preventDefault()</code></a>), or delay closing of the dialog. Otherwise we would see focus being shifted back to the &quot;open dialog&quot; button, where the default activation would be performed, thus immediately reopening the dialog.</p>
+<p>Putting the keyboard handling together we get:</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+var keyHandle;
+
+function openDialog() {
+  // React to enter and escape keys as mandated by ARIA Practices
+  keyHandle = ally.when.key({
+    escape: closeDialogByKey,
+  });
+
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialogByKey(event) {
+  // delay closing so that we don&apos;t
+  // immediately reopen the dialog
+  setTimeout(closeDialog);
+}
+
+function closeDialog() {
+  // undo listening to keyboard
+  keyHandle.disengage();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+
+function saveDialog(event) {
+  // do not submit the form
+  event.preventDefault();
+
+  // do something with the entered data
+  var name = dialog.querySelector(&apos;input&apos;).value;
+  console.log(&apos;entered name&apos;, name);
+
+  closeDialog();
+}
+
+dialog.addEventListener(&apos;submit&apos;, saveDialog, true);
+</code></pre>
+<h3><a id="Focus-first-focusable-element-upon-opening-the-dialog" href="#Focus-first-focusable-element-upon-opening-the-dialog" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Focus first focusable element upon opening the dialog</h3>
+<p>Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus (in order to shift <a href="../concepts.html#Virtual-focus">virtual focus</a>). In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with <a href="../api/query/tabbable.html"><code>ally.query.tabbable</code></a>. Since the <em>order</em> of elements is significant here, we need to sort the focusable elements by <code>tabindex</code> and <code>autofocus</code> attributes. ally.js provides the method <a href="../api/query/first-tabbable.html"><code>ally.query.firstTabbable</code></a> to do all that for you:</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+
+function openDialog() {
+  // create or show the dialog
+  dialog.hidden = false;
+  // the dialog is visible on screen, so find the first
+  // keyboard focusable element (giving any element with
+  // autofocus attribute precendence). If the dialog does
+  // not contain any keyboard focusabe elements, focus will
+  // be given to the dialog itself.
+  var element = ally.query.firstTabbable({
+    context: dialog,
+    defaultToContext: true,
+  });
+  element.focus();
+}
+</code></pre>
+<h3><a id="Restoring-focus-upon-closing-the-dialog" href="#Restoring-focus-upon-closing-the-dialog" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Restoring focus upon closing the dialog</h3>
+<p>In order to restore focus on the element that was focused before we opened the dialog, we simply need to remember which element that was:</p>
+<pre><code class="language-javascript">var focusedElementBeforeDialogOpened;
+
+function openDialog() {
+  // Remember the focused element before we opened the dialog
+  // so we can return focus to it once we close the dialog.
+  focusedElementBeforeDialogOpened = document.activeElement;
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // return focus to where it was before we opened the dialog
+  focusedElementBeforeDialogOpened.focus();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+</code></pre>
+<h3><a id="Hide-document-from-screen-readers" href="#Hide-document-from-screen-readers" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Hide document from screen readers</h3>
+<p>Screen Readers and other tools consuming the document through the Accessibility Tree instead of relying on visual presentation, need to be told what exactly is going on. The translucent backdrop, which obfuscates the document&apos;s content while the dialog is shown, does the job when you actually <em>see</em> the page. To achieve the same for non-visual output methods, we need to add <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden"><code>aria-hidden=&quot;true&quot;</code></a> to all the sibling DOM elements of our dialog.</p>
+<p>There is no native DOM method to obtain all parental siblings of an element. ally.js has got you covered with <a href="../api/get/insignificant-branches.html"><code>ally.get.insignificantBranches</code></a>, considering this is a pretty generic operation. To make things even more comfortable for you, ally.js provides <a href="../api/maintain/hidden.html"><code>ally.maintain.hidden</code></a> to also apply <code>aria-hidden=&quot;true&quot;</code>. This service also observes changes to the DOM and applies <code>aria-hidden=&quot;true&quot;</code> to any element added to the DOM while the dialog is being shown. The <code>disengage()</code> method stops observing the DOM and removes all <code>aria-hidden=&quot;true&quot;</code> attributes that were set by the service.</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+var hiddenHandle;
+
+function openDialog() {
+  // Make sure that no element outside of the dialog
+  // is exposed via the Accessibility Tree, to prevent
+  // screen readers from navigating to content it shouldn&apos;t
+  // be seeing while the dialog is open. See example:
+  // http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
+  hiddenHandle = ally.maintain.hidden({
+    filter: dialog,
+  });
+  // create or show the dialog
+  dialog.hidden = false;
+}
+
+function closeDialog() {
+  // undo hiding elements outside of the dialog
+  hiddenHandle.disengage();
+  // hide or remove the dialog
+  dialog.hidden = true;
+}
+</code></pre>
+<h3><a id="Wait-until-dialog-is-visible-before-shifting-focus" href="#Wait-until-dialog-is-visible-before-shifting-focus" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Wait until dialog is visible before shifting focus</h3>
+<p>An unspecified step performed by the browser when focusing an element is that the focusing element is scrolled into view. There is no way to prevent this from happening. But we can get around it by waiting for animated elements to come into view before shifting focus to them. For that reason ally.js provides the method <a href="../api/when/visible-area.html"><code>ally.when.visibleArea</code></a> to execute a callback once an element fully entered the viewport. This allows us to rewrite focusing the first keyboard focusable element:</p>
+<pre><code class="language-javascript">var dialog = document.getElementById(&apos;dialog&apos;);
+
+function openDialog() {
+  // We&apos;re using a transition to reveal the dialog,
+  // so wait until the element is visible, before
+  // finding the first keyboard focusable element
+  // and passing focus to it, otherwise the browser
+  // might scroll the document to reveal the element
+  // receiving focus
+  ally.when.visibleArea({
+    context: dialog,
+    callback: function(context) {
+      // the dialog is visible on screen, so find the first
+      // keyboard focusable element (giving any element with
+      // autofocus attribute precendence). If the dialog does
+      // not contain any keyboard focusabe elements, focus will
+      // be given to the dialog itself.
+      var element = ally.query.firstTabbable({
+        context: context, // context === dialog
+        defaultToContext: true,
+      });
+      element.focus();
+    },
+  });
+  // create or show the dialog
+  dialog.hidden = false;
+}
+</code></pre>
+<h2><a id="Interactive-demo" href="#Interactive-demo" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Interactive demo</h2>
+<section class="example"><h1><a id="Example-Dialog-Tutorial" href="#Example-Dialog-Tutorial" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: Dialog Tutorial</h1><a class="jsbin-embed" href="https://jsbin.com/qawasag/embed?output">Dialog Tutorial on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/qawasag/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./dialog.example.html" target="_blank">open the source document</a></p></section><div class="note"><strong>NOTE:</strong> Focus is only trapped inside of the embedded iframe. The iframe&apos;s content cannot change this page in any way.</div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

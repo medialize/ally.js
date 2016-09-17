@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Trident: Focusable Components of Browser-UI for audio element leak key event</title>
+</head>
+<body>
+
+  <p>
+    In Trident the components of an <code>&lt;audio&gt;</code> element (play/pause, volume control, etc) can be tabbed through as well - these TABs are propagated to the document as regular <code>KeyEvent</code>s.
+    Gecko and Trident allow controlling the <code>&lt;audio&gt;</code> element by keyboard (<kbd>left/right</kbd> to seek, <kbd>space</kbd> to toggle playback, <kbd>up/down</kbd> to control volume) - these interactions are propagated to the document as regular <code>KeyEvent</code>s.
+    Blink allows neither.
+  </p>
+
+
+  <audio data-label="audio" controls>
+    <source src="../media/test.mp3"></source>
+    <source src="../media/test.ogg"></source>
+    <p>no &lt;audio&gt; support</p>
+  </audio>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.body.addEventListener('keydown', function(event) {
+      // if (document.activeElement.nodeName.toLowerCase() === 'audio') {
+      //   event.preventDefault();
+      // }
+      log.textContent += 'KEY[' + (event.keyCode || event.which) + ']\n';
+    }, true);
+    
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>

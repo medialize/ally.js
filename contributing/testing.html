@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test infrastructure - ally.js</title><link rel="canonical" href="http://allyjs.io/contributing/testing.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Locally-running-unit-tests-in-the-browser">Locally running unit tests in the browser</a></li>
+        
+        
+        <li><a href="#Locally-running-all-tests-in-the-browser">Locally running all tests in the browser</a></li>
+        
+        
+        <li><a href="#Remotely-running-all-tests-in-all-browsers">Remotely running all tests in all browsers</a></li>
+        
+        
+        <li><a href="#Reports">Reports</a></li>
+        
+        
+        <li><a href="#Analyzing-bundle-size">Analyzing bundle size</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/contributing/testing.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Test infrastructure" href="https://github.com/medialize/ally.js/issues/new?title=[Test%20infrastructure]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Contributing</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Contributing</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="build.html">Build infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="docs.html">Documentation infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="release.html">Releasing ally.js</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="testing.html">Test infrastructure</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Test-infrastructure" href="#Test-infrastructure" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Test infrastructure</h1>
+<p>The tests are built on top of <a href="https://theintern.github.io/">The Intern</a>. See the <a href="https://github.com/theintern/intern-tutorial">tutorial</a> and <a href="https://github.com/theintern/intern-examples">some examples</a> to get started. Also see <a href="http://chaijs.com/api/bdd/">Chai BDD</a> for asserting stuff and <a href="http://theintern.github.io/leadfoot/">leadfoot</a> for interacting with browsers.</p>
+<div class="note"><strong>NOTE:</strong> Unlike ally.js, the tests are not written in ES6, but follow Intern&apos;s ES5 and AMD scheme.</div>
+<p>The test infrastructure is located in the <code>test</code> directory. Note that the <code>tests</code> directory is occupied by manual browser support tests.</p>
+<p>Intern handles both unit and functional tests. Unit tests are the ones that verify a function&apos;s integrity without user interaction (like clicking on things or pressing keys). Functional tests are the ones that use <a href="http://theintern.github.io/leadfoot/">leadfoot</a> to simulate a human being using the browser. Both types of tests are executed in the browser, there is no point testing things in Node.</p>
+<p>For local development the command <code>npm run test</code> can be used to run tests in local Google Chrome. To run tests against a whole battery of browsers in the cloud we use <a href="http://browserstack.com">BrowserStack</a> and <a href="https://saucelabs.com">SauceLabs</a>. To run those locally, you&apos;ll need the secret access keys (which you&apos;ll only get if you&apos;re a core contributor, sorry).</p>
+<p>Coverage reports are made available in the directory <code>reports/coverage</code>.</p>
+<p>Tests are run by <a href="https://travis-ci.org/medialize/ally.js">TravisCI</a> on every push and every pull request.</p>
+<h2><a id="Locally-running-unit-tests-in-the-browser" href="#Locally-running-unit-tests-in-the-browser" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Locally running unit tests in the browser</h2>
+<p>You can run the unit tests in any browser by starting the server using <code>npm run test:server</code> and navigating to the following URL:</p>
+<pre><code class="language-text">http://localhost:9000/node_modules/intern/client.html?config=test/browser
+</code></pre>
+<div class="note"><strong>NOTE:</strong> The tests run off <code>dist/amd</code> and require the <code>reports</code> directory to exist. Before running running the tests, you need to have run <code>npm run clean</code> and <code>npm run build:amd</code> at least once.</div>
+<h2><a id="Locally-running-all-tests-in-the-browser" href="#Locally-running-all-tests-in-the-browser" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Locally running all tests in the browser</h2>
+<p>Both unit and functional tests can be executed in Google Chrome locally via <code>npm run test</code>. This requires Java, as the <a href="https://theintern.github.io/digdug/module-digdug_SeleniumTunnel.html">SeleniumTunnel</a> simply spawns a <a href="http://www.seleniumhq.org/download/">Selenium Standalone Server</a>.</p>
+<pre><code class="language-bash"># run all tests locally in Google Chrome
+npm run test
+</code></pre>
+<div class="note"><strong>NOTE:</strong> The tests run off <code>dist/amd</code> and require the <code>reports</code> directory to exist. Before running running the tests, you need to have run <code>npm run clean</code> and <code>npm run build:amd</code> at least once.</div>
+<h2><a id="Remotely-running-all-tests-in-all-browsers" href="#Remotely-running-all-tests-in-all-browsers" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remotely running all tests in all browsers</h2>
+<p>You can register your own SauceLabs account (there is a <a href="https://saucelabs.com/signup/plan/free">free tier</a>) and provide your own credentials if you don&apos;t have access to the project&apos;s account. The same is true for <a href="http://browserstack.com/">BrowserStack</a>.</p>
+<h3><a id="Running-tests-on-BrowserStack" href="#Running-tests-on-BrowserStack" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Running tests on BrowserStack</h3>
+<pre><code class="language-bash"># make BrowserStack credentials available to Intern
+# obtainable at https://www.browserstack.com/accounts/automate
+export BROWSERSTACK_USERNAME=rodneyrehm1
+export BROWSERSTACK_ACCESS_KEY=nope
+
+# run all tests
+npm run test:browserstack
+
+# run all tests (without npm)
+./node_modules/.bin/intern-runner \
+  config=test/browserstack
+
+# run selected suites
+./node_modules/.bin/intern-runner \
+  config=test/browserstack \
+  suites=test/unit/selected-test \
+  functionalSuites=tests/functional/selected-test
+</code></pre>
+<h3><a id="Running-tests-on-SauceLaubs" href="#Running-tests-on-SauceLaubs" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Running tests on SauceLaubs</h3>
+<pre><code class="language-bash"># make SauceLabs credentials available to Intern
+# obtainable at https://saucelabs.com/account
+export SAUCE_USERNAME=allyjs
+export SAUCE_ACCESS_KEY=nope
+
+# run all tests
+npm run test:sauce
+
+# run all tests (without npm)
+./node_modules/.bin/intern-runner \
+  config=test/sauce
+
+# run selected suites
+./node_modules/.bin/intern-runner \
+  config=test/sauce \
+  suites=test/unit/selected-test \
+  functionalSuites=tests/functional/selected-test
+</code></pre>
+<h2><a id="Reports" href="#Reports" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Reports</h2>
+<p>After running the automated tests, the <code>reports</code> directory will contain several files:</p>
+<pre><code class="language-text">reports
+&#x251C;&#x2500;&#x2500; coverage
+&#x2502;   &#x251C;&#x2500;&#x2500; &#x2026;
+&#x2502;   &#x2514;&#x2500;&#x2500; index.html  - test coverage in human readable format
+&#x251C;&#x2500;&#x2500; junit.xml       - test status non-human readable format
+&#x2514;&#x2500;&#x2500; lcov.info       - test coverage non-human readable format
+</code></pre>
+<p>When the tests executed, code coverage results can be uploaded to <a href="http://codeclimate.com/">Code Climate</a> and <a href="http://coveralls.io/">Coveralls</a> by running <code>npm run publish:lcov</code>.</p>
+<div class="note"><strong>NOTE:</strong> The coverage measured by <code>npm run test</code> is (dramatically) lower than for <code>npm run test-ci</code>, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.</div>
+<h2><a id="Analyzing-bundle-size" href="#Analyzing-bundle-size" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Analyzing bundle size</h2>
+<p>Before a release the structure of the UMD bundle should be analyzed to make sure we didn&apos;t accidentally blow it up. Since <a href="https://github.com/nolanlawson/rollupify/">rollupify</a> reduces all ES6 code to a single bundle, bundles need to be analyzed on a bundle that was built <em>without</em> rollupify.
+The interactive bundle size report is generated by <a href="https://github.com/danvk/source-map-explorer">source-map-explorer</a>.</p>
+<pre><code class="language-bash"># run surce-map-explorer
+npm run analyze:bundle
+</code></pre>
+<p>The report will be available in <code>reports/bundle-size.html</code>.</p>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

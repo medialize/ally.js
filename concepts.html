@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>General concepts - ally.js</title><link rel="canonical" href="http://allyjs.io/concepts.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="index.html">Home</a>
+            </li>
+          
+            <li class="active">
+              <a href="getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#WAI-ARIA">WAI ARIA</a></li>
+        
+        
+        <li><a href="#Accessibility-tree">Accessibility tree</a></li>
+        
+        
+        <li><a href="#Sequential-navigation-focus-order">Sequential navigation focus order</a></li>
+        
+        
+        <li><a href="#Virtual-focus">Virtual focus</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/concepts.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="General concepts" href="https://github.com/medialize/ally.js/issues/new?title=[General%20concepts]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Getting Started</em></h1><ul>
+          <li class="">
+            <a class="" href="getting-started.html">Getting started</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="concepts.html">General concepts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="questions.html">Frequently asked questions</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="what-is-focusable.html">What does &quot;focusable&quot; mean?</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="General-concepts" href="#General-concepts" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>General concepts</h1>
+<p>This document explains the general concepts encountered in the world of accessibility.</p>
+<h2><a id="WAI-ARIA" href="#WAI-ARIA" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>WAI ARIA</h2>
+<p>WAI-ARIA stands for <a href="http://www.w3.org/WAI/">Web Accessibility Initiative</a> - Accessible Rich Internet Applications. ARIA defines semantics (HTML attributes to express application structure state), behavior requirements and more.</p>
+<ul>
+<li><a href="http://www.w3.org/TR/wai-aria/">Accessible Rich Internet Applications (WAI-ARIA) 1.0</a></li>
+<li><a href="http://w3c.github.io/aria/aria/aria.html">Accessible Rich Internet Applications (WAI-ARIA) 1.1</a></li>
+<li><a href="http://www.w3.org/TR/wai-aria-practices/">WAI-ARIA 1.0 Authoring Practices</a></li>
+<li><a href="http://w3c.github.io/aria/practices/aria-practices.html">WAI-ARIA 1.1 Authoring Practices</a></li>
+<li><a href="http://w3c.github.io/aria-in-html/">Notes on Using ARIA in HTML</a></li>
+<li><a href="http://w3c.github.io/aria/core-aam/core-aam.html">Core Accessibility API Mappings 1.1</a></li>
+<li><a href="http://w3c.github.io/aria/accname-aam/accname-aam.html">Accessible Name and Description: Computation and API Mappings 1.1</a></li>
+<li><a href="https://w3c.github.io/aria/svg-aam/svg-aam.html">SVG Accessibility API Mappings</a></li>
+</ul>
+<h2><a id="Accessibility-tree" href="#Accessibility-tree" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Accessibility tree</h2>
+<p>The Accessibility Tree (often abbreviated &quot;AT&quot;, which may be ambiguous as it is also used to abbreviate &quot;Assistive Technology&quot;) is an object structure much like the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">DOM</a>, but with a different focus and purpose. The AT is invisible to web applications and is generated from the DOM. In a way the AT is a view of the DOM that only shows the semantically significant structure.</p>
+<ul>
+<li><a href="http://w3c.github.io/aria/core-aam/core-aam.html#dfn-accessibility-tree">Definition</a></li>
+<li><a href="http://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/">Accessibility APIs: A Key To Web Accessibility</a></li>
+<li><a href="https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/">The Browser Accessibility Tree</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Accessibility/Accessibility_architecture">Mozilla accessibility architecture</a></li>
+</ul>
+<h2><a id="Sequential-navigation-focus-order" href="#Sequential-navigation-focus-order" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Sequential navigation focus order</h2>
+<p>The Sequential Navigation Focus Order, also referred to as the Tabbing Order or <em>tabsequence</em>, is an ordered list of all keyboard focusable elements in a document. Unless elements are moved to the front of the list by specifying a positive <code>tabindex</code> attribute such as <code>tabindex=&quot;1&quot;</code>, the tabbing order usually correlates to the DOM order. Users can usually navigate to the next and previous element in the list by pressing the <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> keys respectively.</p>
+<h2><a id="Virtual-focus" href="#Virtual-focus" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Virtual focus</h2>
+<p>Assistive technologies such as screen readers may provide their own cursor to indicate the element a user is currently focused on. The element that cursor is pointing to is said to have virtual focus. Web applications have no knowledge of this cursor existing, let alone what it is pointing to. In other words the CSS pseudo-class <code>:focus</code> does <em>not</em> indicate the virtual focus, nor does any other CSS pseudo-class. The virtual focus usually follows the &quot;real&quot; focus. This means that should a script focus an element (thereby making it the activeElement), the virtual focus of the screen reader will also be set to that element.</p>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

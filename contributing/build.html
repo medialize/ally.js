@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Build infrastructure - ally.js</title><link rel="canonical" href="http://allyjs.io/contributing/build.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Building">Building</a></li>
+        
+        
+        <li><a href="#Linting">Linting</a></li>
+        
+        
+        <li><a href="#ES6-in-older-browsers">ES6 in older browsers</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/contributing/build.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Build infrastructure" href="https://github.com/medialize/ally.js/issues/new?title=[Build%20infrastructure]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Contributing</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Contributing</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="build.html">Build infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="docs.html">Documentation infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="release.html">Releasing ally.js</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="testing.html">Test infrastructure</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Build-infrastructure" href="#Build-infrastructure" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Build infrastructure</h1>
+<p>The build infrastructure consists of a few tools made available through <code>npm run</code> commands.</p>
+<p>This document is concerned with building the JavaScript source code. See <a href="docs.html">Documentation Infrastructure</a> for how the documentation and website are generated.</p>
+<div class="note"><strong>NOTE:</strong> If this is your first contact with ally.js, make sure to run <code>npm run init</code> after cloning the repository. This will run <code>npm install</code>, <code>npm run clean</code>, <code>npm run build</code> and <code>npm run build:website</code> to make sure your local copy is ready.</div>
+<h2><a id="Building" href="#Building" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Building</h2>
+<pre><code class="language-bash"># build everything
+npm run build
+
+# remove everything in dist
+npm run clean
+</code></pre>
+<p><code>npm run build</code> first runs <code>build:pre</code> to setup the <code>dist</code> directory, overwriting <code>src/version.js</code> to expose the package version:</p>
+<pre><code class="language-text">dist
+&#x2514;&#x2500;&#x2500; src
+    &#x2514;&#x2500;&#x2500; &lt;ES6 files&gt;
+</code></pre>
+<p><code>npm run build</code> then runs <code>build:umd</code>, <code>build:amd</code>, <code>build:common</code> and creates the following structure in the <code>dist</code> directory:</p>
+<pre><code class="language-text">dist
+&#x251C;&#x2500;&#x2500; &lt;UMD bundle&gt;
+&#x251C;&#x2500;&#x2500; amd
+&#x2502;   &#x2514;&#x2500;&#x2500; &lt;AMD files&gt;
+&#x2514;&#x2500;&#x2500; common
+&#x2502;   &#x2514;&#x2500;&#x2500; &lt;CommonJS files&gt;
+&#x2514;&#x2500;&#x2500; src
+    &#x2514;&#x2500;&#x2500; &lt;ES6 files&gt;
+</code></pre>
+<p><code>npm run build</code> then runs <code>build:post</code> after the bundle and modules have been created, mutating the the <code>dist</code> directory to the following structure (that is published to npm):</p>
+<pre><code class="language-text">dist
+&#x251C;&#x2500;&#x2500; package.json
+&#x251C;&#x2500;&#x2500; README.md
+&#x251C;&#x2500;&#x2500; CHANGELOG.md
+&#x251C;&#x2500;&#x2500; LICENSE.txt
+&#x251C;&#x2500;&#x2500; &lt;UMD bundle&gt;
+&#x251C;&#x2500;&#x2500; &lt;CommonJS files&gt;
+&#x251C;&#x2500;&#x2500; amd
+&#x2502;   &#x2514;&#x2500;&#x2500; &lt;AMD files&gt;
+&#x2514;&#x2500;&#x2500; src
+    &#x2514;&#x2500;&#x2500; &lt;ES6 files&gt;
+</code></pre>
+<p>At the end <code>npm run build</code> also runs <code>build:archive</code>, which creates a ZIP archive of <code>dist</code> and saves it to <code>dist/ally.js.zip</code>.</p>
+<h3><a id="Building-the-UMD-bundle" href="#Building-the-UMD-bundle" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Building the UMD bundle</h3>
+<p>ally.js is made available in one convenient file, consumable as a browser global (<code>window.ally</code>), via AMD and CommonJS (exposed in UMD). The source is compiled to the distributable by <a href="https://github.com/substack/node-browserify">browserify</a> using <a href="https://github.com/babel/babelify">babelify</a> to resolve the ES6 modules.</p>
+<pre><code class="language-bash"># build the UMD bundle
+npm run build:umd
+
+# remove everything in dist
+npm run clean
+</code></pre>
+<h3><a id="Building-AMD-and-CommonJS-modules" href="#Building-AMD-and-CommonJS-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Building AMD and CommonJS modules</h3>
+<p>To allow developers to use selected features (rather than import everything), the ES6 source (<code>src</code>) is made available in ES5 via AMD and CommonJS in <code>dist/amd</code> and <code>dist/common</code>.</p>
+<pre><code class="language-bash"># convert to CommonJS modules
+npm run build:common
+
+# convert to AMD modules
+npm run build:amd
+
+# keep converting to dist/amd while working on src
+npm run watch:amd
+</code></pre>
+<p>See the <a href="https://babeljs.io/docs/usage/cli/">Babel CLI docs</a></p>
+<hr>
+<h2><a id="Linting" href="#Linting" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Linting</h2>
+<p>Since ally.js is using the ES6 Module Syntax - and <a href="https://github.com/eslint/eslint">eslint</a> does not support that yet - we&apos;re using <a href="https://github.com/babel/babel-eslint">babel-eslint</a> as the parser in eslint and configured via <a href="https://github.com/medialize/ally.js/blob/master/.eslintrc"><code>.eslintrc</code></a>. See the docs to understand the <a href="http://eslint.org/docs/rules">rules</a>.</p>
+<dl><dt>Note:</dt><dd> Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally:</dd></dl>
+<pre><code class="language-bash">npm install -g babel-eslint
+</code></pre>
+<h3><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h3>
+<pre><code class="language-bash"># lint everything
+npm run lint
+
+# lint only JavaScript
+npm run lint:js
+
+# lint only Markdown
+npm run lint:md
+</code></pre>
+<p>Linting is done automatically during <code>git commit</code> by way of <a href="https://www.npmjs.com/package/pre-commit">pre-commit</a> and limited to the actually changed files by way of <a href="https://www.npmjs.com/package/lint-staged">lint-staged</a> in order to keep <code>git commit</code> as fast as possible.</p>
+<hr>
+<h2><a id="ES6-in-older-browsers" href="#ES6-in-older-browsers" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ES6 in older browsers</h2>
+<p>Currently only a single ES6 function <code>Array.prototype.findIndex</code> is used in ally.js. Should we choose to use more ES6 functions, possibly things like <code>Set</code> and <code>Map</code>, we would have to include the <a href="http://babeljs.io/docs/usage/polyfill/">babel polyfill</a> in our distribution. This step should not be taken lightly, as the polyfill is a heavyweight.</p>
+<pre><code class="language-bash">npm install babel-core
+cat node_modules/babel-core/browser-polyfill.js dist/ally.js &gt; dist/ally.old-browser.js
+</code></pre>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

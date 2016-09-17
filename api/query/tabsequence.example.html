@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.query.tabsequence Example</title><link rel="canonical" href="http://allyjs.io/api/query/tabsequence.example.html">
+  <link rel="jsbin" href="https://jsbin.com/yakuwu/">
+  <style id="example-css">
+    div {
+      margin-top: 5px;
+      padding: 5px;
+      border: 1px solid grey;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.query.tabsequence</code> Example</h1>
+
+  <p>See <a href="#output">Tab Sequence Output</a></p>
+</article>
+
+<div id="example-html">
+  <main>
+    <p><label for="text-input">Text Input 1</label><input type="text" id="text-input" value="input without tabindex"></p>
+    <p><label for="text-input--1">Text Input 2</label><input type="text" id="text-input--1" value="input tabindex=&quot;-1&quot;" tabindex="-1"></p>
+    <p><label for="text-input-2">Text Input 3</label><input type="text" id="text-input-2" value="input tabindex=&quot;2&quot;" tabindex="2"></p>
+
+    <div>div without <code>tabindex</code></div>
+    <div tabindex="-1">div with <code>tabindex=&quot;-1&quot;</code></div>
+    <div tabindex="0">div with <code>tabindex=&quot;0&quot;</code></div>
+    <div tabindex="1">div with <code>tabindex=&quot;1&quot;</code></div>
+
+    <p><label for="text-input-auto">Text Input with autofocus</label><input type="text" id="text-input-auto" value="input with autofocus" autofocus></p>
+  </main>
+</div>
+
+<h2>Tab Sequence</h2>
+<ol id="output"></ol>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var sequence = ally.query.tabsequence({
+    context: '#example-html',
+  });
+
+  var output = document.getElementById('output');
+  sequence.forEach(function(element) {
+    var li = document.createElement('li');
+    li.textContent = element.value || element.textContent;
+    output.appendChild(li);
+  });
+</script>
+
+</body>
+</html>

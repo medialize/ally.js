@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Object with image map not focusable</title>
+  <style>
+  body :focus {
+    outline: 2px solid hotpink;
+  }
+  </style>
+</head>
+<body>
+
+  <!--
+    Not filing this in any browser because I have no idea why you'd want to do this in the first place.
+    It doesn't work at all for interactive content such as SVG and SWF.
+    It works for still images like PNG and JPG, but for those we already have the <img> element.
+    If anything, I'd drop this from the spec.
+
+    »The usemap attribute, if present while the object element represents an image,
+    can indicate that the object has an associated image map. The attribute must be
+    ignored if the object element doesn't represent an image.«
+    http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element
+  -->
+
+  <p>
+    Chrome ignores the image map of <code>&lt;object usemap&gt;</code> completely, but renders the image fine.
+    Firefox render the image and the image map is accessible by mouse and can be focused by script, but it's not tabbable.
+    IE11 renders the image and the image map is accessible by mouse, but neither focusable nor tabbable.
+  </p>
+
+
+  <map name="the-map">
+    <area href="#void-upper" shape="rect" coords="63,19,144,45" data-label="map.object area[href].upper" id="upper">
+    <area href="#void-lower" shape="rect" coords="63,59,144,85" data-label="map.object area[href].lower" id="lower">
+  </map>
+
+  <object usemap="#the-map" data="../media/image-map.png" type="image/png"></object>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['object', '#upper', '#lower'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+
+    setTimeout(function(){
+      ['object', '#upper', '#lower'].forEach(function(selector) {
+        document.activeElement && document.activeElement.blur();
+        document.querySelector(selector).focus();
+        log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+      });
+    }, 3000)
+  </script>
+</body>
+</html>

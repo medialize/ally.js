@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.fix.pointerFocusChildren Example</title><link rel="canonical" href="http://allyjs.io/api/fix/pointer-focus-children.example.html">
+  <link rel="jsbin" href="https://jsbin.com/gomofa/">
+  <style id="example-css">
+    body :focus {
+      outline: 3px solid red;
+    }
+
+    .flex {
+      display: -ms-flexbox;
+      display: flex;
+      width: 300px;
+    }
+
+    .flex > span {
+      -ms-flex: 1 1 10px;
+          flex: 1 1 10px;
+      display: block;
+      transition:
+        visibility 1s 0.5s linear,
+        background-color 1s 0s ease-in-out;
+    }
+
+    .flex > span:hover {
+      background-color: green;
+    }
+    .flex > span:active {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.fix.pointerFocusChildren</code> Example</h1>
+
+  <p>There are two focusable div elements in this document, each containing two span element children layed out using FlexBox. The first div element exhibits the undesired behavior upon click, the second div element is covered by <code>ally.fix.pointerFocusChildren</code>.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <h2>Natural Browser Behavior</h2>
+    <div tabindex="-1" class="flex">
+      <span>one</span>
+      <span>two</span>
+    </div>
+
+    <h2>Fixed Behavior</h2>
+    <div tabindex="-1" id="fix-pointer-focus" class="flex">
+      <span>one</span>
+      <span>two</span>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  ally.fix.pointerFocusChildren({
+    context: '#fix-pointer-focus',
+  });
+</script>
+
+</body>
+</html>

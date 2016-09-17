@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: Embed element with tabindex="0" breaks sequential focus navigation</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1195457
+    related https://bugzilla.mozilla.org/show_bug.cgi?id=1185657
+  -->
+  
+  <p>
+    Gecko freaks out when encountering <code>&lt;embed tabindex=&quot;0&quot;&gt;</code> in a bad way: <kbd>Tab</kbd> and<kbd>Shift Tab</kbd>
+    will <em>not</em> focus the next/previous keyboard focusable element - the activeElement is stuck.
+  </p>
+
+  <hr>
+
+  <input type="text" label="input before">
+
+  <hr>
+  
+  <embed type="image/svg+xml" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0ic3ZnIj48dGV4dCB4PSIxMCIgeT0iMjAiIGlkPSJzdmctbGluay10ZXh0Ij50ZXh0PC90ZXh0Pjwvc3ZnPg==" width="640" height="480" data-label="embed[tabindex=0]" tabindex="0">
+
+  <hr>
+
+  <input type="text" label="input after">
+
+  <hr>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>

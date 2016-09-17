@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.style.focusSource Example</title><link rel="canonical" href="http://allyjs.io/api/style/focus-source.example.html">
+  <link rel="jsbin" href="https://jsbin.com/ziduzu/">
+  <style id="example-css">
+    body :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] > body :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] > body :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] > body :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] > body :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+    p[data-had-focus] {
+      display: none;
+    }
+    html.focus-source-pointer p[data-had-focus="pointer"],
+    html.focus-source-key p[data-had-focus="key"],
+    html.focus-source-script p[data-had-focus="script"] {
+      display: block;
+    }
+
+    /* separate blocks because ">>>" or "/deep/" might not be supported and thus render the selector void */
+    .example >>> :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] .example >>> :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] .example >>> :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] .example >>> :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] .example >>> :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+    .example /deep/ :focus {
+      /* default styling in case JS broke */
+      background: yellow;
+    }
+    html[data-focus-source="initial"] .example /deep/ :focus {
+      /* styling for when focus was given by pointer */
+      background: green;
+    }
+    html[data-focus-source="pointer"] .example /deep/ :focus {
+      /* styling for when focus was given by pointer */
+      background: red;
+    }
+    html[data-focus-source="key"] .example /deep/ :focus {
+      /* styling for when focus was given by keyboard */
+      background: blue;
+    }
+    html[data-focus-source="script"] .example /deep/ :focus {
+      /* styling for when focus was given by neither pointer nor keyboard */
+      background: orange;
+    }
+
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.style.focusSource</code> Example</h1>
+
+  <p>Use <kbd>Tab</kbd> and the mouse (or touch) as well as the buttons to focus the input elements to see them styled differently depending on the input method used.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button type="button" id="focus-pass">loading&#x2026;</button>
+    <button type="button" id="focus-lock" aria-pressed="false">loading&#x2026;</button>
+
+    <hr>
+
+    <label for="before-input">click me</label>
+    <input id="before-input" type="text" value="before styled">
+    <div class="example">
+      <div id="first-shadow-host"></div>
+      <div>
+        <input id="outer-input" type="text" value="outer input">
+      </div>
+    </div>
+    <input id="after-input" type="text" value="after styled">
+
+    <hr>
+
+    <p data-had-focus="pointer">focus was set by pointer at least once</p>
+    <p data-had-focus="key">focus was set by keyboard at least once</p>
+    <p data-had-focus="script">focus was set by script at least once</p>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var buttonPass = document.getElementById('focus-pass');
+  var buttonLock = document.getElementById('focus-lock');
+
+  var focusSource = ally.style.focusSource();
+
+  var input = document.getElementById('before-input');
+  input.focus();
+
+  buttonPass.textContent = 'focus';
+  buttonPass.addEventListener('click', function() {
+    // passing focus to another element
+    input.focus();
+  }, false);
+
+  buttonLock.textContent = 'focus (lock)';
+  buttonLock.addEventListener('click', function() {
+    if (this.getAttribute('aria-pressed') !== 'true') {
+      this.setAttribute('aria-pressed', 'true');
+      buttonLock.textContent = 'unlock';
+      // passing focus while the method of input is locked
+      focusSource.lock(focusSource.current());
+      input.focus();
+      
+    } else {
+      this.setAttribute('aria-pressed', 'false');
+      buttonLock.textContent = 'focus (lock)';
+      focusSource.lock(false);
+    }
+  }, false);
+
+  // create shadow dom structure:
+  if (document.body.createShadowRoot !== undefined) {
+    var shadowed = createShadowedContent(
+      document.getElementById('first-shadow-host'),
+      '<div id="second-shadow-host"></div><div id="third-shadow-host"></div>'
+    );
+    createShadowedContent(
+      shadowed.getElementById('second-shadow-host'),
+      '<input id="first-input" type="text" value="::shadow ::shadow input">'
+    );
+    createShadowedContent(
+      shadowed.getElementById('third-shadow-host'),
+      '<input id="second-input" type="text" value="::shadow ::shadow input">'
+    );
+  }
+
+  function createShadowedContent(host, html) {
+    var root = host.createShadowRoot();
+    root.innerHTML = html;
+    return root;
+  }
+</script>
+
+</body>
+</html>

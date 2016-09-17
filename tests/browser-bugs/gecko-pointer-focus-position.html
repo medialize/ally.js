@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>gecko-pointer-focus-position</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+  https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-starting-point
+  -->
+
+  <p>
+    Firefox seems to maintain an internal, invisible "focus position".
+    Click on the red text, then hit <kbd>Tab</kbd> and note how "delta" is being focused.
+    Chrome will focus "alpha", because that's the first element of the document's
+    navigation sequence from the position of <code>&lt;body&gt;</code>.
+    Internet Explorer shows the same behavior, but only if you hit <kbd>Tab</kbd> within one second
+    (best guess) of clicking anywhere.
+  </p>
+  <p>
+    Note: There is nothing special about the red text, it's just meant as a target for you to click on.
+    Really you can click anywhere. For example to the right of one of the input elements, and focus
+    will shift to the next one.
+  </p>
+
+  <hr>
+  <input value="alpha">
+  <hr>
+  <input id="focus-first" value="bravo">
+  <hr>
+  <input value="charlie">
+  <hr>
+  <p style="color: red">click on this text, then hit <kbd>Tab</kbd></p>
+  <hr>
+  <input value="delta">
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + (event.target.value || event.target.nodeName) + '\n';
+    }, true);
+
+    document.getElementById('focus-first').focus();
+  </script>
+</body>
+</html>

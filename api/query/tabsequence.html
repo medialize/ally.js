@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.query.tabsequence - ally.js</title><link rel="canonical" href="http://allyjs.io/api/query/tabsequence.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="active">
+              <a href="../index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="../../contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Description">Description</a></li>
+        
+        
+        <li><a href="#Usage">Usage</a></li>
+        
+        
+        <li><a href="#Examples">Examples</a></li>
+        
+        
+        <li><a href="#Changes">Changes</a></li>
+        
+        
+        <li><a href="#Notes">Notes</a></li>
+        
+        
+        <li><a href="#Related-resources">Related resources</a></li>
+        
+        
+        <li><a href="#Contributing">Contributing</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/api/query/tabsequence.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="ally.query.tabsequence" href="https://github.com/medialize/ally.js/issues/new?title=[ally.query.tabsequence]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>API</em></h1><ul>
+          <li class="">
+            <a class="" href="../index.html">API index</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../concepts.html">API concepts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/blur.html">ally.element.blur</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/disabled.html">ally.element.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../element/focus.html">ally.element.focus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../event/active-element.html">ally.event.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../event/shadow-focus.html">ally.event.shadowFocus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-children.html">ally.fix.pointerFocusChildren</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-input.html">ally.fix.pointerFocusInput</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../fix/pointer-focus-parent.html">ally.fix.pointerFocusParent</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/active-element.html">ally.get.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/active-elements.html">ally.get.activeElements</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/focus-redirect-target.html">ally.get.focusRedirectTarget</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/focus-target.html">ally.get.focusTarget</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/insignificant-branches.html">ally.get.insignificantBranches</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/parents.html">ally.get.parents</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/shadow-host.html">ally.get.shadowHost</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../get/shadow-host-parents.html">ally.get.shadowHostParents</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/active-element.html">ally.is.activeElement</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/disabled.html">ally.is.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/focusable.html">ally.is.focusable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/focus-relevant.html">ally.is.focusRelevant</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/only-tabbable.html">ally.is.onlyTabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/shadowed.html">ally.is.shadowed</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/tabbable.html">ally.is.tabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/valid-area.html">ally.is.validArea</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/valid-tabindex.html">ally.is.validTabindex</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../is/visible.html">ally.is.visible</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/disabled.html">ally.maintain.disabled</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/hidden.html">ally.maintain.hidden</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../maintain/tab-focus.html">ally.maintain.tabFocus</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../map/attribute.html">ally.map.attribute</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../map/keycode.html">ally.map.keycode</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../observe/interaction-type.html">ally.observe.interactionType</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../observe/shadow-mutations.html">ally.observe.shadowMutations</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="first-tabbable.html">ally.query.firstTabbable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="focusable.html">ally.query.focusable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="shadow-hosts.html">ally.query.shadowHosts</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="tabbable.html">ally.query.tabbable</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="tabsequence.html">ally.query.tabsequence</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../style/focus-source.html">ally.style.focusSource</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../style/focus-within.html">ally.style.focusWithin</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/focusable.html">ally.when.focusable</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/key.html">ally.when.key</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../when/visible-area.html">ally.when.visibleArea</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../prototype.html">Prototype polyfills</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../selector.html">Selector</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../supports.html">Supports - Browser compatibility</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="../util.html">Utilities</a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="ally-query-tabsequence" href="#ally-query-tabsequence" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.query.tabsequence</h1>
+<p>Finds keyboard focusable (&quot;tabbable&quot;) elements in the DOM and returns them in the order calculated based on <code>tabindex</code> attribute values.</p>
+<h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
+<p>The <a href="../../concepts.html#Sequential-navigation-focus-order">Sequential Navigation Focus Order</a> depends on a variety of factors:</p>
+<ul>
+<li>Value of the <code>tabindex</code> attribute. The sequence generally starts with all positive tabindex elements with <code>tabindex=&quot;1&quot;</code> in DOM order, then all elements with <code>tabindex=&quot;2&quot;</code> in DOM order, then all elements with <code>tabindex=&quot;3&quot;</code>, &#x2026; until the highest tabindex is reached, at which point the sequence continues with the <code>tabindex=&quot;0&quot;</code> (which is set implicitly for a number of HTML elements, e.g. <code>&lt;input&gt;</code>).</li>
+<li><code>&lt;area&gt;</code> elements may either be sorted in DOM order of the <code>&lt;area&gt;</code> itsel, <em>or</em> the <code>&lt;img&gt;</code> referencing the map.</li>
+<li>Within a <a href="http://caniuse.com/#feat=shadowdom">ShadowDOM</a> positive tabindex elements may either be sorted localized to the <code>ShadowRoot</code>, <em>or</em> globally in the document.</li>
+</ul>
+<p><code>ally.query.tabsequence</code> uses <a href="tabbable.html"><code>ally.query.tabbable</code></a> to find keyboard focusable elements and then sorts the element positions respecting <code>ShadowDOM</code>, <code>&lt;area&gt;</code> vs <code>&lt;img&gt;</code> replacement and <code>tabindex</code> attribute value.</p>
+<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<pre><code class="language-javascript">var sequence = ally.query.tabsequence({
+  context: &apos;.within-filter-selector&apos;,
+  includeContext: true,
+  strategy: &apos;quick&apos;,
+});
+</code></pre>
+<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<table>
+<thead>
+<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which to search. The first element of a collection is used.</td></tr>
+<tr><td>includeContext</td><td>boolean</td><td><code>false</code></td><td>Prepend the <code>context</code> element if it is focusable.</td></tr>
+<tr><td>includeOnlyTabbable</td><td>boolean</td><td><code>false</code></td><td>Include elements that would otherwise be ignored because they&apos;re considered only tabbable,</td></tr>
+<tr><td>strategy</td><td><code>&quot;quick&quot;</code>, <code>&quot;strict&quot;</code>, <code>&quot;all&quot;</code></td><td><code>&quot;quick&quot;</code></td><td>The approach used to find elements.</td></tr>
+</tbody>
+</table>
+<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
+<p>Array of <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>.</p>
+
+<h2><a id="Examples" href="#Examples" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Examples</h2>
+<section class="example"><h1><a id="Example-ally-query-tabsequence-Example" href="#Example-ally-query-tabsequence-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.query.tabsequence Example</h1><a class="jsbin-embed" href="https://jsbin.com/yakuwu/embed?output">ally.query.tabsequence Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/yakuwu/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./tabsequence.example.html" target="_blank">open the source document</a></p></section>
+<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<ul>
+<li>Since <code>v1.1.0</code> the module can move <code>&lt;area&gt;</code> elements to the place of the <code>&lt;img&gt;</code> elements they&apos;re referenced from.</li>
+<li>Since <code>v1.1.0</code> the module can sort elements in <a href="http://caniuse.com/#feat=shadowdom">ShadowDOM</a> localized to the <code>ShadowRoot</code>.</li>
+<li>Since <code>v1.1.0</code> the option <code>includeOnlyTabbable</code> allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.</li>
+</ul>
+<h2><a id="Notes" href="#Notes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Notes</h2>
+<p>See <a href="../is/focus-relevant.html#Notes"><code>ally.is.focusRelevant</code></a></p>
+<div class="note"><strong>NOTE:</strong> In some browsers <code>&lt;area&gt;</code> elements are provided in DOM order they occur. Others provide them in DOM order of the <code>&lt;img&gt;</code> elements that use them. <code>ally.query.tabindex</code> handles this appropriately. See <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787">Sequential Navigation Focus Order for Image Maps</a>, <a href="https://code.google.com/p/chromium/issues/detail?id=447289">Blink 447289</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=140259">WebKit 140259</a></div><div class="note"><strong>NOTE:</strong> In some browsers positive tabindexes are sorted localized to <a href="http://caniuse.com/#feat=shadowdom">ShadowDOM</a>, in some they are sorted globally. <code>ally.query.tabindex</code> handles this appropriately.</div><div class="warning"><strong>WARNING:</strong> In Firefox the Flexbox CSS property <code>order</code> affects the tabsequence, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=812687">Gecko 812687</a>, ally.js does not replicate this behavior.</div><div class="warning"><strong>WARNING:</strong> In Firefox referencing the same <code>&lt;map&gt;</code> from multiple <code>&lt;img&gt;</code> elements can lead to elements missing from the tabsequence, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1116126">Gecko 1116126</a>, ally.js does not replicate this behavior.</div><div class="warning"><strong>WARNING:</strong> In Firefox <code>&lt;label tabindex=&quot;0&quot;&gt;</code> is part of the tabsequence, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1240285">Gecko 1240285</a>, ally.js does not replicate this behavior.</div>
+<h2><a id="Related-resources" href="#Related-resources" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Related resources</h2>
+<ul>
+<li><p><a href="../is/tabbable.html"><code>ally.is.tabbable</code></a> is used to filter focusable elements</p></li>
+<li><p><a href="focusable.html"><code>ally.query.focusable</code></a> is used to find focusable elements</p></li>
+<li><p><a href="first-tabbable.html"><code>ally.query.firstTabbable</code></a> finds the first keyboard focusable element in a context</p></li>
+<li><p><a href="tabbable.html"><code>ally.query.tabbable</code></a> finds keyboard focusable elements in DOM order</p></li>
+<li><p><a href="http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5: The <code>tabindex</code> attribute</a></p></li>
+</ul>
+<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<ul>
+<li><a href="https://github.com/medialize/ally.js/blob/master/src/query/tabsequence.js">module source</a></li>
+<li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/query/tabsequence.md">document source</a></li>
+<li><a href="https://github.com/medialize/ally.js/blob/master/test/unit/query.tabsequence.test.js">unit test</a></li>
+</ul>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

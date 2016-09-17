@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Default Browser Focus Outline Styles</title>
+  <style>
+    body {
+      padding-top: 60px;
+    }
+    table {
+      border: 1px solid silver;
+      border-collapse: collapse;
+    }
+    td,
+    th {
+      padding: 5px;
+      border: 1px solid silver;
+    }
+    tbody th {
+      text-align: left;
+    }
+    tbody td {
+      text-align: center;
+      vertical-align: center;
+    }
+    table[data-show="normal"] .focus,
+    table[data-show="focus"] .normal {
+      display: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #style-select {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin: 0;
+      padding: 10px;
+      background-color: #EEE;
+      border-bottom: 1px solid #AAA;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="style-select">
+    <em>show</em>
+    <label><input type="radio" name="show-style" value="normal" checked> normal style</label>
+    <label><input type="radio" name="show-style" value="focus"> focus style</label>
+    <em>for</em>
+    <label><input type="checkbox" name="show-key" value="text" checked> text</label>
+    <label><input type="checkbox" name="show-key" value="radio" checked> radio</label>
+    <label><input type="checkbox" name="show-key" value="checkbox" checked> checkbox</label>
+    <label><input type="checkbox" name="show-key" value="textarea" checked> textarea</label>
+    <label><input type="checkbox" name="show-key" value="button" checked> button</label>
+    <label><input type="checkbox" name="show-key" value="link" checked> link</label>
+    <label><input type="checkbox" name="show-key" value="div" checked> div</label>
+    <em>in</em>
+    <label><input type="checkbox" name="show-browser" value="firefox" checked> Firefox</label>
+    <label><input type="checkbox" name="show-browser" value="chrome" checked> Chrome</label>
+    <label><input type="checkbox" name="show-browser" value="safari" checked> Safari</label>
+    <label><input type="checkbox" name="show-browser" value="ie11" checked> IE11</label>
+  </p>
+
+  <h1>Default Browser Focus Outline Styles</h1>
+
+  <p>
+    The following table was created manually by screenshotting and slicing <a href="test.html">test.html</a>.
+    The Panel above allows filtering the table and switching normal/focus styles (toggled by <kbd>space</kbd>).
+  </p>
+  <table data-show="focus">
+    <thead>
+      <tr>
+        <th colspan="1">What</th>
+        <th colspan="2" class="firefox">Firefox</th>
+        <th colspan="2" class="chrome">Chrome</th>
+        <th colspan="1" class="safari mac">Safari</th>
+        <th colspan="1" class="ie11 win">IE11</th>
+      </tr>
+      <tr>
+        <th colspan="1"></th>
+        <th colspan="1" class="mac firefox">Mac</th>
+        <th colspan="1" class="win firefox">Win</th>
+        <th colspan="1" class="mac chrome">Mac</th>
+        <th colspan="1" class="win chrome">Win</th>
+        <th colspan="1" class="mac safari">Mac</th>
+        <th colspan="1" class="win ie11">Win</th>
+      </tr>
+    </thead>
+    <tbody id="text">
+      <tr id="text/appearance-native.focus-native">
+        <th>text input with native appearance and native focus style</th>
+        <td id="firefox-mac/text/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/text/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/text/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/text/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/text/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/text/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/text/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/text/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="text/appearance-native.focus-custom">
+        <th>text input with native appearance and custom focus style</th>
+        <td id="firefox-mac/text/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/text/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/text/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/text/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/text/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/text/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/text/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/text/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="text/appearance-none.focus-native">
+        <th>text input with appearance:none and native focus style</th>
+        <td id="firefox-mac/text/appearance-none.focus-native" class="firefox mac">
+          <img src="firefox-mac/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/text/appearance-none.focus-native" class="firefox win">
+          <img src="firefox-win/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-win/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/text/appearance-none.focus-native" class="chrome mac">
+          <img src="chrome-mac/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/text/appearance-none.focus-native" class="chrome win">
+          <img src="chrome-win/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-win/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/text/appearance-none.focus-native" class="safari mac">
+          <img src="safari-mac/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="safari-mac/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/text/appearance-none.focus-native" class="ie11 win">
+          <img src="ie11-win/text/appearance-none.focus-native.normal.png" class="normal">
+          <img src="ie11-win/text/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="text/appearance-none.focus-custom">
+        <th>text input with appearance:none and custom focus style</th>
+        <td id="firefox-mac/text/appearance-none.focus-custom" class="firefox mac">
+          <img src="firefox-mac/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/text/appearance-none.focus-custom" class="firefox win">
+          <img src="firefox-win/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/text/appearance-none.focus-custom" class="chrome mac">
+          <img src="chrome-mac/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/text/appearance-none.focus-custom" class="chrome win">
+          <img src="chrome-win/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/text/appearance-none.focus-custom" class="safari mac">
+          <img src="safari-mac/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/text/appearance-none.focus-custom" class="ie11 win">
+          <img src="ie11-win/text/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/text/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="checkbox">
+      <tr id="checkbox/appearance-native.focus-native">
+        <th>checkbox input with native appearance and native focus style</th>
+        <td id="firefox-mac/checkbox/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/checkbox/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/checkbox/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/checkbox/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/checkbox/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/checkbox/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/checkbox/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/checkbox/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="checkbox/appearance-native.focus-custom">
+        <th>checkbox input with native appearance and custom focus style</th>
+        <td id="firefox-mac/checkbox/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/checkbox/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/checkbox/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/checkbox/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/checkbox/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/checkbox/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/checkbox/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/checkbox/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="checkbox/appearance-custom.focus-native">
+        <th>checkbox input with custom appearance and native focus style</th>
+        <td id="firefox-mac/checkbox/appearance-custom.focus-native" class="firefox mac">
+          <img src="firefox-mac/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/checkbox/appearance-custom.focus-native" class="firefox win">
+          <img src="firefox-win/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-win/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/checkbox/appearance-custom.focus-native" class="chrome mac">
+          <img src="chrome-mac/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/checkbox/appearance-custom.focus-native" class="chrome win">
+          <img src="chrome-win/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-win/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/checkbox/appearance-custom.focus-native" class="safari mac">
+          <img src="safari-mac/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="safari-mac/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/checkbox/appearance-custom.focus-native" class="ie11 win">
+          <img src="ie11-win/checkbox/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="ie11-win/checkbox/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="checkbox/appearance-custom.focus-custom">
+        <th>checkbox input with custom appearance and custom focus style</th>
+        <td id="firefox-mac/checkbox/appearance-custom.focus-custom" class="firefox mac">
+          <img src="firefox-mac/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/checkbox/appearance-custom.focus-custom" class="firefox win">
+          <img src="firefox-win/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/checkbox/appearance-custom.focus-custom" class="chrome mac">
+          <img src="chrome-mac/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/checkbox/appearance-custom.focus-custom" class="chrome win">
+          <img src="chrome-win/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/checkbox/appearance-custom.focus-custom" class="safari mac">
+          <img src="safari-mac/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/checkbox/appearance-custom.focus-custom" class="ie11 win">
+          <img src="ie11-win/checkbox/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/checkbox/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="radio">
+      <tr id="radio/appearance-native.focus-native">
+        <th>radio input with native appearance and native focus style</th>
+        <td id="firefox-mac/radio/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/radio/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/radio/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/radio/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/radio/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/radio/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/radio/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/radio/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="radio/appearance-native.focus-custom">
+        <th>radio input with native appearance and custom focus style</th>
+        <td id="firefox-mac/radio/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/radio/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/radio/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/radio/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/radio/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/radio/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/radio/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/radio/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="radio/appearance-custom.focus-native">
+        <th>radio input with custom appearance and native focus style</th>
+        <td id="firefox-mac/radio/appearance-custom.focus-native" class="firefox mac">
+          <img src="firefox-mac/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/radio/appearance-custom.focus-native" class="firefox win">
+          <img src="firefox-win/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-win/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/radio/appearance-custom.focus-native" class="chrome mac">
+          <img src="chrome-mac/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/radio/appearance-custom.focus-native" class="chrome win">
+          <img src="chrome-win/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-win/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/radio/appearance-custom.focus-native" class="safari mac">
+          <img src="safari-mac/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="safari-mac/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/radio/appearance-custom.focus-native" class="ie11 win">
+          <img src="ie11-win/radio/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="ie11-win/radio/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="radio/appearance-custom.focus-custom">
+        <th>radio input with custom appearance and custom focus style</th>
+        <td id="firefox-mac/radio/appearance-custom.focus-custom" class="firefox mac">
+          <img src="firefox-mac/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/radio/appearance-custom.focus-custom" class="firefox win">
+          <img src="firefox-win/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/radio/appearance-custom.focus-custom" class="chrome mac">
+          <img src="chrome-mac/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/radio/appearance-custom.focus-custom" class="chrome win">
+          <img src="chrome-win/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/radio/appearance-custom.focus-custom" class="safari mac">
+          <img src="safari-mac/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/radio/appearance-custom.focus-custom" class="ie11 win">
+          <img src="ie11-win/radio/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/radio/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="button">
+      <tr id="button/appearance-native.focus-native">
+        <th>button with native appearance and native focus style</th>
+        <td id="firefox-mac/button/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/button/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="button/appearance-native.focus-custom">
+        <th>button with native appearance and custom focus style</th>
+        <td id="firefox-mac/button/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/button/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="button/appearance-none.focus-native">
+        <th>button with appearance:none and native focus style</th>
+        <td id="firefox-mac/button/appearance-none.focus-native" class="firefox mac">
+          <img src="firefox-mac/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-none.focus-native" class="firefox win">
+          <img src="firefox-win/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-none.focus-native" class="chrome mac">
+          <img src="chrome-mac/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-none.focus-native" class="chrome win">
+          <img src="chrome-win/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-none.focus-native" class="safari mac">
+          <img src="safari-mac/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-none.focus-native" class="ie11 win">
+          <img src="ie11-win/button/appearance-none.focus-native.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="button/appearance-none.focus-custom">
+        <th>button with appearance:none and native custom style</th>
+        <td id="firefox-mac/button/appearance-none.focus-custom" class="firefox mac">
+          <img src="firefox-mac/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-none.focus-custom" class="firefox win">
+          <img src="firefox-win/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-none.focus-custom" class="chrome mac">
+          <img src="chrome-mac/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-none.focus-custom" class="chrome win">
+          <img src="chrome-win/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-none.focus-custom" class="safari mac">
+          <img src="safari-mac/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-none.focus-custom" class="ie11 win">
+          <img src="ie11-win/button/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="button/appearance-custom.focus-native">
+        <th>button with custom appearance and native focus style</th>
+        <td id="firefox-mac/button/appearance-custom.focus-native" class="firefox mac">
+          <img src="firefox-mac/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-custom.focus-native" class="firefox win">
+          <img src="firefox-win/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-custom.focus-native" class="chrome mac">
+          <img src="chrome-mac/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-custom.focus-native" class="chrome win">
+          <img src="chrome-win/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-custom.focus-native" class="safari mac">
+          <img src="safari-mac/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-custom.focus-native" class="ie11 win">
+          <img src="ie11-win/button/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="button/appearance-custom.focus-custom">
+        <th>button with custom appearance and native custom style</th>
+        <td id="firefox-mac/button/appearance-custom.focus-custom" class="firefox mac">
+          <img src="firefox-mac/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/button/appearance-custom.focus-custom" class="firefox win">
+          <img src="firefox-win/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/button/appearance-custom.focus-custom" class="chrome mac">
+          <img src="chrome-mac/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/button/appearance-custom.focus-custom" class="chrome win">
+          <img src="chrome-win/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/button/appearance-custom.focus-custom" class="safari mac">
+          <img src="safari-mac/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/button/appearance-custom.focus-custom" class="ie11 win">
+          <img src="ie11-win/button/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/button/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="textarea">
+      <tr id="textarea/appearance-native.focus-native">
+        <th>textarea with native appearance and native focus style</th>
+        <td id="firefox-mac/textarea/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="textarea/appearance-native.focus-custom">
+        <th>textarea with native appearance and custom focus style</th>
+        <td id="firefox-mac/textarea/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="textarea/appearance-none.focus-native">
+        <th>textarea with appearance:none and native focus style</th>
+        <td id="firefox-mac/textarea/appearance-none.focus-native" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-none.focus-native" class="firefox win">
+          <img src="firefox-win/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-none.focus-native" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-none.focus-native" class="chrome win">
+          <img src="chrome-win/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-none.focus-native" class="safari mac">
+          <img src="safari-mac/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-none.focus-native" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-none.focus-native.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-none.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="textarea/appearance-none.focus-custom">
+        <th>textarea with appearance:none and custom focus style</th>
+        <td id="firefox-mac/textarea/appearance-none.focus-custom" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-none.focus-custom" class="firefox win">
+          <img src="firefox-win/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-none.focus-custom" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-none.focus-custom" class="chrome win">
+          <img src="chrome-win/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-none.focus-custom" class="safari mac">
+          <img src="safari-mac/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-none.focus-custom" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-none.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-none.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="textarea/appearance-custom.focus-native">
+        <th>textarea with custom appearance and native focus style</th>
+        <td id="firefox-mac/textarea/appearance-custom.focus-native" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-custom.focus-native" class="firefox win">
+          <img src="firefox-win/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-custom.focus-native" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-custom.focus-native" class="chrome win">
+          <img src="chrome-win/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-custom.focus-native" class="safari mac">
+          <img src="safari-mac/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-custom.focus-native" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-custom.focus-native.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-custom.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="textarea/appearance-custom.focus-custom">
+        <th>textarea with custom appearance and custom focus style</th>
+        <td id="firefox-mac/textarea/appearance-custom.focus-custom" class="firefox mac">
+          <img src="firefox-mac/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/textarea/appearance-custom.focus-custom" class="firefox win">
+          <img src="firefox-win/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/textarea/appearance-custom.focus-custom" class="chrome mac">
+          <img src="chrome-mac/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/textarea/appearance-custom.focus-custom" class="chrome win">
+          <img src="chrome-win/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/textarea/appearance-custom.focus-custom" class="safari mac">
+          <img src="safari-mac/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/textarea/appearance-custom.focus-custom" class="ie11 win">
+          <img src="ie11-win/textarea/appearance-custom.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/textarea/appearance-custom.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="link">
+      <tr id="link/appearance-native.focus-native">
+        <th>link with native focus style</th>
+        <td id="firefox-mac/link/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/link/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/link/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/link/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/link/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/link/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/link/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/link/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="link/appearance-native.focus-custom">
+        <th>link with custom focus style</th>
+        <td id="firefox-mac/link/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/link/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/link/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/link/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/link/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/link/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/link/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/link/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+    <tbody id="div">
+      <tr id="div/appearance-native.focus-native">
+        <th>div with native focus style</th>
+        <td id="firefox-mac/div/appearance-native.focus-native" class="firefox mac">
+          <img src="firefox-mac/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-mac/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/div/appearance-native.focus-native" class="firefox win">
+          <img src="firefox-win/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="firefox-win/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/div/appearance-native.focus-native" class="chrome mac">
+          <img src="chrome-mac/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-mac/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/div/appearance-native.focus-native" class="chrome win">
+          <img src="chrome-win/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="chrome-win/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/div/appearance-native.focus-native" class="safari mac">
+          <img src="safari-mac/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="safari-mac/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/div/appearance-native.focus-native" class="ie11 win">
+          <img src="ie11-win/div/appearance-native.focus-native.normal.png" class="normal">
+          <img src="ie11-win/div/appearance-native.focus-native.focus.png" class="focus">
+        </td>
+      </tr>
+      <tr id="div/appearance-native.focus-custom">
+        <th>div with custom focus style</th>
+        <td id="firefox-mac/div/appearance-native.focus-custom" class="firefox mac">
+          <img src="firefox-mac/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-mac/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="firefox-win/div/appearance-native.focus-custom" class="firefox win">
+          <img src="firefox-win/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="firefox-win/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-mac/div/appearance-native.focus-custom" class="chrome mac">
+          <img src="chrome-mac/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-mac/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="chrome-win/div/appearance-native.focus-custom" class="chrome win">
+          <img src="chrome-win/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="chrome-win/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="safari-mac/div/appearance-native.focus-custom" class="safari mac">
+          <img src="safari-mac/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="safari-mac/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+        <td id="ie11-win/div/appearance-native.focus-custom" class="ie11 win">
+          <img src="ie11-win/div/appearance-native.focus-custom.normal.png" class="normal">
+          <img src="ie11-win/div/appearance-native.focus-custom.focus.png" class="focus">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    if (!Array.from) {
+      // yes, I know this is not a true polyfill.
+      // Don't copy and use this anywhere else, instead use
+      // https://www.npmjs.com/package/array.from
+      // or https://github.com/paulmillr/es6-shim
+      Array.from = function(collection) {
+        return [].slice.call(collection, 0);
+      };
+    }
+
+    var table = document.querySelector('table');
+    var styleSelector = document.getElementById('style-select');
+
+    function showStyle(element) {
+      table.setAttribute('data-show', element.value);
+    }
+
+    function showKey(element) {
+      var tbody = document.getElementById(element.value);
+      tbody && tbody.classList.toggle('hidden', !element.checked);
+    }
+
+    function showBrowser(element) {
+      var cells = document.getElementsByClassName(element.value);
+      [].forEach.call(cells, function(cell) {
+        cell.classList.toggle('hidden', !element.checked);
+      });
+    }
+
+    var elements = {
+      style: Array.from(styleSelector.querySelectorAll('[name="show-style"]')),
+      key: Array.from(styleSelector.querySelectorAll('[name="show-key"]')),
+      browser: Array.from(styleSelector.querySelectorAll('[name="show-browser"]')),
+    };
+
+    function checked(element) {
+      return element.checked;
+    }
+
+    function value(element) {
+      return element.value;
+    }
+
+    function updateTable() {
+      showStyle(elements.style.filter(checked)[0]);
+      elements.key.forEach(showKey);
+      elements.browser.forEach(showBrowser);
+    }
+
+    function updateHash() {
+      var _style = value(elements.style.filter(checked)[0])
+      var _keys = elements.key.filter(checked).map(value).join(',');
+      var _browsers = elements.browser.filter(checked).map(value).join(',');
+      location.hash = 'style=' + _style + '&key=' + _keys + '&browser=' + _browsers;
+    }
+
+    function importHash() {
+      location.hash.replace(/^#/, '').split('&').forEach(function(token) {
+        var tokens = token.split('=');
+        var values = tokens[1] && tokens[1].split(',') || [];
+        elements[tokens[0]] && elements[tokens[0]].forEach(function(element) {
+          element.checked = !values.length || values.indexOf(element.value) !== -1;
+        });
+      });
+
+      updateTable();
+    }
+
+    styleSelector.addEventListener('click', updateHash, true);
+    window.addEventListener('hashchange', importHash);
+    importHash();
+
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode === 32) {
+        event.preventDefault();
+        var target = elements.style.filter(function(element){ return !checked(element) })[0];
+        target.focus();
+        target.checked = true;
+        updateHash();
+      }
+    }, true);
+
+  </script>
+
+</body>
+</html>

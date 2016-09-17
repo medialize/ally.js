@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: Image maps skipping elements</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1116126
+  -->
+
+  <p>
+    In Gecko referencing the same <code>&lt;map&gt;</code> from multiple images will hide *all* tabbable elements between the first and last image using that map.
+  </p>
+  <p>
+    Note: Gecko and Trident tab to <code>&lt;area&gt;</code>s in place of the <code>&lt;img&gt;</code> in document order, Blink and WebKit tab to <code>&lt;area&gt;</code> wherever they occur in document order.
+  </p>
+
+
+  <div tabindex="0" data-label="{marker} start of image-maps"></div>
+
+  <div tabindex="0" data-label="{marker} map[name=image-maps-1]"></div>
+  <map name="image-maps-1">
+    <area href="#void" shape="rect" coords="63,19,144,45" data-label="area[href].upper">
+    <area href="#void" shape="rect" coords="63,59,144,85" data-label="area[href].lower">
+  </map>
+
+  <div tabindex="0" data-label="{marker} img[usemap=image-maps-1].first"></div>
+  <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].first">
+
+  <div tabindex="0" data-label="{marker} img[usemap=image-maps-1].second"></div>
+  <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].second">
+
+  <div tabindex="0" data-label="{marker} img[usemap=image-maps-1].third"></div>
+  <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" data-label="img[usemap].third">
+
+  <div tabindex="0" data-label="{marker} end of image-maps"></div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.querySelector('img').addEventListener('load', function() {
+      log.textContent += 'image loaded\n';
+    });
+
+    document.body.addEventListener('keydown', function(event) {
+      if ((event.keyCode || event.which) !== 9) {
+        return;
+      }
+
+      log.textContent += (event.shiftKey ? 'SHIFT ' : '') + 'TAB\n';
+    }, true);
+    
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>

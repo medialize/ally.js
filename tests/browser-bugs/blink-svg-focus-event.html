@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: SVG focus event listener</title>
+</head>
+<body>
+
+  <!--
+    https://bugs.webkit.org/show_bug.cgi?id=140024
+    https://code.google.com/p/chromium/issues/detail?id=445798
+  -->
+
+  <p>
+    The only thing focusable on this page should be <code>svg a[xlink|href]</code>. 
+    But in Blink and WebKit as soon as you add a <code>focus</code> event listener to any SVG element, it becomes focusable.
+    Gecko and Trident are missing <code>SVGElement.prototype.focus</code> (which is why this test will fail there).
+  </p>
+
+
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text x="10" y="20">just text, no link</text>
+    <a xlink:href="#void">
+      <text x="10" y="45">an svg link</text>
+    </a>
+    <rect x="20" y="60" width="5" height="5" data-label="svg rect" />
+  </svg>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+
+    log.textContent += '\nadding focus listeners\n';
+    var noop = function(){};
+
+    ['svg', 'svg text'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).addEventListener('focus', noop, false);
+    });
+
+    ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+
+    log.textContent += '\nremoving focus listeners\n';
+    ['svg', 'svg text'].forEach(function(selector) {
+      document.querySelector(selector).removeEventListener('focus', noop, false);
+    });
+
+    ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+
+  </script>
+
+</body>
+</html>

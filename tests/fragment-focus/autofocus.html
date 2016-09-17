@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>autofocus</title>
+  <style>
+    html :target {
+      background: rgba(250, 0, 0, 0.5);
+    }
+    html :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Focus Sequence For Autofocus Target</h1>
+
+  <input type="text" autofocus value="autofocus">
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.nodeName + '\n';
+    }, true);
+    window.addEventListener('load', function() {
+      log.textContent += 'activeElement: ' + document.activeElement.nodeName + '\n';
+    }, false);
+  </script>
+
+</body>
+</html>

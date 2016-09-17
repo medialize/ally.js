@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: area not focusable after refresh</title>
+</head>
+<body>
+
+  <p>
+    In Gecko the <code>&lt;area&gt;</code> elements in this test only become focusable after the <code>&lt;img&gt;</code> is loaded.
+    Blink, WebKit and Trident make them focusable right away.
+  </p>
+
+
+  <map name="image-maps-1">
+    <area href="#void" shape="rect" coords="63,19,144,45" id="first-area">
+    <area href="#void" shape="rect" coords="63,59,144,85" id="second-area">
+  </map>
+
+  <img usemap="#image-maps-1" src="../media/image-map.png" alt="two clickable areas" id="map-image">
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.querySelector('#map-image').addEventListener('load', function() {
+      log.textContent += 'image loaded\n';
+    });
+
+    ['#first-area', '#second-area', '#map-image'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur();
+      document.querySelector(selector).focus();
+      log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+    });
+
+    setTimeout(function() {
+      ['#first-area', '#second-area', '#map-image'].forEach(function(selector) {
+        document.activeElement && document.activeElement.blur();
+        document.querySelector(selector).focus();
+        log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+      });
+    }, 2000);
+  </script>
+
+</body>
+</html>

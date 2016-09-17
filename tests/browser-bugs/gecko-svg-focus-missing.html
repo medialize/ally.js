@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: SVGElement.prototype.focus is missing</title>
+</head>
+<body>
+
+  <!--
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1116966
+    https://connect.microsoft.com/IE/feedback/details/1072662
+  -->
+
+  <p>
+    Gecko and Trident are missing <code>SVGElement.prototype.focus</code> and <code>SVGElement.prototype.blur</code>
+    which means you cannot focus SVG elements by script. In Trident you can work around this issue by making 
+    <code>SVGElement</code> use <code>HTMLElement.prototype.focus</code>. Gecko does not tolerate this hack and
+    throws an error: <code>TypeError: 'focus' called on an object that does not implement interface HTMLElement</code>.
+  </p>
+
+  <p>
+    Focusing SVG elements works fine in Blink and WebKit because they expose <code>focus</code> at <code>Element.prototype.focus</code>,
+    which is inherited by <code>HTMLElement</code> and <code>SVGElement</code>.
+  </p>
+
+
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text x="10" y="20">just text, no link</text>
+    <a xlink:href="#void">
+      <text x="10" y="45">an svg link</text>
+    </a>
+    <rect x="20" y="60" width="5" height="5" data-label="svg rect" />
+  </svg>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur && document.activeElement.blur();
+      try {
+        var element = document.querySelector(selector);
+        element.focus();
+        log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+      } catch (e) {
+        log.textContent += selector + ': ' + e + '\n';
+      }
+    });
+
+    if (!SVGElement.prototype.focus) {
+      log.textContent += 'fixing missing SVGElement.prototype.focus\n';
+      SVGElement.prototype.focus = HTMLElement.prototype.focus;
+    }
+
+    if (!SVGElement.prototype.blur) {
+      log.textContent += 'fixing missing SVGElement.prototype.blur\n';
+      SVGElement.prototype.blur = HTMLElement.prototype.blur;
+    }
+
+    ['svg', 'svg text', 'svg a[*|href]'].forEach(function(selector) {
+      document.activeElement && document.activeElement.blur && document.activeElement.blur();
+      try {
+        var element = document.querySelector(selector);
+        element.focus();
+        log.textContent += selector + ': ' + (document.activeElement && document.activeElement.nodeName || 'undefined') + '\n';
+      } catch (e) {
+        log.textContent += selector + ': ' + e + '\n';
+      }
+    });
+  </script>
+
+</body>
+</html>

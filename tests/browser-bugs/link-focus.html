@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Focus Link Target (sequential focus navigation starting point)</title>
+  <style>
+    html :focus {
+      outline: 3px solid hotpink;
+    }
+    html :target {
+      background: #ccffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=454172
+    https://bugs.webkit.org/show_bug.cgi?id=141136
+    https://connect.microsoft.com/IE/feedback/details/1111056
+  -->
+
+  <p>Blink, WebKit and Trident do not make use of the <a href="https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-starting-point">"sequential focus navigation starting point"</a> when the <code>:target</code> is not focusable. Blink and Trident lose focus to <code>body</code> Because of that the tabbing sequence is reset to the beginning of the document when the browser is <a href="http://www.w3.org/TR/html5/browsers.html#scroll-to-fragid">navigating to a fragment identifier</a>. WebKit retains focus on the link, but that also yields a wrong behavior for the focus navigation sequence.</p>
+
+  <p>Click on "jump to target", then press <kbd>Tab</kbd>. Compare behavior with "jump to input" and "jump to focusable".</p>
+
+  <hr>
+  <a id="source" href="#target">jump to target</a>,
+  <a href="#within">jump to input</a>,
+  <a href="#target-tabindex">jump to focusable</a>
+  <hr>
+  <input type="text" id="between">
+  <div id="target">
+    <input type="text" id="within">
+  </div>
+  <div id="target-tabindex" tabindex="-1">
+    <input type="text" id="within-tabindex">
+  </div>
+  <hr>
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+    document.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + (event.target.id || event.target.nodeName) + '\n';
+    }, true);
+
+    document.getElementById('source').focus();
+
+  </script>
+
+</body>
+</html>

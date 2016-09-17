@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.js</title><link rel="canonical" href="http://allyjs.io/index.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="active">
+              <a href="index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>
+  <div id="wrapper">
+    <div id="navigation-column">
+      <nav id="table-of-contents">
+        <h1>On this page</h1>
+        <ul>
+          <li><a href="#what-ally-is">What is ally.js?</a></li>
+          <li><a href="#simple-API">Simple API</a></li>
+          <li><a href="#what-is-focusable">What is focusable?</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#what-people-say">What people say</a></li>
+          <li><a href="#supported-by">Supported by</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <article class="what-ally-is">
+        <header>
+          <h1 id="what-ally-is">What is ally.js?</h1>
+        </header>
+
+        <section>
+          <img src="assets/ally-js-logo.png" class="logo" alt="ally.js logo - showing the United Nations Accessibility Logo on top of the JS logo">
+          <p>ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the &quot;web platform&quot; should&apos;ve provided itself, so JavaScript applications can be made accessible more easily.</p>
+
+          <p>ally.js has been tested on IE9+, Firefox, Chrome and Safari 9, as well as Mobile Chrome on Android 5.1 and Safari for iOS 9.</p>
+
+        </section>
+      </article>
+
+      <article class="getting-started">
+        <header>
+          <h1 id="simple-API">Simple API</h1>
+        </header>
+
+        <section>
+          <p>How would you prevent elements outside of your modal dialog or menu from receiving focus?</p>
+          <pre><code class="language-markup">&lt;script src=&quot;path/to/ally.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  ally.maintain.disabled({
+    filter: &apos;#my-dialog-element&apos;
+  });
+&lt;/script&gt;</code></pre>
+        </section>
+        <section class="example">
+          <a class="jsbin-embed" href="https://jsbin.com/qokupi/embed?output">ally.maintain.disabled Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+        </section>
+      </article>
+
+      <article class="getting-started">
+        <header>
+          <h1 id="what-is-focusable">What is focusable?</h1>
+        </header>
+
+        <section>
+          <p>Do you know which elements are <em>focusable</em> or <em>tabbable</em>? ally.js does and does it&apos;s best to hide that complexity behind <a href="api/index.html#Finding-elements">simple to use APIs</a>.</p>
+          <p><a href="data-tables/focusable.html"><img src="assets/home/focusable-crop.png" alt="image of focusable data-table"></a></p>
+          <p>See <a href="what-is-focusable.html">What does &quot;focusable&quot; mean</a>.</p>
+        </section>
+      </article>
+
+      <article class="getting-started">
+        <header>
+          <h1 id="features">Features</h1>
+        </header>
+        
+        <section>
+          <ul>
+            <li>Identify and absorb browser differences regarding which elements are considered focusable</li>
+            <li>Query the DOM for all focusable or tabbable (keyboard focusable) elements</li>
+            <li>Trap focus navigation in a DOM sub-tree</li>
+            <li>Make DOM sub-trees inert (i.e. disable all element&apos;s from being focused or interacted with)</li>
+            <li>Identify focused elements and focus changes within ShadowDOM</li>
+            <li>Provide <code>:focus-within</code> (CSS Selectors Level 4) Polyfill</li>
+            <li>Determine how focus changed (keyboard, mouse, script) to apply different focus outline styles</li>
+            <li>Determine when an element is focusable and visible in the viewport to prevent browsers from scrolling the element into view upon focus</li>
+          </ul>
+
+          <p>Have a look at the <a href="api/index.html">API documentation</a>.</p>
+        </section>
+      </article>
+
+      <article class="what-people-say">
+        <header>
+          <h1 id="what-people-say">What people say</h1>
+        </header>
+        <section>
+          <blockquote>
+            <span>This is a fantastic piece of information and I&apos;m utterly in love with the helper methods ally.js is offering to make this (usually painful) work nice and easy.</span>
+            <a href="https://twitter.com/ginader">Dirk Ginader</a>
+          </blockquote>
+          <blockquote>
+            <span>Wow, ally.js looks super useful! Glad to see it happen.</span>
+            <a href="https://twitter.com/robinberjon">Robin Berjon</a>
+          </blockquote>
+          <blockquote>
+            <span>I&apos;m intrigued by how simple ally.js makes it for us to handle basic accessibility needs.</span>
+            <a href="https://twitter.com/asciidisco">Sebastian Golasch</a>
+          </blockquote>
+        </section>
+      </article>
+
+      <article class="supported-by">
+        <header>
+          <h1 id="supported-by">Supported by</h1>
+        </header>
+
+        <section>
+          <ul>
+            <li>
+              <a href="http://browserstack.com">BrowserStack</a> and <a href="http://saucelabs.com/">SauceLabs</a>
+              provide VMs for automated testing - <em>free for open source projects.</em>
+            </li>
+            <li>
+              <a href="https://codeclimate.com/github/medialize/ally.js">Code Climate</a>
+              and <a href="https://coveralls.io/github/medialize/ally.js/">Coveralls</a>
+              provide us with automated code analysis and coverage reports -
+              <em>free for open source projects.</em>
+            </li>
+            <li>
+              <a href="https://travis-ci.org/medialize/ally.js">Travis CI</a> provides a build server -
+              <em>free for open source projects.</em>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

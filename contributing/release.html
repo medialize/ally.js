@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Releasing ally.js - ally.js</title><link rel="canonical" href="http://allyjs.io/contributing/release.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="">
+              <a href="../tutorials/index.html">Tutorials</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#Publishing-the-library-to-npm">Publishing the library to npm</a></li>
+        
+        
+        <li><a href="#Branch-Rules">Branch Rules</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/contributing/release.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Releasing ally.js" href="https://github.com/medialize/ally.js/issues/new?title=[Releasing%20ally.js]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Contributing</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Contributing</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="build.html">Build infrastructure</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="docs.html">Documentation infrastructure</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="release.html">Releasing ally.js</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="testing.html">Test infrastructure</a>
+          </li>
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1><a id="Releasing-ally-js" href="#Releasing-ally-js" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Releasing ally.js</h1>
+<p>The following sequence steps are necessary to fully release ally.js</p>
+<h2><a id="Publishing-the-library-to-npm" href="#Publishing-the-library-to-npm" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Publishing the library to npm</h2>
+<ul>
+<li><code>npm version &lt;version&gt;</code> to update the package version</li>
+<li>search <code>docs/*.md</code> for <code>v#master</code> and replace with new version (unless this is a beta release)</li>
+<li>update <code>CHANGELOG.md</code> accordingly</li>
+<li><code>git commit package.json CHANGELOG.md docs -m &apos;chore(build): bumping to version &lt;version&gt;&apos;</code> to save the changes</li>
+<li><code>npm run clean</code> to empty <code>dist</code>, <code>web</code> and <code>reports</code></li>
+<li><code>npm run lint</code> to build the library</li>
+<li><code>npm run build</code> to build the library</li>
+<li><code>npm run test</code> to verify the library&apos;s integrity</li>
+<li>The library can now be published to beta or stable:
+<ul>
+<li><code>npm run publish:npm:beta</code> to publish to npm beta channel (skip steps 7, 8, 12)</li>
+<li><code>npm run publish:npm</code> to publish to npm stable channel</li>
+</ul></li>
+<li><code>npm run publish:jsbin</code> to update the examples on JSBin.com</li>
+<li><code>npm run build:website</code> to build the website</li>
+<li><code>git tag &lt;version&gt;</code> (unless the library hasn&apos;t been updated)</li>
+<li><code>git push --no-verify &amp;&amp; git push --tags --no-verify</code> to push the changes to github</li>
+<li>open the <a href="https://github.com/medialize/ally.js/releases">github releases page</a>, then
+<ul>
+<li>edit the new tag and copy-paste the relevant changes from <code>CHANGELOG.md</code></li>
+<li>upload the files <code>dist/ally.js</code>, <code>dist/ally.js.map</code>, <code>dist/ally.js.zip</code> and <code>dist/ally.js.tar.gz</code></li>
+<li>mark as <code>pre-release</code> if the library was pushed to beta channel</li>
+</ul></li>
+<li><code>git checkout release &amp;&amp; git merge master &amp;&amp; git push --no-verify</code> to update the &quot;latest stable release&quot; branch</li>
+<li><code>npm run publish:website</code> to publish the website to the <code>gh-pages</code> branch</li>
+</ul>
+<h2><a id="Branch-Rules" href="#Branch-Rules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Branch Rules</h2>
+<ul>
+<li><code>master</code> contains fully integrated work that may not be released yet. All PRs have to point at this branch.</li>
+<li><code>release</code> contains the library state of the last release. Additionally certain website or documentation related commits may be cherry-picked from <code>master</code> to retain ability to update the website (without leaking unreleased things from <code>master</code>). PRs against this branch must be rejected.</li>
+<li><code>gh-pages</code> contains the website. It is only updated through <code>npm run publish:website</code>. PRs against this branch must be rejected.</li>
+</ul>
+<hr>
+<div class="help"><strong>HELP:</strong> Got a better Idea to solve this? <a href="https://github.com/medialize/ally.js/issues/new">file an issue</a>!</div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

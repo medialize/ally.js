@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blink: Autofocus And URL Fragment</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  
+  <!--
+    https://code.google.com/p/chromium/issues/detail?id=382901
+    https://bugzilla.mozilla.org/show_bug.cgi?id=840187
+    https://bugs.webkit.org/show_bug.cgi?id=140963
+  -->
+  
+  <p>Blink and Gecko ignore the URL's fragment (hash) if there is an element with <code>[autofocus]</code> on the page.</p>
+
+  <!--
+    ### Firefox
+      init: -, BODY
+      readyState[interactive]: -, BODY
+      DOMContentLoaded: DIV, BODY
+      readyState[complete]: DIV, BODY
+      load: DIV, BODY
+      focus: #document
+    ### Firefox [autofocus]
+      init: -, BODY
+      focus: #document
+      focus: INPUT
+      readyState[interactive]: -, INPUT
+      DOMContentLoaded: DIV, BODY
+      readyState[complete]: DIV, BODY
+      load: DIV, BODY
+
+
+    ### Chrome
+      init: -, BODY
+      readyState[interactive]: -, BODY
+      DOMContentLoaded: -, BODY
+      readyState[complete]: -, BODY
+      load: -, BODY
+    ### Chrome [autofocus]
+      init: -, BODY
+      readyState[interactive]: -, BODY
+      DOMContentLoaded: -, BODY
+      readyState[complete]: -, BODY
+      load: -, BODY
+      focus: INPUT
+  -->
+  
+  <a href="#foo">jump to inert anchor, then reload</a>
+  <a href="#bam">jump to tabbable anchor, then reload</a>
+  <input type="text" autofocus>
+  <div style="height: 1000px"></div>
+  <div id="foo">yup</div>
+  <div id="bam" tabindex="0">yup</div>
+  <a name="bar">html4 anchor</a>
+
+  <pre>working…</pre>
+  <script>
+    var log = document.querySelector('pre');
+    var buffer = [];
+
+    function name(element) {
+      return element ? element.nodeName : '-';
+    }
+
+    buffer.push('init: ' + name(document.querySelector(':target')) + ', ' + name(document.activeElement));
+    document.addEventListener('readystatechange', function() {
+      buffer.push('readyState[' + document.readyState + ']: ' + name(document.querySelector(':target')) + ', ' + name(document.activeElement));
+    }, true);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      buffer.push('DOMContentLoaded: ' + name(document.querySelector(':target')) + ', ' + name(document.activeElement));
+    }, true);
+
+    window.addEventListener('load', function() {
+      buffer.push('load: ' + name(document.querySelector(':target')) + ', ' + name(document.activeElement));
+    }, true);
+
+    document.addEventListener('focus', function(event) {
+      buffer.push('focus: ' + name(event.target));
+    }, true);
+
+    document.addEventListener('blur', function(event) {
+      buffer.push('blur: ' + name(document.activeElement));
+    }, true);
+
+    setTimeout(function() {
+      log.textContent = buffer.join('\n');
+    }, 3000);
+  </script>
+
+</body>
+</html>

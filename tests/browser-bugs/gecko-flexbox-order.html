@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gecko: FlexBox Order Affects Tabbing Sequence</title>
+  <style>
+    body :focus {
+      outline: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    http://lists.w3.org/Archives/Public/www-style/2014Dec/0235.html
+    https://bugzilla.mozilla.org/show_bug.cgi?id=812687
+    https://bugzilla.mozilla.org/show_bug.cgi?id=962558
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1116140
+  -->
+
+  <p>
+    In Gecko the CSS <a href="http://dev.w3.org/csswg/css-flexbox/#order-property">property <code>order</code></a> affects tabbing sequence,
+    although the spec explicitly states that <a href="http://dev.w3.org/csswg/css-flexbox/#order-accessibility">this should not happen</a>.
+  </p>
+
+
+  <div style="display: flex;">
+    <input type="text" style="order: 3" data-label="ordered.1" value="one">
+    <input type="text" style="order: 1" data-label="ordered.2" value="two">
+    <input type="text" style="order: 2" data-label="ordered.3" value="three">
+  </div>
+
+
+  <pre></pre>
+  <script>
+    var log = document.querySelector('pre');
+
+    document.body.addEventListener('keydown', function(event) {
+      if ((event.keyCode || event.which) !== 9) {
+        return;
+      }
+
+      log.textContent += (event.shiftKey ? 'SHIFT ' : '') + 'TAB\n';
+    }, true);
+    
+    document.body.addEventListener('focus', function(event) {
+      log.textContent += 'focus: ' + event.target.getAttribute('data-label') + '\n';
+    }, true);
+
+  </script>
+
+</body>
+</html>

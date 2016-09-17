@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ally.maintain.disabled Example</title><link rel="canonical" href="http://allyjs.io/api/maintain/disabled.example.html">
+  <link rel="jsbin" href="https://jsbin.com/qokupi/">
+  <style id="example-css">
+    :disabled,
+    [data-ally-disabled] {
+      outline: 1px solid red;
+      opacity: 0.5;
+    }
+    #inner {
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1><code>ally.maintain.disabled</code> Example</h1>
+
+  <p>
+    Use the <code>toggle inert</code> button to render all elements inert (except the buttons and what&apos;s within the blue border).
+    Use the <code>add elements</code> button to see that the inert state is applied to dynamically added content as well.
+    Note that the disabled elements are visualized with reduced opacity and a red border only for this demo.
+  </p>
+</article>
+
+<div id="example-html">
+  <main>
+    <button id="toggle" type="button">toggle inert</button>
+    <button id="add" type="button">add elements</button>
+    <hr>
+    <input type="text" value="1 not focusable by keyboard" tabindex="-1">
+
+    <div id="outer">
+      <input type="text" value="2 tabbable" tabindex="0">
+
+      <div id="inner">
+        <input type="text" value="3 tabbable">
+        <input type="text" value="4 tabbable">
+      </div>
+
+      <input type="text" value="5 tabbable order" tabindex="1">
+    </div>
+
+    <input type="text" value="6 tabbable">
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
+
+<script id="example-js">
+  var handle;
+
+  var wrapper = document.getElementById('example-html');
+  var outer = document.getElementById('outer');
+  var inner = document.getElementById('inner');
+  var toggle = document.getElementById('toggle');
+  var add = document.getElementById('add');
+
+  toggle.addEventListener('click', function() {
+    if (handle) {
+      handle.disengage();
+      handle = null;
+    } else {
+      handle = ally.maintain.disabled({
+        context: wrapper,
+        filter: [inner, toggle, add]
+      });
+    }
+  });
+
+  add.addEventListener('click', function() {
+    var inputOuter = document.createElement('input');
+    inputOuter.value = "x should not be focusable";
+    outer.appendChild(inputOuter);
+
+    var inputInner = document.createElement('input');
+    inner.appendChild(inputInner);
+    inputInner.value = "x should be focusable";
+  });
+</script>
+
+</body>
+</html>
