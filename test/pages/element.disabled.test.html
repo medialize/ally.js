@@ -63,12 +63,14 @@
     ], function(platform, queryFocusable, elementDisabled) {
       window.platform = platform;
 
-      queryFocusable({
-        context: '#container',
-        strategy: 'all',
-      }).forEach(function(element) {
-        elementDisabled(element, true);
-      });
+      window.disableElements = function() {
+        queryFocusable({
+          context: '#container',
+          strategy: 'all',
+        }).forEach(function(element) {
+          elementDisabled(element, true);
+        });
+      };
     });
   </script>
 </body>

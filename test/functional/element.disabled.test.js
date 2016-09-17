@@ -16,7 +16,9 @@ define(function(require) {
 
         .skipPlatform(this, function(platform) {
           return platform.is.IE10;
-        }, 'This Test will not run on BrowserStack in IE10');
+        }, 'This Test will not run on BrowserStack in IE10')
+
+        .execute('window.disableElements();');
     });
 
     bdd.it('should skip disabled elements', function() {

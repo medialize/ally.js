@@ -1,6 +1,8 @@
 
 import svg from './media/svg';
 
+// Note: IE10 on BrowserStack does not like this test
+
 export default {
   element: 'object',
   mutate: function(element) {

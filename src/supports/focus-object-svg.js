@@ -2,6 +2,8 @@
 import svg from './media/svg';
 import platform from '../util/platform';
 
+// Note: IE10 on BrowserStack does not like this test
+
 export default {
   name: 'can-focus-object-svg',
   element: 'object',
