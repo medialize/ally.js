@@ -98,7 +98,7 @@ Example documents must follow the following general structure.
   </main>
 </div>
 
-<script src="https://cdn.jsdelivr.net/ally.js/1.2.0/ally.min.js"></script>
+<script src="https://cdn.jsdelivr.net/ally.js/1.3.0/ally.min.js"></script>
 
 <script id="example-js">
   ${example_script}
