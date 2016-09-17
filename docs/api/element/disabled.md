@@ -62,7 +62,7 @@ var isDisabled = ally.element.disabled(element);
 
 ## Changes
 
-* As of `v#master` `<a xlink:href="…">` is demoted to `<a>` in order to remove the element from the document's tabbing order in Firefox.
+* As of `v1.3.0` `<a xlink:href="…">` is demoted to `<a>` in order to remove the element from the document's tabbing order in Firefox.
 
 
 ## Notes

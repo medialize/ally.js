@@ -59,7 +59,7 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Changes
 
-* As of `v#master` the callback is [always executed asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony).
+* As of `v1.3.0` the callback is [always executed asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony).
 
 
 ## Notes

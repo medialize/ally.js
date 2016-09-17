@@ -59,7 +59,7 @@ Boolean, `true` if the element is focus relevant.
 * Since `v1.1.0` every element that is either focusable, keyboard focusable, only tabbable or redirects focus is considered focus-relevant.
 * Since `v1.1.0` exceptions can be passed to `ally.is.focusRelevant.rules(options)`.
 * Since `v1.1.0` IE9 properly resolves SVG links (`<a xlink:href="…">`).
-* In `v#master` the `element.prototype.matches` was replaced by `util/element-matches`.
+* In `v1.3.0` the `element.prototype.matches` was replaced by `util/element-matches`.
 
 
 ## Notes

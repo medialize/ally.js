@@ -51,7 +51,7 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 ## Changes
 
 * Since `v1.1.0` nested elements of `<button>` and `<label>` are targeted properly.
-* In `v#master` the `element.prototype.matches` was replaced by `util/element-matches`.
+* In `v1.3.0` the `element.prototype.matches` was replaced by `util/element-matches`.
 
 
 ## Notes

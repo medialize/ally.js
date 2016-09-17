@@ -1,26 +1,85 @@
 # ally.js change log
 
-## master
+## 1.3.0 - Return Of The Focus
 
-* Reducing minified size from 116K to 75K (27K to 22K gzipped) by running [rollupify](https://github.com/nolanlawson/rollupify/).
+*September 17th 2016*. We're continuing our journey to *make accessibility simpler*. Version 1.3.0 comes 6 months after the last feature release. We pushed [about 90 commits](https://github.com/medialize/ally.js/compare/1.1.0...1.3.0) in an effort to reduce the bundle's file size, improve startup performance, convert test suites to BDD and add DOM focus utilities.
+
+
+### The highlights of v1.3.0
+
+* Smaller bundle file size
+* Removed all polyfills modifying DOM prototypes
+* Added utilities for convenient and safe `.focus()`, `.blur()`, and obtaining the active element
+* Test suites converted to BDD style
+
+
+### The numbers of v1.3.0
+
+* ☻ Test coverage remained at ~99%
+* ☻ The library shrunk from ~28KB to ~22KB gzipped (~126KB to ~73KB minified) - *yes, we dropped 43%* by losing the DOMTokenList shim in v1.2.0 and introducing [rollupify](https://github.com/nolanlawson/rollupify/)
+
+
+### The changes of v1.3.0
+
+The following lists show the changes to the library grouped by domain.
+
+#### Focus management in v1.3.0
+
+* adding [`ally.get.activeElement`][ally/get/active-element] - [issue #119](https://github.com/medialize/ally.js/issues/119)
+* adding [`ally.element.blur`][ally/element/blur] - [issue #120](https://github.com/medialize/ally.js/issues/120)
+* adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
+
+#### Keyboard support in v1.3.0
+
+* fixing [`ally.maintain.tabFocus`][ally/maintain|tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
+
+#### Various in v1.3.0
+
+* fixing [`ally.element.disabled`][ally/element/disabled] to remove SVG links from the document's tabbing order in Firefox
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to respect `except.scrollable`
+* improving [`ally.style.focusSource`][ally/style/focus-source] by adding `.unlock()` - [issue #151](https://github.com/medialize/ally.js/issues/151)
+* refactoring [`ally.when.visibleArea`][ally/when/visible-area] to always [execute the callback asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
+
+#### Internals in v1.3.0
+
+* running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
+* removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
+* refactoring `element.prototype.matches` to `util/matches-element`
+
+#### Build in v1.3.0
+
+* adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
+* switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
+* replacing broken [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) plugin - [issue #149](https://github.com/medialize/ally.js/issues/149)
+* refactoring all unit and functional tests to use [BDD interface](https://theintern.github.io/intern/#interface-tdd) to improve clarity of a test's intent
+* simplify running local tests in a non-WebDriver browser
+
+#### Documentation in v1.3.0
+
+* added [Hiding DOM elements](http://allyjs.io/tutorials/hiding-elements.html)
+* added [Managing focus in animated UI](http://allyjs.io/tutorials/focusing-in-animated-ui.html)
+
+### Testing of 1.3.0
+
+Intern unit and functional tests have been run for the following browsers, covering 99% of the library's code:
+
+* Internet Explorer 9, 10, 11
+* Edge 13
+* Safari 6.2, 7.1, 8, 9
+* Chrome 47
+* Firefox 42, 42 with ShadowDOM enabled
+
+### Missing in 1.3.0
+
+In order to avoid shipping any more *temporary* code than we already do in the focusable detection code, we'll provide a separate release once we've *properly* investigated the following behavioral changes:
+
+* Firefox 51 and Edge 14 ship *some sort of* support for the tabindex attribute on SVG elements
+* Chrome 55 seems to have changed keyboard focusability of SVG content within `<object>` elements
+* SVG `<use>` elements *may* be focusable depending on the content they reference
+* MathML elements *may* be focusable
+
 
 ---
-
-* adding [`ally.element.focus`][ally/element/focus] - [issue #121](https://github.com/medialize/ally.js/issues/121)
-* removing `svgelement.prototype.focus` as this should be covered more elegantly by [`ally.element.focus`][ally/element/focus]
-* fixing [`ally.element.disabled`][ally/element/disabled] to remove SVG links from the document's tabbing order in Firefox
-* [build] switching to [lint-staged](https://github.com/okonet/lint-staged) for faster linting during git pre-commit
-* running all [supports][ally/supports] tests in a batch to limit number of reflows - [issue #142](https://github.com/medialize/ally.js/issues/142)
-* [build] adding [rollupify](https://github.com/nolanlawson/rollupify/) to reduce package overhead in build bundle
-* [build] replacing broken [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) plugin - [issue #149](https://github.com/medialize/ally.js/issues/149)
-* improving [`ally.style.focusSource`][ally/style/focus-source] by adding `.unlock()` - [issue #151](https://github.com/medialize/ally.js/issues/151)
-* fixing [`ally.is.tabbable`][ally/is/tabbable] to respect `except.scrollable`
-* refactoring [`ally.when.visibleArea`][ally/when/visible-area] to always [execute the callback asynchronously](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
-* refactoring all unit and functional tests to use [BDD interface](https://theintern.github.io/intern/#interface-tdd) to improve clarity of a test's intent
-* fixing [`ally.maintain.tabFocus`][ally/maintain|tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
-* refactoring `element.prototype.matches` to `util/matches-element`
-* adding [`ally.get.activeElement`][ally/get/active-element] - [issue #119](https://github.com/medialize/ally.js/issues/119)
-
 
 ## 1.2.0 - Adios DOMTokenList
 
@@ -30,6 +89,8 @@
 
 * replacing [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) by [`ally.util.toggleClass`][ally/util] - [issue #147](https://github.com/medialize/ally.js/issues/147)
 
+
+---
 
 ## 1.1.1 - Augmented Reality
 
@@ -42,6 +103,8 @@
 * fixing [`ally.maintain.disabled`][ally/maintain/disabled] to *not* disable ancestors `filter` elements
 * fixing [`ally.event.shadowFocus`][ally/event/shadow-focus] to not access `document.body` before it's available - [issue #144](https://github.com/medialize/ally.js/pull/144)
 
+
+---
 
 ## 1.1.0 - Reality Strikes Back
 
@@ -79,7 +142,7 @@ A few numbers explaining the increased file size:
 
 The following lists show the changes to the library grouped by domain.
 
-#### Browsers
+#### Browsers in v1.1.0
 
 * Adding full support for Internet Explorer 9 - [issue #71](https://github.com/medialize/ally.js/issues/71)
 * Adding full support for Microsoft Edge 12, 13
@@ -88,18 +151,18 @@ The following lists show the changes to the library grouped by domain.
 * Dropping manual focusable tests for Safari on iOS 8, keeping Safari on iOS 9
 * Dropping manual focusable tests for Mobile Chrome on Android 4.4, keeping Mobile Chrome on Android 5.1
 
-#### Dependencies
+#### Dependencies in v1.1.0
 
 * upgrading [css.escape](https://github.com/mathiasbynens/CSS.escape) to version 1.5.0 to work around [WebKit 149175](https://bugs.webkit.org/show_bug.cgi?id=149175)
 * upgrading [platform.js](https://github.com/bestiejs/platform.js) to version 1.3.1
 * adding [domtokenlist-shim](https://github.com/jwilsson/domtokenlist) for IE9 DOM `classList` and SVG `classList` in IE11
 
-#### Browser Behavior
+#### Browser Behavior in v1.1.0
 
 * fixing [`ally.fix.pointerFocusChildren`][ally/fix/pointer-focus-children] to use focus identity exceptions - [issue #103](https://github.com/medialize/ally.js/issues/103)
 * fixing [`ally.fix.pointerFocusInput`][ally/fix/pointer-focus-input] to properly target nested content of `<button>` and `<label>` elements
 
-#### Focusable detection
+#### Focusable detection in v1.1.0
 
 * adding [`ally.get.focusRedirectTarget`][ally/get/focus-redirect-target] to identify elements focus is forwarded to
 * adding [`ally.is.activeElement`][ally/is/active-element] to identify if an element is the activeElement within its context
@@ -125,13 +188,13 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to return `<area>` elements at the correct position - [issue #5](https://github.com/medialize/ally.js/issues/5)
 * fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort within ShadowDOM - [issue #6](https://github.com/medialize/ally.js/issues/6)
 
-#### Keyboard support
+#### Keyboard support in v1.1.0
 
 * adding [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to trap <kbd>TAB</kbd> focus in the tabsequence - [issue #63](https://github.com/medialize/ally.js/issues/63)
 * changing [`ally.when.key`][ally/when/key] to handle modifier keys and respect `context` and `filter` options - [issue #59](https://github.com/medialize/ally.js/issues/59)
 * changing [`ally.map.keycode`][ally/map/keycode] to provide alphanumeric keys and aliasing
 
-#### Various
+#### Various in v1.1.0
 
 * adding [`ally.query.shadowHosts`][ally/query/shadow-hosts] to find elements hosting `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
 * adding [`ally.observe.shadowMutations`][ally/observe/shadow-mutations] to register `MutationObserver`s across nested `ShadowRoot`s - [issue #110](https://github.com/medialize/ally.js/issues/110)
@@ -142,7 +205,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing [`ally.get.parents`][ally/get/parents] to resolve ancestry for `SVGElement` in Internet Explorer
 * fixing [`ally.style.focusWithin`][ally/style/focus-within] to support SVG in IE10 and IE11
 
-#### Internals
+#### Internals in v1.1.0
 
 * adding `ally/util/get-content-document` to obtain the browsing context of `<object>` and `<iframe>` elements
 * adding `ally/util/get-frame-element` to obtain the host element (`<object>` or `<iframe>`) of browsing context elements
@@ -162,7 +225,7 @@ The following lists show the changes to the library grouped by domain.
 * fixing ShadowDOM related unit tests in WebKit
 * fixing `SVGElement.prototype.focus` to identify Microsoft Edge 13
 
-#### Testing
+#### Testing in v1.1.0
 
 Intern unit and functional tests have been run for the following browsers, covering 99% of the library's code:
 
@@ -172,7 +235,7 @@ Intern unit and functional tests have been run for the following browsers, cover
 * Chrome 47
 * Firefox 42, 42 with ShadowDOM enabled
 
-#### Sources
+#### Sources in v1.1.0
 
 * renamed `src/util/sort-elements-by-tabindex.js` to `src/query/tabsequence.sort-tabindex.js`
 
@@ -181,6 +244,8 @@ Intern unit and functional tests have been run for the following browsers, cover
 
 * aligning `package.json` in repository and npm artifact for compatibility with cdnjs
 
+
+---
 
 ## 1.0.0 - A New Hope
 
@@ -261,6 +326,8 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * renamed `focus/disable-focus` to `maintain/disabled`
 
 
+---
+
 ## 0.0.7 (July 8th 2015)
 
 * adding `event/shadow-focus` to emit custom event when focus changes within the ShadowDOM - extracted from `focus/within`
@@ -270,10 +337,14 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * deprecating [`focus/trap`](http://allyjs.io/examples/trap-focus.html), use [`focus/disable-focus`](http://allyjs.io/examples/disable-focus.html) instead
 
 
+---
+
 ## 0.0.6 (June 17th 2015)
 
 * fixing [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html) to subtract scrollbars from visible space
 
+
+---
 
 ## 0.0.5 (June 15th 2015)
 
@@ -281,12 +352,16 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * improving [`dom/when-visible`](http://allyjs.io/examples/focus-when-visible.html) to also wait until an element becomes focusable
 
 
+---
+
 ## 0.0.4 (February 3rd 2015)
 
 * adding [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html)
 * adding [`focus/when-visible`](http://allyjs.io/examples/focus-when-visible.html)
 * fixing [`fix-browser/pointer-focus-children`](http://allyjs.io/examples/fix-pointer-focus-children.html) to temporarily disable transitions
 
+
+---
 
 ## 0.0.3 (January 7th 2015)
 
@@ -296,6 +371,8 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * improving `fix-browser` by only engaging handlers for affected browsers (yes, *user agent sniffing*, deal with it)
 * fixing `dom/is-visible` to look at computed styles, not the element's styles (duh!)
 
+
+---
 
 ## 0.0.2 (January 5th 2015)
 
@@ -314,11 +391,14 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * fixing linting errors
 
 
+---
+
 ## 0.0.1 (December 25th 2014)
 
 * initial release "focus"
 
 
+[ally/element/blur]: http://allyjs.io/api/element/blur.html
 [ally/element/disabled]: http://allyjs.io/api/element/disabled.html
 [ally/element/focus]: http://allyjs.io/api/element/focus.html
 [ally/event/active-element]: http://allyjs.io/api/event/active-element.html

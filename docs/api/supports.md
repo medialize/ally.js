@@ -53,7 +53,7 @@ For the tests to run properly, the document needs to have focus during execution
 
 ## Changes
 
-* As of `v#master` *all* tests are run at once and within an iframe to limit layout thrashing.
+* As of `v1.3.0` *all* tests are run at once and within an iframe to limit layout thrashing.
 
 
 ## Contributing

@@ -58,7 +58,7 @@ var result = ally.element.focus(element);
 
 ## Changes
 
-* Added in `v#master`.
+* Added in `v1.3.0`.
 
 
 ## Notes

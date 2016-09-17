@@ -141,7 +141,7 @@ The `handle.unlock()` method releases the focus-source lock.
 
 ## Changes
 
-* In `v#master` the method `handle.unlock()` was added to supersede `handle.lock(false)`, which is still available, but removed from documentation.
+* In `v1.3.0` the method `handle.unlock()` was added to supersede `handle.lock(false)`, which is still available, but removed from documentation.
 
 
 ## Notes
