@@ -144,7 +144,7 @@ define(function(require) {
       }, 50);
     });
 
-    bdd.it('should ceize operation on .disengage()', function() {
+    bdd.it('should seize operation on .disengage()', function() {
       var deferred = this.async(10000);
 
       handle = whenFocusable({
