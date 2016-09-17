@@ -31,7 +31,7 @@ The following lists show the changes to the library grouped by domain.
 
 #### Keyboard support in v1.3.0
 
-* fixing [`ally.maintain.tabFocus`][ally/maintain|tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
+* fixing [`ally.maintain.tabFocus`][ally/maintain/tab-focus] to also work with <kbd>Option Tab</kbd> in Safari for macOS - [issue #146](https://github.com/medialize/ally.js/issues/146)
 
 #### Various in v1.3.0
 
