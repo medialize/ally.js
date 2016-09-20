@@ -58,7 +58,7 @@
     <p data-label="p">This document is a testing ground to identify what a browser deems focusable and tabbable.</p>
     <p data-label="ignore">
       At first the document will add <code data-label="code">focus</code> event handlers to every descendant of <code>&lt;body&gt;</code>.
-      <!-- FocusManagement: http://www.w3.org/TR/html5/editing.html#focus-management -->
+      <!-- FocusManagement: https://www.w3.org/TR/html5/editing.html#focus-management -->
       It will then try to <code>.focus()</code> every element to identify which elements satisfiy Focus Managemenet.
       After that you - the user - can hit <kbd data-label="kbd">TAB</kbd> a couple of times (like 250 or something) to determine the browser's natural tabbing order
     </p>
@@ -100,7 +100,7 @@
     <button type="button" data-label="button[type=button][tabindex=-1]" tabindex="-1">button</button>
   </article>
 
-  <!-- http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled -->
+  <!-- https://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled -->
   <article data-label="article{disabled-input}">
     <h2 data-label="ignore">Disabled Form Control Elements</h2>
 
@@ -216,7 +216,7 @@
   </article>
 
   <!-- https://html.spec.whatwg.org/multipage/microdata.html#microdata -->
-  <article data-label="article{itemprop}" itemscope itemtype="http://schema.org/BlogPosting">
+  <article data-label="article{itemprop}" itemscope itemtype="https://schema.org/BlogPosting">
    <header>
     <h1 id="microdata-link" itemprop="headline">Microdata Link</h1>
     <p><time itemprop="datePublished" datetime="2013-08-29">today</time></p>
@@ -297,7 +297,7 @@
     </a>
   </article>
 
-  <!-- http://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
+  <!-- https://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
   <article data-label="article{browsing}">
     <h2 data-label="ignore">Browsing Contexts</h2>
     
@@ -382,7 +382,7 @@
   </article>
 
   <!--
-    http://www.w3.org/TR/html5/dom.html#interactive-content
+    https://www.w3.org/TR/html5/dom.html#interactive-content
     https://blog.mediacru.sh/2013/12/23/The-right-way-to-encode-HTML5-video.html
   -->
   <article data-label="article{interactive}">
@@ -681,7 +681,7 @@
   <article data-label="article{svg}">
     <h2 data-label="ignore">SVG</h2>
 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg">
       <a xlink:href="#void" data-label="svg a[xlink|href]">
         <text x="10" y="20" data-label="svg a[xlink|href] text">a link</text>
       </a>
@@ -694,7 +694,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>svg with negative tabindex</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[tabindex=-1]" tabindex="-1">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg[tabindex=-1]" tabindex="-1">
       <a xlink:href="#void" data-label="svg[tabindex=-1] a[xlink|href]">
         <text x="10" y="20" data-label="svg[tabindex=-1] a[xlink|href] text">a link</text>
       </a>
@@ -705,7 +705,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>svg containing positive tabindex</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg[focusable=false]" focusable="false">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg[focusable=false]" focusable="false">
       <a xlink:href="#void" data-label="svg[focusable=false] a[xlink|href]">
         <text x="10" y="20" data-label="svg[focusable=false] a[xlink|href] text">a link</text>
       </a>
@@ -716,7 +716,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>tiny profile focusable="false"</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=0])">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=0])">
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=0]" tabindex="0">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=0] text">a link</text>
       </a>
@@ -735,7 +735,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>svg with viewbox</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{viewbox}" viewBox="0 0 30 30">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg{viewbox}" viewBox="0 0 30 30">
       <rect x="20" y="20" width="5" height="5" tabindex="0" data-label="svg rect[tabindex=0]{viewbox}" />
       <rect x="20" y="20" width="5" height="5" tabindex="-1" data-label="svg rect[tabindex=-1]{viewbox}" />
       <rect x="20" y="20" width="10" height="10" fill="brown" focusable="true" data-label="svg rect[focusable=true]{viewbox}" />
@@ -744,7 +744,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>svg containing negative tabindex</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=-1])">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg:has(a[tabindex=-1])">
       <a xlink:href="#void" data-label="svg a[xlink|href][tabindex=-1]" tabindex="-1">
         <text x="10" y="20" data-label="svg a[xlink|href][tabindex=-1] text">a link</text>
       </a>
@@ -755,7 +755,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>tiny profile</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}">
       <rect x="5" y="5" width="10" height="10" fill="red" data-label="svg{tiny} rect" />
       <rect x="10" y="10" width="10" height="10" fill="blue" tabindex="0" data-label="svg{tiny} rect[tabindex=0]" />
       <rect x="15" y="15" width="10" height="10" fill="green" focusable="true" data-label="svg{tiny} rect[focusable=true]" />
@@ -772,7 +772,7 @@
     <div tabindex="0" data-label="ignore"></div>
 
     <h3>tiny profile focusable="false"</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}[focusable=false]" focusable="false">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 30 30" data-label="svg{tiny}[focusable=false]" focusable="false">
       <a xlink:href="#void" data-label="svg{tiny}[focusable=false] a">
         <rect x="10" y="20" width="10" height="10" fill="brown" />
       </a>
@@ -781,7 +781,7 @@
     <input data-label="ignore" class="manual-continuation" value="click here if stuck">
 
     <h3>visibility hidden SVG</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{hidden}" style="visibility: hidden;">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg{hidden}" style="visibility: hidden;">
       <a xlink:href="#void" data-label="svg{hidden} a[xlink|href]">
         <text x="10" y="20" data-label="svg{hidden} a[xlink|href] text">a link</text>
       </a>
@@ -795,7 +795,7 @@
     <input data-label="ignore" class="manual-continuation" value="click here if stuck">
 
     <h3>display none SVG</h3>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-label="svg{none}" style="display: none;">
+    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" data-label="svg{none}" style="display: none;">
       <a xlink:href="#void" data-label="svg{none} a[xlink|href]">
         <text x="10" y="20" data-label="svg{none} a[xlink|href] text">a link</text>
       </a>
@@ -810,7 +810,7 @@
 
   </article>
 
-  <!-- http://www.w3.org/TR/html5/editing.html#editing-host -->
+  <!-- https://www.w3.org/TR/html5/editing.html#editing-host -->
   <article data-label="article{contenteditable}">
     <h2 data-label="ignore">Editing Hosts</h2>
     

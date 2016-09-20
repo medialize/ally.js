@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Managing focus in animated UI - ally.js</title><link rel="canonical" href="http://allyjs.io/tutorials/focusing-in-animated-ui.html">
+  <title>Managing focus in animated UI - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/focusing-in-animated-ui.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -90,7 +90,7 @@
     <main id="main" tabindex="-1">
       <h1><a id="Managing-focus-in-animated-UI" href="#Managing-focus-in-animated-UI" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Managing focus in animated UI</h1>
 <p>Managing focus is pretty straight forward: invoke the <code>element.focus()</code> to make <code>element</code> the active element. If the element is not visible in the viewport, browsers will scroll that element into view. From a user&apos;s point of view it makes a lot of sense to <em>see</em> where their keyboard input is directed to, even though no HTML specification has ever defined this behavior (<a href="https://github.com/whatwg/html/issues/94">WHATWG HTML #94</a>). What worked really well for static documents, <em>can</em> be a bit of a problem for UI components that are transitioned into view as part of the web app&apos;s logic.</p>
-<p>Consider a new dialog is constructed off-screen and then moved into view in an animated fashion. Right after the elements are available in the DOM, the applications sends focus to one of its elements, as often required by <a href="http://w3c.github.io/aria/practices/aria-practices.html">WAI-ARIA Authoring Practices</a>. Since the element is still off-screen, the browser scrolls whatever elements it must, so that the element becomes visible in the viewport. But the application itself also kicks off an animation to move the element into view. And the end result is that the dialog came into view by way of the browser scrolling, and back out of view by way of the application&apos;s animation. Play with the following example to see this problem in action:</p>
+<p>Consider a new dialog is constructed off-screen and then moved into view in an animated fashion. Right after the elements are available in the DOM, the applications sends focus to one of its elements, as often required by <a href="https://w3c.github.io/aria/practices/aria-practices.html">WAI-ARIA Authoring Practices</a>. Since the element is still off-screen, the browser scrolls whatever elements it must, so that the element becomes visible in the viewport. But the application itself also kicks off an animation to move the element into view. And the end result is that the dialog came into view by way of the browser scrolling, and back out of view by way of the application&apos;s animation. Play with the following example to see this problem in action:</p>
 <section class="example"><h1><a id="Example-Failing-Focus-in-Animated-UI" href="#Example-Failing-Focus-in-Animated-UI" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: Failing Focus in Animated UI</h1><a class="jsbin-embed" href="https://jsbin.com/pehehe/embed?output">Failing Focus in Animated UI on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/pehehe/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./focusing-animated.fail.example.html" target="_blank">open the source document</a></p></section>
 <p>There is no way to prevent the browser from scrolling elements into view upon receiving focus. That means the UI has to work around this built-in behavior when creating animation-revealed-content UI such as carousels, accordions, off-screen menus, and so on. The UI can deal with the browser&apos;s inevitable scrolling habits in two ways: wait for the element to become visible, or reset the scroll position.</p>
 <h2><a id="Remedy-1-Wait-until-visible" href="#Remedy-1-Wait-until-visible" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remedy 1: Wait until visible</h2>
@@ -184,7 +184,7 @@ element.focus();
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>

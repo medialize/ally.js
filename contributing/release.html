@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Releasing ally.js - ally.js</title><link rel="canonical" href="http://allyjs.io/contributing/release.html">
+  <title>Releasing ally.js - ally.js</title><link rel="canonical" href="https://allyjs.io/contributing/release.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -91,8 +91,8 @@
 <h2><a id="Publishing-the-library-to-npm" href="#Publishing-the-library-to-npm" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Publishing the library to npm</h2>
 <ul>
 <li><code>npm version &lt;version&gt;</code> to update the package version</li>
-<li>search <code>docs/*.md</code> for <code>v#master</code> and replace with new version (unless this is a beta release)</li>
 <li>update <code>CHANGELOG.md</code> accordingly</li>
+<li><code>npm run version</code> to replace <code>v#master</code> in docs and bump jsbin examples accordingly</li>
 <li><code>git commit package.json CHANGELOG.md docs -m &apos;chore(build): bumping to version &lt;version&gt;&apos;</code> to save the changes</li>
 <li><code>npm run clean</code> to empty <code>dist</code>, <code>web</code> and <code>reports</code></li>
 <li><code>npm run lint</code> to build the library</li>
@@ -106,20 +106,18 @@
 <li><code>npm run publish:jsbin</code> to update the examples on JSBin.com</li>
 <li><code>npm run build:website</code> to build the website</li>
 <li><code>git tag &lt;version&gt;</code> (unless the library hasn&apos;t been updated)</li>
-<li><code>git push --no-verify &amp;&amp; git push --tags --no-verify</code> to push the changes to github</li>
+<li><code>git push &amp;&amp; git push --tags</code> to push the changes to github</li>
 <li>open the <a href="https://github.com/medialize/ally.js/releases">github releases page</a>, then
 <ul>
 <li>edit the new tag and copy-paste the relevant changes from <code>CHANGELOG.md</code></li>
 <li>upload the files <code>dist/ally.js</code>, <code>dist/ally.js.map</code>, <code>dist/ally.js.zip</code> and <code>dist/ally.js.tar.gz</code></li>
 <li>mark as <code>pre-release</code> if the library was pushed to beta channel</li>
 </ul></li>
-<li><code>git checkout release &amp;&amp; git merge master &amp;&amp; git push --no-verify</code> to update the &quot;latest stable release&quot; branch</li>
 <li><code>npm run publish:website</code> to publish the website to the <code>gh-pages</code> branch</li>
 </ul>
 <h2><a id="Branch-Rules" href="#Branch-Rules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Branch Rules</h2>
 <ul>
 <li><code>master</code> contains fully integrated work that may not be released yet. All PRs have to point at this branch.</li>
-<li><code>release</code> contains the library state of the last release. Additionally certain website or documentation related commits may be cherry-picked from <code>master</code> to retain ability to update the website (without leaking unreleased things from <code>master</code>). PRs against this branch must be rejected.</li>
 <li><code>gh-pages</code> contains the website. It is only updated through <code>npm run publish:website</code>. PRs against this branch must be rejected.</li>
 </ul>
 <hr>
@@ -129,7 +127,7 @@
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>

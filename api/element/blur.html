@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ally.element.blur - ally.js</title><link rel="canonical" href="http://allyjs.io/api/element/blur.html">
+  <title>ally.element.blur - ally.js</title><link rel="canonical" href="https://allyjs.io/api/element/blur.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -352,7 +352,7 @@
       <h1><a id="ally-element-blur" href="#ally-element-blur" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.element.blur</h1>
 <p>Shifts focus away from an element if it currently has focus.</p>
 <h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
-<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur"><code>blur()</code></a> method is available on all <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>. But this is not necessarily true for <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"><code>SVGElement</code></a>. Only Blink and WebKit expose the <code>blur()</code> method on SVG elements, Gecko, Trident and Edge do not. This will likely change once <a href="http://www.w3.org/TR/SVG2/interact.html#Focus">SVG 2</a> is a thing. Until then <code>ally.element.blur()</code> tries to apply <code>HTMLElement.prototoype.blur</code> to <code>SVGElement</code>s. This only works for Internet Explorer 9 - 11, as Gecko and Edge actively prevent this.</p>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur"><code>blur()</code></a> method is available on all <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>. But this is not necessarily true for <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"><code>SVGElement</code></a>. Only Blink and WebKit expose the <code>blur()</code> method on SVG elements, Gecko, Trident and Edge do not. This will likely change once <a href="https://www.w3.org/TR/SVG2/interact.html#Focus">SVG 2</a> is a thing. Until then <code>ally.element.blur()</code> tries to apply <code>HTMLElement.prototoype.blur</code> to <code>SVGElement</code>s. This only works for Internet Explorer 9 - 11, as Gecko and Edge actively prevent this.</p>
 <p>According to <a href="https://bugs.jqueryui.com/ticket/9420">jQuery Bug 9420</a> calling <code>blur()</code> on the <code>body</code> element may make the browser window lose focus. <code>ally.element.blur()</code> guards against this.</p>
 <h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
 <pre><code class="language-javascript">var element = document.getElementById(&apos;victim&apos;);
@@ -392,7 +392,7 @@ var result = ally.element.blur(element);
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>

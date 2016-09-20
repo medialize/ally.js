@@ -20,7 +20,7 @@
     https://connect.microsoft.com/IE/feedback/details/1111056
   -->
 
-  <p>Blink, WebKit and Trident do not make use of the <a href="https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-starting-point">"sequential focus navigation starting point"</a> when the <code>:target</code> is not focusable. Blink and Trident lose focus to <code>body</code> Because of that the tabbing sequence is reset to the beginning of the document when the browser is <a href="http://www.w3.org/TR/html5/browsers.html#scroll-to-fragid">navigating to a fragment identifier</a>. WebKit retains focus on the link, but that also yields a wrong behavior for the focus navigation sequence.</p>
+  <p>Blink, WebKit and Trident do not make use of the <a href="https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-starting-point">"sequential focus navigation starting point"</a> when the <code>:target</code> is not focusable. Blink and Trident lose focus to <code>body</code> Because of that the tabbing sequence is reset to the beginning of the document when the browser is <a href="https://www.w3.org/TR/html5/browsers.html#scroll-to-fragid">navigating to a fragment identifier</a>. WebKit retains focus on the link, but that also yields a wrong behavior for the focus navigation sequence.</p>
 
   <p>Click on "jump to target", then press <kbd>Tab</kbd>. Compare behavior with "jump to input" and "jump to focusable".</p>
 

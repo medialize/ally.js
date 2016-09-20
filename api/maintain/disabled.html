@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ally.maintain.disabled - ally.js</title><link rel="canonical" href="http://allyjs.io/api/maintain/disabled.html">
+  <title>ally.maintain.disabled - ally.js</title><link rel="canonical" href="https://allyjs.io/api/maintain/disabled.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -360,8 +360,8 @@
 <h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
 <p>This allows an application to make sure no element <em>other than the exempted</em> can be focused. This is method is superior to the idea of trapping focus by intercepting <kbd>Tab</kbd>, because it allows cycling through the browser UI and is not as prone to break for spatial focus navigation (i.e. any sort of focus navigation that does not use the <kbd>Tab</kbd> key). The major benefit of disabling focus of elements is that in turn we do not have to meddle with the user&apos;s interaction to actually change focus - we can leave that to the browser.</p>
 <p>Elements are disabled by <a href="../element/disabled.html"><code>ally.element.disabled</code></a> and can be identified in the DOM by the attribute <code>[data-ally-disabled=&quot;true&quot;]</code> to align with styling of other <code>:disabled</code> elements.</p>
-<p>The proposed <code>inert</code> attribute was <a href="https://html5.org/r/8536">removed from HTML5</a>, because people thought <a href="http://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees">inert subtrees</a> by way of the <code>&lt;dialog&gt;</code> element would suffice. While we believe <em>it doesn&apos;t</em>, the <code>inert</code> attribute would only have solved half of the problem, because there&apos;s no way to avoid inheriting the inert state onto children. This behavior can be observed in the <a href="https://github.com/GoogleChrome/inert-polyfill">Google Chrome Inert Attribute Polyfill</a>.</p>
-<div class="note"><strong>NOTE:</strong> The <a href="https://wicg.io/">WICG</a> (Web Incubater Community Group) is working on <a href="https://github.com/wicg/inert">reviving the inert attribute</a> (including a polyfill).</div><div class="note"><strong>NOTE:</strong> There <a href="http://whatwg.org/">WHATWG</a> is discussing a <a href="https://github.com/whatwg/html/issues/897">blockElements API</a> that would cover the primary use-case of <code>ally.maintain.disabled</code> in a much better way.</div>
+<p>The proposed <code>inert</code> attribute was <a href="https://html5.org/r/8536">removed from HTML5</a>, because people thought <a href="https://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees">inert subtrees</a> by way of the <code>&lt;dialog&gt;</code> element would suffice. While we believe <em>it doesn&apos;t</em>, the <code>inert</code> attribute would only have solved half of the problem, because there&apos;s no way to avoid inheriting the inert state onto children. This behavior can be observed in the <a href="https://github.com/GoogleChrome/inert-polyfill">Google Chrome Inert Attribute Polyfill</a>.</p>
+<div class="note"><strong>NOTE:</strong> The <a href="https://wicg.io/">WICG</a> (Web Incubater Community Group) is working on <a href="https://github.com/wicg/inert">reviving the inert attribute</a> (including a polyfill).</div><div class="note"><strong>NOTE:</strong> There <a href="https://whatwg.org/">WHATWG</a> is discussing a <a href="https://github.com/whatwg/html/issues/897">blockElements API</a> that would cover the primary use-case of <code>ally.maintain.disabled</code> in a much better way.</div>
 <p><code>ally.maintain.disabled</code> observes DOM manipulations and automatically disables newly added elements when necessary.</p>
 <h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
 <pre><code class="language-javascript">var handle = ally.maintain.disabled({
@@ -413,7 +413,7 @@ handle.disengage();
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>

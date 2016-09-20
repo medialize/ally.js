@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Hiding DOM elements - ally.js</title><link rel="canonical" href="http://allyjs.io/tutorials/hiding-elements.html">
+  <title>Hiding DOM elements - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/hiding-elements.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -146,7 +146,7 @@
 }
 </code></pre>
 <h2><a id="How-to-hide-elements-semantically" href="#How-to-hide-elements-semantically" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>How to hide elements semantically</h2>
-<p>To hide content from the <a href="../concepts.html#Accessibility-tree">accessibility tree</a> but retain the content on screen, we may use the attribute <a href="http://w3c.github.io/aria/aria/aria.html#aria-hidden"><code>aria-hidden=&quot;true&quot;</code></a>.</p>
+<p>To hide content from the <a href="../concepts.html#Accessibility-tree">accessibility tree</a> but retain the content on screen, we may use the attribute <a href="https://w3c.github.io/aria/aria/aria.html#aria-hidden"><code>aria-hidden=&quot;true&quot;</code></a>.</p>
 <p>For example we might want to hide certain images and icons that serve non-descriptive, purely esthetical purposes:</p>
 <pre><code class="language-markup">&lt;a href=&quot;https://google.com&quot;&gt;
   &lt;img src=&quot;search-symbol.png&quot; alt=&quot;&quot; aria-hidden=&quot;true&quot;&gt;
@@ -155,7 +155,7 @@
 </code></pre>
 <div class="tip"><strong>TIP:</strong> We should not add any visual styles (like <code>visibility: hidden;</code> or <code>display: none;</code>) to the CSS selector <code>[aria-hidden=&quot;true&quot;]</code>, as this would make us lose the ability to hide content only from screen readers.</div>
 <h2><a id="How-to-hide-elements-visually" href="#How-to-hide-elements-visually" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>How to hide elements visually</h2>
-<p>We may need to provide invisible content in order to make sure the structures presented in the accessibility tree make sense. The following CSS is taken from <a href="https://github.com/h5bp/html5-boilerplate/blob/v5.0.0/src/css/main.css#L126-L156">HTML5 Boilerplate</a>, which is based on <a href="http://snook.ca/archives/html_and_css/hiding-content-for-accessibility">Hiding Content for Accessibility</a>:</p>
+<p>We may need to provide invisible content in order to make sure the structures presented in the accessibility tree make sense. The following CSS is taken from <a href="https://github.com/h5bp/html5-boilerplate/blob/v5.0.0/src/css/main.css#L126-L156">HTML5 Boilerplate</a>, which is based on <a href="https://snook.ca/archives/html_and_css/hiding-content-for-accessibility">Hiding Content for Accessibility</a>:</p>
 <pre><code class="language-css">.visuallyhidden {
   position: absolute;
 
@@ -171,7 +171,7 @@
 </code></pre>
 <p>The CSS property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip"><code>clip</code></a> is supported in every browser, but was deprecated in <a href="https://drafts.fxtf.org/css-masking-1/#clip-property">CSS Masking Level 1</a>. Instead we&apos;re supposed to use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path"><code>clip-path</code></a>, which <a href="http://caniuse.com/#search=clip-path">isn&apos;t widely supported</a> yet. To support this swap of CSS properties - whenever that may happen - we would add <code>clip-path: inset(100%);</code> to cover the deprecated <code>clip: rect(0 0 0 0);</code> style.</p>
 <p>While Internet Explorer 9 - 11 make overflowing containers <a href="../what-is-focusable.html">focusable</a>, the <code>clip</code> makes sure the <code>outline</code> drawn by <code>:focus</code> is not visible and the element cannot be clicked on.</p>
-<p>Speaking of focusable elements, we are likely using the <code>.visuallyhidden</code> style for <a href="http://webaim.org/techniques/skipnav/">skip links</a>, in which case we need a way to <em>undo</em> the visual hiding. The HTML5 Boilerplate provides the following styles for that:</p>
+<p>Speaking of focusable elements, we are likely using the <code>.visuallyhidden</code> style for <a href="https://webaim.org/techniques/skipnav/">skip links</a>, in which case we need a way to <em>undo</em> the visual hiding. The HTML5 Boilerplate provides the following styles for that:</p>
 <pre><code class="language-css">.visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   position: static;
@@ -219,7 +219,7 @@
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>

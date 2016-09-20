@@ -13,7 +13,7 @@
   <p>
     Gecko (Firefox Nightly 37.0a1 (2015-01-04)) leaks shadowed elements to <code>document.activeElement</code> (though not through <code>FocusEvent</code>)
     and it does not implement <code>ShadowRoot.activeElement</code>.
-    See <a href="http://w3c.github.io/webcomponents/spec/shadow/#active-element">Shadow DOM 6.3 Active Element</a>
+    See <a href="https://w3c.github.io/webcomponents/spec/shadow/#active-element">Shadow DOM 6.3 Active Element</a>
   </p>
 
   <p>
@@ -24,7 +24,7 @@
   <p>
     Note: I peg this bug to be the cause for Gecko dispatching <code>FocusEvent</code>s if the focus stayed
     within the same ShadowRoot and there shouldn't be a change to <code>document.activeElement</code>. At least
-    I consider this a bug per <a href="http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">Shadow DOM 5.8 Event Dispatch</a>: <q cite="http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">If the relatedTarget and target are the same for a given node, its the event listeners must not be invoked.</q>
+    I consider this a bug per <a href="https://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">Shadow DOM 5.8 Event Dispatch</a>: <q cite="https://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events">If the relatedTarget and target are the same for a given node, its the event listeners must not be invoked.</q>
   </p>
 
   <p class="note">

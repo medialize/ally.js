@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ally.event.activeElement - ally.js</title><link rel="canonical" href="http://allyjs.io/api/event/active-element.html">
+  <title>ally.event.activeElement - ally.js</title><link rel="canonical" href="https://allyjs.io/api/event/active-element.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
@@ -350,7 +350,7 @@
 <p>Observes changes to <code>document.activeElement</code> regardless of focus/blur events and emits <code>active-element</code> <a href="https://developer.mozilla.org/en/docs/Web/API/CustomEvent">CustomEvent</a>s.</p>
 <h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
 <p>The property <code>document.activeElement</code> is visited on every <a href="https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame">animation frame</a>.</p>
-<p>This event should not be abused because <code>FocusEvent</code>s do not bubble and are therefore unaccessible to <a href="http://davidwalsh.name/event-delegate">event delegation</a>, as the handling of <code>focus</code> and <code>blur</code> events <em>can</em> be delegated when using the <a href="http://www.quirksmode.org/js/events_order.html">capture phase</a>:</p>
+<p>This event should not be abused because <code>FocusEvent</code>s do not bubble and are therefore unaccessible to <a href="https://davidwalsh.name/event-delegate">event delegation</a>, as the handling of <code>focus</code> and <code>blur</code> events <em>can</em> be delegated when using the <a href="http://www.quirksmode.org/js/events_order.html">capture phase</a>:</p>
 <pre><code class="language-javascript">document.addEventListener(&apos;focus&apos;, function(event) {
   // event.target: element that received focus
   // event.relatedTarget: element that lost focus
@@ -397,7 +397,7 @@ handle.disengage();
   </div>
 
   <footer>
-    <p>ally.js is published under the <a href="http://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
