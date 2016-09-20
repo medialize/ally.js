@@ -4,7 +4,7 @@ layout: doc-page.html
 
 # Documentation infrastructure
 
-The documentation is authored in markdown in the `docs` directory. We're using [Remarkable](https://www.npmjs.com/package/remarkable) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `build/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
+The documentation is authored in markdown in the `docs` directory. We're using [markdown-it](https://www.npmjs.com/package/markdown-it) (but staying close to [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)) to convert the markdown to HTML. [markdownlint](https://github.com/DavidAnson/markdownlint/) is there to lint the files, its configuration is maintained in `build/markdownlint.js`, see the [Rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 
 The idea is to create a documentation that can be read on github and on the generated website.
 
@@ -46,7 +46,7 @@ If you're new to metalsmith, have a look at [simple static site demo](https://gi
 We use the following plugins:
 
 * [metalsmith-packagejson](https://www.npmjs.com/package/metalsmith-packagejson) to import `package.json`
-* [metalsmith-markdown-remarkable](https://github.com/attentif/metalsmith-markdown-remarkable) (see [config options](https://github.com/jonschlinkert/remarkable#options)
+* [metalsmith-markdownit](https://github.com/attentif/metalsmith-markdownit)
 * [metalsmith-register-helpers](https://github.com/losttype/metalsmith-register-helpers) to use custom handlebar helpers
 * [metalsmith-layouts](https://github.com/superwolff/metalsmith-layouts) to use [handlebars](http://handlebarsjs.com/) templates
 * [metalsmith-broken-link-checker](https://github.com/davidxmoody/metalsmith-broken-link-checker) to verify link integrity

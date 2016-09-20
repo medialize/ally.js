@@ -1,6 +1,5 @@
 
 const metalsmith = require('metalsmith');
-const remarkable = require('metalsmith-markdown-remarkable');
 const paths = require('metalsmith-paths');
 const registerHelpers = require('metalsmith-register-helpers');
 const layouts = require('metalsmith-layouts');
@@ -10,6 +9,7 @@ const staticFiles = require('metalsmith-static');
 const redirect = require('metalsmith-redirect');
 const inPlace = require('metalsmith-in-place');
 
+const markdown = require('./metalsmith.markdown');
 const importJson = require('./plugins/import-json');
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
@@ -96,10 +96,7 @@ metalsmith(__dirname)
     directory: './',
     engine: 'handlebars',
   }))
-  .use(remarkable({
-    linkify: true,
-    html: true,
-  }))
+  .use(markdown())
   .use(absoluteUrl({
     property: 'websiteRoot',
     define: WEBSITE_ROOT,

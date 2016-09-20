@@ -1,5 +1,5 @@
 
-const Remarkable = require('remarkable');
+const Markdown = require('markdown-it');
 
 class Notes {
   constructor(source, offset) {
@@ -200,7 +200,7 @@ class Notes {
   }
 
   getNotes() {
-    const md = new Remarkable({});
+    const md = new Markdown({});
     const notes = {};
     this.messages.forEach(function(key, message) {
       notes[key] = md.render(message);
