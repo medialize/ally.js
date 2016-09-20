@@ -32,7 +32,7 @@ All downloads are hosted on the [github release page](https://github.com/mediali
 
 ## Loading the UMD bundle from CDN
 
-ally.js is made available for production use by [jsDelivr](http://www.jsdelivr.com/projects/ally.js):
+ally.js is made available for production use by [jsDelivr](https://www.jsdelivr.com/projects/ally.js):
 
 ```html
 <script src="https://cdn.jsdelivr.net/ally.js/{{pkg.version}}/ally.min.js"></script>
@@ -68,7 +68,7 @@ ally.js is also available via [unpkg.com](https://unpkg.com):
 npm install --save ally.js
 ```
 
-Although [bower](http://bower.io/) can download archives, it won't be able to inform you of updates:
+Although [bower](https://bower.io/) can download archives, it won't be able to inform you of updates:
 
 ```sh
 bower install --save https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip

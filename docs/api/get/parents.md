@@ -10,7 +10,7 @@ Identifies the parent elements
 
 ## Description
 
-Like [`jQuery.parents()`](http://api.jquery.com/parents/), except [`ally.get.parents`](#ally.get.parents) doesn't have a filter arguments.
+Like [`jQuery.parents()`](https://api.jquery.com/parents/), except [`ally.get.parents`](#ally.get.parents) doesn't have a filter arguments.
 
 The returned list is sorted as follows `[element, element.parent, element.parent.parent, …]`
 

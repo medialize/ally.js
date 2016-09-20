@@ -201,7 +201,7 @@ function isTabbableRules({
     }
   }
 
-  // http://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
+  // https://www.w3.org/WAI/PF/aria-practices/#focus_tabindex
   return element.tabIndex >= 0;
 }
 

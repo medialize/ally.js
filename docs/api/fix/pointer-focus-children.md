@@ -23,7 +23,7 @@ Considering the following markup, clicking on one of the `<span>` elements would
   }
 </style>
 
-<a href="http://example.org/" class="fancy-link">
+<a href="https://example.org/" class="fancy-link">
   <span>Hello</span>
   <span>World</span>
 </a>

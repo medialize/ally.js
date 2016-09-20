@@ -67,7 +67,7 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.html'),
   title: 'Focusable Elements - Browser Compatibility Table',
   introduction: `<p>The following tables show which elements individual browsers consider focusable or tabbable (keyboard focusable).
-    The tables are based on the <a href="http://allyjs.io/tests/focusable/test.html">focusable test document</a>.</p>
+    The tables are based on the <a href="https://allyjs.io/tests/focusable/test.html">focusable test document</a>.</p>
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: false,
@@ -159,7 +159,7 @@ generateTableDocument({
   targetFile: path.resolve(targetDirectory, 'focusable.jquery.html'),
   title: 'Focusable Elements - jQuery UI Compatibility Table',
   introduction: `<p>The following tables show the differences between what browsers consider <a href="./focusable.html">focusable</a>
-    and what <a href="http://api.jqueryui.com/focusable-selector/">jQuery UI</a> identifies.</p>
+    and what <a href="https://api.jqueryui.com/focusable-selector/">jQuery UI</a> identifies.</p>
     <p>Note that touch devices (without a physical keyboard) only show elements as tabbable (keyboard focusable),
     that can be navigated to through the on-screen keyboard (or "virtual keyboard").</p>`,
   skipExpected: true,

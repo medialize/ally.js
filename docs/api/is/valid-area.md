@@ -52,9 +52,9 @@ Boolean, `true` if the element is a valid area.
 
 ## Related resources
 
-* [HTML5: The Map Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-map-element)
-* [HTML5: The Area Element](http://www.w3.org/TR/html5/embedded-content-0.html#the-area-element)
-* [HTML5: Image Maps](http://www.w3.org/TR/html5/embedded-content-0.html#image-maps)
+* [HTML5: The Map Element](https://www.w3.org/TR/html5/embedded-content-0.html#the-map-element)
+* [HTML5: The Area Element](https://www.w3.org/TR/html5/embedded-content-0.html#the-area-element)
+* [HTML5: Image Maps](https://www.w3.org/TR/html5/embedded-content-0.html#image-maps)
 
 
 ## Contributing

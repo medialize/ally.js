@@ -11,7 +11,7 @@ This document explains which third party works are part of ally.js.
 
 ![ally.js logo](assets/ally-js-logo.png)
 
-The logo is a composition of the [United Nations Accessibility Logo](http://www.un.org/webaccessibility/logo.shtml) and the [JavaScript Logo by The Community](https://github.com/voodootikigod/logo.js#js-logo-by-the-community).
+The logo is a composition of the [United Nations Accessibility Logo](https://www.un.org/webaccessibility/logo.shtml) and the [JavaScript Logo by The Community](https://github.com/voodootikigod/logo.js#js-logo-by-the-community).
 
 
 ## Bundled works

@@ -5,7 +5,7 @@ import contextToElement from '../util/context-to-element';
 import _supports from '../supports/supports';
 let supports;
 
-// http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
+// https://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers
 // NOTE: all browsers agree to allow trailing spaces as well
 const validIntegerPatternNoTrailing = /^\s*(-|\+)?[0-9]+\s*$/;
 const validIntegerPatternWithTrailing = /^\s*(-|\+)?[0-9]+.*$/;

@@ -14,10 +14,10 @@ This allows an application to make sure no element *other than the exempted* can
 
 Elements are disabled by [`ally.element.disabled`](../element/disabled.md) and can be identified in the DOM by the attribute `[data-ally-disabled="true"]` to align with styling of other `:disabled` elements.
 
-The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536), because people thought [inert subtrees](http://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees) by way of the `<dialog>` element would suffice. While we believe *it doesn't*, the `inert` attribute would only have solved half of the problem, because there's no way to avoid inheriting the inert state onto children. This behavior can be observed in the [Google Chrome Inert Attribute Polyfill](https://github.com/GoogleChrome/inert-polyfill).
+The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536), because people thought [inert subtrees](https://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees) by way of the `<dialog>` element would suffice. While we believe *it doesn't*, the `inert` attribute would only have solved half of the problem, because there's no way to avoid inheriting the inert state onto children. This behavior can be observed in the [Google Chrome Inert Attribute Polyfill](https://github.com/GoogleChrome/inert-polyfill).
 
 * **NOTE:** The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
-* **NOTE:** There [WHATWG](http://whatwg.org/) is discussing a [blockElements API](https://github.com/whatwg/html/issues/897) that would cover the primary use-case of `ally.maintain.disabled` in a much better way.
+* **NOTE:** There [WHATWG](https://whatwg.org/) is discussing a [blockElements API](https://github.com/whatwg/html/issues/897) that would cover the primary use-case of `ally.maintain.disabled` in a much better way.
 
 `ally.maintain.disabled` observes DOM manipulations and automatically disables newly added elements when necessary.
 

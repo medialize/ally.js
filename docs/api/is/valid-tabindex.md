@@ -46,7 +46,7 @@ Boolean, `true` if the element is has a valid tabindex attribute specified.
 
 ## Related resources
 
-* [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
+* [HTML5: The `tabindex` attribute](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 
 
 ## Contributing

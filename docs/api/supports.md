@@ -16,7 +16,7 @@ For the tests to run properly, the document needs to have focus during execution
 
 | Test Name | Return Type | Description |
 | --------- | ----------- | ----------- |
-| css-shadow-piercing-deep-combinator | string (`">>>"`, `"/deep/"` `""`) | the browser's support for [selecting through ShadowDOM](http://dev.w3.org/csswg/css-scoping/#deep-combinator), empty string if not supported |
+| css-shadow-piercing-deep-combinator | string (`">>>"`, `"/deep/"` `""`) | the browser's support for [selecting through ShadowDOM](https://dev.w3.org/csswg/css-scoping/#deep-combinator), empty string if not supported |
 | focus-area-img-tabindex | boolean | true if `<area>` is focusable for `<img tabindex="-1" usemap="…">` |
 | focus-area-tabindex | boolean | true if `<area href="…" tabindex="-1">` is focusable |
 | focus-area-without-href | boolean | true if `<area tabindex="-1">` is focusable |

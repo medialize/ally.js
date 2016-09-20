@@ -17,7 +17,7 @@ const injectExamples = require('./plugins/inject-examples');
 const absoluteUrl = require('./plugins/absolute-url');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
-const WEBSITE_CANONICAL = 'http://allyjs.io/';
+const WEBSITE_CANONICAL = 'https://allyjs.io/';
 
 function getRedirectionMap() {
   // make sure legacy links are forwarded

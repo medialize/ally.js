@@ -2,7 +2,7 @@
 export default function() {
   let combinator;
 
-  // see http://dev.w3.org/csswg/css-scoping-1/#deep-combinator
+  // see https://dev.w3.org/csswg/css-scoping-1/#deep-combinator
   // https://bugzilla.mozilla.org/show_bug.cgi?id=1117572
   // https://code.google.com/p/chromium/issues/detail?id=446051
   try {

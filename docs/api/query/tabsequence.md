@@ -75,7 +75,7 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element in a context
 * [`ally.query.tabbable`](tabbable.md) finds keyboard focusable elements in DOM order
 
-* [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
+* [HTML5: The `tabindex` attribute](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
 
 
 ## Contributing

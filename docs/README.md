@@ -26,4 +26,4 @@ layout: index.html
 
 ## License
 
-ally.js is published under the [MIT License](http://opensource.org/licenses/mit-license).
+ally.js is published under the [MIT License](https://opensource.org/licenses/mit-license).

@@ -92,7 +92,7 @@ define(function(require) {
         /*eslint-disable indent */
         '<div tabindex="0" id="non-input"></div>',
         '<input type="text" id="input">',
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
+        '<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" id="svg">',
           '<a xlink:href="#void" id="svg-link">',
             '<text x="10" y="20" id="svg-link-text">text</text>',
           '</a>',

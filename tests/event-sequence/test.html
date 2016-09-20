@@ -89,8 +89,8 @@
         breaker();
       }
 
-      // http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
-      // http://www.w3.org/TR/DOM-Level-3-Events/#legacy-focusevent-events
+      // https://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
+      // https://www.w3.org/TR/DOM-Level-3-Events/#legacy-focusevent-events
       ['focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DOMFocusOut', 'domfocusin', 'domfocusout'].forEach(function(eventName) {
         document.body.addEventListener(eventName, logFocusEvent, true);
       });

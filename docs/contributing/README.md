@@ -39,7 +39,7 @@ While the project and most of its resources were created by [Rodney Rehm](http:/
 * [Alice Boxhall](https://twitter.com/sundress)
 * [Heydon Pickering](http://www.heydonworks.com/)
 * [Marco Zehe](https://www.marcozehe.de/)
-* [Marcy Sutton](http://marcysutton.com/)
+* [Marcy Sutton](https://marcysutton.com/)
 * [Patrick H Lauke](https://www.splintered.co.uk/)
 * [Steve Faulkner](https://twitter.com/stevefaulkner)
 * … and probably a few more

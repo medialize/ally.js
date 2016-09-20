@@ -3,7 +3,7 @@
 // adapted from https://gist.github.com/paulirish/1579671
 // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
 // original source was published under the MIT license
-// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// https://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
 typeof window !== 'undefined' && (function() {

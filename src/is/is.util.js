@@ -4,7 +4,7 @@
 // as they're implicitly tested by way of the consumers
 
 export function isUserModifyWritable(style) {
-  // http://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
+  // https://www.w3.org/TR/1999/WD-css3-userint-19990916#user-modify
   // https://github.com/medialize/ally.js/issues/17
   const userModify = style.webkitUserModify || '';
   return Boolean(userModify && userModify.indexOf('write') !== -1);

@@ -4,15 +4,15 @@ layout: doc-page.html
 
 # Test infrastructure
 
-The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](http://theintern.github.io/leadfoot/) for interacting with browsers.
+The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](https://theintern.github.io/leadfoot/) for interacting with browsers.
 
 * **NOTE:** Unlike ally.js, the tests are not written in ES6, but follow Intern's ES5 and AMD scheme.
 
 The test infrastructure is located in the `test` directory. Note that the `tests` directory is occupied by manual browser support tests.
 
-Intern handles both unit and functional tests. Unit tests are the ones that verify a function's integrity without user interaction (like clicking on things or pressing keys). Functional tests are the ones that use [leadfoot](http://theintern.github.io/leadfoot/) to simulate a human being using the browser. Both types of tests are executed in the browser, there is no point testing things in Node.
+Intern handles both unit and functional tests. Unit tests are the ones that verify a function's integrity without user interaction (like clicking on things or pressing keys). Functional tests are the ones that use [leadfoot](https://theintern.github.io/leadfoot/) to simulate a human being using the browser. Both types of tests are executed in the browser, there is no point testing things in Node.
 
-For local development the command `npm run test` can be used to run tests in local Google Chrome. To run tests against a whole battery of browsers in the cloud we use [BrowserStack](http://browserstack.com) and [SauceLabs](https://saucelabs.com). To run those locally, you'll need the secret access keys (which you'll only get if you're a core contributor, sorry).
+For local development the command `npm run test` can be used to run tests in local Google Chrome. To run tests against a whole battery of browsers in the cloud we use [BrowserStack](https://browserstack.com) and [SauceLabs](https://saucelabs.com). To run those locally, you'll need the secret access keys (which you'll only get if you're a core contributor, sorry).
 
 Coverage reports are made available in the directory `reports/coverage`.
 
@@ -44,7 +44,7 @@ npm run test
 
 ## Remotely running all tests in all browsers
 
-You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account. The same is true for [BrowserStack](http://browserstack.com/).
+You can register your own SauceLabs account (there is a [free tier](https://saucelabs.com/signup/plan/free)) and provide your own credentials if you don't have access to the project's account. The same is true for [BrowserStack](https://browserstack.com/).
 
 ### Running tests on BrowserStack
 
@@ -103,7 +103,7 @@ reports
 └── lcov.info       - test coverage non-human readable format
 ```
 
-When the tests executed, code coverage results can be uploaded to [Code Climate](http://codeclimate.com/) and [Coveralls](http://coveralls.io/) by running `npm run publish:lcov`.
+When the tests executed, code coverage results can be uploaded to [Code Climate](https://codeclimate.com/) and [Coveralls](https://coveralls.io/) by running `npm run publish:lcov`.
 
 * **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
 

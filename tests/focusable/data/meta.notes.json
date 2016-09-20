@@ -36,10 +36,10 @@
       "form[disabled][tabindex=-1] input",
       "form[disabled][tabindex=0] input"
     ],
-    "general": "HTML5 does *not* specify that the [`<form>` element](http://www.w3.org/TR/html5/forms.html#the-form-element) knows the [`disabled` attribute](http://www.w3.org/TR/html5/forms.html#attr-fe-disabled)."
+    "general": "HTML5 does *not* specify that the [`<form>` element](https://www.w3.org/TR/html5/forms.html#the-form-element) knows the [`disabled` attribute](https://www.w3.org/TR/html5/forms.html#attr-fe-disabled)."
   },
 
-  "@fieldset-disabled-input": "should not be focusable as per [disabled elements](http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
+  "@fieldset-disabled-input": "should not be focusable as per [disabled elements](https://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled). [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)",
   "fieldset[disabled][tabindex=0]": {
     "alias": [
       "fieldset[disabled][tabindex=-1]"
@@ -61,7 +61,7 @@
       "label[tabindex=0]",
       "label:has(input)"
     ],
-    "general": "The activation behavior of the [`<label>`](http://www.w3.org/TR/html5/forms.html#the-label-element) element is not defined beyond »… should match the platform's label behavior.«"
+    "general": "The activation behavior of the [`<label>`](https://www.w3.org/TR/html5/forms.html#the-label-element) element is not defined beyond »… should match the platform's label behavior.«"
   },
 
   "@ie-label-click-script": "Internet Explorer redirects focus from `<label>` to the referenced form control element upon mouse click, but *not* on script focus via `element.focus()`.",
@@ -79,12 +79,12 @@
     }
   },
 
-  "span{user-modify}": "The CSS property [`user-modify`](http://www.w3.org/TR/2000/WD-css3-userint-20000216#user-modify) was proposed and dropped from [CSS UI Level 3](http://www.w3.org/TR/css3-ui/) and has thus not become a standard yet.",
+  "span{user-modify}": "The CSS property [`user-modify`](https://www.w3.org/TR/2000/WD-css3-userint-20000216#user-modify) was proposed and dropped from [CSS UI Level 3](https://www.w3.org/TR/css3-ui/) and has thus not become a standard yet.",
 
-  "@invalid-tabindex-value": "The value is invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "@invalid-tabindex-value": "The value is invalid according to [rules for parsing integers](https://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "@empty-tabindex-ie11": "`tabindex=\"\"` is parsed to the value `-32768`. [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)",
-  "[tabindex=3 ]": "The value's trailing spaces are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
-  "[tabindex=3x]": "The value's trailing non-numeric characters are considered invalid according to [rules for parsing integers](http://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "[tabindex=3 ]": "The value's trailing spaces are considered invalid according to [rules for parsing integers](https://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "[tabindex=3x]": "The value's trailing non-numeric characters are considered invalid according to [rules for parsing integers](https://www.w3.org/TR/html5/infrastructure.html#rules-for-parsing-integers) required by [HTML5 tabindex](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
   "[tabindex=hello]": "@invalid-tabindex-value",
   "input[tabindex=hello]": "@invalid-tabindex-value",
   "[tabindex=]": {
@@ -120,10 +120,10 @@
 
   "map.invalid-image area[href].lower": "Some browsers will not make an image map focusable, if it is associated with an `<img>` that does have a proper image loaded.",
 
-  "audio": "`<audio>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
-  "video": "`<video>` is considered [interactive content](http://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
+  "audio": "`<audio>` is considered [interactive content](https://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
+  "video": "`<video>` is considered [interactive content](https://www.w3.org/TR/html5/dom.html#interactive-content) only with the <code>controls</code> attribute present",
 
-  "@shadow-dom-support": "[Shadow DOM](http://w3c.github.io/webcomponents/spec/shadow/) is currently only \"properly\" supported in Blink based browsers (Chrome, Opera). Firefox exposes the (considerably buggy) development state behind flags.\n\nSee [Can I Use](http://caniuse.com/#feat=shadowdom).",
+  "@shadow-dom-support": "[Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/) is currently only \"properly\" supported in Blink based browsers (Chrome, Opera). Firefox exposes the (considerably buggy) development state behind flags.\n\nSee [Can I Use](http://caniuse.com/#feat=shadowdom).",
   "-shadow-dom-support": {
     "alias": [
       "shadow-host",
@@ -154,7 +154,7 @@
     "general": "@shadow-dom-support"
   },
 
-  "@shadow-host-target": "Regardless of its own focusable state, an element hosting a Shadow DOM can become the `activeElement` if an element inside the `ShadowRoot` has focus. See [Shadow DOM - Active Element](http://w3c.github.io/webcomponents/spec/shadow/#active-element)",
+  "@shadow-host-target": "Regardless of its own focusable state, an element hosting a Shadow DOM can become the `activeElement` if an element inside the `ShadowRoot` has focus. See [Shadow DOM - Active Element](https://w3c.github.io/webcomponents/spec/shadow/#active-element)",
   "-shadow-host-target": {
     "alias": [
       "shadow-host",
@@ -407,7 +407,7 @@
 
       "svg rect[onfocus]"
     ],
-    "general": "[SVG 1.1](http://www.w3.org/TR/SVG/access.html) does not specify much in respect to accessibility. [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG) will bring the `tabindex` attribute. [SVG Tiny 1.2](http://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr) knows the `focusable` attribute."
+    "general": "[SVG 1.1](https://www.w3.org/TR/SVG/access.html) does not specify much in respect to accessibility. [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG) will bring the `tabindex` attribute. [SVG Tiny 1.2](https://www.w3.org/TR/SVGTiny12/interact.html#focusable-attr) knows the `focusable` attribute."
   },
 
   "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
@@ -456,7 +456,7 @@
       "details[open] a[href]",
       "details[open] summary"
     ],
-    "general": "The [`<details>`](http://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1, but [not implemented everywhere](http://caniuse.com/#feat=details)."
+    "general": "The [`<details>`](https://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1, but [not implemented everywhere](http://caniuse.com/#feat=details)."
   },
 
   "-details-webkit-151767": {
@@ -522,7 +522,7 @@
     }
   },
 
-  "link[itemprop][href]": "naturally focusable according to [HTML5 tabindex](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
+  "link[itemprop][href]": "naturally focusable according to [HTML5 tabindex](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)",
 
   "@firefox-bug-1116126-message": "Firefox may hide elements from the document's tabbing sequence if they're enclosed by two images referencing the same image map - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126).",
   "firefox-bug-1116126": {
@@ -548,7 +548,7 @@
     "general": "The `<keygen>` element is poorly supported, practically never used and has seen [intent to deprecate](https://groups.google.com/a/chromium.org/forum/m/#!msg/blink-dev/pX5NbX0Xack/kmHsyMGJZAMJ)"
   },
 
-  "@negative-tabindex-browsing-context": "Keyboard focusable (tabbable) content in nested [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`) is demoted to script and mouse focusable if the browsing context container has `tabindex=\"-1\"`.",
+  "@negative-tabindex-browsing-context": "Keyboard focusable (tabbable) content in nested [browsing contexts](https://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`) is demoted to script and mouse focusable if the browsing context container has `tabindex=\"-1\"`.",
   "-negative-tabindex-browsing-context": {
     "alias": [
       "iframe[tabindex=-1] -> body",
@@ -571,7 +571,7 @@
     "general": "@negative-tabindex-browsing-context"
   },
 
-  "@negative-tabindex-svg": "The focusable state of descendant elements of an `<svg>` element are not affected by `tabindex=\"-1\"` on the `<svg>` element, contrary to the behavior of [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
+  "@negative-tabindex-svg": "The focusable state of descendant elements of an `<svg>` element are not affected by `tabindex=\"-1\"` on the `<svg>` element, contrary to the behavior of [browsing contexts](https://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
   "-negative-tabindex-svg": {
     "alias": [
       "svg[tabindex=-1] a[xlink|href]",
@@ -580,7 +580,7 @@
     "general": "@negative-tabindex-svg"
   },
 
-  "@negative-tabindex-shadow-dom": "The focusable state of content elements in Shadow DOM are not affected by `tabindex=\"-1\"` on the shadow host, contrary to the behavior of [browsing contexts](http://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
+  "@negative-tabindex-shadow-dom": "The focusable state of content elements in Shadow DOM are not affected by `tabindex=\"-1\"` on the shadow host, contrary to the behavior of [browsing contexts](https://www.w3.org/TR/html51/browsers.html) (`<iframe>`, `<object>`, `<element>`).",
   "-negative-tabindex-shadow-dom": {
     "alias": [
       "shadow-host[tabindex=-1] input[tabindex=0]",
@@ -593,8 +593,8 @@
     "general": "@negative-tabindex-shadow-dom"
   },
 
-  "@redirect-referenced-input": "Focus is redirected to the [labeled control](http://www.w3.org/TR/html5/forms.html#labeled-control).",
-  "@redirect-nested-input": "Focus is redirected to the nested [labeled control](http://www.w3.org/TR/html5/forms.html#labeled-control).",
+  "@redirect-referenced-input": "Focus is redirected to the [labeled control](https://www.w3.org/TR/html5/forms.html#labeled-control).",
+  "@redirect-nested-input": "Focus is redirected to the nested [labeled control](https://www.w3.org/TR/html5/forms.html#labeled-control).",
 
   "@redirect-legend-next-tabbable": "Focus is redirected to the the next keyboard focusable (tabbable) element after the `<legend>` in DOM order (not in order of the document's tab sequence). Note that this does not necessarily have to be a descendant of the same `<fieldset>` element.",
   "@redirect-legend-input": "Focus is redirected to the the first focusable form control element (`<input>`, `<select>`, `<textarea>`, `<button>`) of the `<fieldset>` the `<legend>` is the child of.",
@@ -720,7 +720,7 @@
     }
   },
 
-  "@encapsulated-shadow-dom": "Whenever an element within a ShadowRoot has focus, the element hosting the [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) is considered the `activeElement` of the document, as per the [active element adjustment algorithm](http://w3c.github.io/webcomponents/spec/shadow/#active-element).\n\nFirefox' Shadow DOM implementation still has a few problems: [Gecko 1117535](https://bugzilla.mozilla.org/show_bug.cgi?id=1117535), [Gecko 1117544](https://bugzilla.mozilla.org/show_bug.cgi?id=1117544), [Gecko 1117552](https://bugzilla.mozilla.org/show_bug.cgi?id=1117552).",
+  "@encapsulated-shadow-dom": "Whenever an element within a ShadowRoot has focus, the element hosting the [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) is considered the `activeElement` of the document, as per the [active element adjustment algorithm](https://w3c.github.io/webcomponents/spec/shadow/#active-element).\n\nFirefox' Shadow DOM implementation still has a few problems: [Gecko 1117535](https://bugzilla.mozilla.org/show_bug.cgi?id=1117535), [Gecko 1117544](https://bugzilla.mozilla.org/show_bug.cgi?id=1117544), [Gecko 1117552](https://bugzilla.mozilla.org/show_bug.cgi?id=1117552).",
   "-encapsulated-shadow-dom": {
     "redirect": {
       "shadow-host input[tabindex=0] --- shadow-host": "@encapsulated-shadow-dom",

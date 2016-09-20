@@ -20,17 +20,17 @@ Stuff I still need to read…
 
 ## Tools for testing
 
-Some Tools to actually "see" what you're doing, more in [web components punch list](http://www.paciellogroup.com/blog/2014/09/web-components-punch-list/),
+Some Tools to actually "see" what you're doing, more in [web components punch list](https://www.paciellogroup.com/blog/2014/09/web-components-punch-list/),
 
 
 ### Screen readers
 
-* [ChromeVox](www.chromevox.com) (Chrome, Free)
-* [NVDA](http://www.nvaccess.org/) (Windows, Free)
-* [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS) (Windows, Trial)
+* [ChromeVox](http://www.chromevox.com) (Chrome, Free)
+* [NVDA](https://www.nvaccess.org/) (Windows, Free)
+* [JAWS](https://www.freedomscientific.com/Products/Blindness/JAWS) (Windows, Trial)
 * [ZoomText](http://www.aisquared.com/zoomtext/more/zoomtext_magnifier_reader/) (Windows, Trial)
 
-[…and how to use them](http://www.paciellogroup.com/blog/2015/01/basic-screen-reader-commands-for-accessibility-testing/)
+[…and how to use them](https://www.paciellogroup.com/blog/2015/01/basic-screen-reader-commands-for-accessibility-testing/)
 
 ### Tools for visualizing the accessibility tree
 

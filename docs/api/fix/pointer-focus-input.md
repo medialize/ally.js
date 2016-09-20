@@ -11,7 +11,7 @@ This *Browser Bug Workaround* targets an issue in Safari and Firefox **on Mac OS
 ## Description
 
 > In Firefox for Mac, Chrome and Safari, some types of form field don’t take the focus at all when clicked with the mouse; this behavior is limited to fields which have no typed input, such as radios, checkboxes, buttons, color-pickers and sliders.
-> -- [When Do Elements Take the Focus?](http://www.sitepoint.com/when-do-elements-take-the-focus/)
+> -- [When Do Elements Take the Focus?](https://www.sitepoint.com/when-do-elements-take-the-focus/)
 
 
 ## Usage

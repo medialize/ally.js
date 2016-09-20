@@ -80,7 +80,7 @@ Sadly we cannot use the values `inherit`, `initial` or `unset` to simply *undo* 
 
 ## How to hide elements semantically
 
-To hide content from the [accessibility tree](../concepts.md#Accessibility-tree) but retain the content on screen, we may use the attribute [`aria-hidden="true"`](http://w3c.github.io/aria/aria/aria.html#aria-hidden).
+To hide content from the [accessibility tree](../concepts.md#Accessibility-tree) but retain the content on screen, we may use the attribute [`aria-hidden="true"`](https://w3c.github.io/aria/aria/aria.html#aria-hidden).
 
 For example we might want to hide certain images and icons that serve non-descriptive, purely esthetical purposes:
 
@@ -96,7 +96,7 @@ For example we might want to hide certain images and icons that serve non-descri
 
 ## How to hide elements visually
 
-We may need to provide invisible content in order to make sure the structures presented in the accessibility tree make sense. The following CSS is taken from [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/v5.0.0/src/css/main.css#L126-L156), which is based on [Hiding Content for Accessibility](http://snook.ca/archives/html_and_css/hiding-content-for-accessibility):
+We may need to provide invisible content in order to make sure the structures presented in the accessibility tree make sense. The following CSS is taken from [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/v5.0.0/src/css/main.css#L126-L156), which is based on [Hiding Content for Accessibility](https://snook.ca/archives/html_and_css/hiding-content-for-accessibility):
 
 ```css
 .visuallyhidden {
@@ -117,7 +117,7 @@ The CSS property [`clip`](https://developer.mozilla.org/en-US/docs/Web/CSS/clip)
 
 While Internet Explorer 9 - 11 make overflowing containers [focusable](../what-is-focusable.md), the `clip` makes sure the `outline` drawn by `:focus` is not visible and the element cannot be clicked on.
 
-Speaking of focusable elements, we are likely using the `.visuallyhidden` style for [skip links](http://webaim.org/techniques/skipnav/), in which case we need a way to *undo* the visual hiding. The HTML5 Boilerplate provides the following styles for that:
+Speaking of focusable elements, we are likely using the `.visuallyhidden` style for [skip links](https://webaim.org/techniques/skipnav/), in which case we need a way to *undo* the visual hiding. The HTML5 Boilerplate provides the following styles for that:
 
 ```css
 .visuallyhidden.focusable:active,

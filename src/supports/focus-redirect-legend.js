@@ -1,5 +1,5 @@
 
-// see http://jsbin.com/nenirisage/edit?html,js,console,output
+// see https://jsbin.com/nenirisage/edit?html,js,console,output
 
 export default {
   element: 'fieldset',
@@ -13,7 +13,7 @@ export default {
     const tabbable = element.querySelector('input[tabindex="0"]');
 
     // Firefox requires this test to focus the <fieldset> first, while this is not necessary in
-    // http://jsbin.com/nenirisage/edit?html,js,console,output
+    // https://jsbin.com/nenirisage/edit?html,js,console,output
     element.focus();
 
     element.querySelector('legend').focus();

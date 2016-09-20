@@ -19,13 +19,13 @@ export default function() {
     return selector;
   }
 
-  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  // https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   selector = ''
     // IE11 supports.can focus <table> and <td>
     + (supports.focusTable ? 'table, td,' : '')
     // IE11 supports.can focus <fieldset>
     + (supports.focusFieldset ? 'fieldset,' : '')
-    // Namespace problems of [xlink:href] explained in http://stackoverflow.com/a/23047888/515124
+    // Namespace problems of [xlink:href] explained in https://stackoverflow.com/a/23047888/515124
     // svg a[*|href] does not match in IE9, but since we're filtering
     // through is/focusable we can include all <a> from SVG
     + 'svg a,'

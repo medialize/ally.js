@@ -27,7 +27,7 @@ define([], function() {
 
     try {
       // Safari 7 does not like this: ATTEMPTING TO CHANGE VALUE OF A READONLY PROPERTY
-      // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
+      // https://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
       Object.defineProperty(event, 'keyCode', {value: options.keyCode});
       Object.defineProperty(event, 'which', {value: options.keyCode});
       Object.defineProperty(event, 'altKey', {value: !!options.altKey});
@@ -105,7 +105,7 @@ define([], function() {
 
       try {
         // Safari 7 does not like this: ATTEMPTING TO CHANGE VALUE OF A READONLY PROPERTY
-        // http://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
+        // https://stackoverflow.com/questions/1897333/firing-a-keyboard-event-on-chrome
         Object.defineProperty(event, 'defaultPrevented', {value: true});
         // Internet Explorer does not like this
         event.defaultPrevented = true;

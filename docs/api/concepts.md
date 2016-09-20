@@ -39,7 +39,7 @@ Many components work on the DOM. Components ingest elements identified by variou
 * array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement)
 * [`NodeList`](https://developer.mozilla.org/en/docs/Web/API/NodeList)
 * [`HTMLCollection`](https://developer.mozilla.org/en/docs/Web/API/HTMLCollection)
-* [`jQuery`](http://api.jquery.com/jQuery/) instance
+* [`jQuery`](https://api.jquery.com/jQuery/) instance
 
 
 ## Focus identification exceptions

@@ -5,7 +5,7 @@ tags: data
 
 # ally.map.attribute
 
-Map of all [WAI-ARIA states and properties](http://www.w3.org/TR/wai-aria/states_and_properties).
+Map of all [WAI-ARIA states and properties](https://www.w3.org/TR/wai-aria/states_and_properties).
 
 
 ## Description
@@ -13,13 +13,13 @@ Map of all [WAI-ARIA states and properties](http://www.w3.org/TR/wai-aria/states
 ```js
 // example structure
 var map = {
-  // http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid
+  // https://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid
   'aria-invalid': {
     'default': 'false',
     values: ['true', 'false', 'grammar', 'spelling'],
   },
 
-  // http://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant
+  // https://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant
   'aria-relevant': {
     'default': 'additions text',
     multiple: true,

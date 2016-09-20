@@ -14,7 +14,7 @@
     absoluteUrl({ property: "websiteRoot", define: "/hello/world" })
 
     convert all URLs beginning with websiteRoot to relative URLs
-    absoluteUrl({ resolve: "/hello/world", canonical: "http://example.org/" })
+    absoluteUrl({ resolve: "/hello/world", canonical: "https://example.org/" })
 */
 
 // inspired by

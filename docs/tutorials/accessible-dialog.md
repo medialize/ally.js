@@ -4,9 +4,9 @@ layout: doc-page.html
 
 # Accessible dialog tutorial
 
-This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/#dialog_modal).
+This document explains what steps need to be taken in order to make a visually compelling, yet fully accessible dialog according to [WAI-ARIA 1.0 Authoring Practices](https://www.w3.org/WAI/PF/aria-practices/#dialog_modal).
 
-HTML5.1 specifies the [`<dialog>` element](http://www.w3.org/TR/html51/semantics.html#the-dialog-element) that natively does most of what is explained here. But since [browser support](http://caniuse.com/#feat=dialog) is rather limited, making use of `<dialog>` is not yet possible.
+HTML5.1 specifies the [`<dialog>` element](https://www.w3.org/TR/html51/semantics.html#the-dialog-element) that natively does most of what is explained here. But since [browser support](http://caniuse.com/#feat=dialog) is rather limited, making use of `<dialog>` is not yet possible.
 
 The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#Interactive-demo) below.
 
@@ -41,7 +41,7 @@ But visual appearance is not the *only* thing we care about, especially not when
 
 ## HTML - the dialog's structure
 
-First of all we need a container for the dialog to live in, we use a `<div>` element, because it doesn't have any semantic meaning itself. We explain that the `<div>` actually *is* a dialog by adding [`role="dialog"`](http://www.w3.org/TR/wai-aria/roles#dialog). Roles are defined by ARIA, which allow us to express the *meaning* of an element. We also add `tabindex="-1"` to allow the dialog container to be focused, something we'll revisit soon. Because dialogs are not always visible, we also add the [`hidden` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden).
+First of all we need a container for the dialog to live in, we use a `<div>` element, because it doesn't have any semantic meaning itself. We explain that the `<div>` actually *is* a dialog by adding [`role="dialog"`](https://www.w3.org/TR/wai-aria/roles#dialog). Roles are defined by ARIA, which allow us to express the *meaning* of an element. We also add `tabindex="-1"` to allow the dialog container to be focused, something we'll revisit soon. Because dialogs are not always visible, we also add the [`hidden` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden).
 
 To structure the content rendered by the dialog, we'll use `<header>` for the introduction, `<section>` for the content and `<footer>` for the buttons to interact with the dialog.
 
@@ -53,7 +53,7 @@ To structure the content rendered by the dialog, we'll use `<header>` for the in
 </div>
 ```
 
-Now that we have the bare bones, we should talk about a dialog's generic content, like titles and descriptions. All dialogs have a title, most will also have a description. To explain that the title and description actually belong to the dialog, we use the attributes [`aria-labelledby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby) and [`aria-describedby`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby) respectively.
+Now that we have the bare bones, we should talk about a dialog's generic content, like titles and descriptions. All dialogs have a title, most will also have a description. To explain that the title and description actually belong to the dialog, we use the attributes [`aria-labelledby`](https://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby) and [`aria-describedby`](https://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby) respectively.
 
 ```html
 <div role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
@@ -261,7 +261,7 @@ All that is remaining now, is hiding the dialog box itself. As with the backdrop
 
 ## JavaScript - User Interaction
 
-Up to now we covered what we're doing by providing semantically useful HTML *structure*. We've also described what the visual *appearance* of the dialog should be. It's time to visit JavaScript to define the *behavior*. What we have to do is described by [WAI-ARIA 1.0 Authoring Practices](http://www.w3.org/WAI/PF/aria-practices/#dialog_modal), which we'll now walk through step by step. Here's what we need to do:
+Up to now we covered what we're doing by providing semantically useful HTML *structure*. We've also described what the visual *appearance* of the dialog should be. It's time to visit JavaScript to define the *behavior*. What we have to do is described by [WAI-ARIA 1.0 Authoring Practices](https://www.w3.org/WAI/PF/aria-practices/#dialog_modal), which we'll now walk through step by step. Here's what we need to do:
 
 * react to the <kbd>Enter</kbd> and <kbd>Escape</kbd> keys in order close the dialog, while respecting that some elements, when focused, may react to those keys themselves
 * make sure no element outside of the dialog can be focused (by any means, including keyboard and mouse)
@@ -302,7 +302,7 @@ While a dialog is shown, we need to make sure that elements outside of the dialo
 
 A naive implementation might listen to `keydown` events, filtering for <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> to shift focus to the *first* element when focus would leave the dialog at the end, or shift focus to the *last* element, when focus would leave the dialog at its beginning. But this approach has a few problems:
 
-* focus may *not only* be shifted through <kbd>Tab</kbd>, as users of [spatial navigation](http://blog.codinghorror.com/spatial-navigation-and-opera/) will attest
+* focus may *not only* be shifted through <kbd>Tab</kbd>, as users of [spatial navigation](https://blog.codinghorror.com/spatial-navigation-and-opera/) will attest
 * assistive tools that provide more than sequential focus navigation (i.e. random access) may list all focusable elements of the page, including those visually behind the backdrop
 
 We could do away with the need to react to <kbd>Tab</kbd>, by simply hiding everything outside the dialog. But while setting everything to `visibility: hidden;` would certainly do the job, it would also visually hide *everything but the dialog*, rendering the backdrop useless. Most visual designers I know digress.
@@ -469,7 +469,7 @@ function closeDialog() {
 
 ### Hide document from screen readers
 
-Screen Readers and other tools consuming the document through the Accessibility Tree instead of relying on visual presentation, need to be told what exactly is going on. The translucent backdrop, which obfuscates the document's content while the dialog is shown, does the job when you actually *see* the page. To achieve the same for non-visual output methods, we need to add [`aria-hidden="true"`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden) to all the sibling DOM elements of our dialog.
+Screen Readers and other tools consuming the document through the Accessibility Tree instead of relying on visual presentation, need to be told what exactly is going on. The translucent backdrop, which obfuscates the document's content while the dialog is shown, does the job when you actually *see* the page. To achieve the same for non-visual output methods, we need to add [`aria-hidden="true"`](https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden) to all the sibling DOM elements of our dialog.
 
 There is no native DOM method to obtain all parental siblings of an element. ally.js has got you covered with [`ally.get.insignificantBranches`](../api/get/insignificant-branches.md), considering this is a pretty generic operation. To make things even more comfortable for you, ally.js provides [`ally.maintain.hidden`](../api/maintain/hidden.md) to also apply `aria-hidden="true"`. This service also observes changes to the DOM and applies `aria-hidden="true"` to any element added to the DOM while the dialog is being shown. The `disengage()` method stops observing the DOM and removes all `aria-hidden="true"` attributes that were set by the service.
 
@@ -482,7 +482,7 @@ function openDialog() {
   // is exposed via the Accessibility Tree, to prevent
   // screen readers from navigating to content it shouldn't
   // be seeing while the dialog is open. See example:
-  // http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
+  // https://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
   hiddenHandle = ally.maintain.hidden({
     filter: dialog,
   });

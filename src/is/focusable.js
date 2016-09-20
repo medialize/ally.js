@@ -1,7 +1,7 @@
 
 // determine if an element can be focused
 
-// http://www.w3.org/TR/html5/editing.html#focus-management
+// https://www.w3.org/TR/html5/editing.html#focus-management
 
 // NOTE: The following known issues exist:
 //   Gecko: `svg a[xlink|href]` is not identified as focusable (because SVGElement.prototype.focus is missing)

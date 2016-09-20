@@ -2,7 +2,7 @@
 /*
   add .ally-focus-within class to parents of document.activeElement,
   to provide the functionality of :focus-within where it's not available
-  see http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo
+  see https://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo
 
   USAGE:
     style/focus-within()

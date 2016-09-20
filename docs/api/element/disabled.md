@@ -76,8 +76,8 @@ var isDisabled = ally.element.disabled(element);
 * [`ally.is.disabled`](../is/disabled.md) is able to identify elements disabled by [`ally.element.disabled`](#ally.element.disabled)
 * [`ally.maintain.disabled`](../maintain/disabled.md) is a [service](../concepts.md#Service) finding focusable elements and disabling them within the DOM
 
-* [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
-* [WICG: Adding a [disabled] attribute to `<a>`s](http://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
+* [HTML5: Disabled Elements](https://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
+* [WICG: Adding a [disabled] attribute to `<a>`s](https://discourse.wicg.io/t/adding-a-disabled-attribute-to-a-s/1116)
 
 
 ## Contributing

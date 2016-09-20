@@ -3,7 +3,7 @@
 // (basically the tree minus the parent paths of each filtered element reduced to the top most nodes)
 // originally inspired by Marcy Sutton's Material Dialog Component:
 // https://github.com/angular/material/blob/v0.11.1/src/components/dialog/dialog.js#L748-L783
-// to avoid this behavior: http://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
+// to avoid this behavior: https://marcysutton.com/slides/mobile-a11y-seattlejs/#/36
 
 import contextToElement from '../util/context-to-element';
 import nodeArray from '../util/node-array';
@@ -36,7 +36,7 @@ function queryInsignificantBranches({context, filter}) {
     return NodeFilter.FILTER_REJECT;
   };
   // IE requires a function, Browsers require {acceptNode: function}
-  // see http://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
+  // see https://www.bennadel.com/blog/2607-finding-html-comment-nodes-in-the-dom-using-treewalker.htm
   CollectInsignificantBranchesFilter.acceptNode = CollectInsignificantBranchesFilter;
 
   const _document = getDocument(context);

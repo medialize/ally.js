@@ -7,7 +7,7 @@ import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
 
-// http://www.w3.org/TR/html5/rendering.html#being-rendered
+// https://www.w3.org/TR/html5/rendering.html#being-rendered
 // <area> is not rendered, but we *consider* it visible to simplfiy this function's usage
 const notRenderedElementsPattern = /^(area)$/;
 

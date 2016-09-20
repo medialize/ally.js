@@ -1,6 +1,6 @@
 
-// http://www.w3.org/TR/html5/editing.html#focusable
-// http://www.w3.org/WAI/PF/aria-practices/#keyboard
+// https://www.w3.org/TR/html5/editing.html#focusable
+// https://www.w3.org/WAI/PF/aria-practices/#keyboard
 
 import isFocusable from '../is/focusable';
 import isFocusRelevant from '../is/focus-relevant';

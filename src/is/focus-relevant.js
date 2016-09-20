@@ -149,7 +149,7 @@ function isFocusRelevantRules({
     return Boolean(focusableAttribute && focusableAttribute === 'true');
   }
 
-  // http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+  // https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
   if (validTabindex) {
     return true;
   }
@@ -212,7 +212,7 @@ function isFocusRelevantRules({
 
   // NOTE: elements marked as inert are not focusable,
   // but that property is not exposed to the DOM
-  // http://www.w3.org/TR/html5/editing.html#inert
+  // https://www.w3.org/TR/html5/editing.html#inert
 
   return false;
 }

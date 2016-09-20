@@ -139,7 +139,7 @@ Document can make use of definition lists. An unordered list containing only ite
 
 ### API classifications
 
-API documents must declare their traits, which is done via the `tags` property in the [front matter](http://jekyllrb.com/docs/frontmatter/) section of the document:
+API documents must declare their traits, which is done via the `tags` property in the [front matter](https://jekyllrb.com/docs/frontmatter/) section of the document:
 
 ```markdown
 ---

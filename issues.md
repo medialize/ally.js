@@ -43,5 +43,5 @@ This document is used for collecting all the bugs reported and issues raised bec
 * [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787)
 * [initial focus precedence: autofocus or fragment identifier](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27912)
 * [focusing steps don't contain scrolling an element into view](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27913)
-* [[Specifiction] Extending Element-level focus APIs](http://discourse.specifiction.org/t/extending-element-level-focus-apis/726)
+* [[Specifiction] Extending Element-level focus APIs](https://discourse.wicg.io/t/extending-element-level-focus-apis/726)
 

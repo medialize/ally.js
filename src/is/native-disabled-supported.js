@@ -5,7 +5,7 @@ import contextToElement from '../util/context-to-element';
 import _supports from '../supports/supports';
 let supports;
 
-// http://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
+// https://www.w3.org/TR/html5/disabled-elements.html#concept-element-disabled
 let disabledElementsPattern;
 const disabledElements = {
   input: true,

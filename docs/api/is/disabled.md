@@ -53,7 +53,7 @@ Boolean, `true` if the element is disabled.
 
 * [`ally.element.disabled`](../element/disabled.md) can disable *any* interactive element
 
-* [HTML5: Disabled Elements](http://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
+* [HTML5: Disabled Elements](https://www.w3.org/TR/html5/disabled-elements.html#disabled-elements)
 
 
 ## Contributing

@@ -5,7 +5,7 @@ tags: shadow-dom, svg, global-service, argument-object
 
 # ally.style.focusWithin
 
-Polyfill the CSS Selectors Level 4 pseudo-class [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
+Polyfill the CSS Selectors Level 4 pseudo-class [`:focus-within`](https://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 
 
 ## Description
@@ -73,7 +73,7 @@ handle.disengage();
 
 ## Related resources
 
-* [Selectors Level 4: `:focus-within` Pseudo-class](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
+* [Selectors Level 4: `:focus-within` Pseudo-class](https://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 
 
 ## Contributing

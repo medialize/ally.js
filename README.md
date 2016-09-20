@@ -22,9 +22,9 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Requirements
 
-* [ES5](http://kangax.github.io/compat-table/es5/)
+* [ES5](https://kangax.github.io/compat-table/es5/)
 * [ES6 Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
-* [CSSOM CSS.escape](https://developer.mozilla.org/en-US/docs/Web/API/CSS.escape) ([spec](http://dev.w3.org/csswg/cssom/#the-css.escape%28%29-method))
+* [CSSOM CSS.escape](https://developer.mozilla.org/en-US/docs/Web/API/CSS.escape) ([spec](https://dev.w3.org/csswg/cssom/#the-css.escape%28%29-method))
 * [Element.classList](https://developer.mozilla.org/en/docs/Web/API/Element/classList)
 
 
@@ -38,7 +38,7 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Resources
 
-* [Website](http://allyjs.io/)
+* [Website](https://allyjs.io/)
 * [Documentation](docs/README.md)
 * [CONTRIBUTING.md](CONTRIBUTING.md) explaining how to author, test, document and build ally.js
 * [CHANGELOG.md](CHANGELOG.md) detailing what changed over time
@@ -47,14 +47,14 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Supported by
 
-* [BrowserStack](http://browserstack.com) and [SauceLabs](http://saucelabs.com/) provide VMs for automated testing - free for open source projects.
+* [BrowserStack](https://browserstack.com) and [SauceLabs](https://saucelabs.com/) provide VMs for automated testing - free for open source projects.
 * [Code Climate](https://codeclimate.com/github/medialize/ally.js) and [Coveralls](https://coveralls.io/github/medialize/ally.js/) provide us with automated code analysis and coverage reports - free for open source projects.
 * [Travis CI](https://travis-ci.org/medialize/ally.js) provides a build server - free for open source projects.
 
 
 ## License
 
-ally.js is published under the [MIT License](http://opensource.org/licenses/mit-license).
+ally.js is published under the [MIT License](https://opensource.org/licenses/mit-license).
 
 
 [npm-image]: https://img.shields.io/npm/v/ally.js.svg

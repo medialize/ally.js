@@ -69,8 +69,8 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
 * [`ally.is.focusable`](../is/focusable.md) used to filter focusable elements
 
-* [HTML5: The `tabindex` attribute](http://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
-* [HTML5: Focus Management](http://www.w3.org/TR/html5/editing.html#focus-management)
+* [HTML5: The `tabindex` attribute](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)
+* [HTML5: Focus Management](https://www.w3.org/TR/html5/editing.html#focus-management)
 
 * [What Browsers Consider Focusable](../../data-tables/focusable.md)
 * [What ally.js Considers Focusable in `strategy: "strict"`](../../data-tables/focusable.strict.md)

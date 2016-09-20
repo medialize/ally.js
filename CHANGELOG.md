@@ -56,8 +56,8 @@ The following lists show the changes to the library grouped by domain.
 
 #### Documentation in v1.3.0
 
-* added [Hiding DOM elements](http://allyjs.io/tutorials/hiding-elements.html)
-* added [Managing focus in animated UI](http://allyjs.io/tutorials/focusing-in-animated-ui.html)
+* added [Hiding DOM elements](https://allyjs.io/tutorials/hiding-elements.html)
+* added [Managing focus in animated UI](https://allyjs.io/tutorials/focusing-in-animated-ui.html)
 
 ### Testing of 1.3.0
 
@@ -116,7 +116,7 @@ In order to avoid shipping any more *temporary* code than we already do in the f
 * We got rid of those pesky console warnings triggered by the library's initial tests.
 * We added full support for Internet Explorer 9 and made the library *loadable but not executable* in IE8 and NodeJS.
 * While version 1.0.0 was targeting *specific browsers*, version 1.1.0 is targeting *rendering engines* and thereby adding support for blink based Opera and Yandex Browser, as well as WebKit based browsers.
-* We've considerably increased compatibility with browser behavior in regard to what's "focusable". The test suite we used in version 1.0.0 was flawed in many ways. A complete rewrite of the browser tests and the subsequent overhaul of the [what browsers consider focusable](http://allyjs.io/data-tables/focusable.html) tables now paint a much more accurate picture of what's going on. And all of that is covered by ally.js, as the new tables [differences between browsers and ally.js](http://allyjs.io/data-tables/focusable.is.html) show.
+* We've considerably increased compatibility with browser behavior in regard to what's "focusable". The test suite we used in version 1.0.0 was flawed in many ways. A complete rewrite of the browser tests and the subsequent overhaul of the [what browsers consider focusable](https://allyjs.io/data-tables/focusable.html) tables now paint a much more accurate picture of what's going on. And all of that is covered by ally.js, as the new tables [differences between browsers and ally.js](https://allyjs.io/data-tables/focusable.is.html) show.
 
 Even though this is a "stability release" a few new features snuck in, most notably:
 
@@ -264,7 +264,7 @@ Intern unit and functional tests have been run for the following browsers, cover
 
 ### The plan
 
-I've laid the foundation for collaboration. My [goals](https://github.com/medialize/ally.js/tree/master/GOALS.md) are laid out. *Everything* is done on github, in the open. *Everything* is up for discussion. *Anyone* can join. See [contributing to ally.js](http://allyjs.io/contributing/index.html) for more.
+I've laid the foundation for collaboration. My [goals](https://github.com/medialize/ally.js/tree/master/GOALS.md) are laid out. *Everything* is done on github, in the open. *Everything* is up for discussion. *Anyone* can join. See [contributing to ally.js](https://allyjs.io/contributing/index.html) for more.
 
 
 ### The past
@@ -290,7 +290,7 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 
 #### Breaking changes (compared to 0.0.7)
 
-* ally.js is no longer available through bower, other than by [downloading the built archive](http://allyjs.io/getting-started.html#Installing-via-Package-Manager)
+* ally.js is no longer available through bower, other than by [downloading the built archive](https://allyjs.io/getting-started.html#Installing-via-Package-Manager)
 * `src/` was ES5 and AMD, it is now ES6. AMD modules are available in `dist/amd/`
 * dropping `focus/first` in favor of [`ally.query.firstTabbable`][ally/query/first-tabbable]
 * dropping `focus/trap` in favor of [`ally.maintain.disabled`][ally/maintain/disabled]
@@ -332,42 +332,42 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 
 * adding `event/shadow-focus` to emit custom event when focus changes within the ShadowDOM - extracted from `focus/within`
 * adding `event/interaction-type-listener` to track user input to differentiate keyboard and pointer input
-* adding [`focus/source`](http://allyjs.io/examples/focus-source.html) to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
-* adding [`focus/disable-focus`](http://allyjs.io/examples/disable-focus.html) to render elements inert and remove them from the document's focus navigation sequence
-* deprecating [`focus/trap`](http://allyjs.io/examples/trap-focus.html), use [`focus/disable-focus`](http://allyjs.io/examples/disable-focus.html) instead
+* adding [`focus/source`](https://allyjs.io/examples/focus-source.html) to allow styling of `:focus` dependent on user input (keyboard, pinter, script)
+* adding [`focus/disable-focus`](https://allyjs.io/examples/disable-focus.html) to render elements inert and remove them from the document's focus navigation sequence
+* deprecating [`focus/trap`](https://allyjs.io/examples/trap-focus.html), use [`focus/disable-focus`](https://allyjs.io/examples/disable-focus.html) instead
 
 
 ---
 
 ## 0.0.6 (June 17th 2015)
 
-* fixing [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html) to subtract scrollbars from visible space
+* fixing [`dom/visible-quotient`](https://allyjs.io/examples/visible-quotient.html) to subtract scrollbars from visible space
 
 
 ---
 
 ## 0.0.5 (June 15th 2015)
 
-* adding [`dom/when-visible`](http://allyjs.io/examples/focus-when-visible.html) to execute callback when an element becomes visible
-* improving [`dom/when-visible`](http://allyjs.io/examples/focus-when-visible.html) to also wait until an element becomes focusable
+* adding [`dom/when-visible`](https://allyjs.io/examples/focus-when-visible.html) to execute callback when an element becomes visible
+* improving [`dom/when-visible`](https://allyjs.io/examples/focus-when-visible.html) to also wait until an element becomes focusable
 
 
 ---
 
 ## 0.0.4 (February 3rd 2015)
 
-* adding [`dom/visible-quotient`](http://allyjs.io/examples/visible-quotient.html)
-* adding [`focus/when-visible`](http://allyjs.io/examples/focus-when-visible.html)
-* fixing [`fix-browser/pointer-focus-children`](http://allyjs.io/examples/fix-pointer-focus-children.html) to temporarily disable transitions
+* adding [`dom/visible-quotient`](https://allyjs.io/examples/visible-quotient.html)
+* adding [`focus/when-visible`](https://allyjs.io/examples/focus-when-visible.html)
+* fixing [`fix-browser/pointer-focus-children`](https://allyjs.io/examples/fix-pointer-focus-children.html) to temporarily disable transitions
 
 
 ---
 
 ## 0.0.3 (January 7th 2015)
 
-* adding [`fix-browser/pointer-focus-children`](http://allyjs.io/examples/fix-pointer-focus-children.html)
+* adding [`fix-browser/pointer-focus-children`](https://allyjs.io/examples/fix-pointer-focus-children.html)
 * adding `dom/focus-target` to find the first focusable element in an element's ancestry
-* improving [`fix-browser/pointer-focus-parent`](http://allyjs.io/examples/fix-pointer-focus-parent.html) for less complexity
+* improving [`fix-browser/pointer-focus-parent`](https://allyjs.io/examples/fix-pointer-focus-parent.html) for less complexity
 * improving `fix-browser` by only engaging handlers for affected browsers (yes, *user agent sniffing*, deal with it)
 * fixing `dom/is-visible` to look at computed styles, not the element's styles (duh!)
 
@@ -376,15 +376,15 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 
 ## 0.0.2 (January 5th 2015)
 
-* adding [`fix-browser/pointer-focus-input`](http://allyjs.io/examples/fix-pointer-focus-input.html)
-* adding [`dom/active-elements`](http://allyjs.io/examples/active-elements.html) to identify the actually focsued element and its host elements in ShadowDOM
-* adding [`focus/within`](http://allyjs.io/examples/focus-within.html) to "polyfill" [`:focus-within`](http://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
+* adding [`fix-browser/pointer-focus-input`](https://allyjs.io/examples/fix-pointer-focus-input.html)
+* adding [`dom/active-elements`](https://allyjs.io/examples/active-elements.html) to identify the actually focsued element and its host elements in ShadowDOM
+* adding [`focus/within`](https://allyjs.io/examples/focus-within.html) to "polyfill" [`:focus-within`](https://dev.w3.org/csswg/selectors-4/#the-focus-within-pseudo)
 * adding warning to browser support detection when document does not have focus
 * adding `supports/supports-cache` to store browser compatibility data
 * adding `focus/first` to identify and focus the first `[autofocus]` or non positive tabindex (`[tabindex=1]`) element
 * adding `dom/query-domsequence` to separate sorting and mutating the list from `dom/query-tabbable`
-* improving [`fix-browser/pointer-focus-parent`](http://allyjs.io/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
-* improving [`focus/trap`](http://allyjs.io/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
+* improving [`fix-browser/pointer-focus-parent`](https://allyjs.io/examples/fix-pointer-focus-parent.html) for fewer DOM interactions and less code
+* improving [`focus/trap`](https://allyjs.io/examples/trap-focus.html) to allow nothing being focus and re-acquire focus when required
 * improving `selector/focusable` (thus `dom/query-focusable`) by also finding focusable shadowed elements (via `>>>` or `/deep/`, ShadowDOM) - [#11](https://github.com/medialize/ally.js/issues/11)
 * fixing `event/active-element` to be dispatched on `document` rather than `document.body`
 * fixing `prototype/svgelement.prototype.focus` to also cover `SVGElement.prototype.blur`
@@ -398,50 +398,50 @@ Version `1.0.0` is a complete rewrite from the the early `0.0.x` releases, there
 * initial release "focus"
 
 
-[ally/element/blur]: http://allyjs.io/api/element/blur.html
-[ally/element/disabled]: http://allyjs.io/api/element/disabled.html
-[ally/element/focus]: http://allyjs.io/api/element/focus.html
-[ally/event/active-element]: http://allyjs.io/api/event/active-element.html
-[ally/event/shadow-focus]: http://allyjs.io/api/event/shadow-focus.html
-[ally/fix/pointer-focus-children]: http://allyjs.io/api/fix/pointer-focus-children.html
-[ally/fix/pointer-focus-input]: http://allyjs.io/api/fix/pointer-focus-input.html
-[ally/fix/pointer-focus-parent]: http://allyjs.io/api/fix/pointer-focus-parent.html
-[ally/get/active-element]: http://allyjs.io/api/get/active-element.html
-[ally/get/active-elements]: http://allyjs.io/api/get/active-elements.html
-[ally/get/focus-target]: http://allyjs.io/api/get/focus-target.html
-[ally/get/focus-redirect-target]: http://allyjs.io/api/get/focus-redirect-target.html
-[ally/get/insignificant-branches]: http://allyjs.io/api/get/insignificant-branches.html
-[ally/get/parents]: http://allyjs.io/api/get/parents.html
-[ally/get/shadow-host-parents]: http://allyjs.io/api/get/shadow-host-parents.html
-[ally/get/shadow-host]: http://allyjs.io/api/get/shadow-host.html
-[ally/is/active-element]: http://allyjs.io/api/is/active-element.html
-[ally/is/disabled]: http://allyjs.io/api/is/disabled.html
-[ally/is/focus-relevant]: http://allyjs.io/api/is/focus-relevant.html
-[ally/is/focusable]: http://allyjs.io/api/is/focusable.html
-[ally/is/only-tabbable]: http://allyjs.io/api/is/only-tabbable.html
-[ally/is/shadowed]: http://allyjs.io/api/is/shadowed.html
-[ally/is/tabbable]: http://allyjs.io/api/is/tabbable.html
-[ally/is/valid-area]: http://allyjs.io/api/is/valid-area.html
-[ally/is/valid-tabindex]: http://allyjs.io/api/is/valid-tabindex.html
-[ally/is/visible]: http://allyjs.io/api/is/visible.html
-[ally/maintain/disabled]: http://allyjs.io/api/maintain/disabled.html
-[ally/maintain/hidden]: http://allyjs.io/api/maintain/hidden.html
-[ally/maintain/tab-focus]: http://allyjs.io/api/maintain/tab-focus.html
-[ally/map/attribute]: http://allyjs.io/api/map/attribute.html
-[ally/map/keycode]: http://allyjs.io/api/map/keycode.html
-[ally/observe/interaction-type]: http://allyjs.io/api/observe/interaction-type.html
-[ally/observe/shadow-mutations]: http://allyjs.io/api/observe/shadow-mutations.html
-[ally/query/first-tabbable]: http://allyjs.io/api/query/first-tabbable.html
-[ally/query/focusable]: http://allyjs.io/api/query/focusable.html
-[ally/query/shadow-hosts]: http://allyjs.io/api/query/shadow-hosts.html
-[ally/query/tabbable]: http://allyjs.io/api/query/tabbable.html
-[ally/query/tabsequence]: http://allyjs.io/api/query/tabsequence.html
-[ally/style/focus-source]: http://allyjs.io/api/style/focus-source.html
-[ally/style/focus-within]: http://allyjs.io/api/style/focus-within.html
-[ally/when/focusable]: http://allyjs.io/api/when/focusable.html
-[ally/when/key]: http://allyjs.io/api/when/key.html
-[ally/when/visible-area]: http://allyjs.io/api/when/visible-area.html
-[ally/prototype]: http://allyjs.io/api/prototype.html
-[ally/selector]: http://allyjs.io/api/selector.html
-[ally/supports]: http://allyjs.io/api/supports.html
-[ally/util]: http://allyjs.io/api/util.html
+[ally/element/blur]: https://allyjs.io/api/element/blur.html
+[ally/element/disabled]: https://allyjs.io/api/element/disabled.html
+[ally/element/focus]: https://allyjs.io/api/element/focus.html
+[ally/event/active-element]: https://allyjs.io/api/event/active-element.html
+[ally/event/shadow-focus]: https://allyjs.io/api/event/shadow-focus.html
+[ally/fix/pointer-focus-children]: https://allyjs.io/api/fix/pointer-focus-children.html
+[ally/fix/pointer-focus-input]: https://allyjs.io/api/fix/pointer-focus-input.html
+[ally/fix/pointer-focus-parent]: https://allyjs.io/api/fix/pointer-focus-parent.html
+[ally/get/active-element]: https://allyjs.io/api/get/active-element.html
+[ally/get/active-elements]: https://allyjs.io/api/get/active-elements.html
+[ally/get/focus-target]: https://allyjs.io/api/get/focus-target.html
+[ally/get/focus-redirect-target]: https://allyjs.io/api/get/focus-redirect-target.html
+[ally/get/insignificant-branches]: https://allyjs.io/api/get/insignificant-branches.html
+[ally/get/parents]: https://allyjs.io/api/get/parents.html
+[ally/get/shadow-host-parents]: https://allyjs.io/api/get/shadow-host-parents.html
+[ally/get/shadow-host]: https://allyjs.io/api/get/shadow-host.html
+[ally/is/active-element]: https://allyjs.io/api/is/active-element.html
+[ally/is/disabled]: https://allyjs.io/api/is/disabled.html
+[ally/is/focus-relevant]: https://allyjs.io/api/is/focus-relevant.html
+[ally/is/focusable]: https://allyjs.io/api/is/focusable.html
+[ally/is/only-tabbable]: https://allyjs.io/api/is/only-tabbable.html
+[ally/is/shadowed]: https://allyjs.io/api/is/shadowed.html
+[ally/is/tabbable]: https://allyjs.io/api/is/tabbable.html
+[ally/is/valid-area]: https://allyjs.io/api/is/valid-area.html
+[ally/is/valid-tabindex]: https://allyjs.io/api/is/valid-tabindex.html
+[ally/is/visible]: https://allyjs.io/api/is/visible.html
+[ally/maintain/disabled]: https://allyjs.io/api/maintain/disabled.html
+[ally/maintain/hidden]: https://allyjs.io/api/maintain/hidden.html
+[ally/maintain/tab-focus]: https://allyjs.io/api/maintain/tab-focus.html
+[ally/map/attribute]: https://allyjs.io/api/map/attribute.html
+[ally/map/keycode]: https://allyjs.io/api/map/keycode.html
+[ally/observe/interaction-type]: https://allyjs.io/api/observe/interaction-type.html
+[ally/observe/shadow-mutations]: https://allyjs.io/api/observe/shadow-mutations.html
+[ally/query/first-tabbable]: https://allyjs.io/api/query/first-tabbable.html
+[ally/query/focusable]: https://allyjs.io/api/query/focusable.html
+[ally/query/shadow-hosts]: https://allyjs.io/api/query/shadow-hosts.html
+[ally/query/tabbable]: https://allyjs.io/api/query/tabbable.html
+[ally/query/tabsequence]: https://allyjs.io/api/query/tabsequence.html
+[ally/style/focus-source]: https://allyjs.io/api/style/focus-source.html
+[ally/style/focus-within]: https://allyjs.io/api/style/focus-within.html
+[ally/when/focusable]: https://allyjs.io/api/when/focusable.html
+[ally/when/key]: https://allyjs.io/api/when/key.html
+[ally/when/visible-area]: https://allyjs.io/api/when/visible-area.html
+[ally/prototype]: https://allyjs.io/api/prototype.html
+[ally/selector]: https://allyjs.io/api/selector.html
+[ally/supports]: https://allyjs.io/api/supports.html
+[ally/util]: https://allyjs.io/api/util.html

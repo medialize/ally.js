@@ -12,7 +12,7 @@ Observes changes to `document.activeElement` regardless of focus/blur events and
 
 The property `document.activeElement` is visited on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
-This event should not be abused because `FocusEvent`s do not bubble and are therefore unaccessible to [event delegation](http://davidwalsh.name/event-delegate), as the handling of `focus` and `blur` events *can* be delegated when using the [capture phase](http://www.quirksmode.org/js/events_order.html):
+This event should not be abused because `FocusEvent`s do not bubble and are therefore unaccessible to [event delegation](https://davidwalsh.name/event-delegate), as the handling of `focus` and `blur` events *can* be delegated when using the [capture phase](http://www.quirksmode.org/js/events_order.html):
 
 ```js
 document.addEventListener('focus', function(event) {

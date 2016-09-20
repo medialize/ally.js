@@ -36,7 +36,7 @@
   <p>
     Firefox does not know either CSS pseudo <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1112251"><code>::shadow</code></a> nor <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1117572"><code>&gt;&gt;&gt;</code></a> (formerly <code>/deep/</code>)
     and thus cannot "easily" query shadow hosts. Chrome supports the pseudo element, but only if a descendant of <code>::shadow</code> is queried. Chrome has not yet switched from <code>/deep/</code> to <code>&gt;&gt;&gt;</code> (<a href="https://code.google.com/p/chromium/issues/detail?id=446051">Bug 446051</a>)
-    This effectively allows finding all focusable elements in the <a href="http://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
+    This effectively allows finding all focusable elements in the <a href="https://w3c.github.io/webcomponents/spec/shadow/#dfn-composed-tree">composed tree</a>.
   </p>
   <p>
     Firefox adds shadowed elements with <code>[tabindex="1"]</code> to the document's tablist in the global order.
@@ -55,13 +55,13 @@
 
   
   <!--
-    http://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events
-    http://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
-    http://w3c.github.io/webcomponents/spec/shadow/#active-element
+    https://w3c.github.io/webcomponents/spec/shadow/#retargeting-focus-events
+    https://w3c.github.io/webcomponents/spec/shadow/#focus-navigation
+    https://w3c.github.io/webcomponents/spec/shadow/#active-element
 
-    http://dev.w3.org/csswg/css-scoping-1/#shadow-pseudoelement
-    http://dev.w3.org/csswg/css-scoping/#shadow-pseudoelement - ::shadow
-    http://dev.w3.org/csswg/css-scoping/#deep-combinator - /deep/ vs. >>>
+    https://dev.w3.org/csswg/css-scoping-1/#shadow-pseudoelement
+    https://dev.w3.org/csswg/css-scoping/#shadow-pseudoelement - ::shadow
+    https://dev.w3.org/csswg/css-scoping/#deep-combinator - /deep/ vs. >>>
 
     access to shadowed activeElement:
     shadowHostElement.shadowRoot.activeElement

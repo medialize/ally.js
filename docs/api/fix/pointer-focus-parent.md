@@ -14,7 +14,7 @@ Considering the following markup, clicking on the `<a>` element would focus the 
 
 ```html
 <div tabindex="-1">
-  <a href="http://example.org/">Hello World</a>
+  <a href="https://example.org/">Hello World</a>
 </div>
 ```
 
