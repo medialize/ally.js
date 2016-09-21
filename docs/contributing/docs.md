@@ -146,11 +146,14 @@ Got a better Idea to solve this? [file an issue](https://github.com/medialize/al
 
 ### Definitions
 
-Document can make use of definition lists. An unordered list containing only items starting with the term in strong emphasis ending with a colon (`:`) will be converted from `<ul>` to `<dl>` for the purpose of proper semantics:
+Using [markdown-it-deflist](https://www.npmjs.com/package/markdown-it-deflist) the documentation allows [MarkdownExtra-style definition lists](https://michelf.ca/projects/php-markdown/extra/#def-list):
 
 ```markdown
-* **Term 1:** Explanation 1
-* **Term 2:** Explanation 2
+Term 1
+: Explanation 1
+
+Term 2
+: Explanation 2
 ```
 
 ### API classifications

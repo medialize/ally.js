@@ -113,6 +113,7 @@
     "lint-staged": "^1.0.1",
     "markdown-it": "^8.0.0",
     "markdown-it-container": "^2.0.0",
+    "markdown-it-deflist": "^2.0.1",
     "markdownlint": "^0.2.0",
     "metalsmith": "^2.1.0",
     "metalsmith-broken-link-checker": "^0.1.8",

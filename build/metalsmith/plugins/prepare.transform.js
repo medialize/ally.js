@@ -76,41 +76,6 @@ function extractTableOfContents($, data) {
   });
 }
 
-function convertUnorderedListToDefinitionList($/*, data*/) {
-  $('ul').each(function() {
-    const $ul = $(this);
-    const $titles = $ul.find('li > strong:first-child');
-    if ($titles.length !== $ul.children().length) {
-      return;
-    }
-
-    let mismatch = false;
-    $titles.each(function() {
-      const term = String($(this).text());
-      if (term.slice(-1) !== ':' || term === 'EXAMPLE:') {
-        mismatch = true;
-      }
-    });
-
-    if (mismatch) {
-      return;
-    }
-
-    const $dl = $('<dl>');
-    $titles.each(function() {
-      const $term = $(this);
-      const $definition = $term.parent();
-      const term = String($term.remove().text());
-      const definition = $definition.html();
-      $dl.append($('<dt>').text(term));
-      $dl.append($('<dd>').html(definition));
-    });
-
-    $ul.after($dl);
-    $ul.remove();
-  });
-}
-
 function convertCodeLanguageForPrism($/*, data*/) {
   $('pre > code').each(function() {
     const $this = $(this);
@@ -130,8 +95,6 @@ module.exports = function($, data) {
   removeEmptyApiSections($, data);
   makeHeadlinesLinkable($, data);
   extractTableOfContents($, data);
-
-  convertUnorderedListToDefinitionList($, data);
 
   convertCodeLanguageForPrism($, data);
 };

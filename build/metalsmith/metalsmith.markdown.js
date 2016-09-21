@@ -23,7 +23,11 @@ const containerOptions = {
   },
 }
 
+// see https://allyjs.io/contributing/docs.html#Notes-and-warnings
+const deflist = require('markdown-it-deflist');
+
 module.exports = function() {
   return markdown(markdownOptions)
-    .use(container, 'note', containerOptions);
+    .use(container, 'note', containerOptions)
+    .use(deflist);
 };
