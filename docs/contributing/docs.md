@@ -113,20 +113,32 @@ The command `npm run publish:jsbin` uses [jsbin-sync](https://github.com/rodneyr
 
 ### Notes and warnings
 
-In API pages (`layout: doc-api.html`) a separate block `## Notes` can contain a list of notes and warnings in the following form:
+Using [markdown-it-container](https://www.npmjs.com/package/markdown-it-container) the documentation accepts `:::` fenced markdown blocks to highlight certain bits. In API pages (`layout: doc-api.html`) the section `## Notes` can be used to collect multiple highlights:
 
 ```markdown
 ## Notes
 
-* **NOTE:** I'm informing you of something you SHOULD know
-* **WARNING:** I'm informing you of something you MUST know (because it's not obvious)
-* **TIP:** I'm informing you of a best practice
-* **HELP:** I'm informing you of something you can contribute to this project
+:::note
+I'm informing you of something you SHOULD know
+:::
+
+:::warning
+I'm informing you of something you MUST know (because it's not obvious)
+:::
+
+:::tip
+I'm informing you of a best practice
+:::
+
+:::help
+I'm informing you of something you can contribute to this project
+:::
 ```
 
-In any other doc page (e.g. `layout: doc-page.html`) notes and warnings do not have to (but can) be contained in a `## Notes` section. The notation (list with bold identifier, identifier upper-cased and containing the colon) remains the same. The list notation is used to allow `build/metalsmith/plugins/prepare.js` reformatting those blocks to `<div class="note">…</div>` while still allowing github to render something readable.
+:::help
+Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
+:::
 
-* **HELP:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
 
 ### Definitions
 

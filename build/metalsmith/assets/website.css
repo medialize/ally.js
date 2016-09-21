@@ -307,19 +307,21 @@ main .what-ally-is .logo {
  * Block Content
  ************************************************************/
 
-main .warning,
-main .tip,
-main .help,
-main .note {
+main [data-note-type] {
   padding: 12px;
   border: 1px solid #E5E5E5;
   background: rgba(0, 0, 0, 0.05);
 }
-main .warning > strong:first-child {
+main [data-note-type]:before {
+  content: attr(data-note-type) ": ";
+  font-weight: bold;
+  text-transform: uppercase;
+}
+main [data-note-type="warning"]:before {
   color: #DA0000;
 }
-main .tip > strong:first-child,
-main .help > strong:first-child {
+main [data-note-type="tip"]:before,
+main [data-note-type="help"]:before {
   color: blue;
 }
 
