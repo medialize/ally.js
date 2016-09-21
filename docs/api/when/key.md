@@ -116,9 +116,17 @@ The callback is executed in the context of `context` (that's where `this` inside
 
 ## Notes
 
-* **NOTE:** Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with [Gecko 286933](https://bugzilla.mozilla.org/show_bug.cgi?id=286933).
-* **WARNING:** The callback for the `<key-binding>` `space` only executes if *no* modifier key was pressed. In order to make the callback execute regardless of modifier keys, use the `<key-binding>` `*+space`.
-* **NOTE:** The modifiers `alt`, `ctrl`, `meta` usually engage system-level or browser-level functionality. Do not use these modifiers lightly. For example `alt+a` prints the letter `å` on a Mac with German keyboard layout, `meta+q` exits the application and `meta+space` engages Spotlight.
+:::note
+Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with [Gecko 286933](https://bugzilla.mozilla.org/show_bug.cgi?id=286933).
+:::
+
+:::note
+The callback for the `<key-binding>` `space` only executes if *no* modifier key was pressed. In order to make the callback execute regardless of modifier keys, use the `<key-binding>` `*+space`.
+:::
+
+:::note
+The modifiers `alt`, `ctrl`, `meta` usually engage system-level or browser-level functionality. Do not use these modifiers lightly. For example `alt+a` prints the letter `å` on a Mac with German keyboard layout, `meta+q` exits the application and `meta+space` engages Spotlight.
+:::
 
 
 ## Related resources

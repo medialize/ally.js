@@ -114,7 +114,9 @@ var queryFocusable = require('ally.js/query/focusable');
 console.log('focusable elements', queryFocusable());
 ```
 
-* **NOTE:** The CommonJS modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::note
+The CommonJS modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::
 
 
 ## Using ES6 modules
@@ -129,7 +131,9 @@ import queryFocusable from 'ally.js/src/query/focusable';
 console.log('focusable elements', queryFocusable());
 ```
 
-* **NOTE:** The ES6 source modules are available from the [github repository](https://github.com/medialize/ally.js) through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::note
+The ES6 source modules are available from the [github repository](https://github.com/medialize/ally.js) through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::
 
 
 ## Using AMD modules
@@ -176,7 +180,9 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
 });
 ```
 
-* **NOTE:** The AMD modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::note
+The AMD modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::
 
 
 ## Integrations

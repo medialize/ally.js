@@ -51,7 +51,9 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Notes
 
-* **WARNING:** As SVG elements cannot be focused by script in Internet Explorer and Firefox, these elements will not be part of the tabsequence, thus not reachable when `ally.maintain.tabFocus` is active.
+:::warning
+As SVG elements cannot be focused by script in Internet Explorer and Firefox, these elements will not be part of the tabsequence, thus not reachable when `ally.maintain.tabFocus` is active.
+:::
 
 
 ## Related resources

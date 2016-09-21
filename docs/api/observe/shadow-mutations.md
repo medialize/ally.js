@@ -64,8 +64,13 @@ The callback is invoked with one argument, an `array` of [`MutationRecord`s](htt
 
 ## Notes
 
-* **NOTE:** In browsers that do not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) (e.g. Internet Explorer 9 and 10) this service does nothing. [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden on the browser, so not an option to fill the gap.
-* **NOTE:** The creation of `ShadowRoots` cannot be detected reliably,  [w3c/webcomponents#390](https://github.com/w3c/webcomponents/issues/390).
+:::note
+In browsers that do not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) (e.g. Internet Explorer 9 and 10) this service does nothing. [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden on the browser, so not an option to fill the gap.
+:::
+
+:::note
+The creation of `ShadowRoots` cannot be detected reliably,  [w3c/webcomponents#390](https://github.com/w3c/webcomponents/issues/390).
+:::
 
 
 ## Related resources

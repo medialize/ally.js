@@ -98,7 +98,9 @@ Sometimes you need some DOM traversal utilities
 
 When creating libraries these modules may come in handy.
 
-* **NOTE:** When you find yourself using one of these in your application code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
+:::note
+When you find yourself using one of these in your application code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
+:::
 
 
 ### DOM traversal (extended)
@@ -136,8 +138,13 @@ Translate volatile events to stateful interfaces
 
 When working on ally.js these modules may come in handy.
 
-* **NOTE:** When you find yourself using one of these in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
-* **NOTE:** These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `dist/ally.min.js`.
+:::note
+When you find yourself using one of these in your application or library code, we should talk about what you're trying to achieve and how we could do that as part of the library instead. Get in touch, [file an issue](https://github.com/medialize/ally.js/issues) explaining what you're trying to achieve!
+:::
+
+::note
+These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are *not* exposed in the production bundle `dist/ally.min.js`.
+:::
 
 The internal tools are documented in a less accessible way to make it just a tiny bit harder for someone not working on ally to use them. This is intentional. The stability of these APIs is not guaranteed.
 

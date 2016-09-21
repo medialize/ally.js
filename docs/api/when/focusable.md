@@ -63,7 +63,9 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Notes
 
-* **NOTE:** This method *may* cause [layout thrashing](http://wilsonpage.co.uk/preventing-layout-thrashing/)
+:::note
+This method *may* cause [layout thrashing](http://wilsonpage.co.uk/preventing-layout-thrashing/).
+:::
 
 
 ## Related resources

@@ -14,12 +14,17 @@ This allows an application to make sure no element *other than the exempted* can
 
 Elements are disabled by [`ally.element.disabled`](../element/disabled.md) and can be identified in the DOM by the attribute `[data-ally-disabled="true"]` to align with styling of other `:disabled` elements.
 
+`ally.maintain.disabled` observes DOM manipulations and automatically disables newly added elements when necessary.
+
 The proposed `inert` attribute was [removed from HTML5](https://html5.org/r/8536), because people thought [inert subtrees](https://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees) by way of the `<dialog>` element would suffice. While we believe *it doesn't*, the `inert` attribute would only have solved half of the problem, because there's no way to avoid inheriting the inert state onto children. This behavior can be observed in the [Google Chrome Inert Attribute Polyfill](https://github.com/GoogleChrome/inert-polyfill).
 
-* **NOTE:** The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
-* **NOTE:** There [WHATWG](https://whatwg.org/) is discussing a [blockElements API](https://github.com/whatwg/html/issues/897) that would cover the primary use-case of `ally.maintain.disabled` in a much better way.
+:::note
+The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
+:::
 
-`ally.maintain.disabled` observes DOM manipulations and automatically disables newly added elements when necessary.
+:::note
+The [WHATWG](https://whatwg.org/) is discussing a [blockElements API](https://github.com/whatwg/html/issues/897) that would cover the primary use-case of `ally.maintain.disabled` in a much better way.
+:::
 
 
 ## Usage
@@ -63,9 +68,17 @@ A [`<service>`](../concepts.md#Service) interface, providing the `handle.disenga
 
 ## Notes
 
-* **NOTE:** `ShadowHost`s are pierced and `ShadowRoot` content is made inert as well (except for closed shadow trees).
-* **NOTE:** Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden.
-* **WARNING:** Any element not identified as focus relevant by [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes) and not identified as only tabbable by [`ally.is.onlyTabbable`](../is/only-tabbable.md#Notes) is *not* made inert either. See the [identified elements using `strategy: "strict"` compatibility table](../../data-tables/focusable.strict.md).
+:::note
+`ShadowHost`s are pierced and `ShadowRoot` content is made inert as well (except for closed shadow trees).
+:::
+
+:::note
+Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Mutation Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events) are too much of a burden.
+:::
+
+:::warning
+Any element not identified as focus relevant by [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes) and not identified as only tabbable by [`ally.is.onlyTabbable`](../is/only-tabbable.md#Notes) is *not* made inert either. See the [identified elements using `strategy: "strict"` compatibility table](../../data-tables/focusable.strict.md).
+:::
 
 
 ## Related resources

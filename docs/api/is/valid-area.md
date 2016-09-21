@@ -44,10 +44,21 @@ Boolean, `true` if the element is a valid area.
 
 ## Notes
 
-* [object element usemap should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756)
-* [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787)
-* **NOTE:** Firefox only allows fully loaded images to reference image maps
-* **NOTE:** Multiple use of same image map hides elements from tabbing sequence - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126)
+:::note
+The [object element's usemap attribute should be deprecated](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27756).
+:::
+
+:::note
+The [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787) is not standardized.
+:::
+
+:::note
+Firefox only allows fully loaded images to reference image maps.
+:::
+
+:::warning
+Multiple use of same image map hides elements from tabbing sequence - [Gecko 1116126](https://bugzilla.mozilla.org/show_bug.cgi?id=1116126)
+:::
 
 
 ## Related resources

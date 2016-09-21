@@ -57,8 +57,13 @@ var element = ally.query.firstTabbable({
 
 See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 
-* **NOTE:** Google Chrome's `<dialog>` implementation will focus the first keyboard focusable element, even if it has `[tabindex="1"]`, ally.js does not.
-* **WARNING:** Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored.
+:::note
+Google Chrome's `<dialog>` implementation will focus the first keyboard focusable element, even if it has `[tabindex="1"]`, ally.js does not.
+:::
+
+:::warning
+Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are ignored.
+:::
 
 
 ## Related resources

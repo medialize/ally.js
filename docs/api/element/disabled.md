@@ -23,7 +23,9 @@ The following things are done in order to make an element inert:
 * adding the CSS property `pointer-events: none;` to prevent any interaction from mouse and touch
 * adding `aria-disabled="true"` to inform the AccessibilityTree of the element's state
 
-* **NOTE:** The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
+:::note
+The [WICG](https://wicg.io/) (Web Incubater Community Group) is working on [reviving the inert attribute](https://github.com/wicg/inert) (including a polyfill).
+:::
 
 ## Usage
 
@@ -67,8 +69,13 @@ var isDisabled = ally.element.disabled(element);
 
 ## Notes
 
-* **WARNING:** Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
-* **NOTE:** In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133)
+:::warning
+Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
+:::
+
+:::note
+In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133).
+:::
 
 
 ## Related resources

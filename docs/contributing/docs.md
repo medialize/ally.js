@@ -8,7 +8,9 @@ The documentation is authored in markdown in the `docs` directory. We're using [
 
 The idea is to create a documentation that can be read on github and on the generated website.
 
-* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+:::note
+If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+:::
 
 
 ## Building the website
@@ -39,7 +41,9 @@ npm run build:legacy
 
 The commands `lint:md` and `build:website` are also executed by `npm run lint` and `npm run build`.
 
-* **NOTE:** Before you build the website using `npm run build:website` you need to have run `npm run build` before, in order for the library components to be available to the website build. You don't need to build the library every time you build the website, which is why this step is disconnected. If you ran `npm run init` after cloning the repository, everything is taken care of already.
+:::note
+Before you build the website using `npm run build:website` you need to have run `npm run build` before, in order for the library components to be available to the website build. You don't need to build the library every time you build the website, which is why this step is disconnected. If you ran `npm run init` after cloning the repository, everything is taken care of already.
+:::
 
 If you're new to metalsmith, have a look at [simple static site demo](https://github.com/segmentio/metalsmith/tree/master/examples/static-site) and [getting to know metalsmith](http://www.robinthrift.com/posts/getting-to-know-metalsmith/).
 
@@ -187,4 +191,6 @@ In addition to the less specific [CHANGELOG.md](https://github.com/medialize/all
 
 Since the exact release version a change will be included in is not necessarily known during development, the placeholder `v#master` should be used.
 
-* **NOTE:** The version notation may be extended to also contain addition `+v1.0.0` / removal `-v1.0.0` / change `~v1.0.0` should this become necessary. The website builder may replace the code elements by links to the change log.
+:::note
+The version notation may be extended to also contain addition `+v1.0.0` / removal `-v1.0.0` / change `~v1.0.0` should this become necessary. The website builder may replace the code elements by links to the change log.
+:::

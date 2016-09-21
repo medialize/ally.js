@@ -368,7 +368,10 @@ function closeDialog() {
 }
 ```
 
-* **NOTE:** [`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) was added in version `v1.1.0`.
+:::note
+[`ally.maintain.tabFocus`](../api/maintain/tab-focus.md) was added in version `v1.1.0`.
+:::
+
 
 ### Reacting to <kbd>Enter</kbd> and <kbd>Escape</kbd>
 
@@ -535,4 +538,7 @@ function openDialog() {
 ## Interactive demo
 
 * **EXAMPLE:** [Dialog Tutorial](./dialog.example.html)
-* **NOTE:** Focus is only trapped inside of the embedded iframe. The iframe's content cannot change this page in any way.
+
+:::note
+Focus is only trapped inside of the embedded iframe. The iframe's content cannot change this page in any way.
+:::

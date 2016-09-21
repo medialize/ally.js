@@ -35,6 +35,6 @@ The following sequence steps are necessary to fully release ally.js
 * `master` contains fully integrated work that may not be released yet. All PRs have to point at this branch.
 * `gh-pages` contains the website. It is only updated through `npm run publish:website`. PRs against this branch must be rejected.
 
----
-
-* **HELP:** Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
+:::help
+Got a better Idea to solve this? [file an issue](https://github.com/medialize/ally.js/issues/new)!
+:::

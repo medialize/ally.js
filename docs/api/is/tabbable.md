@@ -59,7 +59,9 @@ Boolean, `true` if the element is tabbable.
 
 See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
 
-* **NOTE:** there is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent sniffing (via [platform.js](https://github.com/bestiejs/platform.js/)) is done internally to fix mismatches.
+:::note
+There is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent sniffing (via [platform.js](https://github.com/bestiejs/platform.js/)) is done internally to fix mismatches.
+:::
 
 
 ## Related resources

@@ -60,7 +60,9 @@ Boolean, `true` if the element is visible (i.e. not hidden by CSS).
 
 ## Notes
 
-* **NOTE:** `<area>` elements are not rendered by themselves, so they are *always* considered visible.
+:::note
+`<area>` elements are not rendered by themselves, so they are *always* considered visible.
+:::
 
 
 ## Related resources

@@ -6,7 +6,9 @@ layout: doc-page.html
 
 The tests are built on top of [The Intern](https://theintern.github.io/). See the [tutorial](https://github.com/theintern/intern-tutorial) and [some examples](https://github.com/theintern/intern-examples) to get started. Also see [Chai BDD](http://chaijs.com/api/bdd/) for asserting stuff and [leadfoot](https://theintern.github.io/leadfoot/) for interacting with browsers.
 
-* **NOTE:** Unlike ally.js, the tests are not written in ES6, but follow Intern's ES5 and AMD scheme.
+:::note
+Unlike ally.js, the tests are not written in ES6, but follow Intern's ES5 and AMD scheme.
+:::
 
 The test infrastructure is located in the `test` directory. Note that the `tests` directory is occupied by manual browser support tests.
 
@@ -27,7 +29,9 @@ You can run the unit tests in any browser by starting the server using `npm run 
 http://localhost:9000/node_modules/intern/client.html?config=test/browser
 ```
 
-* **NOTE:** The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
+:::note
+The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
+:::
 
 
 ## Locally running all tests in the browser
@@ -39,7 +43,9 @@ Both unit and functional tests can be executed in Google Chrome locally via `npm
 npm run test
 ```
 
-* **NOTE:** The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
+:::note
+The tests run off `dist/amd` and require the `reports` directory to exist. Before running running the tests, you need to have run `npm run clean` and `npm run build:amd` at least once.
+:::
 
 
 ## Remotely running all tests in all browsers
@@ -105,7 +111,9 @@ reports
 
 When the tests executed, code coverage results can be uploaded to [Code Climate](https://codeclimate.com/) and [Coveralls](https://coveralls.io/) by running `npm run publish:lcov`.
 
-* **NOTE:** The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
+:::note
+The coverage measured by `npm run test` is (dramatically) lower than for `npm run test-ci`, because the former only runs in a single browser, and ally.js has code paths that only run in specific browsers.
+:::
 
 
 ## Analyzing bundle size

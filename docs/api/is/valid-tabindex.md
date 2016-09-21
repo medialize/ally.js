@@ -38,10 +38,20 @@ Boolean, `true` if the element is has a valid tabindex attribute specified.
 
 ## Notes
 
-* **NOTE:** empty tabindex `[tabindex=""]` parsed and exposed as `[tabindex="-32768"]` - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965)
-* **WARNING:** invalid `tabindex` value makes element focusable - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054)
-* **WARNING:** Gecko, Blink and WebKit consider `[tabindex="3x"]` valid
-* **WARNING:** only Blink and WebKit respect the `tabindex` attribute on SVGElements (defined in [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG))
+::note
+Empty tabindex `[tabindex=""]` parsed and exposed as `[tabindex="-32768"]` - [Trident 1072965](https://connect.microsoft.com/IE/feedback/details/1072965).
+:::
+
+:::note
+Invalid `tabindex` value makes element focusable in - [Gecko 1128054](https://bugzilla.mozilla.org/show_bug.cgi?id=1128054).
+:::
+
+:::warning
+Gecko, Blink and WebKit consider `[tabindex="3x"]` valid.
+:::
+
+:::warning
+Only Blink and WebKit respect the `tabindex` attribute on SVGElements (defined in [SVG 2](https://svgwg.org/svg2-draft/access.html#AccessibilityAndSVG)).
 
 
 ## Related resources

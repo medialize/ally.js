@@ -45,8 +45,13 @@ Boolean, `true` if the element is disabled.
 
 ## Notes
 
-* **NOTE:** The `<fieldset>` element can be disabled, inheriting the state onto all form elements it contains.
-* **NOTE:** WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themselves, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086)
+:::note
+The `<fieldset>` element can be disabled, inheriting the state onto all form elements it contains.
+:::
+
+:::note
+WebKit and Blink do not properly support disabling `<fieldset tabindex="0" disabled>` elements themselves, while descendant form elements are properly disabled, see [Blink 453847](https://code.google.com/p/chromium/issues/detail?id=453847), [Webkit 141086](https://bugs.webkit.org/show_bug.cgi?id=141086).
+:::
 
 
 ## Related resources

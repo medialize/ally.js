@@ -42,7 +42,9 @@ While each of these techniques has the same end result, i.e. content is not rend
 </div>
 ```
 
-* **TIP:** Unless unhiding nested content is *specifically* what we intend to do, we should refrain from using `visibility: visible;` in our style sheets, and use `visibility: inherit;` instead. By inheriting the `visibility` state from the parent element by default, we make sure that nested content does not become visible by accident, in case the an ancestor has `visibility: hidden;` set.
+:::tip
+Unless unhiding nested content is *specifically* what we intend to do, we should refrain from using `visibility: visible;` in our style sheets, and use `visibility: inherit;` instead. By inheriting the `visibility` state from the parent element by default, we make sure that nested content does not become visible by accident, in case the an ancestor has `visibility: hidden;` set.
+:::
 
 ### The HTML5 `hidden` attribute
 
@@ -91,7 +93,9 @@ For example we might want to hide certain images and icons that serve non-descri
 </a>
 ```
 
-* **TIP:** We should not add any visual styles (like `visibility: hidden;` or `display: none;`) to the CSS selector `[aria-hidden="true"]`, as this would make us lose the ability to hide content only from screen readers.
+:::tip
+We should not add any visual styles (like `visibility: hidden;` or `display: none;`) to the CSS selector `[aria-hidden="true"]`, as this would make us lose the ability to hide content only from screen readers.
+:::
 
 
 ## How to hide elements visually

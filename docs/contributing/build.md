@@ -8,7 +8,9 @@ The build infrastructure consists of a few tools made available through `npm run
 
 This document is concerned with building the JavaScript source code. See [Documentation Infrastructure](docs.md) for how the documentation and website are generated.
 
-* **NOTE:** If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+:::note
+If this is your first contact with ally.js, make sure to run `npm run init` after cloning the repository. This will run `npm install`, `npm run clean`, `npm run build` and `npm run build:website` to make sure your local copy is ready.
+:::
 
 
 ## Building
@@ -96,11 +98,15 @@ See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
 
 Since ally.js is using the ES6 Module Syntax - and [eslint](https://github.com/eslint/eslint) does not support that yet - we're using [babel-eslint](https://github.com/babel/babel-eslint) as the parser in eslint and configured via [`.eslintrc`](https://github.com/medialize/ally.js/blob/master/.eslintrc). See the docs to understand the [rules](http://eslint.org/docs/rules).
 
-* **Note:** Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally:
+:::note
+Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally:
 
 ```sh
 npm install -g babel-eslint
 ```
+
+:::
+
 
 ### Usage
 

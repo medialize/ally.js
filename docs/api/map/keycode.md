@@ -75,7 +75,9 @@ console.log('keycode of enter', ally.map.keycode.enter);
 
 ## Notes
 
-* **NOTE:** The key `meta` is known by different keyCodes: `91`, `92`, `93`, `224` - which `ally.map.keycodes.alias.91` helps to resolve. The same is true for numeric keys (0-9) and their counterparts on the numblock.
+:::note
+The key `meta` is known by different keyCodes: `91`, `92`, `93`, `224` - which `ally.map.keycodes.alias.91` helps to resolve. The same is true for numeric keys (0-9) and their counterparts on the numblock.
+:::
 
 
 ## Related resources

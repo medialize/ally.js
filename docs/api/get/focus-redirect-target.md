@@ -48,7 +48,9 @@ var element = ally.get.focusRedirectTarget({
 
 ## Notes
 
-* **NOTE:** Focus redirection is only tested and evaluated for situations where *script* shift focus, not pointer (mouse, touch) or keyboard. Identifying pointer focus behavior is an [open issue](https://github.com/medialize/ally.js/issues/99). The `<label>` element is exempted from this limitation.
+:::note
+Focus redirection is only tested and evaluated for situations where *script* shift focus, not pointer (mouse, touch) or keyboard. Identifying pointer focus behavior is an [open issue](https://github.com/medialize/ally.js/issues/99). The `<label>` element is exempted from this limitation.
+:::
 
 
 ## Related resources
