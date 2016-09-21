@@ -8,9 +8,14 @@ This document explains the various ways of hiding things and the implications th
 
 When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document's representation in the [accessibility tree](../concepts.md#Accessibility-tree). For disambiguation we'll use the following terms:
 
-* **Completely hidden:** The element is *neither* rendered on screen, *nor* exposed in the accessibility tree.
-* **Semantically hidden:** The element is rendered on screen, but *not* exposed in the accessibility tree.
-* **Visually hidden:** The element is *not* rendered on screen, but exposed in the accessibility tree.
+Completely hidden
+: The element is *neither* rendered on screen, *nor* exposed in the accessibility tree.
+
+Semantically hidden
+: The element is rendered on screen, but *not* exposed in the accessibility tree.
+
+Visually hidden
+: The element is *not* rendered on screen, but exposed in the accessibility tree.
 
 The three types of "hidden" produce the following matrix:
 

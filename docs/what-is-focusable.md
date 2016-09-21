@@ -6,11 +6,20 @@ layout: doc-page.html
 
 An HTML element can be a member of exactly one of the following five categories:
 
-* **Inert:** The element is not interactive and thus not focusable.
-* **Focusable:** The element can be focused by script ([`element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)) and possibly the mouse (or pointer), but not the keyboard.
-* **Tabbable:** The element is keyboard focusable ("tabbable"), as it is part of the document's sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).
-* **Only Tabbable:** The element is *only* keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.
-* **Forwards Focus:** The element will forward focus to another element instead of receiving focus itself.
+Inert
+: The element is not interactive and thus not focusable.
+
+Focusable
+: The element can be focused by script ([`element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)) and possibly the mouse (or pointer), but not the keyboard.
+
+Tabbable
+: The element is keyboard focusable ("tabbable"), as it is part of the document's sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).
+
+Only Tabbable
+: The element is *only* keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.
+
+Forwards Focus
+: The element will forward focus to another element instead of receiving focus itself.
 
 In which of these buckets elements are sorted, depends on the browser. Have a look at the following comparison tables:
 

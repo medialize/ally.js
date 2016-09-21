@@ -169,16 +169,37 @@ tags: option-argument, service, svg
 # Headline
 ```
 
-* **argument-options:** To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-options-argument)
-* **argument-list:** To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-options-argument) pattern
-* **service:** To declare the module belongs to the family of [Service](../api/concepts.md#Service) components
-* **global-service:** To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-service) components
-* **data:** To declare the module provides data, not functionality
-* **internal:** To declare the module is intended for internal use only
-* **browser-fix:** To declare the module's only intention is to counter a specific browser quirk
-* **content-document:** To declare the module resolves `<object>` and `<iframe>` elements to their content documents
-* **shadow-dom:** To declare special support for ShadowDOM
-* **svg:** To declare special support for SVG
+The tags to be used for classification are:
+
+argument-options
+: To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-options-argument).
+
+argument-list
+: To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-options-argument) pattern.
+
+service
+: To declare the module belongs to the family of [Service](../api/concepts.md#Service) components.
+
+global-service
+: To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-service) components.
+
+data
+: To declare the module provides data, not functionality.
+
+internal
+: To declare the module is intended for internal use only.
+
+browser-fix
+: To declare the module's only intention is to counter a specific browser quirk.
+
+content-document
+: To declare the module resolves `<object>` and `<iframe>` elements to their content documents.
+
+shadow-dom
+: To declare special support for ShadowDOM.
+
+svg
+: To declare special support for SVG.
 
 ### API changes
 
