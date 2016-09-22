@@ -1,12 +1,10 @@
 
 'use strict';
 
-const utils = require('./utils.js');
-
 function extractData($, data) {
   // extract h1 to title
   if (!data.title) {
-    data.title = $('h1').text();
+    data.title = $('h1').text().replace(/^#\s+/, '');
     data.titleUrlEncoded = encodeURIComponent(data.title);
   }
 
@@ -51,12 +49,6 @@ function removeEmptyApiSections($/*, data*/) {
   });
 }
 
-function makeHeadlinesLinkable($/*, data*/) {
-  $('h1, h2, h3, h4, h5, h6').each(function() {
-    utils.makeHeadlineLinkable($(this), $);
-  });
-}
-
 function extractTableOfContents($, data) {
   // prepare Table Of Contents
   // inlining what metalsmith-autotoc would've done
@@ -65,7 +57,7 @@ function extractTableOfContents($, data) {
   $('h2').each(function() {
     const $this = $(this).clone();
     const $link = $this.find('.link-to-headline');
-    const id = $link.attr('id');
+    const id = $link.parent().attr('id');
     $link.remove();
     const text = $this.text();
 
@@ -93,7 +85,6 @@ module.exports = function($, data) {
   rewriteUrlsFromMdToHtml($, data);
 
   removeEmptyApiSections($, data);
-  makeHeadlinesLinkable($, data);
   extractTableOfContents($, data);
 
   convertCodeLanguageForPrism($, data);

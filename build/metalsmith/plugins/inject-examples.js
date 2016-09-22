@@ -2,7 +2,6 @@
 const path = require('path');
 const URI = require('urijs');
 const cheerio = require('cheerio');
-const utils = require('./utils.js');
 
 function transform($, data, examples) {
   $('ul li strong').each(function() {
@@ -28,7 +27,6 @@ function transform($, data, examples) {
 
     const title = String($example('h1').first().text());
     const $title = $('<h1>').text('Example: ' + title);
-    utils.makeHeadlineLinkable($title, $);
 
     const jsbin = String($example('link[rel="jsbin"]').attr('href'));
     const jsbinEmbed = new URI(jsbin).segment('embed').query('output').toString();

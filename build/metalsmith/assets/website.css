@@ -230,10 +230,13 @@ main > article:first-of-type > header > h1 {
 }
 main .link-to-headline {
   text-decoration: none;
-  font-size: 65%;
   font-weight: normal;
   display: inline-block;
-  margin-right: 6px;
+  color: #999999;
+}
+main .link-to-headline:hover,
+main .link-to-headline:focus {
+  text-decoration: underline;
 }
 
 

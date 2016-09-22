@@ -5,6 +5,14 @@ const markdownOptions = {
   html: true,
 };
 
+const toc = require('markdown-it-toc-and-anchor').default;
+const tocOptions = {
+  // we are only interested in the headline mutations,
+  // as the TOC is built by a metalsmith plugin
+  toc: false,
+  anchorClassName: 'link-to-headline',
+};
+
 // see https://allyjs.io/contributing/docs.html#Notes-and-warnings
 const container = require('markdown-it-container');
 const containerOptions = {
@@ -29,5 +37,6 @@ const deflist = require('markdown-it-deflist');
 module.exports = function() {
   return markdown(markdownOptions)
     .use(container, 'note', containerOptions)
-    .use(deflist);
+    .use(deflist)
+    .use(toc, tocOptions);
 };
