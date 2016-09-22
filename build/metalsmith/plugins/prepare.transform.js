@@ -21,7 +21,7 @@ function rewriteUrlsFromMdToHtml($/*, data*/) {
   // rewrite relative *.md to *.html
   $('a').each(function() {
     const $this = $(this);
-    let href = $this.attr('href');
+    let href = $this.attr('href') || '';
     if (href.indexOf('://') !== -1 || href.slice(0, 1) === '#') {
       return;
     }

@@ -34,9 +34,16 @@ const containerOptions = {
 // see https://allyjs.io/contributing/docs.html#Notes-and-warnings
 const deflist = require('markdown-it-deflist');
 
+const linkCode = require('./markdown/markdown-link-code');
+const linkCodeOptions = {
+  pattern: /^v(\d+\.\d+\.\d+.*)$/,
+  url: 'https://github.com/medialize/ally.js/releases/$1',
+};
+
 module.exports = function() {
   return markdown(markdownOptions)
     .use(container, 'note', containerOptions)
     .use(deflist)
-    .use(toc, tocOptions);
+    .use(toc, tocOptions)
+    .use(linkCode, linkCodeOptions);
 };
