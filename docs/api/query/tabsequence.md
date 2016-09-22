@@ -10,7 +10,7 @@ Finds keyboard focusable ("tabbable") elements in the DOM and returns them in th
 
 ## Description
 
-The [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order) depends on a variety of factors:
+The [Sequential Navigation Focus Order](../../concepts.md#sequential-navigation-focus-order) depends on a variety of factors:
 
 * Value of the `tabindex` attribute. The sequence generally starts with all positive tabindex elements with `tabindex="1"` in DOM order, then all elements with `tabindex="2"` in DOM order, then all elements with `tabindex="3"`, … until the highest tabindex is reached, at which point the sequence continues with the `tabindex="0"` (which is set implicitly for a number of HTML elements, e.g. `<input>`).
 * `<area>` elements may either be sorted in DOM order of the `<area>` itsel, *or* the `<img>` referencing the map.
@@ -33,7 +33,7 @@ var sequence = ally.query.tabsequence({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | includeContext | boolean | `false` | Prepend the `context` element if it is focusable. |
 | includeOnlyTabbable | boolean | `false` | Include elements that would otherwise be ignored because they're considered only tabbable, |
 | strategy | `"quick"`, `"strict"`, `"all"` | `"quick"` | The approach used to find elements. |
@@ -59,7 +59,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Notes
 
-See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](../is/focus-relevant.md#notes)
 
 :::note
 In some browsers `<area>` elements are provided in DOM order they occur. Others provide them in DOM order of the `<img>` elements that use them. `ally.query.tabindex` handles this appropriately. See [Sequential Navigation Focus Order for Image Maps](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27787), [Blink 447289](https://code.google.com/p/chromium/issues/detail?id=447289), [WebKit 140259](https://bugs.webkit.org/show_bug.cgi?id=140259)

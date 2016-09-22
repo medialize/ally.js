@@ -10,7 +10,7 @@ Identifies the parent elements
 
 ## Description
 
-Like [`jQuery.parents()`](https://api.jquery.com/parents/), except [`ally.get.parents`](#ally.get.parents) doesn't have a filter arguments.
+Like [`jQuery.parents()`](https://api.jquery.com/parents/), except [`ally.get.parents`](#allygetparents) doesn't have a filter arguments.
 
 The returned list is sorted as follows `[element, element.parent, element.parent.parent, …]`
 
@@ -27,7 +27,7 @@ var elements = ally.get.parents({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to start searching from. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to start searching from. The first element of a collection is used. |
 
 ### Returns
 

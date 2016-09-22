@@ -33,8 +33,8 @@ var result = ally.element.focus(element);
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| element | [`<selector>`](../concepts.md#Selector) | *required* | The Element to focus. First element of the collections is used. |
-| options | [`<focus options>`](#Focus-options-argument) | `{defaultToAncestor: true}` | The Element to test. |
+| element | [`<selector>`](../concepts.md#selector) | *required* | The Element to focus. First element of the collections is used. |
+| options | [`<focus options>`](#focus-options-argument) | `{defaultToAncestor: true}` | The Element to test. |
 
 #### Focus options argument
 

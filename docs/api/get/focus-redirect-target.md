@@ -27,7 +27,7 @@ var element = ally.get.focusRedirectTarget({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to identify the target for. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to identify the target for. |
 
 ### Returns
 

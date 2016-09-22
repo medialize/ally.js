@@ -29,7 +29,7 @@ var elements = ally.query.tabbable({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | includeContext | boolean | `false` | Prepend the `context` element if it is focusable. |
 | includeOnlyTabbable | boolean | `false` | Include elements that would otherwise be ignored because they're considered only tabbable, |
 | strategy | `"quick"`, `"strict"`, `"all"` | `"quick"` | The approach used to find elements. |
@@ -54,7 +54,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Notes
 
-See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](../is/focus-relevant.md#notes)
 
 
 ## Related resources
@@ -62,7 +62,7 @@ See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
 * [`ally.is.tabbable`](../is/tabbable.md) is used to filter focusable elements
 * [`ally.query.focusable`](focusable.md) is used to find focusable elements
 * [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element in a context
-* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.tabsequence`](tabbable.md) finds keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#sequential-navigation-focus-order)
 
 
 ## Contributing

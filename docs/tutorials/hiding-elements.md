@@ -6,7 +6,7 @@ layout: doc-page.html
 
 This document explains the various ways of hiding things and the implications that come with that.
 
-When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document's representation in the [accessibility tree](../concepts.md#Accessibility-tree). For disambiguation we'll use the following terms:
+When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document's representation in the [accessibility tree](../concepts.md#accessibility-tree). For disambiguation we'll use the following terms:
 
 Completely hidden
 : The element is *neither* rendered on screen, *nor* exposed in the accessibility tree.
@@ -87,7 +87,7 @@ Sadly we cannot use the values `inherit`, `initial` or `unset` to simply *undo* 
 
 ## How to hide elements semantically
 
-To hide content from the [accessibility tree](../concepts.md#Accessibility-tree) but retain the content on screen, we may use the attribute [`aria-hidden="true"`](https://w3c.github.io/aria/aria/aria.html#aria-hidden).
+To hide content from the [accessibility tree](../concepts.md#accessibility-tree) but retain the content on screen, we may use the attribute [`aria-hidden="true"`](https://w3c.github.io/aria/aria/aria.html#aria-hidden).
 
 For example we might want to hide certain images and icons that serve non-descriptive, purely esthetical purposes:
 

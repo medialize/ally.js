@@ -23,7 +23,7 @@ var elements = ally.query.shadowHosts({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 
 ### Returns
 

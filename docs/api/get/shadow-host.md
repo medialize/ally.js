@@ -23,7 +23,7 @@ var element = ally.get.shadowHost({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to start searching from. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to start searching from. The first element of a collection is used. |
 
 ### Returns
 

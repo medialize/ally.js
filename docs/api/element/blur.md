@@ -26,7 +26,7 @@ var result = ally.element.blur(element);
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| element | [`<selector>`](../concepts.md#Selector) | *required* | The Element to blur. First element of the collections is used. |
+| element | [`<selector>`](../concepts.md#selector) | *required* | The Element to blur. First element of the collections is used. |
 
 ### Returns
 

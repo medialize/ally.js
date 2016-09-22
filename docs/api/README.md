@@ -41,12 +41,12 @@ In order to work with focusable elements, we must first know which elements we'r
 * [`ally.query.focusable`](query/focusable.md) finds all focusable elements
 * [`ally.query.shadowHosts`](query/shadow-hosts.md) finds all elements hosting a `ShadowRoot`
 * [`ally.query.tabbable`](query/tabbable.md) finds all keyboard focusable elements in DOM order
-* [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.tabsequence`](query/tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#sequential-navigation-focus-order)
 
 
 ## Element state
 
-Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#Single-options-argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
+Unlike any other ally modules, these components do not take take [`options.context` argument](concepts.md#single-options-argument), but expect the `element` as first argument, allowing easy use in [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). See [what does "focusable" mean?](../what-is-focusable.md) for a differentiation.
 
 * [`ally.is.activeElement`](is/active-element.md) returns true if the element is the activeElement of its host context, i.e. its document, iFrame or ShadowHost
 * [`ally.is.disabled`](is/disabled.md) returns true if the element is `:disabled`

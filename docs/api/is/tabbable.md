@@ -28,12 +28,12 @@ var isTabbable = ally.is.tabbable(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
-The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.tabbable.rules(options)`:
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#single-options-argument) by calling `ally.is.tabbable.rules(options)`:
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
-| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#focus-identification-exceptions) | `{}` | The Element to test. |
 
 ### Returns
 
@@ -57,7 +57,7 @@ Boolean, `true` if the element is tabbable.
 
 ## Notes
 
-See [`ally.is.focusRelevant`](./focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](./focus-relevant.md#notes)
 
 :::note
 There is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent sniffing (via [platform.js](https://github.com/bestiejs/platform.js/)) is done internally to fix mismatches.

@@ -38,8 +38,8 @@ var element = ally.get.focusTarget({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to start searching from. The first element of a collection is used. |
-| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to start searching from. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#focus-identification-exceptions) | `{}` | The Element to test. |
 
 ### Returns
 
@@ -61,7 +61,7 @@ var element = ally.get.focusTarget({
 
 ## Notes
 
-See [`ally.get.focusRedirectTarget`](./focus-redirect-target.md#Notes)
+See [`ally.get.focusRedirectTarget`](./focus-redirect-target.md#notes)
 
 
 ## Related resources

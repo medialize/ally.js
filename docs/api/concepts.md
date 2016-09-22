@@ -76,7 +76,7 @@ While most services will only return an object containing the `disengage()` func
 
 ### Global service
 
-A Global Service (`<global-service>`) is a component that exposes [Service](#Service) API, but will only start a single instance and keep track of its users. This allows ally.js to get by without a service registry in order to reduce complexity. Global Services don't have any arguments and always return the same handle object.
+A Global Service (`<global-service>`) is a component that exposes [Service](#service) API, but will only start a single instance and keep track of its users. This allows ally.js to get by without a service registry in order to reduce complexity. Global Services don't have any arguments and always return the same handle object.
 
 ```js
 // start the service

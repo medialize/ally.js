@@ -34,13 +34,13 @@ handle.disengage();
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | callback | function | *required* | The callback to be invoked by the observer. |
 | config | [`MutationObserverInit`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver#MutationObserverInit) | *required* | The configuration to be used by the observer. |
 
 ### Returns
 
-A [`<service>`](../concepts.md#Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<service>`](../concepts.md#service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 

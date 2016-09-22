@@ -31,7 +31,7 @@ var elements = ally.query.focusable({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | includeContext | boolean | `false` | Prepend the `context` element if it is focusable. |
 | includeOnlyTabbable | boolean | `false` | Include elements that would otherwise be ignored because they're considered only tabbable, |
 | strategy | `"quick"`, `"strict"`, `"all"` | `"quick"` | The approach used to find elements. |
@@ -57,7 +57,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Notes
 
-See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](../is/focus-relevant.md#notes)
 
 :::warning
 Any element marked `only-tabbable` in the [focusable browser compatibility tables](../../data-tables/focusable.md) is *not* identified by [`ally.is.focusable`](../is/focusable.md) or [`ally.is.tabbable`](../is/tabbable.md), only by [`ally.is.onlyTabbable`](../is/only-tabbable.md). That is because these elements cannot be interacted with via script, i.e. calling `element.focus()` does not have any effect.
@@ -68,7 +68,7 @@ Any element marked `only-tabbable` in the [focusable browser compatibility table
 
 * [`ally.query.firstTabbable`](first-tabbable.md) finds the first keyboard focusable element
 * [`ally.query.tabbable`](tabbable.md) finds all keyboard focusable elements in DOM order
-* [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#sequential-navigation-focus-order)
 * [`ally.is.focusable`](../is/focusable.md) used to filter focusable elements
 
 * [HTML5: The `tabindex` attribute](https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute)

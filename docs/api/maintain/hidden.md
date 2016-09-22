@@ -30,12 +30,12 @@ handle.disengage();
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
-| filter | [`<selector>`](../concepts.md#Selector) | `null` | The *significant elements* to exclude from being disabled. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| filter | [`<selector>`](../concepts.md#selector) | `null` | The *significant elements* to exclude from being disabled. |
 
 ### Returns
 
-A [`<service>`](../concepts.md#Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<service>`](../concepts.md#service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 
@@ -54,7 +54,7 @@ Internet Explorer 10 will not update changes made to elements within the inert s
 
 ## Related resources
 
-* [`ally.maintain.disabled`](disabled.md) is a [service](../concepts.md#Service) disabling interactive elements in the DOM
+* [`ally.maintain.disabled`](disabled.md) is a [service](../concepts.md#service) disabling interactive elements in the DOM
 * [`ally.get.insignificantBranches`](../get/insignificant-branches.md) is used to identify the elements to hide
 
 

@@ -172,16 +172,16 @@ tags: option-argument, service, svg
 The tags to be used for classification are:
 
 argument-options
-: To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#Single-options-argument).
+: To declare the module belongs to the family of components expecting a [single options argument](../api/concepts.md#single-options-argument).
 
 argument-list
-: To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#Single-options-argument) pattern.
+: To declare the module expects plain arguments, not the [single options argument](../api/concepts.md#single-options-argument) pattern.
 
 service
-: To declare the module belongs to the family of [Service](../api/concepts.md#Service) components.
+: To declare the module belongs to the family of [Service](../api/concepts.md#service) components.
 
 global-service
-: To declare the module belongs to the family of [Global Service](../api/concepts.md#Global-service) components.
+: To declare the module belongs to the family of [Global Service](../api/concepts.md#global-service) components.
 
 data
 : To declare the module provides data, not functionality.

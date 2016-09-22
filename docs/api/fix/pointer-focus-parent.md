@@ -39,11 +39,11 @@ var handle = ally.fix.pointerFocusParent({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Document) | The scope of the DOM in which to apply the fix. All elements of the collections are used. |
+| context | [`<selector>`](../concepts.md#selector) | [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Document) | The scope of the DOM in which to apply the fix. All elements of the collections are used. |
 
 ### Returns
 
-A [`<service>`](../concepts.md#Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<service>`](../concepts.md#service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 

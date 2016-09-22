@@ -13,7 +13,7 @@ Executes a callback once an element fulfills [`ally.is.focusable`](../is/focusab
 [`Element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.focus) scrolls the element into view if it isn't already. In situations where content is not revealed immediately, but through a transition
 or animation this can be a problem if the element is focused to early.
 
-The callback executes once the predicates [`ally.is.visible`](../is/visible.md), [`ally.is.focusable`](../is/focusable.md) and [`ally/util/visible-area`](../util.md#Calculate-An-Element-s-Visible-Area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
+The callback executes once the predicates [`ally.is.visible`](../is/visible.md), [`ally.is.focusable`](../is/focusable.md) and [`ally/util/visible-area`](../util.md#calculate-an-elements-visible-area) return positive. Visibility detection works regardless of the technical way an element was made invisible. The predicates are evaluated on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame).
 
 The callback function executes exactly once, meaning the callback won't execute every time the element comes into view. Waiting for the callback to execute is aborted automatically should another element have gotten focus prior to the context element coming fully into view. The callback is executed immediately if the context element is already fully visible and focusable.
 
@@ -37,13 +37,13 @@ handle.disengage();
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to observe. The first element of a collection is used. |
-| callback | function | *required* | The callback to execute when context element is visible in viewport and focusable. See [Callback Signature](#Callback-Signature) for details. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to observe. The first element of a collection is used. |
+| callback | function | *required* | The callback to execute when context element is visible in viewport and focusable. See [Callback Signature](#callback-signature) for details. |
 | area | number | `1` | The percentage (0 - 1) of area of the context element has to be visible in the viewport. |
 
 ### Returns
 
-A [`<service>`](../concepts.md#Service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<service>`](../concepts.md#service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 

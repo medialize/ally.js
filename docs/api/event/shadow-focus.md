@@ -31,7 +31,7 @@ handle.disengage();
 
 ### Returns
 
-A [`<global-service>`](../concepts.md#Global-service) interface, providing the `handle.disengage()` method to stop the service.
+A [`<global-service>`](../concepts.md#global-service) interface, providing the `handle.disengage()` method to stop the service.
 
 ### Throws
 

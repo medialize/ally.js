@@ -39,8 +39,8 @@ var elements = ally.get.insignificantBranches({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
-| filter | [`<selector>`](../concepts.md#Selector) | *required* | The *significant elements* to exclude from the search. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| filter | [`<selector>`](../concepts.md#selector) | *required* | The *significant elements* to exclude from the search. |
 
 ### Returns
 
@@ -65,7 +65,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Related resources
 
-* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#Service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#Accessibility-tree)
+* [`ally.maintain.hidden`](../maintain/hidden.md) is a [service](../concepts.md#service) hiding insignificant branches from the [Accessibility Tree](../../concepts.md#accessibility-tree)
 
 
 ## Contributing

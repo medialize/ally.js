@@ -29,7 +29,7 @@ var element = ally.query.firstTabbable({
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
+| context | [`<selector>`](../concepts.md#selector) | [`documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) | The scope of the DOM in which to search. The first element of a collection is used. |
 | ignoreAutofocus | boolean | `false` | Do not give elements with `autofocs` attribute precedence. |
 | defaultToContext | boolean | `false` | Return the `context` element if it is focusable and no other keyboard focusable element could be found. |
 | includeOnlyTabbable | boolean | `false` | Include elements that would otherwise be ignored because they're considered only tabbable, |
@@ -55,7 +55,7 @@ var element = ally.query.firstTabbable({
 
 ## Notes
 
-See [`ally.is.focusRelevant`](../is/focus-relevant.md#Notes)
+See [`ally.is.focusRelevant`](../is/focus-relevant.md#notes)
 
 :::note
 Google Chrome's `<dialog>` implementation will focus the first keyboard focusable element, even if it has `[tabindex="1"]`, ally.js does not.
@@ -69,7 +69,7 @@ Elements with a positive `tabindex` attribute (e.g. `[tabindex="123"]`) are igno
 ## Related resources
 
 * [`ally.query.tabbable`](tabbable.md) finds all keyboard focusable elements in DOM order
-* [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#Sequential-navigation-focus-order)
+* [`ally.query.tabsequence`](tabsequence.md) finds all keyboard focusable elements in [Sequential Navigation Focus Order](../../concepts.md#sequential-navigation-focus-order)
 
 
 ## Contributing

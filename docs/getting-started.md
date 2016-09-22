@@ -9,7 +9,7 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 ## Requirements
 
-In order to load successfully in IE8, the [es5-shim](https://github.com/es-shims/es5-shim/) has to be loaded. Please also see [Does ally.js support Internet Explorer 8 and below?](./questions.md##Does-ally-js-support-Internet-Explorer-8-and-below).
+In order to load successfully in IE8, the [es5-shim](https://github.com/es-shims/es5-shim/) has to be loaded. Please also see [Does ally.js support Internet Explorer 8 and below?](./questions.md#does-allyjs-support-internet-explorer-8-and-below).
 
 The UMD bundle contains the following dependencies:
 

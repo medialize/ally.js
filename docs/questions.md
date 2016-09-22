@@ -22,7 +22,7 @@ While ally.js has not been tested to *run* on IE8, we have made sure that it can
 
 ## Do I need ally.js for static websites?
 
-Probably not. If you don't have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help [get around some non-JavaScript accessibility issues across browsers](api/README.md#Countering-browser-bugs).
+Probably not. If you don't have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help [get around some non-JavaScript accessibility issues across browsers](api/README.md#countering-browser-bugs).
 
 
 ## "ally" not "a11y"?

@@ -28,12 +28,12 @@ var isFocusRelevant = ally.is.focusRelevant(element);
 | ---- | ---- | ------- | ----------- |
 | element | [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement) | *required* | The Element to test. |
 
-The underlying rules can also be accessed in the [`options` argument style](../concepts.md#Single-options-argument) by calling `ally.is.focusRelevant.rules(options)`:
+The underlying rules can also be accessed in the [`options` argument style](../concepts.md#single-options-argument) by calling `ally.is.focusRelevant.rules(options)`:
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| context | [`<selector>`](../concepts.md#Selector) | *required* | The element to examine. The first element of a collection is used. |
-| except | [`<focus identification exception>`](../concepts.md#Focus-identification-exceptions) | `{}` | The Element to test. |
+| context | [`<selector>`](../concepts.md#selector) | *required* | The element to examine. The first element of a collection is used. |
+| except | [`<focus identification exception>`](../concepts.md#focus-identification-exceptions) | `{}` | The Element to test. |
 
 ### Returns
 

@@ -8,7 +8,7 @@ This document explains what steps need to be taken in order to make a visually c
 
 HTML5.1 specifies the [`<dialog>` element](https://www.w3.org/TR/html51/semantics.html#the-dialog-element) that natively does most of what is explained here. But since [browser support](http://caniuse.com/#feat=dialog) is rather limited, making use of `<dialog>` is not yet possible.
 
-The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#Interactive-demo) below.
+The code discussed in this tutorial is available in [ally.js Dialog Example](./dialog.example.html) and can be [interacted with](#interactive-demo) below.
 
 ## The visual effect
 
@@ -426,7 +426,7 @@ dialog.addEventListener('submit', saveDialog, true);
 
 ### Focus first focusable element upon opening the dialog
 
-Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus (in order to shift [virtual focus](../concepts.md#Virtual-focus)). In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
+Once a dialog is opened, the first keyboard focusable (tabbable) element should receive focus (in order to shift [virtual focus](../concepts.md#virtual-focus)). In order to accomplish this, you need to know which elements are keyboard focusable. There is no native DOM method to obtain such a list. ally.js has got you covered with [`ally.query.tabbable`](../api/query/tabbable.md). Since the *order* of elements is significant here, we need to sort the focusable elements by `tabindex` and `autofocus` attributes. ally.js provides the method [`ally.query.firstTabbable`](../api/query/first-tabbable.md) to do all that for you:
 
 ```js
 var dialog = document.getElementById('dialog');
