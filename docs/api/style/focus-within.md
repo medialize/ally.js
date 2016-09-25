@@ -61,7 +61,9 @@ handle.disengage();
 
 ## Examples
 
-* **EXAMPLE:** [`ally.style.focusWithin` Example](./focus-within.example.html)
+@@@example /api/style/focus-within.example.html
+### focusWithin example
+@@@
 
 
 ## Notes

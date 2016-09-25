@@ -59,7 +59,9 @@ var isDisabled = ally.element.disabled(element);
 
 ## Examples
 
-* **EXAMPLE:** [`ally.element.disabled` Example](./disabled.example.html)
+@@@example /api/element/disabled.example.html
+### disabled example
+@@@
 
 
 ## Changes

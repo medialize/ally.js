@@ -50,7 +50,9 @@ A [`<service>`](../concepts.md#service) interface, providing the `handle.disenga
 
 ## Examples
 
-* **EXAMPLE:** [`ally.fix.pointerFocusParent` Example](./pointer-focus-parent.example.html)
+@@@example /api/fix/pointer-focus-parent.example.html
+### pointerFocusParent example
+@@@
 
 
 ## Notes

@@ -55,7 +55,10 @@ The callback is invoked with one argument, the `HTMLElement` identified by `cont
 
 ## Examples
 
-* **EXAMPLE:** [`ally.when.visibleArea` Example](./visible-area.example.html)
+@@@example /api/when/visible-area.example.html
+### visibleArea example
+@@@
+
 
 ## Changes
 

@@ -45,7 +45,9 @@ A [`<service>`](../concepts.md#service) interface, providing the `handle.disenga
 
 ## Examples
 
-* **EXAMPLE:** [`ally.fix.pointerFocusInput` Example](./pointer-focus-input.example.html)
+@@@example /api/fix/pointer-focus-input.example.html
+### pointerFocusInput example
+@@@
 
 
 ## Changes

@@ -537,7 +537,8 @@ function openDialog() {
 
 ## Interactive demo
 
-* **EXAMPLE:** [Dialog Tutorial](./dialog.example.html)
+@@@example /tutorials/dialog.example.html
+@@@
 
 :::note
 Focus is only trapped inside of the embedded iframe. The iframe's content cannot change this page in any way.

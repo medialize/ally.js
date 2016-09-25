@@ -105,7 +105,9 @@ The callback is executed in the context of `context` (that's where `this` inside
 
 ## Examples
 
-* **EXAMPLE:** [`ally.when.key` Example](./key.example.html)
+@@@example /api/when/key.example.html
+### key example
+@@@
 
 
 ## Changes

@@ -8,7 +8,8 @@ Managing focus is pretty straight forward: invoke the `element.focus()` to make 
 
 Consider a new dialog is constructed off-screen and then moved into view in an animated fashion. Right after the elements are available in the DOM, the applications sends focus to one of its elements, as often required by [WAI-ARIA Authoring Practices](https://w3c.github.io/aria/practices/aria-practices.html). Since the element is still off-screen, the browser scrolls whatever elements it must, so that the element becomes visible in the viewport. But the application itself also kicks off an animation to move the element into view. And the end result is that the dialog came into view by way of the browser scrolling, and back out of view by way of the application's animation. Play with the following example to see this problem in action:
 
-* **EXAMPLE:** [Failing Focus in Animated UI](./focusing-animated.fail.example.html)
+@@@example /tutorials/focusing-animated.fail.example.html
+@@@
 
 There is no way to prevent the browser from scrolling elements into view upon receiving focus. That means the UI has to work around this built-in behavior when creating animation-revealed-content UI such as carousels, accordions, off-screen menus, and so on. The UI can deal with the browser's inevitable scrolling habits in two ways: wait for the element to become visible, or reset the scroll position.
 

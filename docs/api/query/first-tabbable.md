@@ -44,8 +44,13 @@ var element = ally.query.firstTabbable({
 
 ## Examples
 
-* **EXAMPLE:** [`ally.query.firstTabbable` Example](./first-tabbable.example.html)
-* **EXAMPLE:** [`ally.query.firstTabbable` ignoring autofocus Example](./first-tabbable.example-2.html)
+@@@example /api/query/first-tabbable.example-2.html
+### firstTabbable example
+@@@
+
+@@@example /api/query/first-tabbable.example-2.html
+### firstTabbable without autofocus example
+@@@
 
 
 ## Changes

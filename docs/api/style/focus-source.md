@@ -136,7 +136,9 @@ The `handle.unlock()` method releases the focus-source lock.
 
 ## Examples
 
-* **EXAMPLE:** [`ally.style.focusSource` Example](./focus-source.example.html)
+@@@example /api/style/focus-source.example.html
+### focusSource example
+@@@
 
 
 ## Changes

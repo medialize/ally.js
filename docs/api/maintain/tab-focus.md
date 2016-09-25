@@ -40,7 +40,9 @@ A [`<service>`](../concepts.md#service) interface, providing the `handle.disenga
 
 ## Examples
 
-* **EXAMPLE:** [`ally.maintain.tabFocus` Example](./tab-focus.example.html)
+@@@example /api/maintain/tab-focus.example.html
+### tabFocus example
+@@@
 
 
 ## Changes

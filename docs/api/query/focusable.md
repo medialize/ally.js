@@ -45,8 +45,13 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Examples
 
-* **EXAMPLE:** [`ally.query.focusable` Example](./focusable.example.html)
-* **EXAMPLE:** [`ally.query.tabbable` Example](./tabbable.example.html)
+@@@example /api/query/focusable.example.html
+### focusable example
+@@@
+
+@@@example /api/query/tabbable.example.html
+### tabbable example
+@@@
 
 
 ## Changes

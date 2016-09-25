@@ -47,7 +47,9 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 
 ## Examples
 
-* **EXAMPLE:** [`ally.query.tabsequence` Example](./tabsequence.example.html)
+@@@example /api/query/tabsequence.example.html
+### tabsequence example
+@@@
 
 
 ## Changes

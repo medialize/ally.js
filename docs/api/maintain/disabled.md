@@ -54,7 +54,9 @@ A [`<service>`](../concepts.md#service) interface, providing the `handle.disenga
 
 ## Examples
 
-* **EXAMPLE:** [`ally.maintain.disabled` Example](./disabled.example.html)
+@@@example /api/maintain/disabled.example.html
+### disabled example
+@@@
 
 
 ## Changes
