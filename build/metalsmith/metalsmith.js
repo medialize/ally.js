@@ -3,7 +3,6 @@ const metalsmith = require('metalsmith');
 const paths = require('metalsmith-paths');
 const registerHelpers = require('metalsmith-register-helpers');
 const layouts = require('metalsmith-layouts');
-const linkChecker = require('metalsmith-broken-link-checker');
 const collections = require('metalsmith-collections');
 const staticFiles = require('metalsmith-static');
 const redirect = require('metalsmith-redirect');
@@ -14,6 +13,7 @@ const importJson = require('./plugins/import-json');
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
 const absoluteUrl = require('./plugins/absolute-url');
+const linkChecker = require('./plugins/link-checker');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
 const WEBSITE_CANONICAL = 'https://allyjs.io/';

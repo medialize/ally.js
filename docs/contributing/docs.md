@@ -53,7 +53,6 @@ We use the following plugins:
 * [metalsmith-markdownit](https://github.com/attentif/metalsmith-markdownit)
 * [metalsmith-register-helpers](https://github.com/losttype/metalsmith-register-helpers) to use custom handlebar helpers
 * [metalsmith-layouts](https://github.com/superwolff/metalsmith-layouts) to use [handlebars](http://handlebarsjs.com/) templates
-* [metalsmith-broken-link-checker](https://github.com/davidxmoody/metalsmith-broken-link-checker) to verify link integrity
 * [metalsmith-collections](https://github.com/segmentio/metalsmith-collections) to deal with groups of files
 * [metalsmith-static](https://github.com/TheHydroImpulse/metalsmith-static) to copy static assets
 * [metalsmith-redirect](https://github.com/aymericbeaumet/metalsmith-redirect/) to create HTML redirection files to forward old URLs to their new homes

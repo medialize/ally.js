@@ -117,7 +117,6 @@
     "markdown-it-toc-and-anchor": "^4.1.1",
     "markdownlint": "^0.2.0",
     "metalsmith": "^2.1.0",
-    "metalsmith-broken-link-checker": "^0.1.8",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-in-place": "^1.3.2",
     "metalsmith-layouts": "^1.4.0",
@@ -139,7 +138,7 @@
     "sinon": "^1.17.3",
     "source-map-explorer": "^1.3.1",
     "uglifyjs": "^2.4.10",
-    "urijs": "^1.16.1"
+    "urijs": "^1.18.2"
   },
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",

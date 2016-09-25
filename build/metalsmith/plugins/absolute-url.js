@@ -6,7 +6,7 @@
 /*
   This is necessary to allow easy URL creation in templates, while
   maintaining the deployment flexibility of relative URLs, as well
-  as allowing metalsmith-broken-link-checker to work properly.
+  as allowing the metalsmith link-checker to work properly.
 
   USAGE:
 
@@ -16,9 +16,6 @@
     convert all URLs beginning with websiteRoot to relative URLs
     absoluteUrl({ resolve: "/hello/world", canonical: "https://example.org/" })
 */
-
-// inspired by
-// https://github.com/davidxmoody/metalsmith-broken-link-checker/blob/master/src/index.coffee
 
 const path = require('path');
 const cheerio = require('cheerio');

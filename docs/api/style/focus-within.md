@@ -69,7 +69,7 @@ handle.disengage();
 ## Notes
 
 :::note
-In Firefox the [setting](about:config) `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
+In Firefox' `about:config` the option `dom.webcomponents.enabled` needs to be set to `true` to enable ShadowDOM support.
 :::
 
 :::note
