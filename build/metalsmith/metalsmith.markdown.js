@@ -1,4 +1,6 @@
 
+
+
 const markdown = require('metalsmith-markdownit');
 const markdownOptions = {
   linkify: true,
@@ -22,14 +24,27 @@ const containerOptions = {
   render: function(tokens, index) {
     const m = tokens[index].info.trim().split(' ');
     if (tokens[index].nesting === 1) {
-      // opening tag
       return '<div data-note-type="' + m[0] + '">\n';
     } else {
-      // closing tag
       return '</div>\n';
     }
   },
-}
+};
+// see https://allyjs.io/contributing/docs.html#Embedding-examples-and-Demos
+const containerExample = require('./markdown/markdown-container-example');
+const exampleOptions = {
+  marker: '@',
+  validate: function(params) {
+    return params.trim().match(/^example .+/);
+  },
+  render: function(tokens, index) {
+    if (tokens[index].nesting === 1) {
+      return '<section class="example">\n';
+    } else {
+      return '</section>\n';
+    }
+  },
+};
 
 // see https://allyjs.io/contributing/docs.html#Notes-and-warnings
 const deflist = require('markdown-it-deflist');
@@ -43,6 +58,8 @@ const linkCodeOptions = {
 module.exports = function() {
   return markdown(markdownOptions)
     .use(container, 'note', containerOptions)
+    .use(container, 'example', exampleOptions)
+    .use(containerExample)
     .use(deflist)
     .use(toc, tocOptions)
     .use(linkCode, linkCodeOptions);

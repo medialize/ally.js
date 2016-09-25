@@ -13,7 +13,6 @@ const markdown = require('./metalsmith.markdown');
 const importJson = require('./plugins/import-json');
 const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
-const injectExamples = require('./plugins/inject-examples');
 const absoluteUrl = require('./plugins/absolute-url');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
@@ -104,7 +103,6 @@ metalsmith(__dirname)
   .use(prepare())
   .use(paths())
   .use(collections(getCollectionsMap()))
-  .use(injectExamples())
   .use(registerHelpers({
     directory: 'helpers/',
   }))

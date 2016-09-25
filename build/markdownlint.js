@@ -22,6 +22,7 @@ const config = {
 
   // MD019: false, // Multiple spaces after hash on atx style header
   // MD021: false, // Multiple spaces inside hashes on closed atx style header
+  MD022: false, // Headers should be surrounded by blank lines (disabled for denser @@@example blocks)
   // MD024: false, // Multiple headers with the same content
   MD026: { // Trailing punctuation in header
     punctuation: '.,;:!',

@@ -68,13 +68,17 @@ Anything you document should be written in a way that caters to an audience that
 
 ### Embedding examples and Demos
 
-You can add HTML to markdown files in order to embed [JSBin.com](https://jsbin.com) demos by using the following markdown in any document:
+Using [markdown-it-container](https://www.npmjs.com/package/markdown-it-container) the documentation accepts `@@@` fenced markdown blocks to embed [jsbin.com](https://jsbin.com) hosted code examples.
 
 ```markdown
-* **EXAMPLE:** [name of demo](./name.example.html)
+@@@example /api/path/to/name.example.html
+### title of example
+@@@
 ```
 
-A demo document is named `${slug}.example.html` (for multiple `${slug}.example-2.html`) and placed in the same directory as the referencing document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
+The example block's first headline's text is automatically replaced by the example document's title. Additional content (like notes, warnings) may be provided in the example block. The example file is referenced by its absolute path from the perspective of the `docs` directory.
+
+An example document is named `${slug}.example.html` (for multiple `${slug}.example-2.html`) and placed in the same directory as the referencing document. So for `docs/api/element/disabled.md` the example file would be `docs/api/element/disabled.example.html`.
 
 Example documents must follow the following general structure.
 
