@@ -4,7 +4,7 @@ import platform from '../util/platform';
 export default {
   element: 'div',
   mutate: function(element) {
-    element.innerHTML = '<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">'
+    element.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
       + '<text focusable="true">a</text></svg>';
     return element.querySelector('text');
   },

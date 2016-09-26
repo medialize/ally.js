@@ -32,7 +32,7 @@ define(function(require) {
       // embedded content
       '<object type="image/svg+xml" id="object-svg" data="' + svg + '" width="200" height="50"></object>',
       '<object type="image/svg+xml" id="object-tabindex-svg" tabindex="-1" data="' + svg + '" width="200" height="50"></object>',
-      '<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" id="svg">',
+      '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
         '<a xlink:href="#void" id="svg-link">',
           '<text x="10" y="20" id="svg-link-text">text</text>',
         '</a>',
