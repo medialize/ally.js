@@ -9,21 +9,21 @@ This document explains the various ways of hiding things and the implications th
 When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document's representation in the [accessibility tree](../concepts.md#accessibility-tree). For disambiguation we'll use the following terms:
 
 Completely hidden
-: The element is *neither* rendered on screen, *nor* exposed in the accessibility tree.
+: The element is *not* rendered on screen, *not* exposed in the accessibility tree, *not* accessible to keyboard navigation.
 
 Semantically hidden
-: The element is rendered on screen, but *not* exposed in the accessibility tree.
+: The element is rendered on screen, but *not* exposed in the accessibility tree, and still accessible to keyboard navigation.
 
 Visually hidden
-: The element is *not* rendered on screen, but exposed in the accessibility tree.
+: The element is *not* rendered on screen, but exposed in the accessibility tree, and still accessible to keyboard navigation.
 
 The three types of "hidden" produce the following matrix:
 
-| visibility state | on screen | in accessibility tree |
+| visibility state | on screen | in accessibility tree | keyboard navigation |
 | ---------------- | --------- | --------------------- |
-| completely hidden | hidden | hidden |
-| semantically hidden | visible | hidden |
-| visually hidden | hidden | visible |
+| completely hidden | hidden | hidden | not navigatable |
+| semantically hidden | visible | hidden | navigatable |
+| visually hidden | hidden | visible | navigatable |
 
 
 ## How to hide elements completely
@@ -169,6 +169,14 @@ Putting all of this together we get the following styles to visually hide conten
 * It side-steps the need to re-style everything for focusable elements such as skip-links.
 * It accounts for the deprecated `clip` property.
 
+
+## Keyboard navigation
+
+The techniques to hide elements only visually or semantically come with a caveat. Focusable elements like `<a href="…">` remain keyboard navigatable, even though the element is not visible on screen or not exposed in the accessibility tree.
+
+To make sure sighted keyboard users do not end up focusing elements they can't see, and screen reader users not focusing element's that don't exist for them, we need to make sure that partially hidden content is not accessible to keyboard navigation using the <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> keys. To accomplish this, we can add [`tabindex="-1"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex) to the elements we want to hide from the keyboard.
+
+
 ## Recap
 
 * Use the `hidden` attribute to completely hide an element.
@@ -176,3 +184,5 @@ Putting all of this together we get the following styles to visually hide conten
 * Use the `.visuallyhidden` class to hide an element from the screen.
 * Use `visibility: inherit;` instead of `visibility: visible;` to avoid accidentally showing content.
 * Do not attach any CSS styles to the `aria-hidden` attribute.
+* Take care of keyboard focusable content that is partially hidden by adding `tabindex="-1"`.
+
