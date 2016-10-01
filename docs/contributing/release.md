@@ -28,6 +28,7 @@ The following sequence steps are necessary to fully release ally.js
   * edit the new tag and copy-paste the relevant changes from `CHANGELOG.md`
   * upload the files `dist/ally.js`, `dist/ally.js.map`, `dist/ally.js.zip` and `dist/ally.js.tar.gz`
   * mark as `pre-release` if the library was pushed to beta channel
+* `npm run publish:algolia` to publish the search index
 * `npm run publish:website` to publish the website to the `gh-pages` branch
 
 ## Branch Rules

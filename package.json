@@ -70,6 +70,7 @@
     "publish:lcov": "npm-run-all --parallel publish:codeclimate publish:coveralls",
     "publish:codeclimate": "codeclimate-test-reporter < reports/lcov.info",
     "publish:coveralls": "cat reports/lcov.info | coveralls",
+    "publish:algolia": "node build/publish.algolia.js",
     "lint": "npm-run-all --parallel lint:js lint:md lint:md:js",
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}')",
     "lint:md": "node build/markdownlint.js $(glob-cli '{*.md,docs/**/*.md}')",
@@ -89,6 +90,7 @@
     "lint-staged:md:js": "docs/**/*.md"
   },
   "devDependencies": {
+    "algoliasearch": "^3.18.1",
     "archiver": "^1.0.0",
     "babel": "^5.8.23",
     "babel-eslint": "^6.0.2",

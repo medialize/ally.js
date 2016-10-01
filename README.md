@@ -50,6 +50,7 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 * [BrowserStack](https://browserstack.com) and [SauceLabs](https://saucelabs.com/) provide VMs for automated testing - free for open source projects.
 * [Code Climate](https://codeclimate.com/github/medialize/ally.js) and [Coveralls](https://coveralls.io/github/medialize/ally.js/) provide us with automated code analysis and coverage reports - free for open source projects.
 * [Travis CI](https://travis-ci.org/medialize/ally.js) provides a build server - free for open source projects.
+* [Algolia](https://algolia.com/) provides a search interface - free for open source projects.
 
 
 ## License

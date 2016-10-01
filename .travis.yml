@@ -13,6 +13,8 @@ before_install:
   - true && `base64 --decode <<< 'ZXhwb3J0IEdJVEhVQl9TVEFUVVNfQUNDRVNTX1RPS0VOPTNjYTdmNzllMjc3NzMwMWExMTI0NGUxZGI5M2NiNWVjNzQ4ZjZjNTUK'`
   - true && `base64 --decode <<< 'ZXhwb3J0IEFXU19BQ0NFU1NfS0VZX0lEPUFLSUFJQk1MVUtXRU02NkdRTjdRCg=='`
   - true && `base64 --decode <<< 'ZXhwb3J0IEFXU19TRUNSRVRfQUNDRVNTX0tFWT1wOVRlTm44UXgrdU5EczExazJ1WjgvWDdUamlNMmZ2d0tTZkgwQ0hpCg=='`
+  - true && `base64 --decode <<< 'ZXhwb3J0IEFMR09MSUFfQVBQTElDQVRJT05fSUQ9UExDTlVSSTNQNg=='`
+  - true && `base64 --decode <<< 'ZXhwb3J0IEFMR09MSUFfQURNSU5fS0VZPTZjNGMwZDI2NjdlZmUwZmFhMzcxY2YzODk2OTBlNmI0'`
 script: npm run ci
 before_deploy:
 - mkdir deploy

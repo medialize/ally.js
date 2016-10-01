@@ -58,6 +58,11 @@ We use the following plugins:
 * [metalsmith-redirect](https://github.com/aymericbeaumet/metalsmith-redirect/) to create HTML redirection files to forward old URLs to their new homes
 
 
+## Website search
+
+The website's autosuggest-based search is powered by [Algolia](https://www.algolia.com/). As part of `npm run build:website` the index files `web/algolia.*.json` are generated, which can be uploaded using `npm run publish:algolia`.
+
+
 ## Authoring documentation
 
 The public API provided by ally.js needs to be explained in `docs/api`. As every component has its source file, it has an accompanying markdown file for documentation. ally.js contains components that are not meant to be used directly, thus do not have to be documented in detail.

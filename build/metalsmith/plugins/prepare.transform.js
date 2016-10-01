@@ -1,6 +1,52 @@
 
 'use strict';
 
+function convertMarkdownUrl(url) {
+  return url
+    .replace(/\/README\.md(#.*)?$/, '/index.html$1')
+    .replace(/\.md(#.*)?$/, '.html$1');
+}
+
+function indexAlgolia($, data) {
+  if (data.algolia) {
+    return;
+  }
+
+  switch (data.originalPath) {
+    case 'README.md':
+    case 'api/util.md':
+    case 'api/supports.md':
+    case 'api/selector.md':
+    case 'data-tables/focusable.md':
+    case 'data-tables/focusable.is.md':
+    case 'data-tables/focusable.quick.md':
+    case 'data-tables/focusable.strict.md':
+      return;
+  }
+
+  const $p = $('p').first();
+  data.algolia = {
+    url: convertMarkdownUrl(data.originalPath),
+    title: data.title,
+    excerpt: $p.text().trim(),
+  };
+
+  const parts = data.originalPath.replace(/\.md$/, '').split('/');
+  if (parts[0] === 'api') {
+    data.algolia.module = parts.join('/');
+    data.algolia.index = parts[0];
+    return;
+  }
+
+  if (parts[0] === 'tutorials') {
+    data.algolia.index = 'tutorial';
+  } else {
+    data.algolia.index = 'documentation';
+  }
+
+  data.algolia.toc = data.toc;
+}
+
 function extractData($, data) {
   // extract h1 to title
   if (!data.title) {
@@ -26,9 +72,7 @@ function rewriteUrlsFromMdToHtml($/*, data*/) {
       return;
     }
 
-    href = href
-      .replace(/\/README\.md(#.*)?$/, '/index.html$1')
-      .replace(/\.md(#.*)?$/, '.html$1');
+    href = convertMarkdownUrl(href);
     $this.attr('href', href);
   });
 }
@@ -59,7 +103,7 @@ function extractTableOfContents($, data) {
     const $link = $this.find('.link-to-headline');
     const id = $link.parent().attr('id');
     $link.remove();
-    const text = $this.text();
+    const text = $this.text().trim();
 
     data.toc.push({
       id: String(id),
@@ -86,6 +130,7 @@ module.exports = function($, data) {
 
   removeEmptyApiSections($, data);
   extractTableOfContents($, data);
+  indexAlgolia($, data);
 
   convertCodeLanguageForPrism($, data);
 };

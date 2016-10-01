@@ -14,6 +14,7 @@ const manualSort = require('./plugins/collection.manual-sort');
 const prepare = require('./plugins/prepare');
 const absoluteUrl = require('./plugins/absolute-url');
 const linkChecker = require('./plugins/link-checker');
+const writeAlgoliaIndex = require('./plugins/write-algolia-index');
 
 const WEBSITE_ROOT = '/medialize/ally.js/';
 const WEBSITE_CANONICAL = 'https://allyjs.io/';
@@ -120,6 +121,7 @@ metalsmith(__dirname)
     resolve: WEBSITE_ROOT,
     canonical: WEBSITE_CANONICAL,
   }))
+  .use(writeAlgoliaIndex())
   .use(linkChecker({
     warn: true,
   }))
