@@ -5,7 +5,7 @@
   <title>Utilities - ally.js</title><link rel="canonical" href="https://allyjs.io/api/util.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,14 +35,14 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -337,18 +338,18 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Utilities" href="#Utilities" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Utilities</h1>
+      <h1 id="utilities"><a class="link-to-headline" href="#utilities">#</a> Utilities</h1>
 <p>the util infrastructure does not contain any functionality relevant to a user of ally.js. It merely contains code supporting other components, e.g. to ensure consistent component function signatures for a consistent APIs. To be honest, it&apos;s also the dumping ground for everything that didn&apos;t fit into one of the other buckets. None of these functions are available through the <code>ally</code> object exposed by the production file <code>dist/ally.min.js</code>, but are very much accessible via modules.</p>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
-<h3><a id="Platform" href="#Platform" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Platform</h3>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
+<h3 id="platform"><a class="link-to-headline" href="#platform">#</a> Platform</h3>
 <p>In order to make using <a href="https://github.com/bestiejs/platform.js">platform.js</a> even simpler, this utility adds the few verifications ally.js actually needs.</p>
-<h3><a id="Logger" href="#Logger" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Logger</h3>
+<h3 id="logger"><a class="link-to-headline" href="#logger">#</a> Logger</h3>
 <p>In order to safely access - and in the future possibly mutate - any calls to <code>console.log</code> et al, we&apos;re importing the logger utility, rather than referencing <code>console.*</code> directly.</p>
-<h3><a id="Translate-input-to-node-array" href="#Translate-input-to-node-array" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Translate input to node array</h3>
+<h3 id="translate-input-to-node-array"><a class="link-to-headline" href="#translate-input-to-node-array">#</a> Translate input to node array</h3>
 <p>Internally ally.js prefers to use Arrays of Nodes, but when accepting input from the outside we&apos;re not sure what we get. NodeList, HTMLCollection, jQuery object, a single Node or even just a string (to run through <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">document.querySelectorAll</a>) - <code>util/node-array.js</code> converts everything to array.</p>
-<h3><a id="Context-to-element" href="#Context-to-element" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Context to element</h3>
+<h3 id="context-to-element"><a class="link-to-headline" href="#context-to-element">#</a> Context to element</h3>
 <p><code>util/context-to-element.js</code> is an internal convenience function to hide grabbing the first element of <code>util/node-array</code> or throwing an <code>TypeError</code> if nothing was found. It is unclear if this &quot;convenience&quot; may cause developers to complain about indirected stack traces.</p>
-<h3><a id="Decorate-service" href="#Decorate-service" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Decorate service</h3>
+<h3 id="decorate-service"><a class="link-to-headline" href="#decorate-service">#</a> Decorate service</h3>
 <p><code>util/decorate-service.js</code> is a decorator wrapping a component&apos;s setup (<code>engage</code>) and teardown (<code>disengage</code>) functions in a way that exposes the component with the following trivialized signature:</p>
 <pre><code class="language-javascript">function engage() {
   component.engage();
@@ -361,7 +362,7 @@
 </code></pre>
 <p>The &quot;service&quot; aspect here is that a components <code>engage()</code> function can be invoked from anyone anywhere anytime without having to track if the component has already been initialized before. This is made possible by a simple reference counter. If three components <code>engage()</code> but only two <code>disengage()</code>, the <code>component.disengage()</code> is never executed. Only after the last reference has been <code>disengage()</code>d, the component is told to teardown. It is possible to force teardown by executing <code>disengage({force: true})</code>.</p>
 <p>A component&apos;s <code>engage()</code> function may return an result object. The decorated <code>disengage()</code> function is added to that result object, returned to the caller and cached for subsequent calls to the decorated <code>engage()</code> function.</p>
-<h3><a id="Decorate-options-context" href="#Decorate-options-context" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Decorate options.context</h3>
+<h3 id="decorate-optionscontext"><a class="link-to-headline" href="#decorate-optionscontext">#</a> Decorate options.context</h3>
 <p><code>util/decorate-context</code> is a decorate wrapping a component&apos;s setup (<code>engage()</code>) and teardown (<code>disengage()</code>) functions in a way that exposes the component with the following trivialized signature:</p>
 <pre><code class="language-javascript">function engage(options) {
   var context = nodeArray(options.context);
@@ -379,32 +380,32 @@
 </code></pre>
 <p>Unlike the singleton decorator, the context decorator allows multiple concurrent instances of a component. There is no need for counting references - <code>disengage()</code>ing is the library user&apos;s obligation.</p>
 <p>A component&apos;s <code>engage()</code> function may return an result object. The decorated <code>disengage()</code> function is added to that result object and returned to the caller. Unlike the singleton decorator, the context decorator returns a unique result object for every <code>engage()</code> invocation.</p>
-<h3><a id="Sort-elements-according-to-DOM-order" href="#Sort-elements-according-to-DOM-order" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Sort elements according to DOM order</h3>
+<h3 id="sort-elements-according-to-dom-order"><a class="link-to-headline" href="#sort-elements-according-to-dom-order">#</a> Sort elements according to DOM order</h3>
 <p><code>util/sort-dom-order</code> sorts an <code>Array</code> of elements according to their relative position in the DOM.</p>
-<h3><a id="Merge-elements-according-to-DOM-order" href="#Merge-elements-according-to-DOM-order" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Merge elements according to DOM order</h3>
+<h3 id="merge-elements-according-to-dom-order"><a class="link-to-headline" href="#merge-elements-according-to-dom-order">#</a> Merge elements according to DOM order</h3>
 <p><code>util/merge-dom-order</code> merges an <code>Array</code> of elements with another <code>Array</code> of elements so that the resulting array&apos;s sorting order corresponds to DOM each element&apos;s relative position in the DOM.</p>
-<h3><a id="Retrieve-tabindex-value" href="#Retrieve-tabindex-value" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Retrieve tabindex value</h3>
+<h3 id="retrieve-tabindex-value"><a class="link-to-headline" href="#retrieve-tabindex-value">#</a> Retrieve tabindex value</h3>
 <p><code>util/tabindex-value</code> returns the value of the tabindex attribute (not property!) as an integer, or null for missing or invalid values</p>
-<h3><a id="Calculate-an-element-s-visible-area" href="#Calculate-an-element-s-visible-area" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Calculate an element&apos;s visible area</h3>
+<h3 id="calculate-an-elements-visible-area"><a class="link-to-headline" href="#calculate-an-elements-visible-area">#</a> Calculate an element&apos;s visible area</h3>
 <p><code>util/visible-area</code> calculates the fraction of the area that is visible in the viewport (<code>1</code> fully visible, <code>0</code> not visible at all, <code>0.5</code> half the element is visible, the rest is hidden by <em>scroll containers</em>)</p>
-<h3><a id="Compare-document-position" href="#Compare-document-position" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Compare document position</h3>
+<h3 id="compare-document-position"><a class="link-to-headline" href="#compare-document-position">#</a> Compare document position</h3>
 <p><code>util/compare-position</code> provides utilities for comparing the relative position of elements in the DOM for use with higher order functions (such as <code>Array.map</code>)</p>
-<h3><a id="Toggle-attribute-value" href="#Toggle-attribute-value" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Toggle attribute value</h3>
+<h3 id="toggle-attribute-value"><a class="link-to-headline" href="#toggle-attribute-value">#</a> Toggle attribute value</h3>
 <p><code>util/toggle-attribute-value</code> can will change an attribute&apos;s value, while saving its former value to allow restoring the previous state</p>
-<h3><a id="Select-in-ShadowDOM" href="#Select-in-ShadowDOM" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Select in ShadowDOM</h3>
+<h3 id="select-in-shadowdom"><a class="link-to-headline" href="#select-in-shadowdom">#</a> Select in ShadowDOM</h3>
 <p><code>util/select-in-shadows</code> mutates a given CSS selector in order to make it match elements in ShadowDOM as well.</p>
-<h3><a id="Get-a-Node-s-document-window-and-content-document" href="#Get-a-Node-s-document-window-and-content-document" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Get a Node&apos;s document, window and content document</h3>
+<h3 id="get-a-nodes-document-window-and-content-document"><a class="link-to-headline" href="#get-a-nodes-document-window-and-content-document">#</a> Get a Node&apos;s document, window and content document</h3>
 <ul>
 <li><code>util/get-content-document</code> returns the <code>document</code> representing the content of an <code>&lt;iframe&gt;</code> or <code>&lt;object&gt;</code> element.</li>
 <li><code>util/get-document</code> returns the <code>document</code> an element is attached to.* <code>util/get-document</code> returns the <code>document</code> an element is attached to.</li>
 <li><code>util/get-frame-element</code> returns the <code>&lt;iframe&gt;</code> or <code>&lt;object&gt;</code> the element is hosted in.</li>
 <li><code>util/get-window</code> returns the <code>window</code> (also known as <code>defaultView</code>) of the document and element is attached to.<code>util/get-window</code> returns the <code>window</code> (also known as <code>defaultView</code>) of the document and element is attached to.</li>
 </ul>
-<h3><a id="Mutate-Element-className-classList" href="#Mutate-Element-className-classList" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Mutate Element.className (classList)</h3>
+<h3 id="mutate-elementclassname-classlist"><a class="link-to-headline" href="#mutate-elementclassname-classlist">#</a> Mutate Element.className (classList)</h3>
 <p><code>util/toggle-class</code> mutates a given element&apos;s <code>class</code> attribute without using <a href="https://developer.mozilla.org/en/docs/Web/API/Element/classList"><code>classList</code></a>, as this is not consistently available on <code>Element</code> and <code>SVGEelement</code>.</p>
-<h3><a id="Reset-scroll-positions" href="#Reset-scroll-positions" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Reset scroll positions</h3>
+<h3 id="reset-scroll-positions"><a class="link-to-headline" href="#reset-scroll-positions">#</a> Reset scroll positions</h3>
 <p><code>util/reset-scrolling</code> collects the scroll positions of the given element&apos;s ancestors. The function returned as a result will reset the elements to the collected elements&apos; positions. This is useful to revert the effect of an operation that causes unpreventable scrolling.</p>
-<h3><a id="Match-element-agains-CSS-selector" href="#Match-element-agains-CSS-selector" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Match element agains CSS selector</h3>
+<h3 id="match-element-agains-css-selector"><a class="link-to-headline" href="#match-element-agains-css-selector">#</a> Match element agains CSS selector</h3>
 <p><code>util/element-matches</code> provides a simple interface to using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.matches">Element.matches</a> through its various vendor-prefixed names.</p>
 
     </main>
@@ -415,8 +416,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

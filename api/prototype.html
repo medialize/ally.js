@@ -5,7 +5,7 @@
   <title>Prototype polyfills - ally.js</title><link rel="canonical" href="https://allyjs.io/api/prototype.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,14 +35,14 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -337,7 +338,7 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Prototype-polyfills" href="#Prototype-polyfills" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Prototype polyfills</h1>
+      <h1 id="prototype-polyfills"><a class="link-to-headline" href="#prototype-polyfills">#</a> Prototype polyfills</h1>
 <p>The prototype infrastructure makes functions available in modern browsers available to older browsers lacking the native support.</p>
 <p>Polyfills should only extend JavaScript and BOM (Browser Object Model). Polyfills that extend the DOM (Document Object Model), i.e. the <code>Element</code> interface, are to be avoided, as they prove difficult in multi-document scenarios (e.g. <code>&lt;iframe&gt;</code>, <code>&lt;object&gt;</code>) and may not be made available on all inheriting interfaces (e.g. <code>SVGElement</code>).</p>
 <ul>
@@ -349,7 +350,7 @@
 <li><a href="https://github.com/mathiasbynens/CSS.escape"><code>CSS.escape</code></a> to polyfill the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS/escape">CSSOM <code>CSS.escape</code></a> function</li>
 <li><a href="https://github.com/paulmillr/Array.prototype.findIndex">array.prototype.findindex</a> to polyfill the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ES6 <code>Array.findIndex</code></a></li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <p>ally.js is not using the <a href="http://babeljs.io/docs/usage/polyfill/">babel polyfill</a> because it is too big for the rather limited subset we&apos;re using at the moment. This may change in the future, but we&apos;re not keen on making this move.</p>
 <p>ally.js will not pollute prototypes of built-in methods with anything but proper polyfills for (semi-) standardized methods. If we <em>need</em> to add another polyfill, we&apos;ll prefer to use an external dependency over implementing things ourselves.</p>
 
@@ -361,8 +362,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

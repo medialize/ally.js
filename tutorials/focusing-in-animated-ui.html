@@ -5,7 +5,7 @@
   <title>Managing focus in animated UI - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/focusing-in-animated-ui.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,20 +35,20 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Remedy-1-Wait-until-visible">Remedy 1: Wait until visible</a></li>
+        <li><a href="#remedy-1-wait-until-visible">Remedy 1: Wait until visible</a></li>
         
         
-        <li><a href="#Remedy-2-Undo-scrolling">Remedy 2: Undo scrolling</a></li>
+        <li><a href="#remedy-2-undo-scrolling">Remedy 2: Undo scrolling</a></li>
         
         
-        <li><a href="#Recap">Recap</a></li>
+        <li><a href="#recap">Recap</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -88,12 +89,19 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Managing-focus-in-animated-UI" href="#Managing-focus-in-animated-UI" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Managing focus in animated UI</h1>
+      <h1 id="managing-focus-in-animated-ui"><a class="link-to-headline" href="#managing-focus-in-animated-ui">#</a> Managing focus in animated UI</h1>
 <p>Managing focus is pretty straight forward: invoke the <code>element.focus()</code> to make <code>element</code> the active element. If the element is not visible in the viewport, browsers will scroll that element into view. From a user&apos;s point of view it makes a lot of sense to <em>see</em> where their keyboard input is directed to, even though no HTML specification has ever defined this behavior (<a href="https://github.com/whatwg/html/issues/94">WHATWG HTML #94</a>). What worked really well for static documents, <em>can</em> be a bit of a problem for UI components that are transitioned into view as part of the web app&apos;s logic.</p>
 <p>Consider a new dialog is constructed off-screen and then moved into view in an animated fashion. Right after the elements are available in the DOM, the applications sends focus to one of its elements, as often required by <a href="https://w3c.github.io/aria/practices/aria-practices.html">WAI-ARIA Authoring Practices</a>. Since the element is still off-screen, the browser scrolls whatever elements it must, so that the element becomes visible in the viewport. But the application itself also kicks off an animation to move the element into view. And the end result is that the dialog came into view by way of the browser scrolling, and back out of view by way of the application&apos;s animation. Play with the following example to see this problem in action:</p>
-<section class="example"><h1><a id="Example-Failing-Focus-in-Animated-UI" href="#Example-Failing-Focus-in-Animated-UI" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: Failing Focus in Animated UI</h1><a class="jsbin-embed" href="https://jsbin.com/pehehe/embed?output">Failing Focus in Animated UI on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/pehehe/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./focusing-animated.fail.example.html" target="_blank">open the source document</a></p></section>
+<section class="example">
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/pehehe/embed?output">Failing Focus in Animated UI on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/pehehe/edit" target="_blank">play with <span class="visuallyhidden">Failing Focus in Animated UI</span> on jsbin.com</a> or <a href="focusing-animated.fail.example.html" target="_blank">open the document <span class="visuallyhidden">of Failing Focus in Animated UI</span></a></p>
+</section>
 <p>There is no way to prevent the browser from scrolling elements into view upon receiving focus. That means the UI has to work around this built-in behavior when creating animation-revealed-content UI such as carousels, accordions, off-screen menus, and so on. The UI can deal with the browser&apos;s inevitable scrolling habits in two ways: wait for the element to become visible, or reset the scroll position.</p>
-<h2><a id="Remedy-1-Wait-until-visible" href="#Remedy-1-Wait-until-visible" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remedy 1: Wait until visible</h2>
+<h2 id="remedy-1-wait-until-visible"><a class="link-to-headline" href="#remedy-1-wait-until-visible">#</a> Remedy 1: Wait until visible</h2>
 <p>Browsers will only scroll elements into view upon receiving focus, if they weren&apos;t already visible in the viewport. That allows the UI to wait for the end of the transition that&apos;s moving the content into view, before shifting focus to it.</p>
 <p>In case the element that should receive focus is already known, the UI could use <a href="../api/when/focusable.html"><code>ally.when.focusable</code></a>. This utility examines the the current state on every animation, both in DOM and on screen. Once the target element is both focusable and visible in the viewport, the callback function is invoked and the UI can safely shift focus:</p>
 <pre><code class="language-javascript">ally.when.focusable({
@@ -117,7 +125,7 @@
   },
 });
 </code></pre>
-<h3><a id="Remedy-1-Performance" href="#Remedy-1-Performance" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remedy 1: Performance</h3>
+<h3 id="remedy-1-performance"><a class="link-to-headline" href="#remedy-1-performance">#</a> Remedy 1: Performance</h3>
 <p>Note that these utilities work regardless of the method used to transition the content into view. This comes at a price, as they need to determine the element&apos;s position on each animation frame. This <em>may</em> lead to a <a href="http://jankfree.org/">janky experience</a> due to <a href="http://wilsonpage.co.uk/preventing-layout-thrashing/">layout thrashing</a>.</p>
 <p>In a more tightly coupled UI, the JavaScript might know the exact method of animation used to reveal the content. In that case it is <em>much</em> more efficient to wait for the animation to announce it&apos;s finished.</p>
 <ul>
@@ -126,14 +134,14 @@
 <li>See the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Animation/onfinish"><code>onfinish</code></a> callback or promise for content revealed through <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API">Web Animations API</a>.</li>
 </ul>
 <p>Tools like <a href="https://github.com/medialize/jQuery-transitionEndPromise">jQuery.transitionEndPromise</a> can make <code>transitionend</code> and <code>animationend</code> events a little more convenient by providing filters and promises.</p>
-<h2><a id="Remedy-2-Undo-scrolling" href="#Remedy-2-Undo-scrolling" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remedy 2: Undo scrolling</h2>
+<h2 id="remedy-2-undo-scrolling"><a class="link-to-headline" href="#remedy-2-undo-scrolling">#</a> Remedy 2: Undo scrolling</h2>
 <p>Contrary to the first approach&apos;s <em>avoiding of scroll</em>, the UI could let the scroll happen and then <em>reset</em> all scroll positions so that they never happened. Besides a few undesired <code>scroll</code> events, this approach would also see a few layout operations (what&apos;s commonly referred to as layout thrashing). However, both are limited to before the content-revealing transitions run, so shouldn&apos;t be a bigger issue than any other <a href="https://aerotwist.com/blog/flip-your-animations/">FLIP animation</a>.</p>
 <p>In order to <em>reset</em> scroll position after the element received focus, the UI needs to collect the scroll positions of all ancestor elements before focus was shifted. The utility <a href="../api/element/focus.html"><code>ally.element.focus</code></a> provides the option <code>undoScrolling</code> to conveniently do just that:</p>
 <pre><code class="language-javascript">ally.element.focus(&apos;#element-to-focus&apos;, {
   undoScrolling: true,
 });
 </code></pre>
-<h3><a id="Remedy-2-Caveat" href="#Remedy-2-Caveat" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Remedy 2: Caveat</h3>
+<h3 id="remedy-2-caveat"><a class="link-to-headline" href="#remedy-2-caveat">#</a> Remedy 2: Caveat</h3>
 <p>This approach has one caveat, though. It is <em>required</em> that the element is able to receive focus immediately. That means that extra care must be taken when CSS transitions are used.</p>
 <p>When hiding things off-screen, the UI must make sure the invisible contents are not only hidden visually, but also semantically, which is why we need to specify the <code>visiblity</code> property. See the <a href="./hiding-elements.html">Hiding DOM elements tutorial</a> for more details.</p>
 <p>The UI usually needs to change the <code>visibility</code> property from <code>hidden</code> to <code>visible</code> right away, but delay the reverse by 1 second. This is necessary so the element is <em>already</em> visible when moving in, and <em>still</em> visible while moving out.</p>
@@ -173,7 +181,7 @@ element.focus();
 </code></pre>
 <p>The <a href="https://developer.mozilla.org/en/docs/Web/CSS/transition-property"><code>transition-property</code></a> effectively <em>removed</em> the transition of <code>visibility</code> when showing the element, but the transition for hiding it is retained.</p>
 <p>Note that setting the <a href="https://developer.mozilla.org/en/docs/Web/CSS/transition-duration"><code>transition-duration</code></a> and <a href="https://developer.mozilla.org/en/docs/Web/CSS/transition-delay"><code>transition-delay</code></a> to <code>0s</code> would&apos;ve achieved the same effect, but meant more repetition of CSS.</p>
-<h2><a id="Recap" href="#Recap" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Recap</h2>
+<h2 id="recap"><a class="link-to-headline" href="#recap">#</a> Recap</h2>
 <ul>
 <li>The browser will scroll elements into view when they receive focus and there is no way to prevent that.</li>
 <li>Where the content being revealed is already accessible, use <a href="../api/element/focus.html"><code>ally.element.focus</code></a> to shift focus using the <code>undoScrolling</code> option. Make sure the element is made focusable synchronously.</li>
@@ -188,8 +196,10 @@ element.focus();
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

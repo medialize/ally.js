@@ -5,7 +5,7 @@
   <title>Supports - Browser compatibility - ally.js</title><link rel="canonical" href="https://allyjs.io/api/supports.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,20 +35,20 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Available-compatibility-tests">Available compatibility tests</a></li>
+        <li><a href="#available-compatibility-tests">Available compatibility tests</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -343,56 +344,192 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Supports-Browser-compatibility" href="#Supports-Browser-compatibility" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Supports - Browser compatibility</h1>
+      <h1 id="supports-browser-compatibility"><a class="link-to-headline" href="#supports-browser-compatibility">#</a> Supports - Browser compatibility</h1>
 <p>The supports infrastructure is a set of tests determining browser behavior and compatibility at runtime. This piece of the infrastructure does for focus management what <a href="https://modernizr.com/">Modernizr</a> does for the rest of the web platform.</p>
 <p>The tests change focus to detect compatibility and thereby cause focus change announcements in screen readers, as well as <a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a#what-forces-layout--reflow">force the browser to perform layout / reflow operations</a>, commonly known as <a href="http://kellegous.com/j/2013/01/26/layout-performance/">layout thrashing</a>. To limit these effects, tests are performed in an iframe and cached in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>, so only the first impression of a document on a given domain will have to live with the overhead.</p>
 <p>For the tests to run properly, the document needs to have focus during execution. If it does not, e.g. because the browser&apos;s DevTools have focus, the cache is invalidated.</p>
-<h2><a id="Available-compatibility-tests" href="#Available-compatibility-tests" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Available compatibility tests</h2>
+<h2 id="available-compatibility-tests"><a class="link-to-headline" href="#available-compatibility-tests">#</a> Available compatibility tests</h2>
 <table>
 <thead>
-<tr><th>Test Name</th><th>Return Type</th><th>Description</th></tr>
+<tr>
+<th>Test Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>css-shadow-piercing-deep-combinator</td><td>string (<code>&quot;&gt;&gt;&gt;&quot;</code>, <code>&quot;/deep/&quot;</code> <code>&quot;&quot;</code>)</td><td>the browser&apos;s support for <a href="https://dev.w3.org/csswg/css-scoping/#deep-combinator">selecting through ShadowDOM</a>, empty string if not supported</td></tr>
-<tr><td>focus-area-img-tabindex</td><td>boolean</td><td>true if <code>&lt;area&gt;</code> is focusable for <code>&lt;img tabindex=&quot;-1&quot; usemap=&quot;&#x2026;&quot;&gt;</code></td></tr>
-<tr><td>focus-area-tabindex</td><td>boolean</td><td>true if <code>&lt;area href=&quot;&#x2026;&quot; tabindex=&quot;-1&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-area-without-href</td><td>boolean</td><td>true if <code>&lt;area tabindex=&quot;-1&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-audio-without-controls</td><td>boolean</td><td>true if <code>&lt;audio&gt;</code> is focusable (while only <code>&lt;audio controls&gt;</code> should be)</td></tr>
-<tr><td>focus-broken-image-map</td><td>boolean</td><td>true if <code>&lt;area&gt;</code> is focusable although the <code>&lt;img&gt;</code> using the <code>&lt;map&gt;</code> is not properly loaded</td></tr>
-<tr><td>focus-children-of-focusable-flexbox</td><td>boolean</td><td>true if <code>&lt;span&gt;</code> in <code>&lt;a href=&quot;&#x2026;&quot; style=&quot;display:flex;&quot;&gt;&lt;span&gt;</code> is focusable</td></tr>
-<tr><td>focus-fieldset-disabled</td><td>boolean</td><td>true if <code>&lt;fieldset tabindex=&quot;0&quot; disabled&gt;</code> is focusable</td></tr>
-<tr><td>focus-fieldset</td><td>boolean</td><td>true if <code>&lt;fieldset&gt;</code> is focusable</td></tr>
-<tr><td>focus-flexbox-container</td><td>boolean</td><td>true if <code>&lt;span style=&quot;display: flex&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-form-disabled</td><td>boolean</td><td>true if <code>&lt;fieldset tabindex=&quot;0&quot; disabled&gt;</code> is focusable</td></tr>
-<tr><td>focus-img-ismap</td><td>boolean</td><td>true if <code>&lt;img&gt;</code> in <code>&lt;a href=&quot;&#x2013;&quot;&gt;&lt;img ismap src=&quot;&#x2026;&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-img-usemap-tabindex</td><td>boolean</td><td>true if <code>&lt;img usemap=&quot;#&#x2026;&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-in-hidden-iframe</td><td>boolean</td><td>true if content within <code>&lt;iframe style=&quot;visibility: hidden&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-in-zero-dimension-object</td><td>boolean</td><td>true if content within <code>&lt;object height=&quot;0&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-invalid-tabindex</td><td>boolean</td><td>true if <code>&lt;div tabindex=&quot;invalid-value&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-label-tabindex</td><td>boolean</td><td>true if <code>&lt;label tabindex=&quot;-1&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-object-svg</td><td>boolean</td><td>true if <code>&lt;object type=&quot;image/svg+xml&quot; data=&quot;&#x2026;&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-object-svg-hidden</td><td>boolean</td><td>true if <code>&lt;object type=&quot;image/svg+xml&quot; data=&quot;&#x2026;&quot; style=&quot;visibility: hidden&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-object-swf</td><td>boolean</td><td>true if <code>&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;&#x2026;&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-redirect-legend</td><td>string (<code>&quot;focusable&quot;</code>, <code>&quot;tabbable&quot;</code>, <code>&quot;&quot;</code>)</td><td>the browser&apos;s query method for identifying the target for passing focus from <code>&lt;legend&gt;</code></td></tr>
-<tr><td>focus-redirect-img-usemap</td><td>boolean</td><td>true if <code>img.focus()</code> passes focus to the first <code>&lt;area&gt;</code> of the associated element</td></tr>
-<tr><td>focus-scroll-body</td><td>boolean</td><td>true if the child element of a scrollable area is focusable</td></tr>
-<tr><td>focus-scroll-container-without-overflow</td><td>boolean</td><td>true if a scrollable element is focusable (without being made scrollable using the CSS property <code>overflow</code> )</td></tr>
-<tr><td>focus-scroll-container</td><td>boolean</td><td>true if a scrollable element is focusable</td></tr>
-<tr><td>focus-summary</td><td>boolean</td><td>true if the browser implements <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> is focusable</td></tr>
-<tr><td>focus-svg</td><td>boolean</td><td>true if <code>&lt;svg&gt;</code> is focusable</td></tr>
-<tr><td>focus-svg-focusable-attribute</td><td>boolean</td><td>true if <code>&lt;text focusable=&quot;true&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-svg-tabindex-attribute</td><td>boolean</td><td>true if <code>&lt;text tabindex=&quot;-1&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-tabindex-trailing-characters</td><td>boolean</td><td>true if <code>&lt;div tabindex=&quot;3x&quot;&gt;</code> is focusable</td></tr>
-<tr><td>focus-table</td><td>boolean</td><td>true if <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> are focusable</td></tr>
-<tr><td>focus-video-without-controls</td><td>boolean</td><td>true if <code>&lt;video&gt;</code> is focusable (while only <code>&lt;video controls&gt;</code> should be)</td></tr>
-<tr><td>tabsequence-area-at-img-position</td><td>boolean</td><td>true if <code>&lt;area&gt;</code> are tabbed at the DOM position of <code>&lt;img usemap=&quot;&#x2026;&quot;&gt;</code></td></tr>
+<tr>
+<td>css-shadow-piercing-deep-combinator</td>
+<td>string (<code>&quot;&gt;&gt;&gt;&quot;</code>, <code>&quot;/deep/&quot;</code> <code>&quot;&quot;</code>)</td>
+<td>the browser&apos;s support for <a href="https://dev.w3.org/csswg/css-scoping/#deep-combinator">selecting through ShadowDOM</a>, empty string if not supported</td>
+</tr>
+<tr>
+<td>focus-area-img-tabindex</td>
+<td>boolean</td>
+<td>true if <code>&lt;area&gt;</code> is focusable for <code>&lt;img tabindex=&quot;-1&quot; usemap=&quot;&#x2026;&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>focus-area-tabindex</td>
+<td>boolean</td>
+<td>true if <code>&lt;area href=&quot;&#x2026;&quot; tabindex=&quot;-1&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-area-without-href</td>
+<td>boolean</td>
+<td>true if <code>&lt;area tabindex=&quot;-1&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-audio-without-controls</td>
+<td>boolean</td>
+<td>true if <code>&lt;audio&gt;</code> is focusable (while only <code>&lt;audio controls&gt;</code> should be)</td>
+</tr>
+<tr>
+<td>focus-broken-image-map</td>
+<td>boolean</td>
+<td>true if <code>&lt;area&gt;</code> is focusable although the <code>&lt;img&gt;</code> using the <code>&lt;map&gt;</code> is not properly loaded</td>
+</tr>
+<tr>
+<td>focus-children-of-focusable-flexbox</td>
+<td>boolean</td>
+<td>true if <code>&lt;span&gt;</code> in <code>&lt;a href=&quot;&#x2026;&quot; style=&quot;display:flex;&quot;&gt;&lt;span&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-fieldset-disabled</td>
+<td>boolean</td>
+<td>true if <code>&lt;fieldset tabindex=&quot;0&quot; disabled&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-fieldset</td>
+<td>boolean</td>
+<td>true if <code>&lt;fieldset&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-flexbox-container</td>
+<td>boolean</td>
+<td>true if <code>&lt;span style=&quot;display: flex&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-form-disabled</td>
+<td>boolean</td>
+<td>true if <code>&lt;fieldset tabindex=&quot;0&quot; disabled&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-img-ismap</td>
+<td>boolean</td>
+<td>true if <code>&lt;img&gt;</code> in <code>&lt;a href=&quot;&#x2013;&quot;&gt;&lt;img ismap src=&quot;&#x2026;&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-img-usemap-tabindex</td>
+<td>boolean</td>
+<td>true if <code>&lt;img usemap=&quot;#&#x2026;&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-in-hidden-iframe</td>
+<td>boolean</td>
+<td>true if content within <code>&lt;iframe style=&quot;visibility: hidden&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-in-zero-dimension-object</td>
+<td>boolean</td>
+<td>true if content within <code>&lt;object height=&quot;0&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-invalid-tabindex</td>
+<td>boolean</td>
+<td>true if <code>&lt;div tabindex=&quot;invalid-value&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-label-tabindex</td>
+<td>boolean</td>
+<td>true if <code>&lt;label tabindex=&quot;-1&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-object-svg</td>
+<td>boolean</td>
+<td>true if <code>&lt;object type=&quot;image/svg+xml&quot; data=&quot;&#x2026;&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-object-svg-hidden</td>
+<td>boolean</td>
+<td>true if <code>&lt;object type=&quot;image/svg+xml&quot; data=&quot;&#x2026;&quot; style=&quot;visibility: hidden&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-object-swf</td>
+<td>boolean</td>
+<td>true if <code>&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;&#x2026;&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-redirect-legend</td>
+<td>string (<code>&quot;focusable&quot;</code>, <code>&quot;tabbable&quot;</code>, <code>&quot;&quot;</code>)</td>
+<td>the browser&apos;s query method for identifying the target for passing focus from <code>&lt;legend&gt;</code></td>
+</tr>
+<tr>
+<td>focus-redirect-img-usemap</td>
+<td>boolean</td>
+<td>true if <code>img.focus()</code> passes focus to the first <code>&lt;area&gt;</code> of the associated element</td>
+</tr>
+<tr>
+<td>focus-scroll-body</td>
+<td>boolean</td>
+<td>true if the child element of a scrollable area is focusable</td>
+</tr>
+<tr>
+<td>focus-scroll-container-without-overflow</td>
+<td>boolean</td>
+<td>true if a scrollable element is focusable (without being made scrollable using the CSS property <code>overflow</code> )</td>
+</tr>
+<tr>
+<td>focus-scroll-container</td>
+<td>boolean</td>
+<td>true if a scrollable element is focusable</td>
+</tr>
+<tr>
+<td>focus-summary</td>
+<td>boolean</td>
+<td>true if the browser implements <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-svg</td>
+<td>boolean</td>
+<td>true if <code>&lt;svg&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-svg-focusable-attribute</td>
+<td>boolean</td>
+<td>true if <code>&lt;text focusable=&quot;true&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-svg-tabindex-attribute</td>
+<td>boolean</td>
+<td>true if <code>&lt;text tabindex=&quot;-1&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-tabindex-trailing-characters</td>
+<td>boolean</td>
+<td>true if <code>&lt;div tabindex=&quot;3x&quot;&gt;</code> is focusable</td>
+</tr>
+<tr>
+<td>focus-table</td>
+<td>boolean</td>
+<td>true if <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> are focusable</td>
+</tr>
+<tr>
+<td>focus-video-without-controls</td>
+<td>boolean</td>
+<td>true if <code>&lt;video&gt;</code> is focusable (while only <code>&lt;video controls&gt;</code> should be)</td>
+</tr>
+<tr>
+<td>tabsequence-area-at-img-position</td>
+<td>boolean</td>
+<td>true if <code>&lt;area&gt;</code> are tabbed at the DOM position of <code>&lt;img usemap=&quot;&#x2026;&quot;&gt;</code></td>
+</tr>
 </tbody>
 </table>
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li>As of <code>v1.3.0</code> <em>all</em> tests are run at once and within an iframe to limit layout thrashing.</li>
+<li>As of <a href="https://github.com/medialize/ally.js/releases/1.3.0"><code>v1.3.0</code></a> <em>all</em> tests are run at once and within an iframe to limit layout thrashing.</li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <p>Tests go in <code>src/supports</code> and results are used through the <code>src/supports/supports.js</code> module.</p>
 
     </main>
@@ -403,8 +540,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

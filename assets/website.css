@@ -45,6 +45,20 @@ a:visited {
   outline: none;
 }
 
+.visuallyhidden:not(:focus):not(:active) {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 body > header,
 body > #wrapper,
 body > footer {
@@ -117,6 +131,9 @@ body > header {
 #site-navigation > ul > li.github,
 #site-navigation > ul > li.download {
   float: right;
+}
+#site-navigation > .algolia-autocomplete + ul {
+  margin-top: 6px;
 }
 
 /************************************************************
@@ -230,10 +247,13 @@ main > article:first-of-type > header > h1 {
 }
 main .link-to-headline {
   text-decoration: none;
-  font-size: 65%;
   font-weight: normal;
   display: inline-block;
-  margin-right: 6px;
+  color: #999999;
+}
+main .link-to-headline:hover,
+main .link-to-headline:focus {
+  text-decoration: underline;
 }
 
 
@@ -307,19 +327,21 @@ main .what-ally-is .logo {
  * Block Content
  ************************************************************/
 
-main .warning,
-main .tip,
-main .help,
-main .note {
+main [data-note-type] {
   padding: 12px;
   border: 1px solid #E5E5E5;
   background: rgba(0, 0, 0, 0.05);
 }
-main .warning > strong:first-child {
+main [data-note-type]:before {
+  content: attr(data-note-type) ": ";
+  font-weight: bold;
+  text-transform: uppercase;
+}
+main [data-note-type="warning"]:before {
   color: #DA0000;
 }
-main .tip > strong:first-child,
-main .help > strong:first-child {
+main [data-note-type="tip"]:before,
+main [data-note-type="help"]:before {
   color: blue;
 }
 
@@ -436,4 +458,86 @@ main dd + dt {
   #site-navigation > ul > li + li {
     margin-left: 0;
   }
+}
+
+/************************************************************
+ * Algolia Search
+ ************************************************************/
+
+.algolia-autocomplete {
+  width: 100%;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 100%;
+}
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #B2D7FF;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em:not(.document) {
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+.algolia-autocomplete input {
+  box-sizing: border-box;
+  border: 1px solid #999;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu > * {
+  margin: 0;
+}
+
+.algolia-autocomplete .index-block {
+  margin: 0;
+  padding: 5px;
+  border: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  background: #999;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .title {
+  margin: 0;
+  padding: 5px;
+  border: 0;
+  font-size: 16px;
+  font-weight: normal;
+  background: rgba(0, 0, 0, 0.1);
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .excerpt {
+  padding: 5px;
+  font-size: 14px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion + .aa-suggestion {
+  margin-top: 0;
+}
+
+.algolia-autocomplete .branding {
+  margin-top: 0;
+  padding: 3px 5px;
+  font-size: 14px;
+  text-align: right;
+  color: #04101E;
+  background: #CCC;
+}
+.algolia-autocomplete .branding img {
+  height: 14px;
+  vertical-align: middle;
 }

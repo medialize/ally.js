@@ -5,7 +5,7 @@
   <title>API index - ally.js</title><link rel="canonical" href="https://allyjs.io/api/index.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,44 +35,44 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Countering-browser-bugs">Countering browser bugs</a></li>
+        <li><a href="#countering-browser-bugs">Countering browser bugs</a></li>
         
         
-        <li><a href="#Extended-focus-Styling">Extended :focus Styling</a></li>
+        <li><a href="#extended-focus-styling">Extended :focus Styling</a></li>
         
         
-        <li><a href="#Altering-browser-focus-behavior">Altering browser focus behavior</a></li>
+        <li><a href="#altering-browser-focus-behavior">Altering browser focus behavior</a></li>
         
         
-        <li><a href="#Finding-elements">Finding elements</a></li>
+        <li><a href="#finding-elements">Finding elements</a></li>
         
         
-        <li><a href="#Element-state">Element state</a></li>
+        <li><a href="#element-state">Element state</a></li>
         
         
-        <li><a href="#Manipulating-element-state">Manipulating element state</a></li>
+        <li><a href="#manipulating-element-state">Manipulating element state</a></li>
         
         
-        <li><a href="#Reacting-to-element-state">Reacting to element state</a></li>
+        <li><a href="#reacting-to-element-state">Reacting to element state</a></li>
         
         
-        <li><a href="#DOM-traversal">DOM traversal</a></li>
+        <li><a href="#dom-traversal">DOM traversal</a></li>
         
         
-        <li><a href="#Values">Values</a></li>
+        <li><a href="#values">Values</a></li>
         
         
-        <li><a href="#Developer-modules">Developer modules</a></li>
+        <li><a href="#developer-modules">Developer modules</a></li>
         
         
-        <li><a href="#Contributor-modules">Contributor modules</a></li>
+        <li><a href="#contributor-modules">Contributor modules</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -367,39 +368,39 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="API-index" href="#API-index" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>API index</h1>
+      <h1 id="api-index"><a class="link-to-headline" href="#api-index">#</a> API index</h1>
 <p>When creating web applications or UI widgets these modules may come in handy.</p>
-<h2><a id="Countering-browser-bugs" href="#Countering-browser-bugs" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Countering browser bugs</h2>
+<h2 id="countering-browser-bugs"><a class="link-to-headline" href="#countering-browser-bugs">#</a> Countering browser bugs</h2>
 <p>Every software has its problems - so do browsers. These utilities combat things browsers get wrong.</p>
 <ul>
 <li><a href="fix/pointer-focus-children.html"><code>ally.fix.pointerFocusChildren</code></a> (Internet Explorer 10 - 11)</li>
 <li><a href="fix/pointer-focus-input.html"><code>ally.fix.pointerFocusInput</code></a> (Safari and Firefox on Mac OS X)</li>
 <li><a href="fix/pointer-focus-parent.html"><code>ally.fix.pointerFocusParent</code></a> (WebKit and old Blink)</li>
 </ul>
-<h2><a id="Extended-focus-Styling" href="#Extended-focus-Styling" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Extended <code>:focus</code> Styling</h2>
+<h2 id="extended-focus-styling"><a class="link-to-headline" href="#extended-focus-styling">#</a> Extended <code>:focus</code> Styling</h2>
 <p>Sometimes <code>:focus</code> is not enough for communicating your application&apos;s intentions properly.</p>
 <ul>
 <li><a href="style/focus-source.html"><code>ally.style.focusSource</code></a> provides <code>html[focus-source=&quot;pointer|key|script&quot;]</code></li>
 <li><a href="style/focus-within.html"><code>ally.style.focusWithin</code></a> polyfills <code>:focus-within</code> with <code>.ally-focus-within</code></li>
 </ul>
-<h2><a id="Altering-browser-focus-behavior" href="#Altering-browser-focus-behavior" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Altering browser focus behavior</h2>
+<h2 id="altering-browser-focus-behavior"><a class="link-to-headline" href="#altering-browser-focus-behavior">#</a> Altering browser focus behavior</h2>
 <p>While it&apos;s best to use standardized features and leave browsers to figure things out, specifications sometimes leave us hanging in limbo.</p>
 <ul>
 <li><a href="maintain/disabled.html"><code>ally.maintain.disabled</code></a> renders elements inert to prevent any user interaction</li>
 <li><a href="maintain/hidden.html"><code>ally.maintain.hidden</code></a> sets <code>aria-hidden=&quot;true&quot;</code> on insignificant branches</li>
 <li><a href="maintain/tab-focus.html"><code>ally.maintain.tabFocus</code></a> traps <kbd>TAB</kbd> focus in the tabsequence</li>
 </ul>
-<h2><a id="Finding-elements" href="#Finding-elements" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Finding elements</h2>
+<h2 id="finding-elements"><a class="link-to-headline" href="#finding-elements">#</a> Finding elements</h2>
 <p>In order to work with focusable elements, we must first know which elements we&apos;re supposed to work with. See <a href="../what-is-focusable.html">what does &quot;focusable&quot; mean?</a> for a differentiation.</p>
 <ul>
 <li><a href="query/first-tabbable.html"><code>ally.query.firstTabbable</code></a> finds the first keyboard focusable element</li>
 <li><a href="query/focusable.html"><code>ally.query.focusable</code></a> finds all focusable elements</li>
 <li><a href="query/shadow-hosts.html"><code>ally.query.shadowHosts</code></a> finds all elements hosting a <code>ShadowRoot</code></li>
 <li><a href="query/tabbable.html"><code>ally.query.tabbable</code></a> finds all keyboard focusable elements in DOM order</li>
-<li><a href="query/tabsequence.html"><code>ally.query.tabsequence</code></a> finds all keyboard focusable elements in <a href="../../concepts.html#Sequential-navigation-focus-order">Sequential Navigation Focus Order</a></li>
+<li><a href="query/tabsequence.html"><code>ally.query.tabsequence</code></a> finds all keyboard focusable elements in <a href="../../concepts.html#sequential-navigation-focus-order">Sequential Navigation Focus Order</a></li>
 </ul>
-<h2><a id="Element-state" href="#Element-state" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Element state</h2>
-<p>Unlike any other ally modules, these components do not take take <a href="concepts.html#Single-options-argument"><code>options.context</code> argument</a>, but expect the <code>element</code> as first argument, allowing easy use in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>.filter()</code></a>. See <a href="../what-is-focusable.html">what does &quot;focusable&quot; mean?</a> for a differentiation.</p>
+<h2 id="element-state"><a class="link-to-headline" href="#element-state">#</a> Element state</h2>
+<p>Unlike any other ally modules, these components do not take take <a href="concepts.html#single-options-argument"><code>options.context</code> argument</a>, but expect the <code>element</code> as first argument, allowing easy use in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>.filter()</code></a>. See <a href="../what-is-focusable.html">what does &quot;focusable&quot; mean?</a> for a differentiation.</p>
 <ul>
 <li><a href="is/active-element.html"><code>ally.is.activeElement</code></a> returns true if the element is the activeElement of its host context, i.e. its document, iFrame or ShadowHost</li>
 <li><a href="is/disabled.html"><code>ally.is.disabled</code></a> returns true if the element is <code>:disabled</code></li>
@@ -412,36 +413,38 @@
 <li><a href="is/valid-tabindex.html"><code>ally.is.validTabindex</code></a> returns true if the element&apos;s <code>tabindex</code> attribute value is sound</li>
 <li><a href="is/visible.html"><code>ally.is.visible</code></a> returns true if the element is rendered (but not necessarily visible in the viewport)</li>
 </ul>
-<h2><a id="Manipulating-element-state" href="#Manipulating-element-state" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Manipulating element state</h2>
+<h2 id="manipulating-element-state"><a class="link-to-headline" href="#manipulating-element-state">#</a> Manipulating element state</h2>
 <p>Making up for missing or lacking DOM mutation APIs.</p>
 <ul>
 <li><a href="element/blur.html"><code>ally.element.blur</code></a> shifts focus away from an element</li>
 <li><a href="element/disabled.html"><code>ally.element.disabled</code></a> disables all elements, not only form controls</li>
 <li><a href="element/focus.html"><code>ally.element.focus</code></a> shifts focus to an element</li>
 </ul>
-<h2><a id="Reacting-to-element-state" href="#Reacting-to-element-state" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Reacting to element state</h2>
+<h2 id="reacting-to-element-state"><a class="link-to-headline" href="#reacting-to-element-state">#</a> Reacting to element state</h2>
 <p>Especially when dealing with transitional user interfaces we need to know when an element can be safely focused.</p>
 <ul>
 <li><a href="when/focusable.html"><code>ally.when.focusable</code></a> executes a callback once an element fulfills <a href="is/focusable.html"><code>ally.is.focusable</code></a> and is visible in the viewport</li>
 <li><a href="when/key.html"><code>ally.when.key</code></a> executes a callback when a given key has been pressed</li>
 <li><a href="when/visible-area.html"><code>ally.when.visibleArea</code></a> executes a callback once an element is visible in the viewport</li>
 </ul>
-<h2><a id="DOM-traversal" href="#DOM-traversal" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>DOM traversal</h2>
+<h2 id="dom-traversal"><a class="link-to-headline" href="#dom-traversal">#</a> DOM traversal</h2>
 <p>Sometimes you need some DOM traversal utilities</p>
 <ul>
 <li><a href="get/insignificant-branches.html"><code>ally.get.insignificantBranches</code></a> returns an array containing the branches of the DOM that do contain any of the target elements</li>
 <li><a href="get/active-element.html"><code>ally.get.activeElement</code></a> identifies the element that has focus</li>
 </ul>
-<h2><a id="Values" href="#Values" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Values</h2>
+<h2 id="values"><a class="link-to-headline" href="#values">#</a> Values</h2>
 <ul>
 <li><a href="map/attribute.html"><code>ally.map.attribute</code></a> maps WAI-ARIA states and properties</li>
 <li><a href="map/keycode.html"><code>ally.map.keycode</code></a> maps control keys to readable names</li>
 </ul>
 <hr>
-<h2><a id="Developer-modules" href="#Developer-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Developer modules</h2>
+<h2 id="developer-modules"><a class="link-to-headline" href="#developer-modules">#</a> Developer modules</h2>
 <p>When creating libraries these modules may come in handy.</p>
-<div class="note"><strong>NOTE:</strong> When you find yourself using one of these in your application code, we should talk about what you&apos;re trying to achieve and how we could do that as part of the library instead. Get in touch, <a href="https://github.com/medialize/ally.js/issues">file an issue</a> explaining what you&apos;re trying to achieve!</div>
-<h3><a id="DOM-traversal-extended" href="#DOM-traversal-extended" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>DOM traversal (extended)</h3>
+<div data-note-type="note">
+<p>When you find yourself using one of these in your application code, we should talk about what you&apos;re trying to achieve and how we could do that as part of the library instead. Get in touch, <a href="https://github.com/medialize/ally.js/issues">file an issue</a> explaining what you&apos;re trying to achieve!</p>
+</div>
+<h3 id="dom-traversal-extended"><a class="link-to-headline" href="#dom-traversal-extended">#</a> DOM traversal (extended)</h3>
 <p>Sometimes you need some DOM traversal utilities</p>
 <ul>
 <li><a href="get/active-elements.html"><code>ally.get.activeElements</code></a> identifies the <code>ShadowHost</code> ancestry of the active element</li>
@@ -452,22 +455,27 @@
 <li><a href="get/shadow-host-parents.html"><code>ally.get.shadowHostParents</code></a></li>
 <li><a href="get/shadow-host.html"><code>ally.get.shadowHost</code></a></li>
 </ul>
-<h3><a id="Event-dispatchers" href="#Event-dispatchers" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Event dispatchers</h3>
+<h3 id="event-dispatchers"><a class="link-to-headline" href="#event-dispatchers">#</a> Event dispatchers</h3>
 <p>Emitting events when there&apos;s no standardized equivalent</p>
 <ul>
 <li><a href="event/active-element.html"><code>ally.event.activeElement</code></a></li>
 <li><a href="event/shadow-focus.html"><code>ally.event.shadowFocus</code></a></li>
 </ul>
-<h3><a id="Event-listeners" href="#Event-listeners" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Event listeners</h3>
+<h3 id="event-listeners"><a class="link-to-headline" href="#event-listeners">#</a> Event listeners</h3>
 <p>Translate volatile events to stateful interfaces</p>
 <ul>
 <li><a href="observe/interaction-type.html"><code>ally.observe.interactionType</code></a> observes user interaction method to distinguish pointer and keyboard actions</li>
 <li><a href="observe/shadow-mutations.html"><code>ally.observe.shadowMutations</code></a> registers <code>MutationObserver</code>s across nested <code>ShadowRoot</code>s</li>
 </ul>
 <hr>
-<h2><a id="Contributor-modules" href="#Contributor-modules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributor modules</h2>
+<h2 id="contributor-modules"><a class="link-to-headline" href="#contributor-modules">#</a> Contributor modules</h2>
 <p>When working on ally.js these modules may come in handy.</p>
-<div class="note"><strong>NOTE:</strong> When you find yourself using one of these in your application or library code, we should talk about what you&apos;re trying to achieve and how we could do that as part of the library instead. Get in touch, <a href="https://github.com/medialize/ally.js/issues">file an issue</a> explaining what you&apos;re trying to achieve!</div><div class="note"><strong>NOTE:</strong> These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are <em>not</em> exposed in the production bundle <code>dist/ally.min.js</code>.</div>
+<div data-note-type="note">
+<p>When you find yourself using one of these in your application or library code, we should talk about what you&apos;re trying to achieve and how we could do that as part of the library instead. Get in touch, <a href="https://github.com/medialize/ally.js/issues">file an issue</a> explaining what you&apos;re trying to achieve!</p>
+</div>
+<p>::note
+These modules are only available to be consumed via ES6, AMD or CommonJS directly, they are <em>not</em> exposed in the production bundle <code>dist/ally.min.js</code>.
+:::</p>
 <p>The internal tools are documented in a less accessible way to make it just a tiny bit harder for someone not working on ally to use them. This is intentional. The stability of these APIs is not guaranteed.</p>
 <ul>
 <li><a href="prototype.html"><code>ally/prototype/*</code></a></li>
@@ -484,8 +492,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

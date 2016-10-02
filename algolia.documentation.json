@@ -1,0 +1,308 @@
+[
+  {
+    "url": "concepts.html",
+    "title": "General concepts",
+    "excerpt": "This document explains the general concepts encountered in the world of accessibility.",
+    "objectID": "concepts.html"
+  },
+  {
+    "url": "concepts.html#wai-aria",
+    "title": "WAI ARIA",
+    "document": "General concepts",
+    "objectID": "concepts.html#wai-aria"
+  },
+  {
+    "url": "concepts.html#accessibility-tree",
+    "title": "Accessibility tree",
+    "document": "General concepts",
+    "objectID": "concepts.html#accessibility-tree"
+  },
+  {
+    "url": "concepts.html#sequential-navigation-focus-order",
+    "title": "Sequential navigation focus order",
+    "document": "General concepts",
+    "objectID": "concepts.html#sequential-navigation-focus-order"
+  },
+  {
+    "url": "concepts.html#virtual-focus",
+    "title": "Virtual focus",
+    "document": "General concepts",
+    "objectID": "concepts.html#virtual-focus"
+  },
+  {
+    "url": "getting-started.html",
+    "title": "Getting started",
+    "excerpt": "ally.js is a JavaScript library simplifying certain accessibility features, functions and behaviors. However, simply loading ally.js will not automagically make a web application accessible. The library provides certain standard functions the \"web platform\" should&quot;ve provided itself, so JavaScript applications be made accessible more easily. This document covers how to import ally.js in your project - see the API documentation to learn what the library actually provides.",
+    "objectID": "getting-started.html"
+  },
+  {
+    "url": "getting-started.html#requirements",
+    "title": "Requirements",
+    "document": "Getting started",
+    "objectID": "getting-started.html#requirements"
+  },
+  {
+    "url": "getting-started.html#downloading-the-umd-bundle",
+    "title": "Downloading the UMD bundle",
+    "document": "Getting started",
+    "objectID": "getting-started.html#downloading-the-umd-bundle"
+  },
+  {
+    "url": "getting-started.html#loading-the-umd-bundle-from-cdn",
+    "title": "Loading the UMD bundle from CDN",
+    "document": "Getting started",
+    "objectID": "getting-started.html#loading-the-umd-bundle-from-cdn"
+  },
+  {
+    "url": "getting-started.html#installing-via-package-manager",
+    "title": "Installing via package manager",
+    "document": "Getting started",
+    "objectID": "getting-started.html#installing-via-package-manager"
+  },
+  {
+    "url": "getting-started.html#using-the-umd-bundle-via-script",
+    "title": "Using the UMD bundle via &lt;script&gt;",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-the-umd-bundle-via-script"
+  },
+  {
+    "url": "getting-started.html#using-commonjs-modules",
+    "title": "Using CommonJS modules",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-commonjs-modules"
+  },
+  {
+    "url": "getting-started.html#using-es6-modules",
+    "title": "Using ES6 modules",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-es6-modules"
+  },
+  {
+    "url": "getting-started.html#using-amd-modules",
+    "title": "Using AMD modules",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-amd-modules"
+  },
+  {
+    "url": "getting-started.html#integrations",
+    "title": "Integrations",
+    "document": "Getting started",
+    "objectID": "getting-started.html#integrations"
+  },
+  {
+    "url": "legal.html",
+    "title": "Legal",
+    "excerpt": "This document explains which third party works are part of ally.js.",
+    "objectID": "legal.html"
+  },
+  {
+    "url": "legal.html#allyjs-logo",
+    "title": "ally.js Logo",
+    "document": "Legal",
+    "objectID": "legal.html#allyjs-logo"
+  },
+  {
+    "url": "legal.html#bundled-works",
+    "title": "Bundled works",
+    "document": "Legal",
+    "objectID": "legal.html#bundled-works"
+  },
+  {
+    "url": "legal.html#mit-license",
+    "title": "MIT License",
+    "document": "Legal",
+    "objectID": "legal.html#mit-license"
+  },
+  {
+    "url": "questions.html",
+    "title": "Frequently asked questions",
+    "excerpt": "There are a couple of questions we have been asked over and over again…",
+    "objectID": "questions.html"
+  },
+  {
+    "url": "questions.html#does-allyjs-support-internet-explorer-8-and-below",
+    "title": "Does ally.js support Internet Explorer 8 and below?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#does-allyjs-support-internet-explorer-8-and-below"
+  },
+  {
+    "url": "questions.html#do-i-need-allyjs-for-static-websites",
+    "title": "Do I need ally.js for static websites?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#do-i-need-allyjs-for-static-websites"
+  },
+  {
+    "url": "questions.html#ally-not-a11y",
+    "title": "\"ally\" not \"a11y\"?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#ally-not-a11y"
+  },
+  {
+    "url": "questions.html#why-was-this-created",
+    "title": "Why was this created?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#why-was-this-created"
+  },
+  {
+    "url": "questions.html#ultimate-goal",
+    "title": "Ultimate goal?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#ultimate-goal"
+  },
+  {
+    "url": "questions.html#corporate-backing",
+    "title": "Corporate backing?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#corporate-backing"
+  },
+  {
+    "url": "questions.html#multiple-personality-disorder",
+    "title": "Multiple personality disorder?",
+    "document": "Frequently asked questions",
+    "objectID": "questions.html#multiple-personality-disorder"
+  },
+  {
+    "url": "what-is-focusable.html",
+    "title": "What does \"focusable\" mean?",
+    "excerpt": "An HTML element can be a member of exactly one of the following five categories:",
+    "objectID": "what-is-focusable.html"
+  },
+  {
+    "url": "what-is-focusable.html#filtering-elements",
+    "title": "Filtering elements",
+    "document": "What does \"focusable\" mean?",
+    "objectID": "what-is-focusable.html#filtering-elements"
+  },
+  {
+    "url": "what-is-focusable.html#finding-elements",
+    "title": "Finding elements",
+    "document": "What does \"focusable\" mean?",
+    "objectID": "what-is-focusable.html#finding-elements"
+  },
+  {
+    "url": "contributing/build.html",
+    "title": "Build infrastructure",
+    "excerpt": "The build infrastructure consists of a few tools made available through npm run commands.",
+    "objectID": "contributing/build.html"
+  },
+  {
+    "url": "contributing/build.html#building",
+    "title": "Building",
+    "document": "Build infrastructure",
+    "objectID": "contributing/build.html#building"
+  },
+  {
+    "url": "contributing/build.html#linting",
+    "title": "Linting",
+    "document": "Build infrastructure",
+    "objectID": "contributing/build.html#linting"
+  },
+  {
+    "url": "contributing/build.html#es6-in-older-browsers",
+    "title": "ES6 in older browsers",
+    "document": "Build infrastructure",
+    "objectID": "contributing/build.html#es6-in-older-browsers"
+  },
+  {
+    "url": "contributing/docs.html",
+    "title": "Documentation infrastructure",
+    "excerpt": "The documentation is authored in markdown in the docs directory. We&quot;re using markdown-it (but staying close to Github Flavored Markdown) to convert the markdown to HTML. markdownlint is there to lint the files, its configuration is maintained in build/markdownlint.js, see the Rules.",
+    "objectID": "contributing/docs.html"
+  },
+  {
+    "url": "contributing/docs.html#building-the-website",
+    "title": "Building the website",
+    "document": "Documentation infrastructure",
+    "objectID": "contributing/docs.html#building-the-website"
+  },
+  {
+    "url": "contributing/docs.html#website-search",
+    "title": "Website search",
+    "document": "Documentation infrastructure",
+    "objectID": "contributing/docs.html#website-search"
+  },
+  {
+    "url": "contributing/docs.html#authoring-documentation",
+    "title": "Authoring documentation",
+    "document": "Documentation infrastructure",
+    "objectID": "contributing/docs.html#authoring-documentation"
+  },
+  {
+    "url": "contributing/release.html",
+    "title": "Releasing ally.js",
+    "excerpt": "The following sequence steps are necessary to fully release ally.js",
+    "objectID": "contributing/release.html"
+  },
+  {
+    "url": "contributing/release.html#publishing-the-library-to-npm",
+    "title": "Publishing the library to npm",
+    "document": "Releasing ally.js",
+    "objectID": "contributing/release.html#publishing-the-library-to-npm"
+  },
+  {
+    "url": "contributing/release.html#branch-rules",
+    "title": "Branch Rules",
+    "document": "Releasing ally.js",
+    "objectID": "contributing/release.html#branch-rules"
+  },
+  {
+    "url": "contributing/testing.html",
+    "title": "Test infrastructure",
+    "excerpt": "The tests are built on top of The Intern. See the tutorial and some examples to get started. Also see Chai BDD for asserting stuff and leadfoot for interacting with browsers.",
+    "objectID": "contributing/testing.html"
+  },
+  {
+    "url": "contributing/testing.html#locally-running-unit-tests-in-the-browser",
+    "title": "Locally running unit tests in the browser",
+    "document": "Test infrastructure",
+    "objectID": "contributing/testing.html#locally-running-unit-tests-in-the-browser"
+  },
+  {
+    "url": "contributing/testing.html#locally-running-all-tests-in-the-browser",
+    "title": "Locally running all tests in the browser",
+    "document": "Test infrastructure",
+    "objectID": "contributing/testing.html#locally-running-all-tests-in-the-browser"
+  },
+  {
+    "url": "contributing/testing.html#remotely-running-all-tests-in-all-browsers",
+    "title": "Remotely running all tests in all browsers",
+    "document": "Test infrastructure",
+    "objectID": "contributing/testing.html#remotely-running-all-tests-in-all-browsers"
+  },
+  {
+    "url": "contributing/testing.html#reports",
+    "title": "Reports",
+    "document": "Test infrastructure",
+    "objectID": "contributing/testing.html#reports"
+  },
+  {
+    "url": "contributing/testing.html#analyzing-bundle-size",
+    "title": "Analyzing bundle size",
+    "document": "Test infrastructure",
+    "objectID": "contributing/testing.html#analyzing-bundle-size"
+  },
+  {
+    "url": "contributing/index.html",
+    "title": "Contributing",
+    "excerpt": "While up to version 1.0.0 ally.js has been developed primarily by only one person, the intention is to get more people aboard. If there is anything about ally.js you&quot;d like to improve, open an issue so we can discuss how you might approach that goal. We&quot;ve created some docs and rules to give contributors some guidance. Don&quot;t worry if you don&quot;t understand every single piece of our fuzzy puzzle, we&quot;ll help you in any way we can.",
+    "objectID": "contributing/index.html"
+  },
+  {
+    "url": "contributing/index.html#who-can-contribute",
+    "title": "Who can contribute?",
+    "document": "Contributing",
+    "objectID": "contributing/index.html#who-can-contribute"
+  },
+  {
+    "url": "contributing/index.html#documentation-for-contributors",
+    "title": "Documentation for contributors",
+    "document": "Contributing",
+    "objectID": "contributing/index.html#documentation-for-contributors"
+  },
+  {
+    "url": "contributing/index.html#acknowledgements",
+    "title": "Acknowledgements",
+    "document": "Contributing",
+    "objectID": "contributing/index.html#acknowledgements"
+  }
+]

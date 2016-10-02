@@ -5,7 +5,7 @@
   <title>Frequently asked questions - ally.js</title><link rel="canonical" href="https://allyjs.io/questions.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,32 +35,32 @@
             <li class="">
               <a href="contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Does-ally-js-support-Internet-Explorer-8-and-below">Does ally.js support Internet Explorer 8 and below?</a></li>
+        <li><a href="#does-allyjs-support-internet-explorer-8-and-below">Does ally.js support Internet Explorer 8 and below?</a></li>
         
         
-        <li><a href="#Do-I-need-ally-js-for-static-websites">Do I need ally.js for static websites?</a></li>
+        <li><a href="#do-i-need-allyjs-for-static-websites">Do I need ally.js for static websites?</a></li>
         
         
         <li><a href="#ally-not-a11y">&quot;ally&quot; not &quot;a11y&quot;?</a></li>
         
         
-        <li><a href="#Why-was-this-created">Why was this created?</a></li>
+        <li><a href="#why-was-this-created">Why was this created?</a></li>
         
         
-        <li><a href="#Ultimate-goal">Ultimate goal?</a></li>
+        <li><a href="#ultimate-goal">Ultimate goal?</a></li>
         
         
-        <li><a href="#Corporate-backing">Corporate backing?</a></li>
+        <li><a href="#corporate-backing">Corporate backing?</a></li>
         
         
-        <li><a href="#Multiple-personality-disorder">Multiple personality disorder?</a></li>
+        <li><a href="#multiple-personality-disorder">Multiple personality disorder?</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -96,9 +97,9 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Frequently-asked-questions" href="#Frequently-asked-questions" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Frequently asked questions</h1>
+      <h1 id="frequently-asked-questions"><a class="link-to-headline" href="#frequently-asked-questions">#</a> Frequently asked questions</h1>
 <p>There are a couple of questions we have been asked over and over again&#x2026;</p>
-<h2><a id="Does-ally-js-support-Internet-Explorer-8-and-below" href="#Does-ally-js-support-Internet-Explorer-8-and-below" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Does ally.js support Internet Explorer 8 and below?</h2>
+<h2 id="does-allyjs-support-internet-explorer-8-and-below"><a class="link-to-headline" href="#does-allyjs-support-internet-explorer-8-and-below">#</a> Does ally.js support Internet Explorer 8 and below?</h2>
 <p>The short answer is <em>no</em>. IE8 is too far behind on various APIs to make the existing code work. Additionally, our test system <a href="https://theintern.github.io/">Intern</a> does not run on IE8. Also <a href="https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support">Microsoft ended support for IE8 in January 2016</a>.</p>
 <p>While ally.js has not been tested to <em>run</em> on IE8, we have made sure that it can be <em>loaded</em> without problems. Since ally.js is compiled to ES5, you will need to load the <a href="https://github.com/es-shims/es5-shim/">es5-shim</a> in IE8:</p>
 <pre><code class="language-markup">&lt;!--[if lt IE 9]&gt;
@@ -106,19 +107,19 @@
   &lt;script src=&quot;node_modules/es5-shim/es5-sham.js&quot;&gt;&lt;/script&gt;
 &lt;![endif]--&gt;
 </code></pre>
-<h2><a id="Do-I-need-ally-js-for-static-websites" href="#Do-I-need-ally-js-for-static-websites" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Do I need ally.js for static websites?</h2>
-<p>Probably not. If you don&apos;t have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help <a href="api/index.html#Countering-browser-bugs">get around some non-JavaScript accessibility issues across browsers</a>.</p>
-<h2><a id="ally-not-a11y" href="#ally-not-a11y" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>&quot;ally&quot; not &quot;a11y&quot;?</h2>
+<h2 id="do-i-need-allyjs-for-static-websites"><a class="link-to-headline" href="#do-i-need-allyjs-for-static-websites">#</a> Do I need ally.js for static websites?</h2>
+<p>Probably not. If you don&apos;t have any interactive widgets on your site, chances are ally.js is not going to do you much good. Except for maybe help <a href="api/index.html#countering-browser-bugs">get around some non-JavaScript accessibility issues across browsers</a>.</p>
+<h2 id="ally-not-a11y"><a class="link-to-headline" href="#ally-not-a11y">#</a> &quot;ally&quot; not &quot;a11y&quot;?</h2>
 <p>When the project started in October 2014, it was called &quot;a11y.js&quot;. We didn&apos;t register any domains or grabbed the npm package name - which turned out to be a problem a couple of weeks later. We&apos;re not sad this happened.</p>
 <p>&quot;ally&quot; (<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">phonetic</a> <code>&#xE6;laj</code>) is easier to pronounce than &quot;a11y&quot; (phonetic <code>&#x259; &#x259;l&#x25B;v&#x259;n waj</code>). &quot;a11y&quot; is a <a href="https://en.wikipedia.org/wiki/Numeronym">numeronym</a> and expands to &quot;accessibility&quot;. &quot;ally&quot; has a number of <a href="http://dictionary.reference.com/browse/ally">definitions</a> ranging from &quot;friend&quot; to &quot;cooperating&quot;, which has a much nicer tone to it.</p>
-<h2><a id="Why-was-this-created" href="#Why-was-this-created" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Why was this created?</h2>
+<h2 id="why-was-this-created"><a class="link-to-headline" href="#why-was-this-created">#</a> Why was this created?</h2>
 <p>While trying to learn accessibility in general and keyboard navigation in particular, it became obvious that the web was not making things very easy. Tutorials were missing important pieces - coherence and a focus on the developer usually wasn&apos;t a thing. Examples looked like their JavaScript was written in the 90s, or depended on jQuery, or simply skipped the meaty parts.</p>
 <p>We weren&apos;t able to use any of the existing solutions. We also weren&apos;t going to just copy paste other people&apos;s code into our applications and let the cycle repeat. We wanted to create the basis for accessibility experts and web developers to <em>collaborate</em> in a way that might help everyone.</p>
-<h2><a id="Ultimate-goal" href="#Ultimate-goal" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Ultimate goal?</h2>
+<h2 id="ultimate-goal"><a class="link-to-headline" href="#ultimate-goal">#</a> Ultimate goal?</h2>
 <p>In theory the ultimate goal for ally.js is to make itself obsolete because web standards and browser implementations have caught up. This isn&apos;t very likely to happen any time soon, if at all. In the meanwhile the goal is to provide all the low-level utilities required for other libraries and websites and applications to make accessible experiences an easier target. Have a look at <a href="https://github.com/medialize/ally.js/tree/master/GOALS.md">GOALS.md</a> to find out what we&apos;re planning.</p>
-<h2><a id="Corporate-backing" href="#Corporate-backing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Corporate backing?</h2>
+<h2 id="corporate-backing"><a class="link-to-headline" href="#corporate-backing">#</a> Corporate backing?</h2>
 <p>As of today ally.js does not receive official funding or guidance from anyone. The project is maintained by people volunteering their spare time.</p>
-<h2><a id="Multiple-personality-disorder" href="#Multiple-personality-disorder" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Multiple personality disorder?</h2>
+<h2 id="multiple-personality-disorder"><a class="link-to-headline" href="#multiple-personality-disorder">#</a> Multiple personality disorder?</h2>
 <p>Most of the documentation was written from a group perspective (&quot;we have done&#x2026;&quot;), but some statements are personal (&quot;I have done&quot;). I have gone with the group voice, because I hope it won&apos;t take long for others to join the project. That said, while I have <em>created</em> most of the resources so far, many people have been involved in figuring out how to do things.</p>
 
     </main>
@@ -129,8 +130,10 @@
     <p><a href="legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

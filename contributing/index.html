@@ -5,7 +5,7 @@
   <title>Contributing - ally.js</title><link rel="canonical" href="https://allyjs.io/contributing/index.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,20 +35,20 @@
             <li class="active">
               <a href="index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Who-can-contribute">Who can contribute?</a></li>
+        <li><a href="#who-can-contribute">Who can contribute?</a></li>
         
         
-        <li><a href="#Documentation-for-contributors">Documentation for contributors</a></li>
+        <li><a href="#documentation-for-contributors">Documentation for contributors</a></li>
         
         
-        <li><a href="#Acknowledgements">Acknowledgements</a></li>
+        <li><a href="#acknowledgements">Acknowledgements</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -89,21 +90,23 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h1>
+      <h1 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h1>
 <p>While up to version 1.0.0 ally.js has been developed primarily by only one person, the intention is to get more people aboard. If there is anything about ally.js you&apos;d like to improve, open an issue so we can discuss how you might approach that goal. We&apos;ve created some docs and rules to give contributors some guidance. Don&apos;t worry if you don&apos;t understand every single piece of our fuzzy puzzle, we&apos;ll help you in any way we can.</p>
 <p>ally.js strives to be a general purpose helper library for accessibility concerns. As such, contributions should be applicable to virtually any project and refrain from being overly specific. <a href="https://github.com/medialize/ally.js/blob/master/GOALS.md">GOALS.md</a> describes the possible future of the project. If you have any expertise or experience to share for those topics, please <a href="https://github.com/medialize/ally.js/issues/new">open an issue</a> to discuss.</p>
 <p>ally.js is <em>not only</em> about the library code. All the concepts covered by ally.js need to be explained in such a way that people new to accessibility understand what is going on. To make that happen, you can help improve our documentation or write a tutorial.</p>
-<h2><a id="Who-can-contribute" href="#Who-can-contribute" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Who can contribute?</h2>
+<h2 id="who-can-contribute"><a class="link-to-headline" href="#who-can-contribute">#</a> Who can contribute?</h2>
 <p><em>Anyone</em> can join. <em>Everything</em> is done on github in the open. <em>Everything</em> is up for discussion.</p>
-<div class="help"><strong>HELP:</strong> Issues tagged with <a href="https://github.com/medialize/ally.js/labels/good%20first%20contribution">good first contribution</a> have been analyzed and explained. They should provide all details required for your first contribution to ally.js. Feel free to pick one, work on it and send a pull request. If you have questions, please post them to the issue and we&apos;ll get back to you.</div><ul>
-
+<div data-note-type="help">
+<p>Issues tagged with <a href="https://github.com/medialize/ally.js/labels/good%20first%20contribution">good first contribution</a> have been analyzed and explained. They should provide all details required for your first contribution to ally.js. Feel free to pick one, work on it and send a pull request. If you have questions, please post them to the issue and we&apos;ll get back to you.</p>
+</div>
+<ul>
 <li>You <strong>specialize in accessibility</strong>, but aren&apos;t an expert with the JavaScripts? No worries, be the brains, we&apos;ll be your code monkeys. See issues tagged with <a href="https://github.com/medialize/ally.js/labels/question">question</a> or <a href="https://github.com/medialize/ally.js/labels/discussion">discussion</a>.</li>
 <li>You <strong>specialize in JavaScript</strong>, but aren&apos;t experienced with that accessibility thing? No worries, I&apos;m sure there&apos;s plenty to optimize and refactor and test and so on. You&apos;ll probably find something to improve in <a href="https://github.com/medialize/ally.js/tree/master/src"><code>./src</code></a> or <a href="https://github.com/medialize/ally.js/tree/master/test"><code>./test</code></a> or issues tagged with <a href="https://github.com/medialize/ally.js/labels/improve">improve</a>.</li>
 <li>You <strong>specialize in writing</strong> things but your accessibility is about as rusty as your JavaScript? Have a look at the docs, I&apos;m sure they can be translated to actual, proper <em>English</em>. You&apos;ll likely find something in <a href="https://github.com/medialize/ally.js/tree/master/docs"><code>./docs</code></a> or issues tagged with <a href="https://github.com/medialize/ally.js/labels/website">website</a> or <a href="https://github.com/medialize/ally.js/labels/documentation">documentation</a>.</li>
 <li>You <strong>specialize in the build pipeline</strong>? Issues tagged with <a href="https://github.com/medialize/ally.js/labels/build">build</a> might be your thing.</li>
-<li>You <strong>specialize in a framework</strong> or library and would <strong>like to integrate</strong> ally.js? See the issues tagged with <a href="https://github.com/medialize/ally.js/labels/integration">integration</a> or open a <a href="https://github.com/medialize/ally.js/issues/new?title=[integrate]%20_your_library_name_%20">new issue</a> to discuss your approach.</li>
+<li>You <strong>specialize in a framework</strong> or library and would <strong>like to integrate</strong> ally.js? See the issues tagged with <a href="https://github.com/medialize/ally.js/labels/integration">integration</a> or open a <a href="https://github.com/medialize/ally.js/issues/new?title=%5Bintegrate%5D%20_your_library_name_%20">new issue</a> to discuss your approach.</li>
 </ul>
-<h2><a id="Documentation-for-contributors" href="#Documentation-for-contributors" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Documentation for contributors</h2>
+<h2 id="documentation-for-contributors"><a class="link-to-headline" href="#documentation-for-contributors">#</a> Documentation for contributors</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/CONTRIBUTING.md">Contribution guide on Github</a></li>
 <li><a href="build.html">Building ally.js</a></li>
@@ -111,7 +114,7 @@
 <li><a href="testing.html">Testing ally.js</a></li>
 <li><a href="release.html">Releasing ally.js</a></li>
 </ul>
-<h2><a id="Acknowledgements" href="#Acknowledgements" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Acknowledgements</h2>
+<h2 id="acknowledgements"><a class="link-to-headline" href="#acknowledgements">#</a> Acknowledgements</h2>
 <p>While the project and most of its resources were created by <a href="http://rodneyrehm.de/en/">Rodney Rehm</a>, the following people had <em>substantial</em> impact on ally.js:</p>
 <ul>
 <li><a href="https://twitter.com/sundress">Alice Boxhall</a></li>
@@ -131,8 +134,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -1,0 +1,324 @@
+[
+  {
+    "url": "api/concepts.html",
+    "title": "API concepts",
+    "excerpt": "This document explains the concepts, structures and data types used in ally.js",
+    "module": "api/concepts",
+    "objectID": "api/concepts.html"
+  },
+  {
+    "url": "api/prototype.html",
+    "title": "Prototype polyfills",
+    "excerpt": "The prototype infrastructure makes functions available in modern browsers available to older browsers lacking the native support.",
+    "module": "api/prototype",
+    "objectID": "api/prototype.html"
+  },
+  {
+    "url": "api/element/blur.html",
+    "title": "ally.element.blur",
+    "excerpt": "Shifts focus away from an element if it currently has focus.",
+    "module": "api/element/blur",
+    "objectID": "api/element/blur.html"
+  },
+  {
+    "url": "api/element/disabled.html",
+    "title": "ally.element.disabled",
+    "excerpt": "Makes an element inert, i.e. not editable.",
+    "module": "api/element/disabled",
+    "objectID": "api/element/disabled.html"
+  },
+  {
+    "url": "api/element/focus.html",
+    "title": "ally.element.focus",
+    "excerpt": "Shifts focus to an element if it does not already have focus.",
+    "module": "api/element/focus",
+    "objectID": "api/element/focus.html"
+  },
+  {
+    "url": "api/event/active-element.html",
+    "title": "ally.event.activeElement",
+    "excerpt": "Observes changes to document.activeElement regardless of focus/blur events and emits active-element CustomEvents.",
+    "module": "api/event/active-element",
+    "objectID": "api/event/active-element.html"
+  },
+  {
+    "url": "api/event/shadow-focus.html",
+    "title": "ally.event.shadowFocus",
+    "excerpt": "Observes focus changes within ShadowDOMs and emits shadow-focus CustomEvents.",
+    "module": "api/event/shadow-focus",
+    "objectID": "api/event/shadow-focus.html"
+  },
+  {
+    "url": "api/fix/pointer-focus-children.html",
+    "title": "ally.fix.pointerFocusChildren",
+    "excerpt": "This Browser Bug Workaround targets an issue in Internet Explorer 10 and 11 where the children of a focusable element styled with display: flex become focusable and react to being clicked on.",
+    "module": "api/fix/pointer-focus-children",
+    "objectID": "api/fix/pointer-focus-children.html"
+  },
+  {
+    "url": "api/fix/pointer-focus-input.html",
+    "title": "ally.fix.pointerFocusInput",
+    "excerpt": "This Browser Bug Workaround targets an issue in Safari and Firefox on Mac OS X, where focus would not be given to certain form elements upon mousedown. This is not a browser bug, it is desired behavior by the OSX platform. Use this feature only if you require the elements to receive focus (e.g. for custom styling).",
+    "module": "api/fix/pointer-focus-input",
+    "objectID": "api/fix/pointer-focus-input.html"
+  },
+  {
+    "url": "api/fix/pointer-focus-parent.html",
+    "title": "ally.fix.pointerFocusParent",
+    "excerpt": "This Browser Bug Workaround targets an issue in old Blink and WebKit causing focus (by MouseEvent and TouchEvent) to be given to the next parent element accepting focus, rather than the element the event was dispatched to.",
+    "module": "api/fix/pointer-focus-parent",
+    "objectID": "api/fix/pointer-focus-parent.html"
+  },
+  {
+    "url": "api/get/active-element.html",
+    "title": "ally.get.activeElement",
+    "excerpt": "Identifies the element that currently has focus",
+    "module": "api/get/active-element",
+    "objectID": "api/get/active-element.html"
+  },
+  {
+    "url": "api/get/active-elements.html",
+    "title": "ally.get.activeElements",
+    "excerpt": "Identifies the ShadowHost ancestry of the active element",
+    "module": "api/get/active-elements",
+    "objectID": "api/get/active-elements.html"
+  },
+  {
+    "url": "api/get/focus-redirect-target.html",
+    "title": "ally.get.focusRedirectTarget",
+    "excerpt": "Identifies the element that would get focus passed to when element.focus() is executed",
+    "module": "api/get/focus-redirect-target",
+    "objectID": "api/get/focus-redirect-target.html"
+  },
+  {
+    "url": "api/get/focus-target.html",
+    "title": "ally.get.focusTarget",
+    "excerpt": "Identifies the element that would get focus upon click",
+    "module": "api/get/focus-target",
+    "objectID": "api/get/focus-target.html"
+  },
+  {
+    "url": "api/get/insignificant-branches.html",
+    "title": "ally.get.insignificantBranches",
+    "excerpt": "Identifies all the branches of the DOM that do not contain any of the target elements",
+    "module": "api/get/insignificant-branches",
+    "objectID": "api/get/insignificant-branches.html"
+  },
+  {
+    "url": "api/get/parents.html",
+    "title": "ally.get.parents",
+    "excerpt": "Identifies the parent elements",
+    "module": "api/get/parents",
+    "objectID": "api/get/parents.html"
+  },
+  {
+    "url": "api/get/shadow-host-parents.html",
+    "title": "ally.get.shadowHostParents",
+    "excerpt": "Identifies the ShadowHost ancestry of an element",
+    "module": "api/get/shadow-host-parents",
+    "objectID": "api/get/shadow-host-parents.html"
+  },
+  {
+    "url": "api/get/shadow-host.html",
+    "title": "ally.get.shadowHost",
+    "excerpt": "Identifies the ShadowHost of an element",
+    "module": "api/get/shadow-host",
+    "objectID": "api/get/shadow-host.html"
+  },
+  {
+    "url": "api/is/active-element.html",
+    "title": "ally.is.activeElement",
+    "excerpt": "Determines if an element is the activeElement of its host context, i.e. its document, iFrame or ShadowHost.",
+    "module": "api/is/active-element",
+    "objectID": "api/is/active-element.html"
+  },
+  {
+    "url": "api/is/disabled.html",
+    "title": "ally.is.disabled",
+    "excerpt": "Determines if an element is :disabled, or was disabled by ally.element.disabled - i.e. the element is not focusable and editable.",
+    "module": "api/is/disabled",
+    "objectID": "api/is/disabled.html"
+  },
+  {
+    "url": "api/is/focus-relevant.html",
+    "title": "ally.is.focusRelevant",
+    "excerpt": "Determines if an element has any relevance to focus management.",
+    "module": "api/is/focus-relevant",
+    "objectID": "api/is/focus-relevant.html"
+  },
+  {
+    "url": "api/is/focusable.html",
+    "title": "ally.is.focusable",
+    "excerpt": "Determines if an element is considered focusable.",
+    "module": "api/is/focusable",
+    "objectID": "api/is/focusable.html"
+  },
+  {
+    "url": "api/is/only-tabbable.html",
+    "title": "ally.is.onlyTabbable",
+    "excerpt": "Determines if an element is considered tabbable and not focusable.",
+    "module": "api/is/only-tabbable",
+    "objectID": "api/is/only-tabbable.html"
+  },
+  {
+    "url": "api/is/shadowed.html",
+    "title": "ally.is.shadowed",
+    "excerpt": "Determines if an element is the descendant of a ShadowRoot.",
+    "module": "api/is/shadowed",
+    "objectID": "api/is/shadowed.html"
+  },
+  {
+    "url": "api/is/tabbable.html",
+    "title": "ally.is.tabbable",
+    "excerpt": "Determines if an element is considered keyboard focusable (\"tabbable\").",
+    "module": "api/is/tabbable",
+    "objectID": "api/is/tabbable.html"
+  },
+  {
+    "url": "api/is/valid-area.html",
+    "title": "ally.is.validArea",
+    "excerpt": "Determines if an &lt;area&gt; element is properly used via &lt;map&gt; by an &lt;img&gt;.",
+    "module": "api/is/valid-area",
+    "objectID": "api/is/valid-area.html"
+  },
+  {
+    "url": "api/is/valid-tabindex.html",
+    "title": "ally.is.validTabindex",
+    "excerpt": "Determines if an element&quot;s tabindex attribute value is sound",
+    "module": "api/is/valid-tabindex",
+    "objectID": "api/is/valid-tabindex.html"
+  },
+  {
+    "url": "api/is/visible.html",
+    "title": "ally.is.visible",
+    "excerpt": "Determines if an element is rendered.",
+    "module": "api/is/visible",
+    "objectID": "api/is/visible.html"
+  },
+  {
+    "url": "api/maintain/disabled.html",
+    "title": "ally.maintain.disabled",
+    "excerpt": "Disables any type of user interaction - including the ability to focus elements - essentially rendering elements inert.",
+    "module": "api/maintain/disabled",
+    "objectID": "api/maintain/disabled.html"
+  },
+  {
+    "url": "api/maintain/hidden.html",
+    "title": "ally.maintain.hidden",
+    "excerpt": "Sets aria-hidden=\"true\" on insignificant branches.",
+    "module": "api/maintain/hidden",
+    "objectID": "api/maintain/hidden.html"
+  },
+  {
+    "url": "api/maintain/tab-focus.html",
+    "title": "ally.maintain.tabFocus",
+    "excerpt": "Traps TAB focus in the tabsequence to prevent the browser from shifting focus to its UI (e.g. the location bar).",
+    "module": "api/maintain/tab-focus",
+    "objectID": "api/maintain/tab-focus.html"
+  },
+  {
+    "url": "api/map/attribute.html",
+    "title": "ally.map.attribute",
+    "excerpt": "Map of all WAI-ARIA states and properties.",
+    "module": "api/map/attribute",
+    "objectID": "api/map/attribute.html"
+  },
+  {
+    "url": "api/map/keycode.html",
+    "title": "ally.map.keycode",
+    "excerpt": "Map human readable names for event.keyCodes.",
+    "module": "api/map/keycode",
+    "objectID": "api/map/keycode.html"
+  },
+  {
+    "url": "api/observe/interaction-type.html",
+    "title": "ally.observe.interactionType",
+    "excerpt": "Observes user interaction method to distinguish pointer and keyboard actions.",
+    "module": "api/observe/interaction-type",
+    "objectID": "api/observe/interaction-type.html"
+  },
+  {
+    "url": "api/observe/shadow-mutations.html",
+    "title": "ally.observe.shadowMutations",
+    "excerpt": "Registers MutationObservers across nested ShadowRoots.",
+    "module": "api/observe/shadow-mutations",
+    "objectID": "api/observe/shadow-mutations.html"
+  },
+  {
+    "url": "api/query/first-tabbable.html",
+    "title": "ally.query.firstTabbable",
+    "excerpt": "Finds the first keyboard focusable (\"tabbable\") element in the DOM.",
+    "module": "api/query/first-tabbable",
+    "objectID": "api/query/first-tabbable.html"
+  },
+  {
+    "url": "api/query/focusable.html",
+    "title": "ally.query.focusable",
+    "excerpt": "Finds focusable elements in the DOM.",
+    "module": "api/query/focusable",
+    "objectID": "api/query/focusable.html"
+  },
+  {
+    "url": "api/query/shadow-hosts.html",
+    "title": "ally.query.shadowHosts",
+    "excerpt": "finds all elements hosting a ShadowRoot.",
+    "module": "api/query/shadow-hosts",
+    "objectID": "api/query/shadow-hosts.html"
+  },
+  {
+    "url": "api/query/tabbable.html",
+    "title": "ally.query.tabbable",
+    "excerpt": "Finds keyboard focusable (\"tabbable\") elements in the DOM.",
+    "module": "api/query/tabbable",
+    "objectID": "api/query/tabbable.html"
+  },
+  {
+    "url": "api/query/tabsequence.html",
+    "title": "ally.query.tabsequence",
+    "excerpt": "Finds keyboard focusable (\"tabbable\") elements in the DOM and returns them in the order calculated based on tabindex attribute values.",
+    "module": "api/query/tabsequence",
+    "objectID": "api/query/tabsequence.html"
+  },
+  {
+    "url": "api/style/focus-source.html",
+    "title": "ally.style.focusSource",
+    "excerpt": "Differentiate the causes of focus change for when different visual styles need to applied.",
+    "module": "api/style/focus-source",
+    "objectID": "api/style/focus-source.html"
+  },
+  {
+    "url": "api/style/focus-within.html",
+    "title": "ally.style.focusWithin",
+    "excerpt": "Polyfill the CSS Selectors Level 4 pseudo-class :focus-within",
+    "module": "api/style/focus-within",
+    "objectID": "api/style/focus-within.html"
+  },
+  {
+    "url": "api/when/focusable.html",
+    "title": "ally.when.focusable",
+    "excerpt": "Executes a callback once an element fulfills ally.is.focusable and is visible in the viewport",
+    "module": "api/when/focusable",
+    "objectID": "api/when/focusable.html"
+  },
+  {
+    "url": "api/when/key.html",
+    "title": "ally.when.key",
+    "excerpt": "Executes a callback when a given key has been pressed.",
+    "module": "api/when/key",
+    "objectID": "api/when/key.html"
+  },
+  {
+    "url": "api/when/visible-area.html",
+    "title": "ally.when.visibleArea",
+    "excerpt": "Executes a callback once an element is visible in the viewport",
+    "module": "api/when/visible-area",
+    "objectID": "api/when/visible-area.html"
+  },
+  {
+    "url": "api/index.html",
+    "title": "API index",
+    "excerpt": "When creating web applications or UI widgets these modules may come in handy.",
+    "module": "api/README",
+    "objectID": "api/index.html"
+  }
+]

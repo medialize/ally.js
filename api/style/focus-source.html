@@ -5,7 +5,7 @@
   <title>ally.style.focusSource - ally.js</title><link rel="canonical" href="https://allyjs.io/api/style/focus-source.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,32 +35,32 @@
             <li class="">
               <a href="../../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Description">Description</a></li>
+        <li><a href="#description">Description</a></li>
         
         
-        <li><a href="#Usage">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         
         
-        <li><a href="#Service-handle">Service handle</a></li>
+        <li><a href="#service-handle">Service handle</a></li>
         
         
-        <li><a href="#Examples">Examples</a></li>
+        <li><a href="#examples">Examples</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Related-resources">Related resources</a></li>
+        <li><a href="#related-resources">Related resources</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -355,9 +356,9 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="ally-style-focusSource" href="#ally-style-focusSource" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.style.focusSource</h1>
+      <h1 id="allystylefocussource"><a class="link-to-headline" href="#allystylefocussource">#</a> ally.style.focusSource</h1>
 <p>Differentiate the causes of focus change for when different visual styles need to applied.</p>
-<h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
+<h2 id="description"><a class="link-to-headline" href="#description">#</a> Description</h2>
 <p>The utility identifies <code>pointer</code> (mouse, touch), <code>key</code> (keyboard) and <code>script</code> as sources for an element being focused. The information is made available to CSS via <code>&lt;html data-focus-source=&quot;key&quot;&gt;</code>. The classes <code>.focus-source-key</code>, <code>.focus-source-pointer</code>, <code>.focus-source-script</code> are made available on <code>&lt;html&gt;</code> when the respective focus source occurs for the first time. When the utility is initialized, the focus source is <code>&lt;html data-focus-source=&quot;initial&quot;&gt;</code>.</p>
 <p>This module allows the document to style <code>:focus</code> as follows:</p>
 <pre><code class="language-css">body :focus {
@@ -398,7 +399,7 @@ html[data-focus-source=&quot;pointer&quot;] /deep/ :focus {
   background: red;
 }
 </code></pre>
-<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var handle = ally.style.focusSource();
 
 handle.disengage();
@@ -434,31 +435,39 @@ element.addEventListener(&apos;click&apos;, function() {
 });
 </code></pre>
 
-<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
-<p>A <a href="../concepts.html#Global-service"><code>&lt;global-service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
+<h3 id="returns"><a class="link-to-headline" href="#returns">#</a> Returns</h3>
+<p>A <a href="../concepts.html#global-service"><code>&lt;global-service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
 
-<h2><a id="Service-handle" href="#Service-handle" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Service handle</h2>
-<p>The <code>handle</code> is returned when engaging the service. As the <a href="../concepts.html#Global-service"><code>&lt;global-service&gt;</code></a> interface describes, the <code>handle.disengage()</code> method is provided to stop the service. Additionally the following methods are made available:</p>
-<h3><a id="handle-current" href="#handle-current" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>handle.current()</h3>
+<h2 id="service-handle"><a class="link-to-headline" href="#service-handle">#</a> Service handle</h2>
+<p>The <code>handle</code> is returned when engaging the service. As the <a href="../concepts.html#global-service"><code>&lt;global-service&gt;</code></a> interface describes, the <code>handle.disengage()</code> method is provided to stop the service. Additionally the following methods are made available:</p>
+<h3 id="handlecurrent"><a class="link-to-headline" href="#handlecurrent">#</a> handle.current()</h3>
 <p>The <code>handle.current()</code> method does not accept any arguments and returns one of the following strings <code>&quot;key&quot;</code>, <code>&quot;pointer&quot;</code>, <code>&quot;script&quot;</code>, depending on the current interaction type.</p>
-<h3><a id="handle-used-string" href="#handle-used-string" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>handle.used(<code>&lt;string&gt;</code>)</h3>
+<h3 id="handleusedstring"><a class="link-to-headline" href="#handleusedstring">#</a> handle.used(<code>&lt;string&gt;</code>)</h3>
 <p>The <code>handle.used()</code> method accepts one string argument and returns <code>true</code> if that interaction type has ever been used before.</p>
-<h3><a id="handle-lock-string" href="#handle-lock-string" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>handle.lock(<code>&lt;string&gt;</code>)</h3>
+<h3 id="handlelockstring"><a class="link-to-headline" href="#handlelockstring">#</a> handle.lock(<code>&lt;string&gt;</code>)</h3>
 <p>The <code>handle.lock()</code> method accepts one string argument and sets that as the interaction type for all subsequent <code>handle.current()</code> invocations.</p>
-<h3><a id="handle-unlock" href="#handle-unlock" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>handle.unlock()</h3>
+<h3 id="handleunlock"><a class="link-to-headline" href="#handleunlock">#</a> handle.unlock()</h3>
 <p>The <code>handle.unlock()</code> method releases the focus-source lock.</p>
-<h2><a id="Examples" href="#Examples" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Examples</h2>
-<section class="example"><h1><a id="Example-ally-style-focusSource-Example" href="#Example-ally-style-focusSource-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.style.focusSource Example</h1><a class="jsbin-embed" href="https://jsbin.com/ziduzu/embed?output">ally.style.focusSource Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/ziduzu/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./focus-source.example.html" target="_blank">open the source document</a></p></section>
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="examples"><a class="link-to-headline" href="#examples">#</a> Examples</h2>
+<section class="example">
+<h3 id="allystylefocussource-example"><a class="link-to-headline" href="#allystylefocussource-example">#</a> ally.style.focusSource Example</h3>
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/ziduzu/embed?output">ally.style.focusSource Example on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/ziduzu/edit" target="_blank">play with <span class="visuallyhidden">ally.style.focusSource Example</span> on jsbin.com</a> or <a href="focus-source.example.html" target="_blank">open the document <span class="visuallyhidden">of ally.style.focusSource Example</span></a></p>
+</section>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li>In <code>v1.3.0</code> the method <code>handle.unlock()</code> was added to supersede <code>handle.lock(false)</code>, which is still available, but removed from documentation.</li>
+<li>In <a href="https://github.com/medialize/ally.js/releases/1.3.0"><code>v1.3.0</code></a> the method <code>handle.unlock()</code> was added to supersede <code>handle.lock(false)</code>, which is still available, but removed from documentation.</li>
 </ul>
 
-<h2><a id="Related-resources" href="#Related-resources" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Related resources</h2>
+<h2 id="related-resources"><a class="link-to-headline" href="#related-resources">#</a> Related resources</h2>
 <ul>
 <li><a href="https://discourse.wicg.io/t/exposing-a-users-input-modality/1067">WICG: Exposing a user&#x2019;s input modality</a> and accompanying <a href="https://github.com/alice/modality">prollyfill</a></li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/src/style/focus-source.js">module source</a></li>
 <li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-source.md">document source</a></li>
@@ -473,8 +482,10 @@ element.addEventListener(&apos;click&apos;, function() {
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -5,7 +5,7 @@
   <title>ally.query.focusable - ally.js</title><link rel="canonical" href="https://allyjs.io/api/query/focusable.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,32 +35,32 @@
             <li class="">
               <a href="../../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Description">Description</a></li>
+        <li><a href="#description">Description</a></li>
         
         
-        <li><a href="#Usage">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         
         
-        <li><a href="#Examples">Examples</a></li>
+        <li><a href="#examples">Examples</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Notes">Notes</a></li>
+        <li><a href="#notes">Notes</a></li>
         
         
-        <li><a href="#Related-resources">Related resources</a></li>
+        <li><a href="#related-resources">Related resources</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -355,57 +356,119 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="ally-query-focusable" href="#ally-query-focusable" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.query.focusable</h1>
+      <h1 id="allyqueryfocusable"><a class="link-to-headline" href="#allyqueryfocusable">#</a> ally.query.focusable</h1>
 <p>Finds focusable elements in the DOM.</p>
-<h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
+<h2 id="description"><a class="link-to-headline" href="#description">#</a> Description</h2>
 <p>The query infrastructure provides two different implementations. The <code>&quot;quick&quot;</code> strategy uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"><code>document.querySelectorAll</code></a> and is able to find <em>most</em> focusable elements. Elements that are made focusable by way of CSS properties cannot be queried that way, though. To allow finding <em>more</em> focusable elements, the <code>&quot;strict&quot;</code> strategy makes use of <a href="https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker">TreeWalker</a> to &quot;manually&quot; iterate over the DOM. While the <code>&quot;strict&quot;</code> strategy provides more accurate results, it is slower than the <code>&quot;quick&quot;</code> strategy. The default strategy is <code>&quot;quick&quot;</code>.</p>
 <p>The <code>&quot;all&quot;</code> strategy, used internally by <a href="../maintain/disabled.html"><code>ally.maintain.disabled</code></a> will find <em>all</em> the elements that are either <a href="../is/focus-relevant.html">focus relevant</a> or <a href="../is/only-tabbable.html">only tabbable</a> - including elements that <em>would</em> be focusable, were they not visually hidden or disabled.</p>
 <p>Consult the data tables <a href="../../data-tables/focusable.html">what browsers consider focusable</a> to learn how HTML elements behave across browsers and what ally.js considers focusable in <a href="../../data-tables/focusable.strict.html"><code>strategy: &quot;strict&quot;</code></a> or <a href="../../data-tables/focusable.quick.html"><code>strategy: &quot;quick&quot;</code></a>.</p>
-<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var elements = ally.query.focusable({
   context: &apos;.within-filter-selector&apos;,
   includeContext: true,
   strategy: &apos;quick&apos;,
 });
 </code></pre>
-<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<h3 id="arguments"><a class="link-to-headline" href="#arguments">#</a> Arguments</h3>
 <table>
 <thead>
-<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which to search. The first element of a collection is used.</td></tr>
-<tr><td>includeContext</td><td>boolean</td><td><code>false</code></td><td>Prepend the <code>context</code> element if it is focusable.</td></tr>
-<tr><td>includeOnlyTabbable</td><td>boolean</td><td><code>false</code></td><td>Include elements that would otherwise be ignored because they&apos;re considered only tabbable,</td></tr>
-<tr><td>strategy</td><td><code>&quot;quick&quot;</code>, <code>&quot;strict&quot;</code>, <code>&quot;all&quot;</code></td><td><code>&quot;quick&quot;</code></td><td>The approach used to find elements.</td></tr>
+<tr>
+<td>context</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td>
+<td>The scope of the DOM in which to search. The first element of a collection is used.</td>
+</tr>
+<tr>
+<td>includeContext</td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Prepend the <code>context</code> element if it is focusable.</td>
+</tr>
+<tr>
+<td>includeOnlyTabbable</td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Include elements that would otherwise be ignored because they&apos;re considered only tabbable,</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td><code>&quot;quick&quot;</code>, <code>&quot;strict&quot;</code>, <code>&quot;all&quot;</code></td>
+<td><code>&quot;quick&quot;</code></td>
+<td>The approach used to find elements.</td>
+</tr>
 </tbody>
 </table>
-<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
+<h3 id="returns"><a class="link-to-headline" href="#returns">#</a> Returns</h3>
 <p>Array of <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>.</p>
 
-<h2><a id="Examples" href="#Examples" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Examples</h2>
-<section class="example"><h1><a id="Example-ally-query-tabbable-Example" href="#Example-ally-query-tabbable-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.query.tabbable Example</h1><a class="jsbin-embed" href="https://jsbin.com/hubuqo/embed?output">ally.query.tabbable Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/hubuqo/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./tabbable.example.html" target="_blank">open the source document</a></p></section><section class="example"><h1><a id="Example-ally-query-focusable-Example" href="#Example-ally-query-focusable-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.query.focusable Example</h1><a class="jsbin-embed" href="https://jsbin.com/wotudik/embed?output">ally.query.focusable Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/wotudik/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./focusable.example.html" target="_blank">open the source document</a></p></section>
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="examples"><a class="link-to-headline" href="#examples">#</a> Examples</h2>
+<section class="example">
+<h3 id="allyqueryfocusable-example"><a class="link-to-headline" href="#allyqueryfocusable-example">#</a> ally.query.focusable Example</h3>
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/wotudik/embed?output">ally.query.focusable Example on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/wotudik/edit" target="_blank">play with <span class="visuallyhidden">ally.query.focusable Example</span> on jsbin.com</a> or <a href="focusable.example.html" target="_blank">open the document <span class="visuallyhidden">of ally.query.focusable Example</span></a></p>
+</section>
+<section class="example">
+<h3 id="allyquerytabbable-example"><a class="link-to-headline" href="#allyquerytabbable-example">#</a> ally.query.tabbable Example</h3>
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/hubuqo/embed?output">ally.query.tabbable Example on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/hubuqo/edit" target="_blank">play with <span class="visuallyhidden">ally.query.tabbable Example</span> on jsbin.com</a> or <a href="tabbable.example.html" target="_blank">open the document <span class="visuallyhidden">of ally.query.tabbable Example</span></a></p>
+</section>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li>Since <code>v1.1.0</code> the <code>context</code> option can point to another document (e.g. <code>&lt;body&gt;</code> in an iframe)</li>
-<li>Since <code>v1.1.0</code> the option <code>includeOnlyTabbable</code> allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> the <code>context</code> option can point to another document (e.g. <code>&lt;body&gt;</code> in an iframe)</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> the option <code>includeOnlyTabbable</code> allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.</li>
 </ul>
-<h2><a id="Notes" href="#Notes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Notes</h2>
-<p>See <a href="../is/focus-relevant.html#Notes"><code>ally.is.focusRelevant</code></a></p>
-<div class="warning"><strong>WARNING:</strong> Any element marked <code>only-tabbable</code> in the <a href="../../data-tables/focusable.html">focusable browser compatibility tables</a> is <em>not</em> identified by <a href="../is/focusable.html"><code>ally.is.focusable</code></a> or <a href="../is/tabbable.html"><code>ally.is.tabbable</code></a>, only by <a href="../is/only-tabbable.html"><code>ally.is.onlyTabbable</code></a>. That is because these elements cannot be interacted with via script, i.e. calling <code>element.focus()</code> does not have any effect.</div>
-<h2><a id="Related-resources" href="#Related-resources" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Related resources</h2>
+<h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
+<p>See <a href="../is/focus-relevant.html#notes"><code>ally.is.focusRelevant</code></a></p>
+<div data-note-type="warning">
+<p>Any element marked <code>only-tabbable</code> in the <a href="../../data-tables/focusable.html">focusable browser compatibility tables</a> is <em>not</em> identified by <a href="../is/focusable.html"><code>ally.is.focusable</code></a> or <a href="../is/tabbable.html"><code>ally.is.tabbable</code></a>, only by <a href="../is/only-tabbable.html"><code>ally.is.onlyTabbable</code></a>. That is because these elements cannot be interacted with via script, i.e. calling <code>element.focus()</code> does not have any effect.</p>
+</div>
+<h2 id="related-resources"><a class="link-to-headline" href="#related-resources">#</a> Related resources</h2>
 <ul>
-<li><p><a href="first-tabbable.html"><code>ally.query.firstTabbable</code></a> finds the first keyboard focusable element</p></li>
-<li><p><a href="tabbable.html"><code>ally.query.tabbable</code></a> finds all keyboard focusable elements in DOM order</p></li>
-<li><p><a href="tabsequence.html"><code>ally.query.tabsequence</code></a> finds all keyboard focusable elements in <a href="../../concepts.html#Sequential-navigation-focus-order">Sequential Navigation Focus Order</a></p></li>
-<li><p><a href="../is/focusable.html"><code>ally.is.focusable</code></a> used to filter focusable elements</p></li>
-<li><p><a href="https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5: The <code>tabindex</code> attribute</a></p></li>
-<li><p><a href="https://www.w3.org/TR/html5/editing.html#focus-management">HTML5: Focus Management</a></p></li>
-<li><p><a href="../../data-tables/focusable.html">What Browsers Consider Focusable</a></p></li>
-<li><p><a href="../../data-tables/focusable.strict.html">What ally.js Considers Focusable in <code>strategy: &quot;strict&quot;</code></a></p></li>
-<li><p><a href="../../data-tables/focusable.quick.html">What ally.js Considers Focusable in <code>strategy: &quot;quick&quot;</code></a></p></li>
+<li>
+<p><a href="first-tabbable.html"><code>ally.query.firstTabbable</code></a> finds the first keyboard focusable element</p>
+</li>
+<li>
+<p><a href="tabbable.html"><code>ally.query.tabbable</code></a> finds all keyboard focusable elements in DOM order</p>
+</li>
+<li>
+<p><a href="tabsequence.html"><code>ally.query.tabsequence</code></a> finds all keyboard focusable elements in <a href="../../concepts.html#sequential-navigation-focus-order">Sequential Navigation Focus Order</a></p>
+</li>
+<li>
+<p><a href="../is/focusable.html"><code>ally.is.focusable</code></a> used to filter focusable elements</p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute">HTML5: The <code>tabindex</code> attribute</a></p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/html5/editing.html#focus-management">HTML5: Focus Management</a></p>
+</li>
+<li>
+<p><a href="../../data-tables/focusable.html">What Browsers Consider Focusable</a></p>
+</li>
+<li>
+<p><a href="../../data-tables/focusable.strict.html">What ally.js Considers Focusable in <code>strategy: &quot;strict&quot;</code></a></p>
+</li>
+<li>
+<p><a href="../../data-tables/focusable.quick.html">What ally.js Considers Focusable in <code>strategy: &quot;quick&quot;</code></a></p>
+</li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/src/query/focusable.js">module source</a></li>
 <li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/query/focusable.md">document source</a></li>
@@ -420,8 +483,10 @@
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

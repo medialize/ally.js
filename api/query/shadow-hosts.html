@@ -5,7 +5,7 @@
   <title>ally.query.shadowHosts - ally.js</title><link rel="canonical" href="https://allyjs.io/api/query/shadow-hosts.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,20 +35,20 @@
             <li class="">
               <a href="../../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Usage">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -343,34 +344,44 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="ally-query-shadowHosts" href="#ally-query-shadowHosts" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.query.shadowHosts</h1>
+      <h1 id="allyqueryshadowhosts"><a class="link-to-headline" href="#allyqueryshadowhosts">#</a> ally.query.shadowHosts</h1>
 <p>finds all elements hosting a <code>ShadowRoot</code>.</p>
 
-<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var elements = ally.query.shadowHosts({
   context: &apos;.within-filter-selector&apos;,
 });
 </code></pre>
-<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<h3 id="arguments"><a class="link-to-headline" href="#arguments">#</a> Arguments</h3>
 <table>
 <thead>
-<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which to search. The first element of a collection is used.</td></tr>
+<tr>
+<td>context</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td>
+<td>The scope of the DOM in which to search. The first element of a collection is used.</td>
+</tr>
 </tbody>
 </table>
-<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
+<h3 id="returns"><a class="link-to-headline" href="#returns">#</a> Returns</h3>
 <p>Array of <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>.</p>
 
 
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li>Added in <code>v1.1.0</code>.</li>
+<li>Added in <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a>.</li>
 </ul>
 
 
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/src/query/shadow-hosts.js">module source</a></li>
 <li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/query/shadow-hosts.md">document source</a></li>
@@ -385,8 +396,10 @@
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

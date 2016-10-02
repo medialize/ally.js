@@ -5,7 +5,7 @@
   <title>ally.when.key - ally.js</title><link rel="canonical" href="https://allyjs.io/api/when/key.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,35 +35,35 @@
             <li class="">
               <a href="../../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Description">Description</a></li>
+        <li><a href="#description">Description</a></li>
         
         
-        <li><a href="#Usage">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         
         
-        <li><a href="#Callback-signature">Callback signature</a></li>
+        <li><a href="#callback-signature">Callback signature</a></li>
         
         
-        <li><a href="#Examples">Examples</a></li>
+        <li><a href="#examples">Examples</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Notes">Notes</a></li>
+        <li><a href="#notes">Notes</a></li>
         
         
-        <li><a href="#Related-resources">Related resources</a></li>
+        <li><a href="#related-resources">Related resources</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -358,26 +359,98 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="ally-when-key" href="#ally-when-key" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.when.key</h1>
+      <h1 id="allywhenkey"><a class="link-to-headline" href="#allywhenkey">#</a> ally.when.key</h1>
 <p>Executes a callback when a given key has been pressed.</p>
-<h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
+<h2 id="description"><a class="link-to-headline" href="#description">#</a> Description</h2>
 <p>This is a convenience API to avoid adding and removing keyboard event handlers and having to filter for specific keys in application code. Callbacks are executed synchronously while handling <a href="https://developer.mozilla.org/en-US/docs/Web/Events/keydown"><code>keydown</code></a> events to maintain the ability to <a href="https://developer.mozilla.org/en/docs/Web/API/Event/preventDefault"><code>event.preventDefault()</code></a>.</p>
 <p>Keyboard events are dispatched to the currently focused element (<code>document.activeElement</code>). This allows us to handle keyboard events only when the user is engaged in a particular widget.</p>
-<h3><a id="Key-binding-syntax" href="#Key-binding-syntax" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Key binding syntax</h3>
+<h3 id="key-binding-syntax"><a class="link-to-headline" href="#key-binding-syntax">#</a> Key binding syntax</h3>
 <p>In order to easily register keyboard events including modifier keys, <code>ally.when.key</code> understands the following <code>&lt;key-binding&gt;</code> syntax:</p>
 <table>
 <thead>
-<tr><th><code>&lt;key-binding&gt;</code></th><th>primary key</th><th>keyCode</th><th>alt</th><th>ctrl</th><th>meta</th><th>shift</th></tr>
+<tr>
+<th><code>&lt;key-binding&gt;</code></th>
+<th>primary key</th>
+<th>keyCode</th>
+<th>alt</th>
+<th>ctrl</th>
+<th>meta</th>
+<th>shift</th>
+</tr>
 </thead>
 <tbody>
-<tr><td><code>space</code></td><td><kbd>Space</kbd></td><td>32</td><td>no</td><td>no</td><td>no</td><td>no</td></tr>
-<tr><td><code>*+space</code></td><td><kbd>Space</kbd></td><td>32</td><td>?</td><td>?</td><td>?</td><td>?</td></tr>
-<tr><td><code>shift+space</code></td><td><kbd>Space</kbd></td><td>32</td><td>no</td><td>no</td><td>no</td><td>yes</td></tr>
-<tr><td><code>shift+*+enter</code></td><td><kbd>Enter</kbd></td><td>13</td><td>?</td><td>?</td><td>?</td><td>yes</td></tr>
-<tr><td><code>!shift+*+enter</code></td><td><kbd>Enter</kbd></td><td>13</td><td>?</td><td>?</td><td>?</td><td>no</td></tr>
-<tr><td><code>?shift+ctrl+enter</code></td><td><kbd>Enter</kbd></td><td>13</td><td>no</td><td>yes</td><td>no</td><td>?</td></tr>
-<tr><td><code>enter shift+8</code></td><td><kbd>Enter</kbd></td><td>13</td><td>no</td><td>no</td><td>no</td><td>no</td></tr>
-<tr><td><em>(continued)</em></td><td><kbd>Backspace</kbd></td><td>8</td><td>no</td><td>no</td><td>no</td><td>yes</td></tr>
+<tr>
+<td><code>space</code></td>
+<td><kbd>Space</kbd></td>
+<td>32</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>*+space</code></td>
+<td><kbd>Space</kbd></td>
+<td>32</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><code>shift+space</code></td>
+<td><kbd>Space</kbd></td>
+<td>32</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>shift+*+enter</code></td>
+<td><kbd>Enter</kbd></td>
+<td>13</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>!shift+*+enter</code></td>
+<td><kbd>Enter</kbd></td>
+<td>13</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>?shift+ctrl+enter</code></td>
+<td><kbd>Enter</kbd></td>
+<td>13</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>?</td>
+</tr>
+<tr>
+<td><code>enter shift+8</code></td>
+<td><kbd>Enter</kbd></td>
+<td>13</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><em>(continued)</em></td>
+<td><kbd>Backspace</kbd></td>
+<td>8</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
 </tbody>
 </table>
 <p>Legend: <code>no</code> means the modifier key is not pressed, <code>yes</code> means the modifier key is pressed, <code>?</code> means the state of the modifier key is ignored.</p>
@@ -390,20 +463,35 @@ keycode       = ? /[0-9]+/ ? ;
 modifier      = ( [ &quot;!&quot; | &quot;?&quot; ], modifier-name ) | &quot;*&quot; ;
 modifier-name = &quot;alt&quot; | &quot;ctrl&quot; | &quot;meta&quot; | &quot;shift&quot; ;
 </code></pre>
-<h3><a id="Modifier-keys" href="#Modifier-keys" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Modifier keys</h3>
+<h3 id="modifier-keys"><a class="link-to-headline" href="#modifier-keys">#</a> Modifier keys</h3>
 <p>The modifier keys may have different names/symbols depending on operating system and physical keyboard:</p>
 <table>
 <thead>
-<tr><th>modifier key name</th><th>physical key on keyboard</th></tr>
+<tr>
+<th>modifier key name</th>
+<th>physical key on keyboard</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>alt</td><td><kbd>Alt</kbd>, <kbd>Option</kbd> or<kbd> &#x2325;</kbd> on Mac)</td></tr>
-<tr><td>ctrl</td><td><kbd>Ctrl</kbd>, <kbd>&#x2303;</kbd> on Mac</td></tr>
-<tr><td>meta</td><td><kbd>Meta</kbd>, <kbd> &#x2318;</kbd> or <kbd>&#xF8FF;</kbd> or <kbd>Command</kbd> on Mac, <kbd>&#x229E;</kbd> or <kbd>Windows</kbd> on Windows</td></tr>
-<tr><td>shift</td><td><kbd>Shift</kbd>, <kbd>&#x21E7;</kbd> on Mac</td></tr>
+<tr>
+<td>alt</td>
+<td><kbd>Alt</kbd>, <kbd>Option</kbd> or<kbd> &#x2325;</kbd> on Mac)</td>
+</tr>
+<tr>
+<td>ctrl</td>
+<td><kbd>Ctrl</kbd>, <kbd>&#x2303;</kbd> on Mac</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><kbd>Meta</kbd>, <kbd> &#x2318;</kbd> or <kbd>&#xF8FF;</kbd> or <kbd>Command</kbd> on Mac, <kbd>&#x229E;</kbd> or <kbd>Windows</kbd> on Windows</td>
+</tr>
+<tr>
+<td>shift</td>
+<td><kbd>Shift</kbd>, <kbd>&#x21E7;</kbd> on Mac</td>
+</tr>
 </tbody>
 </table>
-<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var handle = ally.when.key({
   enter: function(event, disengage) {
     // react to &lt;kbd&gt;Enter&lt;/kbd&gt;
@@ -418,52 +506,103 @@ modifier-name = &quot;alt&quot; | &quot;ctrl&quot; | &quot;meta&quot; | &quot;sh
 
 handle.disengage();
 </code></pre>
-<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<h3 id="arguments"><a class="link-to-headline" href="#arguments">#</a> Arguments</h3>
 <table>
 <thead>
-<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which keyboard events will be processed. The first element of a collection is used.</td></tr>
-<tr><td>filter</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><code>null</code></td><td>The elements and descendants to exclude when processing keyboard events.</td></tr>
-<tr><td><a href="#Key-binding-syntax"><code>&lt;key-binding&gt;</code></a></td><td>function</td><td><em>required</em></td><td>Mapping of <code>&lt;key-binding&gt;</code> to callback function. See <a href="#Callback-Signature">Callback Signature</a> for details. This argument is expected one or more times.</td></tr>
+<tr>
+<td>context</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td>
+<td>The scope of the DOM in which keyboard events will be processed. The first element of a collection is used.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><code>null</code></td>
+<td>The elements and descendants to exclude when processing keyboard events.</td>
+</tr>
+<tr>
+<td><a href="#key-binding-syntax"><code>&lt;key-binding&gt;</code></a></td>
+<td>function</td>
+<td><em>required</em></td>
+<td>Mapping of <code>&lt;key-binding&gt;</code> to callback function. See <a href="#callback-signature">Callback Signature</a> for details. This argument is expected one or more times.</td>
+</tr>
 </tbody>
 </table>
-<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
-<p>A <a href="../concepts.html#Service"><code>&lt;service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
-<h3><a id="Throws" href="#Throws" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Throws</h3>
+<h3 id="returns"><a class="link-to-headline" href="#returns">#</a> Returns</h3>
+<p>A <a href="../concepts.html#service"><code>&lt;service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
+<h3 id="throws"><a class="link-to-headline" href="#throws">#</a> Throws</h3>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> if no <code>&lt;key-binding&gt;: &lt;callback&gt;</code> combinations were passed.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> if <code>&lt;key-binding&gt;</code> does not resolve to a keyCode.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> if <code>&lt;key-binding&gt;</code> contains illegal modifier names.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> if <code>&lt;callback&gt;</code> is not a <code>function</code>.</li>
 </ul>
-<h2><a id="Callback-signature" href="#Callback-signature" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Callback signature</h2>
+<h2 id="callback-signature"><a class="link-to-headline" href="#callback-signature">#</a> Callback signature</h2>
 <table>
 <thead>
-<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>event</td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent"><code>KeyboardEvent</code></a></td><td><em>required</em></td><td>The original <code>keydown</code> event.</td></tr>
-<tr><td>disengage</td><td>function</td><td><em>required</em></td><td>The service&apos;s <code>handle.disengage()</code> method.</td></tr>
+<tr>
+<td>event</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent"><code>KeyboardEvent</code></a></td>
+<td><em>required</em></td>
+<td>The original <code>keydown</code> event.</td>
+</tr>
+<tr>
+<td>disengage</td>
+<td>function</td>
+<td><em>required</em></td>
+<td>The service&apos;s <code>handle.disengage()</code> method.</td>
+</tr>
 </tbody>
 </table>
 <p>The callback is executed in the context of <code>context</code> (that&apos;s where <code>this</code> inside the callback points to). The callback is passed the <code>handle.disengage()</code> method to allow simplified &quot;execute once&quot; behaviors. The callback&apos;s return value is ignored.</p>
-<h2><a id="Examples" href="#Examples" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Examples</h2>
-<section class="example"><h1><a id="Example-ally-when-key-Example" href="#Example-ally-when-key-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.when.key Example</h1><a class="jsbin-embed" href="https://jsbin.com/kekuwo/embed?output">ally.when.key Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/kekuwo/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./key.example.html" target="_blank">open the source document</a></p></section>
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="examples"><a class="link-to-headline" href="#examples">#</a> Examples</h2>
+<section class="example">
+<h3 id="allywhenkey-example"><a class="link-to-headline" href="#allywhenkey-example">#</a> ally.when.key Example</h3>
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/kekuwo/embed?output">ally.when.key Example on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/kekuwo/edit" target="_blank">play with <span class="visuallyhidden">ally.when.key Example</span> on jsbin.com</a> or <a href="key.example.html" target="_blank">open the document <span class="visuallyhidden">of ally.when.key Example</span></a></p>
+</section>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li><code>v1.1.0</code> introduced the extended <code>&lt;key-binding&gt;</code> syntax (thereby changing the default modifier key behavior).</li>
-<li><code>v1.1.0</code> introduced the options <code>context</code> and <code>filter</code>.</li>
+<li><a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> introduced the extended <code>&lt;key-binding&gt;</code> syntax (thereby changing the default modifier key behavior).</li>
+<li><a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> introduced the options <code>context</code> and <code>filter</code>.</li>
 </ul>
-<h2><a id="Notes" href="#Notes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Notes</h2>
-<div class="note"><strong>NOTE:</strong> Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=286933">Gecko 286933</a>.</div><div class="warning"><strong>WARNING:</strong> The callback for the <code>&lt;key-binding&gt;</code> <code>space</code> only executes if <em>no</em> modifier key was pressed. In order to make the callback execute regardless of modifier keys, use the <code>&lt;key-binding&gt;</code> <code>*+space</code>.</div><div class="note"><strong>NOTE:</strong> The modifiers <code>alt</code>, <code>ctrl</code>, <code>meta</code> usually engage system-level or browser-level functionality. Do not use these modifiers lightly. For example <code>alt+a</code> prints the letter <code>&#xE5;</code> on a Mac with German keyboard layout, <code>meta+q</code> exits the application and <code>meta+space</code> engages Spotlight.</div>
-<h2><a id="Related-resources" href="#Related-resources" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Related resources</h2>
+<h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
+<div data-note-type="note">
+<p>Firefox has a long standing issue with keyboard events propagating to the document while browser UI like autocomplete is being interacted with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=286933">Gecko 286933</a>.</p>
+</div>
+<div data-note-type="note">
+<p>The callback for the <code>&lt;key-binding&gt;</code> <code>space</code> only executes if <em>no</em> modifier key was pressed. In order to make the callback execute regardless of modifier keys, use the <code>&lt;key-binding&gt;</code> <code>*+space</code>.</p>
+</div>
+<div data-note-type="note">
+<p>The modifiers <code>alt</code>, <code>ctrl</code>, <code>meta</code> usually engage system-level or browser-level functionality. Do not use these modifiers lightly. For example <code>alt+a</code> prints the letter <code>&#xE5;</code> on a Mac with German keyboard layout, <code>meta+q</code> exits the application and <code>meta+space</code> engages Spotlight.</p>
+</div>
+<h2 id="related-resources"><a class="link-to-headline" href="#related-resources">#</a> Related resources</h2>
 <ul>
 <li><a href="../map/keycode.html"><code>ally.map.keycode</code></a> used for resolving named keys</li>
 <li>The <code>&lt;key-binding&gt;</code> syntax is inspired by <a href="https://github.com/PolymerElements/iron-a11y-keys#grammar">PolymerElements/iron-a11y-keys</a></li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/src/when/key.js">module source</a></li>
 <li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/when/key.md">document source</a></li>
@@ -479,8 +618,10 @@ handle.disengage();
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

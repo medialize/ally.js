@@ -5,7 +5,7 @@
   <title>ally.maintain.disabled - ally.js</title><link rel="canonical" href="https://allyjs.io/api/maintain/disabled.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,32 +35,32 @@
             <li class="">
               <a href="../../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Description">Description</a></li>
+        <li><a href="#description">Description</a></li>
         
         
-        <li><a href="#Usage">Usage</a></li>
+        <li><a href="#usage">Usage</a></li>
         
         
-        <li><a href="#Examples">Examples</a></li>
+        <li><a href="#examples">Examples</a></li>
         
         
-        <li><a href="#Changes">Changes</a></li>
+        <li><a href="#changes">Changes</a></li>
         
         
-        <li><a href="#Notes">Notes</a></li>
+        <li><a href="#notes">Notes</a></li>
         
         
-        <li><a href="#Related-resources">Related resources</a></li>
+        <li><a href="#related-resources">Related resources</a></li>
         
         
-        <li><a href="#Contributing">Contributing</a></li>
+        <li><a href="#contributing">Contributing</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -355,15 +356,20 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="ally-maintain-disabled" href="#ally-maintain-disabled" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>ally.maintain.disabled</h1>
+      <h1 id="allymaintaindisabled"><a class="link-to-headline" href="#allymaintaindisabled">#</a> ally.maintain.disabled</h1>
 <p>Disables any type of user interaction - including the ability to focus elements - essentially rendering elements <em>inert</em>.</p>
-<h2><a id="Description" href="#Description" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Description</h2>
+<h2 id="description"><a class="link-to-headline" href="#description">#</a> Description</h2>
 <p>This allows an application to make sure no element <em>other than the exempted</em> can be focused. This is method is superior to the idea of trapping focus by intercepting <kbd>Tab</kbd>, because it allows cycling through the browser UI and is not as prone to break for spatial focus navigation (i.e. any sort of focus navigation that does not use the <kbd>Tab</kbd> key). The major benefit of disabling focus of elements is that in turn we do not have to meddle with the user&apos;s interaction to actually change focus - we can leave that to the browser.</p>
 <p>Elements are disabled by <a href="../element/disabled.html"><code>ally.element.disabled</code></a> and can be identified in the DOM by the attribute <code>[data-ally-disabled=&quot;true&quot;]</code> to align with styling of other <code>:disabled</code> elements.</p>
-<p>The proposed <code>inert</code> attribute was <a href="https://html5.org/r/8536">removed from HTML5</a>, because people thought <a href="https://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees">inert subtrees</a> by way of the <code>&lt;dialog&gt;</code> element would suffice. While we believe <em>it doesn&apos;t</em>, the <code>inert</code> attribute would only have solved half of the problem, because there&apos;s no way to avoid inheriting the inert state onto children. This behavior can be observed in the <a href="https://github.com/GoogleChrome/inert-polyfill">Google Chrome Inert Attribute Polyfill</a>.</p>
-<div class="note"><strong>NOTE:</strong> The <a href="https://wicg.io/">WICG</a> (Web Incubater Community Group) is working on <a href="https://github.com/wicg/inert">reviving the inert attribute</a> (including a polyfill).</div><div class="note"><strong>NOTE:</strong> There <a href="https://whatwg.org/">WHATWG</a> is discussing a <a href="https://github.com/whatwg/html/issues/897">blockElements API</a> that would cover the primary use-case of <code>ally.maintain.disabled</code> in a much better way.</div>
 <p><code>ally.maintain.disabled</code> observes DOM manipulations and automatically disables newly added elements when necessary.</p>
-<h2><a id="Usage" href="#Usage" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Usage</h2>
+<p>The proposed <code>inert</code> attribute was <a href="https://html5.org/r/8536">removed from HTML5</a>, because people thought <a href="https://www.w3.org/html/wg/drafts/html/master/editing.html#inert-subtrees">inert subtrees</a> by way of the <code>&lt;dialog&gt;</code> element would suffice. While we believe <em>it doesn&apos;t</em>, the <code>inert</code> attribute would only have solved half of the problem, because there&apos;s no way to avoid inheriting the inert state onto children. This behavior can be observed in the <a href="https://github.com/GoogleChrome/inert-polyfill">Google Chrome Inert Attribute Polyfill</a>.</p>
+<div data-note-type="note">
+<p>The <a href="https://wicg.io/">WICG</a> (Web Incubater Community Group) is working on <a href="https://github.com/wicg/inert">reviving the inert attribute</a> (including a polyfill).</p>
+</div>
+<div data-note-type="note">
+<p>The <a href="https://whatwg.org/">WHATWG</a> is discussing a <a href="https://github.com/whatwg/html/issues/897">blockElements API</a> that would cover the primary use-case of <code>ally.maintain.disabled</code> in a much better way.</p>
+</div>
+<h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var handle = ally.maintain.disabled({
   context: &apos;.within-filter-selector&apos;,
   filter: &apos;.except-filter-selector&apos;,
@@ -371,38 +377,69 @@
 
 handle.disengage();
 </code></pre>
-<h3><a id="Arguments" href="#Arguments" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Arguments</h3>
+<h3 id="arguments"><a class="link-to-headline" href="#arguments">#</a> Arguments</h3>
 <table>
 <thead>
-<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>context</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td><td>The scope of the DOM in which to search. The first element of a collection is used.</td></tr>
-<tr><td>filter</td><td><a href="../concepts.html#Selector"><code>&lt;selector&gt;</code></a></td><td><code>null</code></td><td>The <em>significant elements</em> to exclude from being disabled.</td></tr>
+<tr>
+<td>context</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement"><code>documentElement</code></a></td>
+<td>The scope of the DOM in which to search. The first element of a collection is used.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td><a href="../concepts.html#selector"><code>&lt;selector&gt;</code></a></td>
+<td><code>null</code></td>
+<td>The <em>significant elements</em> to exclude from being disabled.</td>
+</tr>
 </tbody>
 </table>
-<h3><a id="Returns" href="#Returns" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Returns</h3>
-<p>A <a href="../concepts.html#Service"><code>&lt;service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
+<h3 id="returns"><a class="link-to-headline" href="#returns">#</a> Returns</h3>
+<p>A <a href="../concepts.html#service"><code>&lt;service&gt;</code></a> interface, providing the <code>handle.disengage()</code> method to stop the service.</p>
 
-<h2><a id="Examples" href="#Examples" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Examples</h2>
-<section class="example"><h1><a id="Example-ally-maintain-disabled-Example" href="#Example-ally-maintain-disabled-Example" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Example: ally.maintain.disabled Example</h1><a class="jsbin-embed" href="https://jsbin.com/qokupi/embed?output">ally.maintain.disabled Example on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script><p><a href="https://jsbin.com/qokupi/edit" target="_blank">play with the example on jsbin.com</a> or <a href="./disabled.example.html" target="_blank">open the source document</a></p></section>
-<h2><a id="Changes" href="#Changes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Changes</h2>
+<h2 id="examples"><a class="link-to-headline" href="#examples">#</a> Examples</h2>
+<section class="example">
+<h3 id="allymaintaindisabled-example"><a class="link-to-headline" href="#allymaintaindisabled-example">#</a> ally.maintain.disabled Example</h3>
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/qokupi/embed?output">ally.maintain.disabled Example on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/qokupi/edit" target="_blank">play with <span class="visuallyhidden">ally.maintain.disabled Example</span> on jsbin.com</a> or <a href="disabled.example.html" target="_blank">open the document <span class="visuallyhidden">of ally.maintain.disabled Example</span></a></p>
+</section>
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
-<li>Since <code>v1.1.0</code> changing <code>tabindex</code> attribute values are properly handled.</li>
-<li>Since <code>v1.1.0</code> the <code>disengage()</code> method reverts elements within ShadowHosts to their previous state.</li>
-<li>Since <code>v1.1.0</code> DOM mutations within <code>ShadowRoot</code>s are properly observed.</li>
-<li>Since <code>v1.1.0</code> initially disabled elements are not accidentally enabled when disengaging the service.</li>
-<li>Since <code>v1.1.1</code> ancestors of exempted sub-trees (defined by <code>filter</code> option) are <em>not</em> disabled anymore.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> changing <code>tabindex</code> attribute values are properly handled.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> the <code>disengage()</code> method reverts elements within ShadowHosts to their previous state.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> DOM mutations within <code>ShadowRoot</code>s are properly observed.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> initially disabled elements are not accidentally enabled when disengaging the service.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.1"><code>v1.1.1</code></a> ancestors of exempted sub-trees (defined by <code>filter</code> option) are <em>not</em> disabled anymore.</li>
 </ul>
-<h2><a id="Notes" href="#Notes" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Notes</h2>
-<div class="note"><strong>NOTE:</strong> <code>ShadowHost</code>s are pierced and <code>ShadowRoot</code> content is made inert as well (except for closed shadow trees).</div><div class="note"><strong>NOTE:</strong> Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events">Mutation Events</a> are too much of a burden.</div><div class="warning"><strong>WARNING:</strong> Any element not identified as focus relevant by <a href="../is/focus-relevant.html#Notes"><code>ally.is.focusRelevant</code></a> and not identified as only tabbable by <a href="../is/only-tabbable.html#Notes"><code>ally.is.onlyTabbable</code></a> is <em>not</em> made inert either. See the <a href="../../data-tables/focusable.strict.html">identified elements using <code>strategy: &quot;strict&quot;</code> compatibility table</a>.</div>
-<h2><a id="Related-resources" href="#Related-resources" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Related resources</h2>
+<h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
+<div data-note-type="note">
+<p><code>ShadowHost</code>s are pierced and <code>ShadowRoot</code> content is made inert as well (except for closed shadow trees).</p>
+</div>
+<div data-note-type="note">
+<p>Internet Explorer 10 will not update changes made to elements within the inert sub-trees, because it does not support <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events">Mutation Events</a> are too much of a burden.</p>
+</div>
+<div data-note-type="warning">
+<p>Any element not identified as focus relevant by <a href="../is/focus-relevant.html#notes"><code>ally.is.focusRelevant</code></a> and not identified as only tabbable by <a href="../is/only-tabbable.html#notes"><code>ally.is.onlyTabbable</code></a> is <em>not</em> made inert either. See the <a href="../../data-tables/focusable.strict.html">identified elements using <code>strategy: &quot;strict&quot;</code> compatibility table</a>.</p>
+</div>
+<h2 id="related-resources"><a class="link-to-headline" href="#related-resources">#</a> Related resources</h2>
 <ul>
-<li><a href="../maintain/hidden.html"><code>ally.maintain.hidden</code></a> is a <a href="../concepts.html#Service">service</a> hiding insignificant branches from the <a href="../../concepts.html#Accessibility-tree">Accessibility Tree</a></li>
+<li><a href="../maintain/hidden.html"><code>ally.maintain.hidden</code></a> is a <a href="../concepts.html#service">service</a> hiding insignificant branches from the <a href="../../concepts.html#accessibility-tree">Accessibility Tree</a></li>
 <li><a href="../query/focusable.html"><code>ally.query.focusable</code></a> is used to identify the elements to disable</li>
 <li><a href="../element/disabled.html"><code>ally.element.disabled</code></a> is used to disable the elements</li>
 </ul>
-<h2><a id="Contributing" href="#Contributing" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Contributing</h2>
+<h2 id="contributing"><a class="link-to-headline" href="#contributing">#</a> Contributing</h2>
 <ul>
 <li><a href="https://github.com/medialize/ally.js/blob/master/src/maintain/disabled.js">module source</a></li>
 <li><a href="https://github.com/medialize/ally.js/blob/master/docs/api/maintain/disabled.md">document source</a></li>
@@ -417,8 +454,10 @@ handle.disengage();
     <p><a href="../../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

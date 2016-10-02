@@ -5,7 +5,7 @@
   <title>Releasing ally.js - ally.js</title><link rel="canonical" href="https://allyjs.io/contributing/release.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,17 +35,17 @@
             <li class="active">
               <a href="index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Publishing-the-library-to-npm">Publishing the library to npm</a></li>
+        <li><a href="#publishing-the-library-to-npm">Publishing the library to npm</a></li>
         
         
-        <li><a href="#Branch-Rules">Branch Rules</a></li>
+        <li><a href="#branch-rules">Branch Rules</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -86,9 +87,9 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Releasing-ally-js" href="#Releasing-ally-js" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Releasing ally.js</h1>
+      <h1 id="releasing-allyjs"><a class="link-to-headline" href="#releasing-allyjs">#</a> Releasing ally.js</h1>
 <p>The following sequence steps are necessary to fully release ally.js</p>
-<h2><a id="Publishing-the-library-to-npm" href="#Publishing-the-library-to-npm" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Publishing the library to npm</h2>
+<h2 id="publishing-the-library-to-npm"><a class="link-to-headline" href="#publishing-the-library-to-npm">#</a> Publishing the library to npm</h2>
 <ul>
 <li><code>npm version &lt;version&gt;</code> to update the package version</li>
 <li>update <code>CHANGELOG.md</code> accordingly</li>
@@ -102,8 +103,9 @@
 <ul>
 <li><code>npm run publish:npm:beta</code> to publish to npm beta channel (skip steps 7, 8, 12)</li>
 <li><code>npm run publish:npm</code> to publish to npm stable channel</li>
-</ul></li>
-<li><code>npm run publish:jsbin</code> to update the examples on JSBin.com</li>
+</ul>
+</li>
+<li><code>npm run publish:jsbin</code> to update the examples on <a href="http://JSBin.com">JSBin.com</a></li>
 <li><code>npm run build:website</code> to build the website</li>
 <li><code>git tag &lt;version&gt;</code> (unless the library hasn&apos;t been updated)</li>
 <li><code>git push &amp;&amp; git push --tags</code> to push the changes to github</li>
@@ -112,16 +114,19 @@
 <li>edit the new tag and copy-paste the relevant changes from <code>CHANGELOG.md</code></li>
 <li>upload the files <code>dist/ally.js</code>, <code>dist/ally.js.map</code>, <code>dist/ally.js.zip</code> and <code>dist/ally.js.tar.gz</code></li>
 <li>mark as <code>pre-release</code> if the library was pushed to beta channel</li>
-</ul></li>
+</ul>
+</li>
+<li><code>npm run publish:algolia</code> to publish the search index</li>
 <li><code>npm run publish:website</code> to publish the website to the <code>gh-pages</code> branch</li>
 </ul>
-<h2><a id="Branch-Rules" href="#Branch-Rules" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Branch Rules</h2>
+<h2 id="branch-rules"><a class="link-to-headline" href="#branch-rules">#</a> Branch Rules</h2>
 <ul>
 <li><code>master</code> contains fully integrated work that may not be released yet. All PRs have to point at this branch.</li>
 <li><code>gh-pages</code> contains the website. It is only updated through <code>npm run publish:website</code>. PRs against this branch must be rejected.</li>
 </ul>
-<hr>
-<div class="help"><strong>HELP:</strong> Got a better Idea to solve this? <a href="https://github.com/medialize/ally.js/issues/new">file an issue</a>!</div>
+<div data-note-type="help">
+<p>Got a better Idea to solve this? <a href="https://github.com/medialize/ally.js/issues/new">file an issue</a>!</p>
+</div>
 
     </main>
   </div>
@@ -131,8 +136,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -5,7 +5,7 @@
   <title>What does &quot;focusable&quot; mean? - ally.js</title><link rel="canonical" href="https://allyjs.io/what-is-focusable.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,17 +35,17 @@
             <li class="">
               <a href="contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#Filtering-elements">Filtering elements</a></li>
+        <li><a href="#filtering-elements">Filtering elements</a></li>
         
         
-        <li><a href="#Finding-elements">Finding elements</a></li>
+        <li><a href="#finding-elements">Finding elements</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -81,9 +82,20 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="What-does-focusable-mean" href="#What-does-focusable-mean" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>What does &quot;focusable&quot; mean?</h1>
+      <h1 id="what-does-focusable-mean"><a class="link-to-headline" href="#what-does-focusable-mean">#</a> What does &quot;focusable&quot; mean?</h1>
 <p>An HTML element can be a member of exactly one of the following five categories:</p>
-<dl><dt>Inert:</dt><dd> The element is not interactive and thus not focusable.</dd><dt>Focusable:</dt><dd> The element can be focused by script (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus"><code>element.focus()</code></a>) and possibly the mouse (or pointer), but not the keyboard.</dd><dt>Tabbable:</dt><dd> The element is keyboard focusable (&quot;tabbable&quot;), as it is part of the document&apos;s sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).</dd><dt>Only Tabbable:</dt><dd> The element is <em>only</em> keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.</dd><dt>Forwards Focus:</dt><dd> The element will forward focus to another element instead of receiving focus itself.</dd></dl>
+<dl>
+<dt>Inert</dt>
+<dd>The element is not interactive and thus not focusable.</dd>
+<dt>Focusable</dt>
+<dd>The element can be focused by script (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus"><code>element.focus()</code></a>) and possibly the mouse (or pointer), but not the keyboard.</dd>
+<dt>Tabbable</dt>
+<dd>The element is keyboard focusable (&quot;tabbable&quot;), as it is part of the document&apos;s sequential focus navigation order. The element is also focusable by script and possibly the mouse (or pointer).</dd>
+<dt>Only Tabbable</dt>
+<dd>The element is <em>only</em> keyboard focusable, possibly by the mouse (or pointer), but it cannot be focused by script.</dd>
+<dt>Forwards Focus</dt>
+<dd>The element will forward focus to another element instead of receiving focus itself.</dd>
+</dl>
 <p>In which of these buckets elements are sorted, depends on the browser. Have a look at the following comparison tables:</p>
 <ul>
 <li><a href="./data-tables/focusable.html">What browsers consider focusable</a> details in which category the various HTML elements fall per browser</li>
@@ -91,7 +103,7 @@
 </ul>
 <hr>
 <p>The functions pertaining to &quot;focus&quot; are grouped in two categories: <code>ally.is.*</code> represents the filters and <code>ally.query.*</code> the crawlers.</p>
-<h2><a id="Filtering-elements" href="#Filtering-elements" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Filtering elements</h2>
+<h2 id="filtering-elements"><a class="link-to-headline" href="#filtering-elements">#</a> Filtering elements</h2>
 <p>A filter takes an element (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element"><code>Element</code></a>) for input and returns a boolean result. Filters can be used to verify the state of a given element.</p>
 <ul>
 <li><a href="./api/is/focusable.html"><code>ally.is.focusable</code></a> returns true for any element that passes <code>ally.is.focusRelevant</code>, is not <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/disabled">disabled</a>, rendered (i.e. not visually hidden, e.g. by <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><code>display: none</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility"><code>visibility: hidden</code></a>) and does <em>not</em> pass <code>ally.is.onlyTabbable</code>.</li>
@@ -99,7 +111,7 @@
 <li><a href="./api/is/tabbable.html"><code>ally.is.tabbable</code></a> <em>expects <code>ally.is.focusable</code> has already passed for the given element</em> and returns true in case the element is keyboard focusable.</li>
 <li><a href="./api/is/only-tabbable.html"><code>ally.is.onlyTabbable</code></a> returns true for any element that can only be focused by keyboard, but not by script.</li>
 </ul>
-<h2><a id="Finding-elements" href="#Finding-elements" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Finding elements</h2>
+<h2 id="finding-elements"><a class="link-to-headline" href="#finding-elements">#</a> Finding elements</h2>
 <p>A crawler (or &quot;DOM walker&quot;) traverses the DOM in order to find elements matching the desired focusable state.</p>
 <ul>
 <li><a href="./api/query/focusable.html"><code>ally.query.focusable</code></a> finds all the elements that are script focusable or keyboard focusable, but not only tabbable. By providing the strategies <code>&quot;quick&quot;</code> and <code>&quot;strict&quot;</code> the user can choose to trade performance for accuracy. The difference in accuracy is detailed by the compatibility tables for <a href="./data-tables/focusable.quick.html">quick</a> and <a href="./data-tables/focusable.strict.html">strict</a>. Internally the <code>ally.is.focusable</code> filter is used to verify each element&apos;s state. Internally a third strategy called &quot;all&quot; is available to find elements that are either focus relevant (regardless of disabled and visual state) or only tabbable.</li>
@@ -114,8 +126,10 @@
     <p><a href="legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

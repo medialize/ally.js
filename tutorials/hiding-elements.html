@@ -5,7 +5,7 @@
   <title>Hiding DOM elements - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/hiding-elements.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -13,6 +13,7 @@
     <h1 id="logo">ally.js</h1>
     <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
     <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
       <ul>
           
             <li class="">
@@ -34,23 +35,26 @@
             <li class="">
               <a href="../contributing/index.html">Contributing</a>
             </li>
-              <li class="download"><a href="../getting-started.html#Downloading-the-UMD-bundle">Download</a></li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
         <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
       </ul>
     </nav></header>  
   <div id="wrapper">
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
-        <li><a href="#How-to-hide-elements-completely">How to hide elements completely</a></li>
+        <li><a href="#how-to-hide-elements-completely">How to hide elements completely</a></li>
         
         
-        <li><a href="#How-to-hide-elements-semantically">How to hide elements semantically</a></li>
+        <li><a href="#how-to-hide-elements-semantically">How to hide elements semantically</a></li>
         
         
-        <li><a href="#How-to-hide-elements-visually">How to hide elements visually</a></li>
+        <li><a href="#how-to-hide-elements-visually">How to hide elements visually</a></li>
         
         
-        <li><a href="#Recap">Recap</a></li>
+        <li><a href="#keyboard-navigation">Keyboard navigation</a></li>
+        
+        
+        <li><a href="#recap">Recap</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -91,22 +95,24 @@
     </div>
 
     <main id="main" tabindex="-1">
-      <h1><a id="Hiding-DOM-elements" href="#Hiding-DOM-elements" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Hiding DOM elements</h1>
+      <h1 id="hiding-dom-elements"><a class="link-to-headline" href="#hiding-dom-elements">#</a> Hiding DOM elements</h1>
 <p>This document explains the various ways of hiding things and the implications that come with that.</p>
-<p>When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document&apos;s representation in the <a href="../concepts.html#Accessibility-tree">accessibility tree</a>. For disambiguation we&apos;ll use the following terms:</p>
-<dl><dt>Completely hidden:</dt><dd> The element is <em>neither</em> rendered on screen, <em>nor</em> exposed in the accessibility tree.</dd><dt>Semantically hidden:</dt><dd> The element is rendered on screen, but <em>not</em> exposed in the accessibility tree.</dd><dt>Visually hidden:</dt><dd> The element is <em>not</em> rendered on screen, but exposed in the accessibility tree.</dd></dl>
+<p>When we say an element is hidden, we usually mean it is not visible. However, the screen is not the only output mechanism we may need to hide content from. Systems like screen readers and braille displays rely on a document&apos;s representation in the <a href="../concepts.html#accessibility-tree">accessibility tree</a>. For disambiguation we&apos;ll use the following terms:</p>
+<dl>
+<dt>Completely hidden</dt>
+<dd>The element is <em>not</em> rendered on screen, <em>not</em> exposed in the accessibility tree, <em>not</em> accessible to keyboard navigation.</dd>
+<dt>Semantically hidden</dt>
+<dd>The element is rendered on screen, but <em>not</em> exposed in the accessibility tree, and still accessible to keyboard navigation.</dd>
+<dt>Visually hidden</dt>
+<dd>The element is <em>not</em> rendered on screen, but exposed in the accessibility tree, and still accessible to keyboard navigation.</dd>
+</dl>
 <p>The three types of &quot;hidden&quot; produce the following matrix:</p>
-<table>
-<thead>
-<tr><th>visibility state</th><th>on screen</th><th>in accessibility tree</th></tr>
-</thead>
-<tbody>
-<tr><td>completely hidden</td><td>hidden</td><td>hidden</td></tr>
-<tr><td>semantically hidden</td><td>visible</td><td>hidden</td></tr>
-<tr><td>visually hidden</td><td>hidden</td><td>visible</td></tr>
-</tbody>
-</table>
-<h2><a id="How-to-hide-elements-completely" href="#How-to-hide-elements-completely" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>How to hide elements completely</h2>
+<p>| visibility state | on screen | in accessibility tree | keyboard navigation |
+| ---------------- | --------- | --------------------- |
+| completely hidden | hidden | hidden | not navigatable |
+| semantically hidden | visible | hidden | navigatable |
+| visually hidden | hidden | visible | navigatable |</p>
+<h2 id="how-to-hide-elements-completely"><a class="link-to-headline" href="#how-to-hide-elements-completely">#</a> How to hide elements completely</h2>
 <p>Completely hiding elements can be done in 3 ways:</p>
 <ul>
 <li>via the CSS property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><code>display</code></a>, e.g. <code>display: none;</code></li>
@@ -114,21 +120,23 @@
 <li>via the HTML5 attribute <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden"><code>hidden</code></a>, e.g. <code>&lt;span hidden&gt;</code></li>
 </ul>
 <p>While each of these techniques has the same end result, i.e. content is not rendered and not exposed in the accessibility tree, they have different behaviors.</p>
-<h3><a id="The-CSS-properties-display-and-visibility" href="#The-CSS-properties-display-and-visibility" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>The CSS properties <code>display</code> and <code>visibility</code></h3>
+<h3 id="the-css-properties-display-and-visibility"><a class="link-to-headline" href="#the-css-properties-display-and-visibility">#</a> The CSS properties <code>display</code> and <code>visibility</code></h3>
 <p><code>display: none;</code> will cause the element to completely vanish, it won&apos;t take any space and it won&apos;t be <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions">animatable</a>. <code>visibility: hidden;</code> allows animation and preserves the space the element would occupy on screen, but simply leave it blank. Unlike every other method to hide content, <code>visibility</code> has the ability to <em>unhide nested content</em>:</p>
 <pre><code class="language-markup">&lt;div style=&quot;visibility: hidden&quot;&gt;
   &lt;span&gt;not visible&lt;/span&gt;
   &lt;span style=&quot;visibility: visible&quot;&gt;visible!&lt;/span&gt;
 &lt;/div&gt;
 </code></pre>
-<div class="tip"><strong>TIP:</strong> Unless unhiding nested content is <em>specifically</em> what we intend to do, we should refrain from using <code>visibility: visible;</code> in our style sheets, and use <code>visibility: inherit;</code> instead. By inheriting the <code>visibility</code> state from the parent element by default, we make sure that nested content does not become visible by accident, in case the an ancestor has <code>visibility: hidden;</code> set.</div>
-<h3><a id="The-HTML5-hidden-attribute" href="#The-HTML5-hidden-attribute" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>The HTML5 <code>hidden</code> attribute</h3>
+<div data-note-type="tip">
+<p>Unless unhiding nested content is <em>specifically</em> what we intend to do, we should refrain from using <code>visibility: visible;</code> in our style sheets, and use <code>visibility: inherit;</code> instead. By inheriting the <code>visibility</code> state from the parent element by default, we make sure that nested content does not become visible by accident, in case the an ancestor has <code>visibility: hidden;</code> set.</p>
+</div>
+<h3 id="the-html5-hidden-attribute"><a class="link-to-headline" href="#the-html5-hidden-attribute">#</a> The HTML5 <code>hidden</code> attribute</h3>
 <p>The HTML5 <code>hidden</code> attribute provides a convenient API, as it can be toggled simply by setting <code>element.hidden = true;</code>. The element itself does not hide the content, but browser&apos;s internal style sheets contain the following CSS rule:</p>
 <pre><code class="language-css">[hidden] {
   display: none;
 }
 </code></pre>
-<h3><a id="Safely-overwriting-the-hidden-attribute" href="#Safely-overwriting-the-hidden-attribute" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Safely overwriting the <code>hidden</code> attribute</h3>
+<h3 id="safely-overwriting-the-hidden-attribute"><a class="link-to-headline" href="#safely-overwriting-the-hidden-attribute">#</a> Safely overwriting the <code>hidden</code> attribute</h3>
 <p>We <strong>absolutely must not</strong> revert the hiding effects of the <code>hidden</code> attribute. However, we <em>can</em> swap <code>display</code> for <code>visibility</code> in certain situations, for example to allow us to animate the element:</p>
 <pre><code class="language-css">.my-element[hidden] {
   display: block;
@@ -145,16 +153,18 @@
   visibility: hidden;
 }
 </code></pre>
-<h2><a id="How-to-hide-elements-semantically" href="#How-to-hide-elements-semantically" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>How to hide elements semantically</h2>
-<p>To hide content from the <a href="../concepts.html#Accessibility-tree">accessibility tree</a> but retain the content on screen, we may use the attribute <a href="https://w3c.github.io/aria/aria/aria.html#aria-hidden"><code>aria-hidden=&quot;true&quot;</code></a>.</p>
+<h2 id="how-to-hide-elements-semantically"><a class="link-to-headline" href="#how-to-hide-elements-semantically">#</a> How to hide elements semantically</h2>
+<p>To hide content from the <a href="../concepts.html#accessibility-tree">accessibility tree</a> but retain the content on screen, we may use the attribute <a href="https://w3c.github.io/aria/aria/aria.html#aria-hidden"><code>aria-hidden=&quot;true&quot;</code></a>.</p>
 <p>For example we might want to hide certain images and icons that serve non-descriptive, purely esthetical purposes:</p>
 <pre><code class="language-markup">&lt;a href=&quot;https://google.com&quot;&gt;
   &lt;img src=&quot;search-symbol.png&quot; alt=&quot;&quot; aria-hidden=&quot;true&quot;&gt;
   Google Search
 &lt;/a&gt;
 </code></pre>
-<div class="tip"><strong>TIP:</strong> We should not add any visual styles (like <code>visibility: hidden;</code> or <code>display: none;</code>) to the CSS selector <code>[aria-hidden=&quot;true&quot;]</code>, as this would make us lose the ability to hide content only from screen readers.</div>
-<h2><a id="How-to-hide-elements-visually" href="#How-to-hide-elements-visually" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>How to hide elements visually</h2>
+<div data-note-type="tip">
+<p>We should not add any visual styles (like <code>visibility: hidden;</code> or <code>display: none;</code>) to the CSS selector <code>[aria-hidden=&quot;true&quot;]</code>, as this would make us lose the ability to hide content only from screen readers.</p>
+</div>
+<h2 id="how-to-hide-elements-visually"><a class="link-to-headline" href="#how-to-hide-elements-visually">#</a> How to hide elements visually</h2>
 <p>We may need to provide invisible content in order to make sure the structures presented in the accessibility tree make sense. The following CSS is taken from <a href="https://github.com/h5bp/html5-boilerplate/blob/v5.0.0/src/css/main.css#L126-L156">HTML5 Boilerplate</a>, which is based on <a href="https://snook.ca/archives/html_and_css/hiding-content-for-accessibility">Hiding Content for Accessibility</a>:</p>
 <pre><code class="language-css">.visuallyhidden {
   position: absolute;
@@ -185,7 +195,7 @@
 }
 </code></pre>
 <p>This approach poses a couple of problems, though. First of all we need to declare elements compatible by adding the class <code>focusable</code>. Second - and much more importantly - we&apos;re resetting styles to values that are likely not what we intend to render. Instead we could use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not"><code>:not()</code></a>, which is <a href="http://caniuse.com/#feat=css-sel3">supported in every modern browser</a>.</p>
-<h3><a id="2016-edition-of-visuallyhidden" href="#2016-edition-of-visuallyhidden" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>2016 edition of <code>.visuallyhidden</code></h3>
+<h3 id="2016-edition-of-visuallyhidden"><a class="link-to-headline" href="#2016-edition-of-visuallyhidden">#</a> 2016 edition of <code>.visuallyhidden</code></h3>
 <p>Putting all of this together we get the following styles to visually hide content:</p>
 <pre><code class="language-css">.visuallyhidden:not(:focus):not(:active) {
   position: absolute;
@@ -206,13 +216,17 @@
 <li>It side-steps the need to re-style everything for focusable elements such as skip-links.</li>
 <li>It accounts for the deprecated <code>clip</code> property.</li>
 </ul>
-<h2><a id="Recap" href="#Recap" class="link-to-headline" aria-label="link to headline">&#x1F517;</a>Recap</h2>
+<h2 id="keyboard-navigation"><a class="link-to-headline" href="#keyboard-navigation">#</a> Keyboard navigation</h2>
+<p>The techniques to hide elements only visually or semantically come with a caveat. Focusable elements like <code>&lt;a href=&quot;&#x2026;&quot;&gt;</code> remain keyboard navigatable, even though the element is not visible on screen or not exposed in the accessibility tree.</p>
+<p>To make sure sighted keyboard users do not end up focusing elements they can&apos;t see, and screen reader users not focusing element&apos;s that don&apos;t exist for them, we need to make sure that partially hidden content is not accessible to keyboard navigation using the <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> keys. To accomplish this, we can add <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex"><code>tabindex=&quot;-1&quot;</code></a> to the elements we want to hide from the keyboard.</p>
+<h2 id="recap"><a class="link-to-headline" href="#recap">#</a> Recap</h2>
 <ul>
 <li>Use the <code>hidden</code> attribute to completely hide an element.</li>
 <li>Use the <code>aria-hidden</code> attribute to hide an element from the accessibility tree.</li>
 <li>Use the <code>.visuallyhidden</code> class to hide an element from the screen.</li>
 <li>Use <code>visibility: inherit;</code> instead of <code>visibility: visible;</code> to avoid accidentally showing content.</li>
 <li>Do not attach any CSS styles to the <code>aria-hidden</code> attribute.</li>
+<li>Take care of keyboard focusable content that is partially hidden by adding <code>tabindex=&quot;-1&quot;</code>.</li>
 </ul>
 
     </main>
@@ -223,8 +237,10 @@
     <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
     <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
