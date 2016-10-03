@@ -491,6 +491,8 @@
       "svg": "<svg>",
       "svg[tabindex=-1]": "<svg tabindex=\"-1\">",
       "svg[focusable=false]": "<svg focusable=\"false\">",
+      "svg[focusable=false][tabindex=-1]": "<svg focusable=\"false\" tabindex=\"-1\">",
+      "svg[focusable=true][tabindex=-1]": "<svg focusable=\"true\" tabindex=\"-1\">",
       "svg:has(a[tabindex=-1])": "<svg> containing <a xlink:href=\"…\" tabindex=\"-1\">",
       "svg:has(a[tabindex=0])": "<svg> containing <a xlink:href=\"…\" tabindex=\"0\">",
 
@@ -524,8 +526,10 @@
       "svg{tiny} rect[tabindex=0]": "<rect tabindex=\"0\"> within <svg baseProfile=\"tiny\">",
       "svg{tiny} a[focusable=false]": "<a xlink:href=\"…\" focusable=\"true\"> within <svg baseProfile=\"tiny\">",
       "svg{tiny} a[tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <svg baseProfile=\"tiny\">",
+      "svg{tiny} rect[focusable=true][tabindex=0]": "<rect focusable=\"true\" tabindex=\"0\"> within <svg baseProfile=\"tiny\">",
       "svg{tiny} rect[focusable=true][tabindex=-1]": "<rect focusable=\"true\" tabindex=\"-1\"> within <svg baseProfile=\"tiny\">",
       "svg{tiny} rect[focusable=false][tabindex=0]": "<rect focusable=\"false\" tabindex=\"0\"> within <svg baseProfile=\"tiny\">",
+      "svg{tiny} rect[focusable=false][tabindex=-1]": "<rect focusable=\"false\" tabindex=\"-1\"> within <svg baseProfile=\"tiny\">",
       "svg{tiny}[focusable=false]": "<svg baseProfile=\"tiny\" focusable=\"false\">",
       "svg{tiny}[focusable=false] a": "<a xlink:href=\"…\"> within <svg baseProfile=\"tiny\" focusable=\"false\">",
 
@@ -668,6 +672,7 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1]": "<a xlink:href=\"…\" tabindex=\"-1\"> within <object height=\"0\">",
       "object[src=svg][height=0] -> file:svg a[focusable=false]": "<a xlink:href=\"…\" focusable=\"false\"> within <object height=\"0\">",
+      "object[src=svg]{none} -> file:svg": "<svg> within <object style=\"display: none\">",
       "object[src=svg]{hidden} -> file:svg": "<svg> within <object style=\"visibility: hidden\">",
       "object[src=svg]{hidden} -> file:svg a[xlink|href]": "<a xlink:href=\"…\"> within <object style=\"visibility: hidden\">",
       "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=1]": "<a xlink:href=\"…\" tabindex=\"1\"> within <object style=\"visibility: hidden\">",

@@ -4,7 +4,8 @@ define([
   './elements',
   './collector',
   './format-result',
-], function(platform, utils, Elements, Collector, formatResult) {
+  './focus-element',
+], function(platform, utils, Elements, Collector, formatResult, focusElement) {
 
   function resetActiveElement() {
     document.activeElement && document.activeElement.blur && document.activeElement.blur();
@@ -18,10 +19,10 @@ define([
     element.scrollIntoView && element.scrollIntoView(true);
     // give browser a little time to scroll
     setTimeout(function() {
-      element.focus();
+      var cleanup = focusElement(element);
       // give browser a little time to focus
       setTimeout(function() {
-        evaluate(previousActiveElement);
+        evaluate(previousActiveElement, cleanup);
       }, 10);
     }, 10);
   }
@@ -72,7 +73,7 @@ define([
     return scriptFocus.mapFocusableElements(function(element, done) {
       resetActiveElement();
 
-      evaluateFocusInView(element, function(previousActiveElement) {
+      evaluateFocusInView(element, function(previousActiveElement, cleanup) {
         var data = {
           scriptFocus: elements.analyzeActiveElementState(element, previousActiveElement),
         };
@@ -88,6 +89,8 @@ define([
           data.referenceElementFocus = elements.analyzeActiveElementState(referenceElement, null);
           data.referenceElementFocus.ident = utils.elementName(referenceElement);
         }
+
+        cleanup();
         done(data);
       });
     }).then(log('completed script focus collection'));
@@ -104,10 +107,12 @@ define([
       resetActiveElement();
       var observer = observe();
 
-      evaluateFocusInView(element, function(previousActiveElement) {
+      evaluateFocusInView(element, function(previousActiveElement, cleanup) {
         var events = observer.focusEvent.getHistory();
         var data = elements.analyzeActiveElementState(element, previousActiveElement);
         data.events = events;
+
+        cleanup();
         done(data);
       });
     }).then(log('completed script focus with event listener collection'));

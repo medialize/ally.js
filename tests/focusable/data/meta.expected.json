@@ -481,6 +481,11 @@
     "tabbable": false,
     "index": 1
   },
+  "details object[src=svg]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
   "details object[src=svg] -> file:svg": {
     "focusable": false,
     "tabbable": false,
@@ -2574,6 +2579,26 @@
     "tabbable": false,
     "index": -1
   },
+  "svg[focusable=false][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=false][tabindex=-1] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=true][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg[focusable=true][tabindex=-1] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
   "svg[tabindex=-1]": {
     "focusable": true,
     "tabbable": false,
@@ -2599,6 +2624,76 @@
     "tabbable": false,
     "index": -1
   },
+  "svg{hidden}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{hidden} a[xlink|href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "svg{hidden} a[xlink|href] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{hidden} rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{hidden} rect[focusable=true]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{hidden} rect[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{hidden} text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none} a[xlink|href]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": 0
+  },
+  "svg{none} a[xlink|href] text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none} rect": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none} rect[focusable=true]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none} rect[onfocus]": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg{none} text": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
   "svg{tiny}": {
     "focusable": false,
     "tabbable": false,
@@ -2619,6 +2714,11 @@
     "tabbable": false,
     "index": -1
   },
+  "svg{tiny} rect[focusable=false][tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
   "svg{tiny} rect[focusable=false][tabindex=0]": {
     "focusable": true,
     "tabbable": true,
@@ -2633,6 +2733,11 @@
     "focusable": true,
     "tabbable": false,
     "index": -1
+  },
+  "svg{tiny} rect[focusable=true][tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
   },
   "svg{tiny} rect[tabindex=0]": {
     "focusable": true,

@@ -229,6 +229,7 @@
 
   "iframe[src=svg] -> file:svg": {
     "alias": [
+      "iframe[src=svg] -> file:svg",
       "iframe[src=svg] -> file:svg a[xlink|href]",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1]",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
@@ -243,6 +244,7 @@
 
   "embed[type=svg] -> file:svg": {
     "alias": [
+      "embed[type=svg] -> file:svg",
       "embed[type=svg] -> file:svg a[xlink|href]",
       "embed[type=svg] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1]",
@@ -252,6 +254,7 @@
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
       "embed[type=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -277,6 +280,7 @@
 
   "object[src=svg] -> file:svg": {
     "alias": [
+      "object[src=svg] -> file:svg",
       "object[src=svg] -> file:svg a[xlink|href]",
       "object[src=svg] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg] -> file:svg a[xlink|href][tabindex=-1]",
@@ -286,6 +290,7 @@
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][tabindex=0] -> file:svg a[xlink|href][tabindex=-1]",
       "object[src=svg][tabindex=0] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -412,6 +417,7 @@
 
   "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
   "svg rect[onfocus]": {
+    "general": "[SVG 2: Focus](https://svgwg.org/svg2-draft/single-page.html#interact-Focus) says:\n\n> In particular, user agents may support using keyboard focus to reveal ‘title’ element text as tooltips, and may allow focus to reach elements which have been assigned listeners for mouse, pointer, or focus events",
     "ally": "Elements made focusable by way of adding a `focus` event listener cannot be identified by ally.js",
     "browsers": {
       "chrome-stable": "@svg-onfocus",
@@ -457,30 +463,6 @@
       "details[open] summary"
     ],
     "general": "The [`<details>`](https://www.w3.org/TR/html51/semantics.html#the-details-element) element is specified in HTML 5.1, but [not implemented everywhere](http://caniuse.com/#feat=details)."
-  },
-
-  "-details-webkit-151767": {
-    "alias": [
-      "details object[src=svg]",
-      "details a[href]",
-      "details[tabindex=-1] a[href]",
-      "details:has(summary[tabindex=-1]) a[href]"
-    ],
-    "browsers": {
-      "webkit-nightly": "This element should be keyboard focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
-    }
-  },
-
-  "-details-closed-webkit-151767": {
-    "alias": [
-      "details summary",
-      "details[tabindex=-1] summary",
-      "details[open] summary",
-      "details[open] a[href]"
-    ],
-    "browsers": {
-      "webkit-nightly": "This element should *not* be focusable (tabbable), but is currently only focusable because of [WebKit 151767](https://bugs.webkit.org/show_bug.cgi?id=151767)"
-    }
   },
 
   "@ie-scroll-div": "Internet Explorer turns `<div>` and `<span>` elements focusable when they're scrollable, but does *not* do the same for other sectioning or block-level elements",
@@ -555,14 +537,17 @@
       "iframe{focusable}[tabindex=-1] -> body",
       "iframe{focusable}[tabindex=-1] -> input",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1]",
+      "iframe[src=svg][tabindex=-1] -> file:svg",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
       "iframe[src=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "embed[type=svg][tabindex=-1] -> file:svg",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
       "embed[type=svg][tabindex=-1] -> file:svg a[focusable=false]",
+      "object[src=svg][tabindex=-1] -> file:svg",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1]",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1]",
@@ -641,9 +626,12 @@
       "iframe{focusable}[tabindex=-1] -> body --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
       "iframe{focusable}[tabindex=-1] -> input --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
       "iframe{focusable}[tabindex=-1] -> input[tabindex=1] --- iframe{focusable}[tabindex=-1]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[xlink|href] --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=1] text --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- iframe[src=svg]": "@encapsulated-iframe",
+      "iframe[src=svg] -> file:svg a[xlink|href][tabindex=-1] text --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg] -> file:svg a[focusable=false] --- iframe[src=svg]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
       "iframe[src=svg][tabindex=-1] -> file:svg a[xlink|href] --- iframe[src=svg][tabindex=-1]": "@encapsulated-iframe",
@@ -672,6 +660,7 @@
       "embed[type=svg] -> file:svg a[xlink|href][tabindex=1] --- embed[type=svg]": "@encapsulated-embed",
       "embed[type=svg] -> file:svg a[xlink|href][tabindex=-1] --- embed[type=svg]": "@encapsulated-embed",
       "embed[type=svg] -> file:svg a[focusable=false] --- embed[type=svg]": "@encapsulated-embed",
+      "embed[type=svg][tabindex=-1] -> file:svg --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
       "embed[type=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- embed[type=svg][tabindex=-1]": "@encapsulated-embed",
@@ -690,11 +679,17 @@
   "@encapsulated-object": "The `<object>`'s document manages its own focus. Any time the `<object>` or its content has focus, the master document's `activeElement` points to the `<object>`.\n\nNote that `<object>`s are only [accessible to script](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement) via `element.contentWindow` when they share [the same origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).",
   "-encapsulated-object": {
     "redirect": {
+      "details object[src=svg] -> file:svg --- details object[src=svg]": "@encapsulated-object",
+      "details object[src=svg] -> file:svg a[xlink|href] --- details object[src=svg]": "@encapsulated-object",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=1] --- details object[src=svg]": "@encapsulated-object",
+      "details object[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- details object[src=svg]": "@encapsulated-object",
+      "details object[src=svg] -> file:svg a[focusable=false] --- details object[src=svg]": "@encapsulated-object",
       "object[src=svg] -> file:svg --- object[src=svg]": "@encapsulated-object",
       "object[src=svg] -> file:svg a[xlink|href] --- object[src=svg]": "@encapsulated-object",
       "object[src=svg] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg]": "@encapsulated-object",
       "object[src=svg] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg]": "@encapsulated-object",
       "object[src=svg] -> file:svg a[focusable=false] --- object[src=svg]": "@encapsulated-object",
+      "object[src=svg][tabindex=-1] -> file:svg --- object[src=svg][tabindex=-1]": "@encapsulated-object",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
       "object[src=svg][tabindex=-1] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][tabindex=-1]": "@encapsulated-object",
@@ -709,6 +704,7 @@
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=1] --- object[src=svg][height=0]": "@encapsulated-object",
       "object[src=svg][height=0] -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg][height=0]": "@encapsulated-object",
       "object[src=svg][height=0] -> file:svg a[focusable=false] --- object[src=svg][height=0]": "@encapsulated-object",
+      "object[src=svg]{hidden} -> file:svg --- object[src=svg]{hidden}": "@encapsulated-object",
       "object[src=svg]{hidden} -> file:svg a[focusable=false] --- object[src=svg]{hidden}": "@encapsulated-object",
       "object[src=svg]{hidden} -> file:svg a[xlink|href] --- object[src=svg]{hidden}": "@encapsulated-object",
       "object[src=svg]{hidden} -> file:svg a[xlink|href][tabindex=-1] --- object[src=svg]{hidden}": "@encapsulated-object",

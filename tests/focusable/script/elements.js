@@ -25,8 +25,7 @@ define([
       .filter(utils.filterLabeledElements)
       .filter(utils.removeIgnoredAttribute);
     // the elements we can actually focus from script
-    this.scriptFocusableElements = this.relevantElements
-      .filter(utils.filterFocusMethod);
+    this.scriptFocusableElements = this.relevantElements.slice(0);
 
     // lookup table for ident -> element,
     // also log duplicate ident use
@@ -250,16 +249,33 @@ define([
         // true if the element is the activeElement of the master document
         documentActiveElement: document.activeElement === element,
         // true if the element is the activeElement within the nested document or ShadowRoot
-        contextActiveElement: utils.getRootNode(element).activeElement === element,
+        contextActiveElement: false,
         // true if the element has the :focus pseudo class set
         cssFocus: elementMatches(element, ':focus'),
       };
+
+      try {
+        // IE may throw when trying to access .activeElement on an svg document
+        data.contextActiveElement = utils.getRootNode(element).activeElement === element;
+      } catch (e) {
+        // IGNORE
+      }
 
       // in case the element did not become the activeElement itself
       // but the activeElement changed anyway, we're either dealing with
       // encapsulated focus (e.g. content of <iframe>),
       // or redirected focus (e.g. <label> to <input>)
-      if (previousActiveElement !== null && !data.documentActiveElement && document.activeElement !== previousActiveElement) {
+      var isRedirectedFocus = previousActiveElement !== null
+        && !data.documentActiveElement
+        && document.activeElement !== previousActiveElement;
+
+      // The SVG foreignObject hack may lead to <body>, or the temporary container <g>
+      // receiving focus. If that's not a proper redirection and must be ignored.
+      var activeElementLabel = document.activeElement.getAttribute('data-label');
+      var isFailedSvgRedirection = activeElementLabel === 'body'
+        || activeElementLabel === 'ignore';
+
+      if (isRedirectedFocus && !isFailedSvgRedirection) {
         // SVG document don't know document.activeElement, which is why we
         // can't simply test agains data.contextActiveElement
         if (meta.document !== 'html' || meta.shadowHost) {
