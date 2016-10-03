@@ -427,12 +427,24 @@
       <p>no &lt;video&gt; support</p>
     </video>
 
+    <script>
+      (function() {
+        var edgeVersion = window.navigator.userAgent.match(/Edge\/([\d.]+)/);
+        if (edgeVersion && +edgeVersion[1] >= 14) {
+          // Microsoft Edge14+ shows a download prompt for mov files
+          // and thereby breaks the testing script
+          document.write('<' + '!-- begin[skip MOV in Edge14+]');
+        }
+      })();
+    </script>
+
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed">
 
     <div tabindex="0" data-label="ignore"></div>
 
     <embed type="video/quicktime" src="../media/test.mov" width="640" height="480" data-label="embed[tabindex=-1]" tabindex="-1">
 
+    <!-- end[skip MOV in Edge14+] -->
 
     <div tabindex="0" data-label="ignore"></div>
 
