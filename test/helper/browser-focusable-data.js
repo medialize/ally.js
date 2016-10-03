@@ -9,6 +9,7 @@ define([
   'intern/dojo/text!../../tests/focusable/data/ie-11.json',
   'intern/dojo/text!../../tests/focusable/data/ie-10.json',
   'intern/dojo/text!../../tests/focusable/data/ie-9.json',
+  'intern/dojo/text!../../tests/focusable/data/safari-10.json',
   'intern/dojo/text!../../tests/focusable/data/safari-9.json',
   'intern/dojo/text!../../tests/focusable/data/safari-8.json',
   'intern/dojo/text!../../tests/focusable/data/safari-6.json',
