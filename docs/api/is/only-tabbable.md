@@ -53,6 +53,7 @@ Boolean, `true` if the element is only tabbable.
 * Since `v1.1.0` exceptions can be passed to `ally.is.onlyTabbable.rules(options)`.
 * Since `v1.1.0` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 * Since `v1.1.0` elements must be [visible](./visible.md) to be considered only tabbable.
+* Since `v#master` SVG elements are no longer considered *only tabbable* in IE9+, Edge12+ and Firefox 51+.
 
 
 ## Notes
@@ -61,6 +62,10 @@ See [`ally.is.focusRelevant`](./focus-relevant.md#notes)
 
 :::note
 There is no way to feature detect if an element is tabbable or not. The `Element.tabIndex` property gives some indication, but ultimately user agent sniffing (via [platform.js](https://github.com/bestiejs/platform.js/)) is done internally to fix mismatches.
+:::
+
+:::warning
+Even though SVG elements are focusable by script in Internet Explorer, they may lack the `.focus()` and `.blur()` methods. In order to safely manage focus for these elements use [`ally.element.focus`](../element/focus.md) and [`ally.element.blur`](../element/blur.md).
 :::
 
 

@@ -16,6 +16,7 @@ define(function(require) {
   })();
 
   supports.svgFocusMethod = Boolean(SVGElement.prototype.focus);
+  supports.focusingSvgElements = !platform.is.GECKO || supports.svgFocusMethod;
   // IE9 may not have "Windows Media Feature Pack" available,
   // causing "Error: Not implemented" being thrown all over the place
   supports.AVOID_MEDIA = CANNOT_DEAL_WITH_MEDIA;

@@ -208,18 +208,18 @@ define(function(require) {
     bdd.describe('for SVG', function() {
       bdd.it('should return {browser-specific} for <svg>', function() {
         var element = document.getElementById('svg');
-        expect(isFocusable(element)).to.equal(supports.svgFocusMethod && supports.focusSvg);
+        expect(isFocusable(element)).to.equal(supports.focusingSvgElements && supports.focusSvg);
       });
 
       bdd.it('should return {browser-specific} for <svg tabindex="-1">', function() {
         var element = document.getElementById('svg');
         element.setAttribute('tabindex', '-1');
-        expect(isFocusable(element)).to.equal(supports.svgFocusMethod && supports.focusSvg || supports.focusSvgTabindexAttribute);
+        expect(isFocusable(element)).to.equal(supports.focusingSvgElements && supports.focusSvg || supports.focusSvgTabindexAttribute);
       });
 
       bdd.it('should return {browser-specific} for <a xlink:href="…">', function() {
         var element = document.getElementById('svg-link');
-        expect(isFocusable(element)).to.equal(supports.svgFocusMethod);
+        expect(isFocusable(element)).to.equal(supports.focusingSvgElements);
       });
 
       bdd.it('should return true for <a xlink:href="…"> with except.onlyTabbable', function() {

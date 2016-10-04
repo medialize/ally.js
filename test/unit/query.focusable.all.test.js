@@ -6,7 +6,6 @@ define(function(require) {
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
   var supports = require('../helper/supports');
-  var platform = require('ally/util/platform');
   var queryFocusable = require('ally/query/focusable');
 
   bdd.describe('query/focusable.all', function() {
@@ -74,7 +73,7 @@ define(function(require) {
         '#image-map-area-nolink',
         supports.focusRedirectImgUsemap && '#img-usemap',
         supports.focusObjectSvg && '#object-svg',
-        (platform.is.TRIDENT || platform.is.EDGE) && '#svg',
+        (supports.focusingSvgElements && supports.focusSvg) && '#svg',
         supports.focusObjectSvg && '#object-tabindex-svg',
         '#svg-link',
         !supports.AVOID_QUICKTIME && '#embed',

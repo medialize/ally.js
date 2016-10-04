@@ -211,22 +211,20 @@ define(function(require) {
     });
 
     bdd.describe('for SVG', function() {
-      bdd.it('should return {browser-specific} for <svg>', function() {
+      bdd.it('should return false for <svg>', function() {
         var element = document.getElementById('svg');
-        var expected = platform.is.TRIDENT || platform.is.EDGE;
-        expect(isOnlyTabbable(element)).to.equal(expected);
+        expect(isOnlyTabbable(element)).to.equal(false);
       });
 
-      bdd.it('should return {browser-specific} for <svg tabindex="-1">', function() {
+      bdd.it('should return false for <svg tabindex="-1">', function() {
         var element = document.getElementById('svg');
         element.setAttribute('tabindex', '-1');
-        var expected = platform.is.TRIDENT || platform.is.EDGE;
-        expect(isOnlyTabbable(element)).to.equal(expected);
+        expect(isOnlyTabbable(element)).to.equal(false);
       });
 
       bdd.it('should return {browser-specific} for <a xlink:href="…">', function() {
         var element = document.getElementById('svg-link');
-        var expected = platform.is.TRIDENT || platform.is.EDGE || platform.is.GECKO;
+        var expected = Boolean(platform.is.GECKO && !element.focus);
         expect(isOnlyTabbable(element)).to.equal(expected);
       });
 

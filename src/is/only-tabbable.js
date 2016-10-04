@@ -2,7 +2,6 @@
 import isVisible from './visible';
 import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
-import getWindow from '../util/get-window';
 import tabindexValue from '../util/tabindex-value';
 import platform from '../util/platform';
 
@@ -42,23 +41,15 @@ function isOnlyTabbableRules({
     return tabindex !== null && tabindex >= 0;
   }
 
-  if (nodeName === 'svg' && (platform.is.TRIDENT || platform.is.EDGE)) {
-    return element.getAttribute('focusable') !== 'false';
-  }
-
-  const _window = getWindow(element);
-  if (element instanceof _window.SVGElement) {
+  // SVG Elements were keyboard focusable but not script focusable before Firefox 51.
+  // Firefox 51 added the focus management DOM API (.focus and .blur) to SVGElement,
+  // see https://bugzilla.mozilla.org/show_bug.cgi?id=778654
+  if (platform.is.GECKO && element.ownerSVGElement && !element.focus) {
     if (nodeName === 'a' && element.hasAttribute('xlink:href')) {
       // any focusable child of <svg> cannot be focused, but tabbed to
       if (platform.is.GECKO) {
         return true;
       }
-      if (platform.is.TRIDENT || platform.is.EDGE) {
-        return element.getAttribute('focusable') !== 'false';
-      }
-    }
-    if (platform.is.TRIDENT || platform.is.EDGE) {
-      return element.getAttribute('focusable') === 'true';
     }
   }
 

@@ -6,7 +6,6 @@ define(function(require) {
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var shadowInputFixture = require('../helper/fixtures/shadow-input.fixture');
   var supports = require('../helper/supports');
-  var platform = require('ally/util/platform');
   var queryFocusable = require('ally/query/focusable');
 
   bdd.describe('query/focusable.strict', function() {
@@ -56,7 +55,7 @@ define(function(require) {
           supports.focusAreaWithoutHref && '#image-map-area-nolink',
           supports.focusObjectSvg && '#object-svg',
           supports.focusObjectSvg && '#object-tabindex-svg',
-          (platform.is.TRIDENT || platform.is.EDGE) && '#svg',
+          (supports.focusingSvgElements && supports.focusSvg) && '#svg',
           '#svg-link',
           supports.focusAudioWithoutControls && '#audio',
           '#audio-controls',
@@ -119,7 +118,8 @@ define(function(require) {
         supports.focusAreaWithoutHref && '#image-map-area-nolink',
         supports.focusObjectSvg && '#object-svg',
         supports.focusObjectSvg && '#object-tabindex-svg',
-        supports.svgFocusMethod && '#svg-link',
+        supports.focusSvg && '#svg',
+        supports.focusingSvgElements && '#svg-link',
         supports.focusAudioWithoutControls && '#audio',
         '#audio-controls',
         '#input',
@@ -206,7 +206,7 @@ define(function(require) {
           supports.focusAreaWithoutHref && '#image-map-area-nolink',
           supports.focusObjectSvg && '#object-svg',
           supports.focusObjectSvg && '#object-tabindex-svg',
-          supports.svgFocusMethod && '#svg-link',
+          supports.focusingSvgElements && '#svg-link',
           supports.focusAudioWithoutControls && '#audio',
           '#audio-controls',
           '#input',

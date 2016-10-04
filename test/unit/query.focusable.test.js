@@ -113,7 +113,7 @@ define(function(require) {
         '#image-map-area',
         supports.focusObjectSvg && '#object-svg',
         supports.focusObjectSvg && '#object-tabindex-svg',
-        supports.svgFocusMethod && '#svg-link',
+        supports.focusingSvgElements && '#svg-link',
         supports.focusAudioWithoutControls && '#audio',
         '#audio-controls',
         '#input',
