@@ -6,6 +6,7 @@
 import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
 import elementMatches from '../util/element-matches';
+import tabindexValue from '../util/tabindex-value';
 import isValidTabindex from './valid-tabindex';
 import {
   hasCssOverflowScroll,
@@ -132,21 +133,37 @@ function isFocusRelevantRules({
     return true;
   }
 
+  const isSvgElement = nodeName === 'svg';
+  const isSvgContent = element.ownerSVGElement;
   const focusableAttribute = element.getAttribute('focusable');
-
-  if (nodeName === 'svg') {
-    return validTabindex || supports.focusSvg
-      // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
-      || Boolean(supports.focusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
-  }
+  const tabindex = tabindexValue(element);
 
   if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
     return true;
   }
 
-  if (supports.focusSvgFocusableAttribute && element.ownerSVGElement) {
-    // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
-    return Boolean(focusableAttribute && focusableAttribute === 'true');
+  if ((isSvgElement || isSvgContent) && element.focus && !supports.focusSvgNegativeTabindexAttribute && tabindex < 0) {
+    // Firefox 51 and 52 treat any natively tabbable SVG element with
+    // tabindex="-1" as tabbable and everything else as inert
+    // see https://bugzilla.mozilla.org/show_bug.cgi?id=1302340
+    return false;
+  }
+
+  if (isSvgElement) {
+    return validTabindex || supports.focusSvg
+      // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
+      || Boolean(supports.focusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
+  }
+
+  if (isSvgContent) {
+    if (supports.focusSvgTabindexAttribute && validTabindex) {
+      return true;
+    }
+
+    if (supports.focusSvgFocusableAttribute) {
+      // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
+      return focusableAttribute === 'true';
+    }
   }
 
   // https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute

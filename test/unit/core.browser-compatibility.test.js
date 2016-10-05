@@ -80,6 +80,22 @@ define(function(require) {
       }
     }
 
+    if (data.platform.name === 'Firefox' && parseInt(data.platform.version, 10) >= 52) {
+      // With the introduction of tabindex support on SVG elements, Firefox broke a few things
+      skipUntestable['details object[src=svg] -> file:svg'] = true;
+      skipUntestable['iframe[src=svg] -> file:svg'] = true;
+      skipUntestable['iframe[src=svg][tabindex=-1] -> file:svg'] = true;
+      skipUntestable['object[src=svg]'] = true;
+      skipUntestable['object[src=svg] -> file:svg'] = true;
+      skipUntestable['object[src=svg][height=0]'] = true;
+      skipUntestable['object[src=svg][height=0] -> file:svg'] = true;
+      skipUntestable['object[src=svg][tabindex=-1] -> file:svg'] = true;
+      skipUntestable['object[src=svg][tabindex=0]'] = true;
+      skipUntestable['object[src=svg][tabindex=0] -> file:svg'] = true;
+      skipUntestable['object[src=svg]{hidden} -> file:svg'] = true;
+      skipUntestable['object[src=svg]{none} -> file:svg'] = true;
+    }
+
     if (data.platform.layout === 'Trident' || data.platform.layout === 'EdgeHTML') {
       // IE and Edge do not forward focus upon script-focus, but does on pointer-focus,
       // we'll act as if script-focus worked just like pointer-focus
