@@ -159,7 +159,7 @@ define(function(require) {
         !platform.is.IOS && !supports.tabsequenceAreaAtImgPosition && '#image-map-area',
         !platform.is.IOS && !supports.tabsequenceAreaAtImgPosition && '#image-map-area-2',
         !platform.is.IOS && platform.is.GECKO && '#object-svg',
-        !platform.is.IOS && supports.svgFocusMethod && '#svg-link',
+        !platform.is.IOS && supports.focusingSvgElements && '#svg-link',
         !platform.is.IOS && '#audio-controls',
         '#input',
         '#span-contenteditable',

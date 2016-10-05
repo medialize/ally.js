@@ -3,6 +3,7 @@
 
 import isVisible from './visible';
 import contextToElement from '../util/context-to-element';
+import elementMatches from '../util/element-matches';
 import tabindexValue from '../util/tabindex-value';
 import focusRelevant from './focus-relevant';
 import getFrameElement from '../util/get-frame-element';
@@ -14,6 +15,9 @@ import {
   isScrollableContainer,
   isUserModifyWritable,
 } from './is.util';
+
+import _supports from '../supports/supports';
+let supports;
 
 // Internet Explorer 11 considers fieldset, table, td focusable, but not tabbable
 // Internet Explorer 11 considers body to have [tabindex=0], but does not allow tabbing to it
@@ -29,6 +33,10 @@ function isTabbableRules({
     onlyTabbable: false,
   },
 } = {}) {
+  if (!supports) {
+    supports = _supports();
+  }
+
   const element = contextToElement({
     label: 'is/tabbable',
     resolveDocument: true,
@@ -84,7 +92,60 @@ function isTabbableRules({
     return false;
   }
 
-  // in Trident and Gecko SVGElement does not know about the tabIndex property
+  if (platform.is.WEBKIT && platform.is.IOS) {
+    // iOS only considers a hand full of elements tabbable (keyboard focusable)
+    // this holds true even with external keyboards
+    let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
+      || nodeName === 'select'
+      || nodeName === 'textarea'
+      || element.hasAttribute('contenteditable');
+
+    if (!potentiallyTabbable) {
+      const style = window.getComputedStyle(element, null);
+      potentiallyTabbable = isUserModifyWritable(style);
+    }
+
+    if (!potentiallyTabbable) {
+      return false;
+    }
+  }
+
+  if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
+    if (hasTabbableTabindexOrNone) {
+      // in Trident and Gecko SVGElement does not handle the tabIndex property properly
+      return true;
+    }
+
+    if (element.focus && !supports.focusSvgNegativeTabindexAttribute) {
+      // Firefox 51 and 52 treat any natively tabbable SVG element with
+      // tabindex="-1" as tabbable and everything else as inert
+      // see https://bugzilla.mozilla.org/show_bug.cgi?id=1302340
+      return true;
+    }
+  }
+
+  if (platform.is.TRIDENT || platform.is.EDGE) {
+    if (nodeName === 'svg') {
+      if (supports.focusSvg) {
+        // older Internet Explorers consider <svg> keyboard focusable
+        // unless they have focsable="false", but then they wouldn't
+        // be focusable and thus not even reach this filter
+        return true;
+      }
+
+      // elements that have [focusable] are automatically keyboard focusable regardless of the attribute's value
+      return element.hasAttribute('focusable') || hasTabbableTabindex;
+    }
+
+    if (element.ownerSVGElement) {
+      if (supports.focusSvgTabindexAttribute && hasTabbableTabindex) {
+        return true;
+      }
+
+      // elements that have [focusable] are automatically keyboard focusable regardless of the attribute's value
+      return element.hasAttribute('focusable');
+    }
+  }
   if (element.tabIndex === undefined) {
     return Boolean(except.onlyTabbable);
   }
@@ -124,24 +185,6 @@ function isTabbableRules({
     // Since we can't reliably investigate iframe documents because of the
     // SameOriginPolicy, we're declaring everything only focusable.
     return false;
-  }
-
-  if (platform.is.WEBKIT && platform.is.IOS) {
-    // iOS only considers a hand full of elements tabbable (keyboard focusable)
-    // this holds true even with external keyboards
-    let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
-      || nodeName === 'select'
-      || nodeName === 'textarea'
-      || element.hasAttribute('contenteditable');
-
-    if (!potentiallyTabbable) {
-      const style = window.getComputedStyle(element, null);
-      potentiallyTabbable = isUserModifyWritable(style);
-    }
-
-    if (!potentiallyTabbable) {
-      return false;
-    }
   }
 
   if (!except.scrollable && platform.is.GECKO) {

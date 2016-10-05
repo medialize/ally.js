@@ -86,7 +86,7 @@ define(function(require) {
         !platform.is.IOS && '#link',
         !platform.is.IOS && '#image-map-area',
         !platform.is.IOS && platform.is.GECKO && '#object-svg',
-        !platform.is.IOS && supports.svgFocusMethod && '#svg-link',
+        !platform.is.IOS && supports.focusingSvgElements && '#svg-link',
         !platform.is.IOS && '#audio-controls',
         '#input',
         '#span-contenteditable',
