@@ -564,6 +564,25 @@
   },
 
   {
+    "label": "SVG foreignObject element",
+    "idents": {
+      "svg foreignObject body input": "<input> within <foreignObject>",
+      "svg foreignObject body input[tabindex=-1]": "<input tabindex=\"-1\"> within <foreignObject>",
+      "svg foreignObject body input[tabindex=0]": "<input tabindex=\"0\"> within <foreignObject>",
+      "svg foreignObject body input[tabindex=1]": "<input tabindex=\"1\"> within <foreignObject>",
+      "svg foreignObject[tabindex=-1]": "<foreignObject tabindex=\"-1\">",
+      "svg foreignObject[tabindex=-1] body input": "<input> within <foreignObject tabindex=\"-1\">",
+      "svg foreignObject[tabindex=-1] body input[tabindex=-1]": "<input tabindex=\"-1\"> within <foreignObject tabindex=\"-1\">",
+      "svg foreignObject[tabindex=-1] body input[tabindex=0]": "<input tabindex=\"0\"> within <foreignObject tabindex=\"-1\">",
+      "svg foreignObject[tabindex=-1] body input[tabindex=1]": "<input tabindex=\"1\"> within <foreignObject tabindex=\"-1\">",
+      "svg switch foreignObject body input": "<input> within <foreignObject> within <switch>",
+      "svg switch foreignObject body input[tabindex=-1]": "<input tabindex=\"-1\"> within <foreignObject> within <switch>",
+      "svg switch foreignObject body input[tabindex=0]": "<input tabindex=\"0\"> within <foreignObject> within <switch>",
+      "svg switch foreignObject body input[tabindex=1]": "<input tabindex=\"1\"> within <foreignObject> within <switch>"
+    }
+  },
+
+  {
     "label": "SVG Document in Iframe Element",
     "idents": {
       "iframe[src=svg] -> file:svg": "<svg> within <iframe>",

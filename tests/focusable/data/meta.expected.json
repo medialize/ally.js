@@ -331,6 +331,16 @@
     "tabbable": false,
     "index": -1
   },
+  "article{svg-foreignObject}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "article{svg-use}": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
   "article{svg}": {
     "focusable": false,
     "tabbable": false,
@@ -2479,6 +2489,66 @@
     "tabbable": false,
     "index": -1
   },
+  "svg foreignObject": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg foreignObject body input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg foreignObject body input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg foreignObject body input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg foreignObject body input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "svg foreignObject body p": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg foreignObject[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg foreignObject[tabindex=-1] body input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg foreignObject[tabindex=-1] body input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg foreignObject[tabindex=-1] body input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg foreignObject[tabindex=-1] body input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "svg foreignObject[tabindex=-1] body p": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
   "svg rect": {
     "focusable": false,
     "tabbable": false,
@@ -2518,6 +2588,41 @@
     "focusable": true,
     "tabbable": true,
     "index": 0
+  },
+  "svg switch": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg switch foreignObject": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg switch foreignObject body input": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg switch foreignObject body input[tabindex=-1]": {
+    "focusable": true,
+    "tabbable": false,
+    "index": -1
+  },
+  "svg switch foreignObject body input[tabindex=0]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 0
+  },
+  "svg switch foreignObject body input[tabindex=1]": {
+    "focusable": true,
+    "tabbable": true,
+    "index": 1
+  },
+  "svg switch foreignObject body p": {
+    "focusable": false,
+    "tabbable": false,
+    "index": -1
   },
   "svg text": {
     "focusable": false,

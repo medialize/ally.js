@@ -77,7 +77,7 @@
 
   <article data-label="article{input}">
     <h2 data-label="ignore">Form Control Elements</h2>
-  
+
     <input type="text" id="label-target" data-label="input[type=text]">
     <input type="text" id="label-target-focusable" data-label="input[type=text][tabindex=-1]" tabindex="-1">
     <input type="password" data-label="input[type=password]">
@@ -300,7 +300,7 @@
   <!-- https://www.w3.org/TR/html5/browsers.html#browsing-context-container -->
   <article data-label="article{browsing}">
     <h2 data-label="ignore">Browsing Contexts</h2>
-    
+
     <iframe src="iframe.html#iframe" name="iframe-1" width="200" height="100" data-label="iframe"></iframe>
 
     <div tabindex="0" data-label="ignore"></div>
@@ -834,13 +834,98 @@
 
     <!-- Chrome might get stuck on the previous element -->
     <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+  </article>
 
+  <article data-label="article{svg-foreignObject}">
+    <h2 data-label="ignore">SVG foreignObject</h2>
+
+    <!--
+      https://developer.mozilla.org/en/docs/Web/SVG/Element/foreignObject
+    -->
+    <h3>svg with foreignObject content</h3>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="400" data-label="ignore">
+      <!--
+        deliberately ignoring these attributes as their support is questionable at best
+          requiredExtensions="http://www.w3.org/1999/xhtml"
+          requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"
+
+          requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+          requiredFeatures="http://example.com/TR/SVG11/feature#Extensibility"
+
+        more details
+          https://www.w3.org/TR/SVG/struct.html#RequiredExtensionsAttribute
+          http://stackoverflow.com/a/12977351/515124
+
+        reason for ignoring
+          https://twitter.com/AmeliasBrain/status/789870470329995264
+          https://twitter.com/AmeliasBrain/status/789884019487961088
+          https://twitter.com/AmeliasBrain/status/789884252779405312
+          https://twitter.com/AmeliasBrain/status/789884519906148352
+      -->
+      <foreignObject width="300" height="200" data-label="svg foreignObject">
+        <body xmlns="http://www.w3.org/1999/xhtml" data-label="svg foreignObject body">
+          <input type="text" data-label="svg foreignObject body input" />
+          <input type="text" data-label="svg foreignObject body input[tabindex=-1]" tabindex="-1" />
+          <input type="text" data-label="svg foreignObject body input[tabindex=0]" tabindex="0" />
+          <input type="text" data-label="svg foreignObject body input[tabindex=1]" tabindex="1" />
+          <p data-label="svg foreignObject body p">Here is a paragraph that requires word wrap</p>
+        </body>
+      </foreignObject>
+
+      <foreignObject width="300" height="200" y="200" data-label="svg foreignObject[tabindex=-1]" tabindex="-1">
+        <body xmlns="http://www.w3.org/1999/xhtml" data-label="svg foreignObject[tabindex=-1] body">
+          <input type="text" data-label="svg foreignObject[tabindex=-1] body input" />
+          <input type="text" data-label="svg foreignObject[tabindex=-1] body input[tabindex=-1]" tabindex="-1" />
+          <input type="text" data-label="svg foreignObject[tabindex=-1] body input[tabindex=0]" tabindex="0" />
+          <input type="text" data-label="svg foreignObject[tabindex=-1] body input[tabindex=1]" tabindex="1" />
+          <p data-label="svg foreignObject[tabindex=-1] body p">Here is a paragraph that requires word wrap</p>
+        </body>
+      </foreignObject>
+    </svg>
+
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
+
+    <h3>svg with switch content</h3>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="200" data-label="ignore">
+      <!--
+        The 'switch' element will process the first child element
+        whose testing attributes evaluate to true.
+      -->
+      <switch data-label="svg switch">
+        <!--
+          Process the embedded XHTML if the requiredExtensions attribute evaluates to true
+          (i.e., the user agent supports XHTML embedded within SVG).
+        -->
+        <foreignObject width="300" height="200" data-label="svg switch foreignObject">
+          <body xmlns="http://www.w3.org/1999/xhtml" data-label="svg switch foreignObject body">
+            <input type="text" data-label="svg switch foreignObject body input" />
+            <input type="text" data-label="svg switch foreignObject body input[tabindex=-1]" tabindex="-1" />
+            <input type="text" data-label="svg switch foreignObject body input[tabindex=0]" tabindex="0" />
+            <input type="text" data-label="svg switch foreignObject body input[tabindex=1]" tabindex="1" />
+            <p data-label="svg switch foreignObject body p">Here is a paragraph that requires word wrap</p>
+          </body>
+        </foreignObject>
+
+        <!--
+          Else, process the following alternate SVG.
+          Note that there are no testing attributes on the 'text' element.
+          If no testing attributes are provided, it is as if there were
+          testing attributes and they evaluated to true.
+        -->
+        <text font-size="10" font-family="Verdana">
+          <tspan x="10" y="10">Here is a paragraph that</tspan>
+          <tspan x="10" y="20">requires word wrap.</tspan>
+        </text>
+      </switch>
+    </svg>
+
+    <input data-label="ignore" class="manual-continuation" value="click here if stuck">
   </article>
 
   <!-- https://www.w3.org/TR/html5/editing.html#editing-host -->
   <article data-label="article{contenteditable}">
     <h2 data-label="ignore">Editing Hosts</h2>
-    
+
     <div contenteditable data-label="[contenteditable]:empty"></div>
     <div contenteditable data-label="[contenteditable]">foo</div>
     <div contenteditable tabindex="-1" data-label="[contenteditable][tabindex=-1]">foo</div>
