@@ -11,7 +11,7 @@ export default {
     // focus the <img>, not the <div>
     return element.querySelector('img');
   },
-  validate: function(element, _document) {
+  validate: function(element, focusTarget, _document) {
     const target = element.querySelector('area');
     return _document.activeElement === target;
   },

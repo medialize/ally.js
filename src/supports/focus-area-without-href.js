@@ -12,14 +12,13 @@ export default {
 
     return element.querySelector('area');
   },
-  validate: function(element, _document) {
+  validate: function(element, focusTarget, _document) {
     if (platform.is.GECKO) {
       // fixes https://github.com/medialize/ally.js/issues/35
       // Firefox loads the DataURI asynchronously, causing a false-negative
       return true;
     }
 
-    const focus = element.querySelector('area');
-    return _document.activeElement === focus;
+    return _document.activeElement === focusTarget;
   },
 };

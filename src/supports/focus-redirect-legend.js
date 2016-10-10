@@ -8,7 +8,7 @@ export default {
     // take care of focus in validate();
     return false;
   },
-  validate: function(element, _document) {
+  validate: function(element, focusTarget, _document) {
     const focusable = element.querySelector('input[tabindex="-1"]');
     const tabbable = element.querySelector('input[tabindex="0"]');
 

@@ -44,7 +44,7 @@ function before() {
 //  {function} callback(element, wrapper, document) to manipulate element prior to focus-test.
 //             Can return DOMElement to define focus target (default: element)
 // options.validate: (optional)
-//  {function} callback(element, document) to manipulate test-result
+//  {function} callback(element, focusTarget, document) to manipulate test-result
 function test(data, options) {
   // make sure we operate on a clean slate
   data.wrapper.innerHTML = '';
@@ -64,7 +64,7 @@ function test(data, options) {
   focus && focus.focus && focus.focus();
   // validate test's result
   return options.validate
-    ? options.validate(element, data.document)
+    ? options.validate(element, focus, data.document)
     : data.document.activeElement === focus;
 }
 

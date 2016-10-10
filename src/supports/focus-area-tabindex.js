@@ -12,7 +12,7 @@ export default {
 
     return false;
   },
-  validate: function(element, _document) {
+  validate: function(element, focusTarget, _document) {
     if (platform.is.GECKO) {
       // fixes https://github.com/medialize/ally.js/issues/35
       // Firefox loads the DataURI asynchronously, causing a false-negative
