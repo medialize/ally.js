@@ -25,12 +25,18 @@ export default function(context) {
     context,
   });
 
-  if (!element.hasAttribute('tabindex')) {
+  // Edge 14 has a capitalization problem on SVG elements,
+  // see https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9282058/
+  const hasTabindex = element.hasAttribute('tabindex');
+  const hasTabIndex = element.hasAttribute('tabIndex');
+
+  if (!hasTabindex && !hasTabIndex) {
     return false;
   }
 
-  // SVGElement does not support tabIndex, so it cannot be considered valid
-  if (element.tabIndex === undefined) {
+  // older Firefox and Internet Explorer don't support tabindex on SVG elements
+  const isSvgElement = element.ownerSVGElement || element.nodeName.toLowerCase() === 'svg';
+  if (isSvgElement && !supports.focusSvgTabindexAttribute) {
     return false;
   }
 
@@ -38,8 +44,9 @@ export default function(context) {
   if (supports.focusInvalidTabindex) {
     return true;
   }
+
   // an element matches the tabindex selector even if its value is invalid
-  const tabindex = element.getAttribute('tabindex');
+  const tabindex = element.getAttribute(hasTabindex ? 'tabindex' : 'tabIndex');
   // IE11 parses tabindex="" as the value "-32768"
   // @browser-issue Trident https://connect.microsoft.com/IE/feedback/details/1072965
   if (tabindex === '-32768') {

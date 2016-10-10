@@ -20,6 +20,7 @@ define(function(require) {
         '<div id="tabindex-0-char" tabindex="0char"></div>',
         '<div id="tabindex-bad" tabindex="bad"></div>',
         '<div id="tabindex-empty" tabindex=""></div>',
+        '<svg id="tabindex-svg" tabindex="-1"></svg>',
       ]);
     });
 
@@ -101,6 +102,13 @@ define(function(require) {
         var element = document.getElementById('tabindex-empty');
         // .tabIndex IE: 0, rest: -1
         expect(isValidTabindex(element)).to.equal(supports.focusInvalidTabindex);
+      });
+    });
+
+    bdd.describe('for SVG', function() {
+      bdd.it('should return {browser-specific} for <svg tabindex="-1">', function() {
+        var element = document.getElementById('tabindex-svg');
+        expect(isValidTabindex(element)).to.equal(supports.focusSvgTabindexAttribute);
       });
     });
 
