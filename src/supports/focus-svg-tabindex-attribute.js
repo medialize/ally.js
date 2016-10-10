@@ -1,9 +1,11 @@
 
+import {generate, validate} from './helper/svg';
+
 export default {
   element: 'div',
   mutate: function(element) {
-    element.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
-      + '<text tabindex="0">a</text></svg>';
+    element.innerHTML = generate('<text tabindex="0">a</text>');
     return element.querySelector('text');
   },
+  validate,
 };
