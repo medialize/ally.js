@@ -13,12 +13,11 @@ define([
   'intern/dojo/text!../../tests/focusable/data/safari-10.json',
   'intern/dojo/text!../../tests/focusable/data/safari-9.json',
   'intern/dojo/text!../../tests/focusable/data/safari-8.json',
-  'intern/dojo/text!../../tests/focusable/data/safari-6.json',
 
   // currently not tested automatically
   'intern/dojo/text!../../tests/focusable/data/webkit-nightly.json',
   'intern/dojo/text!../../tests/focusable/data/chrome-mobile.json',
-  'intern/dojo/text!../../tests/focusable/data/ios-9.json',
+  'intern/dojo/text!../../tests/focusable/data/ios-10.json',
 ], function() {
 
   var data = [].map.call(arguments, JSON.parse);

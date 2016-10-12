@@ -1,13 +1,13 @@
 {
   "platform": {
-    "description": "Chrome Mobile 48.0.2564.95 on Android 5.1",
+    "description": "Chrome Mobile 55.0.2883.91 on Android 5.1",
     "layout": "Blink",
     "manufacturer": null,
     "name": "Chrome Mobile",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Linux; Android 5.1; XT1021 Build/LPC23.13-34.8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.95 Mobile Safari/537.36",
-    "version": "48.0.2564.95",
+    "ua": "Mozilla/5.0 (Linux; Android 5.1; XT1021 Build/LPCS23.13-34.8-3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36",
+    "version": "55.0.2883.91",
     "os": {
       "architecture": 32,
       "family": "Android",
@@ -763,6 +763,22 @@
       "scriptFocus": {}
     },
     "article{shadow}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "article{svg-foreignObject}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "article{svg-use}": {
       "tabindexProperty": -1,
       "hasFocusMethod": true,
       "document": "html",
@@ -1793,7 +1809,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -1815,7 +1834,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -1852,7 +1874,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -1889,7 +1913,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -1984,7 +2011,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2006,7 +2036,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2043,7 +2076,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2080,7 +2115,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2176,7 +2214,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2198,7 +2239,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2235,7 +2279,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2272,7 +2318,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -2330,7 +2379,7 @@
       }
     },
     "fieldset": {
-      "tabindexProperty": 0,
+      "tabindexProperty": -1,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2388,7 +2437,7 @@
       }
     },
     "fieldset:empty": {
-      "tabindexProperty": 0,
+      "tabindexProperty": -1,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2547,7 +2596,7 @@
       "focusable": true
     },
     "fieldset[disabled]": {
-      "tabindexProperty": 0,
+      "tabindexProperty": -1,
       "hasFocusMethod": true,
       "document": "html",
       "ally": {},
@@ -2588,7 +2637,7 @@
       "scriptFocus": {}
     },
     "fieldset[disabled][tabindex=0]": {
-      "tabindexProperty": 0,
+      "tabindexProperty": -1,
       "tabindexAttribute": "0",
       "hasFocusMethod": true,
       "document": "html",
@@ -3006,7 +3055,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3028,7 +3080,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3065,7 +3120,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3102,7 +3159,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3198,7 +3258,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3220,7 +3283,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3257,7 +3323,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -3294,7 +3362,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4717,7 +4788,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4739,7 +4813,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4776,7 +4853,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4813,7 +4892,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4910,7 +4992,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4932,7 +5017,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -4969,7 +5057,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5006,7 +5096,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5103,7 +5196,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5125,7 +5221,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5162,7 +5261,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5199,7 +5300,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5297,7 +5401,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5319,7 +5426,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5356,7 +5466,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5393,7 +5505,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5454,17 +5569,9 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "object[src=svg]{hidden} -> file:svg": {
       "tabindexProperty": -1,
@@ -5487,7 +5594,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5509,7 +5619,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5546,7 +5659,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5583,7 +5698,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "contextActiveElement": true,
         "cssFocus": true,
@@ -5729,17 +5847,9 @@
       "tabindexProperty": 0,
       "hasFocusMethod": true,
       "document": "html",
-      "ally": {
-        "focusable": true
-      },
+      "ally": {},
       "jquery": {},
-      "scriptFocus": {
-        "documentActiveElement": true,
-        "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
-      },
-      "focusable": true
+      "scriptFocus": {}
     },
     "object[src=swf]{none}": {
       "tabindexProperty": 0,
@@ -6706,7 +6816,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6722,7 +6835,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6749,7 +6865,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6776,7 +6894,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6803,7 +6924,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6821,6 +6945,207 @@
       "scriptFocus": {
         "event": true
       }
+    },
+    "svg foreignObject": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg foreignObject body input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject body input[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject body input[tabindex=0]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "0",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject body input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject body p": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg foreignObject[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject[tabindex=-1] body input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject[tabindex=-1] body input[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject[tabindex=-1] body input[tabindex=0]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "0",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject[tabindex=-1] body input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg foreignObject[tabindex=-1] body p": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
     },
     "svg rect": {
       "tabindexProperty": -1,
@@ -6874,7 +7199,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6891,7 +7218,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6908,7 +7237,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6925,7 +7257,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -6933,6 +7268,112 @@
         "event": true
       },
       "focusable": true
+    },
+    "svg switch": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg switch foreignObject": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg switch foreignObject body input": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg switch foreignObject body input[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg switch foreignObject body input[tabindex=0]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "0",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg switch foreignObject body input[tabindex=1]": {
+      "tabindexProperty": 1,
+      "tabindexAttribute": "1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg switch foreignObject body p": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
     },
     "svg text": {
       "tabindexProperty": -1,
@@ -7021,7 +7462,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7060,6 +7504,64 @@
         "event": true
       }
     },
+    "svg[focusable=false][tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg[focusable=false][tabindex=-1] text": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg[focusable=true][tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg[focusable=true][tabindex=-1] text": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
     "svg[tabindex=-1]": {
       "tabindexProperty": -1,
       "tabindexAttribute": "-1",
@@ -7086,7 +7588,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7254,7 +7759,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7271,7 +7779,9 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7290,6 +7800,25 @@
         "event": true
       }
     },
+    "svg{tiny} rect[focusable=false][tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
     "svg{tiny} rect[focusable=false][tabindex=0]": {
       "tabindexProperty": 0,
       "tabindexAttribute": "0",
@@ -7298,7 +7827,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7325,7 +7857,29 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{tiny} rect[focusable=true][tabindex=0]": {
+      "tabindexProperty": 0,
+      "tabindexAttribute": "0",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7342,7 +7896,10 @@
       "ally": {
         "focusable": true
       },
-      "jquery": {},
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
@@ -7368,6 +7925,110 @@
       "ally": {
         "focusable": true
       },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use:foreign}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use:foreign} use": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use:foreign} use[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {}
+    },
+    "svg{use} defs g": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g circle": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g rect": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g[onfocus]": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
       "jquery": {},
       "scriptFocus": {
         "documentActiveElement": true,
@@ -7376,6 +8037,429 @@
         "event": true
       },
       "focusable": true
+    },
+    "svg{use} defs g[onfocus] circle": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g[onfocus] rect": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g{focusable}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} defs g{focusable} circle[onfocus]": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} defs g{focusable} link": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} defs g{focusable} rect": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} g": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} g link": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} g rect[onfocus]": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{10}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{1}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{2}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{3}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{4}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{5}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{6}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{7}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{8}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} link{9}": {
+      "tabindexProperty": 0,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true,
+        "tabbable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} use{inline-shape}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} use{inline-shape}[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} use{shape-with-focus-content:1}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} use{shape-with-focus-content:1}[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} use{shape-with-focus-content:2}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} use{shape-with-focus-content:2}[tabindex=-1]": {
+      "tabindexProperty": -1,
+      "tabindexAttribute": "-1",
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {
+        "focusable": true
+      },
+      "jquery": {
+        "focusable": true
+      },
+      "scriptFocus": {
+        "documentActiveElement": true,
+        "contextActiveElement": true,
+        "cssFocus": true,
+        "event": true
+      },
+      "focusable": true
+    },
+    "svg{use} use{shape-with-focus:1}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} use{shape-with-focus:2}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
+    },
+    "svg{use} use{shape}": {
+      "tabindexProperty": -1,
+      "hasFocusMethod": true,
+      "document": "html",
+      "ally": {},
+      "jquery": {},
+      "scriptFocus": {
+        "event": true
+      }
     },
     "svg{viewbox}": {
       "tabindexProperty": -1,
@@ -7840,16 +8924,16 @@
       "object[src=swf][tabindex=0]",
       "object[src=swf][tabindex=-1]",
       "object[src=swf][height=0]",
-      "object[src=swf]{hidden}",
       "object[src=svg]",
       "object[src=svg][tabindex=-1]",
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
-      "object[src=svg]{hidden}",
       "svg a[xlink|href]",
       "svg[tabindex=-1]",
       "svg[tabindex=-1] a[xlink|href]",
       "svg[focusable=false] a[xlink|href]",
+      "svg[focusable=false][tabindex=-1]",
+      "svg[focusable=true][tabindex=-1]",
       "svg a[xlink|href][tabindex=0]",
       "svg a[xlink|href][tabindex=1]",
       "svg rect[tabindex=0]",
@@ -7861,9 +8945,40 @@
       "svg{tiny} rect[tabindex=0]",
       "svg{tiny} a[focusable=false]",
       "svg{tiny} a[tabindex=-1]",
+      "svg{tiny} rect[focusable=true][tabindex=0]",
       "svg{tiny} rect[focusable=true][tabindex=-1]",
       "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny} rect[focusable=false][tabindex=-1]",
       "svg{tiny}[focusable=false] a",
+      "svg foreignObject body input",
+      "svg foreignObject body input[tabindex=-1]",
+      "svg foreignObject body input[tabindex=0]",
+      "svg foreignObject body input[tabindex=1]",
+      "svg foreignObject[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input",
+      "svg foreignObject[tabindex=-1] body input[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=0]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=1]",
+      "svg switch foreignObject body input",
+      "svg switch foreignObject body input[tabindex=-1]",
+      "svg switch foreignObject body input[tabindex=0]",
+      "svg switch foreignObject body input[tabindex=1]",
+      "svg{use} defs g{focusable} link",
+      "svg{use} link{1}",
+      "svg{use} link{2}",
+      "svg{use} g link",
+      "svg{use} link{3}",
+      "svg{use} link{4}",
+      "svg{use} link{5}",
+      "svg{use} link{6}",
+      "svg{use} link{7}",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]",
+      "svg{use} link{8}",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]",
+      "svg{use} link{9}",
+      "svg{use} use{inline-shape}[tabindex=-1]",
+      "svg{use} link{10}",
+      "svg{use:foreign} use[tabindex=-1]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[contenteditable][tabindex=-1]",
@@ -8004,16 +9119,16 @@
       "object[src=swf][tabindex=0]",
       "object[src=swf][tabindex=-1]",
       "object[src=swf][height=0]",
-      "object[src=swf]{hidden}",
       "object[src=svg]",
       "object[src=svg][tabindex=-1]",
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
-      "object[src=svg]{hidden}",
       "svg a[xlink|href]",
       "svg[tabindex=-1]",
       "svg[tabindex=-1] a[xlink|href]",
       "svg[focusable=false] a[xlink|href]",
+      "svg[focusable=false][tabindex=-1]",
+      "svg[focusable=true][tabindex=-1]",
       "svg a[xlink|href][tabindex=0]",
       "svg a[xlink|href][tabindex=1]",
       "svg rect[tabindex=0]",
@@ -8025,9 +9140,40 @@
       "svg{tiny} rect[tabindex=0]",
       "svg{tiny} a[focusable=false]",
       "svg{tiny} a[tabindex=-1]",
+      "svg{tiny} rect[focusable=true][tabindex=0]",
       "svg{tiny} rect[focusable=true][tabindex=-1]",
       "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny} rect[focusable=false][tabindex=-1]",
       "svg{tiny}[focusable=false] a",
+      "svg foreignObject body input",
+      "svg foreignObject body input[tabindex=-1]",
+      "svg foreignObject body input[tabindex=0]",
+      "svg foreignObject body input[tabindex=1]",
+      "svg foreignObject[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input",
+      "svg foreignObject[tabindex=-1] body input[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=0]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=1]",
+      "svg switch foreignObject body input",
+      "svg switch foreignObject body input[tabindex=-1]",
+      "svg switch foreignObject body input[tabindex=0]",
+      "svg switch foreignObject body input[tabindex=1]",
+      "svg{use} defs g{focusable} link",
+      "svg{use} link{1}",
+      "svg{use} link{2}",
+      "svg{use} g link",
+      "svg{use} link{3}",
+      "svg{use} link{4}",
+      "svg{use} link{5}",
+      "svg{use} link{6}",
+      "svg{use} link{7}",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]",
+      "svg{use} link{8}",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]",
+      "svg{use} link{9}",
+      "svg{use} use{inline-shape}[tabindex=-1]",
+      "svg{use} link{10}",
+      "svg{use:foreign} use[tabindex=-1]",
       "[contenteditable]:empty",
       "[contenteditable]",
       "[contenteditable][tabindex=-1]",
@@ -8166,7 +9312,57 @@
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
       "object[usemap]",
+      "svg a[xlink|href]",
       "svg[tabindex=-1]",
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[focusable=false] a[xlink|href]",
+      "svg[focusable=false][tabindex=-1]",
+      "svg[focusable=true][tabindex=-1]",
+      "svg a[xlink|href][tabindex=0]",
+      "svg a[xlink|href][tabindex=1]",
+      "svg rect[tabindex=0]",
+      "svg rect[tabindex=-1]",
+      "svg a[focusable=false]",
+      "svg rect[tabindex=0]{viewbox}",
+      "svg rect[tabindex=-1]{viewbox}",
+      "svg a[xlink|href][tabindex=-1]",
+      "svg{tiny} rect[tabindex=0]",
+      "svg{tiny} a[focusable=false]",
+      "svg{tiny} a[tabindex=-1]",
+      "svg{tiny} rect[focusable=true][tabindex=0]",
+      "svg{tiny} rect[focusable=true][tabindex=-1]",
+      "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny} rect[focusable=false][tabindex=-1]",
+      "svg{tiny}[focusable=false] a",
+      "svg foreignObject body input",
+      "svg foreignObject body input[tabindex=-1]",
+      "svg foreignObject body input[tabindex=0]",
+      "svg foreignObject body input[tabindex=1]",
+      "svg foreignObject[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input",
+      "svg foreignObject[tabindex=-1] body input[tabindex=-1]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=0]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=1]",
+      "svg switch foreignObject body input",
+      "svg switch foreignObject body input[tabindex=-1]",
+      "svg switch foreignObject body input[tabindex=0]",
+      "svg switch foreignObject body input[tabindex=1]",
+      "svg{use} defs g{focusable} link",
+      "svg{use} link{1}",
+      "svg{use} link{2}",
+      "svg{use} g link",
+      "svg{use} link{3}",
+      "svg{use} link{4}",
+      "svg{use} link{5}",
+      "svg{use} link{6}",
+      "svg{use} link{7}",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]",
+      "svg{use} link{8}",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]",
+      "svg{use} link{9}",
+      "svg{use} use{inline-shape}[tabindex=-1]",
+      "svg{use} link{10}",
+      "svg{use:foreign} use[tabindex=-1]",
       "[contenteditable][tabindex=-1]",
       "[tabindex=-2]",
       "[tabindex=-1]",
@@ -8252,6 +9448,40 @@
       "object[src=svg][tabindex=0]",
       "object[src=svg][height=0]",
       "object[usemap]",
+      "svg a[xlink|href]",
+      "svg[tabindex=-1] a[xlink|href]",
+      "svg[focusable=false] a[xlink|href]",
+      "svg a[xlink|href][tabindex=0]",
+      "svg a[xlink|href][tabindex=1]",
+      "svg rect[tabindex=0]",
+      "svg a[focusable=false]",
+      "svg rect[tabindex=0]{viewbox}",
+      "svg{tiny} rect[tabindex=0]",
+      "svg{tiny} a[focusable=false]",
+      "svg{tiny} rect[focusable=true][tabindex=0]",
+      "svg{tiny} rect[focusable=false][tabindex=0]",
+      "svg{tiny}[focusable=false] a",
+      "svg foreignObject body input",
+      "svg foreignObject body input[tabindex=0]",
+      "svg foreignObject body input[tabindex=1]",
+      "svg foreignObject[tabindex=-1] body input",
+      "svg foreignObject[tabindex=-1] body input[tabindex=0]",
+      "svg foreignObject[tabindex=-1] body input[tabindex=1]",
+      "svg switch foreignObject body input",
+      "svg switch foreignObject body input[tabindex=0]",
+      "svg switch foreignObject body input[tabindex=1]",
+      "svg{use} defs g{focusable} link",
+      "svg{use} link{1}",
+      "svg{use} link{2}",
+      "svg{use} g link",
+      "svg{use} link{3}",
+      "svg{use} link{4}",
+      "svg{use} link{5}",
+      "svg{use} link{6}",
+      "svg{use} link{7}",
+      "svg{use} link{8}",
+      "svg{use} link{9}",
+      "svg{use} link{10}",
       "[tabindex=0]",
       "[tabindex=1]",
       "[tabindex=+2]",
