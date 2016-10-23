@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mutating the active element</title>
+  <link rel="jsbin" href="https://jsbin.com/fesexin/">
+  <style id="example-css">
+    main {
+      display: flex;
+      flex-direction: row;
+    }
+    main fieldset {
+      flex: 1 1 auto;
+    }
+
+    main :focus {
+      outline: 2px solid red;
+    }
+    main #container {
+      border: 1px solid grey;
+      padding: 0 10px;
+    }
+    main ul {
+      margin: 0;
+      padding: 0;
+
+    }
+    main li {
+      display: block;
+    }
+    main .trigger {
+      background: #eef;
+      padding: 5px;
+    }
+
+    #output {
+      margin-top: 10px;
+      padding: 10px;
+      background: #eee;
+    }
+
+    *[hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1>Mutating the active element</h1>
+
+  <p>
+    This document provides a simple way to test browsers&apos; behavior when the active element
+    is mutated so that it isn&apos;t focusable anymore. The mutations include hiding and disabling
+    disabling the element, as well as removing it from the DOM and removing the ability to
+    receive focus by removing the <code>tabindex</code> attribute. Browser behavior can be
+    observed for the elements <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code> and
+    <code>&lt;div&gt;</code>. At the end of the document the current active element is
+    printed on screen for convenience.
+  </p>
+</article>
+
+<div id="example-html">
+  <main>
+    <fieldset>
+      <legend>Testing grounds</legend>
+
+      <p><input id="alpha" value="alpha"></p>
+      <div id="container" tabindex="-1">
+        <p><input id="bravo" value="bravo"></p>
+
+        <div class="trigger">
+          <div><button type="button" id="trigger-button">click to mutate</button></div>
+          <div hidden><input id="trigger-input" value="focus to mutate"></div>
+          <div hidden><div id="trigger-div" role="button" tabindex="0">click to mutate</div></div>
+        </div>
+
+        <p><input id="charlie" value="charlie"></p>
+      </div>
+    </fieldset>
+
+    <fieldset id="source">
+      <legend>Element to mutate</legend>
+      <p>Choose the type of element you want to observe the mutation on.</p>
+      <ul>
+        <li><label><input type="radio" name="source" value="button" id="source-button" checked> button element on click</label></li>
+        <li><label><input type="radio" name="source" value="input" id="source-input"> input element on focus</label></li>
+        <li><label><input type="radio" name="source" value="div" id="source-div"> div element on click</label></li>
+      </ul>
+      
+      <p><label><input type="checkbox" name="delay" id="delay"> delay mutation for 50ms</label></p>
+    </fieldset>
+
+    <fieldset id="method">
+      <legend>Method of mutation</legend>
+      <p>Choose the way the element should lose the ability to receive focus.</p>
+      <ul>
+        <li><label><input type="radio" name="method" value="disabled" id="method-disabled" checked> disable element (not div)</label></li>
+        <li><label><input type="radio" name="method" value="hidden" id="method-hidden"> hide element</label></li>
+        <li><label><input type="radio" name="method" value="detached" id="method-detached"> detach element</label></li>
+        <li><label><input type="radio" name="method" value="tabindex" id="method-tabindex" disabled> remove tabindex from element (only div)</label></li>
+      </ul>
+    </fieldset>
+  </main>
+  <div id="output">document.activeElement: <span id="active-element"></span></div>
+
+</div>
+
+<script id="example-js">
+  var triggers = {
+    button: document.getElementById('trigger-button'),
+    input: document.getElementById('trigger-input'),
+    div: document.getElementById('trigger-div'),
+  };
+
+  var source = document.getElementById('source');
+  var sources = {
+    button: document.getElementById('source-button'),
+    input: document.getElementById('source-input'),
+    div: document.getElementById('source-div'),
+  };
+
+  var _method = 'disabled';
+  var method = document.getElementById('method');
+  var methods = {
+    disabled: document.getElementById('method-disabled'),
+    hidden: document.getElementById('method-hidden'),
+    detached: document.getElementById('method-detached'),
+    tabindex: document.getElementById('method-tabindex'),
+  };
+
+  var mutations = {
+    disabled: function(event) {
+      console.log("disabling element");
+      event.target.disabled = true;
+      return function() {
+        console.log("enabling element");
+        event.target.disabled = false;
+      };
+    },
+    hidden: function(event) {
+      console.log("hiding element");
+      event.target.setAttribute('hidden', '');
+      return function() {
+        console.log("showing element");
+        event.target.removeAttribute('hidden');
+      };
+    },
+    detached: function(event) {
+      console.log("detaching element");
+      var element = event.target;
+      var container = element.parentNode;
+      var dummy = document.createElement('div');
+
+      container.insertBefore(dummy, element);
+      container.removeChild(element);
+
+      return function() {
+      console.log("attaching element");
+        container.insertBefore(element, dummy);
+        container.removeChild(dummy);
+      };
+    },
+    tabindex: function(event) {
+      console.log("removing tabindex from element");
+      event.target.removeAttribute('tabindex');
+      return function() {
+        console.log("restoring tabindex on element");
+        event.target.setAttribute('tabindex', '0');
+      };
+    },
+  };
+  var mutate = mutations.disabled;
+
+  source.addEventListener('change', function() {
+    Object.keys(triggers).forEach(function(key) {
+      triggers[key].parentNode.hidden = !sources[key].checked;
+    });
+
+    methods.disabled.disabled = sources.div.checked;
+    methods.tabindex.disabled = !sources.div.checked;
+  });
+
+  method.addEventListener('change', function() {
+    var checked = this.querySelector(':checked');
+    mutate = mutations[checked.value];
+  });
+
+  var delay = document.getElementById('delay');
+  function handleMutation(event) {
+    var executeMutation = function() {
+      var reset = mutate(event);
+      reset && setTimeout(reset, 1000);
+    };
+
+    if (delay) {
+      setTimeout(executeMutation, 50);
+    } else {
+      executeMutation();
+    }
+  };
+
+  triggers.button.addEventListener('click', handleMutation, false);
+  triggers.input.addEventListener('focus', handleMutation, false);
+  triggers.div.addEventListener('click', handleMutation, false);
+  triggers.div.addEventListener('keyup', function(event) {
+    if (event.keyCode !== 13 && event.keyCode !== 32) {
+      return;
+    }
+
+    handleMutation(event);
+  }, false);
+
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(callback) {
+      setTimeout(callback, 16);
+    };
+  }
+
+  var activeElement = document.getElementById('active-element');
+  var previousActiveElement = document.getActiveElement;
+  function updateActiveElement() {
+    requestAnimationFrame(updateActiveElement);
+
+    if (previousActiveElement === document.activeElement) {
+      return;
+    }
+
+    var ident = document.activeElement && (document.activeElement.id || document.activeElement.nodeName.toLowerCase()) || 'null';
+    activeElement.textContent = ident;
+    previousActiveElement = document.activeElement;
+  }
+
+  updateActiveElement();
+
+</script>
+
+</body>
+</html>
