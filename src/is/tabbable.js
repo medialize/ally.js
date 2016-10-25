@@ -69,9 +69,15 @@ function isTabbableRules({
     }
 
     // Webkit and Blink don't consider anything in <object> tabbable
+    // Blink fixed that fixed in Chrome 54, Opera 41
     const frameNodeName = frameElement.nodeName.toLowerCase();
-    if (frameNodeName === 'object' && (platform.is.BLINK || platform.is.WEBKIT)) {
-      return false;
+    if (frameNodeName === 'object') {
+      const isFixedBlink = (platform.name === 'Chrome' && platform.majorVersion >= 54)
+        || (platform.name === 'Opera' && platform.majorVersion >= 41);
+
+      if (platform.is.WEBKIT || (platform.is.BLINK && !isFixedBlink)) {
+        return false;
+      }
     }
   }
 

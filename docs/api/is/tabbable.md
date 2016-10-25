@@ -55,6 +55,7 @@ Boolean, `true` if the element is tabbable.
 * Since `v1.1.0` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 * Since `v1.3.0` the `except.scrollable` properly filters elements with CSS property `overflow` in Firefox.
 * Since `v#master` SVG elements can be tabbable in Firefox and Internet Explorer.
+* Since `v#master` SVG elements within `<object>` or `<iframe>` can be tabbable in Blink.
 
 
 ## Notes
