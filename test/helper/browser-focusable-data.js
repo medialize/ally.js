@@ -3,6 +3,7 @@ define([
   'intern/dojo/text!../../tests/focusable/data/chrome-stable.json',
   'intern/dojo/text!../../tests/focusable/data/firefox-nightly.json',
   'intern/dojo/text!../../tests/focusable/data/firefox-stable.json',
+  'intern/dojo/text!../../tests/focusable/data/edge-15.json',
   'intern/dojo/text!../../tests/focusable/data/edge-14.json',
   'intern/dojo/text!../../tests/focusable/data/edge-13.json',
   'intern/dojo/text!../../tests/focusable/data/edge-12.json',
