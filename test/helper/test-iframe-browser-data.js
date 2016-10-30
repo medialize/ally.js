@@ -8,8 +8,10 @@ define(function(require) {
   var source = sourceHtml
     // remove <script src="…"> because we don't want to run the tests themselves
     .replace(/<script\s+src="[^>]+><\/script>/g, '')
-    // add <base> to re-target assets (relative from node_modules/intern/client.html)
-    .replace('</title>', '</title><base href="../../tests/focusable/">');
+    // retarget embedded media files
+    .replace(/"(\.\.\/)+media\//g, '"/tests/media/')
+    .replace(/"iframe\.html/g, '"/tests/focusable/iframe.html')
+    .replace(/"iframe-focusable\.html/g, '"/tests/focusable/iframe-focusable.html');
 
   function BrowserDataFrame() {
     TestFrame.call(this, source);
