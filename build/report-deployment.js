@@ -2,7 +2,7 @@
 const Github = require('github');
 
 const data = {
-  user: 'medialize',
+  owner: 'medialize',
   repo: 'ally.js',
   token: process.env.GITHUB_STATUS_ACCESS_TOKEN,
   sha: process.env.TRAVIS_COMMIT,
@@ -28,13 +28,13 @@ github.authenticate({
 });
 
 function setStatus(options, done) {
-  options.user = data.user;
+  options.owner = data.owner;
   options.repo = data.repo;
   options.sha = data.sha;
   /*eslint-disable camelcase */
   options.target_url = options.url;
   /*eslint-enable camelcase */
-  github.statuses.create(options, function(err) {
+  github.repos.createStatus(options, function(err) {
     if (err) {
       throw err;
     }
