@@ -96,6 +96,30 @@
     "objectID": "tutorials/hiding-elements.html#recap"
   },
   {
+    "url": "tutorials/mutating-active-element.html",
+    "title": "Mutating the active element",
+    "excerpt": "This document explains the browsers&quot; behaviors when the active element is hidden, disabled or removed completely.",
+    "objectID": "tutorials/mutating-active-element.html"
+  },
+  {
+    "url": "tutorials/mutating-active-element.html#specifications",
+    "title": "Specifications",
+    "document": "Mutating the active element",
+    "objectID": "tutorials/mutating-active-element.html#specifications"
+  },
+  {
+    "url": "tutorials/mutating-active-element.html#running-tests",
+    "title": "Running tests",
+    "document": "Mutating the active element",
+    "objectID": "tutorials/mutating-active-element.html#running-tests"
+  },
+  {
+    "url": "tutorials/mutating-active-element.html#the-results",
+    "title": "The results",
+    "document": "Mutating the active element",
+    "objectID": "tutorials/mutating-active-element.html#the-results"
+  },
+  {
     "url": "tutorials/index.html",
     "title": "Tutorials",
     "excerpt": "",

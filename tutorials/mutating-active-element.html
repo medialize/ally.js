@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mutating the active element - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/mutating-active-element.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="../contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#specifications">Specifications</a></li>
+        
+        
+        <li><a href="#running-tests">Running tests</a></li>
+        
+        
+        <li><a href="#the-results">The results</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/tutorials/mutating-active-element.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Mutating the active element" href="https://github.com/medialize/ally.js/issues/new?title=[Mutating%20the%20active%20element]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Tutorials</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Tutorials</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="accessible-dialog.html">Accessible dialog tutorial</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="hiding-elements.html">Hiding DOM elements</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="focusing-in-animated-ui.html">Managing focus in animated UI</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="mutating-active-element.html">Mutating the active element</a>
+          </li>
+          
+          
+          
+          
+          
+          
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1 id="mutating-the-active-element"><a class="link-to-headline" href="#mutating-the-active-element">#</a> Mutating the active element</h1>
+<p>This document explains the browsers&apos; behaviors when the active element is hidden, disabled or removed completely.</p>
+<p>The &quot;active element&quot; refers to the DOM element that currently has focus. It is accessible through the DOM property <a href="https://developer.mozilla.org/en/docs/Web/API/Document/activeElement"><code>document.activeElement</code></a> and can be queried via the CSS pseudo class <a href="https://developer.mozilla.org/en/docs/Web/CSS/:focus"><code>:focus</code></a>.</p>
+<p>The table of <a href="../data-tables/focusable.html">what browsers consider focusable</a> shows that <code>&lt;input disabled&gt;</code> cannot receive focus. But what the table does not show is how browsers react when the <code>&lt;input&gt;</code> element has focus and is then disabled, or hidden, or even completely removed from the DOM.</p>
+<h2 id="specifications"><a class="link-to-headline" href="#specifications">#</a> Specifications</h2>
+<p>The HTML specification features the sections <a href="https://html.spec.whatwg.org/multipage/interaction.html#focusing-steps">focusing steps</a> and <a href="https://html.spec.whatwg.org/multipage/interaction.html#unfocusing-steps">unfocusing steps</a> describing the procedure for shifting focus from one element to another. The section <a href="https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule-one">Focus fixup rule one</a> was introduced in <a href="https://github.com/whatwg/html/commit/f96b1997">February 2014</a> and describes how the browser should behave in case the active element is mutated so that it wouldn&apos;t receive focus anymore. Unfortunately the language used is not particularly easy to understand.</p>
+<p>A simplified interpretation of that convoluted passage is that in case the focused element is no longer focusable, the first focusable element in that document should receive focus. However, that&apos;s not quite what happens in the real world, as we&apos;ll see below.</p>
+<h2 id="running-tests"><a class="link-to-headline" href="#running-tests">#</a> Running tests</h2>
+<div data-note-type="note">
+<p>On macOS the browsers Safari and Firefox <em>will not</em> focus <code>&lt;button&gt;</code> and <code>&lt;input type=&quot;radio|checkbox&quot;&gt;</code> elements when they&apos;re clicked, but <em>will</em> shift focus to them when using the <kbd>Tab</kbd> key. These tests therefore show the result of keyboard interaction.</p>
+</div>
+<section class="example">
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/fesexin/embed?output">Mutating the active element on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/fesexin/edit" target="_blank">play with <span class="visuallyhidden">Mutating the active element</span> on jsbin.com</a> or <a href="mutating-active-element.example.html" target="_blank">open the document <span class="visuallyhidden">of Mutating the active element</span></a></p>
+</section>
+<h2 id="the-results"><a class="link-to-headline" href="#the-results">#</a> The results</h2>
+<p>Executing the test above in various browsers brings about the compatibility tables below. The results are fairly uniform, but there are a few interesting outliers in behavior that are worth discussing.</p>
+<p>Regardless of the mutation method (disable, hide, remove) the Gecko, Blink and Webkit (Firefox, Chrome, Safari) always shift focus to the next focusable element in the document&apos;s <a href="../concepts.html#sequential-navigation-focus-order">sequential navigation focus order</a> when the <kbd>Tab</kbd> key is pressed. This is obvious where the mutated element remains the activeElement. But any time the active element reverts to <code>&lt;body&gt;</code>, this is achieved because the browser sets the <a href="https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-starting-point">sequential focus navigation starting point</a> appropriately.</p>
+<p>When removing the active element from the DOM (also called &quot;detaching the element&quot;) browsers return focus to <code>&lt;body&gt;</code>, while disabling, hiding or interting (removing the tabindex attribute from otherwise non-focusable elements) the active element it usually retains focus.</p>
+<p>Internet Explorer and Microsoft Edge shift focus to the first focusable ancestor or <code>&lt;body&gt;</code> when the active element is disabled.</p>
+<p>Internet Explorer 9 doesn&apos;t cope well when the active element is removed, as it simply sets <code>document.activeElement</code> to <code>null</code>, instead of shifting focus back to <code>&lt;body&gt;</code>. Internet Explorer 11 may still reference the element that was removed from the DOM, instead of shifting focus back to <code>&lt;body&gt;</code>. Both scenarios can cause havoc in scripts accessing <code>document.activeElement</code> without performing sanity checks. The <a href="../api/get/active-element.html"><code>ally.get.activeElement</code></a> utility is there to help with this.</p>
+<h3 id="disabling-the-active-element"><a class="link-to-headline" href="#disabling-the-active-element">#</a> Disabling the active element</h3>
+<p>When the active element changes from <code>&lt;button&gt;</code> to <code>&lt;button disabled&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>active after disabling</th>
+<th>active after <kbd>Tab</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safari 10</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Firefox 49</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Chrome 53</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Internet Explorer 9</td>
+<td><code>#container</code></td>
+<td>first focusable element in <code>#container</code></td>
+</tr>
+<tr>
+<td>Internet Explorer 11</td>
+<td><code>#container</code></td>
+<td>first focusable element in <code>#container</code></td>
+</tr>
+<tr>
+<td>Edge 14</td>
+<td><code>#container</code></td>
+<td>first focusable element in <code>#container</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="hiding-the-active-element"><a class="link-to-headline" href="#hiding-the-active-element">#</a> Hiding the active element</h3>
+<p>When the active element changes from <code>&lt;button&gt;</code> to <code>&lt;button hidden&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>active after hiding</th>
+<th>active after <kbd>Tab</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safari 10</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Firefox 49</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Chrome 53</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Internet Explorer 9</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Internet Explorer 11</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Edge 14</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+</tbody>
+</table>
+<h3 id="removing-the-active-element"><a class="link-to-headline" href="#removing-the-active-element">#</a> Removing the active element</h3>
+<p>When the active element is removed from the DOM:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>active after removing</th>
+<th>active after <kbd>Tab</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safari 10</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Firefox 49</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Chrome 53</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Internet Explorer 9</td>
+<td><code>null</code></td>
+<td>first focusable element of the document</td>
+</tr>
+<tr>
+<td>Internet Explorer 11</td>
+<td>unchanged [1] or <code>&lt;body&gt;</code></td>
+<td>first focusable element of the document</td>
+</tr>
+<tr>
+<td>Edge 14</td>
+<td><code>&lt;body&gt;</code></td>
+<td>first focusable element of the document</td>
+</tr>
+</tbody>
+</table>
+<p>[1] document.activeElement still points to the detached element, but when reattaching the element it does not match <code>:focus</code> anymore.</p>
+<h3 id="removing-tabindex-from-the-active-element"><a class="link-to-headline" href="#removing-tabindex-from-the-active-element">#</a> Removing tabindex from the active element</h3>
+<p>When the active element changes from <code>&lt;div role=&quot;button&quot; tabindex=&quot;0&quot;&gt;</code> to <code>&lt;div role=&quot;button&quot;&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>active after removing tabindex</th>
+<th>active after <kbd>Tab</kbd></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safari 10</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Firefox 49</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Chrome 53</td>
+<td><code>&lt;body&gt;</code></td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Internet Explorer 11</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+<tr>
+<td>Edge 14</td>
+<td>unchanged</td>
+<td>next focusable element</td>
+</tr>
+</tbody>
+</table>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>
