@@ -34,6 +34,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * label element with tabindex attribute is keyboard focusable - [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285)
 * `<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 * Tab focus navigation should not break on hidden SVG - [Blink 586200](https://code.google.com/p/chromium/issues/detail?id=586200), [WebKit 154114](https://bugs.webkit.org/show_bug.cgi?id=154114)
+* mutating document.activeElement resets focus to document.body [Blink 660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999)
 
 
 ## Filed specification issues
@@ -45,4 +46,3 @@ This document is used for collecting all the bugs reported and issues raised bec
 * [focusing steps don't contain scrolling an element into view](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27913)
 * [[Specifiction] Extending Element-level focus APIs](https://discourse.wicg.io/t/extending-element-level-focus-apis/726)
 * ["Focus fixup rule one" not very clear, possibly wrong](https://github.com/whatwg/html/issues/1972)
-

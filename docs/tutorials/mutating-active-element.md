@@ -98,3 +98,8 @@ When the active element changes from `<div role="button" tabindex="0">` to `<div
 | Edge 14 | unchanged | next focusable element |
 
 
+## Tracked issues
+
+* [Edge #9548332](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9548332/): activeElement changes when button disabled during click
+* [Chromium #660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999): mutating document.activeElement resets focus to document.body
+* [whatwg/html #1972](https://github.com/whatwg/html/issues/1972): "Focus fixup rule one" not very clear, possibly wrong
