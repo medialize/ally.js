@@ -13,9 +13,9 @@ The table of [what browsers consider focusable](../data-tables/focusable.md) sho
 
 ## Specifications
 
-The HTML specification features the sections [focusing steps](https://html.spec.whatwg.org/multipage/interaction.html#focusing-steps) and [unfocusing steps](https://html.spec.whatwg.org/multipage/interaction.html#unfocusing-steps) describing the procedure for shifting focus from one element to another. The section [Focus fixup rule one](https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule-one) was introduced in [February 2014](https://github.com/whatwg/html/commit/f96b1997) and describes how the browser should behave in case the active element is mutated so that it wouldn't receive focus anymore. Unfortunately the language used is not particularly easy to understand.
+The section [Focus fixup rule one](https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule-one) was introduced in [February 2014](https://github.com/whatwg/html/commit/f96b1997) and made a little clearer in [November 2016](https://github.com/whatwg/html/commit/deb83668). It describes that focus is returned to `<body>` when the active element loses its ability to receive focus. 
 
-A simplified interpretation of that convoluted passage is that in case the focused element is no longer focusable, the first focusable element in that document should receive focus. However, that's not quite what happens in the real world, as we'll see below.
+The specification paints a different picture than browsers have implemented, as we'll see below. Thanks go to Domenic Denicola for his efforts to rectify the status quo by [improving the spec, writing platform tests and filing browser bugs](https://github.com/whatwg/html/issues/1972#issuecomment-257985353).
 
 
 ## Running tests
@@ -96,10 +96,3 @@ When the active element changes from `<div role="button" tabindex="0">` to `<div
 | Chrome 53 | `<body>` | next focusable element |
 | Internet Explorer 11 | unchanged | next focusable element |
 | Edge 14 | unchanged | next focusable element |
-
-
-## Tracked issues
-
-* [Edge #9548332](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9548332/): activeElement changes when button disabled during click
-* [Chromium #660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999): mutating document.activeElement resets focus to document.body
-* [whatwg/html #1972](https://github.com/whatwg/html/issues/1972): "Focus fixup rule one" not very clear, possibly wrong
