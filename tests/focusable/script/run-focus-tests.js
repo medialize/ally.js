@@ -7,7 +7,7 @@ define([
 ], function(platform, utils, Elements, Collector, formatResult) {
 
   function resetActiveElement() {
-    document.activeElement.blur();
+    document.activeElement && document.activeElement.blur && document.activeElement.blur();
     document.body.focus();
   }
 
