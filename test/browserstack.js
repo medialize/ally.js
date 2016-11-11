@@ -23,11 +23,8 @@ define(function(require) {
     { browser: 'Edge', browser_version: '13.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge13' },
 
     { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
-    // [IE10, Browserstack, Intern] is not sending HEAD requests and thus failing tests
-    // { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10', nativeEvents: true },
-    // [IE9, Browserstack, Intern] is not sending HEAD requests and thus failing tests
-    // [IE9, Browserstack, Intern] is not completing in the runner when tests are completed in the browser
-    // { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
+    { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10', nativeEvents: true },
+    { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
 
     { browser: 'Firefox', browser_version: '44', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
     { browser: 'Chrome', browser_version: '48', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
