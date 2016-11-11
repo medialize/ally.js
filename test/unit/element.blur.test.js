@@ -62,7 +62,7 @@ define(function(require) {
       });
 
       var result = elementBlur(element);
-      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;
+      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
       expect(result).to.equal(canFocusSvg ? document.body : null);
     });
 

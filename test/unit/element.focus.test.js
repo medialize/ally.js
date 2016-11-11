@@ -79,7 +79,7 @@ define(function(require) {
     });
 
     bdd.describe('for SVG elements', function() {
-      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;
+      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
 
       bdd.it('should focus SVG links', function() {
         var element = document.getElementById('svg-link');
@@ -95,7 +95,7 @@ define(function(require) {
           defaultToAncestor: true,
         });
 
-        var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT && platform.majorVersion < 13;
+        var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
         expect(result).to.equal(canFocusSvg ? target : null);
       });
     });

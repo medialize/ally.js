@@ -80,7 +80,7 @@ define(function(require) {
       }
     }
 
-    if (data.platform.layout === 'Trident') {
+    if (data.platform.layout === 'Trident' || data.platform.layout === 'EdgeHTML') {
       // IE and Edge do not forward focus upon script-focus, but does on pointer-focus,
       // we'll act as if script-focus worked just like pointer-focus
       data.elements['label:has(input)'].scriptFocus.redirected = 'label:has(input) input';

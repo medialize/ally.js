@@ -1,7 +1,7 @@
 {
   "platform": {
-    "description": "Microsoft Edge 12.10240 on Windows NT 10.0 64-bit",
-    "layout": "Trident",
+    "description": "Microsoft Edge 12.10240 on Windows 10 64-bit",
+    "layout": "EdgeHTML",
     "manufacturer": null,
     "name": "Microsoft Edge",
     "prerelease": null,
@@ -10,8 +10,8 @@
     "version": "12.10240",
     "os": {
       "architecture": 64,
-      "family": "Windows NT",
-      "version": "10.0"
+      "family": "Windows",
+      "version": "10"
     }
   },
   "elements": {

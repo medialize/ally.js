@@ -23,7 +23,7 @@ function isOnlyTabbableRules({
     return false;
   }
 
-  if (!except.onlyFocusableBrowsingContext && (platform.is.GECKO || platform.is.TRIDENT)) {
+  if (!except.onlyFocusableBrowsingContext && (platform.is.GECKO || platform.is.TRIDENT || platform.is.EDGE)) {
     const frameElement = getFrameElement(element);
     if (frameElement) {
       if (tabindexValue(frameElement) < 0) {
@@ -42,7 +42,7 @@ function isOnlyTabbableRules({
     return tabindex !== null && tabindex >= 0;
   }
 
-  if (nodeName === 'svg' && platform.is.TRIDENT) {
+  if (nodeName === 'svg' && (platform.is.TRIDENT || platform.is.EDGE)) {
     return element.getAttribute('focusable') !== 'false';
   }
 
@@ -53,11 +53,11 @@ function isOnlyTabbableRules({
       if (platform.is.GECKO) {
         return true;
       }
-      if (platform.is.TRIDENT) {
+      if (platform.is.TRIDENT || platform.is.EDGE) {
         return element.getAttribute('focusable') !== 'false';
       }
     }
-    if (platform.is.TRIDENT) {
+    if (platform.is.TRIDENT || platform.is.EDGE) {
       return element.getAttribute('focusable') === 'true';
     }
   }

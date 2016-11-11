@@ -1,5 +1,11 @@
 # ally.js change log
 
+## master
+
+* Updated to platform.js [1.3.3](https://github.com/bestiejs/platform.js/wiki/Changelog#133)
+* Separated Edge 12+ from IE9-11 (Trident)
+
+
 ## 1.3.0 - Return Of The Focus
 
 *September 17th 2016*. We're continuing our journey to *make accessibility simpler*. Version 1.3.0 comes 6 months after the last feature release. We pushed [about 90 commits](https://github.com/medialize/ally.js/compare/1.1.0...1.3.0) in an effort to reduce the bundle's file size, improve startup performance, convert test suites to BDD and add DOM focus utilities.

@@ -10,7 +10,7 @@ export default {
   },
   validate: function(element, _document) {
     const focus = element.querySelector('text');
-    if (platform.is.TRIDENT) {
+    if (platform.is.TRIDENT || platform.is.EDGE) {
       // Edge 13 does not allow polyfilling the missing SVGElement.prototype.focus anymore
       return true;
     }

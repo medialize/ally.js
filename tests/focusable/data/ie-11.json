@@ -6,7 +6,7 @@
     "name": "IE",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; GWX:QUALIFIED; rv:11.0) like Gecko",
+    "ua": "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0; rv:11.0) like Gecko",
     "version": "11.0",
     "os": {
       "architecture": 64,
@@ -207,7 +207,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -599,14 +600,15 @@
       },
       "scriptFocus": {
         "documentActiveElement": true,
-        "contextActiveElement": true
+        "contextActiveElement": true,
+        "event": true
       },
       "referenceElementFocus": {
         "documentActiveElement": false,
         "contextActiveElement": false,
         "cssFocus": true,
         "ident": "img[usemap].focusable",
-        "event": false
+        "event": true
       },
       "focusable": true
     },
@@ -951,7 +953,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -1089,7 +1092,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -1490,7 +1494,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -1886,7 +1891,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -2581,7 +2587,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -2851,7 +2858,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -5391,7 +5399,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true
@@ -5798,8 +5807,7 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true,
-        "event": true
+        "cssFocus": true
       },
       "focusable": true
     },
@@ -6371,7 +6379,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "focusable": true
     },
@@ -6584,7 +6593,8 @@
       "scriptFocus": {
         "documentActiveElement": true,
         "contextActiveElement": true,
-        "cssFocus": true
+        "cssFocus": true,
+        "event": true
       },
       "tabbable": true,
       "focusable": true

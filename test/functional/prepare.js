@@ -15,7 +15,7 @@ define(function(require) {
         .setFindTimeout(timeout)
         .setExecuteAsyncTimeout(timeout)
         // wait until we're really initialized
-        .then(pollUntil('return window.platform'));
+        .then(pollUntil('return window._platform'));
     });
 
     bdd.it('should understand "shiftFocusOnTab"', function() {

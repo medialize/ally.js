@@ -20,6 +20,7 @@ const IOS = os === 'iOS';
 const BLINK = platform.layout === 'Blink';
 const GECKO = platform.layout === 'Gecko';
 const TRIDENT = platform.layout === 'Trident';
+const EDGE = platform.layout === 'EdgeHTML';
 const WEBKIT = platform.layout === 'WebKit';
 
 // browser version (not layout engine version!)
@@ -36,7 +37,8 @@ platform.is = {
   // layout
   BLINK, // "Chrome", "Chrome Mobile", "Opera"
   GECKO, // "Firefox"
-  TRIDENT, // "Internet Explorer", ("Edge")
+  TRIDENT, // "Internet Explorer"
+  EDGE, // "Microsoft Edge"
   WEBKIT, // "Safari"
   // INTERNET EXPLORERS
   IE9: TRIDENT && majorVersion === 9,

@@ -74,7 +74,7 @@ define(function(require) {
         '#image-map-area-nolink',
         supports.focusRedirectImgUsemap && '#img-usemap',
         supports.focusObjectSvg && '#object-svg',
-        platform.is.TRIDENT && '#svg',
+        (platform.is.TRIDENT || platform.is.EDGE) && '#svg',
         supports.focusObjectSvg && '#object-tabindex-svg',
         '#svg-link',
         !supports.AVOID_QUICKTIME && '#embed',

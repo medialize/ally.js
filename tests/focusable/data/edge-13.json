@@ -1,17 +1,17 @@
 {
   "platform": {
-    "description": "Microsoft Edge 13.11082 on Windows NT 10.0 64-bit",
-    "layout": "Trident",
+    "description": "Microsoft Edge 13.10586 on Windows 10 64-bit",
+    "layout": "EdgeHTML",
     "manufacturer": null,
     "name": "Microsoft Edge",
     "prerelease": null,
     "product": null,
-    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.11082",
-    "version": "13.11082",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586",
+    "version": "13.10586",
     "os": {
       "architecture": 64,
-      "family": "Windows NT",
-      "version": "10.0"
+      "family": "Windows",
+      "version": "10"
     }
   },
   "elements": {

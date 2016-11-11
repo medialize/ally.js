@@ -61,7 +61,7 @@
       'ally/query/focusable',
       'ally/element/disabled',
     ], function(platform, queryFocusable, elementDisabled) {
-      window.platform = platform;
+      window._platform = platform;
 
       window.disableElements = function() {
         queryFocusable({

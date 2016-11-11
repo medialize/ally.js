@@ -92,12 +92,19 @@ define(function(require) {
   Command.prototype.skipPlatform = function(test, callback, message) {
     return new this.constructor(this, function () {
       return this.parent
-        .then(pollUntil('return window.platform'))
+        .getPlatform()
         .then(function(platform) {
           if (callback(platform)) {
             test.skip(message);
           }
         });
+    });
+  };
+
+  Command.prototype.getPlatform = function() {
+    return new this.constructor(this, function () {
+      return this.parent
+        .then(pollUntil('return window._platform'));
     });
   };
 

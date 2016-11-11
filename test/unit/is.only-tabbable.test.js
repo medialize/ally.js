@@ -213,18 +213,21 @@ define(function(require) {
     bdd.describe('for SVG', function() {
       bdd.it('should return {browser-specific} for <svg>', function() {
         var element = document.getElementById('svg');
-        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT);
+        var expected = platform.is.TRIDENT || platform.is.EDGE;
+        expect(isOnlyTabbable(element)).to.equal(expected);
       });
 
       bdd.it('should return {browser-specific} for <svg tabindex="-1">', function() {
         var element = document.getElementById('svg');
         element.setAttribute('tabindex', '-1');
-        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT);
+        var expected = platform.is.TRIDENT || platform.is.EDGE;
+        expect(isOnlyTabbable(element)).to.equal(expected);
       });
 
       bdd.it('should return {browser-specific} for <a xlink:href="…">', function() {
         var element = document.getElementById('svg-link');
-        expect(isOnlyTabbable(element)).to.equal(platform.is.TRIDENT || platform.is.GECKO);
+        var expected = platform.is.TRIDENT || platform.is.EDGE || platform.is.GECKO;
+        expect(isOnlyTabbable(element)).to.equal(expected);
       });
 
       bdd.it('should return false for <text>', function() {

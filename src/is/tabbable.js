@@ -101,8 +101,8 @@ function isTabbableRules({
 
   if (nodeName === 'video') {
     if (!element.hasAttribute('controls')) {
-      if (platform.is.TRIDENT) {
-        // In Internet Explorer the <video> element is focusable, but not tabbable, and tabIndex property is wrong
+      if (platform.is.TRIDENT || platform.is.EDGE) {
+        // In Internet Explorer and Edge the <video> element is focusable, but not tabbable, and tabIndex property is wrong
         return false;
       }
     } else if (platform.is.BLINK || platform.is.GECKO) {
@@ -153,8 +153,8 @@ function isTabbableRules({
     }
   }
 
-  if (platform.is.TRIDENT) {
-    // IE degrades <area> to script focusable, if the image
+  if (platform.is.TRIDENT || platform.is.EDGE) {
+    // IE and Edge degrade <area> to script focusable, if the image
     // using the <map> has been given tabindex="-1"
     if (nodeName === 'area') {
       const img = getImageOfArea(element);

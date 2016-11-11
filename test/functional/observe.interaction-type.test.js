@@ -3,7 +3,6 @@ define(function(require) {
 
   var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
-  var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
   var makeCustomCommand = require('../helper/leadfoot-commands');
 
   var InteractionTypeCommand = makeCustomCommand({
@@ -24,7 +23,7 @@ define(function(require) {
         .setTimeouts(timeout)
         .get(require.toUrl('test/pages/observe.interaction-type.test.html'))
         // wait until we're really initialized
-        .then(pollUntil('return window.platform'));
+        .getPlatform();
     });
 
     bdd.it('should identify pointer input', function() {

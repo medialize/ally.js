@@ -2,7 +2,6 @@ define(function(require) {
   'use strict';
 
   var bdd = require('intern!bdd');
-  var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
   require('../helper/leadfoot-commands');
 
   bdd.describe('maintain/tab-focus', function() {
@@ -19,9 +18,6 @@ define(function(require) {
         .skipPlatform(this, function(platform) {
           return platform.is.IE10;
         }, 'This Test will not run on BrowserStack in IE10')
-
-        // wait until we're really initialized
-        .then(pollUntil('return window.platform'));
     });
 
     bdd.it('should wrap tab to next element', function() {

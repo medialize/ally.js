@@ -56,7 +56,7 @@ define(function(require) {
           supports.focusAreaWithoutHref && '#image-map-area-nolink',
           supports.focusObjectSvg && '#object-svg',
           supports.focusObjectSvg && '#object-tabindex-svg',
-          platform.is.TRIDENT && '#svg',
+          (platform.is.TRIDENT || platform.is.EDGE) && '#svg',
           '#svg-link',
           supports.focusAudioWithoutControls && '#audio',
           '#audio-controls',
