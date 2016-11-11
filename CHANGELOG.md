@@ -1,6 +1,8 @@
 # ally.js change log
 
-## master
+## 1.3.1 - Version Panic
+
+*November 11th 2016*. This release does not contain any functional changes. The release was necessary because platform.js now identifies EdgeHTML (instead of Trident) as a the layout engine of Microsoft Edge and focus detection suffered.
 
 * Updated to platform.js [1.3.3](https://github.com/bestiejs/platform.js/wiki/Changelog#133)
 * Separated Edge 12+ from IE9-11 (Trident)
