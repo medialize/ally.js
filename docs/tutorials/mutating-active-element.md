@@ -13,7 +13,7 @@ The table of [what browsers consider focusable](../data-tables/focusable.md) sho
 
 ## Specifications
 
-The section [Focus fixup rule one](https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule-one) was introduced in [February 2014](https://github.com/whatwg/html/commit/f96b1997) and made a little clearer in [November 2016](https://github.com/whatwg/html/commit/deb83668). It describes that focus is returned to `<body>` when the active element loses its ability to receive focus. 
+The section [Focus fixup rule one](https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule-one) was introduced in [February 2014](https://github.com/whatwg/html/commit/f96b1997) and made a little clearer in [November 2016](https://github.com/whatwg/html/commit/deb83668). It describes that focus is returned to `<body>` when the active element loses its ability to receive focus.
 
 The specification paints a different picture than browsers have implemented, as we'll see below. Thanks go to Domenic Denicola for his efforts to rectify the status quo by [improving the spec, writing platform tests and filing browser bugs](https://github.com/whatwg/html/issues/1972#issuecomment-257985353).
 
