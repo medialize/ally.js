@@ -519,7 +519,7 @@
       "svg{viewbox}": "<svg viewBox=\"…\">",
       "svg rect[tabindex=0]{viewbox}": "<rect tabindex=\"0\"> within <svg viewBox=\"…\"> with position outside of box",
       "svg rect[tabindex=-1]{viewbox}": "<rect tabindex=\"-1\"> within <svg viewBox=\"…\"> with position outside of box",
-      "svg rect[focusable=true]{viewbox}": "<rect focusable=\"false\"> within <svg viewBox=\"…\"> with position outside of box",
+      "svg rect[focusable=true]{viewbox}": "<rect focusable=\"true\"> within <svg viewBox=\"…\"> with position outside of box",
 
       "svg{tiny}": "<svg baseProfile=\"tiny\">",
       "svg{tiny} rect[focusable=true]": "<rect focusable=\"true\"> within <svg baseProfile=\"tiny\">",
