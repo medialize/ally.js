@@ -102,13 +102,23 @@ define(function(require) {
       data.elements['label:has(input)'].scriptFocus.redirected = 'label:has(input) input';
       data.elements['label[for=label-target-focusable]'].scriptFocus.redirected = 'input[type=text][tabindex=-1]';
       data.elements['label[for=label-target]'].scriptFocus.redirected = 'input[type=text]';
+    }
 
-      if (parseInt(data.platform.version, 10) === 10) {
-        // these elements were removed from IE10's manual test
-        skipUntestable['object[src=swf]'] = true;
-        skipUntestable['object[src=swf][height=0]'] = true;
-        skipUntestable['object[src=swf][tabindex=0]'] = true;
-      }
+    if (data.platform.layout === 'Trident' && parseInt(data.platform.version, 10) === 10) {
+      // these elements were removed from IE10's manual test
+      skipUntestable['object[src=swf]'] = true;
+      skipUntestable['object[src=swf][height=0]'] = true;
+      skipUntestable['object[src=swf][tabindex=0]'] = true;
+    }
+
+    if (data.platform.layout === 'EdgeHTML' && parseInt(data.platform.version, 10) >= 14) {
+      skipUntestable['iframe[src=svg] -> file:svg'] = true;
+      // cannot detect tabbables in an iframe
+      // is.tabbable.test will have to suffice
+      skipUntestable['svg a[xlink|href][tabindex=-1]'] = true;
+      skipUntestable['svg rect[tabindex=-1]'] = true;
+      skipUntestable['svg rect[tabindex=-1]{viewbox}'] = true;
+      skipUntestable['svg{tiny} a[tabindex=-1]'] = true;
     }
 
     if (data.platform.product === 'iPhone' && data.platform.name === 'Safari') {

@@ -84,6 +84,13 @@ function isTabbableRules({
   const nodeName = element.nodeName.toLowerCase();
   const _tabindex = tabindexValue(element);
   const tabindex = _tabindex === null ? null : _tabindex >= 0;
+
+  if (platform.is.EDGE && platform.majorVersion >= 14 && frameElement && element.ownerSVGElement && _tabindex < 0) {
+    // Edge 14+ considers <a xlink:href="…" tabindex="-1"> keyboard focusable
+    // if the element is in a nested browsing context
+    return true;
+  }
+
   const hasTabbableTabindexOrNone = tabindex !== false;
   const hasTabbableTabindex = _tabindex !== null && _tabindex >= 0;
 

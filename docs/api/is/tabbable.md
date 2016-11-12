@@ -56,6 +56,7 @@ Boolean, `true` if the element is tabbable.
 * Since `v1.3.0` the `except.scrollable` properly filters elements with CSS property `overflow` in Firefox.
 * Since `v#master` SVG elements can be tabbable in Firefox and Internet Explorer.
 * Since `v#master` SVG elements within `<object>` or `<iframe>` can be tabbable in Blink.
+* Since `v#master` SVG elements with negative tabindex attribute within browsing contexts (`<iframe>` or `<object>`) are considered tabbable since Edge 14.
 
 
 ## Notes
@@ -83,4 +84,3 @@ There is no way to feature detect if an element is tabbable or not. The `Element
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/tabbable.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/tabbable.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.tabbable.test.js)
-
