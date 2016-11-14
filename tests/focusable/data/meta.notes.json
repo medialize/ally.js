@@ -435,6 +435,53 @@
     "ally": "The attributes `requiredExtensions` and `requiredFeatures` are ignored."
   },
 
+  "@svg-use-element-chrome": "The `<use>` element is keyboard focusable if it references content that contains focusable elements. [Blink 665121](https://bugs.chromium.org/p/chromium/issues/detail?id=665121)",
+  "-svg-use-element-chrome": {
+    "alias": [
+      "svg{use} use{inline-shape}",
+      "svg{use} use{shape-with-focus-content:1}",
+      "svg{use} use{shape-with-focus:1}",
+      "svg{use:foreign} use",
+      "svg{use} use{inline-shape}[tabindex=-1]",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]",
+      "svg{use:foreign} use[tabindex=-1]"
+    ],
+    "browsers": {
+      "chrome-stable": "@svg-use-element-chrome",
+      "chrome-nightly": "@svg-use-element-chrome"
+    }
+  },
+
+  "@svg-use-element-safari8": "This element is actually **tabbable** (keyboard focusable).\n\nHowever, as soon as a `<use>` element became the active element, the <kbd>Tab</kbd> effectively becomes useless, because the tabbing order cannot be navigated anymore. See this [demo](http://jsbin.com/yukogaluju/1/edit?html,js,output).",
+  "-svg-use-element-safari8": {
+    "alias": [
+      "svg{use} use{shape-with-focus:1}",
+      "svg{use} use{shape-with-focus:2}",
+      "svg{use} use{shape-with-focus-content:1}",
+      "svg{use} use{shape-with-focus-content:2}",
+      "svg{use} use{shape}",
+      "svg{use} use{inline-shape}",
+      "svg{use} use{shape-with-focus-content:1}[tabindex=-1]",
+      "svg{use} use{shape-with-focus-content:2}[tabindex=-1]",
+      "svg{use} use{inline-shape}[tabindex=-1]",
+      "svg{use:foreign} use",
+      "svg{use:foreign} use[tabindex=-1]"
+    ],
+    "browsers": {
+      "safari-8": "@svg-use-element-safari8"
+    }
+  },
+
+  "-svg-use-element": {
+    "alias": [
+      "svg{use} use{inline-shape}",
+      "svg{use} use{shape-with-focus-content:1}",
+      "svg{use} use{shape-with-focus:1}",
+      "svg{use:foreign} use"
+    ],
+    "ally": "`<use>` elements referencing focusable content cannot be identified by ally.js"
+  },
+
   "@svg-onfocus": "By registering a `focus` event listener the element becomes focusable. [Blink 445798](https://code.google.com/p/chromium/issues/detail?id=445798), [WebKit 140024](https://bugs.webkit.org/show_bug.cgi?id=140024).\n\nThis is **undetectable** because elements don't provide a list of their registered event handlers.",
   "svg rect[onfocus]": {
     "alias": [

@@ -75,6 +75,10 @@ var isDisabled = ally.element.disabled(element);
 Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable [Trident 962368](https://connect.microsoft.com/IE/feedbackdetail/view/962368), [Trident 817488](https://connect.microsoft.com/IE/feedbackdetail/view/817488) (ally.js does not fix that). One can prevent this wrong behavior by adding `:disabled { pointer-events: none; }`.
 :::
 
+:::warning
+In Blink and WebKit based browsers (Chrome, Opera, Safari, …) the `<use>` element is keyboard focusable if the content it references contains focusable elements. In Blink even `<use tabindex="-1">` remains keyboard focusable. ally.js does not identify these `<use>` elements and can therefore not disable them. [Blink 665121](https://bugs.chromium.org/p/chromium/issues/detail?id=665121)
+:::
+
 :::note
 In Google Chrome `<audio controls>` and `<video controls>` elements are made inert by removing the `controls` attribute - [Blink 512133](https://code.google.com/p/chromium/issues/detail?id=512133).
 :::
@@ -95,4 +99,3 @@ In Google Chrome `<audio controls>` and `<video controls>` elements are made ine
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/element/disabled.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/element.disabled.test.js)
 * [functional test](https://github.com/medialize/ally.js/blob/master/test/functional/element.disabled.test.js)
-

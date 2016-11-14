@@ -35,6 +35,7 @@ This document is used for collecting all the bugs reported and issues raised bec
 * `<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 * Tab focus navigation should not break on hidden SVG - [Blink 586200](https://code.google.com/p/chromium/issues/detail?id=586200), [WebKit 154114](https://bugs.webkit.org/show_bug.cgi?id=154114)
 * mutating document.activeElement resets focus to document.body [Blink 660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999)
+* SVG `<use>` element and elements in `<defs>` receive keyboard focus [Blink 665121](https://bugs.chromium.org/p/chromium/issues/detail?id=665121)
 
 
 ## Filed specification issues
