@@ -46,6 +46,7 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-svg-focusable-attribute | boolean | true if `<text focusable="true">` is focusable |
 | focus-svg-tabindex-attribute | boolean | true if `<text tabindex="0">` is focusable |
 | focus-svg-negative-tabindex-attribute | boolean | true if `<text tabindex="-1">` is focusable |
+| focus-svg-use-tabindex | boolean | true if `<use … tabindex="-1">` is focusable |
 | focus-tabindex-trailing-characters | boolean | true if `<div tabindex="3x">` is focusable |
 | focus-table | boolean | true if `<table>`, `<tr>` and `<td>` are focusable |
 | focus-video-without-controls | boolean | true if `<video>` is focusable (while only `<video controls>` should be) |
@@ -57,9 +58,9 @@ For the tests to run properly, the document needs to have focus during execution
 * As of `v1.3.0` *all* tests are run at once and within an iframe to limit layout thrashing.
 * In `v#master` the test `focus-svg-negative-tabindex-attribute` was introduced.
 * Since `v#master` the SVG tests attempt to focus elements using `HTMLElement.prototye.focus` and the "focusable foreignObject hack".
+* In `v#master` the test `focus-svg-use-tabindex` was introduced.
 
 
 ## Contributing
 
 Tests go in `src/supports` and results are used through the `src/supports/supports.js` module.
-
