@@ -143,6 +143,11 @@ function isFocusRelevantRules({
     return false;
   }
 
+  if (nodeName === 'foreignobject') {
+    // <use> can only be made focusable in Blink and WebKit
+    return tabindex !== null && supports.focusSvgForeignobjectTabindex;
+  }
+
   if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
     return true;
   }
