@@ -61,6 +61,8 @@ Boolean, `true` if the element is focus relevant.
 * Since `v1.1.0` IE9 properly resolves SVG links (`<a xlink:href="…">`).
 * In `v1.3.0` the `element.prototype.matches` was replaced by `util/element-matches`.
 * Since `v#master` SVG elements with `tabindex="-1"` are handled properly in Firefox 51 and 51 ([Bug 1302340](https://bugzilla.mozilla.org/show_bug.cgi?id=1302340)) as well as MS Edge 14.
+* Since `v#master` only Blink considers `<use … tabindex="-1">` focus relevant.
+
 
 ## Notes
 
@@ -105,4 +107,3 @@ WebKit and Blink make any `SVGElement` focusable that has a `focus` event listen
 * [module source](https://github.com/medialize/ally.js/blob/master/src/is/focus-relevant.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/is/focus-relevant.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/is.focus-relevant.test.js)
-

@@ -57,7 +57,19 @@ define(function(require) {
     };
 
     if (data.platform.layout === 'Blink' || data.platform.layout === 'WebKit') {
+      // SVG elements made focusable by focus event listener
       skipUntestable['svg rect[onfocus]'] = true;
+      skipUntestable['svg{use} defs g[onfocus]'] = true;
+      skipUntestable['svg{use} defs g{focusable} circle[onfocus]'] = true;
+      skipUntestable['svg{use} g rect[onfocus]'] = true;
+      // <use> element made focusable by referencing focusable content
+      // https://bugs.chromium.org/p/chromium/issues/detail?id=665121
+      skipUntestable['svg{use:foreign} use'] = true;
+      skipUntestable['svg{use} use{inline-shape}'] = true;
+      skipUntestable['svg{use} use{shape-with-focus-content:1}'] = true;
+      skipUntestable['svg{use} use{shape-with-focus-content:2}'] = true;
+      skipUntestable['svg{use} use{shape-with-focus:1}'] = true;
+      skipUntestable['svg{use} use{shape-with-focus:2}'] = true;
     }
 
     if (data.platform.name === 'Firefox') {

@@ -138,6 +138,11 @@ function isFocusRelevantRules({
   const focusableAttribute = element.getAttribute('focusable');
   const tabindex = tabindexValue(element);
 
+  if (nodeName === 'use' && tabindex !== null && !supports.focusSvgUseTabindex) {
+    // <use> cannot be made focusable by adding a tabindex attribute anywhere but Blink and WebKit
+    return false;
+  }
+
   if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
     return true;
   }
