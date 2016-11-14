@@ -57,6 +57,7 @@ Boolean, `true` if the element is tabbable.
 * Since `v#master` SVG elements can be tabbable in Firefox and Internet Explorer.
 * Since `v#master` SVG elements within `<object>` or `<iframe>` can be tabbable in Blink.
 * Since `v#master` SVG elements with negative tabindex attribute within browsing contexts (`<iframe>` or `<object>`) are considered tabbable since Edge 14.
+* Since `v#master` Blink and Safari 9 consider `<use … tabindex="-1">` tabbable.
 
 
 ## Notes

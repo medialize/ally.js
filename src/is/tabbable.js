@@ -123,6 +123,13 @@ function isTabbableRules({
     }
   }
 
+  if (nodeName === 'use' && _tabindex !== null) {
+    if (platform.is.BLINK || platform.is.WEBKIT && platform.majorVersion === 9) {
+      // In Chrome and Safari 9 the <use> element is keyboard focusable even for tabindex="-1"
+      return true;
+    }
+  }
+
   if (elementMatches(element, 'svg a') && element.hasAttribute('xlink:href')) {
     if (hasTabbableTabindexOrNone) {
       // in Trident and Gecko SVGElement does not handle the tabIndex property properly
