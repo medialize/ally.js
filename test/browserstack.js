@@ -4,6 +4,7 @@ define(function(require) {
   var config = require('./intern');
   var firefoxProfileWebcomponents = require('intern/dojo/text!./config/firefox-profile.webcomponents.txt');
 
+  // https://www.browserstack.com/automate/capabilities
   config.capabilities = {
     project: 'ally.js',
     // 'browserstack.debug': true,
@@ -20,29 +21,38 @@ define(function(require) {
   // see https://www.browserstack.com/automate/capabilities
   /*eslint-disable camelcase */
   config.environments = [
+    { browser: 'Edge', browser_version: '14.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge14' },
     { browser: 'Edge', browser_version: '13.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge13' },
 
     { browser: 'IE', browser_version: '11', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'IE11' },
     { browser: 'IE', browser_version: '10', os: 'WINDOWS', os_version: '8', platform: 'WIN', browserName: 'IE10', nativeEvents: true },
     { browser: 'IE', browser_version: '9', os: 'WINDOWS', os_version: '7', platform: 'WIN', browserName: 'IE9' },
 
-    { browser: 'Firefox', browser_version: '44', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 42' },
-    { browser: 'Chrome', browser_version: '48', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 47' },
+    { browser: 'Firefox', browser_version: '50', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Firefox 50' },
+    { browser: 'Chrome', browser_version: '55', os: 'WINDOWS', os_version: '8.1', platform: 'WIN', browserName: 'Chrome 55' },
 
-    { browser: 'Firefox', browser_version: '44', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 42' },
-    { browser: 'Chrome', browser_version: '48', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 47' },
+    { browser: 'Firefox', browser_version: '50', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Firefox 50' },
+    { browser: 'Chrome', browser_version: '55', os: 'OS X', os_version: 'Yosemite', platform: 'MAC', browserName: 'Chrome 55' },
 
     {
       browser: 'Firefox',
-      browser_version: '44',
+      browser_version: '50',
       os: 'WINDOWS',
       os_version: '8.1',
       platform: 'WIN',
-      browserName: 'Firefox 42 (ShadowDOM)',
+      browserName: 'Firefox 50 (ShadowDOM)',
       // dom.webcomponents.enabled=true
       firefox_profile: firefoxProfileWebcomponents,
     },
 
+    {
+      browser: 'Safari',
+      browser_version: '10.0',
+      os: 'OS X',
+      os_version: 'Sierra',
+      platform: 'MAC',
+      browserName: 'Safari 10',
+    },
     {
       browser: 'Safari',
       browser_version: '9.0',
@@ -59,24 +69,6 @@ define(function(require) {
       os_version: 'Yosemite',
       platform: 'MAC',
       browserName: 'Safari 8',
-      'browserstack.safari.driver': '2.48',
-    },
-    {
-      browser: 'Safari',
-      browser_version: '7.1',
-      os: 'OS X',
-      os_version: 'Mavericks',
-      platform: 'MAC',
-      browserName: 'Safari 7',
-      'browserstack.safari.driver': '2.48',
-    },
-    {
-      browser: 'Safari',
-      browser_version: '6.2',
-      os: 'OS X',
-      os_version: 'Mountain Lion',
-      platform: 'MAC',
-      browserName: 'Safari 6',
       'browserstack.safari.driver': '2.48',
     },
 
