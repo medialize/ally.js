@@ -30,7 +30,7 @@ define(function(require) {
       fixture = focusableFixture();
       mutateFixtureForImageMaps();
       // NOTE: Firefox decodes DataURIs asynchronously
-      setTimeout(deferred.resolve, 200);
+      setTimeout(deferred.resolve, 300);
     });
 
     bdd.afterEach(function() {
