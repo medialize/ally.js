@@ -5,17 +5,18 @@ define([], function() {
 
   // possibly replace this with https://github.com/termi/DOM-Keyboard-Event-Level-3-polyfill
   function createKeyEvent(type, options) {
-    // new KeyboardEvent('keydown'), {
-    //   key: 'Tab',
-    //   code: 'Tab',
-    //   keyCode: 9,
-    // }
+    // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/KeyboardEvent
+    if (typeof KeyboardEvent === 'function') {
+      options.bubbles = true;
+      return new KeyboardEvent(type, options);
+    }
+
     // https://gist.github.com/boazsender/1291874
     var event = document.createEvent('KeyboardEvent');
     if (event.initKeyEvent) {
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyEvent
       event.initKeyEvent(type, true, false, null, !!options.ctrlKey, !!options.altKey, !!options.shiftKey, !!options.metaKey, options.keyCode, 0);
-    } else {
+    } else if (event.initKeyboardEvent) {
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent
       var modifiers = [];
       options.altKey && modifiers.push('Alt');

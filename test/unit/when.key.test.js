@@ -490,12 +490,12 @@ define(function(require) {
         events = [];
       });
 
-      bdd.it('should react to enter key within context', function() {
+      bdd.it('should not react to enter key outside of context', function() {
         simulateKeyDown('enter', fixture.root);
         expect(events).to.deep.equal([]);
       });
 
-      bdd.it('should not react to enter key outside of context', function() {
+      bdd.it('should react to enter key within context', function() {
         var target = document.getElementById('target');
         simulateKeyDown('enter', target);
         expect(events).to.deep.equal(['enter']);
