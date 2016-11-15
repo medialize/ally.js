@@ -1,5 +1,9 @@
 # ally.js change log
 
+## 1.3.2 - Publish Panic
+
+*November 15th 2016*. Version 1.3.1 was not published properly and nobody noticed. This release is basically version 1.3.1 but with the proper directory published to npm.
+
 ## 1.3.1 - Version Panic
 
 *November 11th 2016*. This release does not contain any functional changes. The release was necessary because platform.js now identifies EdgeHTML (instead of Trident) as a the layout engine of Microsoft Edge and focus detection suffered.
