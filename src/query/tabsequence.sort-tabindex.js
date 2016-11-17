@@ -1,4 +1,6 @@
 
+import tabindexValue from '../util/tabindex-value';
+
 export default function(elements) {
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.tabIndex
   // elements with tabIndex "0" (including tabbableElements without tabIndex) should be navigated in the order they appear.
@@ -19,21 +21,26 @@ export default function(elements) {
   const map = {};
   const indexes = [];
   const normal = elements.filter(function(element) {
-    // extract elements that don't need sorting
     // in Trident and Gecko SVGElement does not know about the tabIndex property
-    if (element.tabIndex <= 0 || element.tabIndex === undefined) {
+    let tabIndex = element.tabIndex;
+    if (tabIndex === undefined) {
+      tabIndex = tabindexValue(element);
+    }
+
+    // extract elements that don't need sorting
+    if (tabIndex <= 0 || tabIndex === null || tabIndex === undefined) {
       return true;
     }
 
-    if (!map[element.tabIndex]) {
+    if (!map[tabIndex]) {
       // create sortable bucket for dom-order-preservation of elements with the same tabIndex
-      map[element.tabIndex] = [];
+      map[tabIndex] = [];
       // maintain a list of unique tabIndexes
-      indexes.push(element.tabIndex);
+      indexes.push(tabIndex);
     }
 
     // sort element into the proper bucket
-    map[element.tabIndex].push(element);
+    map[tabIndex].push(element);
     // element moved to sorting map, so not "normal" anymore
     return false;
   });

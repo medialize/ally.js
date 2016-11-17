@@ -57,6 +57,7 @@ Array of [`HTMLElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLEleme
 * Since `v1.1.0` the module can move `<area>` elements to the place of the `<img>` elements they're referenced from.
 * Since `v1.1.0` the module can sort elements in [ShadowDOM](http://caniuse.com/#feat=shadowdom) localized to the `ShadowRoot`.
 * Since `v1.1.0` the option `includeOnlyTabbable` allows to skip the internal filter preventing this module from returning elements that cannot be focused by script.
+* Since `v#master` the `tabindex` attribute is used for sorting for elements without a `tabIndex` property.
 
 
 ## Notes
@@ -99,4 +100,3 @@ In Firefox `<label tabindex="0">` is part of the tabsequence, [Gecko 1240285](ht
 * [module source](https://github.com/medialize/ally.js/blob/master/src/query/tabsequence.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/query/tabsequence.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/query.tabsequence.test.js)
-

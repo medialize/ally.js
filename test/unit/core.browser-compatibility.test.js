@@ -73,7 +73,6 @@ define(function(require) {
     }
 
     if (data.platform.name === 'Firefox') {
-      skipUntestable['firefox-bug-1116126'] = true;
       skipUntestable['map.object area'] = true;
       skipUntestable['map.object area[href].upper'] = true;
       skipUntestable['map.object area[href].lower'] = true;
@@ -81,7 +80,13 @@ define(function(require) {
       // (it's considered to redirect focus - scriptFocus and keyboardFocus behavior do not align!)
       skipTabsequence['label[tabindex=0]'] = true;
       // "img[usemap].duplicate area[href]" is in the browser's tabsequence once, in ally's twice
+      // caused by https://bugzilla.mozilla.org/show_bug.cgi?id=1116126
       skipTabsequence['img[usemap].duplicate area[href]'] = true;
+      skipUntestable['firefox-bug-1116126'] = true;
+      // <use> content should be in a shadow tree
+      // https://svgwg.org/svg2-draft/single-page.html#struct-TermUseElementShadowTree
+      skipTabsequence['svg{use} defs g{focusable} link'] = true;
+      skipTabsequence['svg{use} g link'] = true;
       // "div{flexbox} > span{order:1} > input" and "div{flexbox} > span{order:2} > input" are not reordered in ally
       skipTabsequence['div{flexbox} > span{order:1} > input'] = true;
       skipTabsequence['div{flexbox} > span{order:2} > input'] = true;
