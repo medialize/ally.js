@@ -18,7 +18,13 @@ The [`Element.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEle
 </a>
 ```
 
-While `focus()` is available on `HTMLElement`, this is not necessarily true for [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement). Only Blink and WebKit expose the `focus()` method on SVG elements, Gecko, Trident and Edge do not. This will likely change once [SVG 2](https://www.w3.org/TR/SVG2/interact.html#Focus) is a thing. Until then `ally.element.focus()` tries to apply `HTMLElement.prototoype.focus` to `SVGElement`s. This only works for Internet Explorer 9 - 11, as Gecko and Edge actively prevent this.
+### Focusing in SVG
+
+While `focus()` is available on `HTMLElement`, this is not necessarily true for [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement). Only Blink and WebKit expose the `focus()` method on SVG elements, Gecko, Trident and Edge do not. This will likely change once [SVG 2](https://www.w3.org/TR/SVG2/interact.html#Focus) is a thing. Until then `ally.element.focus()` tries to apply `HTMLElement.prototoype.focus` to `SVGElement`s. This only works for Internet Explorer 9 - 11 and Edge 12, as Gecko and Edge actively prevent this.
+
+In Edge 13 and newer versions `ally.element.focus()` injects a `<foreignObject>` containing an `<input>` element into the SVG element requested to shift focus to. The `<input>` is focused and immediately disabled. Since Trident and Edge shift focus to the next focusable ancestor (see [Mutating the active element](../../tutorials/mutating-active-element.md)), focus is shifted to the requested SVG element and the injected `<foreignObject>` is removed from DOM.
+
+### Focusing in Animated UI
 
 Browsers [scroll the focused element into view](https://github.com/whatwg/html/issues/94), if it isn't already. However, this may interfere with widgets revealing content in an animated fashion. As there is no way to focus an element *without* the browser scrolling the element into view, `ally.element.focus()` provides the option `undoScrolling` to revert all scroll containers of the focused element to their state before the element got focus.
 
@@ -59,9 +65,14 @@ var result = ally.element.focus(element);
 ## Changes
 
 * Added in `v1.3.0`.
+* Since `v#master` can focus SVG elements in Internet Explorer and Edge.
 
 
 ## Notes
+
+:::warning
+Cannot focus SVG and MathML elements in Mozilla Firefox and other Gecko based browsers.
+:::
 
 
 ## Related resources

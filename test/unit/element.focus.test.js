@@ -6,7 +6,6 @@ define(function(require) {
   var sinon = require('sinon');
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
   var supports = require('../helper/supports');
-  var platform = require('ally/util/platform');
   var elementFocus = require('ally/element/focus');
   var visibleArea = require('ally/util/visible-area');
 
@@ -79,12 +78,10 @@ define(function(require) {
     });
 
     bdd.describe('for SVG elements', function() {
-      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
-
       bdd.it('should focus SVG links', function() {
         var element = document.getElementById('svg-link');
         var result = elementFocus(element);
-        expect(result).to.equal(canFocusSvg ? element : null);
+        expect(result).to.equal(supports.focusingSvgElements ? element : null);
       });
 
       bdd.it('should redirect focus from descendants of SVG links', function() {
@@ -95,8 +92,7 @@ define(function(require) {
           defaultToAncestor: true,
         });
 
-        var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
-        expect(result).to.equal(canFocusSvg ? target : null);
+        expect(result).to.equal(supports.focusingSvgElements ? target : null);
       });
     });
 

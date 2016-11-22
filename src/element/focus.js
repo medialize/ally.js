@@ -1,6 +1,7 @@
 
 // wrapper for HTMLElement.prototype.focus
 
+import focusSvgForeignObjectHack from './focus.svg-foreign-object-hack';
 import getFocusTarget from '../get/focus-target';
 import isActiveElement from '../is/active-element';
 import isFocusable from '../is/focusable';
@@ -23,9 +24,10 @@ function focus(element) {
     // IE9 - 11 will let us abuse HTMLElement's focus method,
     // Firefox and Edge will throw an error.
     _window.HTMLElement.prototype.focus.call(element);
-    return element;
+    return isActiveElement(element) ? element : null;
   } catch (e) {
-    return null;
+    const actionPerformed = focusSvgForeignObjectHack(element);
+    return actionPerformed && isActiveElement(element) ? element : null;
   }
 }
 
