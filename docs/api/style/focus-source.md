@@ -152,6 +152,8 @@ The `handle.unlock()` method releases the focus-source lock.
 ## Related resources
 
 * [WICG: Exposing a user’s input modality](https://discourse.wicg.io/t/exposing-a-users-input-modality/1067) and accompanying [prollyfill](https://github.com/alice/modality)
+* [CSS pseudo-class `:focus-ring`](https://drafts.csswg.org/selectors-4/#the-focusring-pseudo)
+
 
 
 ## Contributing
@@ -159,4 +161,3 @@ The `handle.unlock()` method releases the focus-source lock.
 * [module source](https://github.com/medialize/ally.js/blob/master/src/style/focus-source.js)
 * [document source](https://github.com/medialize/ally.js/blob/master/docs/api/style/focus-source.md)
 * [unit test](https://github.com/medialize/ally.js/blob/master/test/unit/style.focus-source.test.js)
-
