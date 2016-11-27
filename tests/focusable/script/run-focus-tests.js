@@ -163,14 +163,46 @@ define([
     // Otherwise MS Edge might freak and start with an iframe
     document.documentElement.scrollTop = document.body.scrollTop = 0;
     document.getElementById('tabsequence-start').focus();
+    // inform us when we're at the end
+    var endElement = document.getElementById('tabsequence-end');
+    var endHandler = function() {
+      endElement.removeEventListener('focus', endHandler, true);
+      alert('Last element reached, almowst done!');
+    };
+
+    endElement.addEventListener('focus', endHandler, true);
+
     return wait().then(function() {
       return new window.Promise(function(resolve) {
         // start observing activeElement and :focus
         var done = tabsequence.observeTabsequence();
+
+        var output = document.createElement('p');
+        var outputStyle = 'position: fixed; right:0; bottom: 70px; margin: 0; padding: 5px;'
+          + ' font-size: 24px; color: white; background: #003366;';
+        output.setAttribute('style', outputStyle);
+        document.body.appendChild(output);
+
+        var active = null;
+        var pollActiveElement = function() {
+          if (!output.parentNode) {
+            return;
+          }
+
+          if (active !== document.activeElement) {
+            output.textContent = document.activeElement.getAttribute('data-label');
+            active = document.activeElement
+          }
+
+          (window.requestAnimationFrame || window.setTimeout)(pollActiveElement)
+        };
+
+        pollActiveElement();
+
         // create a button to complete the observation
         var button = document.createElement('p');
-        button.textContent = 'click to finished sequence and continue with next text';
-        var buttonStyle = 'position: fixed; right:0; bottom: 20px; left: 0; margin: 0; padding: 5px;'
+        button.textContent = 'click to finished sequence and continue with next test';
+        var buttonStyle = 'position: fixed; right:0; bottom: 20px; margin: 0; padding: 5px;'
           + ' font-size: 24px; color: white; background: red; cursor: pointer;';
         button.setAttribute('style', buttonStyle);
         button.addEventListener('click', function(event) {
@@ -182,6 +214,7 @@ define([
           resolve(tabsequence.results);
           // remove the button and scroll to the end of the page to finish
           this.parentNode.removeChild(this);
+          document.body.removeChild(output);
           document.getElementById('output-results').scrollIntoView(true);
         }, false);
 
