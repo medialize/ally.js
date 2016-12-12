@@ -1,4 +1,6 @@
 
+// wrapper for HTMLElement.prototype.blur
+
 import isActiveElement from '../is/active-element';
 import contextToElement from '../util/context-to-element';
 import getWindow from '../util/get-window';
@@ -34,10 +36,24 @@ export default function(context) {
     // IE9 - 11 will let us abuse HTMLElement's blur method,
     // Firefox and Edge will throw an error.
     _window.HTMLElement.prototype.blur.call(element);
-    return document.activeElement;
   } catch (e) {
-    // we may want to try focusing <body> before giving up.
-    // not sure how this works for an SVG document, though.
-    return null;
+    // if we're not in an HTML document, we don't have access to document.body
+    const body = _window.document && _window.document.body;
+    if (!body) {
+      return null;
+    }
+
+    // we can't simply call document.body.focus() unless
+    // we make sure the element actually is focusable
+    const tabindex = body.getAttribute('tabindex');
+    body.setAttribute('tabindex', '-1');
+    body.focus();
+    if (tabindex) {
+      body.setAttribute('tabindex', tabindex);
+    } else {
+      body.removeAttribute('tabindex');
+    }
   }
+
+  return _window.document.activeElement;
 }

@@ -4,8 +4,6 @@ define(function(require) {
   var bdd = require('intern!bdd');
   var expect = require('intern/chai!expect');
   var focusableFixture = require('../helper/fixtures/focusable.fixture');
-  var supports = require('../helper/supports');
-  var platform = require('ally/util/platform');
   var elementFocus = require('ally/element/focus');
   var elementBlur = require('ally/element/blur');
 
@@ -61,9 +59,12 @@ define(function(require) {
         defaultToAncestor: true,
       });
 
+      if (document.activeElement !== element) {
+        this.skip('Cannot focus SVG elements in this browser');
+      }
+
       var result = elementBlur(element);
-      var canFocusSvg = supports.svgFocusMethod || platform.is.TRIDENT || platform.is.EDGE && platform.majorVersion < 13;
-      expect(result).to.equal(canFocusSvg ? document.body : null);
+      expect(result).to.equal(document.body);
     });
 
   });
