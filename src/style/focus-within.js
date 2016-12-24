@@ -19,8 +19,9 @@ import _supports from '../supports/supports';
 let supports;
 
 // preferring focusin/out because they are synchronous in IE10+11
-const focusEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusin' : 'focus');
-const blurEventName = typeof document !== 'undefined' && ('onfocusin' in document ? 'focusout' : 'blur');
+const supportsFocusIn = typeof document !== 'undefined' && 'onfocusin' in document;
+const focusEventName = supportsFocusIn ? 'focusin' : 'focus';
+const blurEventName = supportsFocusIn ? 'focusout' : 'blur';
 
 const className = 'ally-focus-within';
 // defined in engage();
