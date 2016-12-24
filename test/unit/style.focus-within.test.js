@@ -22,12 +22,16 @@ define(function(require) {
     }
 
     bdd.before(function() {
+      if (!document.hasFocus()) {
+        this.skip('focus events are not processed properly while document does not have focus');
+      }
+
       fixture = shadowInputFixture();
     });
 
     bdd.after(function() {
       handle && handle.disengage({ force: true });
-      fixture.remove();
+      fixture && fixture.remove();
       fixture = null;
     });
 
@@ -77,7 +81,7 @@ define(function(require) {
         setTimeout(deferred.callback(function() {
           expect(document.activeElement).to.equal(document.body, 'activeElement');
           _expect('ancestry', 'html body'.split(' '));
-        }), 200)
+        }), 200);
       });
 
       bdd.describe('for ShadowDOM', function() {
@@ -106,7 +110,7 @@ define(function(require) {
           _expect('ancestry in host', ['#first-input'], fixture.shadow.first.shadowRoot);
         });
 
-        bdd.it('should asdasd', function() {
+        bdd.it('should follow focus into nested ShadowHost', function() {
           // shadow dom updates are performed asynchronous
           // (async introduced by event/shadow-focus)
           var deferred = this.async(10000);

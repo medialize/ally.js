@@ -22,6 +22,10 @@ define(function(require) {
     }
 
     function before() {
+      if (!document.hasFocus()) {
+        this.skip('focus events are not processed properly while document does not have focus');
+      }
+
       fixture = shadowInputFixture();
       events = [];
       document.addEventListener('shadow-focus', collectShadowFocusEvents, true);
@@ -37,7 +41,7 @@ define(function(require) {
       handle && handle.disengage({ force: true });
       document.removeEventListener('shadow-focus', collectShadowFocusEvents, true);
       document.removeEventListener('focus', collectFocusEvents, true);
-      fixture.remove();
+      fixture && fixture.remove();
       fixture = null;
       events = null;
     }

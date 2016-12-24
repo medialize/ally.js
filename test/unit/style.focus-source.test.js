@@ -32,12 +32,16 @@ define(function(require) {
     }
 
     bdd.before(function() {
+      if (!document.hasFocus()) {
+        this.skip('focus events are not processed properly while document does not have focus');
+      }
+
       fixture = shadowInputFixture();
     });
 
     bdd.after(function() {
       handle && handle.disengage({ force: true });
-      fixture.remove();
+      fixture && fixture.remove();
       fixture = null;
     });
 
