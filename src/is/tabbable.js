@@ -52,7 +52,7 @@ function isTabbableRules({
 
   const frameElement = getFrameElement(element);
   if (frameElement) {
-    if (platform.is.WEBKIT && platform.is.IOS && platform.majorVersion < 10) {
+    if (platform.is.WEBKIT && platform.is.IOS) {
       // iOS only does not consider anything from another browsing context keyboard focusable
       return false;
     }
