@@ -43,6 +43,7 @@ For the tests to run properly, the document needs to have focus during execution
 | focus-scroll-container | boolean | true if a scrollable element is focusable |
 | focus-summary | boolean | true if the browser implements `<details>` and `<summary>` is focusable |
 | focus-svg | boolean | true if `<svg>` is focusable |
+| focus-svg-in-iframe | boolean | true if `<svg>` is focusable if it's the root of a browsing context |
 | focus-svg-focusable-attribute | boolean | true if `<text focusable="true">` is focusable |
 | focus-svg-tabindex-attribute | boolean | true if `<text tabindex="0">` is focusable |
 | focus-svg-negative-tabindex-attribute | boolean | true if `<text tabindex="-1">` is focusable |

@@ -60,10 +60,10 @@ Boolean, `true` if the element is focus relevant.
 * Since `v1.1.0` exceptions can be passed to `ally.is.focusRelevant.rules(options)`.
 * Since `v1.1.0` IE9 properly resolves SVG links (`<a xlink:href="…">`).
 * In `v1.3.0` the `element.prototype.matches` was replaced by `util/element-matches`.
-* Since `v#master` SVG elements with `tabindex="-1"` are handled properly in Firefox 51 and 51 ([Bug 1302340](https://bugzilla.mozilla.org/show_bug.cgi?id=1302340)) as well as MS Edge 14.
+* Since `v#master` SVG elements with `tabindex="-1"` are handled properly in Firefox 51 ([Bug 1302340](https://bugzilla.mozilla.org/show_bug.cgi?id=1302340)) as well as MS Edge 14.
 * Since `v#master` only Blink considers `<use … tabindex="-1">` focus relevant.
 * Since `v#master` only Blink and WebKit consider `<foreignObject … tabindex="-1">` focus relevant.
-
+* Since `v#master` the document element (`<svg>`) of SVG documents in browsing contexts (`<iframe>`, `<object>`) is considered focus relevant in Firefox 51.
 
 ## Notes
 

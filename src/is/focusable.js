@@ -145,6 +145,11 @@ function isFocusableRules({
     }
   }
 
+  const nodeName = element.nodeName.toLowerCase();
+  if (nodeName === 'svg' && supports.focusSvgInIframe && !frameElement && element.getAttribute('tabindex') === null) {
+    return false;
+  }
+
   return true;
 }
 

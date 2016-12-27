@@ -144,6 +144,10 @@ function isTabbableRules({
     }
   }
 
+  if (nodeName === 'svg' && supports.focusSvgInIframe && hasTabbableTabindexOrNone) {
+    return true;
+  }
+
   if (platform.is.TRIDENT || platform.is.EDGE) {
     if (nodeName === 'svg') {
       if (supports.focusSvg) {

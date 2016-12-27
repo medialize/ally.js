@@ -160,7 +160,7 @@ function isFocusRelevantRules({
   }
 
   if (isSvgElement) {
-    return validTabindex || supports.focusSvg
+    return validTabindex || supports.focusSvg || supports.focusSvgInIframe
       // Internet Explorer understands the focusable attribute introduced in SVG Tiny 1.2
       || Boolean(supports.focusSvgFocusableAttribute && focusableAttribute && focusableAttribute === 'true');
   }
