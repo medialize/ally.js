@@ -131,6 +131,5 @@ define(function(require) {
         expect(visibleArea(target)).to.equal(0);
       });
     });
-
   });
 });

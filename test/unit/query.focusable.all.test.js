@@ -111,7 +111,7 @@ define(function(require) {
     bdd.describe('for children of <canvas>', function() {
       bdd.it('should find all focusable elements', function() {
         var container = fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<canvas>',
             '<input type="text" id="canvas-input">',
             '<input type="text" id="canvas-input-tabindex--1" tabindex="-1">',
@@ -201,6 +201,5 @@ define(function(require) {
         expect(result).to.deep.equal(expected);
       });
     });
-
   });
 });

@@ -32,7 +32,7 @@ const config = {
   // MD030: false, // Spaces after list markers
   MD033: {
     // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md033---inline-html
-    /*eslint-disable camelcase */
+    /* eslint-disable camelcase */
     allowed_elements: ['kbd', 'a'],
     /*eslint-enable camelcase */
   },
@@ -45,8 +45,8 @@ markdownlint({
   frontMatter: /(^---$[^]*?^---$)?(\r\n|\r|\n){1,}/m,
   config: config,
 }, function(err, result) {
-  /*eslint-disable no-console */
-  /*eslint-disable no-process-exit */
+  /* eslint-disable no-console */
+  /* eslint-disable no-process-exit */
   if (err) {
     console.error(err);
     process.exit(1);
@@ -56,8 +56,7 @@ markdownlint({
   if (resultString) {
     console.error(resultString);
     process.exit(1);
-
   }
-  /*eslint-enable no-console */
-  /*eslint-enable no-process-exit */
+  /* eslint-enable no-console */
+  /* eslint-enable no-process-exit */
 });

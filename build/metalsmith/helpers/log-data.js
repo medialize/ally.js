@@ -1,6 +1,6 @@
 
 module.exports = function(context) {
-  /*eslint-disable no-console */
+  /* eslint-disable no-console */
   // context.name - helper name
   // context.hash - arguments map
   // context.data - data map
@@ -19,5 +19,5 @@ module.exports = function(context) {
     console.log('dumping everything because of circular references');
     console.log(context.data.root);
   }
-  /*eslint-enable no-console */
+  /* eslint-enable no-console */
 };

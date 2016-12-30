@@ -1,7 +1,6 @@
 define([
   './utils',
 ], function(utils) {
-
   function FocusEventObserver() {
     this.seenBefore = {};
     this.callback = null;

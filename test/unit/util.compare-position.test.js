@@ -79,6 +79,5 @@ define(function(require) {
         expect(isParent(sibling)).to.equal(false, 'sibling');
       });
     });
-
   });
 });

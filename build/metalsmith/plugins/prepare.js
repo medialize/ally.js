@@ -3,7 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 const transform = require('./prepare.transform.js');
 
-module.exports = function plugin(/*options*/) {
+module.exports = function plugin(/* options */) {
   return function(files, metalsmith, done) {
     setImmediate(done);
 

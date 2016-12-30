@@ -1,5 +1,4 @@
 define([], function() {
-
   return {
     elementName: function(element) {
       return element ? element.getAttribute('data-label') || element.nodeName : '-null-';
@@ -58,5 +57,4 @@ define([], function() {
     // promise waterfall
     // https://remysharp.com/2015/12/18/promise-waterfall
   };
-
 });

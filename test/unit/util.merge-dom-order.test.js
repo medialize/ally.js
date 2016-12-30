@@ -144,6 +144,5 @@ define(function(require) {
 
       expect(result).to.deep.equal(expected, 'merged in dom order');
     });
-
   });
 });

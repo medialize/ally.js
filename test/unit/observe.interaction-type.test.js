@@ -136,6 +136,5 @@ define(function(require) {
         expect(type.key).to.equal(false, 'key-down key');
       });
     });
-
   });
 });

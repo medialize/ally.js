@@ -8,7 +8,6 @@ define([
   'jquery',
   'jquery-ui/core',
 ], function(utils, elementMatches, isFocusable, isTabbable, isOnlyTabbable, getFocusRedirectTarget, $) {
-
   // infrastructure grabbing all the elements we have
   function Elements() {
     // [html, head, …]
@@ -135,9 +134,9 @@ define([
       });
 
       keys.forEach(function(key) {
-        /*eslint-disable no-console */
+        /* eslint-disable no-console */
         console.warn('duplicate', key, map[key]);
-        /*eslint-enable no-console */
+        /* eslint-enable no-console */
       });
 
       return result;

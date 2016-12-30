@@ -74,7 +74,7 @@ function after(data) {
     document.activeElement && document.activeElement.blur && document.activeElement.blur();
     if (platform.is.IE10) {
       // IE10 does not redirect focus to <body> when the activeElement is removed
-      document.body.focus()
+      document.body.focus();
     }
   } else {
     data.activeElement && data.activeElement.focus && data.activeElement.focus();

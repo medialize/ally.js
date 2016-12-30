@@ -31,9 +31,9 @@ function setStatus(options, done) {
   options.owner = data.owner;
   options.repo = data.repo;
   options.sha = data.sha;
-  /*eslint-disable camelcase */
+  /* eslint-disable camelcase */
   options.target_url = options.url;
-  /*eslint-enable camelcase */
+  /* eslint-enable camelcase */
   github.repos.createStatus(options, function(err) {
     if (err) {
       throw err;

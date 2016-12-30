@@ -12,7 +12,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="non-map">',
           '<area id="non-map-area" href="#void" shape="rect" coords="63,19,144,45">',
         '</div>',
@@ -87,6 +87,5 @@ define(function(require) {
         expect(image).to.equal(null);
       });
     });
-
   });
 });

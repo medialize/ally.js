@@ -1,5 +1,4 @@
 define(function(require) {
-
   var platform = require('ally/util/platform');
   var supports = require('ally/supports/supports')();
 

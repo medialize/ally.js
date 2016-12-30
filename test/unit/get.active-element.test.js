@@ -15,7 +15,7 @@ define(function(require) {
       fixture = focusableFixture();
 
       frame = new TestFrame([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<!DOCTYPE html>',
         '<html lang="en">',
           '<head>',
@@ -81,6 +81,5 @@ define(function(require) {
         expect(result).to.equal(target);
       });
     });
-
   });
 });

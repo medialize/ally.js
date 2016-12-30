@@ -11,7 +11,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<a id="self" href="#" data-label="self">',
           '<span data-label="self-wrap"><span data-label="self-inner">nested</span></span>',
         '</a>',
@@ -95,6 +95,5 @@ define(function(require) {
 
       expect(target.id).to.equal('flexbox-container');
     });
-
   });
 });

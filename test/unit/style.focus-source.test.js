@@ -153,6 +153,5 @@ define(function(require) {
         expect(document.documentElement.hasAttribute('data-focus-source')).to.equal(false, 'attribute');
       });
     });
-
   });
 });

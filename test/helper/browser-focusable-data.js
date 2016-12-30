@@ -19,7 +19,6 @@ define([
   'intern/dojo/text!../../tests/focusable/data/chrome-mobile.json',
   'intern/dojo/text!../../tests/focusable/data/ios-10.json',
 ], function() {
-
   var data = [].map.call(arguments, JSON.parse);
 
   function findPlatform(product, name, version) {
@@ -62,5 +61,4 @@ define([
 
     return results;
   };
-
 });

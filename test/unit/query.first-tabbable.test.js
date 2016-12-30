@@ -132,6 +132,5 @@ define(function(require) {
         expect(result).to.equal(expected);
       });
     });
-
   });
 });

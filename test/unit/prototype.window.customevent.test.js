@@ -7,7 +7,6 @@ define(function(require) {
   var CustomEvent = require('ally/prototype/window.customevent');
 
   bdd.describe('prototype/window.customevent', function() {
-
     bdd.it('should provide window.CustomEvent', function() {
       if (getFunctionName(CustomEvent) !== 'CustomEventPolyfill') {
         this.skip('CustomEvent supported natively');
@@ -15,6 +14,5 @@ define(function(require) {
 
       expect(CustomEvent).to.be.a('function');
     });
-
   });
 });

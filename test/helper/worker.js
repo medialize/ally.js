@@ -1,4 +1,4 @@
-/*eslint-env worker*/
+/* eslint-env worker */
 importScripts('../../node_modules/requirejs/require.js');
 
 require.config({
@@ -14,10 +14,10 @@ require.config({
 
 function stringToCallable(text) {
   var argumentNames;
-  var functionBody = text.replace(/\(([^\)]+)\)/, function(match, args) {
+  var functionBody = text.replace(/\(([^)]+)\)/, function(match, args) {
     argumentNames = args.replace(/\s+/, '').split(',');
     return '';
-  }).replace(/^function[^\{]+\{([\w\W]+)\}$/, '$1');
+  }).replace(/^function[^{]+\{([\w\W]+)\}$/, '$1');
   return Function.apply(Function, argumentNames.concat([functionBody]));
 }
 

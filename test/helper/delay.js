@@ -8,5 +8,4 @@ define(function(require) {
     setTimeout(dfd.resolve, duration);
     return dfd.promise;
   };
-
 });

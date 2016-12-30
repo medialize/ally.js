@@ -328,7 +328,7 @@ define(function(require) {
     bdd.describe('for CSS Flexbox Layout', function() {
       bdd.before(function() {
         fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div id="flexbox-parent" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
             '<span id="flexbox-child" style="display: block;">hello</span>',
           '</div>',
@@ -357,7 +357,7 @@ define(function(require) {
         }
 
         host = fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div></div>',
           /*eslint-enable indent */
         ]).firstElementChild;
@@ -379,6 +379,5 @@ define(function(require) {
         expect(isFocusableAndTabbable(host)).to.equal(trueUnlessPlatform);
       });
     });
-
   });
 });

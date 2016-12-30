@@ -29,6 +29,5 @@ define(function(require) {
       expect(handle.disengage).to.be.a('function');
       handle.disengage();
     });
-
   });
 });

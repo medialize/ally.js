@@ -261,6 +261,5 @@ define(function(require) {
         }), 50);
       });
     });
-
   });
 });

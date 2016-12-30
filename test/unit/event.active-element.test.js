@@ -158,6 +158,5 @@ define(function(require) {
         }), 20);
       });
     });
-
   });
 });

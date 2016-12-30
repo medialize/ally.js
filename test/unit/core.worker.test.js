@@ -54,6 +54,5 @@ define(function(require) {
         });
       });
     });
-
   });
 });

@@ -95,6 +95,5 @@ define(function(require) {
 
       expect(result).to.deep.equal(expected);
     });
-
   });
 });

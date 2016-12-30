@@ -63,7 +63,7 @@ function extractData($, data) {
   }
 }
 
-function rewriteUrlsFromMdToHtml($/*, data*/) {
+function rewriteUrlsFromMdToHtml($/*, data */) {
   // rewrite relative *.md to *.html
   $('a').each(function() {
     const $this = $(this);
@@ -77,7 +77,7 @@ function rewriteUrlsFromMdToHtml($/*, data*/) {
   });
 }
 
-function removeEmptyApiSections($/*, data*/) {
+function removeEmptyApiSections($/*, data */) {
   $('h2').each(function() {
     const $headline = $(this);
     if ($headline.next().is('h2')) {
@@ -112,7 +112,7 @@ function extractTableOfContents($, data) {
   });
 }
 
-function convertCodeLanguageForPrism($/*, data*/) {
+function convertCodeLanguageForPrism($/*, data */) {
   $('pre > code').each(function() {
     const $this = $(this);
     const className = $this.attr('class')

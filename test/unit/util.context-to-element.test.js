@@ -6,7 +6,6 @@ define(function(require) {
   var contextToElement = require('ally/util/context-to-element');
 
   bdd.describe('util/context-to-element', function() {
-
     bdd.describe('for array input', function() {
       bdd.it('should return the first element', function() {
         var first = document.createElement('div');
@@ -85,6 +84,5 @@ define(function(require) {
         expect(element).to.equal(document.documentElement);
       });
     });
-
   });
 });

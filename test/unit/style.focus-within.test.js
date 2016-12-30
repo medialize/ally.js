@@ -139,6 +139,5 @@ define(function(require) {
         _expect('after disengage', []);
       });
     });
-
   });
 });

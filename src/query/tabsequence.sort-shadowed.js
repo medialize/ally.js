@@ -64,7 +64,7 @@ class Shadows {
   // later on
   extractElements(elements) {
     return elements.filter(function(element) {
-      const host = getShadowHost({context: element });
+      const host = getShadowHost({ context: element });
       if (!host) {
         return true;
       }

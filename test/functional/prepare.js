@@ -70,6 +70,5 @@ define(function(require) {
           this.session.capabilities.shiftModifierKey = tabKeyEvent.indexOf(':shift') > -1;
         });
     });
-
   });
 });

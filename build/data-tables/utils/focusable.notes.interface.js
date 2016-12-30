@@ -167,9 +167,9 @@ class Notes {
     const key = source + ' --- ' + target;
     let message = this.redirections[key];
     if (!message) {
-      /*eslint-disable no-console */
+      /* eslint-disable no-console */
       console.warn('no redirect resolution for "' + key + '"');
-      /*eslint-enable no-console */
+      /* eslint-enable no-console */
       message = this._addMessage('Redirecting to ' + target);
       this.redirections[key] = message;
     }

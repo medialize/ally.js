@@ -7,7 +7,7 @@ define(function(require) {
   var pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
 
   Command.prototype.setTimeouts = function(timeout) {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .setPageLoadTimeout(timeout)
         .setFindTimeout(timeout)
@@ -16,7 +16,7 @@ define(function(require) {
   };
 
   Command.prototype.withActiveElement = function(callback) {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .execute('return document.activeElement.id || document.activeElement.nodeName.toUpperCase()')
         .then(callback);
@@ -30,7 +30,7 @@ define(function(require) {
   };
 
   Command.prototype.focusForward = function() {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       var _keys = this.session.capabilities.shiftFocusOnAltTabToLink
         ? [keys.ALT, keys.TAB]
         : [keys.TAB];
@@ -42,7 +42,7 @@ define(function(require) {
   };
 
   Command.prototype.focusBackward = function() {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       var _keys = this.session.capabilities.shiftFocusOnAltTabToLink
         ? [keys.ALT, keys.SHIFT, keys.TAB]
         : [keys.SHIFT, keys.TAB];
@@ -54,7 +54,7 @@ define(function(require) {
   };
 
   Command.prototype.focusBody = function() {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .findByCssSelector('body')
           .click()
@@ -63,7 +63,7 @@ define(function(require) {
   };
 
   Command.prototype.focusById = function(id) {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .findById(id)
           .click()
@@ -72,7 +72,7 @@ define(function(require) {
   };
 
   Command.prototype.skipUnlessCapability = function(test, capabilities, message) {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       if (!Array.isArray(capabilities)) {
         capabilities = [capabilities];
       }
@@ -90,7 +90,7 @@ define(function(require) {
   };
 
   Command.prototype.skipPlatform = function(test, callback, message) {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .getPlatform()
         .then(function(platform) {
@@ -102,14 +102,14 @@ define(function(require) {
   };
 
   Command.prototype.getPlatform = function() {
-    return new this.constructor(this, function () {
+    return new this.constructor(this, function() {
       return this.parent
         .then(pollUntil('return window._platform'));
     });
   };
 
   Command.prototype.useCommand = function(CustomCommand) {
-    return new CustomCommand(this, function () {});
+    return new CustomCommand(this, function() {});
   };
 
   return function(prototype) {
@@ -123,13 +123,12 @@ define(function(require) {
     Object.keys(prototype).forEach(function(name) {
       CustomCommand.prototype[name] = function() {
         var args = arguments;
-        return new this.constructor(this, function () {
+        return new this.constructor(this, function() {
           prototype[name].apply(this, args);
         });
-      }
+      };
     });
 
     return CustomCommand;
   };
-
 });

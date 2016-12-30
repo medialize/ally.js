@@ -1,4 +1,4 @@
-/*global Promise*/
+/* global Promise */
 define([
   './utils',
   './active-element-observer',
@@ -10,7 +10,6 @@ define([
   'jquery',
   'jquery-ui/core',
 ], function(utils, ActiveElementObserver, CssFocusObserver, FocusEventObserver, queryFocusable, queryTabbable, queryTabsequence, $) {
-
   function mapLabels(list) {
     return list.map(utils.elementName).filter(utils.removeIgnoredName);
   }
@@ -61,7 +60,7 @@ define([
         }.bind(this);
 
         // setup observers
-        return new Promise(function(resolve /*, reject*/) {
+        return new Promise(function(resolve /*, reject */) {
           callback(element, function(data) {
             results[elementName] = data;
             terminateElement();

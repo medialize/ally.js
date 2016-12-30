@@ -6,7 +6,6 @@ define([
   './format-result',
   './focus-element',
 ], function(platform, utils, Elements, Collector, formatResult, focusElement) {
-
   function resetActiveElement() {
     document.activeElement && document.activeElement.blur && document.activeElement.blur();
     document.body.focus();
@@ -29,9 +28,9 @@ define([
 
   function log(message) {
     return function(res) {
-      /*eslint-disable no-console */
+      /* eslint-disable no-console */
       console.log(message);
-      /*eslint-enable no-console */
+      /* eslint-enable no-console */
       return res;
     };
   }
@@ -144,9 +143,9 @@ define([
     // IE10 reacts bad to the <object>s, so we simply remove them
     // related to https://connect.microsoft.com/IE/feedback/details/1109008
     if (platform.name === 'IE' && platform.version === '10.0') {
-      /*eslint-disable no-alert */
+      /* eslint-disable no-alert */
       alert('removing <object> because IE might get stuck');
-      /*eslint-enable no-alert */
+      /* eslint-enable no-alert */
       [].forEach.call(document.querySelectorAll('.hide-from-ie10'), function(element) {
         element.parentNode.removeChild(element);
       });
@@ -156,9 +155,9 @@ define([
     // once it encounters a <use> element referencing focusable content
     // see http://jsbin.com/yukogaluju/1/edit?html,js,output
     if (platform.name === 'Safari' && parseInt(platform.version) === 8) {
-      /*eslint-disable no-alert */
+      /* eslint-disable no-alert */
       alert('removing <use> because Safari 8 might get stuck');
-      /*eslint-enable no-alert */
+      /* eslint-enable no-alert */
       [].forEach.call(document.querySelectorAll('.hide-from-safari8'), function(element) {
         element.parentNode.removeChild(element);
       });
@@ -166,10 +165,10 @@ define([
 
     resetActiveElement();
 
-    /*eslint-disable no-alert */
+    /* eslint-disable no-alert */
     alert('With closed DevTools, hit TAB until you reach the browser address bar.'
       + ' Then click on the red banner at the bottom');
-    /*eslint-enable no-alert */
+    /* eslint-enable no-alert */
 
     // start with a common element
     // Otherwise MS Edge might freak and start with an iframe
@@ -203,10 +202,10 @@ define([
 
           if (active !== document.activeElement) {
             output.textContent = document.activeElement.getAttribute('data-label');
-            active = document.activeElement
+            active = document.activeElement;
           }
 
-          (window.requestAnimationFrame || window.setTimeout)(pollActiveElement)
+          (window.requestAnimationFrame || window.setTimeout)(pollActiveElement);
         };
 
         pollActiveElement();
@@ -263,9 +262,9 @@ define([
     .then(wait)
     .then(prepareResult)
     .then(null, function(error) {
-      /*eslint-disable no-console */
+      /* eslint-disable no-console */
       console.error(error);
       console.error(error.stack);
-      /*eslint-enable no-console */
+      /* eslint-enable no-console */
     });
 });

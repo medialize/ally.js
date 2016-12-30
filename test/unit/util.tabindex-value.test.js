@@ -12,7 +12,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="tabindex-none">text</div>',
         '<div id="tabindex-empty" tabindex="">text</div>',
         '<div id="tabindex-bad" tabindex="bad">text</div>',
@@ -91,6 +91,5 @@ define(function(require) {
         expect(result).to.equal(expected);
       });
     });
-
   });
 });

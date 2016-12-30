@@ -17,7 +17,7 @@ define(function(require) {
         // see https://gist.github.com/rodneyrehm/23df2ae750ca5bac96f7ad93ffcf69bd
         .skipPlatform(this, function(platform) {
           return platform.is.IE10;
-        }, 'This Test will not run on BrowserStack in IE10')
+        }, 'This Test will not run on BrowserStack in IE10');
     });
 
     bdd.it('should wrap tab to next element', function() {

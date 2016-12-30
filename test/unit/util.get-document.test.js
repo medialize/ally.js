@@ -20,6 +20,5 @@ define(function(require) {
       var _document = getDocument(document.body);
       expect(_document).to.equal(document);
     });
-
   });
 });

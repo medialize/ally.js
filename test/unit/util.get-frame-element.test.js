@@ -19,7 +19,7 @@ define(function(require) {
 
       bdd.before(function() {
         frame = new TestFrame([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<!DOCTYPE html>',
           '<html lang="en">',
             '<head>',
@@ -56,7 +56,7 @@ define(function(require) {
         var dfd = new Promise.Deferred();
 
         fixture = customFixture([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<object type="image/svg+xml" typemustmatch="false" id="object-svg" data="../../tests/media/test.svg" width="200" height="50"></object>',
           /*eslint-enable indent */
         ]);
@@ -143,6 +143,5 @@ define(function(require) {
         expect(cachedFrameElement).to.equal(object);
       });
     });
-
   });
 });

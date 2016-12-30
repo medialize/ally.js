@@ -31,15 +31,15 @@ const config = {
 };
 
 requirejs.optimize(config, function(/* buildResponse */) {
-  //buildResponse is just a text output of the modules
-  //included. Load the built file for the contents.
-  //Use config.out to get the optimized file contents.
-  //var contents = fs.readFileSync(config.out, 'utf8');
+  // buildResponse is just a text output of the modules
+  // included. Load the built file for the contents.
+  // Use config.out to get the optimized file contents.
+  // var contents = fs.readFileSync(config.out, 'utf8');
 }, function(err) {
-  /*eslint-disable no-console */
+  /* eslint-disable no-console */
   console.log(err);
-  /*eslint-enable no-console */
-  /*eslint-disable no-process-exit */
+  /* eslint-enable no-console */
+  /* eslint-disable no-process-exit */
   process.exit(1);
-  /*eslint-enable no-process-exit */
+  /* eslint-enable no-process-exit */
 });

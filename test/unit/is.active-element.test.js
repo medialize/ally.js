@@ -84,7 +84,7 @@ define(function(require) {
         }
 
         host = fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div></div>',
           /*eslint-enable indent */
         ]).firstElementChild;
@@ -106,6 +106,5 @@ define(function(require) {
         expect(isActiveElement(document.body)).to.equal(false, 'body');
       });
     });
-
   });
 });

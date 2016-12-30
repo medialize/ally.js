@@ -11,7 +11,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div style="height: 100px; width: 100px; overflow: auto;">',
           '<div style="height: 200px; width: 200px;">spacer</div>',
           '<div style="height: 100px; overflow: auto;">',
@@ -48,7 +48,5 @@ define(function(require) {
       expect(inner.scrollTop).to.equal(0, 'inner.scrollTop');
       expect(inner.scrollLeft).to.equal(0, 'inner.scrollTop');
     });
-
-
   });
 });

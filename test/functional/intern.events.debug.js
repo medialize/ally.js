@@ -145,7 +145,6 @@ define(function(require) {
     var resetAndReturnEvents = 'var _events = window.events.slice(0); window.events.length = 0; return _events;';
     var resetEvents = 'window.events.length = 0; return null;';
 
-
     bdd.before(function() {
       return this.remote
         .setTimeouts(timeout)
@@ -229,6 +228,5 @@ define(function(require) {
           .then(skipLoggingEvents.bind(this));
       });
     });
-
   });
 });

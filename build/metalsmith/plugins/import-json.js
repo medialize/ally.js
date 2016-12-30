@@ -12,10 +12,10 @@ function importFile(path) {
     const content = fs.readFileSync(path, { encoding: 'utf8' });
     return JSON.parse(content);
   } catch (error) {
-    /*eslint-disable no-console */
+    /* eslint-disable no-console */
     console.error('could not parse ', path, 'as JSON');
     console.error(error);
-    /*eslint-enable no-console */
+    /* eslint-enable no-console */
   }
 
   return null;
@@ -32,10 +32,10 @@ function extractMetalsmithFile(files, name) {
     const content = files[name].contents.toString();
     data = JSON.parse(content);
   } catch (error) {
-    /*eslint-disable no-console */
+    /* eslint-disable no-console */
     console.error('could not parse ', name, 'as JSON');
     console.error(error);
-    /*eslint-enable no-console */
+    /* eslint-enable no-console */
   }
 
   delete files[name];
@@ -43,7 +43,7 @@ function extractMetalsmithFile(files, name) {
   return data;
 }
 
-module.exports = function(options){
+module.exports = function(options) {
   if (!options) {
     options = {};
   }
@@ -67,4 +67,4 @@ module.exports = function(options){
 
     done();
   };
-}
+};

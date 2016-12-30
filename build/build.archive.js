@@ -12,9 +12,9 @@ function createArchive(name, type, options) {
   const archive = archiver(type, options || {});
 
   output.on('close', function() {
-    /*eslint-disable no-console */
+    /* eslint-disable no-console */
     console.log(archive.pointer() + ' total bytes');
-    /*eslint-enable no-console */
+    /* eslint-enable no-console */
   });
 
   archive.on('error', function(err) {

@@ -140,7 +140,7 @@ module.exports = function plugin(options) {
       }
 
       const file = files[filename];
-      const contents = file.contents.toString()
+      const contents = file.contents.toString();
       const $ = cheerio.load(contents);
       documents[filename] = $;
       index[filename] = extractFragmentTargets($);
@@ -149,10 +149,10 @@ module.exports = function plugin(options) {
     Object.keys(documents).forEach(function(filename) {
       const errors = verifyLinks(index, filename, documents[filename], options.ignore);
       if (errors.length) {
-        /*eslint-disable no-console */
+        /* eslint-disable no-console */
         console.log('bad links found in', filename);
         console.log(JSON.stringify(errors, null, 2));
-        /*eslint-enable no-console */
+        /* eslint-enable no-console */
       }
     });
 

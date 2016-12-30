@@ -1,6 +1,4 @@
 
-
-
 const markdown = require('metalsmith-markdownit');
 const markdownOptions = {
   linkify: true,

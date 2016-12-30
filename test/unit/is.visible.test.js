@@ -15,7 +15,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="visible-div">asd</div>',
         // empty content
         '<div id="empty-div"></div>',
@@ -62,7 +62,7 @@ define(function(require) {
       ]);
 
       frame = new TestFrame([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<!DOCTYPE html>',
         '<html lang="en">',
           '<head>',
@@ -228,6 +228,5 @@ define(function(require) {
         expect(isVisible(element)).to.equal(false);
       });
     });
-
   });
 });

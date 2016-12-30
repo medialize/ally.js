@@ -64,6 +64,5 @@ define(function(require) {
         expect(shadowHost).to.equal(fixture.shadow.second);
       });
     });
-
   });
 });

@@ -138,5 +138,4 @@ define([], function() {
     camelCase: camelCase,
     map: map,
   };
-
 });

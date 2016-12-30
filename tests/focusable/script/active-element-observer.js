@@ -2,7 +2,6 @@ define([
   './utils',
   'ally/prototype/window.requestanimationframe',
 ], function(utils) {
-
   function ActiveElementObserver(doc, onTick) {
     this.document = doc || document;
     this.lastElementName = null;

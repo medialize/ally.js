@@ -11,7 +11,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div>',
           '<span id="target">target</span>',
         '</div>',
@@ -52,6 +52,5 @@ define(function(require) {
 
       expect(result).to.deep.equal(expected);
     });
-
   });
 });

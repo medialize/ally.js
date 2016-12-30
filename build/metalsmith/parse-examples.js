@@ -33,7 +33,6 @@ list.forEach(function(file) {
     embed: embed,
     edit: edit,
   };
-
 });
 
 module.exports = examples;

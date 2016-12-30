@@ -12,7 +12,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div tabindex="-1" id="non-input"></div>',
         '<input type="text" id="non-disabled-input">',
         '<input type="text" id="disabled-input" disabled>',
@@ -107,6 +107,5 @@ define(function(require) {
         expect(res).to.equal(!supports.focusFormDisabled);
       });
     });
-
   });
 });

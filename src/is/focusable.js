@@ -42,7 +42,7 @@ function isOnlyFocusRelevant(element) {
     return !supports.focusLabelTabindex || _tabindex === null;
   }
 
-  if (nodeName === 'legend' ) {
+  if (nodeName === 'legend') {
     return _tabindex === null;
   }
 

@@ -133,6 +133,5 @@ define(function(require) {
         });
       });
     });
-
   });
 });

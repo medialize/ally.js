@@ -26,10 +26,10 @@ module.exports = function(md, options) {
     : getUrlByReplace;
 
   md.core.ruler.push('link-code', function(state) {
-    const tokens = state.tokens
+    const tokens = state.tokens;
     for (let i = 0; i < tokens.length; i++) {
       if (tokens[i].type !== 'inline') {
-        continue
+        continue;
       }
 
       let inLink = false;
@@ -47,7 +47,7 @@ module.exports = function(md, options) {
         }
 
         if (code.type !== 'code_inline' || inLink) {
-          continue
+          continue;
         }
 
         const match = code.content.match(options.pattern);

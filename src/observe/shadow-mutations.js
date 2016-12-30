@@ -51,7 +51,6 @@ class ShadowMutationObserver {
   }
 }
 
-
 export default function({
   context,
   callback,

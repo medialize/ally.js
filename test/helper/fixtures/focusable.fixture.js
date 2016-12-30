@@ -10,7 +10,7 @@ define(function(require) {
 
   return function(context) {
     return customFixture([
-      /*eslint-disable indent */
+      /* eslint-disable indent */
       // tabindex attribute
       '<div id="inert-div">a</div>',
       '<div tabindex="-1" id="tabindex--1">a</div>',

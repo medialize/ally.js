@@ -6,7 +6,6 @@ define(function(require) {
   var decorateContext = require('ally/util/decorate-context');
 
   bdd.describe('util/decorate-context', function() {
-
     bdd.it('should engage and disengage the service', function() {
       var engaged = [];
       var disengaged = [];
@@ -92,6 +91,5 @@ define(function(require) {
       handle.disengage();
       expect(disengaged).to.deep.equal(['hello', 'world'], 'disengaged elements after stop');
     });
-
   });
 });

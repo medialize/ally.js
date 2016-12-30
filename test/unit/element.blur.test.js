@@ -66,6 +66,5 @@ define(function(require) {
       var result = elementBlur(element);
       expect(result).to.equal(document.body);
     });
-
   });
 });

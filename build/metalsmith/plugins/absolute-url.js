@@ -25,7 +25,7 @@ const urlSelector = Object.keys(URI.domAttributes).map(function(tagName) {
   return tagName + '[' + URI.domAttributes[tagName] + ']';
 }).join(',');
 
-function filter(file, files, filePath /*, options*/) {
+function filter(file, files, filePath /*, options */) {
   // skip mutations for anything that isn't html
   if (filePath.ext !== '.html') {
     return true;

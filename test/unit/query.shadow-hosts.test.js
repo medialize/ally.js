@@ -31,7 +31,7 @@ define(function(require) {
         this.skip('ShadowDOM is supported');
       }
 
-      var result = queryShadowHosts()
+      var result = queryShadowHosts();
       expect(result).to.deep.equal([]);
     });
 
@@ -71,6 +71,5 @@ define(function(require) {
         expect(elements).to.deep.equal(expected);
       });
     });
-
   });
 });

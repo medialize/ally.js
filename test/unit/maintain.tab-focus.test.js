@@ -13,7 +13,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="outer">',
           '<div id="inner">',
             '<input type="text" id="first">',
@@ -61,6 +61,5 @@ define(function(require) {
 
       expect(document.activeElement.id).to.equal('first', 'tab key not handled after disengage');
     });
-
   });
 });

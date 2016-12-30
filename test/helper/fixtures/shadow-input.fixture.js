@@ -41,7 +41,7 @@ define(function(require) {
 
   function createFixture(context) {
     var fixture = customFixture([
-      /*eslint-disable indent */
+      /* eslint-disable indent */
       '<input id="outer-input" type="text" value="outer-input">',
       '<div id="first-shadow-host" class="shadow-host"></div>',
       '<div id="after-wrapper">',

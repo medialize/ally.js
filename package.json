@@ -73,6 +73,7 @@
     "publish:algolia": "node build/publish.algolia.js",
     "lint": "npm-run-all --parallel lint:js lint:md lint:md:js",
     "lint:js": "eslint $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}')",
+    "lint:js:fix": "eslint --fix $(glob-cli '{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}')",
     "lint:md": "node build/markdownlint.js $(glob-cli '{*.md,docs/**/*.md}')",
     "lint:md:js": "eslint --ext md $(glob-cli 'docs/**/*.md')",
     "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",

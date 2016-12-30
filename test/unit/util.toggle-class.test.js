@@ -64,6 +64,5 @@ define(function(require) {
         expect(div.className).to.equal('bravo');
       });
     });
-
   });
 });

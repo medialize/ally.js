@@ -20,7 +20,6 @@ require.config({
 
 function runFocusTests() {
   require(['./script/run-focus-tests'], function(results) {
-
     results.then(function(data) {
       var placeholder = document.getElementById('output-results');
 
@@ -42,7 +41,6 @@ function runFocusTests() {
 
       form.scrollIntoView && form.scrollIntoView(true);
     });
-
   });
 }
 

@@ -63,6 +63,5 @@ define(function(require) {
         expect(isShadowed(fixture.input.second)).to.equal(true);
       });
     });
-
   });
 });

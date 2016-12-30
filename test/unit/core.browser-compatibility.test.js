@@ -14,7 +14,6 @@ define(function(require) {
   var queryTabsequence = require('ally/query/tabsequence');
 
   bdd.describe('core: Focusable Browser Compatibility', function() {
-
     var framed = new FocusableTestFrame();
     var data = focusableTestData(platform);
 
@@ -265,6 +264,5 @@ define(function(require) {
         expect(sequence).to.deep.equal(expected);
       });
     });
-
   });
 });

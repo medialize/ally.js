@@ -12,7 +12,7 @@ define(function(require) {
 
     bdd.beforeEach(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="outer">',
           '<div id="inner">',
             '<input type="text" id="target">',
@@ -186,6 +186,5 @@ define(function(require) {
         fixture.target.disabled = false;
       }, 50);
     });
-
   });
 });

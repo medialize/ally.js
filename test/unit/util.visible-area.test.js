@@ -28,11 +28,11 @@ define(function(require) {
         // tested by when.visible-area.test, so just skip it.
         this.skip('Test does not run in iOS simulator');
       }
-    })
+    });
 
     bdd.beforeEach(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="outer">',
           '<div id="inner">',
             '<input type="text" id="target">',
@@ -74,7 +74,7 @@ define(function(require) {
     bdd.describe('for nested scrolled element', function() {
       bdd.it('should be visible 0%', function() {
         fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div id="container" style="width: 20px; height: 20px; overflow: hidden">',
             '<div id="nested-container" style="width: 20px; height: 20px; margin-left: 30px; overflow: hidden;">',
               '<div id="nested-target">target</div>',
@@ -163,6 +163,5 @@ define(function(require) {
         expect(fixFloat(visibleArea(fixture.target))).to.equal(0.75);
       });
     });
-
   });
 });

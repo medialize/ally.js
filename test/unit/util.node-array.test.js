@@ -56,6 +56,5 @@ define(function(require) {
       var res = nodeArray('.test-foo');
       expect(res).to.deep.equal(nodes);
     });
-
   });
 });

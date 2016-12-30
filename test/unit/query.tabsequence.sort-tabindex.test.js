@@ -35,6 +35,5 @@ define(function(require) {
       });
       expect(sequence).to.deep.equal(expected);
     });
-
   });
 });

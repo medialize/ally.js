@@ -10,14 +10,14 @@ function publish(indexName, fileName) {
   const file = path.resolve(process.cwd(), fileName);
   const documents = require(file);
 
-  index.saveObjects(documents, function(err/*, content*/) {
+  index.saveObjects(documents, function(err/*, content */) {
     if (err) {
-      /*eslint-disable no-console */
+      /* eslint-disable no-console */
       console.error(err);
-      /*eslint-enable no-console */
-      /*eslint-disable no-process-exit */
+      /* eslint-enable no-console */
+      /* eslint-disable no-process-exit */
       process.exit(1);
-      /*eslint-enable no-process-exit */
+      /* eslint-enable no-process-exit */
     }
   });
 }

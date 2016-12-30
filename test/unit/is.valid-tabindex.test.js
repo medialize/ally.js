@@ -111,6 +111,5 @@ define(function(require) {
         expect(isValidTabindex(element)).to.equal(supports.focusSvgTabindexAttribute);
       });
     });
-
   });
 });

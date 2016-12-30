@@ -9,13 +9,12 @@ define(function(require) {
   var getContentDocument = require('ally/util/get-content-document');
 
   bdd.describe('util/get-content-document', function() {
-
     bdd.describe('for <iframe> elements', function() {
       var frame;
 
       bdd.before(function() {
         frame = new TestFrame([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<!DOCTYPE html>',
           '<html lang="en">',
             '<head>',
@@ -29,7 +28,7 @@ define(function(require) {
           /*eslint-enable indent */
         ].join(''));
 
-        return frame.initialize(document.body)
+        return frame.initialize(document.body);
       });
 
       bdd.after(function() {
@@ -56,7 +55,7 @@ define(function(require) {
         };
 
         fixture = customFixture([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<object type="image/svg+xml" id="object-svg" data="../../tests/media/test.svg#object-svg" width="200" height="50"></object>',
           /*eslint-enable indent */
         ]);
@@ -93,7 +92,7 @@ define(function(require) {
         var dfd = new Promise.Deferred();
 
         fixture = customFixture([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<object type="image/gif" id="object-gif" data="../../tests/media/test.poster.png" width="200" height="50"></object>',
           /*eslint-enable indent */
         ]);
@@ -119,6 +118,5 @@ define(function(require) {
         expect(_document).to.equal(null);
       });
     });
-
   });
 });

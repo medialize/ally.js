@@ -19,7 +19,7 @@ define(function(require) {
 
   // https://theintern.github.io/intern/#option-environments
   // see https://www.browserstack.com/automate/capabilities
-  /*eslint-disable camelcase */
+  /* eslint-disable camelcase */
   config.environments = [
     { browser: 'Edge', browser_version: '14.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge14' },
     { browser: 'Edge', browser_version: '13.0', os: 'WINDOWS', os_version: '10', platform: 'WIN', browserName: 'Edge13' },
@@ -75,11 +75,11 @@ define(function(require) {
     // Disabled because tests are flaky and BrowserStack-Support claims Intern is the culprit
     // { browserName: 'iPhone', platform: 'MAC', device: 'iPhone 6S' },
   ];
-  /*eslint-enable camelcase */
+  /* eslint-enable camelcase */
 
   // https://theintern.github.io/intern/#option-maxConcurrency
   // OpenSauce allows 5 concurrent VMs
-  //config.maxConcurrency = 5;
+  // config.maxConcurrency = 5;
   config.maxConcurrency = 2;
   // https://theintern.github.io/intern/#option-tunnel
   config.tunnel = 'BrowserStackTunnel';

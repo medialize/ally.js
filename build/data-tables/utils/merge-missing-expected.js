@@ -29,6 +29,6 @@ Object.keys(expected).sort().forEach(function(ident) {
   result[ident] = expected[ident];
 });
 
-/*eslint-disable no-console */
+/* eslint-disable no-console */
 console.log(JSON.stringify(result, null, 2));
-/*eslint-enable no-console */
+/* eslint-enable no-console */

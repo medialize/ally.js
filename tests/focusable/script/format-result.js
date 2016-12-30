@@ -1,7 +1,6 @@
 define([
   'platform',
 ], function(platform) {
-
   /*
     results = {
       // browser meta data
@@ -147,9 +146,9 @@ define([
 
     collected.tabsequence.results.sequence.forEach(function(ident) {
       if (!results.elements[ident]) {
-        /*eslint-disable no-console */
+        /* eslint-disable no-console */
         console.warn('tabbable but otherwise unknown element', ident);
-        /*eslint-enable no-console */
+        /* eslint-enable no-console */
         results.elements[ident] = {
           ally: {},
           jquery: {},

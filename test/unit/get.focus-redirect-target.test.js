@@ -13,7 +13,7 @@ define(function(require) {
 
     bdd.before(function() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<label id="label" for="label-target">label</label><input id="label-target">',
         '<label id="label-nested">label <input id="label-nested-target"></label>',
         '<label id="label-tabindex" for="label-tabindex-target" tabindex="-1">label</label><input id="label-tabindex-target">',
@@ -224,6 +224,5 @@ define(function(require) {
         expect(target).to.equal(null);
       });
     });
-
   });
 });

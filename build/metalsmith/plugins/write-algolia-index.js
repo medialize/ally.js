@@ -11,7 +11,7 @@ function escapeHtml(string) {
     .replace(/'/g, '&quot;');
 }
 
-module.exports = function plugin(/*options*/) {
+module.exports = function plugin(/* options */) {
   return function(files, metalsmith, done) {
     const indexes = {
       documentation: [],
@@ -60,5 +60,5 @@ module.exports = function plugin(/*options*/) {
     fs.writeFileSync(apiFile, JSON.stringify(indexes.api, null, 2));
 
     done();
-  }
+  };
 };

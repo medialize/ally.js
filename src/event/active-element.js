@@ -10,7 +10,6 @@
       // event.detail.blur: element that lost focus
     }, false);
 
-
   NOTE: You *can* use event-delegation on focus events by using the capture-phase:
     document.body.addEventListener('focus', function(event) {
       // event.target: element that received focus

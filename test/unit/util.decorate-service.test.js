@@ -6,7 +6,6 @@ define(function(require) {
   var decorateService = require('ally/util/decorate-service');
 
   bdd.describe('util/decorate-service', function() {
-
     bdd.it('should engage and disengage the service', function() {
       var engaged = false;
       var decorated = decorateService({
@@ -87,7 +86,7 @@ define(function(require) {
 
       two.disengage();
       expect(engaged).to.equal(false);
-    })
+    });
 
     bdd.it('should allow more disengage() than engage() calls', function() {
       var engaged = false;
@@ -151,6 +150,5 @@ define(function(require) {
       handle.disengage({force: true});
       expect(engaged).to.equal(false);
     });
-
   });
 });

@@ -14,7 +14,7 @@ define(function(require) {
       var deferred = this.async(10000);
       fixture = focusableFixture();
       fixture.add([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<label tabindex="0" id="label-tabindex-0">text</label>',
         '<label tabindex="-1" id="label-tabindex--1">text</label>',
         /*eslint-enable indent */
@@ -285,7 +285,7 @@ define(function(require) {
     bdd.describe('for CSS Flexbox Layout', function() {
       bdd.before(function() {
         fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div id="flexbox-parent" style="display: -webkit-flex; display: -ms-flexbox; display: flex;">',
             '<span id="flexbox-child" style="display: block;">hello</span>',
           '</div>',
@@ -314,7 +314,7 @@ define(function(require) {
         }
 
         host = fixture.add([
-          /*eslint-disable indent */
+          /* eslint-disable indent */
           '<div></div>',
           /*eslint-enable indent */
         ]).firstElementChild;
@@ -331,6 +331,5 @@ define(function(require) {
         expect(isOnlyTabbable(host)).to.equal(false);
       });
     });
-
   });
 });

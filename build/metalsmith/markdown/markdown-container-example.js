@@ -2,9 +2,9 @@
 
 const examples = require('../parse-examples');
 
-module.exports = function(md/*, options*/) {
+module.exports = function(md/*, options */) {
   md.core.ruler.push('container_example', function(state) {
-    const tokens = state.tokens
+    const tokens = state.tokens;
     let containerOpen;
     let headingContent;
 
@@ -29,9 +29,9 @@ module.exports = function(md/*, options*/) {
       const example = examples[url];
 
       if (!example) {
-        /*eslint-disable no-console */
+        /* eslint-disable no-console */
         console.error('could not find example', url);
-        /*eslint-enable no-console */
+        /* eslint-enable no-console */
       }
 
       if (headingContent) {

@@ -89,7 +89,7 @@ define(function(require) {
     bdd.beforeEach(function() {
       sinon.spy(logger, 'warn');
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div tabindex="0" id="non-input"></div>',
         '<input type="text" id="input">',
         '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg">',
@@ -229,6 +229,5 @@ define(function(require) {
       bdd.it('should set aria-disabled="true"', modifiesAttribute('svg-link', 'aria-disabled', 'true', null));
       bdd.it('should overwrite aria-disabled="false"', modifiesAttribute('svg-link', 'aria-disabled', 'true', 'false'));
     });
-
   });
 });

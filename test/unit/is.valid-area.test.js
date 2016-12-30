@@ -16,7 +16,7 @@ define(function(require) {
       var deferred = this.async(10000);
 
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="non-area"></div>',
         '<map name="disconnected-map">',
           '<area id="disconnected-map-area" href="#void" shape="rect" coords="63,19,144,45">',
@@ -113,6 +113,5 @@ define(function(require) {
         expect(isValidArea(element)).to.equal(supports.focusBrokenImageMap);
       });
     });
-
   });
 });

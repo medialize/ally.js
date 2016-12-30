@@ -12,7 +12,7 @@ define(function(require) {
 
     function before() {
       fixture = customFixture([
-        /*eslint-disable indent */
+        /* eslint-disable indent */
         '<div id="uncle-1">',
           '<div id="cousin-1"></div>',
         '</div>',
@@ -219,6 +219,5 @@ define(function(require) {
         expect(cousin.getAttribute('aria-hidden')).to.equal(null, 'cousin not hidden');
       });
     });
-
   });
 });
