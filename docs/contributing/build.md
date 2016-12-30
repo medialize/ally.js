@@ -37,11 +37,11 @@ dist
 dist
 ├── <UMD bundle>
 ├── amd
-│   └── <AMD files>
+│   └── <UMD module files>
 └── common
-│   └── <CommonJS files>
+│   └── <CommonJS module files>
 └── src
-    └── <ES6 files>
+    └── <ES6 module files>
 ```
 
 `npm run build` then runs `build:post` after the bundle and modules have been created, mutating the the `dist` directory to the following structure (that is published to npm):
@@ -53,11 +53,11 @@ dist
 ├── CHANGELOG.md
 ├── LICENSE.txt
 ├── <UMD bundle>
-├── <CommonJS files>
+├── <CommonJS module files>
 ├── amd
-│   └── <AMD files>
+│   └── <UMD module files>
 └── src
-    └── <ES6 files>
+    └── <ES6 module files>
 ```
 
 At the end `npm run build` also runs `build:archive`, which creates a ZIP archive of `dist` and saves it to `dist/ally.js.zip`.
@@ -65,7 +65,7 @@ At the end `npm run build` also runs `build:archive`, which creates a ZIP archiv
 
 ### Building the UMD bundle
 
-ally.js is made available in one convenient file, consumable as a browser global (`window.ally`), via AMD and CommonJS (exposed in UMD). The source is compiled to the distributable by [browserify](https://github.com/substack/node-browserify) using [babelify](https://github.com/babel/babelify) to resolve the ES6 modules.
+ally.js is made available in one convenient file, consumable as a browser global (`window.ally`), via AMD and CommonJS (exposed in UMD). The source is compiled to the distributable by [browserify](https://github.com/substack/node-browserify) using [babelify](https://github.com/babel/babelify) and [rollupify](https://github.com/nolanlawson/rollupify/) to resolve the ES6 modules.
 
 ```sh
 # build the UMD bundle
@@ -90,7 +90,8 @@ npm run build:amd
 npm run watch:amd
 ```
 
-See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
+Since `v#master` the AMD modules are actually UMD modules, because of how babel 6 handles default exports. Since UMD can be consumed by both AMD and CommonJS system, a separate CommonJS build is not necessary anymore. However, changing the npm module's structure is a breaking change and has thus been deferred to the next major release.
+
 
 ---
 
