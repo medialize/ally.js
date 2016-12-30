@@ -102,8 +102,8 @@ metalsmith(__dirname)
     define: WEBSITE_ROOT,
   }))
   .use(prepare())
-  .use(paths())
   .use(collections(getCollectionsMap()))
+  .use(paths())
   .use(registerHelpers({
     directory: 'helpers/',
   }))
