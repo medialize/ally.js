@@ -96,17 +96,7 @@ See the [Babel CLI docs](https://babeljs.io/docs/usage/cli/)
 
 ## Linting
 
-Since ally.js is using the ES6 Module Syntax - and [eslint](https://github.com/eslint/eslint) does not support that yet - we're using [babel-eslint](https://github.com/babel/babel-eslint) as the parser in eslint and configured via [`.eslintrc`](https://github.com/medialize/ally.js/blob/master/.eslintrc). See the docs to understand the [rules](http://eslint.org/docs/rules).
-
-:::note
-Although listed in the devDependencies of package.json and thus installed locally, babel-eslint has to be installed globally:
-
-```sh
-npm install -g babel-eslint
-```
-
-:::
-
+We use [eslint](https://github.com/eslint/eslint) with [eslint-config-semistandard](https://github.com/Flet/eslint-config-semistandard) and a [few custom rules](https://github.com/medialize/ally.js/blob/master/.eslintrc.js) to keep the JavaScript sane. The markdown files are kept sane through [markdownlint](https://github.com/DavidAnson/markdownlint) and [eslint-plugin-markdown](https://github.com/eslint/eslint-plugin-markdown).
 
 ### Usage
 
@@ -119,6 +109,12 @@ npm run lint:js
 
 # lint only Markdown
 npm run lint:md
+
+# lint only JavaScript in Markdown
+npm run lint:md:js
+
+# fix linting errors
+npm run lint:js:fix
 ```
 
 Linting is done automatically during `git commit` by way of [pre-commit](https://www.npmjs.com/package/pre-commit) and limited to the actually changed files by way of [lint-staged](https://www.npmjs.com/package/lint-staged) in order to keep `git commit` as fast as possible.

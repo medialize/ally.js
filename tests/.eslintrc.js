@@ -1,5 +1,6 @@
-{
-  "extends": "../.eslintrc",
+
+module.exports = {
+  "extends": "../.eslintrc.js",
   "env": {
     "amd": 1,
     "browser": 1,
@@ -11,4 +12,4 @@
     "no-const-assign": 0,
     "prefer-const": 0
   }
-}
+};

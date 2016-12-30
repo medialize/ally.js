@@ -1,5 +1,6 @@
-{
-  "extends": "../.eslintrc",
+
+module.exports = {
+  "extends": "../.eslintrc.js",
   "plugins": [
     "markdown"
   ],
@@ -22,4 +23,4 @@
   "globals": {
     "ally": true
   }
-}
+};
