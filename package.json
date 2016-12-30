@@ -76,18 +76,19 @@
     "lint:md": "node build/markdownlint.js $(glob-cli '{*.md,docs/**/*.md}')",
     "lint:md:js": "eslint --ext md $(glob-cli 'docs/**/*.md')",
     "ci": "npm-run-all --sequential lint clean build test:browserstack publish:lcov build:website analyze:bundle",
-    "lint-staged": "lint-staged",
-    "lint-staged:js": "eslint",
-    "lint-staged:md": "node build/markdownlint.js",
-    "lint-staged:md:js": "eslint --ext md"
+    "lint-staged": "lint-staged"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
+  "pre-commit": "lint-staged",
   "lint-staged": {
-    "lint-staged:js": "{src/**/*.js,test/**/*.js,build/**/*.js,tests/focusable/**/*.js}",
-    "lint-staged:md": "{*.md,docs/**/*.md}",
-    "lint-staged:md:js": "docs/**/*.md"
+    "src/**/*.js": "eslint",
+    "test/**/*.js": "eslint",
+    "build/**/*.js": "eslint",
+    "tests/focusable/**/*.js": "eslint",
+    "*.md": "node build/markdownlint.js",
+    "docs/**/*.md": [
+      "node build/markdownlint.js",
+      "eslint --ext md"
+    ]
   },
   "devDependencies": {
     "algoliasearch": "^3.19.0",

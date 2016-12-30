@@ -2,7 +2,8 @@
 
 const markdownlint = require('markdownlint');
 
-const files = process.argv.slice(2);
+// "<binary>" "<path>" "--" "<file1>" "<file2>" "<file…>"
+const files = process.argv.slice(3);
 
 // https://github.com/DavidAnson/markdownlint#rules
 // https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
@@ -60,4 +61,3 @@ markdownlint({
   /*eslint-enable no-console */
   /*eslint-enable no-process-exit */
 });
-
