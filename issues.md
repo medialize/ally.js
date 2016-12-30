@@ -34,8 +34,11 @@ This document is used for collecting all the bugs reported and issues raised bec
 * label element with tabindex attribute is keyboard focusable - [Gecko 1240285](https://bugzilla.mozilla.org/show_bug.cgi?id=1240285)
 * `<object>` with visibility:hidden should not be focusable - [Blink 586191](https://code.google.com/p/chromium/issues/detail?id=586191)
 * Tab focus navigation should not break on hidden SVG - [Blink 586200](https://code.google.com/p/chromium/issues/detail?id=586200), [WebKit 154114](https://bugs.webkit.org/show_bug.cgi?id=154114)
-* mutating document.activeElement resets focus to document.body [Blink 660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999)
-* SVG `<use>` element and elements in `<defs>` receive keyboard focus [Blink 665121](https://bugs.chromium.org/p/chromium/issues/detail?id=665121)
+* mutating document.activeElement resets focus to document.body - [Blink 660999](https://bugs.chromium.org/p/chromium/issues/detail?id=660999)
+* SVG `<use>` element and elements in `<defs>` receive keyboard focus - [Blink 665121](https://bugs.chromium.org/p/chromium/issues/detail?id=665121)
+* SVG link element focus behavior [Gecko 1302341](https://bugzilla.mozilla.org/show_bug.cgi?id=1302341)
+* SVG elements and negative tabindex - [Gecko 1302340](https://bugzilla.mozilla.org/show_bug.cgi?id=1302340)
+* attribute name `tabindex` vs `tabIndex` - [Edge 9282058](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9282058/)
 
 
 ## Filed specification issues
