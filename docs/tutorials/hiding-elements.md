@@ -20,7 +20,7 @@ Visually hidden
 The three types of "hidden" produce the following matrix:
 
 | visibility state | on screen | in accessibility tree | keyboard navigation |
-| ---------------- | --------- | --------------------- |
+| ---------------- | --------- | --------------------- | ------------------- |
 | completely hidden | hidden | hidden | not navigatable |
 | semantically hidden | visible | hidden | navigatable |
 | visually hidden | hidden | visible | navigatable |
