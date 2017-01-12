@@ -121,11 +121,36 @@
 <dd>The element is <em>not</em> rendered on screen, but exposed in the accessibility tree, and still accessible to keyboard navigation.</dd>
 </dl>
 <p>The three types of &quot;hidden&quot; produce the following matrix:</p>
-<p>| visibility state | on screen | in accessibility tree | keyboard navigation |
-| ---------------- | --------- | --------------------- |
-| completely hidden | hidden | hidden | not navigatable |
-| semantically hidden | visible | hidden | navigatable |
-| visually hidden | hidden | visible | navigatable |</p>
+<table>
+<thead>
+<tr>
+<th>visibility state</th>
+<th>on screen</th>
+<th>in accessibility tree</th>
+<th>keyboard navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>completely hidden</td>
+<td>hidden</td>
+<td>hidden</td>
+<td>not navigatable</td>
+</tr>
+<tr>
+<td>semantically hidden</td>
+<td>visible</td>
+<td>hidden</td>
+<td>navigatable</td>
+</tr>
+<tr>
+<td>visually hidden</td>
+<td>hidden</td>
+<td>visible</td>
+<td>navigatable</td>
+</tr>
+</tbody>
+</table>
 <h2 id="how-to-hide-elements-completely"><a class="link-to-headline" href="#how-to-hide-elements-completely">#</a> How to hide elements completely</h2>
 <p>Completely hiding elements can be done in 3 ways:</p>
 <ul>
@@ -209,7 +234,8 @@
 }
 </code></pre>
 <p>This approach poses a couple of problems, though. First of all we need to declare elements compatible by adding the class <code>focusable</code>. Second - and much more importantly - we&apos;re resetting styles to values that are likely not what we intend to render. Instead we could use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not"><code>:not()</code></a>, which is <a href="http://caniuse.com/#feat=css-sel3">supported in every modern browser</a>.</p>
-<h3 id="2016-edition-of-visuallyhidden"><a class="link-to-headline" href="#2016-edition-of-visuallyhidden">#</a> 2016 edition of <code>.visuallyhidden</code></h3>
+<p>According to <a href="https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe#.7izbq9mfs">Beware smushed off-screen accessible text</a> the above snippet of CSS might pose a problem to some screen readers. It seems that (in some situations) separate words might be concatenated and thus spoken weirdly. Luckily we can prevent the undesired collapse of whitespace by adding <code>white-space: nowrap;</code>.</p>
+<h3 id="2017-edition-of-visuallyhidden"><a class="link-to-headline" href="#2017-edition-of-visuallyhidden">#</a> 2017 edition of <code>.visuallyhidden</code></h3>
 <p>Putting all of this together we get the following styles to visually hide content:</p>
 <pre><code class="language-css">.visuallyhidden:not(:focus):not(:active) {
   position: absolute;
@@ -219,6 +245,8 @@
   margin: -1px;
   border: 0;
   padding: 0;
+
+  white-space: nowrap;
 
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
