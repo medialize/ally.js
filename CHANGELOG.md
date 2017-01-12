@@ -1,8 +1,93 @@
 # ally.js change log
 
+## 1.4.0 - The SVG Awakens
+
+*January 12th 2017*. We're continuing our journey to *make accessibility simpler* (by advancing our understanding of the "platform"). Version 1.4.0 comes 4 months after the last feature release. We pushed [about 50 commits](https://github.com/medialize/ally.js/compare/1.3.2...1.4.0) in an effort to understand focus behavior in SVG, update the build systems and upgrade automated testing to modern browser versions.
+
+
+### The highlights of v1.4.0
+
+* Improving utilities for convenient and safe `.focus()`, `.blur()` to properly support SVG content
+* Improving identification of focusable status of SVG content
+* Upgrading babel from version 5.x to 6.x, by providing AMD modules via UMD bundles
+* Upgrading to eslint from version 2.x to 3.x, switching to (slightly customized) [eslint-config-semistandard](https://github.com/Flet/eslint-config-semistandard)
+
+
+### The numbers of v1.4.0
+
+* Test coverage remained at ~99%
+* The library grew from ~22KB to ~23KB gzipped (~73KB to ~76KB minified)
+
+
+### The changes of v1.4.0
+
+The following lists show the changes to the library grouped by domain.
+
+
+#### Focus management in v1.4.0
+
+* Improving [`ally.element.focus`][ally/element/focus] to focus SVG elements in MS Edge
+* Improving [`ally.element.blur`][ally/element/blur] to remove focus from SVG elements in MS Edge and Firefox <51
+
+#### Various in v1.4.0
+
+* fixing [`ally.is.validTabindex`][ally/is/valid-tabindex] to account for wrong-cased `tabIndex` attribute on SVG elements in MS Edge 14
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to understand `tabindex` on SVG in Firefox and MS Edge
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to understand `<use tabindex="-1">`
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to understand `<foreignObject tabindex="-1">`
+* fixing [`ally.is.focusRelevant`][ally/is/focus-relevant] to include `<svg>` when it is its own browsing context in Firefox
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to consider SVG content tabbable in Firefox and Internet Explorer
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to consider SVG elements in browsing contexts in Blink
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `tabindex="-1"` on SVG elements in `<object>` in Edge
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to consider `<use … tabindex="-1">` tabbable in Chrome
+* fixing [`ally.is.tabbable`][ally/is/tabbable] to remove iOS version restriction on filter
+* fixing [`ally.is.onlyTabbable`][ally/is/only-tabbable] to stop considering SVG elements in IE, Edge and Firefox 51+
+* fixing [`ally.query.tabsequence`][ally/query/tabsequence] to properly sort SVG elements with tabindex in Edge 14+
+
+#### Internals in v1.4.0
+
+* refactoring [supports][ally/supports] to pass focused element to validation callback
+* refactoring [supports][ally/supports] to properly test support of SVG elements in Trident
+* refactoring [`ally.style.focusSource`][ally/style/focus-source] and [`ally.style.focusWithin`][ally/style/focus-within] to optimize `focusin` or `focus` event name detection
+* fixing various linting errors after upgrading to eslint 3 and semistandard
+
+#### Build in v1.4.0
+
+* upgrading [babel](http://babeljs.io/) from 5.x to 6.x - [issue #51](https://github.com/medialize/ally.js/issues/51)
+* upgrading [eslint](http://eslint.org/) from 2.x to 3.x
+* introducing [eslint-config-semistandard](https://github.com/Flet/eslint-config-semistandard)
+* upgrading [lint-staged](https://github.com/okonet/lint-staged)
+* upgrading [intern](https://theintern.github.io/intern/) to 3.4.2
+* upgrading TravisCI to run build and tests on NodeJS 6.1
+
+#### Documentation in v1.4.0
+
+* adding [Managing focus in SVG](https://allyjs.io/tutorials/focusing-in-svg.html)
+* adding various notes to API docs
+
+
+### Testing of v1.4.0
+
+* Internet Explorer 9, 10, 11
+* Edge 13, 14 (15 manually)
+* Safari 8, 9, 10 (6.2 and 7.1 were dropped from automated tests)
+* Chrome 55
+* Firefox 50, 50 with ShadowDOM enabled
+
+### Missing in v1.4.0
+
+* MathML elements *may* be focusable
+* Shadow DOM focus behavior *may* have changed from v0 to v1
+
+
+---
+
 ## 1.3.2 - Publish Panic
 
 *November 15th 2016*. Version 1.3.1 was not published properly and nobody noticed. This release is basically version 1.3.1 but with the proper directory published to npm.
+
+
+---
 
 ## 1.3.1 - Version Panic
 
@@ -11,6 +96,8 @@
 * Updated to platform.js [1.3.3](https://github.com/bestiejs/platform.js/wiki/Changelog#133)
 * Separated Edge 12+ from IE9-11 (Trident)
 
+
+---
 
 ## 1.3.0 - Return Of The Focus
 
