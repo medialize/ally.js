@@ -144,8 +144,10 @@ Speaking of focusable elements, we are likely using the `.visuallyhidden` style 
 
 This approach poses a couple of problems, though. First of all we need to declare elements compatible by adding the class `focusable`. Second - and much more importantly - we're resetting styles to values that are likely not what we intend to render. Instead we could use [`:not()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:not), which is [supported in every modern browser](http://caniuse.com/#feat=css-sel3).
 
+According to [Beware smushed off-screen accessible text](https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe#.7izbq9mfs) the above snippet of CSS might pose a problem to some screen readers. It seems that (in some situations) separate words might be concatenated and thus spoken weirdly. Luckily we can prevent the undesired collapse of whitespace by adding `white-space: nowrap;`.
 
-### 2016 edition of `.visuallyhidden`
+
+### 2017 edition of `.visuallyhidden`
 
 Putting all of this together we get the following styles to visually hide content:
 
@@ -158,6 +160,8 @@ Putting all of this together we get the following styles to visually hide conten
   margin: -1px;
   border: 0;
   padding: 0;
+
+  white-space: nowrap;
 
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
@@ -185,4 +189,3 @@ To make sure sighted keyboard users do not end up focusing elements they can't s
 * Use `visibility: inherit;` instead of `visibility: visible;` to avoid accidentally showing content.
 * Do not attach any CSS styles to the `aria-hidden` attribute.
 * Take care of keyboard focusable content that is partially hidden by adding `tabindex="-1"`.
-
