@@ -65,7 +65,7 @@ var result = ally.element.focus(element);
 ## Changes
 
 * Added in `v1.3.0`.
-* Since `v#master` can focus SVG elements in Internet Explorer and Edge.
+* Since `v1.4.0` can focus SVG elements in Internet Explorer and Edge.
 
 
 ## Notes

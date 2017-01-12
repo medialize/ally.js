@@ -38,7 +38,7 @@ Boolean, `true` if the element is has a valid tabindex attribute specified.
 
 ## Changes
 
-* Since `v#master` supports `tabIndex` as attribute name for SVG elements in Microsoft Edge.
+* Since `v1.4.0` supports `tabIndex` as attribute name for SVG elements in Microsoft Edge.
 
 
 ## Notes

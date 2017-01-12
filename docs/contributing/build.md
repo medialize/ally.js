@@ -90,7 +90,7 @@ npm run build:amd
 npm run watch:amd
 ```
 
-Since `v#master` the AMD modules are actually UMD modules, because of how babel 6 handles default exports. Since UMD can be consumed by both AMD and CommonJS system, a separate CommonJS build is not necessary anymore. However, changing the npm module's structure is a breaking change and has thus been deferred to the next major release.
+Since `v1.4.0` the AMD modules are actually UMD modules, because of how babel 6 handles default exports. Since UMD can be consumed by both AMD and CommonJS system, a separate CommonJS build is not necessary anymore. However, changing the npm module's structure is a breaking change and has thus been deferred to the next major release.
 
 
 ---

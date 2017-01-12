@@ -53,7 +53,7 @@ Boolean, `true` if the element is only tabbable.
 * Since `v1.1.0` exceptions can be passed to `ally.is.onlyTabbable.rules(options)`.
 * Since `v1.1.0` the state of the `<iframe>` or `<object>` element in which the currently examined element is hosted in is considered.
 * Since `v1.1.0` elements must be [visible](./visible.md) to be considered only tabbable.
-* Since `v#master` SVG elements are no longer considered *only tabbable* in IE9+, Edge12+ and Firefox 51+.
+* Since `v1.4.0` SVG elements are no longer considered *only tabbable* in IE9+, Edge12+ and Firefox 51+.
 
 
 ## Notes

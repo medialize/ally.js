@@ -58,10 +58,10 @@ For the tests to run properly, the document needs to have focus during execution
 ## Changes
 
 * As of `v1.3.0` *all* tests are run at once and within an iframe to limit layout thrashing.
-* In `v#master` the test `focus-svg-negative-tabindex-attribute` was introduced.
-* Since `v#master` the SVG tests attempt to focus elements using `HTMLElement.prototye.focus` and the "focusable foreignObject hack".
-* In `v#master` the test `focus-svg-use-tabindex` was introduced.
-* In `v#master` the test `focus-svg-foreignobject-tabindex` was introduced.
+* In `v1.4.0` the test `focus-svg-negative-tabindex-attribute` was introduced.
+* Since `v1.4.0` the SVG tests attempt to focus elements using `HTMLElement.prototye.focus` and the "focusable foreignObject hack".
+* In `v1.4.0` the test `focus-svg-use-tabindex` was introduced.
+* In `v1.4.0` the test `focus-svg-foreignobject-tabindex` was introduced.
 
 
 ## Contributing

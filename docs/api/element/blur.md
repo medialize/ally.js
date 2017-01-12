@@ -43,7 +43,7 @@ var result = ally.element.blur(element);
 ## Changes
 
 * Added in `v1.3.0`.
-* Since `v#master` can blur SVG elements in Firefox, Internet Explorer and Edge.
+* Since `v1.4.0` can blur SVG elements in Firefox, Internet Explorer and Edge.
 
 
 ## Notes

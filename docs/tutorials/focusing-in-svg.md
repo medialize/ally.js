@@ -88,7 +88,7 @@ It is possible to programmatically shift focus to an `<a xlink:href="…">` elem
 1. remove the `<foreignObject>` element injected in step 1
 1. the target element has received focus and become the active element
 
-As of `v#master` the utility [`ally.element.focus`](../api/element/focus.md) incorporates the above workarounds to focus SVG elements in all versions of Internet Explorer and Microsoft Edge.
+As of `v1.4.0` the utility [`ally.element.focus`](../api/element/focus.md) incorporates the above workarounds to focus SVG elements in all versions of Internet Explorer and Microsoft Edge.
 
 
 ### The blur SVG element hack
@@ -101,7 +101,7 @@ Browsers that don't provide the `.focus()` method on `SVGElement` also lack the 
 1. remove the `<input>` element injected in step 1
 1. `document.body` is now the active element
 
-As of `v#master` the utility [`ally.element.blur`](../api/element/blur.md) incorporates the above workaround to shift focus away from SVG elements in all versions of Internet Explorer, Microsoft Edge and Firefox below version 51.
+As of `v1.4.0` the utility [`ally.element.blur`](../api/element/blur.md) incorporates the above workaround to shift focus away from SVG elements in all versions of Internet Explorer, Microsoft Edge and Firefox below version 51.
 
 
 ## Styling focused SVG elements
