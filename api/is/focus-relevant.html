@@ -5,7 +5,7 @@
   <title>ally.is.focusRelevant - ally.js</title><link rel="canonical" href="https://allyjs.io/api/is/focus-relevant.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -424,6 +424,10 @@ var isFocusRelevant = ally.is.focusRelevant(element);
 <li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> exceptions can be passed to <code>ally.is.focusRelevant.rules(options)</code>.</li>
 <li>Since <a href="https://github.com/medialize/ally.js/releases/1.1.0"><code>v1.1.0</code></a> IE9 properly resolves SVG links (<code>&lt;a xlink:href=&quot;&#x2026;&quot;&gt;</code>).</li>
 <li>In <a href="https://github.com/medialize/ally.js/releases/1.3.0"><code>v1.3.0</code></a> the <code>element.prototype.matches</code> was replaced by <code>util/element-matches</code>.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> SVG elements with <code>tabindex=&quot;-1&quot;</code> are handled properly in Firefox 51 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1302340">Bug 1302340</a>) as well as MS Edge 14.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> only Blink considers <code>&lt;use &#x2026; tabindex=&quot;-1&quot;&gt;</code> focus relevant.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> only Blink and WebKit consider <code>&lt;foreignObject &#x2026; tabindex=&quot;-1&quot;&gt;</code> focus relevant.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> the document element (<code>&lt;svg&gt;</code>) of SVG documents in browsing contexts (<code>&lt;iframe&gt;</code>, <code>&lt;object&gt;</code>) is considered focus relevant in Firefox 51.</li>
 </ul>
 <h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
 <div data-note-type="note">
@@ -483,7 +487,7 @@ var isFocusRelevant = ally.is.focusRelevant(element);
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -60,6 +60,72 @@
     "objectID": "tutorials/focusing-in-animated-ui.html#recap"
   },
   {
+    "url": "tutorials/focusing-in-svg.html",
+    "title": "Managing focus in SVG",
+    "excerpt": "This document explains how managing focus in SVG works and how it differs from HTML.",
+    "objectID": "tutorials/focusing-in-svg.html"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#svg-specifications",
+    "title": "SVG specifications",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#svg-specifications"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#browser-compatibility",
+    "title": "Browser compatibility",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#browser-compatibility"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#making-svg-elements-focusable",
+    "title": "Making SVG elements focusable",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#making-svg-elements-focusable"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#focusing-svg-elements",
+    "title": "Focusing SVG elements",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#focusing-svg-elements"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#styling-focused-svg-elements",
+    "title": "Styling focused SVG elements",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#styling-focused-svg-elements"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#the-foreignobject-element",
+    "title": "The &lt;foreignObject&gt; element",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#the-foreignobject-element"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#the-defs-element",
+    "title": "The &lt;defs&gt; element",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#the-defs-element"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#the-use-element",
+    "title": "The &lt;use&gt; element",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#the-use-element"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#hidden-svg-with-focusable-content",
+    "title": "Hidden SVG with focusable content",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#hidden-svg-with-focusable-content"
+  },
+  {
+    "url": "tutorials/focusing-in-svg.html#recap",
+    "title": "Recap",
+    "document": "Managing focus in SVG",
+    "objectID": "tutorials/focusing-in-svg.html#recap"
+  },
+  {
     "url": "tutorials/hiding-elements.html",
     "title": "Hiding DOM elements",
     "excerpt": "This document explains the various ways of hiding things and the implications that come with that.",
@@ -123,7 +189,12 @@
     "url": "tutorials/index.html",
     "title": "Tutorials",
     "excerpt": "",
-    "toc": [],
     "objectID": "tutorials/index.html"
+  },
+  {
+    "url": "tutorials/index.html#managing-focus",
+    "title": "Managing Focus",
+    "document": "Tutorials",
+    "objectID": "tutorials/index.html#managing-focus"
   }
 ]

@@ -5,7 +5,7 @@
   <title>ally.is.validTabindex - ally.js</title><link rel="canonical" href="https://allyjs.io/api/is/valid-tabindex.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -43,6 +43,9 @@
     <div id="navigation-column">
         <nav id="table-of-contents"><h1>On this page</h1><ul>
         <li><a href="#usage">Usage</a></li>
+        
+        
+        <li><a href="#changes">Changes</a></li>
         
         
         <li><a href="#notes">Notes</a></li>
@@ -378,6 +381,10 @@ var isValidTabindex = ally.is.validTabindex(element);
 <h3 id="throws"><a class="link-to-headline" href="#throws">#</a> Throws</h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> if <code>element</code> argument is not of type <code>HTMLElement</code>.</p>
 
+<h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
+<ul>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> supports <code>tabIndex</code> as attribute name for SVG elements in Microsoft Edge.</li>
+</ul>
 <h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
 <p>::note
 Empty tabindex <code>[tabindex=&quot;&quot;]</code> parsed and exposed as <code>[tabindex=&quot;-32768&quot;]</code> - <a href="https://connect.microsoft.com/IE/feedback/details/1072965">Trident 1072965</a>.
@@ -413,7 +420,7 @@ Empty tabindex <code>[tabindex=&quot;&quot;]</code> parsed and exposed as <code>
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

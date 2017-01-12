@@ -5,7 +5,7 @@
   <title>ally.element.focus - ally.js</title><link rel="canonical" href="https://allyjs.io/api/element/focus.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -49,6 +49,9 @@
         
         
         <li><a href="#changes">Changes</a></li>
+        
+        
+        <li><a href="#notes">Notes</a></li>
         
         
         <li><a href="#related-resources">Related resources</a></li>
@@ -358,7 +361,10 @@
   &lt;span&gt;click me&lt;/span&gt;
 &lt;/a&gt;
 </code></pre>
-<p>While <code>focus()</code> is available on <code>HTMLElement</code>, this is not necessarily true for <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"><code>SVGElement</code></a>. Only Blink and WebKit expose the <code>focus()</code> method on SVG elements, Gecko, Trident and Edge do not. This will likely change once <a href="https://www.w3.org/TR/SVG2/interact.html#Focus">SVG 2</a> is a thing. Until then <code>ally.element.focus()</code> tries to apply <code>HTMLElement.prototoype.focus</code> to <code>SVGElement</code>s. This only works for Internet Explorer 9 - 11, as Gecko and Edge actively prevent this.</p>
+<h3 id="focusing-in-svg"><a class="link-to-headline" href="#focusing-in-svg">#</a> Focusing in SVG</h3>
+<p>While <code>focus()</code> is available on <code>HTMLElement</code>, this is not necessarily true for <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"><code>SVGElement</code></a>. Only Blink and WebKit expose the <code>focus()</code> method on SVG elements, Gecko, Trident and Edge do not. This will likely change once <a href="https://www.w3.org/TR/SVG2/interact.html#Focus">SVG 2</a> is a thing. Until then <code>ally.element.focus()</code> tries to apply <code>HTMLElement.prototoype.focus</code> to <code>SVGElement</code>s. This only works for Internet Explorer 9 - 11 and Edge 12, as Gecko and Edge actively prevent this.</p>
+<p>In Edge 13 and newer versions <code>ally.element.focus()</code> injects a <code>&lt;foreignObject&gt;</code> containing an <code>&lt;input&gt;</code> element into the SVG element requested to shift focus to. The <code>&lt;input&gt;</code> is focused and immediately disabled. Since Trident and Edge shift focus to the next focusable ancestor (see <a href="../../tutorials/mutating-active-element.html">Mutating the active element</a>), focus is shifted to the requested SVG element and the injected <code>&lt;foreignObject&gt;</code> is removed from DOM.</p>
+<h3 id="focusing-in-animated-ui"><a class="link-to-headline" href="#focusing-in-animated-ui">#</a> Focusing in Animated UI</h3>
 <p>Browsers <a href="https://github.com/whatwg/html/issues/94">scroll the focused element into view</a>, if it isn&apos;t already. However, this may interfere with widgets revealing content in an animated fashion. As there is no way to focus an element <em>without</em> the browser scrolling the element into view, <code>ally.element.focus()</code> provides the option <code>undoScrolling</code> to revert all scroll containers of the focused element to their state before the element got focus.</p>
 <h2 id="usage"><a class="link-to-headline" href="#usage">#</a> Usage</h2>
 <pre><code class="language-javascript">var element = document.getElementById(&apos;victim&apos;);
@@ -422,8 +428,12 @@ var result = ally.element.focus(element);
 <h2 id="changes"><a class="link-to-headline" href="#changes">#</a> Changes</h2>
 <ul>
 <li>Added in <a href="https://github.com/medialize/ally.js/releases/1.3.0"><code>v1.3.0</code></a>.</li>
+<li>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> can focus SVG elements in Internet Explorer and Edge.</li>
 </ul>
-
+<h2 id="notes"><a class="link-to-headline" href="#notes">#</a> Notes</h2>
+<div data-note-type="warning">
+<p>Cannot focus SVG and MathML elements in Mozilla Firefox and other Gecko based browsers.</p>
+</div>
 <h2 id="related-resources"><a class="link-to-headline" href="#related-resources">#</a> Related resources</h2>
 <ul>
 <li><a href="./blur.html"><code>ally.element.blur</code></a> shifts focus away from an element if it currently has focus.</li>
@@ -447,7 +457,7 @@ var result = ally.element.focus(element);
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

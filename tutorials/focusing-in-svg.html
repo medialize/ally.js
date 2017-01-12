@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Managing focus in SVG - ally.js</title><link rel="canonical" href="https://allyjs.io/tutorials/focusing-in-svg.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" data-noprefix="">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">Skip to content</a>
+  <header>
+    <h1 id="logo">ally.js</h1>
+    <p id="claim"><em>JavaScript</em> library to help modern <em>web applications</em> with <em>accessibility</em> concerns by <strong>making accessibility simpler</strong></p>
+    <nav id="site-navigation">
+      <input type="search" id="search-input" placeholder="Search the docs" aria-label="Search the docs">
+      <ul>
+          
+            <li class="">
+              <a href="../index.html">Home</a>
+            </li>
+          
+            <li class="">
+              <a href="../getting-started.html">Getting Started</a>
+            </li>
+          
+            <li class="">
+              <a href="../api/index.html">API</a>
+            </li>
+          
+            <li class="active">
+              <a href="index.html">Tutorials</a>
+            </li>
+          
+            <li class="">
+              <a href="../contributing/index.html">Contributing</a>
+            </li>
+              <li class="download"><a href="../getting-started.html#downloading-the-umd-bundle">Download</a></li>
+        <li class="github"><a href="https://github.com/medialize/ally.js">Github</a></li>
+      </ul>
+    </nav></header>  
+  <div id="wrapper">
+    <div id="navigation-column">
+        <nav id="table-of-contents"><h1>On this page</h1><ul>
+        <li><a href="#svg-specifications">SVG specifications</a></li>
+        
+        
+        <li><a href="#browser-compatibility">Browser compatibility</a></li>
+        
+        
+        <li><a href="#making-svg-elements-focusable">Making SVG elements focusable</a></li>
+        
+        
+        <li><a href="#focusing-svg-elements">Focusing SVG elements</a></li>
+        
+        
+        <li><a href="#styling-focused-svg-elements">Styling focused SVG elements</a></li>
+        
+        
+        <li><a href="#the-foreignobject-element">The &lt;foreignObject&gt; element</a></li>
+        
+        
+        <li><a href="#the-defs-element">The &lt;defs&gt; element</a></li>
+        
+        
+        <li><a href="#the-use-element">The &lt;use&gt; element</a></li>
+        
+        
+        <li><a href="#hidden-svg-with-focusable-content">Hidden SVG with focusable content</a></li>
+        
+        
+        <li><a href="#recap">Recap</a></li>
+        </ul></nav>
+      <aside>
+        <h1>Contribute to this page</h1>
+        <ul id="collaboration-links">
+          <li><a id="document-github-edit" href="https://github.com/medialize/ally.js/blob/master/docs/tutorials/focusing-in-svg.md">edit this page on github</a></li>
+          <li><a id="document-github-issue" data-title="Managing focus in SVG" href="https://github.com/medialize/ally.js/issues/new?title=[Managing%20focus%20in%20SVG]%20_your_problem_summary_">file an issue</a></li>
+          <li></li>
+        
+      </ul></aside>
+      <aside>
+        <nav id="collection-navigation">
+        
+          <h1>More in <em>Tutorials</em></h1><ul>
+          <li class="">
+            <a class="" href="index.html">Tutorials</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="accessible-dialog.html">Accessible dialog tutorial</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="hiding-elements.html">Hiding DOM elements</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="focusing-in-animated-ui.html">Managing focus in animated UI</a>
+          </li>
+          
+          
+          <li class="active">
+            <a class="" href="focusing-in-svg.html">Managing focus in SVG</a>
+          </li>
+          
+          
+          <li class="">
+            <a class="" href="mutating-active-element.html">Mutating the active element</a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          </ul>
+        </nav>      </aside>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <h1 id="managing-focus-in-svg"><a class="link-to-headline" href="#managing-focus-in-svg">#</a> Managing focus in SVG</h1>
+<p>This document explains how managing focus in SVG works and how it differs from HTML.</p>
+<h2 id="svg-specifications"><a class="link-to-headline" href="#svg-specifications">#</a> SVG specifications</h2>
+<p>There are three relevant iterations of SVG considering focus management: <a href="https://www.w3.org/TR/SVG11/">SVG 1.1</a>, <a href="https://www.w3.org/TR/SVGTiny12/">SVG 1.2 Tiny</a> and <a href="https://www.w3.org/TR/SVG2/">SVG 2</a>. Although SVG 1.1 <a href="https://www.w3.org/TR/SVG11/interact.html#SVGEvents">knew focus events</a> such as <code>focusin</code> and <code>focusout</code> and <a href="https://www.w3.org/TR/SVG11/interact.html#event-processing">mentions the CSS pseudo-class</a> <code>:focus</code>, it does not describe how elements can be made focusable. SVG 1.2 Tiny rectifies that by adding the <a href="https://www.w3.org/TR/SVGTiny12/interact.html#focus"><code>focusable</code> attribute</a>. And finally SVG 2 defines <a href="https://www.w3.org/TR/SVG2/interact.html#Focus">focus management</a> to be the same as HTML, including the <a href="https://www.w3.org/TR/SVG2/struct.html#SVGElementTabindexAttribute"><code>tabindex</code> attribute</a>.</p>
+<h2 id="browser-compatibility"><a class="link-to-headline" href="#browser-compatibility">#</a> Browser compatibility</h2>
+<p>While the Blink and WebKit based browsers (Google Chrome, Apple Safari) have had solid support for <code>:focus</code>, <code>.focus()</code> and <code>tabindex</code> on SVG elements for quite a while, the story is different for Gecko (Mozilla Firefox), Trident (Microsoft Internet Explorer) and EdgeHTML (Microsoft Edge).</p>
+<p>Up to version 50 Firefox had very limited support for focus in SVG. <code>&lt;a xlink:href=&quot;&#x2026;&quot;&gt;</code> elements could be focused by keyboard and mouse, but the <code>.focus()</code> method was missing. The only way to shift focus to an SVG element was by user action (keyboard, pointer). As of version 51 Firefox has caught up.</p>
+<p>Internet Explorer is the only mainstream browser to implement SVG 1.2 Tiny&apos;s <code>focusable</code> attribute to make arbitrary elements focusable. However, it does not support the <code>tabindex</code> attribute and <code>.focus()</code> method on <code>SVGElement</code>s. Support for <code>focusable</code> and the lack of <code>.focus()</code> carried over to Microsoft Edge, which only added support for the <code>tabindex</code> attribute in version 14.</p>
+<h2 id="making-svg-elements-focusable"><a class="link-to-headline" href="#making-svg-elements-focusable">#</a> Making SVG elements focusable</h2>
+<p>In SVG only the element <code>&lt;a xlink:href=&quot;&#x2026;&quot;&gt;</code> is considered naturally focusable by all browsers. Internet Explorer and Microsoft Edge up to version 13 also consider <code>&lt;svg&gt;</code> itself keyboard focusable. Firefox 52 considers <code>&lt;svg&gt;</code> focusable, if it&apos;s the root element of a browsing context (e.g. <code>&lt;iframe&gt;</code> or <code>&lt;object&gt;</code>).</p>
+<div data-note-type="note">
+<p>Browsers on macOS in general and Apple&apos;s Safari in particular <a href="http://www.weba11y.com/blog/2014/07/07/keyboard-navigation-in-mac-browsers/">need to be configured for keyboard navigation</a>.</p>
+</div>
+<p>The HTML attribute <code>tabindex</code> made its way into SVG in SVG 2. The behavior of the attribute is defined to be the same as in HTML, i.e. a negative value making elements script and pointer focusable, a value of <code>0</code> adding the element to the document&apos;s tabbing order, and a positive value affecting the order in the document&apos;s sequential focus navigation list.</p>
+<div data-note-type="note">
+<p><a href="http://adrianroselli.com/2014/11/dont-use-tabindex-greater-than-0.html">Don&#x2019;t Use Tabindex Greater than 0</a> also applies to SVG content.</p>
+</div>
+<p>The <code>focusable</code> attribute defined by SVG Tiny 1.2 is only implemented in Internet Explorer and Microsoft Edge. Unlike <code>tabindex</code> this attribute has a boolean value, where <code>focusable=&quot;true&quot;</code> equals <code>tabindex=&quot;0&quot;</code> and <code>focusable=&quot;false&quot;</code> makes the element inert. Besides removing SVG links from the tabbing order by way of <code>&lt;a xlink:href=&quot;&#x2026;&quot; focusable=&quot;false&quot;&gt;</code>, this property also comes in handy to prevent the SVG&apos;s root element from unnecessarily receiving focus: <code>&lt;svg focusable=&quot;false&quot;&gt;</code>.</p>
+<div data-note-type="note">
+<p>In general it&apos;s not a good idea to remove interactive elements from the tabbing order, such as <code>&lt;a href=&quot;&#x2026;&quot; tabindex=&quot;-1&quot;&gt;</code> would achieve. However, this is the only way for utilities like <a href="../api/element/focus.html"><code>ally.element.disabled</code></a> and the <a href="https://github.com/wicg/inert">WICG <code>inert</code> polyfill</a> to prevent elements from receiving keyboard focus, while maintaining their visual presentation on screen.</p>
+</div>
+<p>As of version 14 Microsoft Edge also supports the <code>tabindex</code> attribute. For the case <code>&lt;rect &#x2026; tabindex=&quot;0&quot; focusable=&quot;true&quot;&gt;</code> the situation is clear: the element element is keyboard focusable. However both attributes could be contradicting each other, in which case the <code>focusable</code> attribute wins and the <code>tabindex</code> attribute is ignored:</p>
+<ul>
+<li><code>&lt;svg focusable=&quot;false&quot; tabindex=&quot;0&quot;&gt;</code> is considered inert</li>
+<li><code>&lt;svg focusable=&quot;true&quot; tabindex=&quot;-1&quot;&gt;</code> is considered keyboard focusable</li>
+</ul>
+<h3 id="event-listeners"><a class="link-to-headline" href="#event-listeners">#</a> Event Listeners</h3>
+<blockquote>
+<p><a href="https://svgwg.org/svg2-draft/single-page.html#interact-Focus">SVG2 - 15.9. Focus</a>: [&#x2026;] may allow focus to reach elements which have been assigned listeners for mouse, pointer, or focus events.</p>
+</blockquote>
+<p>Blink and WebKit (Chrome and Safari) consider <em>any</em> SVG element with a <code>focus</code> event handler focusable. However, mouse events (e.g. <code>click</code>, <code>mousedown</code>) and keyboard events (e.g. <code>keydown</code>) don&apos;t cause elements to become focusable.</p>
+<p>Since we can&apos;t query the event listeners attached to DOM elements, it&apos;s impossible to identify elements that have become focusable by way of a <code>focus</code> event listener.</p>
+<div data-note-type="note">
+<p>Any element that has a <code>focus</code> event listener attached should also be made focusable by adding <code>tabindex=&quot;0&quot;</code>.</p>
+</div>
+<h2 id="focusing-svg-elements"><a class="link-to-headline" href="#focusing-svg-elements">#</a> Focusing SVG elements</h2>
+<p>In Blink and WebKit based browsers focusing SVG elements is not different from focusing an HTML element, the <code>.focus()</code> method is available on <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"><code>HTMLElement</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"><code>SVGElement</code></a>. Since Firefox 51 the <code>.focus()</code> method is also available. In Internet Explorer and Microsoft Edge this is not the case.</p>
+<p>Internet Explorer and Microsoft Edge up to version 12 allow misappropriating the <code>.focus()</code> method by applying the method from <code>HTMLElement</code>&apos;s prototype to an <code>SVGElement</code>: <code>HTMLElement.prototoype.focus.apply(svgElement)</code>. Microsoft Edge 13 joined Firefox (up to version 50) in rejecting such attempts by throwing an error:</p>
+<pre><code class="language-text">// Firefox
+TypeError: &apos;focus&apos; called on an object that does not implement interface HTMLElement.
+// Edge
+TypeError: Invalid calling object
+</code></pre>
+<p>While Firefox before version 51 <em>can&apos;t</em> focus SVG elements because of this limitation, Microsoft Edge 13 and newer <em>can be persuaded</em> otherwise.</p>
+<h3 id="the-focus-svg-element-hack"><a class="link-to-headline" href="#the-focus-svg-element-hack">#</a> The focus SVG element hack</h3>
+<p><a href="./mutating-active-element.html#disabling-the-active-element">Mutating the active element</a> shows that Edge will shift focus to the next focusable ancestor when the active element is disabled. While it&apos;s not possible to use an <code>&lt;input&gt;</code> element in <code>&lt;svg&gt;</code> directly, the <a href="https://developer.mozilla.org/en/docs/Web/SVG/Element/foreignObject"><code>&lt;foreignObject&gt;</code></a> element allows HTML to be embedded in SVG.</p>
+<p>It is possible to programmatically shift focus to an <code>&lt;a xlink:href=&quot;&#x2026;&quot;&gt;</code> element in Microsoft Edge 13+ by going through the following steps:</p>
+<ol>
+<li>append <code>&lt;foreignObject&gt;&lt;input /&gt;&lt;/foreignObject&gt;</code> to the target element</li>
+<li>call <code>element.focus()</code> on the input element</li>
+<li>set the input element to <code>element.disabled = true;</code></li>
+<li>remove the <code>&lt;foreignObject&gt;</code> element injected in step 1</li>
+<li>the target element has received focus and become the active element</li>
+</ol>
+<p>As of <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> the utility <a href="../api/element/focus.html"><code>ally.element.focus</code></a> incorporates the above workarounds to focus SVG elements in all versions of Internet Explorer and Microsoft Edge.</p>
+<h3 id="the-blur-svg-element-hack"><a class="link-to-headline" href="#the-blur-svg-element-hack">#</a> The blur SVG element hack</h3>
+<p>Browsers that don&apos;t provide the <code>.focus()</code> method on <code>SVGElement</code> also lack the <code>.blur()</code> method. Sadly calling <code>document.body.focus()</code> won&apos;t achieve what <code>document.activeElement.blur()</code> should&apos;ve done. But shifting focus back to <code>&lt;body&gt;</code> is possible by going through the following steps:</p>
+<ol>
+<li>append <code>&lt;input&gt;</code> to <code>document.body</code></li>
+<li>call <code>element.focus()</code> on the input element</li>
+<li>call <code>element.blur()</code> on the input element</li>
+<li>remove the <code>&lt;input&gt;</code> element injected in step 1</li>
+<li><code>document.body</code> is now the active element</li>
+</ol>
+<p>As of <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> the utility <a href="../api/element/blur.html"><code>ally.element.blur</code></a> incorporates the above workaround to shift focus away from SVG elements in all versions of Internet Explorer, Microsoft Edge and Firefox below version 51.</p>
+<h2 id="styling-focused-svg-elements"><a class="link-to-headline" href="#styling-focused-svg-elements">#</a> Styling focused SVG elements</h2>
+<p>All browsers support the CSS pseudo-class <code>:focus</code>. However, Firefox until version 50, Internet Explorer and Edge including version 15 do <em>not</em> support the CSS property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline"><code>outline</code></a> on SVG elements.</p>
+<p>It is also worth noting that <code>&lt;a&gt;</code> elements do not have dimensions of their own. The focus outline can therefore only be drawn on the element&apos;s bounding box, which is the smallest rectangle enclosing all of the <code>&lt;a&gt;</code> element&apos;s children (<a href="http://jsbin.com/witehokeka/1/edit?html,css,output">demo</a>). WebKit (Safari 10) does <em>not</em> render the focus outline on an <code>&lt;a&gt;</code> element&apos;s bounding box, so the focus state of SVG links is not visually indicated. Internet Explorer and Edge render the native focus outline, as long as the <code>outline</code> property isn&apos;t set.</p>
+<p>These limitations make it necessary to indicate the focused element another way, e.g. by changing <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill"><code>fill</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke"><code>stroke</code></a>.</p>
+<div data-note-type="note">
+<p>Using <code>stroke</code> on text will create a different kind of outline than produced by the CSS properties <code>outline</code> or <code>border</code> on HTML elements. A rectangular outline similar to the browser&apos;s default focus outline would have to be rendered using SVG itself, e.g. by way of a <code>&lt;rect&gt;</code> element.</p>
+</div>
+<p>Also note that browsers are inconsistent about how focus outlines should behave in scaled images, as the following table shows (<a href="http://jsbin.com/cabusivunu/edit?html,css,output">test case</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>Native focus indication</th>
+<th><code>outline</code></th>
+<th><code>stroke</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firefox 51</td>
+<td>scaled</td>
+<td>scaled</td>
+<td>scaled</td>
+</tr>
+<tr>
+<td>Chrome 55</td>
+<td>scaled</td>
+<td>scaled</td>
+<td>scaled</td>
+</tr>
+<tr>
+<td>Safari 10</td>
+<td>fix</td>
+<td>scaled</td>
+<td>scaled</td>
+</tr>
+<tr>
+<td>MS Edge 15</td>
+<td>fix</td>
+<td><em>not supported</em></td>
+<td>scaled</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-foreignobject-element"><a class="link-to-headline" href="#the-foreignobject-element">#</a> The <code>&lt;foreignObject&gt;</code> element</h2>
+<p>The <a href="https://developer.mozilla.org/en/docs/Web/SVG/Element/foreignObject"><code>&lt;foreignObject&gt;</code></a> allows arbitrary HTML to be embedded in SVG. This includes interactive elements like <code>&lt;input&gt;</code> elements, as we&apos;ve already seen in <a href="#the-focus-svg-element-hack">the focus SVG element hack</a>. However, the presented hack (deliberately) omitted a few elements and attributes.</p>
+<p>Most resources on the web, including the <a href="https://www.w3.org/TR/SVG2/embedded.html#ForeignObjectElement">SVG 2 spec</a> present the <code>&lt;foreignObject&gt;</code> element in a setting like the following:</p>
+<pre><code class="language-xml">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+ &lt;switch&gt;
+   &lt;foreignObject requiredExtensions=&quot;http://example.com/SVGExtensions/EmbeddedXHTML&quot;&gt;
+     &lt;body xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+       &lt;p&gt;HTML content&lt;/p&gt;
+     &lt;/body&gt;
+   &lt;/foreignObject&gt;
+ &lt;/switch&gt;
+ &lt;/svg&gt;
+</code></pre>
+<p>It&apos;s not immediately obvious that the snippet won&apos;t render the text <em>HTML content</em> in any browser. The reason is the invalid extension URI <code>http://example.com/SVGExtensions/EmbeddedXHTML</code> provided in the <a href="https://www.w3.org/TR/SVG2/struct.html#ConditionalProcessingRequiredExtensionsAttribute"><code>requiredExtensions</code></a> attribute. But even if the correct URI <code>http://www.w3.org/1999/xhtml</code> is used, Chrome still won&apos;t render the embedded HTML. Similar problems exist with the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures"><code>requiredFeatures</code></a> attribute, which was dropped in SVG 2. See the following table and example for a support matrix:</p>
+<table>
+<thead>
+<tr>
+<th>embed type</th>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invalid extension</td>
+<td>not rendered</td>
+<td>not rendered</td>
+<td>not rendered</td>
+</tr>
+<tr>
+<td>valid extension</td>
+<td>not rendered</td>
+<td>rendered</td>
+<td>rendered</td>
+</tr>
+<tr>
+<td>invalid feature</td>
+<td>rendered</td>
+<td>not rendered</td>
+<td>not rendered</td>
+</tr>
+<tr>
+<td>valid feature</td>
+<td>rendered</td>
+<td>rendered</td>
+<td>rendered</td>
+</tr>
+<tr>
+<td>no extension or feature</td>
+<td>rendered</td>
+<td>rendered</td>
+<td>rendered</td>
+</tr>
+</tbody>
+</table>
+<section class="example">
+<div>
+<a class="jsbin-embed" href="https://jsbin.com/vedunec/embed?output">Embedding HTML in SVG on jsbin.com</a>
+<script src="https://static.jsbin.com/js/embed.min.js?3.35.3"></script>
+</div>
+<p>
+<a href="https://jsbin.com/vedunec/edit" target="_blank">play with <span class="visuallyhidden">Embedding HTML in SVG</span> on jsbin.com</a> or <a href="focusing-svg.foreignobject.example.html" target="_blank">open the document <span class="visuallyhidden">of Embedding HTML in SVG</span></a></p>
+</section>
+<div data-note-type="tip">
+<p>Do not use the attributes <code>requiredExtensions</code> or <code>requiredFeatures</code> on <code>&lt;foreignObject&gt;</code>, as there is no JavaScript API to determine if a <code>&lt;foreignObject&gt;</code> is being rendered because of these restrictions.</p>
+</div>
+<p>Note that the <code>&lt;foreignObject&gt;</code> element is not supported in Internet Explorer 11 and below.</p>
+<h2 id="the-defs-element"><a class="link-to-headline" href="#the-defs-element">#</a> The <code>&lt;defs&gt;</code> element</h2>
+<p>The <a href="https://www.w3.org/TR/SVG2/struct.html#DefsElement"><code>&lt;defs&gt;</code></a> element defines that descendants are not rendered directly and should therefore not be focusable according to <a href="https://www.w3.org/TR/SVG2/interact.html#Focus">SVG 2 - 15.9. Focus</a>. But currently all browsers consider the link in the following snippet keyboard focusable:</p>
+<pre><code class="language-xml">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+  &lt;defs&gt;
+    &lt;g id=&quot;use-somewhere&quot;&gt;
+      &lt;a xlink:href=&quot;&#x2026;&quot;&gt;&lt;text&gt;a link&lt;/text&gt;&lt;/a&gt;
+    &lt;/g&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+</code></pre>
+<div data-note-type="tip">
+<p>Do not put interactive content in <code>&lt;defs&gt;</code> to avoid visual focus from getting lost.</p>
+</div>
+<h2 id="the-use-element"><a class="link-to-headline" href="#the-use-element">#</a> The <code>&lt;use&gt;</code> element</h2>
+<p>The <a href="https://www.w3.org/TR/SVG2/struct.html#UseElement"><code>&lt;use&gt;</code></a> element references other content, that is rendered in its stead. The <code>&lt;use&gt;</code> element is a Shadow Host, hiding all of the referenced content.</p>
+<p>If the referenced content has focusable elements and one of those shadowed elements has focus, the <code>&lt;use&gt;</code> element will be the document&apos;s active element. Currently only Chrome and Safari 10 have functioning Shadow DOM implementations to handle this &quot;correctly&quot;. However, Chrome is not able to prevent shadowed content from receiving keyboard focus when the host is removed from the document&apos;s tabbing order via <code>&lt;use tabindex=&quot;-1&quot;&gt;</code>.</p>
+<p>As with other Shadow Hosts, Firefox does not properly encapsulate focused elements. Instead of the <code>&lt;use&gt;</code> element becoming the active element, the focusable content within the ShadowRoot are exposed as the document&apos;s active elements.</p>
+<p>Chrome has an interesting bug (<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=665121">665121</a>) regarding the rendering of focus indication within <code>&lt;use&gt;</code> elements, as can be observed in the <a href="http://jsbin.com/julekuxuwe/1/edit?html,output">test case</a>. The previous section already explained that elements in <code>&lt;defs&gt;</code> receive focus when they shouldn&apos;t. But to make things worse, the supposedly cloned elements in the <code>&lt;use&gt;</code> elements indicate focus when the original element in <code>&lt;defs&gt;</code> has focus. But when the clones themselves receive focus, there is no indication.</p>
+<p>Safari 8 really trips up when it encounters <code>&lt;use&gt;</code> elements that reference focusable content. Once a <code>&lt;use&gt;</code> element&apos;s content received focus, it is <em>not possible</em> to shift focus with <kbd>Tab</kbd> and <kbd>Shift Tab</kbd> anymore. Keyboard users are effectively stranded, as this <a href="http://jsbin.com/yukogaluju/1/edit?html,output">demo</a> shows.</p>
+<div data-note-type="warning">
+<p>There is a <em>weird</em> problem with <code>&lt;use&gt;</code> elements in Safari 10 (but not in Safari 9 or the current WebKit nightly). When <code>&lt;use&gt;</code> elements are <em>not</em> surrounded by whitespace (e.g. <code>&lt;svg&gt;&lt;use xlink:href=&quot;&#x2026;&quot; /&gt;&lt;/svg&gt;</code>), the document&apos;s tabbing order is truncated so that all elements following that <code>&lt;use&gt;</code> are not accessible via the <kbd>Tab</kbd> key anymore, as this <a href="http://jsbin.com/tuxaseyugo/1/edit?html,output">demo</a> shows.</p>
+</div>
+<div data-note-type="tip">
+<p>Do not reference interactive content in <code>&lt;use&gt;</code>. Browser support is not great and in the case of Safari 8 a real problem.</p>
+</div>
+<h2 id="hidden-svg-with-focusable-content"><a class="link-to-headline" href="#hidden-svg-with-focusable-content">#</a> Hidden SVG with focusable content</h2>
+<p>We must be careful when hiding SVGs that host focusable content. Opening the <a href="http://jsbin.com/buciwihiyi/edit?html,output">demo</a> in Safari will show how focus cannot be shifted from the first input to the second using the <kbd>Tab</kbd> key. The reason is this hidden (via <code>display: none</code> or <code>visibility: hidden</code>) SVG link in between. While <a href="https://code.google.com/p/chromium/issues/detail?id=586200">Blink 586200</a> has been fixed in early 2016, <a href="https://bugs.webkit.org/show_bug.cgi?id=154114">WebKit 154114</a> is still alive and kicking in Safari 10.</p>
+<h2 id="recap"><a class="link-to-headline" href="#recap">#</a> Recap</h2>
+<ul>
+<li>use <a href="../api/element/focus.html"><code>ally.element.focus</code></a> and <a href="../api/element/blur.html"><code>ally.element.blur</code></a> to programmatically shift focus SVG elements.</li>
+<li>Avoid the attributes <code>requiredExtensions</code> and <code>requiredFeatures</code> on <code>&lt;foreignObject&gt;</code>, since their interpretations vary among browsers.</li>
+<li>Add <code>tabindex=&quot;0&quot;</code> to all interactive SVG content.</li>
+<li>Visualize <code>:focus</code> state using styles other than <code>outline</code>, as that CSS property is not widely supported for SVG elements.</li>
+<li>Do not host focusable content in <code>&lt;defs&gt;</code>, as these elements are not made properly inert by browsers.</li>
+<li>Do not reference focusable content in <code>&lt;use&gt;</code>, since Shadow DOM isn&apos;t yet properly implemented in most browsers.</li>
+<li>Do not hide SVG content that hosts focusable elements, as that would break the ability to traverse the document&apos;s tabbing order via the keyboard in Safari.</li>
+</ul>
+<hr>
+<p>Thanks to <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> for taking the time to review this piece and provide some very good comments and insights!</p>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>ally.js is published under the <a href="https://opensource.org/licenses/mit-license">MIT License</a>.</p>
+    <p><a href="../legal.html">Legal</a>, <a href="https://github.com/medialize/ally.js">Github</a>, <a href="https://twitter.com/allyjs_io">@allyjs_io</a>.</p>
+    <p>Created By <a href="https://twitter.com/rodneyrehm">Rodney Rehm</a>.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
+  <script src="../assets/website.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" defer></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-8922143-6', 'auto');
+    ga('send', 'pageview');
+  </script></body>
+</html>

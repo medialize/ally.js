@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Embedding HTML in SVG</title><link rel="canonical" href="https://allyjs.io/tutorials/focusing-svg.foreignobject.example.html">
+  <link rel="jsbin" href="https://jsbin.com/vedunec/">
+  <style id="example-css">
+
+  </style>
+</head>
+<body>
+
+<article id="example-introduction">
+  <h1>Embedding HTML in SVG</h1>
+
+  <p>This example shows the ramifications of using the attributes <code>requiredExtensions</code> and <code>requiredFeatures</code> when embedding HTML in SVG.</p>
+</article>
+
+<div id="example-html">
+  <main>
+    <h2>using invalid extension</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50">
+      <switch x="10" y="10" width="100" height="40">
+        <foreignobject requiredextensions="http://example.com/SVGExtensions/EmbeddedXHTML" x="10" y="10" width="100" height="40">
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>hello world</p>
+          </body>
+        </foreignobject>
+      </switch>
+    </svg>
+
+    <h2>using valid extension</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50">
+      <switch x="10" y="10" width="100" height="40">
+       <foreignobject requiredextensions="http://www.w3.org/1999/xhtml" x="10" y="10" width="100" height="40">
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>hello world</p>
+          </body>
+        </foreignobject>
+      </switch>
+    </svg>
+
+    <h2>using invalid feature</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50">
+      <switch x="10" y="10" width="100" height="40">
+        <foreignobject requiredfeatures="http://example.com/TR/SVG11/feature#Extensibility" x="10" y="10" width="100" height="40">
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>hello world</p>
+          </body>
+        </foreignobject>
+      </switch>
+    </svg>
+
+    <h2>using valid feature</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50">
+      <switch x="10" y="10" width="100" height="40">
+        <foreignobject requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" x="10" y="10" width="100" height="40">
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>hello world</p>
+          </body>
+        </foreignobject>
+      </switch>
+    </svg>
+
+    <h2>using no extension, no feature</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50">
+      <foreignobject x="10" y="10" width="100" height="40">
+        <p>hello world</p>
+      </foreignobject>
+    </svg>
+  </main>
+</div>
+
+<script id="example-js">
+
+</script>
+
+</body>
+</html>

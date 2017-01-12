@@ -1,4 +1,4 @@
-/*eslint-disable no-var */
+/* eslint-disable no-var */
 (function() {
   'use strict';
 
@@ -49,7 +49,7 @@
  * Algolia Search
  ************************************************************/
 (function() {
-  var client = window.algoliasearch('PLCNURI3P6', '572a18e64d6d618a62df82a0d28927b7')
+  var client = window.algoliasearch('PLCNURI3P6', '572a18e64d6d618a62df82a0d28927b7');
   var index = {
     api: client.initIndex('ally.api'),
     tutorial: client.initIndex('ally.tutorial'),
@@ -58,8 +58,8 @@
 
   // https://github.com/algolia/autocomplete.js#options
   var options = {
-    //hint: false,
-    //debug: true,
+    // hint: false,
+    // debug: true,
     templates: {
       footer: '<div class="branding">Powered by <a href="https://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" alt="algolia"></a></div>',
     },
@@ -117,7 +117,7 @@
     },
   ];
 
-  function handleSelected(event, suggestion /*, dataset*/) {
+  function handleSelected(event, suggestion /*, dataset */) {
     location.href = '/' + suggestion.url;
   }
 

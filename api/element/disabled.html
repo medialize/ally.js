@@ -5,7 +5,7 @@
   <title>ally.element.disabled - ally.js</title><link rel="canonical" href="https://allyjs.io/api/element/disabled.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../assets/website.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" data-noprefix="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" data-noprefix="">
 </head>
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
@@ -432,6 +432,9 @@ var isDisabled = ally.element.disabled(element);
 <div data-note-type="warning">
 <p>Internet Explorer 10 - 11 leave a few disabled elements focusable and thus editable to the mouse, but not keyboard focusable <a href="https://connect.microsoft.com/IE/feedbackdetail/view/962368">Trident 962368</a>, <a href="https://connect.microsoft.com/IE/feedbackdetail/view/817488">Trident 817488</a> (ally.js does not fix that). One can prevent this wrong behavior by adding <code>:disabled { pointer-events: none; }</code>.</p>
 </div>
+<div data-note-type="warning">
+<p>In Blink and WebKit based browsers (Chrome, Opera, Safari, &#x2026;) the <code>&lt;use&gt;</code> element is keyboard focusable if the content it references contains focusable elements. In Blink even <code>&lt;use tabindex=&quot;-1&quot;&gt;</code> remains keyboard focusable. ally.js does not identify these <code>&lt;use&gt;</code> elements and can therefore not disable them. <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=665121">Blink 665121</a></p>
+</div>
 <div data-note-type="note">
 <p>In Google Chrome <code>&lt;audio controls&gt;</code> and <code>&lt;video controls&gt;</code> elements are made inert by removing the <code>controls</code> attribute - <a href="https://code.google.com/p/chromium/issues/detail?id=512133">Blink 512133</a>.</p>
 </div>
@@ -469,7 +472,7 @@ var isDisabled = ally.element.disabled(element);
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js" defer></script>
   <script src="../../assets/website.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" defer></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
