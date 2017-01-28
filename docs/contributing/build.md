@@ -31,7 +31,7 @@ dist
     └── <ES6 files>
 ```
 
-`npm run build` then runs `build:umd`, `build:amd`, `build:common` and creates the following structure in the `dist` directory:
+`npm run build` then runs `build:umd`, `build:amd`, `build:common`, `build:esm` and creates the following structure in the `dist` directory:
 
 ```text
 dist
@@ -40,6 +40,8 @@ dist
 │   └── <UMD module files>
 └── common
 │   └── <CommonJS module files>
+└── esm
+│   └── <ES6 module files compiled to ES5>
 └── src
     └── <ES6 module files>
 ```
@@ -56,6 +58,8 @@ dist
 ├── <CommonJS module files>
 ├── amd
 │   └── <UMD module files>
+└── esm
+│   └── <ES6 module files compiled to ES5>
 └── src
     └── <ES6 module files>
 ```
@@ -75,9 +79,9 @@ npm run build:umd
 npm run clean
 ```
 
-### Building AMD and CommonJS modules
+### Building AMD and CommonJS and ES6 modules
 
-To allow developers to use selected features (rather than import everything), the ES6 source (`src`) is made available in ES5 via AMD and CommonJS in `dist/amd` and `dist/common`.
+To allow developers to use selected features (rather than import everything), the ES6 source (`src`) is made available in ES5 via AMD and CommonJS in `dist/amd` and `dist/common` and as ES6 modules in `dist/esm`.
 
 ```sh
 # convert to CommonJS modules
@@ -88,10 +92,12 @@ npm run build:amd
 
 # keep converting to dist/amd while working on src
 npm run watch:amd
+
+# convert to compiled ES6 modules
+npm run build:esm
 ```
 
 Since `v1.4.0` the AMD modules are actually UMD modules, because of how babel 6 handles default exports. Since UMD can be consumed by both AMD and CommonJS system, a separate CommonJS build is not necessary anymore. However, changing the npm module's structure is a breaking change and has thus been deferred to the next major release.
-
 
 ---
 

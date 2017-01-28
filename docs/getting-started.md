@@ -134,6 +134,21 @@ console.log('focusable elements', queryFocusable());
 The ES6 source modules are available from the [github repository](https://github.com/medialize/ally.js) through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 :::
 
+## Using ES5 code contained in ES6 modules
+
+ally.js also ships a version of the source code as ES6 modules but with the contents of each module compiled to ES5 in the `esm` directory. It is recommeneded that you use these modules with a build tool such as [webpack 2](https://webpack.js.org/) or [Rollup](https://github.com/rollup/rollup) which understand how to parse ES6 modules but generally recommened ignoring the `node_modules` folder.
+
+```js
+import version from 'ally.js/esm/version';
+console.log('loaded version of ally.js', version);
+
+import queryFocusable from 'ally.js/esm/query/focusable';
+console.log('focusable elements', queryFocusable());
+```
+
+:::note
+The ES5 compiled ES6 modules with are available from the [github repository](https://github.com/medialize/ally.js) through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
+:::
 
 ## Using AMD modules
 
@@ -183,6 +198,30 @@ require(['ally.js/query/focusable'], function(queryFocusable) {
 The AMD modules are only available through [npm](https://www.npmjs.com/package/ally.js) and [`ally.js.zip`](https://github.com/medialize/ally.js/releases/download/{{pkg.version}}/ally.js.zip).
 :::
 
+## Using with TypeScript
+
+ally.js does not have a dediated set of TypeScript definitions. However you can still use ally.js in TypeScript by declaring a TypeScript module and using the ES5 compiled ES6 modules in the `esm` folder.
+
+```ts
+// in a .d.ts file, usually next to your applications entry point
+declare module 'ally.js/esm/version';
+declare module 'ally.js/esm/query/focusable';
+```
+
+```ts
+// in your application code
+import version from 'ally.js/esm/version';
+console.log('loaded version of ally.js', version);
+
+import queryFocusable from 'ally.js/esm/query/focusable';
+console.log('focusable elements', queryFocusable());
+```
+
+You will also need to set `allowJs` in your `tsconfig.json` file to be `true`.
+
+:::note
+This approach allows TypeScript to build and compile ally.js it does not provide any type checking. Only a properly authored definition file can provide type checking. If you want to contribute TypeScript definitions for ally.js the TypeScript documentation has an [excellent section on declartion files](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html).
+:::
 
 ## Integrations
 
