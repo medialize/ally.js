@@ -119,14 +119,3 @@ npm run lint:js:fix
 ```
 
 Linting is done automatically during `git commit` by way of [pre-commit](https://www.npmjs.com/package/pre-commit) and limited to the actually changed files by way of [lint-staged](https://www.npmjs.com/package/lint-staged) in order to keep `git commit` as fast as possible.
-
----
-
-## ES6 in older browsers
-
-Currently only a single ES6 function `Array.prototype.findIndex` is used in ally.js. Should we choose to use more ES6 functions, possibly things like `Set` and `Map`, we would have to include the [babel polyfill](http://babeljs.io/docs/usage/polyfill/) in our distribution. This step should not be taken lightly, as the polyfill is a heavyweight.
-
-```sh
-npm install babel-core
-cat node_modules/babel-core/browser-polyfill.js dist/ally.js > dist/ally.old-browser.js
-```

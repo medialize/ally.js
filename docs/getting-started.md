@@ -14,7 +14,6 @@ In order to load successfully in IE8, the [es5-shim](https://github.com/es-shims
 The UMD bundle contains the following dependencies:
 
 * [platform.js](https://github.com/bestiejs/platform.js) because parsing the userAgent string yourself is ludicrous.
-* [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) because loading the entire ES6-shim is unnecessary.
 * [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape) for properly constructing CSS query selectors.
 
 
@@ -160,8 +159,8 @@ require.config({
   paths: {
     // map to AMD files
     'ally.js': 'node_modules/ally.js/amd',
+
     // provide paths to dependencies
-    'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
     'css.escape': 'node_modules/css.escape/css.escape',
     'platform': 'node_modules/platform/platform',
   },

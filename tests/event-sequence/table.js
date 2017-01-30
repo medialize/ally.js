@@ -2,7 +2,6 @@ require.config({
   paths: {
     ally: '../../dist/amd',
     // shims required by ally.js
-    'array.prototype.findindex': '../../node_modules/array.prototype.findindex/index',
     'css.escape': '../../node_modules/css.escape/css.escape',
     // stuff used for testing and co
     'jquery': '../../node_modules/jquery/dist/jquery',

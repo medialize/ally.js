@@ -23,7 +23,6 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 ## Requirements
 
 * [ES5](https://kangax.github.io/compat-table/es5/)
-* [ES6 Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
 * [CSSOM CSS.escape](https://developer.mozilla.org/en-US/docs/Web/API/CSS.escape) ([spec](https://dev.w3.org/csswg/cssom/#the-css.escape%28%29-method))
 * [Element.classList](https://developer.mozilla.org/en/docs/Web/API/Element/classList)
 
@@ -32,7 +31,6 @@ ally.js is a JavaScript library simplifying certain accessibility features, func
 
 * [platform.js](https://github.com/bestiejs/platform.js) (because parsing the userAgent string yourself is ludicrous)
 * [ES5-shim](https://github.com/es-shims/es5-shim) (implicitly expected)
-* [ES6-shim Array.prototype.findIndex](https://github.com/paulmillr/Array.prototype.findIndex) (or complete [ES6-shim](https://github.com/paulmillr/es6-shim))
 * [CSSOM CSS.escape polyfill](https://github.com/mathiasbynens/CSS.escape)
 
 
