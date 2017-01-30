@@ -15,8 +15,6 @@ Polyfills should only extend JavaScript and BOM (Browser Object Model). Polyfill
 Additionally ally.js uses the following third party polyfills:
 
 * [`CSS.escape`](https://github.com/mathiasbynens/CSS.escape) to polyfill the [CSSOM `CSS.escape`](https://developer.mozilla.org/en-US/docs/Web/API/CSS/escape) function
-* [array.prototype.findindex](https://github.com/paulmillr/Array.prototype.findIndex) to polyfill the [ES6 `Array.findIndex`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
-
 
 ## Contributing
 

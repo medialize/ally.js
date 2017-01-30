@@ -10,7 +10,7 @@
     bad practice we'll ignore it until someone complains.
  */
 
-import 'array.prototype.findindex';
+import findIndex from '../util/array-find-index';
 import queryTabbable from './tabbable';
 import isFocusable from '../is/focusable';
 import nodeArray from '../util/node-array';
@@ -45,12 +45,12 @@ export default function({
 
   if (sequence.length && !ignoreAutofocus) {
     // prefer [autofocus]
-    index = sequence.findIndex(hasAutofocus);
+    index = findIndex(sequence, hasAutofocus);
   }
 
   if (sequence.length && index === -1) {
     // ignore positive [tabindex]
-    index = sequence.findIndex(hasNoPositiveTabindex);
+    index = findIndex(sequence, hasNoPositiveTabindex);
   }
 
   const _isFocusable = isFocusable.rules.except({

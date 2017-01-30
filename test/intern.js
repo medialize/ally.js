@@ -38,7 +38,6 @@ define([], function() {
       paths: {
         'ally/util/logger': 'test/overrides/util.logger.override',
 
-        'array.prototype.findindex': 'node_modules/array.prototype.findindex/index',
         'css.escape': 'node_modules/css.escape/css.escape',
         platform: 'node_modules/platform/platform',
       },

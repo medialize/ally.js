@@ -2,7 +2,7 @@
 // determine if an element is rendered
 // NOTE: that does not mean an element is visible in the viewport, see util/visible-area
 
-import 'array.prototype.findindex';
+import findIndex from '../util/array-find-index';
 import getParents from '../get/parents';
 import contextToElement from '../util/context-to-element';
 import getFrameElement from '../util/get-frame-element';
@@ -27,7 +27,7 @@ function notVisible(_path) {
   // https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L109-L114
   // NOTE: a nested element can reverse visibility:hidden|collapse by explicitly setting visibility:visible
   // NOTE: visibility can be ["", "visible", "hidden", "collapse"]
-  const hidden = _path.findIndex(function(element) {
+  const hidden = findIndex(_path, function(element) {
     const visibility = computedStyle(element, 'visibility');
     return visibility === 'hidden' || visibility === 'collapse';
   });
@@ -37,7 +37,7 @@ function notVisible(_path) {
     return false;
   }
 
-  const visible = _path.findIndex(function(element) {
+  const visible = findIndex(_path, function(element) {
     return computedStyle(element, 'visibility') === 'visible';
   });
 

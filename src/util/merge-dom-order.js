@@ -18,12 +18,13 @@
     })
 */
 
+import findIndex from '../util/array-find-index';
 import nodeArray from './node-array';
 import sortDomOrder from './sort-dom-order';
 
 function getFirstSuccessorOffset(list, target) {
   // find the first element that comes AFTER the target element
-  return list.findIndex(function(element) {
+  return findIndex(list, function(element) {
     return target.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING;
   });
 }

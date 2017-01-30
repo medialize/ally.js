@@ -128,3 +128,7 @@ A component's `engage()` function may return an result object. The decorated `di
 ### Match element agains CSS selector
 
 `util/element-matches` provides a simple interface to using [Element.matches](https://developer.mozilla.org/en-US/docs/Web/API/Element.matches) through its various vendor-prefixed names.
+
+### Find an item in an array
+
+`util/array-find-index` is a simple wrapper that provides the same functionality as [Array.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) for non ES 6 browsers.
