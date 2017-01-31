@@ -1,5 +1,16 @@
 # ally.js change log
 
+## 1.4.1 - Module Mania
+
+*January 31st 2017*. This release does not contain any functional changes.
+
+* replacing [array.prototype.findindex](https://github.com/paulmillr/Array.prototype.findIndex) by [`ally.util.arrayFindIndex`][ally/util] - [PR #154](https://github.com/medialize/ally.js/pull/154)
+* adding `dist/esm` which provides the modules compiled to ES5 but exposing them in ES6 modules for [simplified use in TypeScript projects](https://allyjs.io/getting-started.html#using-with-typescript) - [PR #154](https://github.com/medialize/ally.js/pull/154)
+
+
+---
+
+
 ## 1.4.0 - The SVG Awakens
 
 *January 12th 2017*. We're continuing our journey to *make accessibility simpler* (by advancing our understanding of the "platform"). Version 1.4.0 comes 4 months after the last feature release. We pushed [about 50 commits](https://github.com/medialize/ally.js/compare/1.3.2...1.4.0) in an effort to understand focus behavior in SVG, update the build systems and upgrade automated testing to modern browser versions.
