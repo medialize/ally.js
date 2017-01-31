@@ -78,10 +78,22 @@
     "objectID": "getting-started.html#using-es6-modules"
   },
   {
+    "url": "getting-started.html#using-es5-code-contained-in-es6-modules",
+    "title": "Using ES5 code contained in ES6 modules",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-es5-code-contained-in-es6-modules"
+  },
+  {
     "url": "getting-started.html#using-amd-modules",
     "title": "Using AMD modules",
     "document": "Getting started",
     "objectID": "getting-started.html#using-amd-modules"
+  },
+  {
+    "url": "getting-started.html#using-with-typescript",
+    "title": "Using with TypeScript",
+    "document": "Getting started",
+    "objectID": "getting-started.html#using-with-typescript"
   },
   {
     "url": "getting-started.html#integrations",
@@ -196,12 +208,6 @@
     "title": "Linting",
     "document": "Build infrastructure",
     "objectID": "contributing/build.html#linting"
-  },
-  {
-    "url": "contributing/build.html#es6-in-older-browsers",
-    "title": "ES6 in older browsers",
-    "document": "Build infrastructure",
-    "objectID": "contributing/build.html#es6-in-older-browsers"
   },
   {
     "url": "contributing/docs.html",

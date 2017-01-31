@@ -63,7 +63,13 @@
         <li><a href="#using-es6-modules">Using ES6 modules</a></li>
         
         
+        <li><a href="#using-es5-code-contained-in-es6-modules">Using ES5 code contained in ES6 modules</a></li>
+        
+        
         <li><a href="#using-amd-modules">Using AMD modules</a></li>
+        
+        
+        <li><a href="#using-with-typescript">Using with TypeScript</a></li>
         
         
         <li><a href="#integrations">Integrations</a></li>
@@ -110,35 +116,34 @@
 <p>The UMD bundle contains the following dependencies:</p>
 <ul>
 <li><a href="https://github.com/bestiejs/platform.js">platform.js</a> because parsing the userAgent string yourself is ludicrous.</li>
-<li><a href="https://github.com/paulmillr/Array.prototype.findIndex">ES6-shim Array.prototype.findIndex</a> because loading the entire ES6-shim is unnecessary.</li>
 <li><a href="https://github.com/mathiasbynens/CSS.escape">CSSOM CSS.escape polyfill</a> for properly constructing CSS query selectors.</li>
 </ul>
 <h2 id="downloading-the-umd-bundle"><a class="link-to-headline" href="#downloading-the-umd-bundle">#</a> Downloading the UMD bundle</h2>
 <p>If you&apos;re not comfortable with package mangers, simply download the production ready UMD bundle and drop it in your project.</p>
 <ul>
-<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.min.js" class="download-file">ally.min.js</a> UMD bundle, ready for production use</li>
-<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.min.js.map" class="download-file">ally.min.js.map</a> for SourceMap support</li>
-<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.zip" class="download-file">ally.js.zip</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)</li>
-<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.tar.gz" class="download-file">ally.js.tar.gz</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.min.js" class="download-file">ally.min.js</a> UMD bundle, ready for production use</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.min.js.map" class="download-file">ally.min.js.map</a> for SourceMap support</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip" class="download-file">ally.js.zip</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)</li>
+<li><a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.tar.gz" class="download-file">ally.js.tar.gz</a> archive containing CommonJS, AMD and ES6 modules, as well as the UMD bundle (including SourceMap files)</li>
 </ul>
 <p>All downloads are hosted on the <a href="https://github.com/medialize/ally.js/releases">github release page</a>.</p>
 <h2 id="loading-the-umd-bundle-from-cdn"><a class="link-to-headline" href="#loading-the-umd-bundle-from-cdn">#</a> Loading the UMD bundle from CDN</h2>
 <p>ally.js is made available for production use by <a href="https://www.jsdelivr.com/projects/ally.js">jsDelivr</a>:</p>
-<pre><code class="language-markup">&lt;script src=&quot;https://cdn.jsdelivr.net/ally.js/1.4.0/ally.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-markup">&lt;script src=&quot;https://cdn.jsdelivr.net/ally.js/1.4.1/ally.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   console.log(&apos;loaded ally.js in version&apos;, ally.version);
   console.log(&apos;focusable elements&apos;, ally.query.focusable());
 &lt;/script&gt;
 </code></pre>
 <p>ally.js is also available for production use by <a href="https://cdnjs.com/libraries/ally.js">cdnjs</a>:</p>
-<pre><code class="language-markup">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/ally.js/1.4.0/ally.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-markup">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/ally.js/1.4.1/ally.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   console.log(&apos;loaded ally.js in version&apos;, ally.version);
   console.log(&apos;focusable elements&apos;, ally.query.focusable());
 &lt;/script&gt;
 </code></pre>
 <p>ally.js is also available via <a href="https://unpkg.com">unpkg.com</a>:</p>
-<pre><code class="language-markup">&lt;script src=&quot;https://unpkg.com/ally.js@1.4.0/ally.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-markup">&lt;script src=&quot;https://unpkg.com/ally.js@1.4.1/ally.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   console.log(&apos;loaded ally.js in version&apos;, ally.version);
   console.log(&apos;focusable elements&apos;, ally.query.focusable());
@@ -148,7 +153,7 @@
 <pre><code class="language-bash">npm install --save ally.js
 </code></pre>
 <p>Although <a href="https://bower.io/">bower</a> can download archives, it won&apos;t be able to inform you of updates:</p>
-<pre><code class="language-bash">bower install --save https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.zip
+<pre><code class="language-bash">bower install --save https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip
 </code></pre>
 <p>You can use <a href="https://github.com/stealjs/system-npm">system-npm</a> to consume ally.js from <a href="https://www.npmjs.com/package/ally.js">npm</a> in SystemJS:</p>
 <pre><code class="language-javascript">System.import(&apos;ally.js!npm&apos;).then(function(ally) {
@@ -176,7 +181,7 @@ var queryFocusable = require(&apos;ally.js/query/focusable&apos;);
 console.log(&apos;focusable elements&apos;, queryFocusable());
 </code></pre>
 <div data-note-type="note">
-<p>The CommonJS modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.zip"><code>ally.js.zip</code></a>.</p>
+<p>The CommonJS modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip"><code>ally.js.zip</code></a>.</p>
 </div>
 <h2 id="using-es6-modules"><a class="link-to-headline" href="#using-es6-modules">#</a> Using ES6 modules</h2>
 <p>ally.js is authored in ES6 and its modules are accessible in the <code>src</code> directory:</p>
@@ -187,7 +192,18 @@ import queryFocusable from &apos;ally.js/src/query/focusable&apos;;
 console.log(&apos;focusable elements&apos;, queryFocusable());
 </code></pre>
 <div data-note-type="note">
-<p>The ES6 source modules are available from the <a href="https://github.com/medialize/ally.js">github repository</a> through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.zip"><code>ally.js.zip</code></a>.</p>
+<p>The ES6 source modules are available from the <a href="https://github.com/medialize/ally.js">github repository</a> through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip"><code>ally.js.zip</code></a>.</p>
+</div>
+<h2 id="using-es5-code-contained-in-es6-modules"><a class="link-to-headline" href="#using-es5-code-contained-in-es6-modules">#</a> Using ES5 code contained in ES6 modules</h2>
+<p>ally.js also ships a version of the source code as ES6 modules but with the contents of each module compiled to ES5 in the <code>esm</code> directory. It is recommeneded that you use these modules with a build tool such as <a href="https://webpack.js.org/">webpack 2</a> or <a href="https://github.com/rollup/rollup">Rollup</a> which understand how to parse ES6 modules but generally recommened ignoring the <code>node_modules</code> folder.</p>
+<pre><code class="language-javascript">import version from &apos;ally.js/esm/version&apos;;
+console.log(&apos;loaded version of ally.js&apos;, version);
+
+import queryFocusable from &apos;ally.js/esm/query/focusable&apos;;
+console.log(&apos;focusable elements&apos;, queryFocusable());
+</code></pre>
+<div data-note-type="note">
+<p>The ES5 compiled ES6 modules with are available from the <a href="https://github.com/medialize/ally.js">github repository</a> through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip"><code>ally.js.zip</code></a>.</p>
 </div>
 <h2 id="using-amd-modules"><a class="link-to-headline" href="#using-amd-modules">#</a> Using AMD modules</h2>
 <p>The production UMD bundle contains all dependencies, allowing you to require ally.js directly:</p>
@@ -207,8 +223,8 @@ require([&apos;ally.js&apos;], function(ally) {
   paths: {
     // map to AMD files
     &apos;ally.js&apos;: &apos;node_modules/ally.js/amd&apos;,
+
     // provide paths to dependencies
-    &apos;array.prototype.findindex&apos;: &apos;node_modules/array.prototype.findindex/index&apos;,
     &apos;css.escape&apos;: &apos;node_modules/css.escape/css.escape&apos;,
     &apos;platform&apos;: &apos;node_modules/platform/platform&apos;,
   },
@@ -224,7 +240,24 @@ require([&apos;ally.js/query/focusable&apos;], function(queryFocusable) {
 });
 </code></pre>
 <div data-note-type="note">
-<p>The AMD modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.0/ally.js.zip"><code>ally.js.zip</code></a>.</p>
+<p>The AMD modules are only available through <a href="https://www.npmjs.com/package/ally.js">npm</a> and <a href="https://github.com/medialize/ally.js/releases/download/1.4.1/ally.js.zip"><code>ally.js.zip</code></a>.</p>
+</div>
+<h2 id="using-with-typescript"><a class="link-to-headline" href="#using-with-typescript">#</a> Using with TypeScript</h2>
+<p>ally.js does not have a dediated set of TypeScript definitions. However you can still use ally.js in TypeScript by declaring a TypeScript module and using the ES5 compiled ES6 modules in the <code>esm</code> folder.</p>
+<pre><code class="language-ts">// in a .d.ts file, usually next to your applications entry point
+declare module &apos;ally.js/esm/version&apos;;
+declare module &apos;ally.js/esm/query/focusable&apos;;
+</code></pre>
+<pre><code class="language-ts">// in your application code
+import version from &apos;ally.js/esm/version&apos;;
+console.log(&apos;loaded version of ally.js&apos;, version);
+
+import queryFocusable from &apos;ally.js/esm/query/focusable&apos;;
+console.log(&apos;focusable elements&apos;, queryFocusable());
+</code></pre>
+<p>You will also need to set <code>allowJs</code> in your <code>tsconfig.json</code> file to be <code>true</code>.</p>
+<div data-note-type="note">
+<p>This approach allows TypeScript to build and compile ally.js it does not provide any type checking. Only a properly authored definition file can provide type checking. If you want to contribute TypeScript definitions for ally.js the TypeScript documentation has an <a href="https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html">excellent section on declartion files</a>.</p>
 </div>
 <h2 id="integrations"><a class="link-to-headline" href="#integrations">#</a> Integrations</h2>
 <ul>

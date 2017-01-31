@@ -46,9 +46,6 @@
         
         
         <li><a href="#linting">Linting</a></li>
-        
-        
-        <li><a href="#es6-in-older-browsers">ES6 in older browsers</a></li>
         </ul></nav>
       <aside>
         <h1>Contribute to this page</h1>
@@ -108,13 +105,15 @@ npm run clean
 &#x2514;&#x2500;&#x2500; src
     &#x2514;&#x2500;&#x2500; &lt;ES6 files&gt;
 </code></pre>
-<p><code>npm run build</code> then runs <code>build:umd</code>, <code>build:amd</code>, <code>build:common</code> and creates the following structure in the <code>dist</code> directory:</p>
+<p><code>npm run build</code> then runs <code>build:umd</code>, <code>build:amd</code>, <code>build:common</code>, <code>build:esm</code> and creates the following structure in the <code>dist</code> directory:</p>
 <pre><code class="language-text">dist
 &#x251C;&#x2500;&#x2500; &lt;UMD bundle&gt;
 &#x251C;&#x2500;&#x2500; amd
 &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; &lt;UMD module files&gt;
 &#x2514;&#x2500;&#x2500; common
 &#x2502;   &#x2514;&#x2500;&#x2500; &lt;CommonJS module files&gt;
+&#x2514;&#x2500;&#x2500; esm
+&#x2502;   &#x2514;&#x2500;&#x2500; &lt;ES6 module files compiled to ES5&gt;
 &#x2514;&#x2500;&#x2500; src
     &#x2514;&#x2500;&#x2500; &lt;ES6 module files&gt;
 </code></pre>
@@ -128,6 +127,8 @@ npm run clean
 &#x251C;&#x2500;&#x2500; &lt;CommonJS module files&gt;
 &#x251C;&#x2500;&#x2500; amd
 &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; &lt;UMD module files&gt;
+&#x2514;&#x2500;&#x2500; esm
+&#x2502;   &#x2514;&#x2500;&#x2500; &lt;ES6 module files compiled to ES5&gt;
 &#x2514;&#x2500;&#x2500; src
     &#x2514;&#x2500;&#x2500; &lt;ES6 module files&gt;
 </code></pre>
@@ -140,8 +141,8 @@ npm run build:umd
 # remove everything in dist
 npm run clean
 </code></pre>
-<h3 id="building-amd-and-commonjs-modules"><a class="link-to-headline" href="#building-amd-and-commonjs-modules">#</a> Building AMD and CommonJS modules</h3>
-<p>To allow developers to use selected features (rather than import everything), the ES6 source (<code>src</code>) is made available in ES5 via AMD and CommonJS in <code>dist/amd</code> and <code>dist/common</code>.</p>
+<h3 id="building-amd-and-commonjs-and-es6-modules"><a class="link-to-headline" href="#building-amd-and-commonjs-and-es6-modules">#</a> Building AMD and CommonJS and ES6 modules</h3>
+<p>To allow developers to use selected features (rather than import everything), the ES6 source (<code>src</code>) is made available in ES5 via AMD and CommonJS in <code>dist/amd</code> and <code>dist/common</code> and as ES6 modules in <code>dist/esm</code>.</p>
 <pre><code class="language-bash"># convert to CommonJS modules
 npm run build:common
 
@@ -150,6 +151,9 @@ npm run build:amd
 
 # keep converting to dist/amd while working on src
 npm run watch:amd
+
+# convert to compiled ES6 modules
+npm run build:esm
 </code></pre>
 <p>Since <a href="https://github.com/medialize/ally.js/releases/1.4.0"><code>v1.4.0</code></a> the AMD modules are actually UMD modules, because of how babel 6 handles default exports. Since UMD can be consumed by both AMD and CommonJS system, a separate CommonJS build is not necessary anymore. However, changing the npm module&apos;s structure is a breaking change and has thus been deferred to the next major release.</p>
 <hr>
@@ -172,12 +176,6 @@ npm run lint:md:js
 npm run lint:js:fix
 </code></pre>
 <p>Linting is done automatically during <code>git commit</code> by way of <a href="https://www.npmjs.com/package/pre-commit">pre-commit</a> and limited to the actually changed files by way of <a href="https://www.npmjs.com/package/lint-staged">lint-staged</a> in order to keep <code>git commit</code> as fast as possible.</p>
-<hr>
-<h2 id="es6-in-older-browsers"><a class="link-to-headline" href="#es6-in-older-browsers">#</a> ES6 in older browsers</h2>
-<p>Currently only a single ES6 function <code>Array.prototype.findIndex</code> is used in ally.js. Should we choose to use more ES6 functions, possibly things like <code>Set</code> and <code>Map</code>, we would have to include the <a href="http://babeljs.io/docs/usage/polyfill/">babel polyfill</a> in our distribution. This step should not be taken lightly, as the polyfill is a heavyweight.</p>
-<pre><code class="language-bash">npm install babel-core
-cat node_modules/babel-core/browser-polyfill.js dist/ally.js &gt; dist/ally.old-browser.js
-</code></pre>
 
     </main>
   </div>

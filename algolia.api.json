@@ -70,6 +70,20 @@
     "objectID": "api/fix/pointer-focus-parent.html"
   },
   {
+    "url": "api/map/attribute.html",
+    "title": "ally.map.attribute",
+    "excerpt": "Map of all WAI-ARIA states and properties.",
+    "module": "api/map/attribute",
+    "objectID": "api/map/attribute.html"
+  },
+  {
+    "url": "api/map/keycode.html",
+    "title": "ally.map.keycode",
+    "excerpt": "Map human readable names for event.keyCodes.",
+    "module": "api/map/keycode",
+    "objectID": "api/map/keycode.html"
+  },
+  {
     "url": "api/get/active-element.html",
     "title": "ally.get.activeElement",
     "excerpt": "Identifies the element that currently has focus",
@@ -124,6 +138,41 @@
     "excerpt": "Identifies the ShadowHost of an element",
     "module": "api/get/shadow-host",
     "objectID": "api/get/shadow-host.html"
+  },
+  {
+    "url": "api/observe/interaction-type.html",
+    "title": "ally.observe.interactionType",
+    "excerpt": "Observes user interaction method to distinguish pointer and keyboard actions.",
+    "module": "api/observe/interaction-type",
+    "objectID": "api/observe/interaction-type.html"
+  },
+  {
+    "url": "api/observe/shadow-mutations.html",
+    "title": "ally.observe.shadowMutations",
+    "excerpt": "Registers MutationObservers across nested ShadowRoots.",
+    "module": "api/observe/shadow-mutations",
+    "objectID": "api/observe/shadow-mutations.html"
+  },
+  {
+    "url": "api/maintain/disabled.html",
+    "title": "ally.maintain.disabled",
+    "excerpt": "Disables any type of user interaction - including the ability to focus elements - essentially rendering elements inert.",
+    "module": "api/maintain/disabled",
+    "objectID": "api/maintain/disabled.html"
+  },
+  {
+    "url": "api/maintain/hidden.html",
+    "title": "ally.maintain.hidden",
+    "excerpt": "Sets aria-hidden=\"true\" on insignificant branches.",
+    "module": "api/maintain/hidden",
+    "objectID": "api/maintain/hidden.html"
+  },
+  {
+    "url": "api/maintain/tab-focus.html",
+    "title": "ally.maintain.tabFocus",
+    "excerpt": "Traps TAB focus in the tabsequence to prevent the browser from shifting focus to its UI (e.g. the location bar).",
+    "module": "api/maintain/tab-focus",
+    "objectID": "api/maintain/tab-focus.html"
   },
   {
     "url": "api/is/active-element.html",
@@ -196,53 +245,18 @@
     "objectID": "api/is/visible.html"
   },
   {
-    "url": "api/maintain/disabled.html",
-    "title": "ally.maintain.disabled",
-    "excerpt": "Disables any type of user interaction - including the ability to focus elements - essentially rendering elements inert.",
-    "module": "api/maintain/disabled",
-    "objectID": "api/maintain/disabled.html"
+    "url": "api/style/focus-source.html",
+    "title": "ally.style.focusSource",
+    "excerpt": "Differentiate the causes of focus change for when different visual styles need to applied.",
+    "module": "api/style/focus-source",
+    "objectID": "api/style/focus-source.html"
   },
   {
-    "url": "api/maintain/hidden.html",
-    "title": "ally.maintain.hidden",
-    "excerpt": "Sets aria-hidden=\"true\" on insignificant branches.",
-    "module": "api/maintain/hidden",
-    "objectID": "api/maintain/hidden.html"
-  },
-  {
-    "url": "api/maintain/tab-focus.html",
-    "title": "ally.maintain.tabFocus",
-    "excerpt": "Traps TAB focus in the tabsequence to prevent the browser from shifting focus to its UI (e.g. the location bar).",
-    "module": "api/maintain/tab-focus",
-    "objectID": "api/maintain/tab-focus.html"
-  },
-  {
-    "url": "api/map/attribute.html",
-    "title": "ally.map.attribute",
-    "excerpt": "Map of all WAI-ARIA states and properties.",
-    "module": "api/map/attribute",
-    "objectID": "api/map/attribute.html"
-  },
-  {
-    "url": "api/map/keycode.html",
-    "title": "ally.map.keycode",
-    "excerpt": "Map human readable names for event.keyCodes.",
-    "module": "api/map/keycode",
-    "objectID": "api/map/keycode.html"
-  },
-  {
-    "url": "api/observe/interaction-type.html",
-    "title": "ally.observe.interactionType",
-    "excerpt": "Observes user interaction method to distinguish pointer and keyboard actions.",
-    "module": "api/observe/interaction-type",
-    "objectID": "api/observe/interaction-type.html"
-  },
-  {
-    "url": "api/observe/shadow-mutations.html",
-    "title": "ally.observe.shadowMutations",
-    "excerpt": "Registers MutationObservers across nested ShadowRoots.",
-    "module": "api/observe/shadow-mutations",
-    "objectID": "api/observe/shadow-mutations.html"
+    "url": "api/style/focus-within.html",
+    "title": "ally.style.focusWithin",
+    "excerpt": "Polyfill the CSS Selectors Level 4 pseudo-class :focus-within",
+    "module": "api/style/focus-within",
+    "objectID": "api/style/focus-within.html"
   },
   {
     "url": "api/query/first-tabbable.html",
@@ -278,20 +292,6 @@
     "excerpt": "Finds keyboard focusable (\"tabbable\") elements in the DOM and returns them in the order calculated based on tabindex attribute values.",
     "module": "api/query/tabsequence",
     "objectID": "api/query/tabsequence.html"
-  },
-  {
-    "url": "api/style/focus-source.html",
-    "title": "ally.style.focusSource",
-    "excerpt": "Differentiate the causes of focus change for when different visual styles need to applied.",
-    "module": "api/style/focus-source",
-    "objectID": "api/style/focus-source.html"
-  },
-  {
-    "url": "api/style/focus-within.html",
-    "title": "ally.style.focusWithin",
-    "excerpt": "Polyfill the CSS Selectors Level 4 pseudo-class :focus-within",
-    "module": "api/style/focus-within",
-    "objectID": "api/style/focus-within.html"
   },
   {
     "url": "api/when/focusable.html",
