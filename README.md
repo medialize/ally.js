@@ -4,6 +4,7 @@
 
 [![NPM version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
+[![jsDelivr Hits][jsdelivr-image]][jsdelivr-url]
 [![MIT License][license-image]][license-url]
 [![Travis CI][build-image]][build-url]
 [![Code Climate][climate-image]][climate-url]
@@ -60,6 +61,8 @@ ally.js is published under the [MIT License](https://opensource.org/licenses/mit
 [npm-url]: https://www.npmjs.com/package/ally.js
 [downloads-image]: https://img.shields.io/npm/dm/ally.js.svg
 [downloads-url]: https://www.npmjs.com/package/ally.js
+[jsdelivr-image]:https://data.jsdelivr.com/v1/package/npm/ally.js/badge?style=rounded
+[jsdelivr-url]: https://www.jsdelivr.com/package/npm/ally.js
 [license-image]: https://img.shields.io/npm/l/ally.js.svg
 [license-url]: https://github.com/medialize/ally.js/blob/master/LICENSE.txt
 [build-image]: https://img.shields.io/travis/medialize/ally.js/master.svg
