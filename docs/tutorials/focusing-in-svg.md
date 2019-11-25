@@ -64,7 +64,7 @@ Any element that has a `focus` event listener attached should also be made focus
 
 In Blink and WebKit based browsers focusing SVG elements is not different from focusing an HTML element, the `.focus()` method is available on [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) and [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement). Since Firefox 51 the `.focus()` method is also available. In Internet Explorer and Microsoft Edge this is not the case.
 
-Internet Explorer and Microsoft Edge up to version 12 allow misappropriating the `.focus()` method by applying the method from `HTMLElement`'s prototype to an `SVGElement`: `HTMLElement.prototoype.focus.apply(svgElement)`. Microsoft Edge 13 joined Firefox (up to version 50) in rejecting such attempts by throwing an error:
+Internet Explorer and Microsoft Edge up to version 12 allow misappropriating the `.focus()` method by applying the method from `HTMLElement`'s prototype to an `SVGElement`: `HTMLElement.prototype.focus.apply(svgElement)`. Microsoft Edge 13 joined Firefox (up to version 50) in rejecting such attempts by throwing an error:
 
 ```text
 // Firefox
