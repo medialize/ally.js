@@ -188,6 +188,13 @@ define(function(require) {
         expect(fixture.input.after.disabled).to.equal(false, 'not disabled within filter');
         expect(fixture.input.first.disabled).to.equal(false, 'not disabled within Shadow Root');
       });
+
+      bdd.it('should not disable filtered shadowed elements', function() {
+        handle = maintainDisabled({
+          filter: '#first-shadow-host',
+        });
+        expect(fixture.input.first.disabled).to.equal(false, 'not disabled within Shadow Root');
+      });
     });
 
     bdd.describe('for DOM Mutation', function() {
