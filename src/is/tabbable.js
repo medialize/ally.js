@@ -108,7 +108,7 @@ function isTabbableRules({
   if (platform.is.WEBKIT && platform.is.IOS) {
     // iOS only considers a hand full of elements tabbable (keyboard focusable)
     // this holds true even with external keyboards
-    let potentiallyTabbable = (nodeName === 'input' && element.type === 'text' || element.type === 'password')
+    let potentiallyTabbable = nodeName === 'input' && (element.type === 'text' || element.type === 'password' || element.type === 'email' || element.type === 'number')
       || nodeName === 'select'
       || nodeName === 'textarea'
       || element.hasAttribute('contenteditable');
