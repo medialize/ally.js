@@ -45,7 +45,7 @@
     "build:umd": "npm-run-all --sequential build:umd:bundle build:umd:min build:umd:clean",
     "build:umd:bundle": "browserify dist/src/ally.js --debug --standalone ally --transform rollupify --transform [ babelify --presets [ es2015 ] ] | exorcist dist/ally.js.map > dist/ally.js",
     "build:umd:clean": "rm dist/ally.js dist/ally.js.map",
-    "build:umd:min": "uglifyjs dist/ally.js --in-source-map dist/ally.js.map --source-map dist/ally.min.js.map --source-map-url ally.min.js.map --preamble \"/*! ${npm_package_name} - v${npm_package_version} - ${npm_package_homepage} - ${npm_package_license} License */\" --mangle --compress --output dist/ally.min.js",
+    "build:umd:min": "uglifyjs dist/ally.js --source-map 'url=ally.min.js.map,content=dist/ally.js.map' --compress --mangle --output dist/ally.min.js && echo '/*! $(npm pkg get name) - v$(npm pkg get version) - $(npm pkg get homepage) - $(npm pkg get license) License */' | cat - dist/ally.min.js > temp && mv temp dist/ally.min.js",
     "build:common": "babel --no-babelrc --presets es2015 --plugins add-module-exports --source-maps --out-dir dist/common dist/src",
     "build:amd": "babel --no-babelrc --presets es2015 --plugins add-module-exports,transform-es2015-modules-umd --source-maps --out-dir dist/amd dist/src",
     "build:esm": "babel --source-maps --out-dir dist/esm dist/src",
@@ -156,6 +156,6 @@
   },
   "dependencies": {
     "css.escape": "^1.5.0",
-    "platform": "1.3.3"
+    "platform": "^1.3.6"
   }
 }
